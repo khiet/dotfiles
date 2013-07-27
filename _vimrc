@@ -1,3 +1,24 @@
+" -----------------------------------------------
+"     Cheat Sheets
+" -----------------------------------------------
+" Folding
+" zi: toggle fold (global)
+" za: toggle fold (local)
+" zf: create fold
+" zd: delete fold
+
+" f{char} F{char} search
+" ; to repeat last search - \ to go backward
+
+" :helptag ~/.vim/doc "to enable help
+" :vim[grep][!] /{pattern}(keyword)/ **/*.rb | copen "// is for options:j, g, etc.
+
+" set spell
+" e.g. z=, 1z=
+"
+" NERDTreeBookmarks are kept in $HOME/.NERDTreeBookmarks
+" -----------------------------------------------
+
 " Pathogen
 call pathogen#infect()
 call pathogen#helptags()
@@ -23,8 +44,10 @@ nmap <F4> :Runittest <CR>
 " -----------------------------------------------
 "    Yank Ring
 " -----------------------------------------------
-"nnoremap <F11> :YRShow <CR>
+nmap <F11> :YRShow <CR>
 " -----------------------------------------------
+
+nmap <F10> :Ack
 
 " Allow backspacing over everything in i-mode
 set backspace=indent,eol,start
@@ -63,12 +86,6 @@ else " terminal
     if (&t_Co == 256) " if terminal supports 256 colours
         colorscheme zenburn "desert blackboard elflord desert
     endif
-
-    "clipboard - http://vim.wikia.com/wiki/Mac_OS_X_clipboard_sharing
-    nmap <F11> :.w !pbcopy<CR><CR>
-    vmap <F11> :w !pbcopy<CR><CR>
-    nmap <F12> :set paste<CR>:r !pbpaste<CR>:set nopaste<CR>
-    imap <F12> <Esc>:set paste<CR>:r !pbpaste<CR>:set nopaste<CR>
 endif
 
 " -----------------------------------------------
@@ -130,9 +147,6 @@ nmap <leader>et :tabedit <C-R>=expand("%:p:h") . "/" <CR>
 " cd ../ of editting file
 nmap <leader>cd :cd <C-R>=expand("%:p:h") <CR>
 
-"noremap £ :tabnext<CR>
-"noremap £ :tabprevious<CR>
-
 " #5 - indenting
 vmap << <gv
 vmap >> >gv
@@ -155,15 +169,23 @@ map <leader>i ggvG=<C-o><C-o>
 " -----------------------------------------------
 "   navigation
 " -----------------------------------------------
-" window
+" windows
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
-" buffer
+" buffers
 map <Right> :bn<CR>
 map <Left> :bp<CR>
+
+" tabs
+nmap <C-Right> :tabnext <CR>
+nmap <C-Left> :tabprevious <CR>
+
+" quickfix items
+noremap <Up> :cp <CR>
+noremap <Down> :cn <CR>
 " -----------------------------------------------
 
 " -----------------------------------------------
@@ -172,11 +194,34 @@ map <Left> :bp<CR>
 "function! FullScreen()
 "    set lines=1024 columns=1024
 "endfunction
-" -----------------------------------------------
 
 "nnoremap <F11> :call FullScreen() <CR>
 
-" /n to count # of matches
+function! DosToUnixLineEnding()
+    :update
+    :e ++ff=dos
+    :setlocal ff=unix
+    :w
+endfunction
+
+" ref - http://vimcasts.org/episodes/tidying-whitespace/
+function! <SID>StripTrailingWhitespaces()
+    " Preparation: save last search, and cursor position.
+    let _s=@/
+    let l = line(".")
+    let c = col(".")
+    " Do the business:
+    %s/\s\+$//e
+    " Clean up: restore previous search history, and cursor position
+    let @/=_s
+    call cursor(l, c)
+endfunction
+
+nnoremap <silent> <leader>w :call <SID>StripTrailingWhitespaces()<CR>
+" autocmd BufWritePre *.py,*.js :call <SID>StripTrailingWhitespaces()
+" -----------------------------------------------
+
+" /n to count # of matches i.e. %s///n
 nnoremap <leader>r :%s//
 
 " list invisibles
@@ -201,80 +246,20 @@ if has("mac") " Mac
     " #1 - invisibles
     " <C-v>u<hex> to insert unicode
     set listchars=tab:»\ ,eol:$,nbsp:%,trail:~,extends:>,precedes:<
+    "clipboard - http://vim.wikia.com/wiki/Mac_OS_X_clipboard_sharing
+    set clipboard=unnamed " yank to "* register i.e. system clipboard
+    " for better pasting
+    nmap <F12> :set paste<CR>:r !pbpaste<CR>:set nopaste<CR>
+    imap <F12> <Esc>:set paste<CR>:r !pbpaste<CR>:set nopaste<CR>
 elseif has("win32") " Windows
     " from mswin.vim
     " CTRL-X is Cut
     vnoremap <C-X> "+x
-
     " CTRL-C is Copy
     vnoremap <C-C> "+y
-
     " CTRL-V is Paste
     vnoremap <C-V> "+gP
-
-    " -------------------------------------------
-    "    QAS specifics
-    " -------------------------------------------
-    " search all non-ascii characters
-    nnoremap <C-A> /[^a-zA-Z0-9_[:space:][:punct:]]
-    " on load, cd is set to "Desktop"
-    chdir C:\Users\lekhiet\Desktop
-    " -------------------------------------------
-    " -----------------------------------------------
 endif
-" -----------------------------------------------
-
-" Press F5 in normal mode or in insert mode to insert the current datestamp
-" %T for time
-" :nnoremap <F5> "=strftime("%d %b %Y")<CR>P
-" :inoremap <F5> <C-R>=strftime("%d %b %Y")<CR>
-
-" -----------------------------------------------
-"     Cheat Sheets
-" -----------------------------------------------
-" Folding
-" zi: toggle fold (global)
-" za: toggle fold (local)
-" zf: create fold
-" zd: delete fold
-
-" f{char} F{char} search
-" ; to repeat last search - \ to go backward
-
-" :helptag ~/.vim/doc "to enable help
-" :vim[grep][!] /{pattern}(keyword)/ **/*.rb | copen "// is for options:j, g, etc.
-
-" set spell
-" e.g. z=, 1z=
-"
-" NERDTreeBookmarks are kept in $HOME/.NERDTreeBookmarks
-" -----------------------------------------------
-
-noremap <Up> :cp <CR>
-noremap <Down> :cn <CR>
-
-function! DosToUnixLineEnding()
-    :update
-    :e ++ff=dos
-    :setlocal ff=unix
-    :w
-endfunction
-
-" ref - http://vimcasts.org/episodes/tidying-whitespace/
-function! <SID>StripTrailingWhitespaces()
-    " Preparation: save last search, and cursor position.
-    let _s=@/
-    let l = line(".")
-    let c = col(".")
-    " Do the business:
-    %s/\s\+$//e
-    " Clean up: restore previous search history, and cursor position
-    let @/=_s
-    call cursor(l, c)
-endfunction
-
-nnoremap <silent> <leader>w :call <SID>StripTrailingWhitespaces()<CR>
-" autocmd BufWritePre *.py,*.js :call <SID>StripTrailingWhitespaces()
 
 " http://vim.wikia.com/wiki/Mapping_keys_in_Vim_-_Tutorial_(Part_1)
 "n  Normal mode map. Defined using ':nmap' or ':nnoremap'.
