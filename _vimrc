@@ -47,7 +47,20 @@ nmap <F4> :Runittest <CR>
 nmap <F11> :YRShow <CR>
 " -----------------------------------------------
 
+" ack
 nmap <F10> :Ack
+" ctrlp - https://github.com/kien/ctrlp.vim
+nmap <leader>ff :CtrlP
+
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip " mac/linux
+set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe " windows
+
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+"let g:ctrlp_custom_ignore = {
+"  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+"  \ 'file': '\v\.(exe|so|dll)$',
+"  \ 'link': 'some_bad_symbolic_links',
+"  \ }
 
 " Allow backspacing over everything in i-mode
 set backspace=indent,eol,start
@@ -153,11 +166,6 @@ vmap >> >gv
 
 " NERDTree
 map <leader>b :NERDTreeToggle <CR>
-" FuzzyFinder - **/ for recursive search
-map <leader>ff :FufFile **/<CR>
-map <leader>fb :FufBuffer <CR>
-let g:fuf_file_exclude = '\v\~$|\.(o|exe|dll|bak|orig|swp)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])'
-let g:fuf_dir_exclude = '\v(^|[/\\])\.(hg|git|bzr|tmp)($|[/\\])'
 
 " indent - <C-o><C-o> to set cursor to original position
 map <leader>i ggvG=<C-o><C-o>
