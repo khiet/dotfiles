@@ -97,7 +97,7 @@ if has("gui_running")
 else " terminal
     set t_Co=256
     if (&t_Co == 256) " if terminal supports 256 colours
-        colorscheme zenburn "desert blackboard elflord desert
+        colorscheme darkburn "desert blackboard elflord desert
     endif
 endif
 
