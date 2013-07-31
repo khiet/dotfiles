@@ -49,6 +49,8 @@ nmap <F11> :YRShow <CR>
 
 " ack
 nmap <F10> :Ack
+let g:ackprg = 'ag --nogroup --nocolor --column' " using ag in ack.vim
+
 " ctrlp - https://github.com/kien/ctrlp.vim
 nmap <leader>ff :CtrlP
 
