@@ -284,3 +284,7 @@ endif
 "         ':map' or ':noremap'.
 "!  Insert and command-line mode map. Defined using 'map!' or
 "   'noremap!'.
+
+" powerline - https://github.com/Lokaltog/vim-powerline
+let g:Powerline_symbols = 'fancy'
+set laststatus=2
