@@ -52,7 +52,7 @@ nmap <F10> :Ack
 let g:ackprg = 'ag --nogroup --nocolor --column' " using ag in ack.vim
 
 " ctrlp - https://github.com/kien/ctrlp.vim
-nmap <leader>ff :CtrlP
+nmap <leader>ff :CtrlP <CR>
 
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip " mac/linux
 set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe " windows
@@ -128,7 +128,6 @@ set smartindent
 
 if has("autocmd")
     filetype plugin indent on
-
     " For all text files, set 'textwidth' to 78 characters.
     "autocmd FileType text setlocal textwidth=78
 
@@ -167,9 +166,13 @@ vmap >> >gv
 
 " NERDTree
 map <leader>t :NERDTreeToggle <CR>
+" Bufexplorer
+"<leader>be " normal open
+"<leader>bs " force horizontal split open
+"<leader>bv " force vertical split open
 
 " indent - <C-o><C-o> to set cursor to original position
-map <leader>i ggvG=<C-o><C-o>
+map <leader>= ggvG=<C-o><C-o>
 
 " disable F1 built-in help key
 ":nmap <F1> :echo<CR>
