@@ -137,23 +137,22 @@ if has("autocmd")
     "autocmd FileType javascript setlocal ts=4 sts=4 sw=4 noexpandtab
     "autocmd FileType markdown setlocal wrap linebreak nolist
     "autocmd BufNewFile,BufRead *.rss setfiletype xml
+
+    " http://stackoverflow.com/questions/2400264/is-it-possible-to-apply-vim-configurations-without-restarting/2400289#2400289
+    augroup myvimrc
+      au!
+      autocmd bufwritepost .vimrc source ~/.vimrc
+    augroup END
 endif
 
 " #2 - tabs and spaces
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
-set expandtab
+set expandtab " insert spaces when tab is pressed
+set tabstop=2 " spaces when tab is pressed
+set shiftwidth=2 " spaces for indentation
+set softtabstop=2 " treat spaces like a tab when backspace is pressed
 
 " Editting vimrc
 nmap <leader>v :tabedit $MYVIMRC<CR>
-" http://stackoverflow.com/questions/2400264/is-it-possible-to-apply-vim-configurations-without-restarting/2400289#2400289
-if has("autocmd")
-    augroup myvimrc
-        au!
-        autocmd bufwritepost .vimrc source ~/.vimrc
-    augroup END
-endif
 
 nmap <leader>ew :e <C-R>=expand("%:p:h") . "/" <CR>
 nmap <leader>es :sp <C-R>=expand("%:p:h") . "/" <CR>
@@ -167,7 +166,7 @@ vmap << <gv
 vmap >> >gv
 
 " NERDTree
-map <leader>b :NERDTreeToggle <CR>
+map <leader>t :NERDTreeToggle <CR>
 
 " indent - <C-o><C-o> to set cursor to original position
 map <leader>i ggvG=<C-o><C-o>
