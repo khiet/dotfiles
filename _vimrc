@@ -1,24 +1,3 @@
-" -----------------------------------------------
-"     Cheat Sheets
-" -----------------------------------------------
-" Folding
-" zi: toggle fold (global)
-" za: toggle fold (local)
-" zf: create fold
-" zd: delete fold
-
-" f{char} F{char} search
-" ; to repeat last search - \ to go backward
-
-" :helptag ~/.vim/doc "to enable help
-" :vim[grep][!] /{pattern}(keyword)/ **/*.rb | copen "// is for options:j, g, etc.
-
-" set spell
-" e.g. z=, 1z=
-"
-" NERDTreeBookmarks are kept in $HOME/.NERDTreeBookmarks
-" -----------------------------------------------
-
 " Pathogen
 call pathogen#infect()
 call pathogen#helptags()
@@ -33,7 +12,7 @@ nnoremap \ ,
 inoremap jj <Esc>
 
 " -----------------------------------------------
-"    Rails
+"    rails.vim
 " -----------------------------------------------
 nmap <F1> :Rmodel <CR>
 nmap <F2> :Rview
@@ -44,7 +23,7 @@ nmap <F4> :Runittest <CR>
 " -----------------------------------------------
 "    Yank Ring
 " -----------------------------------------------
-nmap <F11> :YRShow <CR>
+"nmap <F11> :YRShow <CR>
 " -----------------------------------------------
 
 " ack
@@ -245,6 +224,10 @@ nmap <leader>s :set spell! <CR>
 "highlight NonText guifg=#FF0000
 "highlight SpecialKey guifg=#FF0000
 
+" powerline - https://github.com/Lokaltog/vim-powerline
+let g:Powerline_symbols = 'fancy'
+set laststatus=2
+
 " -----------------------------------------------
 "    OS specifics
 " -----------------------------------------------
@@ -273,6 +256,26 @@ elseif has("win32") " Windows
     vnoremap <C-V> "+gP
 endif
 
+" -----------------------------------------------
+"     Cheat Sheets
+" -----------------------------------------------
+" Folding
+" zi: toggle fold (global)
+" za: toggle fold (local)
+" zf: create fold
+" zd: delete fold
+
+" f{char} F{char} search
+" ; to repeat last search - \ to go backward
+
+" :helptag ~/.vim/doc "to enable help
+" :vim[grep][!] /{pattern}(keyword)/ **/*.rb | copen "// is for options:j, g, etc.
+
+" set spell
+" e.g. z=, 1z=
+"
+" NERDTreeBookmarks are kept in $HOME/.NERDTreeBookmarks
+
 " http://vim.wikia.com/wiki/Mapping_keys_in_Vim_-_Tutorial_(Part_1)
 "n  Normal mode map. Defined using ':nmap' or ':nnoremap'.
 "i  Insert mode map. Defined using ':imap' or ':inoremap'.
@@ -286,7 +289,4 @@ endif
 "         ':map' or ':noremap'.
 "!  Insert and command-line mode map. Defined using 'map!' or
 "   'noremap!'.
-
-" powerline - https://github.com/Lokaltog/vim-powerline
-let g:Powerline_symbols = 'fancy'
-set laststatus=2
+" -----------------------------------------------
