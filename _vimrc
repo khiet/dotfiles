@@ -28,7 +28,14 @@ nmap <F4> :Runittest <CR>
 
 " ack
 nmap <F10> :Ack
-let g:ackprg = 'ag --nogroup --nocolor --column' " using ag in ack.vim
+let g:ackprg='ag --nogroup --nocolor --column' " using ag in ack.vim
+
+if executable('ag')
+  " use ag over grep
+  set grepprg=ag\ --nogroup\ --nocolor
+  " use ag in CtrlP for listing files. lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+endif
 
 " ctrlp - https://github.com/kien/ctrlp.vim
 nmap <leader>ff :CtrlP <CR>
@@ -256,6 +263,13 @@ elseif has("win32") " Windows
     vnoremap <C-V> "+gP
 endif
 
+" moving around lines
+nnoremap <c-j> :m .+1<CR>==
+nnoremap <c-k> :m .-2<CR>==
+inoremap <c-j> <Esc>:m .+1<CR>==gi
+inoremap <c-k> <Esc>:m .-2<CR>==gi
+vnoremap <c-j> :m '>+1<CR>gv=gv
+vnoremap <c-k> :m '<-2<CR>gv=gv
 " -----------------------------------------------
 "     Cheat Sheets
 " -----------------------------------------------
