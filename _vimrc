@@ -71,7 +71,7 @@ endif
 "    GUI
 " -----------------------------------------------
 if has("gui_running")
-    colorscheme zenburn "blackboard desert blackboard elflord desert
+    colorscheme zenburn
     set guioptions-=m   "remove menu bar
     set guioptions-=T   "remove toolbar
     "set guioptions-=r  "remove right-hand scroll bar
@@ -85,7 +85,7 @@ if has("gui_running")
 else " terminal
     set t_Co=256
     if (&t_Co == 256) " if terminal supports 256 colours
-        colorscheme darkburn "desert blackboard elflord desert
+        colorscheme jellybeans
     endif
 endif
 
@@ -145,6 +145,8 @@ nmap <leader>ev :vs <C-R>=expand("%:p:h") . "/" <CR>
 nmap <leader>et :tabedit <C-R>=expand("%:p:h") . "/" <CR>
 " cd ../ of editting file
 nmap <leader>cd :cd <C-R>=expand("%:p:h") <CR>
+
+nmap <leader>cf :let @+=expand("%:p") <CR>
 
 " #5 - indenting
 vmap << <gv
@@ -250,9 +252,10 @@ if has("mac") " Mac
     set listchars=tab:»\ ,eol:$,nbsp:%,trail:~,extends:>,precedes:<
     "clipboard - http://vim.wikia.com/wiki/Mac_OS_X_clipboard_sharing
     set clipboard=unnamed " yank to "* register i.e. system clipboard
-    " for better pasting
-    nmap <F12> :set paste<CR>:r !pbpaste<CR>:set nopaste<CR>
-    imap <F12> <Esc>:set paste<CR>:r !pbpaste<CR>:set nopaste<CR>
+    "nmap <F11> :set paste<CR>:r !pbpaste<CR>:set nopaste<CR>
+    "imap <F11> <Esc>:set paste<CR>:r !pbpaste<CR>:set nopaste<CR>
+    nmap <F12> :.w !pbcopy<CR><CR>
+    vmap <F12> :w !pbcopy<CR><CR>
 elseif has("win32") " Windows
     " from mswin.vim
     " CTRL-X is Cut
