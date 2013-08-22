@@ -252,10 +252,10 @@ if has("mac") " Mac
     set listchars=tab:»\ ,eol:$,nbsp:%,trail:~,extends:>,precedes:<
     "clipboard - http://vim.wikia.com/wiki/Mac_OS_X_clipboard_sharing
     set clipboard=unnamed " yank to "* register i.e. system clipboard
-    "nmap <F11> :set paste<CR>:r !pbpaste<CR>:set nopaste<CR>
-    "imap <F11> <Esc>:set paste<CR>:r !pbpaste<CR>:set nopaste<CR>
-    nmap <F12> :.w !pbcopy<CR><CR>
-    vmap <F12> :w !pbcopy<CR><CR>
+    nmap <F11> :set paste<CR>:r !pbpaste<CR>:set nopaste<CR>
+    imap <F11> <Esc>:set paste<CR>:r !pbpaste<CR>:set nopaste<CR>
+    "nmap <F12> :.w !pbcopy<CR><CR>
+    "vmap <F12> :w !pbcopy<CR><CR>
 elseif has("win32") " Windows
     " from mswin.vim
     " CTRL-X is Cut
@@ -267,12 +267,12 @@ elseif has("win32") " Windows
 endif
 
 " moving around lines
-nnoremap <c-j> :m .+1<CR>==
-nnoremap <c-k> :m .-2<CR>==
-inoremap <c-j> <Esc>:m .+1<CR>==gi
-inoremap <c-k> <Esc>:m .-2<CR>==gi
-vnoremap <c-j> :m '>+1<CR>gv=gv
-vnoremap <c-k> :m '<-2<CR>gv=gv
+nnoremap <M-j> :m .+1<CR>==
+nnoremap <M-k> :m .-2<CR>==
+inoremap <M-j> <Esc>:m .+1<CR>==gi
+inoremap <M-k> <Esc>:m .-2<CR>==gi
+vnoremap <M-j> :m '>+1<CR>gv=gv
+vnoremap <M-k> :m '<-2<CR>gv=gv
 " -----------------------------------------------
 "     Cheat Sheets
 " -----------------------------------------------
