@@ -136,13 +136,15 @@ set tabstop=2 " spaces when tab is pressed
 set shiftwidth=2 " spaces for indentation
 set softtabstop=2 " treat spaces like a tab when backspace is pressed
 
-" Editting vimrc
-nmap <leader>v :tabedit $MYVIMRC<CR>
+" editting config files
+nmap <leader>ev :tabedit $MYVIMRC<CR>
+nmap <leader>eb :tabedit <C-R>=expand($HOME."/.bash_profile")<CR><CR>
+nmap <leader>et :tabedit <C-R>=expand($HOME."/.tmux.conf")<CR><CR>
 
-nmap <leader>ew :e <C-R>=expand("%:p:h") . "/" <CR>
-nmap <leader>es :sp <C-R>=expand("%:p:h") . "/" <CR>
-nmap <leader>ev :vs <C-R>=expand("%:p:h") . "/" <CR>
-nmap <leader>et :tabedit <C-R>=expand("%:p:h") . "/" <CR>
+"nmap <leader>ew :e <C-R>=expand("%:p:h") . "/" <CR>
+"nmap <leader>es :sp <C-R>=expand("%:p:h") . "/" <CR>
+"nmap <leader>ev :vs <C-R>=expand("%:p:h") . "/" <CR>
+"nmap <leader>et :tabedit <C-R>=expand("%:p:h") . "/" <CR>
 " cd ../ of editting file
 nmap <leader>cd :cd <C-R>=expand("%:p:h") <CR>
 
@@ -251,7 +253,7 @@ if has("mac") " Mac
     " <C-v>u<hex> to insert unicode
     set listchars=tab:»\ ,eol:$,nbsp:%,trail:~,extends:>,precedes:<
     "clipboard - http://vim.wikia.com/wiki/Mac_OS_X_clipboard_sharing
-    set clipboard=unnamed " yank to "* register i.e. system clipboard
+    " set clipboard=unnamed " yank to "* register i.e. system clipboard
     nmap <F11> :set paste<CR>:r !pbpaste<CR>:set nopaste<CR>
     imap <F11> <Esc>:set paste<CR>:r !pbpaste<CR>:set nopaste<CR>
     "nmap <F12> :.w !pbcopy<CR><CR>
