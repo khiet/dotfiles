@@ -12,12 +12,20 @@ nnoremap \ ,
 inoremap jj <Esc>
 
 " -----------------------------------------------
-"    rails.vim
+"    rails
 " -----------------------------------------------
 nmap <F1> :Rmodel <CR>
 nmap <F2> :Rview
 nmap <F3> :Rcontroller <CR>
 nmap <F4> :Runittest <CR>
+
+" http://robots.thoughtbot.com/post/55273519322/running-specs-from-vim-sent-to-tmux-via-tslime
+let g:rspec_command = 'call Send_to_Tmux("rspec {spec}\n")'
+
+map <Leader>sf :call RunCurrentSpecFile()<CR>
+map <Leader>sn :call RunNearestSpec()<CR>
+map <Leader>sl :call RunLastSpec()<CR>
+"map <Leader>a :call RunAllSpecs()<CR>
 " -----------------------------------------------
 
 " -----------------------------------------------
@@ -140,6 +148,10 @@ set softtabstop=2 " treat spaces like a tab when backspace is pressed
 nmap <leader>ev :tabedit $MYVIMRC<CR>
 nmap <leader>eb :tabedit <C-R>=expand($HOME."/.bash_profile")<CR><CR>
 nmap <leader>et :tabedit <C-R>=expand($HOME."/.tmux.conf")<CR><CR>
+
+" editting current file in split windows
+nmap <leader>vs :vs <C-R>=expand(@%)<CR><CR>
+nmap <leader>sp :sp <C-R>=expand(@%)<CR><CR>
 
 "nmap <leader>ew :e <C-R>=expand("%:p:h") . "/" <CR>
 "nmap <leader>es :sp <C-R>=expand("%:p:h") . "/" <CR>
