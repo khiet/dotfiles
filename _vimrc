@@ -24,7 +24,7 @@ vmap <C-c><C-c> :SlimuxREPLSendSelection<CR>
 "nmap <Z> :Runittest <CR>
 
 " http://robots.thoughtbot.com/post/55273519322/running-specs-from-vim-sent-to-tmux-via-tslime
-let g:rspec_command = 'call Send_to_Tmux("rspec {spec}\n")'
+let g:rspec_command = 'call Send_to_Tmux("bundle exec rspec {spec}\n")'
 
 map <Leader>sf :call RunCurrentSpecFile()<CR>
 map <Leader>sn :call RunNearestSpec()<CR>
@@ -268,8 +268,12 @@ if has("mac") " Mac
     " #1 - invisibles
     " <C-v>u<hex> to insert unicode
     set listchars=tab:»\ ,eol:$,nbsp:%,trail:~,extends:>,precedes:<
-    "clipboard - http://vim.wikia.com/wiki/Mac_OS_X_clipboard_sharing
-    " set clipboard=unnamed " yank to "* register i.e. system clipboard
+
+    if $TMUX == ''
+      "clipboard - http://vim.wikia.com/wiki/Mac_OS_X_clipboard_sharing
+      set clipboard=unnamed " yank to "* register i.e. system clipboard
+    end
+
     nmap <F11> :set paste<CR>:r !pbpaste<CR>:set nopaste<CR>
     imap <F11> <Esc>:set paste<CR>:r !pbpaste<CR>:set nopaste<CR>
     "nmap <F12> :.w !pbcopy<CR><CR>
