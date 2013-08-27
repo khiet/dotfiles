@@ -11,13 +11,17 @@ let mapleader=","
 nnoremap \ ,
 inoremap jj <Esc>
 
+" https://github.com/epeli/slimux
+map <C-c><C-c> :SlimuxREPLSendLine<CR>
+vmap <C-c><C-c> :SlimuxREPLSendSelection<CR>
+
 " -----------------------------------------------
 "    rails
 " -----------------------------------------------
-nmap <F1> :Rmodel <CR>
-nmap <F2> :Rview
-nmap <F3> :Rcontroller <CR>
-nmap <F4> :Runittest <CR>
+"nmap <Z> :Rmodel <CR>
+"nmap <Z> :Rview
+"nmap <Z> :Rcontroller <CR>
+"nmap <Z> :Runittest <CR>
 
 " http://robots.thoughtbot.com/post/55273519322/running-specs-from-vim-sent-to-tmux-via-tslime
 let g:rspec_command = 'call Send_to_Tmux("rspec {spec}\n")'
@@ -25,7 +29,7 @@ let g:rspec_command = 'call Send_to_Tmux("rspec {spec}\n")'
 map <Leader>sf :call RunCurrentSpecFile()<CR>
 map <Leader>sn :call RunNearestSpec()<CR>
 map <Leader>sl :call RunLastSpec()<CR>
-"map <Leader>a :call RunAllSpecs()<CR>
+map <Leader>sa :call RunAllSpecs()<CR>
 " -----------------------------------------------
 
 " -----------------------------------------------
