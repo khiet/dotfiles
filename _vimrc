@@ -15,6 +15,9 @@ inoremap jj <Esc>
 map <C-c><C-c> :SlimuxREPLSendLine<CR>
 vmap <C-c><C-c> :SlimuxREPLSendSelection<CR>
 
+map <leader>ff :SlimuxShellRun bundle exec cucumber <C-R>=expand(@%)<CR><CR>
+map <leader>fn :SlimuxShellRun bundle exec cucumber <C-R>=expand(@%) . ":" . line(".")<CR><CR>
+
 " -----------------------------------------------
 "    rails
 " -----------------------------------------------
@@ -50,7 +53,7 @@ if executable('ag')
 endif
 
 " ctrlp - https://github.com/kien/ctrlp.vim
-nmap <leader>ff :CtrlP <CR>
+nmap <F5> :CtrlP <CR>
 
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip " mac/linux
 set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe " windows
@@ -181,7 +184,7 @@ map <leader>t :NERDTreeToggle <CR>
 map <leader>= ggvG=<C-o><C-o>
 
 " disable F1 built-in help key
-":nmap <F1> :echo<CR>
+:nmap <F1> :echo<CR>
 :imap <F1> <C-o>:echo<CR>
 
 " -----------------------------------------------
@@ -269,10 +272,9 @@ if has("mac") " Mac
     " <C-v>u<hex> to insert unicode
     set listchars=tab:»\ ,eol:$,nbsp:%,trail:~,extends:>,precedes:<
 
-    if $TMUX == ''
-      "clipboard - http://vim.wikia.com/wiki/Mac_OS_X_clipboard_sharing
-      set clipboard=unnamed " yank to "* register i.e. system clipboard
-    end
+    "clipboard - http://vim.wikia.com/wiki/Mac_OS_X_clipboard_sharing
+    "get tmux to play nice with clipboard - https://coderwall.com/p/j9wnfw
+    set clipboard=unnamed " yank to "* register i.e. system clipboard
 
     nmap <F11> :set paste<CR>:r !pbpaste<CR>:set nopaste<CR>
     imap <F11> <Esc>:set paste<CR>:r !pbpaste<CR>:set nopaste<CR>
