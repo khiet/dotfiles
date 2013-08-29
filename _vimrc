@@ -255,10 +255,6 @@ nmap <leader>l :set list! <CR>
 "highlight NonText guifg=#FF0000
 "highlight SpecialKey guifg=#FF0000
 
-" powerline - https://github.com/Lokaltog/vim-powerline
-let g:Powerline_symbols = 'fancy'
-set laststatus=2
-
 " -----------------------------------------------
 "    OS specifics
 " -----------------------------------------------
