@@ -82,6 +82,11 @@ if &t_Co > 2 || has("gui_running") " &t_Co > 2 # if colors exist
     set hlsearch
 endif
 
+if $TMUX != '' " tmux specific settings
+  " enable mouse support
+  set ttymouse=xterm2
+end
+
 " -----------------------------------------------
 "    GUI
 " -----------------------------------------------
@@ -155,10 +160,6 @@ set softtabstop=2 " treat spaces like a tab when backspace is pressed
 nmap <leader>ev :tabedit $MYVIMRC<CR>
 nmap <leader>eb :tabedit <C-R>=expand($HOME."/.bash_profile")<CR><CR>
 nmap <leader>et :tabedit <C-R>=expand($HOME."/.tmux.conf")<CR><CR>
-
-" editting current file in split windows
-nmap <leader>vs :vs <C-R>=expand(@%)<CR><CR>
-nmap <leader>sp :sp <C-R>=expand(@%)<CR><CR>
 
 "nmap <leader>ew :e <C-R>=expand("%:p:h") . "/" <CR>
 "nmap <leader>es :sp <C-R>=expand("%:p:h") . "/" <CR>
@@ -248,7 +249,7 @@ nnoremap <leader>r :%s//
 " list invisibles
 nmap <leader>l :set list! <CR>
 " enable spell check
-nmap <leader>s :set spell! <CR>
+"nmap <leader>s :set spell! <CR>
 
 " invisible character colors
 "highlight NonText guifg=#FF0000
