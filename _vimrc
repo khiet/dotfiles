@@ -2,29 +2,21 @@
 call pathogen#infect()
 call pathogen#helptags()
 
-" set filetype? to check filetype of a file
-au Filetype html,xml,eruby source ~/.vim/scripts/closetag.vim
-au BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
-
 let mapleader=","
-"\ to go back for the f{char} search
-nnoremap \ ,
 inoremap jj <Esc>
 
-" https://github.com/epeli/slimux
-map <C-c><C-c> :SlimuxREPLSendLine<CR>
-vmap <C-c><C-c> :SlimuxREPLSendSelection<CR>
+"\ to go back for the f{char} search
+nnoremap \ ,
 
-map <leader>ff :SlimuxShellRun bundle exec cucumber <C-R>=expand(@%)<CR><CR>
-map <leader>fn :SlimuxShellRun bundle exec cucumber <C-R>=expand(@%) . ":" . line(".")<CR><CR>
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip " mac/linux
+set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe " windows
 
 " -----------------------------------------------
 "    rails
 " -----------------------------------------------
-"nmap <Z> :Rmodel <CR>
-"nmap <Z> :Rview
-"nmap <Z> :Rcontroller <CR>
-"nmap <Z> :Runittest <CR>
+" set filetype? to check filetype of a file
+au Filetype html,xml,eruby source ~/.vim/scripts/closetag.vim
+au BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
 
 " http://robots.thoughtbot.com/post/55273519322/running-specs-from-vim-sent-to-tmux-via-tslime
 let g:rspec_command = 'call Send_to_Tmux("bundle exec rspec {spec}\n")'
@@ -33,13 +25,17 @@ map <Leader>sf :call RunCurrentSpecFile()<CR>
 map <Leader>sn :call RunNearestSpec()<CR>
 map <Leader>sl :call RunLastSpec()<CR>
 map <Leader>sa :call RunAllSpecs()<CR>
+
+" https://github.com/epeli/slimux
+map <C-c><C-c> :SlimuxREPLSendLine<CR>
+vmap <C-c><C-c> :SlimuxREPLSendSelection<CR>
+
+map <leader>ff :SlimuxShellRun bundle exec cucumber <C-R>=expand(@%)<CR><CR>
+map <leader>fn :SlimuxShellRun bundle exec cucumber <C-R>=expand(@%) . ":" . line(".")<CR><CR>
 " -----------------------------------------------
 
-" -----------------------------------------------
-"    Yank Ring
-" -----------------------------------------------
+" yank ring
 "nmap <F11> :YRShow <CR>
-" -----------------------------------------------
 
 " ack
 nmap <F10> :Ack
@@ -53,10 +49,7 @@ if executable('ag')
 endif
 
 " ctrlp - https://github.com/kien/ctrlp.vim
-nmap <F5> :CtrlP <CR>
-
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip " mac/linux
-set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe " windows
+nmap <F5> :CtrlP<CR>
 
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 "let g:ctrlp_custom_ignore = {
@@ -65,27 +58,27 @@ let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 "  \ 'link': 'some_bad_symbolic_links',
 "  \ }
 
-" Allow backspacing over everything in i-mode
+" allow backspacing over everything in i-mode
 set backspace=indent,eol,start
 
 set nobackup " disable ~ files
 set nowritebackup
 set noswapfile " disable .swap files
 
-" Enable 'mouse' in terminal emulators
+" enable mouse in terminal emulators
 if has("mouse")
     set mouse=a
 endif
+
+if $TMUX != '' " tmux specific settings
+  " enable mouse in tmux
+  set ttymouse=xterm2
+end
 
 if &t_Co > 2 || has("gui_running") " &t_Co > 2 # if colors exist
     syntax on
     set hlsearch
 endif
-
-if $TMUX != '' " tmux specific settings
-  " enable mouse support
-  set ttymouse=xterm2
-end
 
 " -----------------------------------------------
 "    GUI
@@ -161,25 +154,12 @@ nmap <leader>ev :tabedit $MYVIMRC<CR>
 nmap <leader>eb :tabedit <C-R>=expand($HOME."/.bash_profile")<CR><CR>
 nmap <leader>et :tabedit <C-R>=expand($HOME."/.tmux.conf")<CR><CR>
 
-"nmap <leader>ew :e <C-R>=expand("%:p:h") . "/" <CR>
-"nmap <leader>es :sp <C-R>=expand("%:p:h") . "/" <CR>
-"nmap <leader>ev :vs <C-R>=expand("%:p:h") . "/" <CR>
-"nmap <leader>et :tabedit <C-R>=expand("%:p:h") . "/" <CR>
-" cd ../ of editting file
-nmap <leader>cd :cd <C-R>=expand("%:p:h") <CR>
-
-nmap <leader>cf :let @+=expand("%:p") <CR>
-
 " #5 - indenting
 vmap << <gv
 vmap >> >gv
 
 " NERDTree
 map <leader>t :NERDTreeToggle <CR>
-" Bufexplorer
-"<leader>be " normal open
-"<leader>bs " force horizontal split open
-"<leader>bv " force vertical split open
 
 " indent - <C-o><C-o> to set cursor to original position
 map <leader>= ggvG=<C-o><C-o>
@@ -213,12 +193,6 @@ noremap <Down> :cn <CR>
 " -----------------------------------------------
 "   function
 " -----------------------------------------------
-"function! FullScreen()
-"    set lines=1024 columns=1024
-"endfunction
-
-"nnoremap <F11> :call FullScreen() <CR>
-
 function! DosToUnixLineEnding()
     :update
     :e ++ff=dos
@@ -273,8 +247,8 @@ if has("mac") " Mac
     "get tmux to play nice with clipboard - https://coderwall.com/p/j9wnfw
     set clipboard=unnamed " yank to "* register i.e. system clipboard
 
-    nmap <F11> :set paste<CR>:r !pbpaste<CR>:set nopaste<CR>
-    imap <F11> <Esc>:set paste<CR>:r !pbpaste<CR>:set nopaste<CR>
+    "nmap <F11> :set paste<CR>:r !pbpaste<CR>:set nopaste<CR>
+    "imap <F11> <Esc>:set paste<CR>:r !pbpaste<CR>:set nopaste<CR>
     "nmap <F12> :.w !pbcopy<CR><CR>
     "vmap <F12> :w !pbcopy<CR><CR>
 elseif has("win32") " Windows
@@ -294,6 +268,7 @@ inoremap <M-j> <Esc>:m .+1<CR>==gi
 inoremap <M-k> <Esc>:m .-2<CR>==gi
 vnoremap <M-j> :m '>+1<CR>gv=gv
 vnoremap <M-k> :m '<-2<CR>gv=gv
+
 " -----------------------------------------------
 "     Cheat Sheets
 " -----------------------------------------------
@@ -302,12 +277,6 @@ vnoremap <M-k> :m '<-2<CR>gv=gv
 " za: toggle fold (local)
 " zf: create fold
 " zd: delete fold
-
-" f{char} F{char} search
-" ; to repeat last search - \ to go backward
-
-" :helptag ~/.vim/doc "to enable help
-" :vim[grep][!] /{pattern}(keyword)/ **/*.rb | copen "// is for options:j, g, etc.
 
 " set spell
 " e.g. z=, 1z=
