@@ -11,6 +11,8 @@ nnoremap \ ,
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip " mac/linux
 set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe " windows
 
+set laststatus=2
+
 " -----------------------------------------------
 "    rails
 " -----------------------------------------------
@@ -21,10 +23,10 @@ au BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
 " http://robots.thoughtbot.com/post/55273519322/running-specs-from-vim-sent-to-tmux-via-tslime
 let g:rspec_command = 'call Send_to_Tmux("bundle exec rspec {spec}\n")'
 
-map <Leader>sf :call RunCurrentSpecFile()<CR>
-map <Leader>sn :call RunNearestSpec()<CR>
-map <Leader>sl :call RunLastSpec()<CR>
-map <Leader>sa :call RunAllSpecs()<CR>
+"map <Leader>sf :call RunCurrentSpecFile()<CR>
+"map <Leader>sn :call RunNearestSpec()<CR>
+"map <Leader>sl :call RunLastSpec()<CR>
+"map <Leader>sa :call RunAllSpecs()<CR>
 
 " https://github.com/epeli/slimux
 map <C-c><C-c> :SlimuxREPLSendLine<CR>
@@ -32,6 +34,8 @@ vmap <C-c><C-c> :SlimuxREPLSendSelection<CR>
 
 map <leader>ff :SlimuxShellRun bundle exec cucumber <C-R>=expand(@%)<CR><CR>
 map <leader>fn :SlimuxShellRun bundle exec cucumber <C-R>=expand(@%) . ":" . line(".")<CR><CR>
+map <leader>sf :SlimuxShellRun bundle exec spec <C-R>=expand(@%)<CR><CR>
+map <leader>sn :SlimuxShellRun bundle exec spec <C-R>=expand(@%) . ":" . line(".")<CR><CR>
 " -----------------------------------------------
 
 " yank ring
