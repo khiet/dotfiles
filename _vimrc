@@ -276,6 +276,10 @@ vnoremap <M-k> :m '<-2<CR>gv=gv
 " vimwiki
 let g:vimwiki_list = [{'path': '~/Dropbox/codeschool/wiki'}]
 
+" highlight lines longer than 80 characters
+highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+match OverLength /\%81v.\+/
+
 " -----------------------------------------------
 "     Cheat Sheets
 " -----------------------------------------------
