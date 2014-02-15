@@ -221,17 +221,20 @@ nnoremap <silent> <leader>t :call <SID>StripTrailingWhitespaces()<CR>
 " autocmd BufWritePre *.py,*.js :call <SID>StripTrailingWhitespaces()
 " -----------------------------------------------
 
-" /n to count # of matches i.e. %s///n
+" /n to count # of lines containing keyword i.e. %s///n
 nnoremap <leader>r :%s//
 
 " list invisibles
-nmap <leader>l :set list! <CR>
+"nmap <leader>l :set list! <CR>
 " enable spell check
 "nmap <leader>s :set spell! <CR>
 
-" invisible character colors
-"highlight NonText guifg=#FF0000
-"highlight SpecialKey guifg=#FF0000
+" show trailing whitespace - http://vim.wikia.com/wiki/Highlight_unwanted_spaces
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+\%#\@<!$/
+" show a vertical line
+set colorcolumn=100
+highlight ColorColumn ctermbg=darkred guibg=darkred
 
 " -----------------------------------------------
 "    OS specifics
@@ -265,19 +268,8 @@ elseif has("win32") " Windows
     vnoremap <C-V> "+gP
 endif
 
-" moving around lines
-nnoremap <M-j> :m .+1<CR>==
-nnoremap <M-k> :m .-2<CR>==
-inoremap <M-j> <Esc>:m .+1<CR>==gi
-inoremap <M-k> <Esc>:m .-2<CR>==gi
-vnoremap <M-j> :m '>+1<CR>gv=gv
-vnoremap <M-k> :m '<-2<CR>gv=gv
-
 " vimwiki
 let g:vimwiki_list = [{'path': '~/Dropbox/codeschool/wiki'}]
-
-set colorcolumn=100
-highlight ColorColumn ctermbg=red ctermfg=white guibg=#592929
 
 " vim-gutter
 let g:gitgutter_realtime = 0
