@@ -53,7 +53,7 @@ if executable('ag')
 endif
 
 " ctrlp - https://github.com/kien/ctrlp.vim
-nmap <F5> :CtrlP<CR>
+nmap <leader>e :CtrlP<CR>
 
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 "let g:ctrlp_custom_ignore = {
@@ -163,7 +163,7 @@ vmap << <gv
 vmap >> >gv
 
 " NERDTree
-map <leader>t :NERDTreeToggle <CR>
+map <C-e> :NERDTreeToggle <CR>
 
 " indent - <C-o><C-o> to set cursor to original position
 map <leader>= ggvG=<C-o><C-o>
@@ -217,7 +217,7 @@ function! <SID>StripTrailingWhitespaces()
     call cursor(l, c)
 endfunction
 
-nnoremap <silent> <leader>w :call <SID>StripTrailingWhitespaces()<CR>
+nnoremap <silent> <leader>t :call <SID>StripTrailingWhitespaces()<CR>
 " autocmd BufWritePre *.py,*.js :call <SID>StripTrailingWhitespaces()
 " -----------------------------------------------
 
@@ -276,9 +276,13 @@ vnoremap <M-k> :m '<-2<CR>gv=gv
 " vimwiki
 let g:vimwiki_list = [{'path': '~/Dropbox/codeschool/wiki'}]
 
-" highlight lines longer than 80 characters
-highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-match OverLength /\%81v.\+/
+set colorcolumn=100
+highlight ColorColumn ctermbg=red ctermfg=white guibg=#592929
+
+" vim-gutter
+let g:gitgutter_realtime = 0
+let g:gitgutter_eager = 0
+let g:gitgutter_map_keys = 0 " turn off all key mappings
 
 " -----------------------------------------------
 "     Cheat Sheets
