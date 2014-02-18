@@ -232,6 +232,8 @@ nnoremap <leader>r :%s//
 " show trailing whitespace - http://vim.wikia.com/wiki/Highlight_unwanted_spaces
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+\%#\@<!$/
+"nnoremap <leader>? :match ExtraWhitespace /\s\+\%#\@<!$/<CR>
+"nnoremap <leader>? :match<CR>
 " show a vertical line
 set colorcolumn=100
 highlight ColorColumn ctermbg=darkred guibg=darkred
