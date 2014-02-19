@@ -230,13 +230,13 @@ nnoremap <leader>r :%s//
 "nmap <leader>s :set spell! <CR>
 
 " show trailing whitespace - http://vim.wikia.com/wiki/Highlight_unwanted_spaces
-highlight ExtraWhitespace ctermbg=red guibg=red
+highlight ExtraWhitespace ctermbg=green guibg=green
 match ExtraWhitespace /\s\+\%#\@<!$/
 "nnoremap <leader>? :match ExtraWhitespace /\s\+\%#\@<!$/<CR>
 "nnoremap <leader>? :match<CR>
 " show a vertical line
 set colorcolumn=100
-highlight ColorColumn ctermbg=darkred guibg=darkred
+highlight ColorColumn ctermbg=red guibg=red
 
 " -----------------------------------------------
 "    OS specifics
