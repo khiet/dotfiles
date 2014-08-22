@@ -1,0 +1,6 @@
+-R
+--exclude=.git
+--exclude=tmp
+--exclude=log
+--exclude=vendor/bundle/gems
+--languages=-javascript,-sql
