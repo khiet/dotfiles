@@ -22,7 +22,19 @@ export PATH="$PATH:~/scripts:" # dump custom bash scripts
 
 alias be="bundle exec"
 alias jspec="jasmine-node spec"
-alias po="bundle exec rake smartling:push smartling:pull"
+alias gdel="git branch --merged | grep -v '\*' | xargs -n 1 git branch -d"
+alias cop="rubocop"
+
+export BUNDLER_EDITOR=vim
+
+# share bash history between sessions
+export HISTCONTROL=ignoredups:erasedups # no duplicate entries
+export HISTSIZE=2000
+export HISTFILESIZE=2000
+shopt -s histappend # append to history
+
+# save and reload the history after each command finishes
+export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
 # ebenv stuff
 export PATH="$HOME/.rbenv/bin:$PATH"
@@ -34,8 +46,6 @@ eval "$(rbenv init -);rbenv rehash" # ruby setup
 # heroku toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 eval "$($HOME/.ht/bin/ht init -)"
-
-alias gdel="git branch --merged | grep -v '\*' | xargs -n 1 git branch -d"
 
 # PS1
 # colours
