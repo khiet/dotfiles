@@ -12,6 +12,7 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip " mac/linux
 set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe " windows
 
 set laststatus=2
+set scrolloff=10
 
 " -----------------------------------------------
 "    rails
@@ -19,30 +20,12 @@ set laststatus=2
 " set filetype? to check filetype of a file
 au Filetype html,xml,eruby source ~/.vim/scripts/closetag.vim
 au BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
-
-" http://robots.thoughtbot.com/post/55273519322/running-specs-from-vim-sent-to-tmux-via-tslime
-let g:rspec_command = 'call Send_to_Tmux("bundle exec rspec {spec}\n")'
-
-"map <Leader>sf :call RunCurrentSpecFile()<CR>
-"map <Leader>sn :call RunNearestSpec()<CR>
-"map <Leader>sl :call RunLastSpec()<CR>
-"map <Leader>sa :call RunAllSpecs()<CR>
-
-" https://github.com/epeli/slimux
-map <C-c><C-c> :SlimuxREPLSendLine<CR>
-vmap <C-c><C-c> :SlimuxREPLSendSelection<CR>
-
-map <leader>ff :SlimuxShellRun bundle exec cucumber <C-R>=expand(@%)<CR><CR>
-map <leader>fn :SlimuxShellRun bundle exec cucumber <C-R>=expand(@%) . ":" . line(".")<CR><CR>
-map <leader>sf :SlimuxShellRun bundle exec spec <C-R>=expand(@%)<CR><CR>
-map <leader>sn :SlimuxShellRun bundle exec spec <C-R>=expand(@%) . ":" . line(".")<CR><CR>
 " -----------------------------------------------
 
 " yank ring
 "nmap <F11> :YRShow <CR>
 
 " ack
-nmap <F10> :Ack
 let g:ackprg='ag --nogroup --nocolor --column' " using ag in ack.vim
 
 if executable('ag')
@@ -88,7 +71,7 @@ endif
 "    GUI
 " -----------------------------------------------
 if has("gui_running")
-    colorscheme zenburn
+    colorscheme jellybeans
     set guioptions-=m   "remove menu bar
     set guioptions-=T   "remove toolbar
     "set guioptions-=r  "remove right-hand scroll bar
@@ -236,7 +219,7 @@ match ExtraWhitespace /\s\+\%#\@<!$/
 "nnoremap <leader>? :match<CR>
 " show a vertical line
 set colorcolumn=100
-highlight ColorColumn ctermbg=red guibg=red
+highlight ColorColumn ctermbg=blue guibg=red
 
 " -----------------------------------------------
 "    OS specifics
@@ -277,6 +260,9 @@ let g:vimwiki_list = [{'path': '~/Dropbox/codeschool/wiki'}]
 let g:gitgutter_realtime = 0
 let g:gitgutter_eager = 0
 let g:gitgutter_map_keys = 0 " turn off all key mappings
+
+" insert story id
+map <F12> jjjAviwykkki[#pA] i 
 
 " -----------------------------------------------
 "     Cheat Sheets
