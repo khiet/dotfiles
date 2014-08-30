@@ -25,9 +25,6 @@ au BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
 " yank ring
 "nmap <F11> :YRShow <CR>
 
-" ack
-let g:ackprg='ag --nogroup --nocolor --column' " using ag in ack.vim
-
 if executable('ag')
   " use ag over grep
   set grepprg=ag\ --nogroup\ --nocolor
