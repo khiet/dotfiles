@@ -11,8 +11,6 @@ alias ctags="ctags -R --exclude=.git --exclude=log ."
 
 # git
 alias gg="git grep -i"
-# git-whistles
-alias gpb="git pivotal-branch"
 
 export PATH="/usr/local/Cellar/ctags/5.8/bin:$PATH:" # overwrite system ctags
 
@@ -24,6 +22,7 @@ alias be="bundle exec"
 alias jspec="jasmine-node spec"
 alias gdel="git branch --merged | grep -v '\*' | xargs -n 1 git branch -d"
 alias cop="rubocop"
+alias ff="ff -r ." # fuzzy-find - https://github.com/silentbicycle/ff
 
 export BUNDLER_EDITOR=vim
 
@@ -74,3 +73,9 @@ PS1="$CRed\u$CEnd$CYellow@$CEnd$CGreen\\w$CEnd$CPurple\$(parse_git_branch_or_tag
 
 # yourube-dl
 alias dl="youtube-dl"
+
+# git submodules
+# git submodule add https://github.com/tpope/vim-fugitive.git bundle/fugitive
+# git init
+# git update
+# git submodule foreach git pull
