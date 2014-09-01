@@ -22,6 +22,12 @@ au Filetype html,xml,eruby source ~/.vim/scripts/closetag.vim
 au BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
 " -----------------------------------------------
 
+"vroom
+let g:vroom_spec_command = 'spec '
+let g:vroom_rspec_version = '1.x'
+let g:vroom_cucumber_path = 'cucumber '
+let g:vroom_use_vimux = 1
+
 " yank ring
 "nmap <F11> :YRShow <CR>
 
@@ -202,7 +208,7 @@ nnoremap <silent> <leader>t :call <SID>StripTrailingWhitespaces()<CR>
 " -----------------------------------------------
 
 " /n to count # of lines containing keyword i.e. %s///n
-nnoremap <leader>r :%s//
+nnoremap <leader>s :%s//
 
 " list invisibles
 "nmap <leader>l :set list! <CR>
