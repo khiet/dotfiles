@@ -19,7 +19,7 @@ export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 export PATH="$PATH:~/scripts:" # dump custom bash scripts
 
 alias be="bundle exec"
-alias jspec="jasmine-node spec"
+alias jspec="bundle exec rake jasmine"
 alias gdel="git branch --merged | grep -v '\*' | xargs -n 1 git branch -d"
 alias cop="rubocop"
 alias ff="ff -r ." # fuzzy-find - https://github.com/silentbicycle/ff
