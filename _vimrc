@@ -256,9 +256,6 @@ elseif has("win32") " Windows
     vnoremap <C-V> "+gP
 endif
 
-" vimwiki
-let g:vimwiki_list = [{'path': '~/Dropbox/codeschool/wiki'}]
-
 " vim-gutter
 let g:gitgutter_realtime = 0
 let g:gitgutter_eager = 0
