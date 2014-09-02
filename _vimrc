@@ -39,14 +39,11 @@ if executable('ag')
 endif
 
 " ctrlp - https://github.com/kien/ctrlp.vim
-nmap <leader>e :CtrlP<CR>
+let g:ctrlp_map = '<leader>e'
 
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
-"let g:ctrlp_custom_ignore = {
-"  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
-"  \ 'file': '\v\.(exe|so|dll)$',
-"  \ 'link': 'some_bad_symbolic_links',
-"  \ }
+unlet g:ctrlp_custom_ignore
+let g:ctrlp_custom_ignore = { 'dir': '\v[\/]\.(git|hg|svn)$', 'file': '\v\.(exe|so|dll)$', 'link': 'some_bad_symbolic_links' }
 
 " allow backspacing over everything in i-mode
 set backspace=indent,eol,start
