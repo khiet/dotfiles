@@ -22,6 +22,9 @@ au Filetype html,xml,eruby source ~/.vim/scripts/closetag.vim
 au BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
 " -----------------------------------------------
 
+" pry
+map <Leader>bp orequire'pry'; binding.pry<esc>:w<cr>
+
 "vroom
 let g:vroom_spec_command = 'spec '
 let g:vroom_rspec_version = '1.x'
