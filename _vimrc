@@ -41,8 +41,6 @@ endif
 " ctrlp - https://github.com/kien/ctrlp.vim
 let g:ctrlp_map = '<leader>e'
 
-let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
-unlet g:ctrlp_custom_ignore
 let g:ctrlp_custom_ignore = { 'dir': '\v[\/]\.(git|hg|svn)$', 'file': '\v\.(exe|so|dll)$', 'link': 'some_bad_symbolic_links' }
 
 " allow backspacing over everything in i-mode
@@ -158,6 +156,10 @@ map <leader>= ggvG=<C-o><C-o>
 " -----------------------------------------------
 "   navigation
 " -----------------------------------------------
+
+noremap H ^
+noremap L $
+
 " windows
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
@@ -169,8 +171,8 @@ map <Right> :bn<CR>
 map <Left> :bp<CR>
 
 " tabs
-nmap <C-Right> :tabnext <CR>
-nmap <C-Left> :tabprevious <CR>
+"nmap <C-Right> :tabnext <CR>
+"nmap <C-Left> :tabprevious <CR>
 
 " quickfix items
 noremap <Up> :cp <CR>

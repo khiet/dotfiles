@@ -5,6 +5,8 @@ export CLICOLOR=1
 export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx alias grep="grep --color" alias eb="vim ~/.bash_profile" alias ea="vim ~/.ackrc"
 export LESS=-RFX
 
+source ~/.private
+
 alias tmux="TERM=screen-256color-bce tmux"
 
 alias ctags="ctags -R --exclude=.git --exclude=log ."
