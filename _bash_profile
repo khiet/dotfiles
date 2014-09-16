@@ -25,6 +25,7 @@ alias jspec="bundle exec rake jasmine"
 alias gdel="git branch --merged | grep -v '\*' | xargs -n 1 git branch -d"
 alias cop="rubocop"
 alias ff="ff -r ." # fuzzy-find - https://github.com/silentbicycle/ff
+alias gim="vim `git status --porcelain | sed -ne 's/^ M //p'`"
 
 export BUNDLER_EDITOR=vim
 
