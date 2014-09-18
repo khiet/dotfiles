@@ -25,7 +25,12 @@ au BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
 " pry
 map <Leader>bp orequire'pry'; binding.pry<esc>:w<cr>
 
-"vroom
+" http://stackoverflow.com/questions/916875/yank-file-name-path-of-current-buffer-in-vim
+" copy relative path
+nmap <leader>cf :let @*=expand("%")<CR>
+" copy absolute path
+nmap <leader>cF :let @*=expand("%:p")<CR>
+
 let g:vroom_spec_command = 'spec '
 let g:vroom_rspec_version = '1.x'
 let g:vroom_cucumber_path = 'cucumber '
@@ -86,7 +91,7 @@ if has("gui_running")
 else " terminal
     set t_Co=256
     if (&t_Co == 256) " if terminal supports 256 colours
-        colorscheme jellybeans
+      colorscheme tomorrow-night-eighties "jellybeans
     endif
 endif
 
