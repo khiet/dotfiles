@@ -229,7 +229,7 @@ match ExtraWhitespace /\s\+\%#\@<!$/
 "nnoremap <leader>? :match<CR>
 " show a vertical line
 set colorcolumn=100
-highlight ColorColumn ctermbg=blue guibg=red
+highlight ColorColumn ctermbg=red guibg=red
 
 " -----------------------------------------------
 "    OS specifics
