@@ -36,8 +36,9 @@ let g:vroom_rspec_version = '1.x'
 let g:vroom_cucumber_path = 'cucumber '
 let g:vroom_use_vimux = 1
 
-" yank ring
+" yankring
 "nmap <F11> :YRShow <CR>
+let g:yankring_history_dir = '~/.vim/'
 
 if executable('ag')
   " use ag over grep
