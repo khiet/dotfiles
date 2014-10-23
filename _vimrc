@@ -14,8 +14,8 @@ set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe " windows
 set laststatus=2
 set scrolloff=10
 
-" autocomplete '-' words
-set lisp
+" consider '-' as part of a word
+set iskeyword+=-
 
 " -----------------------------------------------
 "    rails
