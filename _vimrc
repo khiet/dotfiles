@@ -14,6 +14,9 @@ set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe " windows
 set laststatus=2
 set scrolloff=10
 
+" autocomplete '-' words
+set lisp
+
 " -----------------------------------------------
 "    rails
 " -----------------------------------------------
@@ -38,7 +41,13 @@ let g:vroom_use_vimux = 1
 
 " yankring
 "nmap <F11> :YRShow <CR>
-let g:yankring_history_dir = '~/.vim/'
+let g:yankring_history_dir = $HOME . '/.vim/'
+
+" mru - https://github.com/yegappan/mru/blob/master/plugin/mru.vim
+let MRU_File = $HOME . '/.vim/_vim_mru_files'
+" exlude . files
+let MRU_Include_Files = '\.rb$\|\.haml$\|\.erb$\|\.css$\|\.sass$\|\.scss$\|\.js$'
+let MRU_Window_Height = 24
 
 if executable('ag')
   " use ag over grep
@@ -176,8 +185,8 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
 " buffers
-map <Right> :bn<CR>
-map <Left> :bp<CR>
+map <Right> :bn <CR>
+map <Left> :bp <CR>
 
 " tabs
 "nmap <C-Right> :tabnext <CR>
@@ -249,11 +258,6 @@ if has("mac") " Mac
     "clipboard - http://vim.wikia.com/wiki/Mac_OS_X_clipboard_sharing
     "get tmux to play nice with clipboard - https://coderwall.com/p/j9wnfw
     set clipboard=unnamed " yank to "* register i.e. system clipboard
-
-    nmap <F11> :set paste<CR>:r !pbpaste<CR>:set nopaste<CR>
-    imap <F11> <Esc>:set paste<CR>:r !pbpaste<CR>:set nopaste<CR>
-    "nmap <F12> :.w !pbcopy<CR><CR>
-    "vmap <F12> :w !pbcopy<CR><CR>
 elseif has("win32") " Windows
     " from mswin.vim
     " CTRL-X is Cut
