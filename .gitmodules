@@ -1,6 +1,6 @@
 [submodule "bundle/rails"]
 	path = bundle/rails
-	url = https://github.com/tpope/vim-rails.git
+  url = https://github.com/tpope/vim-rails.git
 [submodule "bundle/bufexplorer"]
 	path = bundle/bufexplorer
 	url = https://github.com/jlanzarotta/bufexplorer.git
@@ -10,6 +10,7 @@
 [submodule "bundle/yankring"]
 	path = bundle/yankring
 	url = https://github.com/vim-scripts/YankRing.vim.git
+  ignore = dirty
 [submodule "bundle/gitgutter"]
 	path = bundle/gitgutter
 	url = https://github.com/airblade/vim-gitgutter.git
@@ -28,3 +29,4 @@
 [submodule "bundle/mru"]
 	path = bundle/mru
 	url = https://github.com/yegappan/mru.git
+  ignore = dirty
