@@ -10,10 +10,10 @@ source ~/.private
 alias tmux="TERM=screen-256color-bce tmux"
 alias grep="grep --color"
 alias ctags="ctags -R --exclude=.git --exclude=log ."
-alias gg="git grep -i"
+alias gg="git grep"
 alias be="bundle exec"
 alias cop="rubocop"
-alias jspec="bundle exec rake jasmine"
+alias jasmine="bundle exec rake jasmine"
 alias gdel="git branch --merged | grep -v '\*' | xargs -n 1 git branch -d"
 alias ff="ff -r ." # fuzzy-find - https://github.com/silentbicycle/ff
 
@@ -28,17 +28,13 @@ export BUNDLER_EDITOR=vim
 
 # share bash history between sessions
 export HISTCONTROL=ignoredups:erasedups # no duplicate entries
-export HISTSIZE=2000
+export HISTSIZE=10000
 export HISTFILESIZE=2000
 shopt -s histappend # append to history
-
 # save and reload the history after each command finishes
 export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
-export PATH="/usr/local/bin:$PATH"
-
-# heroku toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
+export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 
 # https://github.com/jimeh/git-aware-prompt
 export GITAWAREPROMPT=~/.bash/git-aware-prompt
@@ -52,5 +48,11 @@ export PS1="\[$bldylw\]\\w \[$txtgrn\]\$git_branch\[$txtred\]\$git_dirty\[$txtrs
 # git submodule foreach git pull
 
 deploy () {
-  bundle install && ht staging-deploy "$1" --channel mobile-conversion --user khiet --staging staging6
+  bundle install && ht staging-deploy "$1" --channel responsive-emails --staging staging2
 }
+
+# added by the heroku toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
+
+#git remote add staging git@heroku.com:ticket-management-staging.git
+#git remote add production git@heroku.com:ticket-management-production.git

@@ -26,7 +26,7 @@ au BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
 " -----------------------------------------------
 
 " pry
-map <Leader>bp orequire'pry'; binding.pry<esc>:w<cr>
+map <Leader>bp orequire'pry'; Pry.send(:binding).pry<esc>:w<cr>
 
 " http://stackoverflow.com/questions/916875/yank-file-name-path-of-current-buffer-in-vim
 " copy relative path
@@ -48,6 +48,7 @@ let MRU_File = $HOME . '/.vim/_vim_mru_files'
 " exlude . files
 let MRU_Include_Files = '\.rb$\|\.haml$\|\.erb$\|\.css$\|\.sass$\|\.scss$\|\.js$'
 let MRU_Window_Height = 24
+nmap <F12> :MRU <CR>
 
 if executable('ag')
   " use ag over grep
@@ -87,13 +88,13 @@ endif
 "    GUI
 " -----------------------------------------------
 if has("gui_running")
-    colorscheme jellybeans
+    colorscheme tomorrow-night-eighties "jellybeans
     set guioptions-=m   "remove menu bar
     set guioptions-=T   "remove toolbar
     "set guioptions-=r  "remove right-hand scroll bar
 
     if has("gui_macvim")
-        set guifont=Monaco:h12 " :set guifont=Monaco:h10
+        set guifont=Monaco:h10 " :set guifont=Monaco:h10
         "set transparency=30
     elseif has("gui_win32")
         set guifont=Lucida_Console:h10:w6 " Notepad's default
@@ -238,8 +239,8 @@ match ExtraWhitespace /\s\+\%#\@<!$/
 "nnoremap <leader>? :match ExtraWhitespace /\s\+\%#\@<!$/<CR>
 "nnoremap <leader>? :match<CR>
 " show a vertical line
-set colorcolumn=100
-highlight ColorColumn ctermbg=red guibg=red
+"set colorcolumn=100
+"highlight ColorColumn ctermbg=red guibg=red
 
 " -----------------------------------------------
 "    OS specifics
@@ -272,9 +273,6 @@ endif
 let g:gitgutter_realtime = 0
 let g:gitgutter_eager = 0
 let g:gitgutter_map_keys = 0 " turn off all key mappings
-
-" insert story id
-map <F12> jjjAviwykkki[#pA] i 
 
 " -----------------------------------------------
 "     Cheat Sheets
