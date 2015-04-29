@@ -17,7 +17,7 @@ alias jasmine="bundle exec rake jasmine"
 alias gdel="git branch --merged | grep -v '\*' | xargs -n 1 git branch -d"
 alias ff="ff -r ." # fuzzy-find - https://github.com/silentbicycle/ff
 
-alias dl="youtube-dl"
+alias dl="youtube-dl -o '/Users/khietle/youtube/%(title)s-%(id)s.%(ext)s'"
 
 # housetrip
 eval "$($HOME/.ht/bin/ht init -)"
@@ -48,7 +48,15 @@ export PS1="\[$bldylw\]\\w \[$txtgrn\]\$git_branch\[$txtred\]\$git_dirty\[$txtrs
 # git submodule foreach git pull
 
 deploy () {
-  bundle install && ht staging-deploy "$1" --channel responsive-emails --staging staging2
+  bundle install && ht staging-deploy "$1" --channel responsive-checkout --staging "$2"
+}
+
+renv-staging () {
+  renv "$1" -a staging -b ht-renv-staging -n "$2" # set 'key=value'
+}
+
+renv-production () {
+  renv set "$1" -a production -b ht-renv-production
 }
 
 # added by the heroku toolbelt

@@ -40,15 +40,17 @@ let g:vroom_cucumber_path = 'cucumber '
 let g:vroom_use_vimux = 1
 
 " yankring
-"nmap <F11> :YRShow <CR>
+"nmap <F11> :YRShow<CR>
 let g:yankring_history_dir = $HOME . '/.vim/'
+
+nmap <F11> :set filetype=ruby<CR>
 
 " mru - https://github.com/yegappan/mru/blob/master/plugin/mru.vim
 let MRU_File = $HOME . '/.vim/_vim_mru_files'
 " exlude . files
 let MRU_Include_Files = '\.rb$\|\.haml$\|\.erb$\|\.css$\|\.sass$\|\.scss$\|\.js$'
 let MRU_Window_Height = 24
-nmap <F12> :MRU <CR>
+nmap <F12> :MRU<CR>
 
 if executable('ag')
   " use ag over grep
@@ -88,7 +90,7 @@ endif
 "    GUI
 " -----------------------------------------------
 if has("gui_running")
-    colorscheme tomorrow-night-eighties "jellybeans
+    colorscheme tomorrow-night "jellybeans
     set guioptions-=m   "remove menu bar
     set guioptions-=T   "remove toolbar
     "set guioptions-=r  "remove right-hand scroll bar
@@ -102,7 +104,7 @@ if has("gui_running")
 else " terminal
     set t_Co=256
     if (&t_Co == 256) " if terminal supports 256 colours
-      colorscheme tomorrow-night-eighties "jellybeans
+      colorscheme tomorrow-night "jellybeans
     endif
 endif
 
@@ -118,7 +120,7 @@ set ignorecase
 set incsearch
 set smartcase
 
-set cursorline
+"set cursorline
 set number
 set autoindent
 " hidden buffer
@@ -163,7 +165,7 @@ vmap << <gv
 vmap >> >gv
 
 " NERDTree
-map <C-e> :NERDTreeToggle <CR>
+" map <C-e> :NERDTreeToggle<CR>
 
 " indent - <C-o><C-o> to set cursor to original position
 map <leader>= ggvG=<C-o><C-o>
@@ -186,16 +188,16 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
 " buffers
-map <Right> :bn <CR>
-map <Left> :bp <CR>
+map <Right> :bn<CR>
+map <Left> :bp<CR>
 
 " tabs
-"nmap <C-Right> :tabnext <CR>
-"nmap <C-Left> :tabprevious <CR>
+"nmap <C-Right> :tabnext<CR>
+"nmap <C-Left> :tabprevious<CR>
 
 " quickfix items
-noremap <Up> :cp <CR>
-noremap <Down> :cn <CR>
+noremap <Up> :cp<CR>
+noremap <Down> :cn<CR>
 " -----------------------------------------------
 
 " -----------------------------------------------
@@ -229,9 +231,9 @@ nnoremap <silent> <leader>t :call <SID>StripTrailingWhitespaces()<CR>
 nnoremap <leader>s :%s//
 
 " list invisibles
-"nmap <leader>l :set list! <CR>
+"nmap <leader>l :set list!<CR>
 " enable spell check
-"nmap <leader>s :set spell! <CR>
+"nmap <leader>s :set spell!<CR>
 
 " show trailing whitespace - http://vim.wikia.com/wiki/Highlight_unwanted_spaces
 highlight ExtraWhitespace ctermbg=green guibg=green
@@ -286,7 +288,6 @@ let g:gitgutter_map_keys = 0 " turn off all key mappings
 " set spell
 " e.g. z=, 1z=
 "
-" NERDTreeBookmarks are kept in $HOME/.NERDTreeBookmarks
 
 " http://vim.wikia.com/wiki/Mapping_keys_in_Vim_-_Tutorial_(Part_1)
 "n  Normal mode map. Defined using ':nmap' or ':nnoremap'.
