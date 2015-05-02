@@ -55,14 +55,22 @@ nmap <F12> :MRU<CR>
 if executable('ag')
   " use ag over grep
   set grepprg=ag\ --nogroup\ --nocolor
-  " use ag in CtrlP for listing files. lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+
+  let g:unite_source_grep_command = 'ag'
+  let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
+  let g:unite_source_grep_recursive_opt = ''
 endif
 
-" ctrlp - https://github.com/kien/ctrlp.vim
-let g:ctrlp_map = '<leader>e'
+call unite#custom#source('file_rec,file_rec/git','ignore_globs',['.sass-cache/','app/','assets/','public/','bin/','po/','db/'])
+"call unite#custom#source('file_rec,file_rec/git', 'white_globs', ['app/assets/javascripts/'])
+nnoremap <leader>e :Unite file_rec/git<CR>
+nnoremap <C-e> :VimFiler -toggle<CR>
 
-let g:ctrlp_custom_ignore = { 'dir': '\v[\/]\.(git|hg|svn)$', 'file': '\v\.(exe|so|dll)$', 'link': 'some_bad_symbolic_links' }
+let g:vimfiler_as_default_explorer = 1
+let g:vimfiler_tree_opened_icon = '▾'
+let g:vimfiler_tree_closed_icon = '▸'
+let g:vimfiler_marked_file_icon = '*'
+"call vimfiler#custom#profile('default', 'context', { 'safe' : 0 })
 
 " allow backspacing over everything in i-mode
 set backspace=indent,eol,start
@@ -163,9 +171,6 @@ nmap <leader>et :tabedit <C-R>=expand($HOME."/.tmux.conf")<CR><CR>
 " #5 - indenting
 vmap << <gv
 vmap >> >gv
-
-" NERDTree
-" map <C-e> :NERDTreeToggle<CR>
 
 " indent - <C-o><C-o> to set cursor to original position
 map <leader>= ggvG=<C-o><C-o>
