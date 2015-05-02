@@ -39,10 +39,6 @@ let g:vroom_rspec_version = '1.x'
 let g:vroom_cucumber_path = 'cucumber '
 let g:vroom_use_vimux = 1
 
-" yankring
-"nmap <F11> :YRShow<CR>
-let g:yankring_history_dir = $HOME . '/.vim/'
-
 nmap <F11> :set filetype=ruby<CR>
 
 " mru - https://github.com/yegappan/mru/blob/master/plugin/mru.vim
@@ -65,12 +61,15 @@ call unite#custom#source('file_rec,file_rec/git','ignore_globs',['.sass-cache/',
 "call unite#custom#source('file_rec,file_rec/git', 'white_globs', ['app/assets/javascripts/'])
 nnoremap <leader>e :Unite file_rec/git<CR>
 nnoremap <C-e> :VimFiler -toggle<CR>
+nnoremap <C-b> :Unite buffer -toggle<CR>
+nnoremap <F11> :Unite register -toggle<CR>
 
 let g:vimfiler_as_default_explorer = 1
 let g:vimfiler_tree_opened_icon = '▾'
 let g:vimfiler_tree_closed_icon = '▸'
 let g:vimfiler_marked_file_icon = '*'
 "call vimfiler#custom#profile('default', 'context', { 'safe' : 0 })
+let g:unite_source_history_yank_save_clipboard = 1 "https://github.com/Shougo/unite.vim/issues/415
 
 " allow backspacing over everything in i-mode
 set backspace=indent,eol,start
