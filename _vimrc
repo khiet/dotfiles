@@ -41,13 +41,6 @@ let g:vroom_use_vimux = 1
 
 nmap <F11> :set filetype=ruby<CR>
 
-" mru - https://github.com/yegappan/mru/blob/master/plugin/mru.vim
-let MRU_File = $HOME . '/.vim/_vim_mru_files'
-" exlude . files
-let MRU_Include_Files = '\.rb$\|\.haml$\|\.erb$\|\.css$\|\.sass$\|\.scss$\|\.js$'
-let MRU_Window_Height = 24
-nmap <F12> :MRU<CR>
-
 if executable('ag')
   " use ag over grep
   set grepprg=ag\ --nogroup\ --nocolor
@@ -58,11 +51,12 @@ if executable('ag')
 endif
 
 call unite#custom#source('file_rec,file_rec/git','ignore_globs',['.sass-cache/','app/','assets/','public/','bin/','po/','db/'])
-"call unite#custom#source('file_rec,file_rec/git', 'white_globs', ['app/assets/javascripts/'])
+call unite#custom#source('file_rec,file_rec/git', 'white_globs', ['app/models/', 'app/views/', 'app/controllers/', 'app/assets/javascripts/'])
 nnoremap <leader>e :Unite file_rec/git<CR>
 nnoremap <C-e> :VimFiler -toggle<CR>
 nnoremap <C-b> :Unite buffer -toggle<CR>
 nnoremap <F11> :Unite register -toggle<CR>
+nnoremap <F12> :Unite file_mru -toggle<CR>
 
 let g:vimfiler_as_default_explorer = 1
 let g:vimfiler_tree_opened_icon = '▾'

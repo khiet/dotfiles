@@ -13,10 +13,6 @@
 [submodule "bundle/vimux"]
 	path = bundle/vimux
 	url = https://github.com/benmills/vimux.git
-[submodule "bundle/mru"]
-	path = bundle/mru
-	url = https://github.com/yegappan/mru.git
-  ignore = dirty
 [submodule "bundle/vimproc"]
 	path = bundle/vimproc
 	url = https://github.com/Shougo/vimproc.vim.git
@@ -26,3 +22,7 @@
 [submodule "bundle/vimfiler"]
 	path = bundle/vimfiler
 	url = https://github.com/Shougo/vimfiler.vim.git
+[submodule "bundle/neomru"]
+	path = bundle/neomru
+  url = https://github.com/Shougo/neomru.vim.git
+  ignore = dirty
