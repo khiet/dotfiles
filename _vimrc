@@ -39,7 +39,7 @@ let g:vroom_rspec_version = '1.x'
 let g:vroom_cucumber_path = 'cucumber '
 let g:vroom_use_vimux = 1
 
-nmap <F11> :set filetype=ruby<CR>
+nmap <F9> :set filetype=ruby<CR>
 
 if executable('ag')
   " use ag over grep
@@ -48,13 +48,15 @@ if executable('ag')
   let g:unite_source_grep_command = 'ag'
   let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
   let g:unite_source_grep_recursive_opt = ''
+
+  let g:unite_source_rec_async_command = 'ag --nogroup --nocolor --follow  --hidden -g ""'
 endif
 
 call unite#custom#source('file_rec,file_rec/git','ignore_globs',['.sass-cache/','app/','assets/','public/','bin/','po/','db/'])
-call unite#custom#source('file_rec,file_rec/git', 'white_globs', ['app/models/', 'app/views/', 'app/controllers/', 'app/assets/javascripts/'])
-nnoremap <leader>e :Unite file_rec/git<CR>
+call unite#custom#source('file_rec,file_rec/git','white_globs',['app/models/','app/views/','app/controllers/','app/assets/javascripts/'])
 nnoremap <C-e> :VimFiler -toggle<CR>
 nnoremap <C-b> :Unite buffer -toggle<CR>
+nnoremap <F10> :Unite file_rec/git:--cached:--others:--exclude-standard -start-insert<CR>
 nnoremap <F11> :Unite register -toggle<CR>
 nnoremap <F12> :Unite file_mru -toggle<CR>
 
@@ -165,9 +167,6 @@ nmap <leader>et :tabedit <C-R>=expand($HOME."/.tmux.conf")<CR><CR>
 vmap << <gv
 vmap >> >gv
 
-" indent - <C-o><C-o> to set cursor to original position
-map <leader>= ggvG=<C-o><C-o>
-
 " disable F1 built-in help key
 :nmap <F1> :echo<CR>
 :imap <F1> <C-o>:echo<CR>
@@ -186,16 +185,13 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
 " buffers
-map <Right> :bn<CR>
-map <Left> :bp<CR>
+noremap <C-l> :bn<CR>
+noremap <C-h> :bp<CR>
 
 " tabs
 "nmap <C-Right> :tabnext<CR>
 "nmap <C-Left> :tabprevious<CR>
 
-" quickfix items
-noremap <Up> :cp<CR>
-noremap <Down> :cn<CR>
 " -----------------------------------------------
 
 " -----------------------------------------------
@@ -220,10 +216,9 @@ function! <SID>StripTrailingWhitespaces()
     let @/=_s
     call cursor(l, c)
 endfunction
+" -----------------------------------------------
 
 nnoremap <silent> <leader>t :call <SID>StripTrailingWhitespaces()<CR>
-" autocmd BufWritePre *.py,*.js :call <SID>StripTrailingWhitespaces()
-" -----------------------------------------------
 
 " /n to count # of lines containing keyword i.e. %s///n
 nnoremap <leader>s :%s//
@@ -236,8 +231,7 @@ nnoremap <leader>s :%s//
 " show trailing whitespace - http://vim.wikia.com/wiki/Highlight_unwanted_spaces
 highlight ExtraWhitespace ctermbg=green guibg=green
 match ExtraWhitespace /\s\+\%#\@<!$/
-"nnoremap <leader>? :match ExtraWhitespace /\s\+\%#\@<!$/<CR>
-"nnoremap <leader>? :match<CR>
+
 " show a vertical line
 "set colorcolumn=100
 "highlight ColorColumn ctermbg=red guibg=red
@@ -282,10 +276,6 @@ let g:gitgutter_map_keys = 0 " turn off all key mappings
 " za: toggle fold (local)
 " zf: create fold
 " zd: delete fold
-
-" set spell
-" e.g. z=, 1z=
-"
 
 " http://vim.wikia.com/wiki/Mapping_keys_in_Vim_-_Tutorial_(Part_1)
 "n  Normal mode map. Defined using ':nmap' or ':nnoremap'.
