@@ -26,13 +26,14 @@ au BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
 " -----------------------------------------------
 
 " pry
-map <Leader>bp orequire'pry'; Pry.send(:binding).pry<esc>:w<cr>
+map <leader>bp orequire'pry'; Pry.send(:binding).pry<esc>:w<cr>
 
 " http://stackoverflow.com/questions/916875/yank-file-name-path-of-current-buffer-in-vim
 " copy relative path
 nmap <leader>cf :let @*=expand("%")<CR>
 " copy absolute path
 nmap <leader>cF :let @*=expand("%:p")<CR>
+nmap <F12> :let @*=expand("%") . ':' . line(".")<CR>
 
 let g:vroom_spec_command = 'spec '
 let g:vroom_rspec_version = '1.x'
@@ -53,17 +54,19 @@ if executable('ag')
 endif
 
 call unite#custom#source('file_rec,file_rec/git','ignore_globs',['.sass-cache/','app/','assets/','public/','bin/','po/','db/'])
-call unite#custom#source('file_rec,file_rec/git','white_globs',['app/models/','app/views/','app/controllers/','app/assets/javascripts/'])
+call unite#custom#source('file_rec,file_rec/git','white_globs',['app/models/','app/views/','app/controllers/', 'app/services/', 'app/assets/javascripts/'])
 nnoremap <C-e> :VimFiler -toggle<CR>
-nnoremap <C-b> :Unite buffer -toggle<CR>
-nnoremap <F10> :Unite file_rec/git:--cached:--others:--exclude-standard -start-insert<CR>
-nnoremap <F11> :Unite register -toggle<CR>
-nnoremap <F12> :Unite file_mru -toggle<CR>
+nnoremap <leader>e :Unite file_rec/git:--cached:--others:--exclude-standard -start-insert<CR>
+nnoremap <leader>m :Unite file_mru -toggle<CR>
+nnoremap <leader>br :Unite register -toggle<CR>
+nnoremap <leader>bb :Unite buffer -toggle<CR>
 
 let g:vimfiler_as_default_explorer = 1
 let g:vimfiler_tree_opened_icon = '▾'
 let g:vimfiler_tree_closed_icon = '▸'
 let g:vimfiler_marked_file_icon = '*'
+let g:vimfiler_readonly_file_icon = '✗'
+let g:vimfiler_marked_file_icon = '✓'
 "call vimfiler#custom#profile('default', 'context', { 'safe' : 0 })
 let g:unite_source_history_yank_save_clipboard = 1 "https://github.com/Shougo/unite.vim/issues/415
 
@@ -185,8 +188,8 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
 " buffers
-noremap <C-l> :bn<CR>
-noremap <C-h> :bp<CR>
+noremap <Right> :bn<CR>
+noremap <Left> :bp<CR>
 
 " tabs
 "nmap <C-Right> :tabnext<CR>
@@ -222,6 +225,7 @@ nnoremap <silent> <leader>t :call <SID>StripTrailingWhitespaces()<CR>
 
 " /n to count # of lines containing keyword i.e. %s///n
 nnoremap <leader>s :%s//
+nnoremap <leader>h :%s/:\([^ ]*\)\(\s*\)=>/\1:/g
 
 " list invisibles
 "nmap <leader>l :set list!<CR>
@@ -230,7 +234,7 @@ nnoremap <leader>s :%s//
 
 " show trailing whitespace - http://vim.wikia.com/wiki/Highlight_unwanted_spaces
 highlight ExtraWhitespace ctermbg=green guibg=green
-match ExtraWhitespace /\s\+\%#\@<!$/
+match ExtraWhitespace /\s\+$/
 
 " show a vertical line
 "set colorcolumn=100
@@ -271,6 +275,12 @@ let g:gitgutter_map_keys = 0 " turn off all key mappings
 " -----------------------------------------------
 "     Cheat Sheets
 " -----------------------------------------------
+" tmux
+" cmd, % # split vertically
+" cmd, " # split horizontally
+"
+" gx # open URL
+"
 " Folding
 " zi: toggle fold (global)
 " za: toggle fold (local)

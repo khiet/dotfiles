@@ -59,6 +59,14 @@ renv-production () {
   renv set "$1" -a production -b ht-renv-production
 }
 
+doc () {
+  open 'https://docs.google.com/document/d/1QdxE7FMpMtci5gyzzBk7MvB0rCU8aWQ0U8UisyaYzac/edit'
+}
+
+note() {
+  open 'https://docs.google.com/document/d/1WZXdI3HU6EuiaNHmNH7kvo0rkRVmHmw0y9qTuwI0ISU/edit'
+}
+
 # added by the heroku toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 
