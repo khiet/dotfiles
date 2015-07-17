@@ -48,7 +48,7 @@ export PS1="\[$bldylw\]\\w \[$txtgrn\]\$git_branch\[$txtred\]\$git_dirty\[$txtrs
 # git submodule foreach git pull
 
 deploy () {
-  bundle install && ht staging-deploy "$1" --channel responsive-checkout --staging "$2"
+  bundle install && ht staging-deploy "$1" --channel "$2" --staging "$2"
 }
 
 renv-staging () {
@@ -60,11 +60,15 @@ renv-production () {
 }
 
 doc () {
-  open 'https://docs.google.com/document/d/1QdxE7FMpMtci5gyzzBk7MvB0rCU8aWQ0U8UisyaYzac/edit'
-}
-
-note() {
-  open 'https://docs.google.com/document/d/1WZXdI3HU6EuiaNHmNH7kvo0rkRVmHmw0y9qTuwI0ISU/edit'
+  if [ "$1" == 'cmd' ]
+  then
+    open 'https://docs.google.com/document/d/1QdxE7FMpMtci5gyzzBk7MvB0rCU8aWQ0U8UisyaYzac/edit'
+  elif [ "$1" == 'rails' ]
+  then
+    open 'https://docs.google.com/document/d/1LLfmoRb_I65E2xh942-EJwXYkbd7a5CfJ-ho_j6TfL0/edit'
+  else
+    open 'https://docs.google.com/document/d/1LLfmoRb_I65E2xh942-EJwXYkbd7a5CfJ-ho_j6TfL0/edit'
+  fi
 }
 
 # added by the heroku toolbelt

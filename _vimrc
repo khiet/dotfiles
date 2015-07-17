@@ -12,18 +12,13 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip " mac/linux
 set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe " windows
 
 set laststatus=2
-set scrolloff=10
+
 
 " consider '-' as part of a word
 set iskeyword+=-
 
-" -----------------------------------------------
-"    rails
-" -----------------------------------------------
-" set filetype? to check filetype of a file
 au Filetype html,xml,eruby source ~/.vim/scripts/closetag.vim
 au BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
-" -----------------------------------------------
 
 " pry
 map <leader>bp orequire'pry'; Pry.send(:binding).pry<esc>:w<cr>
@@ -53,14 +48,17 @@ if executable('ag')
   let g:unite_source_rec_async_command = 'ag --nogroup --nocolor --follow  --hidden -g ""'
 endif
 
-call unite#custom#source('file_rec,file_rec/git','ignore_globs',['.sass-cache/','app/','assets/','public/','bin/','po/','db/'])
-call unite#custom#source('file_rec,file_rec/git','white_globs',['app/models/','app/views/','app/controllers/', 'app/services/', 'app/assets/javascripts/'])
-nnoremap <C-e> :VimFiler -toggle<CR>
-nnoremap <leader>e :Unite file_rec/git:--cached:--others:--exclude-standard -start-insert<CR>
-nnoremap <leader>m :Unite file_mru -toggle<CR>
-nnoremap <leader>br :Unite register -toggle<CR>
-nnoremap <leader>bb :Unite buffer -toggle<CR>
+noremap H ^
+noremap L $
 
+call unite#custom#source('file_rec,file_rec/git','ignore_globs',['.sass-cache/','assets/','bin/','db/','log/','po/','public/','tmp/','vendor/'])
+"call unite#custom#source('file_rec,file_rec/git','white_globs',[])
+nnoremap <C-f> :VimFiler -simple -toggle<CR>
+nnoremap <leader>f :Unite file_rec/git -start-insert<CR>
+nnoremap <C-m> :Unite file_mru -toggle<CR>
+nnoremap <C-b> :Unite buffer -toggle<CR>
+
+let g:vimfiler_no_default_key_mapping = 1
 let g:vimfiler_as_default_explorer = 1
 let g:vimfiler_tree_opened_icon = '▾'
 let g:vimfiler_tree_closed_icon = '▸'
@@ -96,7 +94,7 @@ endif
 "    GUI
 " -----------------------------------------------
 if has("gui_running")
-    colorscheme tomorrow-night "jellybeans
+    colorscheme tomorrow-night-eighties "jellybeans
     set guioptions-=m   "remove menu bar
     set guioptions-=T   "remove toolbar
     "set guioptions-=r  "remove right-hand scroll bar
@@ -110,7 +108,7 @@ if has("gui_running")
 else " terminal
     set t_Co=256
     if (&t_Co == 256) " if terminal supports 256 colours
-      colorscheme tomorrow-night "jellybeans
+      colorscheme tomorrow-night-eighties "jellybeans
     endif
 endif
 
@@ -151,7 +149,7 @@ if has("autocmd")
     " http://stackoverflow.com/questions/2400264/is-it-possible-to-apply-vim-configurations-without-restarting/2400289#2400289
     augroup myvimrc
       au!
-      autocmd bufwritepost .vimrc source ~/.vimrc
+      autocmd BufWritePost .vimrc source ~/.vimrc
     augroup END
 endif
 
@@ -178,9 +176,6 @@ vmap >> >gv
 "   navigation
 " -----------------------------------------------
 
-noremap H ^
-noremap L $
-
 " windows
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
@@ -188,8 +183,8 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
 " buffers
-noremap <Right> :bn<CR>
-noremap <Left> :bp<CR>
+"nnoremap <C-]> :bn<CR>
+"nnoremap <C-[> :bp<CR>
 
 " tabs
 "nmap <C-Right> :tabnext<CR>
@@ -219,6 +214,18 @@ function! <SID>StripTrailingWhitespaces()
     let @/=_s
     call cursor(l, c)
 endfunction
+
+" open a split for each dirty file in git - from garybernhardt
+function! OpenChangedFiles()
+  only " close windows, unless they're modified
+  let status = system('git status -s | grep "^ \?\(M\|A\|UU\)" | sed "s/^.\{3\}//"')
+  let filenames = split(status, "\n")
+  exec "edit " . filenames[0]
+  for filename in filenames[1:]
+    exec "sp " . filename
+  endfor
+endfunction
+command! OpenChangedFiles :call OpenChangedFiles()
 " -----------------------------------------------
 
 nnoremap <silent> <leader>t :call <SID>StripTrailingWhitespaces()<CR>
@@ -232,9 +239,8 @@ nnoremap <leader>h :%s/:\([^ ]*\)\(\s*\)=>/\1:/g
 " enable spell check
 "nmap <leader>s :set spell!<CR>
 
-" show trailing whitespace - http://vim.wikia.com/wiki/Highlight_unwanted_spaces
-highlight ExtraWhitespace ctermbg=green guibg=green
-match ExtraWhitespace /\s\+$/
+highlight ExtraWhitespace ctermbg=red guibg=red
+au BufWritePre * match ExtraWhitespace /\s\+$/
 
 " show a vertical line
 "set colorcolumn=100
@@ -288,16 +294,4 @@ let g:gitgutter_map_keys = 0 " turn off all key mappings
 " zd: delete fold
 
 " http://vim.wikia.com/wiki/Mapping_keys_in_Vim_-_Tutorial_(Part_1)
-"n  Normal mode map. Defined using ':nmap' or ':nnoremap'.
-"i  Insert mode map. Defined using ':imap' or ':inoremap'.
-"v  Visual and select mode map. Defined using ':vmap' or ':vnoremap'.
-"x  Visual mode map. Defined using ':xmap' or ':xnoremap'.
-"s  Select mode map. Defined using ':smap' or ':snoremap'.
-"c  Command-line mode map. Defined using ':cmap' or ':cnoremap'.
-"o  Operator pending mode map. Defined using ':omap' or ':onoremap'.
-"
-"<Space>  Normal, Visual and operator pending mode map. Defined using
-"         ':map' or ':noremap'.
-"!  Insert and command-line mode map. Defined using 'map!' or
-"   'noremap!'.
 " -----------------------------------------------
