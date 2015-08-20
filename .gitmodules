@@ -13,6 +13,3 @@
 [submodule "bundle/vimux"]
 	path = bundle/vimux
 	url = https://github.com/benmills/vimux.git
-[submodule "bundle/vimproc"]
-	path = bundle/vimproc
-	url = https://github.com/Shougo/vimproc.vim.git
