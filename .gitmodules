@@ -19,7 +19,3 @@
 [submodule "bundle/vimfiler"]
 	path = bundle/vimfiler
 	url = https://github.com/Shougo/vimfiler.vim.git
-[submodule "bundle/neomru"]
-	path = bundle/neomru
-  url = https://github.com/Shougo/neomru.vim.git
-  ignore = dirty
