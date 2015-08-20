@@ -41,33 +41,10 @@ nmap <F9> :set filetype=ruby<CR>
 if executable('ag')
   " use ag over grep
   set grepprg=ag\ --nogroup\ --nocolor
-
-  let g:unite_source_grep_command = 'ag'
-  let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
-  let g:unite_source_grep_recursive_opt = ''
-
-  let g:unite_source_rec_async_command = 'ag --nogroup --nocolor --follow  --hidden -g ""'
 endif
 
 noremap H ^
 noremap L $
-
-call unite#custom#source('file_rec,file_rec/git','ignore_globs',['.sass-cache/','assets/','bin/','db/','log/','po/','public/','tmp/','vendor/'])
-"call unite#custom#source('file_rec,file_rec/git','white_globs',[])
-nnoremap <C-f> :VimFiler -simple -toggle<CR>
-nnoremap <leader>f :Unite file_rec/git -start-insert<CR>
-nnoremap <C-m> :Unite file_mru -toggle<CR>
-nnoremap <C-b> :Unite buffer -toggle<CR>
-
-let g:vimfiler_no_default_key_mapping = 1
-let g:vimfiler_as_default_explorer = 1
-let g:vimfiler_tree_opened_icon = '▾'
-let g:vimfiler_tree_closed_icon = '▸'
-let g:vimfiler_marked_file_icon = '*'
-let g:vimfiler_readonly_file_icon = '✗'
-let g:vimfiler_marked_file_icon = '✓'
-"call vimfiler#custom#profile('default', 'context', { 'safe' : 0 })
-let g:unite_source_history_yank_save_clipboard = 1 "https://github.com/Shougo/unite.vim/issues/415
 
 " allow backspacing over everything in i-mode
 set backspace=indent,eol,start
