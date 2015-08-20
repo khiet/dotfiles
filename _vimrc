@@ -42,10 +42,10 @@ if executable('ag')
   " use ag over grep
   set grepprg=ag\ --nogroup\ --nocolor
 
-  " use ag in CtrlP for listing files (it respects .gitignore)
+  " use ag in ctrlp for listing files (it respects .gitignore)
   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 
-  " ag is fast enough that CtrlP doesn't need to cache
+  " ag is fast enough that ctrlp doesn't need to cache
   let g:ctrlp_use_caching = 0
 endif
 
@@ -178,6 +178,14 @@ nnoremap <C-l> <C-w>l
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
 set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
 let g:ctrlp_custom_ignore = { 'dir':  '\v[\/]\.(git|hg|svn)$', 'file': '\v\.(exe|so|dll)$', 'link': 'some_bad_symbolic_links' }
+
+" mru - https://github.com/yegappan/mru/blob/master/plugin/mru.vim
+let MRU_File = $HOME . '/.vim/_vim_mru_files'
+" exlude . files
+"let MRU_Include_Files = '\.rb$\|\.haml$\|\.erb$\|\.css$\|\.sass$\|\.scss$\|\.js$'
+let MRU_Window_Height = 24
+let MRU_Max_Entries = 200
+nmap <leader>m :MRU<CR>
 
 " -----------------------------------------------
 
