@@ -16,6 +16,3 @@
 [submodule "bundle/vimproc"]
 	path = bundle/vimproc
 	url = https://github.com/Shougo/vimproc.vim.git
-[submodule "bundle/vimfiler"]
-	path = bundle/vimfiler
-	url = https://github.com/Shougo/vimfiler.vim.git
