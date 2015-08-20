@@ -185,6 +185,12 @@ let MRU_File = $HOME . '/.vim/_vim_mru_files'
 "let MRU_Include_Files = '\.rb$\|\.haml$\|\.erb$\|\.css$\|\.sass$\|\.scss$\|\.js$'
 let MRU_Window_Height = 24
 let MRU_Max_Entries = 200
+
+" yankround
+nmap p <Plug>(yankround-p)
+nmap <C-p> <Plug>(yankround-prev)
+nmap <C-n> <Plug>(yankround-next)
+
 nmap <leader>m :MRU<CR>
 " toggle vexplore
 function! ToggleVExplorer()
