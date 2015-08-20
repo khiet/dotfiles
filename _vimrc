@@ -21,7 +21,8 @@ au Filetype html,xml,eruby source ~/.vim/scripts/closetag.vim
 au BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
 
 " pry
-map <leader>bp orequire'pry'; Pry.send(:binding).pry<esc>:w<cr>
+map <leader>bp orequire 'pry-remote'; binding.remote_pry<esc>:w<cr>
+"map <leader>bp orequire'pry'; Pry.send(:binding).pry<esc>:w<cr>
 
 " http://stackoverflow.com/questions/916875/yank-file-name-path-of-current-buffer-in-vim
 " copy relative path
