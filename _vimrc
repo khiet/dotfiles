@@ -21,8 +21,8 @@ au Filetype html,xml,eruby source ~/.vim/scripts/closetag.vim
 au BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
 
 " pry
-map <leader>bp orequire 'pry-remote'; binding.remote_pry<esc>:w<cr>
-"map <leader>bp orequire'pry'; Pry.send(:binding).pry<esc>:w<cr>
+"map <leader>bp orequire 'pry-remote'; binding.remote_pry<esc>:w<cr>
+map <leader>bp orequire'pry'; Pry.send(:binding).pry<esc>:w<cr>
 
 " http://stackoverflow.com/questions/916875/yank-file-name-path-of-current-buffer-in-vim
 " copy relative path
@@ -179,13 +179,8 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
 set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
 let g:ctrlp_custom_ignore = { 'dir':  '\v[\/]\.(git|hg|svn)$', 'file': '\v\.(exe|so|dll)$', 'link': 'some_bad_symbolic_links' }
 
-" mru - https://github.com/yegappan/mru/blob/master/plugin/mru.vim
-let MRU_File = $HOME . '/.vim/_vim_mru_files'
-" exlude . files
-"let MRU_Include_Files = '\.rb$\|\.haml$\|\.erb$\|\.css$\|\.sass$\|\.scss$\|\.js$'
-let MRU_Window_Height = 24
-let MRU_Max_Entries = 200
-nmap <leader>m :MRU<CR>
+"nmap <leader>m :CtrlPMRU<CR>
+"nmap <leader>b :CtrlPBuffer<CR>
 
 " -----------------------------------------------
 
