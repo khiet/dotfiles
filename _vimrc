@@ -178,6 +178,8 @@ nnoremap <C-l> <C-w>l
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
 set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
 let g:ctrlp_custom_ignore = { 'dir':  '\v[\/]\.(git|hg|svn)$', 'file': '\v\.(exe|so|dll)$', 'link': 'some_bad_symbolic_links' }
+" ctrlp-py-matcher - https://github.com/FelikZ/ctrlp-py-matcher
+let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 
 "nmap <leader>m :CtrlPMRU<CR>
 "nmap <leader>b :CtrlPBuffer<CR>
