@@ -166,14 +166,6 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
-" buffers
-"nnoremap <C-Right> :bn<CR>
-"nnoremap <C-Left> :bp<CR>
-
-" tabs
-"nmap <C-Right> :tabnext<CR>
-"nmap <C-Left> :tabprevious<CR>
-
 " ctrlp
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
 set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
@@ -181,8 +173,8 @@ let g:ctrlp_custom_ignore = { 'dir':  '\v[\/]\.(git|hg|svn)$', 'file': '\v\.(exe
 " ctrlp-py-matcher - https://github.com/FelikZ/ctrlp-py-matcher
 let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 
-"nmap <leader>m :CtrlPMRU<CR>
-"nmap <leader>b :CtrlPBuffer<CR>
+" memolist
+let g:memolist_path = "$HOME/Dropbox/memolist"
 
 " -----------------------------------------------
 

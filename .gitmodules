@@ -20,3 +20,7 @@
 	path = bundle/ctrlp-py-matcher
   url = https://github.com/FelikZ/ctrlp-py-matcher.git
   ignore = dirty
+[submodule "bundle/memolist"]
+	path = bundle/memolist
+	url = https://github.com/glidenote/memolist.vim.git
+  ignore = dirty
