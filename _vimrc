@@ -167,8 +167,8 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
 " buffers
-"nnoremap <C-]> :bn<CR>
-"nnoremap <C-[> :bp<CR>
+"nnoremap <C-Right> :bn<CR>
+"nnoremap <C-Left> :bp<CR>
 
 " tabs
 "nmap <C-Right> :tabnext<CR>
@@ -186,11 +186,6 @@ let MRU_File = $HOME . '/.vim/_vim_mru_files'
 let MRU_Window_Height = 24
 let MRU_Max_Entries = 200
 nmap <leader>m :MRU<CR>
-
-" yankround
-nmap p <Plug>(yankround-p)
-nmap <C-p> <Plug>(yankround-prev)
-nmap <C-n> <Plug>(yankround-next)
 
 " -----------------------------------------------
 
@@ -216,18 +211,6 @@ function! <SID>StripTrailingWhitespaces()
     let @/=_s
     call cursor(l, c)
 endfunction
-
-" open a split for each dirty file in git - from garybernhardt
-function! OpenChangedFiles()
-  only " close windows, unless they're modified
-  let status = system('git status -s | grep "^ \?\(M\|A\|UU\)" | sed "s/^.\{3\}//"')
-  let filenames = split(status, "\n")
-  exec "edit " . filenames[0]
-  for filename in filenames[1:]
-    exec "sp " . filename
-  endfor
-endfunction
-command! OpenChangedFiles :call OpenChangedFiles()
 " -----------------------------------------------
 
 nnoremap <silent> <leader>t :call <SID>StripTrailingWhitespaces()<CR>
