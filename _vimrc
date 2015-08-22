@@ -175,34 +175,11 @@ let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 
 " memolist
 let g:memolist_path = "$HOME/Dropbox/memolist"
+let g:memolist_memo_suffix = "txt"
+let g:memolist_memo_date = "%d %b %Y"
+nmap <leader>mf :exe 'CtrlP' g:memolist_path<CR>
 
 " -----------------------------------------------
-
-" -----------------------------------------------
-"   function
-" -----------------------------------------------
-function! DosToUnixLineEnding()
-    :update
-    :e ++ff=dos
-    :setlocal ff=unix
-    :w
-endfunction
-
-" ref - http://vimcasts.org/episodes/tidying-whitespace/
-function! <SID>StripTrailingWhitespaces()
-    " Preparation: save last search, and cursor position.
-    let _s=@/
-    let l = line(".")
-    let c = col(".")
-    " Do the business:
-    %s/\s\+$//e
-    " Clean up: restore previous search history, and cursor position
-    let @/=_s
-    call cursor(l, c)
-endfunction
-" -----------------------------------------------
-
-nnoremap <silent> <leader>t :call <SID>StripTrailingWhitespaces()<CR>
 
 " /n to count # of lines containing keyword i.e. %s///n
 nnoremap <leader>s :%s//
@@ -215,10 +192,6 @@ nnoremap <leader>h :%s/:\([^ ]*\)\(\s*\)=>/\1:/g
 
 highlight ExtraWhitespace ctermbg=red guibg=red
 au BufWritePre * match ExtraWhitespace /\s\+$/
-
-" show a vertical line
-"set colorcolumn=100
-"highlight ColorColumn ctermbg=red guibg=red
 
 " -----------------------------------------------
 "    OS specifics
@@ -251,6 +224,32 @@ endif
 let g:gitgutter_realtime = 0
 let g:gitgutter_eager = 0
 let g:gitgutter_map_keys = 0 " turn off all key mappings
+
+" -----------------------------------------------
+"   function
+" -----------------------------------------------
+function! DosToUnixLineEnding()
+    :update
+    :e ++ff=dos
+    :setlocal ff=unix
+    :w
+endfunction
+
+" ref - http://vimcasts.org/episodes/tidying-whitespace/
+function! <SID>StripTrailingWhitespaces()
+    " Preparation: save last search, and cursor position.
+    let _s=@/
+    let l = line(".")
+    let c = col(".")
+    " Do the business:
+    %s/\s\+$//e
+    " Clean up: restore previous search history, and cursor position
+    let @/=_s
+    call cursor(l, c)
+endfunction
+" -----------------------------------------------
+
+nnoremap <silent> <leader>t :call <SID>StripTrailingWhitespaces()<CR>
 
 " -----------------------------------------------
 "     Cheat Sheets
