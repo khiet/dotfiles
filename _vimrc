@@ -17,7 +17,6 @@ set laststatus=2
 " consider '-' as part of a word
 set iskeyword+=-
 
-au Filetype html,xml,eruby source ~/.vim/scripts/closetag.vim
 au BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
 
 " pry
