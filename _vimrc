@@ -176,7 +176,7 @@ let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 let g:memolist_path = "$HOME/Dropbox/memolist"
 let g:memolist_memo_suffix = "txt"
 let g:memolist_memo_date = "%d %b %Y"
-nmap <leader>mf :exe 'CtrlP' g:memolist_path<CR>
+nmap <leader>m :exe 'CtrlP' g:memolist_path<CR>
 
 " -----------------------------------------------
 

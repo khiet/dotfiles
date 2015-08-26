@@ -48,7 +48,7 @@ export PS1="\[$bldylw\]\\w \[$txtgrn\]\$git_branch\[$txtred\]\$git_dirty\[$txtrs
 # git submodule foreach git pull
 
 deploy () {
-  bundle install && ht staging-deploy "$1" --channel "$2" --staging "$2"
+  bundle install && ht staging-deploy "$1" --channel "staging$2" --staging "staging$2"
 }
 
 renv-staging () {
