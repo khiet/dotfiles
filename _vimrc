@@ -29,13 +29,12 @@ nmap <leader>cf :let @*=expand("%")<CR>
 " copy absolute path
 nmap <leader>cF :let @*=expand("%:p")<CR>
 nmap <F12> :let @*=expand("%") . ':' . line(".")<CR>
+nmap <F11> :set filetype=ruby<CR>
 
 let g:vroom_spec_command = 'spec '
 let g:vroom_rspec_version = '1.x'
 let g:vroom_cucumber_path = 'cucumber '
 let g:vroom_use_vimux = 1
-
-nmap <F9> :set filetype=ruby<CR>
 
 if executable('ag')
   " use ag over grep
@@ -223,6 +222,10 @@ endif
 let g:gitgutter_realtime = 0
 let g:gitgutter_eager = 0
 let g:gitgutter_map_keys = 0 " turn off all key mappings
+
+" vmux
+" run ruby
+map <Leader>rb :call VimuxRunCommand("ruby " . bufname("%"))<CR>
 
 " -----------------------------------------------
 "   function
