@@ -226,6 +226,7 @@ let g:gitgutter_map_keys = 0 " turn off all key mappings
 " vmux
 " run ruby
 map <Leader>rb :call VimuxRunCommand("ruby " . bufname("%"))<CR>
+map <Leader>rs :call VimuxRunCommand("be rspec " . bufname("%"))<CR>
 
 " -----------------------------------------------
 "   function
