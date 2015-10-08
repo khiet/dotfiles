@@ -24,3 +24,6 @@
 	path = bundle/memolist
 	url = https://github.com/glidenote/memolist.vim.git
   ignore = dirty
+[submodule "bundle/ctrlp_bdelete"]
+	path = bundle/ctrlp_bdelete
+	url = https://github.com/d11wtq/ctrlp_bdelete.vim.git

@@ -71,3 +71,6 @@ doc () {
 
 # added by the heroku toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
+
+# added by Anaconda 2.3.0 installer
+export PATH="/Users/khietle/anaconda/bin:$PATH"

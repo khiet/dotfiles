@@ -20,7 +20,7 @@ set iskeyword+=-
 au BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
 
 " pry
-"map <leader>bp orequire 'pry-remote'; binding.remote_pry<esc>:w<cr>
+map <leader>br orequire 'pry-remote'; binding.remote_pry<esc>:w<cr>
 map <leader>bp orequire'pry'; Pry.send(:binding).pry<esc>:w<cr>
 
 " http://stackoverflow.com/questions/916875/yank-file-name-path-of-current-buffer-in-vim
@@ -31,9 +31,28 @@ nmap <leader>cF :let @*=expand("%:p")<CR>
 nmap <F12> :let @*=expand("%") . ':' . line(".")<CR>
 nmap <F11> :set filetype=ruby<CR>
 
-let g:vroom_spec_command = 'spec '
-let g:vroom_rspec_version = '1.x'
-let g:vroom_cucumber_path = 'cucumber '
+nmap <F2> :bp<CR>
+nmap <F3> :bn<CR>
+
+"netrw
+let g:netrw_winsize = 25
+nmap <C-e> :Lexplore<CR>
+
+if filereadable("zeus.json")
+  let g:vroom_use_zeus = 1
+endif
+
+if filereadable("bin/spring")
+  let g:vroom_use_spring = 1
+endif
+
+if filereadable("bin/rspec")
+  let g:vroom_use_binstubs = 1
+endif
+
+let g:vroom_cucumber_path = 'cucumber'
+let g:vroom_spec_command  = 'rspec --format progress'
+let g:vroom_rspec_version = '3.x'
 let g:vroom_use_vimux = 1
 
 if executable('ag')
@@ -171,6 +190,9 @@ let g:ctrlp_custom_ignore = { 'dir':  '\v[\/]\.(git|hg|svn)$', 'file': '\v\.(exe
 " ctrlp-py-matcher - https://github.com/FelikZ/ctrlp-py-matcher
 let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 
+" ctrlp_bdelete - https://github.com/d11wtq/ctrlp_bdelete.vim
+call ctrlp_bdelete#init()
+
 " memolist
 let g:memolist_path = "$HOME/Dropbox/memolist"
 let g:memolist_memo_suffix = "txt"
@@ -226,7 +248,6 @@ let g:gitgutter_map_keys = 0 " turn off all key mappings
 " vmux
 " run ruby
 map <Leader>rb :call VimuxRunCommand("ruby " . bufname("%"))<CR>
-map <Leader>rs :call VimuxRunCommand("be rspec " . bufname("%"))<CR>
 
 " -----------------------------------------------
 "   function
