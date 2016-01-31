@@ -24,7 +24,12 @@ export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 # bundler
 export BUNDLER_EDITOR=vim
 
+# git
+# https://github.com/jimeh/git-aware-prompt
+export GITAWAREPROMPT=~/.bash/git-aware-prompt
+source $GITAWAREPROMPT/main.sh
 export PS1="\[$bldylw\]\\w \[$txtgrn\]\$git_branch\[$txtred\]\$git_dirty\[$txtrst\]\$ "
+
 # enable forward (C-s)
 # http://askubuntu.com/questions/60071/how-to-forward-search-history-with-the-reverse-i-search-command-ctrlr
 stty stop undef
@@ -36,11 +41,6 @@ export HISTFILESIZE=2000
 shopt -s histappend # append to history
 # save and reload the history after each command finishes
 export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
-
-# git
-# https://github.com/jimeh/git-aware-prompt
-export GITAWAREPROMPT=~/.bash/git-aware-prompt
-source $GITAWAREPROMPT/main.sh
 
 # housetrip
 deploy () {
