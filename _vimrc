@@ -28,7 +28,8 @@ map <leader>bp orequire'pry'; Pry.send(:binding).pry<esc>:w<cr>
 nmap <leader>cf :let @*=expand("%")<CR>
 " copy absolute path
 nmap <leader>cF :let @*=expand("%:p")<CR>
-nmap <F12> :let @*=expand("%") . ':' . line(".")<CR>
+nmap <leader>cl :let @*=expand("%") . ':' . line(".")<CR>
+
 nmap <F11> :set filetype=ruby<CR>
 
 nmap <F2> :bp<CR>
@@ -39,11 +40,11 @@ let g:netrw_winsize = 25
 nmap <C-e> :Lexplore<CR>
 
 if filereadable("zeus.json")
-  let g:vroom_use_zeus = 1
+  "let g:vroom_use_zeus = 1
 endif
 
 if filereadable("bin/spring")
-  let g:vroom_use_spring = 1
+  "let g:vroom_use_spring = 1
 endif
 
 if filereadable("bin/rspec")
@@ -220,8 +221,8 @@ au BufWritePre * match ExtraWhitespace /\s\+$/
 if has("mac") " Mac
     " <C-x><C-k> to complete
     "  location of dictionary on Mac
-    set dictionary-=/usr/share/dict/words dictionary+=/usr/share/dict/words
-    set complete-=k complete+=k
+    " set dictionary-=/usr/share/dict/words dictionary+=/usr/share/dict/words
+    " set complete-=k complete+=k
 
     " #1 - invisibles
     " <C-v>u<hex> to insert unicode
