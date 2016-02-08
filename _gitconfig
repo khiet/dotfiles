@@ -1,0 +1,12 @@
+[push]
+	default = simple
+[core]
+	editor = vim
+[color]
+	ui = true
+[alias]
+	st = status
+	co = checkout
+	br = branch
+	aa = add -A
+	ci = commit -av
