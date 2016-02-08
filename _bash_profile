@@ -5,7 +5,7 @@ export CLICOLOR=1
 export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
 export LESS=-RFX
 
-source ~/.private
+# source ~/.private
 
 alias grep="grep --color"
 alias tmux="TERM=screen-256color-bce tmux"
@@ -41,13 +41,6 @@ export HISTFILESIZE=2000
 shopt -s histappend # append to history
 # save and reload the history after each command finishes
 export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
-
-# housetrip
-deploy () {
-  bundle install && ht staging-deploy "$1" --channel "staging$2" --staging "staging$2"
-}
-eval "$($HOME/.ht/bin/ht init -)"
-
 # rbenv
 eval "$(rbenv init -)"
 

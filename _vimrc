@@ -1,6 +1,6 @@
 " Pathogen
-call pathogen#infect()
-call pathogen#helptags()
+execute pathogen#infect()
+execute pathogen#helptags()
 
 let mapleader=","
 inoremap jj <Esc>
