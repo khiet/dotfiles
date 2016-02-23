@@ -1,5 +1,3 @@
-[push]
-	default = simple
 [core]
 	editor = vim
 [color]
@@ -9,4 +7,18 @@
 	co = checkout
 	br = branch
 	aa = add -A
-	ci = commit -av
+  ci = commit -av
+  ft = fetch
+  lg = log --pretty=format:'%C(yellow)%h%Creset %s %Cgreen(%cd) %C(red)%an%Creset'
+  dm = diff origin/master
+[filter "lfs"]
+	smudge = git-lfs smudge %f
+	required = true
+	clean = git-lfs clean %f
+[user]
+	name = Khiet Le
+	email = paranoia.paradise@gmail.com
+[pull]
+	default = current
+[push]
+	default = current

@@ -16,8 +16,9 @@ alias jasmine="bundle exec rake jasmine"
 alias gdel="git branch --merged | grep -v '\*' | xargs -n 1 git branch -d"
 alias gg="git grep"
 alias ff="ff -r ." # fuzzy-find - https://github.com/silentbicycle/ff
+alias tl="tail -f log/development.log"
 alias fs="foreman start"
-alias fsd="foreman start -f Procfile.dev"
+# alias fsd="foreman start -f Procfile.dev"
 
 export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 
