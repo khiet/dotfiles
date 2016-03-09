@@ -19,6 +19,7 @@ alias ff="ff -r ." # fuzzy-find - https://github.com/silentbicycle/ff
 alias tl="tail -f log/development.log"
 alias fs="foreman start"
 # alias fsd="foreman start -f Procfile.dev"
+alias test="be rspec --tag ~live"
 
 export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 
