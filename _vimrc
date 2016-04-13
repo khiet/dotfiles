@@ -1,6 +1,5 @@
 " Pathogen
 execute pathogen#infect()
-execute pathogen#helptags()
 
 let mapleader=","
 inoremap jj <Esc>
@@ -8,11 +7,7 @@ inoremap jj <Esc>
 "\ to go back for the f{char} search
 nnoremap \ ,
 
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip " mac/linux
-set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe " windows
-
 set laststatus=2
-
 
 " consider '-' as part of a word
 set iskeyword+=-
@@ -185,14 +180,13 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
 " ctrlp
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
-set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
-let g:ctrlp_custom_ignore = { 'dir':  '\v[\/]\.(git|hg|svn)$', 'file': '\v\.(exe|so|dll)$', 'link': 'some_bad_symbolic_links' }
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " macosx/linux
+set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " windows
 " ctrlp-py-matcher - https://github.com/FelikZ/ctrlp-py-matcher
 let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 
 " ctrlp_bdelete - https://github.com/d11wtq/ctrlp_bdelete.vim
-call ctrlp_bdelete#init()
+" call ctrlp_bdelete#init()
 
 " memolist
 let g:memolist_path = "$HOME/Dropbox/memolist"
@@ -249,6 +243,9 @@ let g:gitgutter_map_keys = 0 " turn off all key mappings
 " vmux
 " run ruby
 map <Leader>rb :call VimuxRunCommand("ruby " . bufname("%"))<CR>
+
+" html.vim - http://www.vim.org/scripts/script.php?script_id=2075
+let g:html_indent_inctags = "html,body,head,tbody,container,row,columns"
 
 " -----------------------------------------------
 "   function
