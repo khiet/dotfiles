@@ -13,7 +13,7 @@ git submodule update
 ```
 
 ```
-ln -s vimfiles/ ~/.vim/
+ln -s vimfiles ~/.vim
 ln -s vimfiles/_vimrc ~/.vimrc
 ln -s vimfiles/_gitconfig ~/.gitconfig
 ln -s vimfiles/_bash_profile ~/.bash_profile
