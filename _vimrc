@@ -13,6 +13,7 @@ set laststatus=2
 set iskeyword+=-
 
 au BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
+au BufRead,BufNewFile *.inky-haml set ft=haml
 
 " pry
 map <leader>br orequire 'pry-remote'; binding.remote_pry<esc>:w<cr>
@@ -198,8 +199,8 @@ nmap <leader>m :exe 'CtrlP' g:memolist_path<CR>
 
 " /n to count # of lines containing keyword i.e. %s///n
 nnoremap <leader>s :%s//
+nnoremap <leader>w :w<cr>
 nnoremap <leader>h :%s/:\([^ ]*\)\(\s*\)=>/\1:/g
-
 " list invisibles
 "nmap <leader>l :set list!<CR>
 " enable spell check
@@ -239,10 +240,6 @@ endif
 let g:gitgutter_realtime = 0
 let g:gitgutter_eager = 0
 let g:gitgutter_map_keys = 0 " turn off all key mappings
-
-" vmux
-" run ruby
-map <Leader>rb :call VimuxRunCommand("ruby " . bufname("%"))<CR>
 
 " html.vim - http://www.vim.org/scripts/script.php?script_id=2075
 let g:html_indent_inctags = "html,body,head,tbody,container,row,columns"
