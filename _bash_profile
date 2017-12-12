@@ -41,6 +41,7 @@ export HISTCONTROL='ignoredups:erasedups'
 export HISTSIZE=100000
 export HISTIGNORE='ls:bg:fg:history'
 export HISTFILESIZE=100000
+export HISTTIMEFORMAT="%d/%m/%y %T "
 shopt -s histappend # append to history
 # save and reload the history after each command finishes
 export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"

@@ -15,9 +15,8 @@ set iskeyword+=-
 au BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
 au BufRead,BufNewFile *.inky-haml set ft=haml
 
-" pry
-map <leader>br orequire 'pry-remote'; binding.remote_pry<esc>:w<cr>
-map <leader>bp orequire'pry'; Pry.send(:binding).pry<esc>:w<cr>
+" byebug
+map <leader>bb obyebug<esc>:w<cr>
 
 " http://stackoverflow.com/questions/916875/yank-file-name-path-of-current-buffer-in-vim
 " copy relative path
