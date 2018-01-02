@@ -27,6 +27,7 @@ ln -s vimfiles/_bash_profile ~/.bash_profile
 ln -s vimfiles/_ctags ~/.ctags
 ln -s vimfiles/_tmux.conf ~/.tmux.conf
 ln -s vimfiles/_tm_properties ~/.tm_properties
+ln -s vimfiles/_hushlogin ~/.hushlogin
 ```
 
 ### Install reattach-to-user-namespace
