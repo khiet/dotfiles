@@ -17,13 +17,13 @@ au BufRead,BufNewFile *.inky-haml set ft=haml
 
 " byebug
 map <leader>bb obyebug<esc>:w<cr>
+map <leader>cl oconsole<esc>:w<cr>
 
 " http://stackoverflow.com/questions/916875/yank-file-name-path-of-current-buffer-in-vim
 " copy relative path
 nmap <leader>cf :let @*=expand("%")<CR>
 " copy absolute path
 nmap <leader>cF :let @*=expand("%:p")<CR>
-nmap <leader>cl :let @*=expand("%") . ':' . line(".")<CR>
 
 nmap <F11> :set filetype=ruby<CR>
 
