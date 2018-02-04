@@ -30,23 +30,18 @@ nmap <F11> :set filetype=ruby<CR>
 nmap <F2> :bp<CR>
 nmap <F3> :bn<CR>
 
-"netrw
+" netrw
 let g:netrw_winsize = 25
-nmap <C-e> :Lexplore<CR>
+let g:netrw_banner = 0
+let g:netrw_liststyle = 3
+let g:netrw_browse_split = 4
+let g:netrw_altv = 1
 
-if filereadable("zeus.json")
-  "let g:vroom_use_zeus = 1
-endif
-
-if filereadable("bin/spring")
-  "let g:vroom_use_spring = 1
-endif
-
+" vroom
 if filereadable("bin/rspec")
   let g:vroom_use_binstubs = 1
 endif
 
-let g:vroom_cucumber_path = 'cucumber'
 let g:vroom_spec_command  = 'rspec --format progress'
 let g:vroom_rspec_version = '3.x'
 let g:vroom_use_vimux = 1
