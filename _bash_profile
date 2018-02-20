@@ -4,6 +4,7 @@ set -o vi
 export CLICOLOR=1
 export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
 export LESS=-RFX
+export EDITOR='vim'
 
 # source ~/.private
 
@@ -11,32 +12,36 @@ alias grep="grep --color"
 alias tmux="TERM=screen-256color-bce tmux"
 alias ctags="ctags -R --exclude=.git --exclude=log ."
 alias be="bundle exec"
-alias cop="rubocop"
-alias jasmine="bundle exec rake jasmine"
 alias gdel="git branch --merged | grep -v '\*' | xargs -n 1 git branch -d"
+alias gsyncfork="git fetch upstream;git merge upstream/master"
 alias gg="git grep"
 alias ff="ff -r ." # fuzzy-find - https://github.com/silentbicycle/ff
-alias tl="tail -f log/development.log"
 alias fs="foreman start"
-# alias fsd="foreman start -f Procfile.dev"
-alias test="be rspec --tag ~live"
+alias dl="youtube-dl -o '/Users/khietle/youtube/%(title)s-%(id)s.%(ext)s'"
+alias ag='ag --path-to-ignore ~/.ignore'
 
 export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 
 # bundler
 export BUNDLER_EDITOR=vim
 
-# git
+# git-aware-prompt
 # https://github.com/jimeh/git-aware-prompt
 export GITAWAREPROMPT=~/.bash/git-aware-prompt
 source $GITAWAREPROMPT/main.sh
 
+# terminal colour
 export PS1="\[$bldylw\]\\w \[$txtgrn\]\$git_branch\[$txtred\]\$git_dirty\[$txtrst\]\$ "
 
 # enable forward (C-s)
 # http://askubuntu.com/questions/60071/how-to-forward-search-history-with-the-reverse-i-search-command-ctrlr
 stty stop undef
 
+# tmuxinator
+source ~/vimfiles/tmuxinator.bash
+export TMUXINATOR_CONFIG=~/vimfiles/tmuxinator_config
+
+# history
 export HISTCONTROL='ignoredups:erasedups'
 export HISTSIZE=100000
 export HISTIGNORE='ls:bg:fg:history'
@@ -45,7 +50,6 @@ export HISTTIMEFORMAT="%d/%m/%y %T "
 shopt -s histappend # append to history
 # save and reload the history after each command finishes
 export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
+
 # rbenv
 eval "$(rbenv init -)"
-
-alias dl="youtube-dl -o '/Users/khietle/youtube/%(title)s-%(id)s.%(ext)s'"

@@ -1,0 +1,7 @@
+# ag ignore
+
+**.jpg
+**.png
+**.gif
+
+**.min.js

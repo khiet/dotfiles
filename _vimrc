@@ -4,9 +4,6 @@ execute pathogen#infect()
 let mapleader=","
 inoremap jj <Esc>
 
-"\ to go back for the f{char} search
-nnoremap \ ,
-
 set laststatus=2
 
 " consider '-' as part of a word
@@ -46,16 +43,23 @@ let g:vroom_spec_command  = 'rspec --format progress'
 let g:vroom_rspec_version = '3.x'
 let g:vroom_use_vimux = 1
 
+" ctrlp
 if executable('ag')
+  " https://robots.thoughtbot.com/faster-grepping-in-vim
   " use ag over grep
   set grepprg=ag\ --nogroup\ --nocolor
-
   " use ag in ctrlp for listing files (it respects .gitignore)
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g "" --path-to-ignore ~/.ignore --hidden'
   " ag is fast enough that ctrlp doesn't need to cache
   let g:ctrlp_use_caching = 0
 endif
+
+" ctrlp-py-matcher - https://github.com/FelikZ/ctrlp-py-matcher
+let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
+
+" ctrlp_bdelete - https://github.com/d11wtq/ctrlp_bdelete.vim
+" call ctrlp_bdelete#init()
+
 
 noremap H ^
 noremap L $
@@ -174,15 +178,6 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
-" ctrlp
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " macosx/linux
-set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " windows
-" ctrlp-py-matcher - https://github.com/FelikZ/ctrlp-py-matcher
-let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
-
-" ctrlp_bdelete - https://github.com/d11wtq/ctrlp_bdelete.vim
-" call ctrlp_bdelete#init()
-
 " memolist
 let g:memolist_path = "$HOME/Dropbox/memolist"
 let g:memolist_memo_suffix = "txt"
@@ -280,4 +275,15 @@ nnoremap <silent> <leader>t :call <SID>StripTrailingWhitespaces()<CR>
 " zd: delete fold
 
 " http://vim.wikia.com/wiki/Mapping_keys_in_Vim_-_Tutorial_(Part_1)
+"
+" Macro
+" qd	start recording to register d
+" ...	your complex series of commands
+" q	stop recording
+" @d	execute your macro
+" @@	execute your macro again
+"
+" f{char} search
+" ; to go forward
+" , to go backward
 " -----------------------------------------------
