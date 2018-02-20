@@ -9,6 +9,8 @@ Rails development setup
 brew install vim
 brew install tmux
 brew install the_silver_searcher
+
+gem install tmuxinator
 ```
 
 ### Install submodules
