@@ -4,28 +4,27 @@ execute pathogen#infect()
 let mapleader=","
 inoremap jj <Esc>
 
-set laststatus=2
+noremap H ^
+noremap L $
 
 " consider '-' as part of a word
 set iskeyword+=-
 
+" filetype and syntax
 au BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
 au BufRead,BufNewFile *.inky-haml set ft=haml
 
-" byebug
-map <leader>bb obyebug<esc>:w<cr>
-map <leader>cl oconsole<esc>:w<cr>
+set laststatus=2
 
-" http://stackoverflow.com/questions/916875/yank-file-name-path-of-current-buffer-in-vim
+" byebug
+map <leader>bb ibyebug<esc>:w<cr>
+" console
+map <leader>cl iconsole<esc>:w<cr>
+
 " copy relative path
 nmap <leader>cf :let @*=expand("%")<CR>
 " copy absolute path
 nmap <leader>cF :let @*=expand("%:p")<CR>
-
-nmap <F11> :set filetype=ruby<CR>
-
-nmap <F2> :bp<CR>
-nmap <F3> :bn<CR>
 
 " netrw
 let g:netrw_winsize = 25
@@ -49,7 +48,7 @@ if executable('ag')
   " use ag over grep
   set grepprg=ag\ --nogroup\ --nocolor
   " use ag in ctrlp for listing files (it respects .gitignore)
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g "" --path-to-ignore ~/.ignore --hidden'
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g "" --path-to-ignore ~/.ignore'
   " ag is fast enough that ctrlp doesn't need to cache
   let g:ctrlp_use_caching = 0
 endif
@@ -59,10 +58,6 @@ let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 
 " ctrlp_bdelete - https://github.com/d11wtq/ctrlp_bdelete.vim
 " call ctrlp_bdelete#init()
-
-
-noremap H ^
-noremap L $
 
 " allow backspacing over everything in i-mode
 set backspace=indent,eol,start
@@ -107,15 +102,12 @@ else " terminal
       colorscheme tomorrow-night-eighties "jellybeans
     endif
 endif
+" -----------------------------------------------
 
-" -----------------------------------------------
-"   general preferences
-" -----------------------------------------------
 set history=50 " 50 lines of command history
 set ruler " show cursor position at all time
-"set showcmd
 
-" searching
+" search
 set ignorecase
 set incsearch
 set smartcase
@@ -123,24 +115,15 @@ set smartcase
 "set cursorline
 set number
 set autoindent
+
 " hidden buffer
 set hidden
+
 " indenting
 set smartindent
-"set autoindent
-"set wrapscan
-" -----------------------------------------------
 
 if has("autocmd")
     filetype plugin indent on
-    " For all text files, set 'textwidth' to 78 characters.
-    "autocmd FileType text setlocal textwidth=78
-
-    "autocmd Filetype xml* set filetype=xml (for showing Android's .xml* files)
-    "autocmd FileType html,css,scss,ruby,pml setlocal ts=2 sts=2 sw=2 expandtab
-    "autocmd FileType javascript setlocal ts=4 sts=4 sw=4 noexpandtab
-    "autocmd FileType markdown setlocal wrap linebreak nolist
-    "autocmd BufNewFile,BufRead *.rss setfiletype xml
 
     " http://stackoverflow.com/questions/2400264/is-it-possible-to-apply-vim-configurations-without-restarting/2400289#2400289
     augroup myvimrc
@@ -155,7 +138,7 @@ set tabstop=2 " spaces when tab is pressed
 set shiftwidth=2 " spaces for indentation
 set softtabstop=2 " treat spaces like a tab when backspace is pressed
 
-" editting config files
+" edit config files
 nmap <leader>ev :tabedit $MYVIMRC<CR>
 nmap <leader>eb :tabedit <C-R>=expand($HOME."/.bash_profile")<CR><CR>
 nmap <leader>et :tabedit <C-R>=expand($HOME."/.tmux.conf")<CR><CR>
@@ -168,15 +151,18 @@ vmap >> >gv
 :nmap <F1> :echo<CR>
 :imap <F1> <C-o>:echo<CR>
 
-" -----------------------------------------------
-"   navigation
-" -----------------------------------------------
-
 " windows
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
+
+" saving
+nnoremap <leader>w :w<cr>
+nnoremap <leader>x :x<cr>
+
+" replace
+nnoremap <leader>s :%s//
 
 " memolist
 let g:memolist_path = "$HOME/Dropbox/memolist"
@@ -184,12 +170,6 @@ let g:memolist_memo_suffix = "txt"
 let g:memolist_memo_date = "%d %b %Y"
 nmap <leader>m :exe 'CtrlP' g:memolist_path<CR>
 
-" -----------------------------------------------
-
-" /n to count # of lines containing keyword i.e. %s///n
-nnoremap <leader>s :%s//
-nnoremap <leader>w :w<cr>
-nnoremap <leader>h :%s/:\([^ ]*\)\(\s*\)=>/\1:/g
 " list invisibles
 "nmap <leader>l :set list!<CR>
 " enable spell check
@@ -204,12 +184,11 @@ au BufWritePre * match ExtraWhitespace /\s\+$/
 " :h feature-list to check OS for specific settings
 if has("mac") " Mac
     " <C-x><C-k> to complete
-    "  location of dictionary on Mac
+    " location of dictionary on Mac
     " set dictionary-=/usr/share/dict/words dictionary+=/usr/share/dict/words
     " set complete-=k complete+=k
 
     " #1 - invisibles
-    " <C-v>u<hex> to insert unicode
     set listchars=tab:»\ ,eol:$,nbsp:%,trail:~,extends:>,precedes:<
 
     "clipboard - http://vim.wikia.com/wiki/Mac_OS_X_clipboard_sharing
@@ -236,13 +215,6 @@ let g:html_indent_inctags = "html,body,head,tbody,container,row,columns"
 " -----------------------------------------------
 "   function
 " -----------------------------------------------
-function! DosToUnixLineEnding()
-    :update
-    :e ++ff=dos
-    :setlocal ff=unix
-    :w
-endfunction
-
 " ref - http://vimcasts.org/episodes/tidying-whitespace/
 function! <SID>StripTrailingWhitespaces()
     " Preparation: save last search, and cursor position.
@@ -262,24 +234,19 @@ nnoremap <silent> <leader>t :call <SID>StripTrailingWhitespaces()<CR>
 " -----------------------------------------------
 "     Cheat Sheets
 " -----------------------------------------------
-" tmux
-" cmd, % # split vertically
-" cmd, " # split horizontally
-"
 " gx # open URL
 "
-" Folding
+" folding
 " zi: toggle fold (global)
 " za: toggle fold (local)
 " zf: create fold
 " zd: delete fold
 
-" http://vim.wikia.com/wiki/Mapping_keys_in_Vim_-_Tutorial_(Part_1)
-"
-" Macro
+" macro
 " qd	start recording to register d
-" ...	your complex series of commands
+" ...
 " q	stop recording
+"
 " @d	execute your macro
 " @@	execute your macro again
 "
