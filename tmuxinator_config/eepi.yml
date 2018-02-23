@@ -41,7 +41,10 @@ root: ~/eepi
 # post: tmux -CC attach -t eepi
 
 windows:
-  - editor: vim
+  layout: main-vertical
+  panes:
+    - vim
+    - # empty
   - server:
       layout: even-horizontal
       panes:

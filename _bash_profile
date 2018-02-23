@@ -9,16 +9,19 @@ export EDITOR='vim'
 # source ~/.private
 
 alias grep="grep --color"
-alias tmux="TERM=screen-256color-bce tmux"
 alias ctags="ctags -R --exclude=.git --exclude=log ."
 alias be="bundle exec"
 alias gdel="git branch --merged | grep -v '\*' | xargs -n 1 git branch -d"
 alias gsyncfork="git fetch upstream;git merge upstream/master"
 alias gg="git grep"
-alias ff="ff -r ." # fuzzy-find - https://github.com/silentbicycle/ff
 alias fs="foreman start"
 alias dl="youtube-dl -o '/Users/khietle/youtube/%(title)s-%(id)s.%(ext)s'"
 alias ag='ag --path-to-ignore ~/.ignore'
+
+# rails
+alias rr="bundle exec rails restart"
+alias rc="bundle exec rails console"
+alias rl="tail -f -n 1000 log/development.log"
 
 export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 
@@ -43,9 +46,9 @@ export TMUXINATOR_CONFIG=~/vimfiles/tmuxinator_config
 
 # history
 export HISTCONTROL='ignoredups:erasedups'
-export HISTSIZE=100000
+export HISTSIZE=10000
 export HISTIGNORE='ls:bg:fg:history'
-export HISTFILESIZE=100000
+export HISTFILESIZE=10000
 export HISTTIMEFORMAT="%d/%m/%y %T "
 shopt -s histappend # append to history
 # save and reload the history after each command finishes

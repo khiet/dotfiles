@@ -16,10 +16,13 @@ au BufRead,BufNewFile *.inky-haml set ft=haml
 
 set laststatus=2
 
+" full path in status
+set statusline=%F
+
 " byebug
-map <leader>bb ibyebug<esc>:w<cr>
+map <leader>bb obyebug<esc>:w<cr>
 " console
-map <leader>cl iconsole<esc>:w<cr>
+map <leader>cl oconsole<esc>:w<cr>
 
 " copy relative path
 nmap <leader>cf :let @*=expand("%")<CR>
@@ -28,7 +31,7 @@ nmap <leader>cF :let @*=expand("%:p")<CR>
 
 " netrw
 let g:netrw_winsize = 25
-let g:netrw_banner = 0
+" let g:netrw_banner = 0
 let g:netrw_liststyle = 3
 let g:netrw_browse_split = 4
 let g:netrw_altv = 1
@@ -74,6 +77,13 @@ endif
 if $TMUX != '' " tmux specific settings
   " enable mouse in tmux
   set ttymouse=xterm2
+
+  let g:tmux_navigator_no_mappings = 1
+
+  nnoremap <silent> <c-h> :TmuxNavigateLeft<cr>
+  nnoremap <silent> <c-j> :TmuxNavigateDown<cr>
+  nnoremap <silent> <c-k> :TmuxNavigateUp<cr>
+  nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
 end
 
 if &t_Co > 2 || has("gui_running") " &t_Co > 2 # if colors exist
@@ -85,7 +95,7 @@ endif
 "    GUI
 " -----------------------------------------------
 if has("gui_running")
-    colorscheme tomorrow-night-eighties "jellybeans
+    colorscheme tomorrow-night "jellybeans
     set guioptions-=m   "remove menu bar
     set guioptions-=T   "remove toolbar
     "set guioptions-=r  "remove right-hand scroll bar
@@ -99,7 +109,7 @@ if has("gui_running")
 else " terminal
     set t_Co=256
     if (&t_Co == 256) " if terminal supports 256 colours
-      colorscheme tomorrow-night-eighties "jellybeans
+      colorscheme tomorrow-night "jellybeans
     endif
 endif
 " -----------------------------------------------
@@ -151,12 +161,6 @@ vmap >> >gv
 :nmap <F1> :echo<CR>
 :imap <F1> <C-o>:echo<CR>
 
-" windows
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
-
 " saving
 nnoremap <leader>w :w<cr>
 nnoremap <leader>x :x<cr>
@@ -192,7 +196,6 @@ if has("mac") " Mac
     set listchars=tab:»\ ,eol:$,nbsp:%,trail:~,extends:>,precedes:<
 
     "clipboard - http://vim.wikia.com/wiki/Mac_OS_X_clipboard_sharing
-    "get tmux to play nice with clipboard - https://coderwall.com/p/j9wnfw
     set clipboard=unnamed " yank to "* register i.e. system clipboard
 elseif has("win32") " Windows
     " from mswin.vim
