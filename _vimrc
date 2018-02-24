@@ -103,7 +103,7 @@ endif
 "    GUI
 " -----------------------------------------------
 if has("gui_running")
-    colorscheme tomorrow-night "jellybeans
+    colorscheme tomorrow-night
     set guioptions-=m   "remove menu bar
     set guioptions-=T   "remove toolbar
     "set guioptions-=r  "remove right-hand scroll bar
@@ -117,7 +117,7 @@ if has("gui_running")
 else " terminal
     set t_Co=256
     if (&t_Co == 256) " if terminal supports 256 colours
-      colorscheme tomorrow-night "jellybeans
+      colorscheme tomorrow-night
     endif
 endif
 " -----------------------------------------------

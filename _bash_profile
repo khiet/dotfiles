@@ -51,8 +51,8 @@ source $GITAWAREPROMPT/main.sh
 export PS1="\[$bldylw\]\\w \[$txtgrn\]\$git_branch\[$txtred\]\$git_dirty\[$txtrst\]\$ "
 
 # tmuxinator
-source ~/vimfiles/tmuxinator.bash
-export TMUXINATOR_CONFIG=~/vimfiles/tmuxinator_config
+source ~/vimfiles/tmuxinator/tmuxinator.bash
+export TMUXINATOR_CONFIG=~/vimfiles/tmuxinator/config
 
 # history
 export HISTCONTROL='ignoredups:erasedups'
