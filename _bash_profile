@@ -27,7 +27,6 @@ if type "fzf" > /dev/null 2>&1; then
   # used in fzf in <c-t>
   export FZF_CTRL_T_COMMAND='ag -l --no-color -g "" --hidden'
 else
-  echo 'fzf exist'
   # enable forward (C-s) - http://askubuntu.com/questions/60071/how-to-forward-search-history-with-the-reverse-i-search-command-ctrlr
   stty stop undef
 fi
