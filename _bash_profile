@@ -21,12 +21,11 @@ export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
 alias grep="grep --color"
 alias ctags="ctags -R --exclude=.git --exclude=log ."
-alias be="bundle exec"
 alias gdel="git branch --merged | grep -v '\*' | xargs -n 1 git branch -d"
 alias gsyncfork="git fetch upstream;git merge upstream/master"
 alias gg="git grep"
-alias fs="foreman start"
-alias dl="youtube-dl -o '/Users/khietle/youtube/%(title)s-%(id)s.%(ext)s'"
+alias dl="youtube-dl -o '~/youtube/%(title)s-%(id)s.%(ext)s'"
+alias ms='mux start'
 alias ag='ag --hidden --path-to-ignore ~/.ignore'
 
 # fzf
@@ -47,6 +46,8 @@ fi
 alias rr="bundle exec rails restart"
 alias rc="bundle exec rails console"
 alias rl="tail -f -n 1000 log/development.log"
+alias fs="foreman start"
+alias be="bundle exec"
 
 export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 
