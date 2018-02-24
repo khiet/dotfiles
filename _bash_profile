@@ -20,7 +20,7 @@ export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 # source ~/.private
 
 alias grep="grep --color"
-alias ctags="ctags -R --exclude=.git --exclude=log ."
+alias ct="ctags -R ."
 alias gdel="git branch --merged | grep -v '\*' | xargs -n 1 git branch -d"
 alias gsyncfork="git fetch upstream;git merge upstream/master"
 alias gg="git grep"

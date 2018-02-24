@@ -216,8 +216,6 @@ elseif has("win32") " Windows
 endif
 
 " vim-gutter
-let g:gitgutter_realtime = 0
-let g:gitgutter_eager = 0
 let g:gitgutter_map_keys = 0 " turn off all key mappings
 
 " -----------------------------------------------
