@@ -29,14 +29,13 @@ noremap L $
 
 " consider '-' as part of a word
 set iskeyword+=-
+" show status
+set laststatus=2
+" full path in status
+set statusline=%F
 
 " filetype and syntax
 au BufRead,BufNewFile *.inky-haml set ft=haml
-
-set laststatus=2
-
-" full path in status
-set statusline=%F
 
 " byebug
 map <leader>bb obyebug<esc>:w<cr>
@@ -76,16 +75,13 @@ nnoremap <silent> <c-t> :FZF<cr>
 let g:fzf_action = { 'ctrl-t': 'tab split', 'ctrl-x': 'split', 'ctrl-v': 'vsplit' }
 let g:fzf_layout = { 'down': '~25%' }
 
-" allow backspacing over everything in i-mode
-set backspace=indent,eol,start
-
 set nobackup " disable ~ files
 set nowritebackup
 set noswapfile " disable .swap files
 
 " enable mouse in terminal emulators
 if has("mouse")
-    set mouse=a
+  set mouse=a
 endif
 
 if $TMUX != '' " tmux specific settings
@@ -101,29 +97,29 @@ if $TMUX != '' " tmux specific settings
 end
 
 if &t_Co > 2 || has("gui_running") " &t_Co > 2 # if colors exist
-    set hlsearch
+  set hlsearch
 endif
 
 " -----------------------------------------------
 "    GUI
 " -----------------------------------------------
 if has("gui_running")
-    colorscheme tomorrow-night
-    set guioptions-=m   "remove menu bar
-    set guioptions-=T   "remove toolbar
-    "set guioptions-=r  "remove right-hand scroll bar
+  colorscheme tomorrow-night
+  set guioptions-=m   "remove menu bar
+  set guioptions-=T   "remove toolbar
+  "set guioptions-=r  "remove right-hand scroll bar
 
-    if has("gui_macvim")
-        set guifont=Monaco:h10 " :set guifont=Monaco:h10
-        "set transparency=30
-    elseif has("gui_win32")
-        set guifont=Lucida_Console:h10:w6 " Notepad's default
-    endif
+if has("gui_macvim")
+    set guifont=Monaco:h10 " :set guifont=Monaco:h10
+    "set transparency=30
+elseif has("gui_win32")
+    set guifont=Lucida_Console:h10:w6 " Notepad's default
+endif
 else " terminal
-    set t_Co=256
-    if (&t_Co == 256) " if terminal supports 256 colours
-      colorscheme tomorrow-night
-    endif
+  set t_Co=256
+  if (&t_Co == 256) " if terminal supports 256 colours
+    colorscheme tomorrow-night
+  endif
 endif
 " -----------------------------------------------
 
@@ -146,11 +142,11 @@ set hidden
 set smartindent
 
 if has("autocmd")
-    " http://stackoverflow.com/questions/2400264/is-it-possible-to-apply-vim-configurations-without-restarting/2400289#2400289
-    augroup myvimrc
-      au!
-      autocmd BufWritePost .vimrc source ~/.vimrc
-    augroup END
+  " http://stackoverflow.com/questions/2400264/is-it-possible-to-apply-vim-configurations-without-restarting/2400289#2400289
+  augroup myvimrc
+    au!
+    autocmd BufWritePost .vimrc source ~/.vimrc
+  augroup END
 endif
 
 " #2 - tabs and spaces
@@ -198,24 +194,24 @@ au BufWritePre * match ExtraWhitespace /\s\+$/
 " -----------------------------------------------
 " :h feature-list to check OS for specific settings
 if has("mac") " Mac
-    " <C-x><C-k> to complete
-    " location of dictionary on Mac
-    " set dictionary-=/usr/share/dict/words dictionary+=/usr/share/dict/words
-    " set complete-=k complete+=k
+  " <C-x><C-k> to complete
+  " location of dictionary on Mac
+  " set dictionary-=/usr/share/dict/words dictionary+=/usr/share/dict/words
+  " set complete-=k complete+=k
 
-    " #1 - invisibles
-    set listchars=tab:»\ ,eol:$,nbsp:%,trail:~,extends:>,precedes:<
+  " #1 - invisibles
+  set listchars=tab:»\ ,eol:$,nbsp:%,trail:~,extends:>,precedes:<
 
-    "clipboard - http://vim.wikia.com/wiki/Mac_OS_X_clipboard_sharing
-    set clipboard=unnamed " yank to "* register i.e. system clipboard
+  "clipboard - http://vim.wikia.com/wiki/Mac_OS_X_clipboard_sharing
+  set clipboard=unnamed " yank to "* register i.e. system clipboard
 elseif has("win32") " Windows
-    " from mswin.vim
-    " CTRL-X is Cut
-    vnoremap <C-X> "+x
-    " CTRL-C is Copy
-    vnoremap <C-C> "+y
-    " CTRL-V is Paste
-    vnoremap <C-V> "+gP
+  " from mswin.vim
+  " CTRL-X is Cut
+  vnoremap <C-X> "+x
+  " CTRL-C is Copy
+  vnoremap <C-C> "+y
+  " CTRL-V is Paste
+  vnoremap <C-V> "+gP
 endif
 
 " vim-gutter
@@ -228,15 +224,15 @@ let g:gitgutter_map_keys = 0 " turn off all key mappings
 " -----------------------------------------------
 " ref - http://vimcasts.org/episodes/tidying-whitespace/
 function! <SID>StripTrailingWhitespaces()
-    " Preparation: save last search, and cursor position.
-    let _s=@/
-    let l = line(".")
-    let c = col(".")
-    " Do the business:
-    %s/\s\+$//e
-    " Clean up: restore previous search history, and cursor position
-    let @/=_s
-    call cursor(l, c)
+  " Preparation: save last search, and cursor position.
+  let _s=@/
+  let l = line(".")
+  let c = col(".")
+  " Do the business:
+  %s/\s\+$//e
+  " Clean up: restore previous search history, and cursor position
+  let @/=_s
+  call cursor(l, c)
 endfunction
 " -----------------------------------------------
 
