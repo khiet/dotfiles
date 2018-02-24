@@ -31,7 +31,6 @@ noremap L $
 set iskeyword+=-
 
 " filetype and syntax
-au BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
 au BufRead,BufNewFile *.inky-haml set ft=haml
 
 set laststatus=2
@@ -223,9 +222,6 @@ endif
 let g:gitgutter_realtime = 0
 let g:gitgutter_eager = 0
 let g:gitgutter_map_keys = 0 " turn off all key mappings
-
-" html.vim - http://www.vim.org/scripts/script.php?script_id=2075
-let g:html_indent_inctags = "html,body,head,tbody,container,row,columns"
 
 " -----------------------------------------------
 "   function
