@@ -196,7 +196,7 @@ nmap <leader>m :exe 'FZF' g:memolist_path<CR>
 au BufWritePre * match ExtraWhitespace /\s\+$/
 highlight ExtraWhitespace ctermbg=red guibg=red
 highlight clear SpellBad
-highlight SpellBad cterm=underline ctermfg=red
+highlight SpellBad cterm=underline ctermfg=red gui=underline guifg=red
 
 " -----------------------------------------------
 "    OS specifics
@@ -223,9 +223,14 @@ elseif has("win32") " Windows
   vnoremap <C-V> "+gP
 endif
 
-" vim-gutter
+" gitgutter
 let g:gitgutter_map_keys = 0 " turn off all key mappings
-
+" https://github.com/airblade/vim-gitgutter#sign-column
+if exists('&signcolumn')
+  set signcolumn=yes
+else
+  let g:gitgutter_sign_column_always = 1
+endif
 " -----------------------------------------------
 "   function
 " -----------------------------------------------
