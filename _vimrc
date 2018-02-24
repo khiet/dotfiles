@@ -1,11 +1,13 @@
+" ----------------------------------------
 " vim-plug
+" ----------------------------------------
 " automatic installation - https://github.com/junegunn/vim-plug/wiki/tips#automatic-installation
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
-" install
+" PlugInstall to install plugins
 call plug#begin('~/.vim/plugged')
   Plug 'https://github.com/tpope/vim-rails'
   Plug 'https://github.com/benmills/vimux'
@@ -17,6 +19,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'https://github.com/christoomey/vim-tmux-navigator'
   Plug 'https://github.com/glidenote/memolist.vim'
 call plug#end()
+" ----------------------------------------
 
 let mapleader=","
 inoremap jj <esc>
@@ -99,7 +102,6 @@ if $TMUX != '' " tmux specific settings
 end
 
 if &t_Co > 2 || has("gui_running") " &t_Co > 2 # if colors exist
-    syntax on
     set hlsearch
 endif
 
@@ -145,8 +147,6 @@ set hidden
 set smartindent
 
 if has("autocmd")
-    filetype plugin indent on
-
     " http://stackoverflow.com/questions/2400264/is-it-possible-to-apply-vim-configurations-without-restarting/2400289#2400289
     augroup myvimrc
       au!
