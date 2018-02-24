@@ -7,7 +7,7 @@ if empty(glob('~/.vim/autoload/plug.vim'))
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
-" PlugInstall to install plugins
+" PlugInstall to install plugins, PlugClean to delete plugins
 call plug#begin('~/.vim/plugged')
   Plug 'https://github.com/tpope/vim-rails'
   Plug 'https://github.com/benmills/vimux'
@@ -18,6 +18,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'https://github.com/pbrisbin/vim-mkdir'
   Plug 'https://github.com/christoomey/vim-tmux-navigator'
   Plug 'https://github.com/glidenote/memolist.vim'
+  Plug 'https://github.com/scrooloose/nerdtree'
 call plug#end()
 " ----------------------------------------
 
@@ -26,6 +27,9 @@ inoremap jj <esc>
 
 noremap H ^
 noremap L $
+
+" allow backspacing over everything in i-mode
+set backspace=indent,eol,start
 
 " consider '-' as part of a word
 set iskeyword+=-
@@ -67,6 +71,10 @@ set rtp+=/usr/local/opt/fzf
 nnoremap <silent> <c-t> :FZF<cr>
 let g:fzf_action = { 'ctrl-t': 'tab split', 'ctrl-x': 'split', 'ctrl-v': 'vsplit' }
 let g:fzf_layout = { 'down': '~25%' }
+
+" NERDTree
+map <C-n> :NERDTreeToggle<CR>
+let g:NERDTreeWinSize=35
 
 set nobackup " disable ~ files
 set nowritebackup
