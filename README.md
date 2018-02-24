@@ -1,9 +1,6 @@
 vimfiles
 =======================
 
-Rails development setup
-=======================
-
 ### Install vim, tmux, ad, etc.
 ```
 brew install vim
