@@ -4,7 +4,7 @@ vimfiles
 Rails development setup
 =======================
 
-### Install vim, tmux and gg
+### Install vim, tmux, ad, etc.
 ```
 brew install vim
 brew install tmux
@@ -14,11 +14,9 @@ brew install fzf
 gem install tmuxinator
 ```
 
-### Install submodules
+### Install plugins
 ```
-cd vimfiles
-git submodule init
-git submodule update
+:PlugInstall
 ```
 
 ### Symlink config files
