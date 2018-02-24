@@ -16,7 +16,21 @@ alias gsyncfork="git fetch upstream;git merge upstream/master"
 alias gg="git grep"
 alias fs="foreman start"
 alias dl="youtube-dl -o '/Users/khietle/youtube/%(title)s-%(id)s.%(ext)s'"
-alias ag='ag --path-to-ignore ~/.ignore'
+alias ag='ag --hidden --path-to-ignore ~/.ignore'
+
+# fzf
+if type "fzf" > /dev/null 2>&1; then
+  source "/usr/local/opt/fzf/shell/key-bindings.bash"
+  # use ag instead of find
+  # used in fzf and vim
+  export FZF_DEFAULT_COMMAND='ag -l --no-color -g "" --hidden --path-to-ignore ~/.ignore'
+  # used in fzf in <c-t>
+  export FZF_CTRL_T_COMMAND='ag -l --no-color -g "" --hidden'
+else
+  echo 'fzf exist'
+  # enable forward (C-s) - http://askubuntu.com/questions/60071/how-to-forward-search-history-with-the-reverse-i-search-command-ctrlr
+  stty stop undef
+fi
 
 # rails
 alias rr="bundle exec rails restart"
@@ -35,10 +49,6 @@ source $GITAWAREPROMPT/main.sh
 
 # terminal colour
 export PS1="\[$bldylw\]\\w \[$txtgrn\]\$git_branch\[$txtred\]\$git_dirty\[$txtrst\]\$ "
-
-# enable forward (C-s)
-# http://askubuntu.com/questions/60071/how-to-forward-search-history-with-the-reverse-i-search-command-ctrlr
-stty stop undef
 
 # tmuxinator
 source ~/vimfiles/tmuxinator.bash

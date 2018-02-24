@@ -50,11 +50,16 @@ if executable('ag')
   " https://robots.thoughtbot.com/faster-grepping-in-vim
   " use ag over grep
   set grepprg=ag\ --nogroup\ --nocolor
+
   " use ag in ctrlp for listing files (it respects .gitignore)
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g "" --path-to-ignore ~/.ignore'
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g "" --path-to-ignore ~/.ignore --hidden'
   " ag is fast enough that ctrlp doesn't need to cache
   let g:ctrlp_use_caching = 0
 endif
+
+" fzf
+set rtp+=/usr/local/opt/fzf
+" CTRL-X or CTRL-V to open in horizontal or vertical window
 
 " ctrlp-py-matcher - https://github.com/FelikZ/ctrlp-py-matcher
 let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
@@ -172,7 +177,7 @@ nnoremap <leader>s :%s//
 let g:memolist_path = "$HOME/Dropbox/memolist"
 let g:memolist_memo_suffix = "txt"
 let g:memolist_memo_date = "%d %b %Y"
-nmap <leader>m :exe 'CtrlP' g:memolist_path<CR>
+nmap <leader>m :exe 'FZF' g:memolist_path<CR>
 
 " list invisibles
 "nmap <leader>l :set list!<CR>
