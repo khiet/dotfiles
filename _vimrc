@@ -47,13 +47,6 @@ nmap <leader>cf :let @*=expand("%")<CR>
 " copy absolute path
 nmap <leader>cF :let @*=expand("%:p")<CR>
 
-" netrw
-let g:netrw_winsize = 25
-" let g:netrw_banner = 0
-let g:netrw_liststyle = 3
-let g:netrw_browse_split = 4
-let g:netrw_altv = 1
-
 " vroom
 if filereadable("bin/rspec")
   let g:vroom_use_binstubs = 1
