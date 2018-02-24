@@ -38,8 +38,13 @@ set laststatus=2
 " full path in status
 set statusline=%F
 
-" filetype and syntax
+" filetype
 au BufRead,BufNewFile *.inky-haml set ft=haml
+
+" spell-checking
+au BufRead,BufNewFile *.md set filetype=markdown
+au FileType markdown setlocal spell
+au FileType gitcommit setlocal spell
 
 " byebug
 map <leader>bb obyebug<esc>:w<cr>
@@ -132,7 +137,7 @@ set ignorecase
 set incsearch
 set smartcase
 
-"set cursorline
+" set cursorline
 set number
 set autoindent
 
@@ -187,8 +192,11 @@ nmap <leader>m :exe 'FZF' g:memolist_path<CR>
 " enable spell check
 "nmap <leader>s :set spell!<CR>
 
-highlight ExtraWhitespace ctermbg=red guibg=red
+" highlight trailing whitespaces
 au BufWritePre * match ExtraWhitespace /\s\+$/
+highlight ExtraWhitespace ctermbg=red guibg=red
+highlight clear SpellBad
+highlight SpellBad cterm=underline ctermfg=red
 
 " -----------------------------------------------
 "    OS specifics
@@ -259,4 +267,7 @@ nnoremap <silent> <leader>t :call <SID>StripTrailingWhitespaces()<CR>
 " f{char} search
 " ; to go forward
 " , to go backward
+"
+" update spellfile
+" zg
 " -----------------------------------------------
