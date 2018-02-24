@@ -2,7 +2,7 @@
 execute pathogen#infect()
 
 let mapleader=","
-inoremap jj <Esc>
+inoremap jj <esc>
 
 noremap H ^
 noremap L $
@@ -63,6 +63,9 @@ set rtp+=/usr/local/opt/fzf
 
 " ctrlp-py-matcher - https://github.com/FelikZ/ctrlp-py-matcher
 let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
+nnoremap <silent> <c-t> :FZF<cr>
+let g:fzf_action = { 'ctrl-t': 'tab split', 'ctrl-x': 'split', 'ctrl-v': 'vsplit' }
+let g:fzf_layout = { 'down': '~25%' }
 
 " ctrlp_bdelete - https://github.com/d11wtq/ctrlp_bdelete.vim
 " call ctrlp_bdelete#init()
