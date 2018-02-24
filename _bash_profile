@@ -1,10 +1,21 @@
 # home
 set -o vi
+
 # "ls" color
 export CLICOLOR=1
 export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
 export LESS=-RFX
 export EDITOR='vim'
+
+# history
+export HISTCONTROL='ignoredups:erasedups'
+export HISTSIZE=100000
+export HISTIGNORE='clear:exit:vim:ls:history'
+export HISTFILESIZE=100000
+export HISTTIMEFORMAT="%d/%m/%y %T "
+shopt -s histappend # append to history
+# save and reload the history after each command finishes
+export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
 # source ~/.private
 
@@ -21,6 +32,7 @@ alias ag='ag --hidden --path-to-ignore ~/.ignore'
 # fzf
 if type "fzf" > /dev/null 2>&1; then
   source "/usr/local/opt/fzf/shell/key-bindings.bash"
+  export FZF_DEFAULT_OPTS='--height 50% --reverse'
   # use ag instead of find
   # used in fzf and vim
   export FZF_DEFAULT_COMMAND='ag -l --no-color -g "" --hidden --path-to-ignore ~/.ignore'
@@ -52,16 +64,6 @@ export PS1="\[$bldylw\]\\w \[$txtgrn\]\$git_branch\[$txtred\]\$git_dirty\[$txtrs
 # tmuxinator
 source ~/vimfiles/tmuxinator/tmuxinator.bash
 export TMUXINATOR_CONFIG=~/vimfiles/tmuxinator/config
-
-# history
-export HISTCONTROL='ignoredups:erasedups'
-export HISTSIZE=10000
-export HISTIGNORE='ls:bg:fg:history'
-export HISTFILESIZE=10000
-export HISTTIMEFORMAT="%d/%m/%y %T "
-shopt -s histappend # append to history
-# save and reload the history after each command finishes
-export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
 # rbenv
 eval "$(rbenv init -)"
