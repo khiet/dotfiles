@@ -1,5 +1,22 @@
-" Pathogen
-execute pathogen#infect()
+" vim-plug
+" automatic installation - https://github.com/junegunn/vim-plug/wiki/tips#automatic-installation
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+" install
+call plug#begin('~/.vim/plugged')
+  Plug 'https://github.com/tpope/vim-rails'
+  Plug 'https://github.com/benmills/vimux'
+  Plug 'https://github.com/skalnik/vim-vroom'
+  Plug 'https://github.com/tpope/vim-fugitive'
+  Plug 'https://github.com/airblade/vim-gitgutter'
+  Plug 'https://github.com/ihacklog/hicursorwords'
+  Plug 'https://github.com/pbrisbin/vim-mkdir'
+  Plug 'https://github.com/christoomey/vim-tmux-navigator'
+  Plug 'https://github.com/glidenote/memolist.vim'
+call plug#end()
 
 let mapleader=","
 inoremap jj <esc>
@@ -45,30 +62,17 @@ let g:vroom_spec_command  = 'rspec --format progress'
 let g:vroom_rspec_version = '3.x'
 let g:vroom_use_vimux = 1
 
-" ctrlp
 if executable('ag')
   " https://robots.thoughtbot.com/faster-grepping-in-vim
   " use ag over grep
   set grepprg=ag\ --nogroup\ --nocolor
-
-  " use ag in ctrlp for listing files (it respects .gitignore)
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g "" --path-to-ignore ~/.ignore --hidden'
-  " ag is fast enough that ctrlp doesn't need to cache
-  let g:ctrlp_use_caching = 0
 endif
 
 " fzf
 set rtp+=/usr/local/opt/fzf
-" CTRL-X or CTRL-V to open in horizontal or vertical window
-
-" ctrlp-py-matcher - https://github.com/FelikZ/ctrlp-py-matcher
-let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 nnoremap <silent> <c-t> :FZF<cr>
 let g:fzf_action = { 'ctrl-t': 'tab split', 'ctrl-x': 'split', 'ctrl-v': 'vsplit' }
 let g:fzf_layout = { 'down': '~25%' }
-
-" ctrlp_bdelete - https://github.com/d11wtq/ctrlp_bdelete.vim
-" call ctrlp_bdelete#init()
 
 " allow backspacing over everything in i-mode
 set backspace=indent,eol,start
