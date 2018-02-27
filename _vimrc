@@ -26,18 +26,62 @@ call plug#end()
 let mapleader=","
 inoremap jj <esc>
 
+" disable F1 built-in help key
+nmap <F1> :echo<CR>
+imap <F1> <C-o>:echo<CR>
+
 noremap H ^
 noremap L $
 
+" edit config files
+nmap <leader>ev :tabedit $MYVIMRC<CR>
+nmap <leader>eb :tabedit <C-R>=expand($HOME."/.bash_profile")<CR><CR>
+nmap <leader>et :tabedit <C-R>=expand($HOME."/.tmux.conf")<CR><CR>
+
+" indenting
+vmap << <gv
+vmap >> >gv
+
+" saving
+nnoremap <leader>w :w<cr>
+nnoremap <leader>x :x<cr>
+
+" replace
+nnoremap <leader>s :%s//
+
 " allow backspacing over everything in i-mode
 set backspace=indent,eol,start
-
 " consider '-' as part of a word
 set iskeyword+=-
 " show status
 set laststatus=2
 " full path in status
 set statusline=%F
+" 50 lines of command history
+set history=50
+" show cursor position at all time
+set ruler
+" search
+set ignorecase
+set incsearch
+set smartcase
+" set cursorline
+set number
+set autoindent
+" allow opening a new file even if there are unsaved files
+set hidden
+" indenting
+set smartindent
+" disable ~ files
+set nobackup
+set nowritebackup
+ " disable .swap files
+set noswapfile
+" tabs and spaces
+set expandtab " insert spaces when tab is pressed
+set tabstop=2 " spaces when tab is pressed
+set shiftwidth=2 " spaces for indentation
+set softtabstop=2 " treat spaces like a tab when backspace is pressed
 
 " filetype
 au BufRead,BufNewFile *.inky-haml set ft=haml
@@ -87,10 +131,6 @@ let g:fzf_layout = { 'down': '~25%' }
 map <C-n> :NERDTreeToggle<CR>
 let g:NERDTreeWinSize=35
 
-set nobackup " disable ~ files
-set nowritebackup
-set noswapfile " disable .swap files
-
 " enable mouse in terminal emulators
 if has("mouse")
   set mouse=a
@@ -123,7 +163,6 @@ if has("gui_running")
 
 if has("gui_macvim")
     set guifont=Monaco:h10 " :set guifont=Monaco:h10
-    "set transparency=30
 elseif has("gui_win32")
     set guifont=Lucida_Console:h10:w6 " Notepad's default
 endif
@@ -135,24 +174,6 @@ else " terminal
 endif
 " -----------------------------------------------
 
-set history=50 " 50 lines of command history
-set ruler " show cursor position at all time
-
-" search
-set ignorecase
-set incsearch
-set smartcase
-
-" set cursorline
-set number
-set autoindent
-
-" hidden buffer
-set hidden
-
-" indenting
-set smartindent
-
 if has("autocmd")
   " http://stackoverflow.com/questions/2400264/is-it-possible-to-apply-vim-configurations-without-restarting/2400289#2400289
   augroup myvimrc
@@ -160,32 +181,6 @@ if has("autocmd")
     autocmd BufWritePost .vimrc source ~/.vimrc
   augroup END
 endif
-
-" #2 - tabs and spaces
-set expandtab " insert spaces when tab is pressed
-set tabstop=2 " spaces when tab is pressed
-set shiftwidth=2 " spaces for indentation
-set softtabstop=2 " treat spaces like a tab when backspace is pressed
-
-" edit config files
-nmap <leader>ev :tabedit $MYVIMRC<CR>
-nmap <leader>eb :tabedit <C-R>=expand($HOME."/.bash_profile")<CR><CR>
-nmap <leader>et :tabedit <C-R>=expand($HOME."/.tmux.conf")<CR><CR>
-
-" #5 - indenting
-vmap << <gv
-vmap >> >gv
-
-" disable F1 built-in help key
-:nmap <F1> :echo<CR>
-:imap <F1> <C-o>:echo<CR>
-
-" saving
-nnoremap <leader>w :w<cr>
-nnoremap <leader>x :x<cr>
-
-" replace
-nnoremap <leader>s :%s//
 
 " memolist
 let g:memolist_path = "$HOME/Dropbox/memolist"
@@ -203,6 +198,15 @@ au BufWritePre * match ExtraWhitespace /\s\+$/
 highlight ExtraWhitespace ctermbg=red guibg=red
 highlight clear SpellBad
 highlight SpellBad cterm=underline ctermfg=red gui=underline guifg=red
+
+" gitgutter
+let g:gitgutter_map_keys = 0 " turn off all key mappings
+" https://github.com/airblade/vim-gitgutter#sign-column
+if exists('&signcolumn')
+  set signcolumn=yes
+else
+  let g:gitgutter_sign_column_always = 1
+endif
 
 " -----------------------------------------------
 "    OS specifics
@@ -229,14 +233,6 @@ elseif has("win32") " Windows
   vnoremap <C-V> "+gP
 endif
 
-" gitgutter
-let g:gitgutter_map_keys = 0 " turn off all key mappings
-" https://github.com/airblade/vim-gitgutter#sign-column
-if exists('&signcolumn')
-  set signcolumn=yes
-else
-  let g:gitgutter_sign_column_always = 1
-endif
 " -----------------------------------------------
 "   function
 " -----------------------------------------------
