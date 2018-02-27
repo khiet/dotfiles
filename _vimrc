@@ -19,6 +19,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'https://github.com/christoomey/vim-tmux-navigator'
   Plug 'https://github.com/glidenote/memolist.vim'
   Plug 'https://github.com/scrooloose/nerdtree'
+  Plug 'https://github.com/mileszs/ack.vim'
 call plug#end()
 " ----------------------------------------
 
@@ -69,7 +70,12 @@ if executable('ag')
   " https://robots.thoughtbot.com/faster-grepping-in-vim
   " use ag over grep
   set grepprg=ag\ --nogroup\ --nocolor
+  " https://github.com/mileszs/ack.vim#can-i-use-ag-the-silver-searcher-with-this
+  let g:ackprg = 'ag --vimgrep'
 endif
+
+" Ack
+nnoremap <leader>a :Ack<space>
 
 " fzf
 set rtp+=/usr/local/opt/fzf

@@ -19,34 +19,15 @@ root: ~/eepi
 # Run on project stop
 # on_project_stop: command
 
-# Runs in each window and pane before window/pane specific commands. Useful for setting up interpreter versions.
-# pre_window: rbenv shell 2.0.0-p247
-
-# Pass command line options to tmux. Useful for specifying a different tmux.conf.
-# tmux_options: -f ~/.tmux.mac.conf
-
-# Change the command to call tmux.  This can be used by derivatives/wrappers like byobu.
-# tmux_command: byobu
-
-# Specifies (by name or index) which window will be selected on project startup. If not set, the first window is used.
-# startup_window: editor
-
-# Specifies (by index) which pane of the specified window will be selected on project startup. If not set, the first pane is used.
-# startup_pane: 1
-
-# Controls whether the tmux session should be attached to automatically. Defaults to true.
-# attach: false
-
-# Runs after everything. Use it to attach to tmux with custom options etc.
-# post: tmux -CC attach -t eepi
+on_project_first_start: open https://github.com/lord/slate; open https://lord.github.io/slate/
 
 windows:
-  layout: main-vertical
-  panes:
-    - vim
-    - # empty
-  - server:
-      layout: even-horizontal
+  - editor:
+      layout: main-vertical
       panes:
-        - be rails s -p 3001
-        - be guard -G Guardfile.livereload
+        - vim
+        - # empty
+  - server:
+      layout: main-vertical
+      panes:
+        - be rails s

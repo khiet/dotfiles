@@ -9,10 +9,11 @@
 	aa = add -A
   ci = commit -av
   ft = fetch
+  d  = diff
   ds = diff --staged
   lg = log --pretty=format:'%C(yellow)%h%Creset %s %Cgreen(%cd) %C(red)%an%Creset'
   lgg = log --graph --decorate --oneline
-  dm = diff origin/master
+  dm  = diff origin/master
   rmc = rm -r --cached .
 [filter "lfs"]
 	smudge = git-lfs smudge %f
