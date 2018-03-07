@@ -119,7 +119,7 @@ if executable('ag')
 endif
 
 " Ack
-nnoremap <leader>a :Ack<space>
+nnoremap <leader>a :Ack!<space>
 
 " fzf
 set rtp+=/usr/local/opt/fzf

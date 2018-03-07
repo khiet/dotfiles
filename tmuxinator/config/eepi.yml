@@ -31,3 +31,4 @@ windows:
       layout: main-vertical
       panes:
         - be rails s
+        - be guard -G Guardfile.livereload
