@@ -40,6 +40,10 @@ nmap <leader>et :tabedit <C-R>=expand($HOME."/.tmux.conf")<CR><CR>
 " open schema.rb (from vim-rails)
 nmap <leader>es :Eschema <CR>
 
+" buffers
+nmap <leader>bu :buffers<cr>:bdelete<space>
+nmap <leader>bd :buffers<cr>:bdelete<space>
+
 " indenting
 vmap << <gv
 vmap >> >gv
