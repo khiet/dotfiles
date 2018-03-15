@@ -25,4 +25,6 @@
 [pull]
 	default = current
 [push]
-	default = current
+  default = current
+[fetch]
+  prune = true

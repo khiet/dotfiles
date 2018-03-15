@@ -45,11 +45,11 @@ else
 fi
 
 # rails
-alias rr="bundle exec rails restart"
-alias rc="bundle exec rails console"
+alias rr="bin/rails restart"
+alias rc="bin/rails console"
 alias rl="tail -f -n 1000 log/development.log"
-alias fs="foreman start"
 alias be="bundle exec"
+# alias fs="foreman start"
 
 export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 

@@ -37,6 +37,8 @@ noremap L $
 nmap <leader>ev :tabedit $MYVIMRC<CR>
 nmap <leader>eb :tabedit <C-R>=expand($HOME."/.bash_profile")<CR><CR>
 nmap <leader>et :tabedit <C-R>=expand($HOME."/.tmux.conf")<CR><CR>
+" open schema.rb (from vim-rails)
+nmap <leader>es :Eschema <CR>
 
 " indenting
 vmap << <gv
