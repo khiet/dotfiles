@@ -20,6 +20,10 @@ call plug#begin('~/.vim/plugged')
   Plug 'https://github.com/glidenote/memolist.vim'
   Plug 'https://github.com/scrooloose/nerdtree'
   Plug 'https://github.com/mileszs/ack.vim'
+
+  " React
+  Plug 'https://github.com/mxw/vim-jsx'
+  Plug 'https://github.com/pangloss/vim-javascript'
 call plug#end()
 " ----------------------------------------
 
@@ -263,12 +267,6 @@ nnoremap <silent> <leader>t :call <SID>StripTrailingWhitespaces()<CR>
 " -----------------------------------------------
 " gx # open URL
 "
-" folding
-" zi: toggle fold (global)
-" za: toggle fold (local)
-" zf: create fold
-" zd: delete fold
-
 " macro
 " qd	start recording to register d
 " ...
@@ -283,4 +281,6 @@ nnoremap <silent> <leader>t :call <SID>StripTrailingWhitespaces()<CR>
 "
 " update spellfile
 " zg
+"
+" emmet - https://qiita.com/yyuuiikk/items/6c7e793b9c734a84b62a
 " -----------------------------------------------
