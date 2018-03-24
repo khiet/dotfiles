@@ -20,6 +20,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'https://github.com/glidenote/memolist.vim'
   Plug 'https://github.com/scrooloose/nerdtree'
   Plug 'https://github.com/mileszs/ack.vim'
+  Plug 'https://github.com/alvan/vim-closetag'
 
   " React
   Plug 'https://github.com/mxw/vim-jsx'
@@ -221,6 +222,9 @@ if exists('&signcolumn')
 else
   let g:gitgutter_sign_column_always = 1
 endif
+
+" vim-closetag
+let g:closetag_filenames = '*.html,*.js,*.jsx'
 
 " -----------------------------------------------
 "    OS specifics
