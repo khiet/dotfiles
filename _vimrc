@@ -23,7 +23,7 @@ call plug#begin('~/.vim/plugged')
 
   " React
   Plug 'https://github.com/mxw/vim-jsx'
-  Plug 'https://github.com/pangloss/vim-javascript'
+  Plug 'https://github.com/othree/yajs.vim'
 call plug#end()
 " ----------------------------------------
 
@@ -45,8 +45,12 @@ nmap <leader>et :tabedit <C-R>=expand($HOME."/.tmux.conf")<CR><CR>
 nmap <leader>es :Eschema <CR>
 
 " buffers
-nmap <leader>bu :buffers<cr>:bdelete<space>
+nmap <leader>bu :buffers<cr>:buffer<space>
 nmap <leader>bd :buffers<cr>:bdelete<space>
+
+" gf
+" .js,.jsx
+set suffixesadd=.js
 
 " indenting
 vmap << <gv
