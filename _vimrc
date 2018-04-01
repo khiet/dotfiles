@@ -21,7 +21,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'https://github.com/scrooloose/nerdtree'
   Plug 'https://github.com/mileszs/ack.vim'
   Plug 'https://github.com/alvan/vim-closetag'
-  Plug 'https://github.com/ap/vim-css-color'
 
   " React
   Plug 'https://github.com/mxw/vim-jsx'
