@@ -21,6 +21,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'https://github.com/scrooloose/nerdtree'
   Plug 'https://github.com/mileszs/ack.vim'
   Plug 'https://github.com/alvan/vim-closetag'
+  Plug 'https://github.com/ap/vim-css-color'
 
   " React
   Plug 'https://github.com/mxw/vim-jsx'
@@ -43,7 +44,7 @@ nmap <leader>ev :tabedit $MYVIMRC<CR>
 nmap <leader>eb :tabedit <C-R>=expand($HOME."/.bash_profile")<CR><CR>
 nmap <leader>et :tabedit <C-R>=expand($HOME."/.tmux.conf")<CR><CR>
 " open schema.rb (from vim-rails)
-nmap <leader>es :Eschema <CR>
+nmap <leader>vs :Vschema <CR>
 
 " buffers
 nmap <leader>bu :buffers<cr>:buffer<space>
