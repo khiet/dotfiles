@@ -21,6 +21,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'https://github.com/scrooloose/nerdtree'
   Plug 'https://github.com/mileszs/ack.vim'
   Plug 'https://github.com/alvan/vim-closetag'
+  Plug 'https://github.com/itchyny/lightline.vim'
 
   " React
   Plug 'https://github.com/mxw/vim-jsx'
@@ -71,7 +72,7 @@ set iskeyword+=-
 " show status
 set laststatus=2
 " full path in status
-set statusline=%F
+" set statusline=%F
 " 50 lines of command history
 set history=50
 " show cursor position at all time
@@ -145,6 +146,12 @@ let g:fzf_layout = { 'down': '~25%' }
 " NERDTree
 map <C-n> :NERDTreeToggle<CR>
 let g:NERDTreeWinSize=35
+
+" lightline
+let g:lightline = { 'component_function': { 'filename': 'LightLineFilename' } }
+function! LightLineFilename()
+  return expand('%')
+endfunction
 
 " enable mouse in terminal emulators
 if has("mouse")
