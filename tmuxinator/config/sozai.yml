@@ -17,7 +17,7 @@ root: ~/sozai
 # Run on project exit ( detaching from tmux session )
 # on_project_exit: command
 # Run on project stop
-# on_project_stop: command
+on_project_stop: pkill puma
 
 # Runs in each window and pane before window/pane specific commands. Useful for setting up interpreter versions.
 # pre_window: rbenv shell 2.0.0-p247
