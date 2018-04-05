@@ -4,6 +4,7 @@ set -o vi
 # "ls" color
 export CLICOLOR=1
 export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
+
 export LESS=-RFX
 export EDITOR='vim'
 
@@ -17,8 +18,6 @@ shopt -s histappend # append to history
 # save and reload the history after each command finishes
 export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
-# source ~/.private
-
 alias dl="youtube-dl -o '~/youtube/%(title)s-%(id)s.%(ext)s'"
 alias grep="grep --color"
 alias pg="ps aux | grep"
@@ -29,6 +28,8 @@ alias ms='mux start'
 alias agu='ag -u'
 alias agc='ag --hidden --path-to-ignore ~/.ignore -C 5'
 alias agg='ag --unrestricted -g'
+
+export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 
 # fzf
 if type "fzf" > /dev/null 2>&1; then
@@ -50,8 +51,6 @@ alias rc="bin/rails console"
 alias rl="tail -f -n 1000 log/development.log"
 alias be="bundle exec"
 # alias fs="foreman start"
-
-export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 
 # bundler
 export BUNDLER_EDITOR=vim

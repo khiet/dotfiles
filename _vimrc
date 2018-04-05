@@ -29,6 +29,11 @@ call plug#begin('~/.vim/plugged')
 call plug#end()
 " ----------------------------------------
 
+noremap <Up>    <NOP>
+noremap <Down>  <NOP>
+noremap <Left>  <NOP>
+noremap <Right> <NOP>
+
 let mapleader=","
 inoremap jj <esc>
 
