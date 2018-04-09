@@ -11,9 +11,9 @@ brew install fzf
 gem install tmuxinator
 ```
 
-### Install plugins
+### git clone
 ```
-:PlugInstall
+cd; git clone git@github.com:khiet/vimfiles.git
 ```
 
 ### Symlink config files
@@ -29,8 +29,13 @@ ln -s vimfiles/_hushlogin ~/.hushlogin
 ln -s vimfiles/_ignore ~/.ignore
 ```
 
-### Install reattach-to-user-namespace
-https://robots.thoughtbot.com/tmux-copy-paste-on-os-x-a-better-future
+### Install plugins
+```
+:PlugInstall
+```
 
 ### Install git-aware-prompt
 https://github.com/jimeh/git-aware-prompt
+
+### Install reattach-to-user-namespace
+https://robots.thoughtbot.com/tmux-copy-paste-on-os-x-a-better-future
