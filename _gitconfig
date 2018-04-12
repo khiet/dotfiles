@@ -3,15 +3,17 @@
 [color]
 	ui = true
 [alias]
-	st = status
-	co = checkout
-	br = branch
-	aa = add -A
-  ci = commit -av
-  ft = fetch
-  d  = diff
-  ds = diff --staged
-  lg = log --pretty=format:'%C(yellow)%h%Creset %s %Cgreen(%cd) %C(red)%an%Creset'
+	st  = status
+	co  = checkout
+	br  = branch
+	aa  = add -A
+  ci  = commit -av
+  ft  = fetch
+  d   = diff
+  dw  = diff --word-diff
+  ds  = diff --staged
+  dsw = diff --staged --word-diff
+  lg  = log --pretty=format:'%C(yellow)%h%Creset %s %Cgreen(%cd) %C(red)%an%Creset'
   lgg = log --graph --decorate --oneline
   dm  = diff origin/master
   rmc = rm -r --cached .

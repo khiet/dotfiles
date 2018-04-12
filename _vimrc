@@ -282,6 +282,8 @@ endfunction
 
 nnoremap <silent> <leader>t :call <SID>StripTrailingWhitespaces()<CR>
 
+nnoremap <leader>h1 :%s/"\(.*\)"\s*=>/\1: /g <CR>
+
 " -----------------------------------------------
 "     Cheat Sheets
 " -----------------------------------------------

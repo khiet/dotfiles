@@ -49,6 +49,6 @@ windows:
   - server:
       layout: main-vertical
       panes:
-        - be rails s
+        - bin/rails s
         - be guard -G Guardfile.livereload
         - be sidekiq -q default -q mailers
