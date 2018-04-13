@@ -24,7 +24,6 @@ alias pg="ps aux | grep"
 alias ct="ctags -R ."
 alias gdel="git branch --merged | grep -v '\*' | xargs -n 1 git branch -d"
 alias gg="git grep"
-alias ms='mux start'
 alias agu='ag -u'
 alias agc='ag --hidden --path-to-ignore ~/.ignore -C 5'
 alias agg='ag --unrestricted -g'

@@ -1,5 +1,5 @@
 " ----------------------------------------
-" vim-plug
+"    vim-plug
 " ----------------------------------------
 " automatic installation - https://github.com/junegunn/vim-plug/wiki/tips#automatic-installation
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -40,9 +40,6 @@ inoremap jj <esc>
 " disable F1 built-in help key
 nmap <F1> :echo<CR>
 imap <F1> <C-o>:echo<CR>
-
-noremap H ^
-noremap L $
 
 " edit config files
 nmap <leader>ev :tabedit $MYVIMRC<CR>
@@ -264,7 +261,7 @@ elseif has("win32") " Windows
 endif
 
 " -----------------------------------------------
-"   function
+"    function
 " -----------------------------------------------
 " ref - http://vimcasts.org/episodes/tidying-whitespace/
 function! <SID>StripTrailingWhitespaces()
@@ -285,7 +282,7 @@ nnoremap <silent> <leader>t :call <SID>StripTrailingWhitespaces()<CR>
 nnoremap <leader>h1 :%s/"\(.*\)"\s*=>/\1: /g <CR>
 
 " -----------------------------------------------
-"     Cheat Sheets
+"    cheat sheets
 " -----------------------------------------------
 " gx # open URL
 "
@@ -297,12 +294,12 @@ nnoremap <leader>h1 :%s/"\(.*\)"\s*=>/\1: /g <CR>
 " @d	execute your macro
 " @@	execute your macro again
 "
-" f{char} search
-" ; to go forward
-" , to go backward
-"
-" update spellfile
-" zg
-"
-" emmet - https://qiita.com/yyuuiikk/items/6c7e793b9c734a84b62a
+" Ctrl-D  move half-page down
+" Ctrl-U  move half-page up
+" Ctrl-B  page up
+" Ctrl-F  page down
+" Ctrl-O  jump to last (older) cursor position
+" Ctrl-I  jump to next cursor position (after Ctrl-O)
+" Ctrl-Y  move view pane up
+" Ctrl-E  move view pane down
 " -----------------------------------------------
