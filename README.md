@@ -1,4 +1,4 @@
-vimfiles
+dotfiles
 =======================
 
 ### Install vim, tmux, ad, etc.
@@ -13,20 +13,20 @@ gem install tmuxinator
 
 ### git clone
 ```
-cd; git clone git@github.com:khiet/vimfiles.git
+cd; git clone git@github.com:khiet/dotfiles.git
 ```
 
 ### Symlink config files
 ```
-ln -s vimfiles ~/.vim
-ln -s vimfiles/_vimrc ~/.vimrc
-ln -s vimfiles/_gitconfig ~/.gitconfig
-ln -s vimfiles/_bash_profile ~/.bash_profile
-ln -s vimfiles/_ctags ~/.ctags
-ln -s vimfiles/_tmux.conf ~/.tmux.conf
-ln -s vimfiles/_tm_properties ~/.tm_properties
-ln -s vimfiles/_hushlogin ~/.hushlogin
-ln -s vimfiles/_ignore ~/.ignore
+ln -s dotfiles ~/.vim
+ln -s dotfiles/_vimrc ~/.vimrc
+ln -s dotfiles/_gitconfig ~/.gitconfig
+ln -s dotfiles/_bash_profile ~/.bash_profile
+ln -s dotfiles/_ctags ~/.ctags
+ln -s dotfiles/_tmux.conf ~/.tmux.conf
+ln -s dotfiles/_tm_properties ~/.tm_properties
+ln -s dotfiles/_hushlogin ~/.hushlogin
+ln -s dotfiles/_ignore ~/.ignore
 ```
 
 ### Install plugins

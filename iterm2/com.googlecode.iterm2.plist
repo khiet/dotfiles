@@ -230,7 +230,7 @@
 	<key>LoadPrefsFromCustomFolder</key>
 	<true/>
 	<key>NSNavLastRootDirectory</key>
-	<string>~/vimfiles/iterm2</string>
+	<string>~/dotfiles/iterm2</string>
 	<key>NSNavPanelExpandedSizeForOpenMode</key>
 	<string>{722, 448}</string>
 	<key>NSQuotedKeystrokeBinding</key>
@@ -265,7 +265,7 @@
 	<key>NSTableView Supports v2 KeyBingingTable</key>
 	<true/>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>268 155 796 473 0 0 1680 1028 </string>
+	<string>268 181 796 473 0 0 1680 1028 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
 	<string>0 0 1680 1028 0 0 1680 1028 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
@@ -2216,6 +2216,8 @@
 	<true/>
 	<key>NoSyncInstallationId</key>
 	<string>C045D3CD-4465-44BD-8F6A-2ECCAB3B9CFF</string>
+	<key>NoSyncPermissionToShowTip</key>
+	<false/>
 	<key>NoSyncTimeOfFirstLaunchOfVersionWithTip</key>
 	<real>544985453.01622295</real>
 	<key>PointerActions</key>
@@ -2252,7 +2254,7 @@
 		</dict>
 	</dict>
 	<key>PrefsCustomFolder</key>
-	<string>/Users/khietle/vimfiles/iterm2</string>
+	<string>/Users/khietle/dotfiles/iterm2</string>
 	<key>SUEnableAutomaticChecks</key>
 	<true/>
 	<key>SUFeedAlternateAppNameKey</key>
@@ -2262,7 +2264,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2018-04-11T09:54:57Z</date>
+	<date>2018-04-13T08:11:44Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>ShowFullScreenTabBar</key>
