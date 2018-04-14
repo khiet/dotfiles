@@ -279,7 +279,8 @@ endfunction
 
 nnoremap <silent> <leader>t :call <SID>StripTrailingWhitespaces()<CR>
 
-nnoremap <leader>h1 :%s/"\(.*\)"\s*=>/\1: /g <CR>
+" replace rails params hash into { foo: "bar", ... }
+nnoremap <leader>h :%s/"\(\w*\)"\s*=>/\1: /g <bar> :%s/,/,\r/g <bar> :noh <CR>
 
 " -----------------------------------------------
 "    cheat sheets
