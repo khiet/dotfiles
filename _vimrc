@@ -37,10 +37,6 @@ noremap <Right> <NOP>
 let mapleader=","
 inoremap jj <esc>
 
-" disable F1 built-in help key
-nmap <F1> :echo<CR>
-imap <F1> <C-o>:echo<CR>
-
 " edit config files
 nmap <leader>ev :tabedit $MYVIMRC<CR>
 nmap <leader>eb :tabedit <C-R>=expand($HOME."/.bash_profile")<CR><CR>
@@ -83,8 +79,8 @@ set ruler
 set ignorecase
 set incsearch
 set smartcase
-" set cursorline
 set number
+set cursorline
 set autoindent
 " allow opening a new file even if there are unsaved files
 set hidden
@@ -111,8 +107,6 @@ au FileType gitcommit setlocal spell
 
 " byebug
 map <leader>bb obyebug<esc>:w<cr>
-" console
-map <leader>cl oconsole<esc>:w<cr>
 
 " copy relative path
 nmap <leader>cf :let @*=expand("%")<CR>
@@ -155,11 +149,6 @@ function! LightLineFilename()
   return expand('%')
 endfunction
 
-" enable mouse in terminal emulators
-if has("mouse")
-  set mouse=a
-endif
-
 if $TMUX != '' " tmux specific settings
   " enable mouse in tmux
   set ttymouse=xterm2
@@ -185,11 +174,11 @@ if has("gui_running")
   set guioptions-=T   "remove toolbar
   "set guioptions-=r  "remove right-hand scroll bar
 
-if has("gui_macvim")
-    set guifont=Monaco:h10 " :set guifont=Monaco:h10
-elseif has("gui_win32")
-    set guifont=Lucida_Console:h10:w6 " Notepad's default
-endif
+  if has("gui_macvim")
+      " set guifont=Monaco:h10
+  elseif has("gui_win32")
+      set guifont=Lucida_Console:h10:w6 " Notepad's default
+  endif
 else " terminal
   set t_Co=256
   if (&t_Co == 256) " if terminal supports 256 colours
