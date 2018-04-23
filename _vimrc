@@ -113,6 +113,11 @@ nmap <leader>cf :let @*=expand("%")<CR>
 " copy absolute path
 nmap <leader>cF :let @*=expand("%:p")<CR>
 
+" enable mouse in terminal emulators
+if has("mouse")
+  set mouse=a
+endif
+
 " vroom
 if filereadable("bin/rspec")
   let g:vroom_use_binstubs = 1
