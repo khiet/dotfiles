@@ -25,6 +25,7 @@ call plug#begin('~/.vim/plugged')
 
   " React
   Plug 'https://github.com/mxw/vim-jsx'
+  Plug 'https://github.com/othree/yajs.vim'
   Plug 'https://github.com/Valloric/MatchTagAlways'
 call plug#end()
 " ----------------------------------------
@@ -232,7 +233,7 @@ endif
 let g:closetag_filenames = '*.html,*.erb,*.js,*.jsx'
 
 " vim-jsx
-let g:jsx_ext_required = 0
+au BufRead,BufNewFile *.js highlight link xmlEndTag xmlTag
 
 let g:mta_filetypes = { 'javascript.jsx' : 1 }
 
