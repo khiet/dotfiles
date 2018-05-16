@@ -25,7 +25,6 @@ call plug#begin('~/.vim/plugged')
 
   " React
   Plug 'https://github.com/mxw/vim-jsx'
-  Plug 'https://github.com/othree/yajs.vim'
 call plug#end()
 " ----------------------------------------
 
@@ -106,7 +105,9 @@ au FileType markdown setlocal spell
 au FileType gitcommit setlocal spell
 
 " byebug
-map <leader>bb obyebug<esc>:w<cr>
+map <leader>dr obyebug<esc>:w<cr>
+" debugger
+map <leader>dj odebugger;<esc>:w<cr>
 
 " copy relative path
 nmap <leader>cf :let @*=expand("%")<CR>
@@ -227,7 +228,7 @@ else
 endif
 
 " vim-closetag
-let g:closetag_filenames = '*.html,*.js,*.jsx'
+let g:closetag_filenames = '*.html,*.erb,*.js,*.jsx'
 
 " -----------------------------------------------
 "    OS specifics

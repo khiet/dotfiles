@@ -1,5 +1,6 @@
 [core]
 	editor = vim
+	ignorecase = false
 [color]
 	ui = true
 [alias]
@@ -16,7 +17,7 @@
   dsw = diff --staged --word-diff
   lg  = log --pretty=format:'%C(yellow)%h%Creset %s %Cgreen(%cd) %C(red)%an%Creset'
   lgg = log --graph --decorate --oneline
-  dm  = diff origin/master
+  dom  = diff origin/master
   rmc = rm -r --cached .
 [filter "lfs"]
 	smudge = git-lfs smudge %f

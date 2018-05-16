@@ -18,7 +18,7 @@ shopt -s histappend # append to history
 # save and reload the history after each command finishes
 export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
-alias dl="youtube-dl -o '~/youtube/%(title)s-%(id)s.%(ext)s'"
+alias dl="youtube-dl -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4' -o '~/youtube/%(title)s-%(id)s.%(ext)s'"
 alias grep="grep --color"
 alias pg="ps aux | grep"
 alias ct="ctags -R ."
@@ -26,7 +26,7 @@ alias gdel="git branch --merged | grep -v '\*' | xargs -n 1 git branch -d"
 alias gg="git grep"
 alias agu='ag -u'
 alias agc='ag --hidden --path-to-ignore ~/.ignore -C 5'
-alias agg='ag --unrestricted -g'
+alias agg='ag --u -g'
 alias public_ip="curl ipinfo.io/ip"
 
 export PATH="/usr/local/bin:/usr/local/sbin:$PATH"

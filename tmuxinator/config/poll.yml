@@ -1,5 +1,5 @@
-name: sozai
-root: ~/sozai
+name: poll
+root: ~/poll
 
 # Optional tmux socket
 # socket_name: foo
@@ -38,17 +38,14 @@ on_project_stop: pkill puma
 # attach: false
 
 # Runs after everything. Use it to attach to tmux with custom options etc.
-# post: tmux -CC attach -t sozai
+# post: tmux -CC attach -t poll
 
 windows:
   - editor:
       layout: main-vertical
       panes:
         - vim
-        - # empty
   - server:
       layout: main-vertical
       panes:
-        - bin/rails s -p 3002
-        - be guard -G Guardfile.livereload
-        - be sidekiq -q default -q mailers
+        - PORT=3001 npm start
