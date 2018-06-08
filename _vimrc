@@ -27,6 +27,9 @@ call plug#begin('~/.vim/plugged')
   Plug 'https://github.com/mxw/vim-jsx'
   Plug 'https://github.com/othree/yajs.vim'
   Plug 'https://github.com/Valloric/MatchTagAlways'
+  Plug 'https://github.com/SirVer/ultisnips'
+  Plug 'https://github.com/epilande/vim-es2015-snippets'
+  Plug 'https://github.com/epilande/vim-react-snippets'
 call plug#end()
 " ----------------------------------------
 

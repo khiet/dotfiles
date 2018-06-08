@@ -27,6 +27,8 @@ alias gg="git grep"
 alias agu='ag -u'
 alias agc='ag --hidden --path-to-ignore ~/.ignore -C 5'
 alias agg='ag --u -g'
+alias calm='cal -3'
+alias caly='cal -y'
 alias public_ip="curl ipinfo.io/ip"
 
 export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
