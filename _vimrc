@@ -22,11 +22,11 @@ call plug#begin('~/.vim/plugged')
   Plug 'https://github.com/mileszs/ack.vim'
   Plug 'https://github.com/alvan/vim-closetag'
   Plug 'https://github.com/itchyny/lightline.vim'
+  Plug 'https://github.com/ap/vim-css-color'
 
   " React
   Plug 'https://github.com/mxw/vim-jsx'
   Plug 'https://github.com/othree/yajs.vim'
-  Plug 'https://github.com/Valloric/MatchTagAlways'
   Plug 'https://github.com/SirVer/ultisnips'
   Plug 'https://github.com/epilande/vim-es2015-snippets'
   Plug 'https://github.com/epilande/vim-react-snippets'
@@ -180,7 +180,7 @@ endif
 "    GUI
 " -----------------------------------------------
 if has("gui_running")
-  colorscheme tomorrow-night
+  colorscheme gruvbox
   set guioptions-=m   "remove menu bar
   set guioptions-=T   "remove toolbar
   "set guioptions-=r  "remove right-hand scroll bar
@@ -193,7 +193,7 @@ if has("gui_running")
 else " terminal
   set t_Co=256
   if (&t_Co == 256) " if terminal supports 256 colours
-    colorscheme tomorrow-night
+    colorscheme gruvbox
   endif
 endif
 " -----------------------------------------------
