@@ -9,20 +9,33 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 " PlugInstall to install plugins, PlugClean to delete plugins
 call plug#begin('~/.vim/plugged')
-  Plug 'https://github.com/tpope/vim-rails'
-  Plug 'https://github.com/benmills/vimux'
-  Plug 'https://github.com/skalnik/vim-vroom'
-  Plug 'https://github.com/tpope/vim-fugitive'
-  Plug 'https://github.com/airblade/vim-gitgutter'
+  " Utilities
   Plug 'https://github.com/ihacklog/hicursorwords'
   Plug 'https://github.com/pbrisbin/vim-mkdir'
-  Plug 'https://github.com/christoomey/vim-tmux-navigator'
-  Plug 'https://github.com/glidenote/memolist.vim'
   Plug 'https://github.com/scrooloose/nerdtree'
   Plug 'https://github.com/mileszs/ack.vim'
-  Plug 'https://github.com/alvan/vim-closetag'
   Plug 'https://github.com/itchyny/lightline.vim'
+
+  " Rails
+  Plug 'https://github.com/tpope/vim-rails'
+
+  " Note
+  Plug 'https://github.com/glidenote/memolist.vim'
+
+  " HTML
+  Plug 'https://github.com/alvan/vim-closetag'
+
+  " CSS
   Plug 'https://github.com/ap/vim-css-color'
+
+  " Tmux
+  Plug 'https://github.com/benmills/vimux'
+  Plug 'https://github.com/skalnik/vim-vroom'
+  Plug 'https://github.com/christoomey/vim-tmux-navigator'
+
+  " Git
+  Plug 'https://github.com/tpope/vim-fugitive'
+  Plug 'https://github.com/airblade/vim-gitgutter'
 
   " React
   Plug 'https://github.com/mxw/vim-jsx'
