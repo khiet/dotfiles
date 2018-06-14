@@ -16,6 +16,9 @@ call plug#begin('~/.vim/plugged')
   Plug 'https://github.com/mileszs/ack.vim'
   Plug 'https://github.com/itchyny/lightline.vim'
 
+  " Colorscheme
+  Plug 'https://github.com/morhetz/gruvbox'
+
   " Rails
   Plug 'https://github.com/tpope/vim-rails'
 
