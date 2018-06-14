@@ -80,6 +80,9 @@ nnoremap <leader>x :x<cr>
 " replace
 nnoremap <leader>s :%s//
 
+" noh
+nnoremap <leader>h :noh<CR>
+
 " allow backspacing over everything in i-mode
 set backspace=indent,eol,start
 " consider '-' as part of a word
@@ -139,7 +142,9 @@ endif
 
 " vim-test
 let test#strategy = "vimux"
-nnoremap <leader>t :TestNearest<CR>
+nnoremap <leader>T :TestNearest<CR>
+nnoremap <leader>tl :TestLast<CR>
+nnoremap <leader>tf :TestFile<CR>
 
 if executable('ag')
   " https://robots.thoughtbot.com/faster-grepping-in-vim
@@ -293,7 +298,7 @@ au BufWritePre * match ExtraWhitespace /\s\+$/
 highlight ExtraWhitespace ctermbg=red guibg=red
 
 " replace rails params hash into { foo: "bar", ... }
-nnoremap <leader>h :%s/"\(\w*\)"\s*=>/\1: /g <bar> :%s/,/,\r/g <bar> :noh <CR>
+" nnoremap <leader>h :%s/"\(\w*\)"\s*=>/\1: /g <bar> :%s/,/,\r/g <bar> :noh <CR>
 
 " -----------------------------------------------
 "    cheat sheets
