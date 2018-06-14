@@ -29,9 +29,9 @@ call plug#begin('~/.vim/plugged')
   Plug 'https://github.com/ap/vim-css-color'
 
   " Tmux
-  Plug 'https://github.com/benmills/vimux'
-  Plug 'https://github.com/skalnik/vim-vroom'
   Plug 'https://github.com/christoomey/vim-tmux-navigator'
+  Plug 'https://github.com/janko-m/vim-test'
+  Plug 'https://github.com/benmills/vimux'
 
   " Git
   Plug 'https://github.com/tpope/vim-fugitive'
@@ -137,14 +137,9 @@ if has("mouse")
   set mouse=a
 endif
 
-" vroom
-if filereadable("bin/rspec")
-  let g:vroom_use_binstubs = 1
-endif
-
-let g:vroom_spec_command  = 'rspec --format progress'
-let g:vroom_rspec_version = '3.x'
-let g:vroom_use_vimux = 1
+" vim-test
+let test#strategy = "vimux"
+nnoremap <leader>t :TestNearest<CR>
 
 if executable('ag')
   " https://robots.thoughtbot.com/faster-grepping-in-vim
@@ -230,9 +225,6 @@ nmap <leader>m :exe 'FZF' g:memolist_path<CR>
 " enable spell check
 "nmap <leader>s :set spell!<CR>
 
-" highlight trailing whitespaces
-au BufWritePre * match ExtraWhitespace /\s\+$/
-highlight ExtraWhitespace ctermbg=red guibg=red
 highlight clear SpellBad
 highlight SpellBad cterm=underline ctermfg=red gui=underline guifg=red
 
@@ -295,7 +287,10 @@ function! <SID>StripTrailingWhitespaces()
 endfunction
 " -----------------------------------------------
 
-nnoremap <silent> <leader>t :call <SID>StripTrailingWhitespaces()<CR>
+au BufWritePost * call <SID>StripTrailingWhitespaces()
+" highlight trailing whitespaces
+au BufWritePre * match ExtraWhitespace /\s\+$/
+highlight ExtraWhitespace ctermbg=red guibg=red
 
 " replace rails params hash into { foo: "bar", ... }
 nnoremap <leader>h :%s/"\(\w*\)"\s*=>/\1: /g <bar> :%s/,/,\r/g <bar> :noh <CR>
