@@ -67,9 +67,11 @@ nmap <leader>vs :Vschema <CR>
 " buffers
 nmap <leader>bu :buffers<cr>:buffer<space>
 nmap <leader>bd :buffers<cr>:bdelete<space>
+nmap <leader>bn :bn<CR>
+nmap <leader>bp :bp<CR>
 
 " gf
-" .js,.jsx
+" recognize .js without extension
 set suffixesadd=.js
 
 " indenting
