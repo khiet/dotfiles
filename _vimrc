@@ -8,6 +8,7 @@ if empty(glob('~/.vim/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 " PlugInstall to install plugins, PlugClean to delete plugins
+" https://github.com/junegunn/vim-plug#commands
 call plug#begin('~/.vim/plugged')
   " Utilities
   Plug 'https://github.com/ihacklog/hicursorwords'
