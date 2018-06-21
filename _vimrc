@@ -257,11 +257,6 @@ endif
 " vim-closetag
 let g:closetag_filenames = '*.html,*.erb,*.js,*.jsx'
 
-" vim-jsx
-au BufRead,BufNewFile *.js highlight link xmlEndTag xmlTag
-
-let g:mta_filetypes = { 'javascript.jsx' : 1 }
-
 " -----------------------------------------------
 "    OS specifics
 " -----------------------------------------------
@@ -304,7 +299,7 @@ function! <SID>StripTrailingWhitespaces()
 endfunction
 " -----------------------------------------------
 
-au BufWritePost * call <SID>StripTrailingWhitespaces()
+nnoremap <silent> <leader>t :call <SID>StripTrailingWhitespaces()<CR>
 " highlight trailing whitespaces
 au BufWritePre * match ExtraWhitespace /\s\+$/
 highlight ExtraWhitespace ctermbg=red guibg=red
