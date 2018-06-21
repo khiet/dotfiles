@@ -40,9 +40,12 @@ call plug#begin('~/.vim/plugged')
   Plug 'https://github.com/tpope/vim-fugitive'
   Plug 'https://github.com/airblade/vim-gitgutter'
 
-  " React
+  " JS, JSX, ES
   Plug 'https://github.com/mxw/vim-jsx'
   Plug 'https://github.com/othree/yajs.vim'
+  Plug 'https://github.com/othree/es.next.syntax.vim'
+
+  " Snippet
   Plug 'https://github.com/SirVer/ultisnips'
   Plug 'https://github.com/epilande/vim-es2015-snippets'
   Plug 'https://github.com/epilande/vim-react-snippets'
@@ -78,6 +81,9 @@ set suffixesadd=.js
 vmap << <gv
 vmap >> >gv
 
+" indent file
+nmap <leader>= ggvG=<C-o><C-o>
+
 " saving
 nnoremap <leader>w :w<cr>
 nnoremap <leader>x :x<cr>
@@ -96,8 +102,8 @@ set iskeyword+=-
 set laststatus=2
 " full path in status
 " set statusline=%F
-" 50 lines of command history
-set history=50
+" 20 lines of command history
+set history=20
 " show cursor position at all time
 set ruler
 " search
