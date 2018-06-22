@@ -74,6 +74,10 @@ nmap <leader>bd :buffers<cr>:bdelete<space>
 nmap <leader>bn :bn<CR>
 nmap <leader>bp :bp<CR>
 
+" yank
+" http://vim.wikia.com/wiki/Replace_a_word_with_yanked_text
+xnoremap <silent> p p:let @+=@0<CR>:let @"=@0<CR>
+
 " gf
 " recognize .js without extension
 set suffixesadd=.js
