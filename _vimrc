@@ -262,6 +262,11 @@ endif
 " vim-closetag
 let g:closetag_filenames = '*.html,*.erb,*.js,*.jsx'
 
+" vim-prettier
+let g:prettier#config#bracket_spacing = 'true'
+let g:prettier#config#trailing_comma = 'none'
+let g:prettier#config#jsx_bracket_same_line = 'false'
+
 " -----------------------------------------------
 "    OS specifics
 " -----------------------------------------------
