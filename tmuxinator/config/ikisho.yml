@@ -1,5 +1,5 @@
-name: sushimad
-root: ~/sushimad
+name: ikisho
+root: ~/ikisho
 
 # Optional tmux socket
 # socket_name: foo
@@ -38,7 +38,7 @@ on_project_stop: pkill puma
 # attach: false
 
 # Runs after everything. Use it to attach to tmux with custom options etc.
-# post: tmux -CC attach -t sushimad
+# post: tmux -CC attach -t ikisho
 
 windows:
   - editor:

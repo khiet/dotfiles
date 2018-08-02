@@ -45,6 +45,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'https://github.com/mxw/vim-jsx'
   Plug 'https://github.com/othree/yajs.vim'
   Plug 'https://github.com/othree/es.next.syntax.vim'
+  Plug 'https://github.com/prettier/vim-prettier', { 'do': 'yarn install' }
 
   " Snippet
   Plug 'https://github.com/SirVer/ultisnips'
