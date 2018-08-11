@@ -11,7 +11,7 @@ endif
 " https://github.com/junegunn/vim-plug#commands
 call plug#begin('~/.vim/plugged')
   " Utilities
-  Plug 'https://github.com/ihacklog/hicursorwords'
+  Plug 'https://github.com/pboettch/vim-highlight-cursor-words'
   Plug 'https://github.com/pbrisbin/vim-mkdir'
   Plug 'https://github.com/scrooloose/nerdtree'
   Plug 'https://github.com/mileszs/ack.vim'
