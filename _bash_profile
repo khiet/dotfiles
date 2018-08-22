@@ -22,7 +22,7 @@ alias dl="youtube-dl -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4' -o '~/youtub
 alias grep="grep --color"
 alias pg="ps aux | grep"
 alias ct="ctags -R ."
-alias gdel="git branch --merged | grep -v '\*' | xargs -n 1 git branch -d"
+alias gdel="git branch --merged | egrep -v '(^\*|master)' | xargs git branch -d"
 alias gg="git grep"
 alias agu='ag -u'
 alias agc='ag --hidden --path-to-ignore ~/.ignore -C 5'
