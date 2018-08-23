@@ -9,6 +9,8 @@ brew install the_silver_searcher
 brew install fzf
 
 gem install tmuxinator
+
+npm install --global prettier
 ```
 
 ### git clone
@@ -27,6 +29,7 @@ ln -s dotfiles/_tmux.conf ~/.tmux.conf
 ln -s dotfiles/_tm_properties ~/.tm_properties
 ln -s dotfiles/_hushlogin ~/.hushlogin
 ln -s dotfiles/_ignore ~/.ignore
+ln -s dotfiles/_prettierrc ~/.prettierrc
 ```
 
 ### Install plugins

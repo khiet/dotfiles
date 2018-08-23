@@ -45,12 +45,14 @@ call plug#begin('~/.vim/plugged')
   Plug 'https://github.com/mxw/vim-jsx'
   Plug 'https://github.com/othree/yajs.vim'
   Plug 'https://github.com/othree/es.next.syntax.vim'
-  Plug 'https://github.com/prettier/vim-prettier', { 'do': 'yarn install' }
 
   " Snippet
   Plug 'https://github.com/SirVer/ultisnips'
   Plug 'https://github.com/epilande/vim-es2015-snippets'
   Plug 'https://github.com/epilande/vim-react-snippets'
+
+  " Language Server
+  Plug 'https://github.com/w0rp/ale'
 call plug#end()
 " ----------------------------------------
 
@@ -262,10 +264,10 @@ endif
 " vim-closetag
 let g:closetag_filenames = '*.html,*.erb,*.js,*.jsx'
 
-" vim-prettier
-let g:prettier#config#bracket_spacing = 'true'
-let g:prettier#config#trailing_comma = 'none'
-let g:prettier#config#jsx_bracket_same_line = 'false'
+" ale
+let g:ale_linters_explicit = 1
+let g:ale_fixers = {}
+let g:ale_fixers['javascript'] = ['prettier']
 
 " -----------------------------------------------
 "    OS specifics

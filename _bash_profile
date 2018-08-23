@@ -70,5 +70,10 @@ export PS1="\[$bldylw\]\\w \[$txtgrn\]\$git_branch\[$txtred\]\$git_dirty\[$txtrs
 source ~/dotfiles/tmuxinator/tmuxinator.bash
 export TMUXINATOR_CONFIG=~/dotfiles/tmuxinator/config
 
+# flutter
+export PATH=~/flutter/bin:$PATH
+# dart
+export PATH=~/flutter/bin/cache/dart-sdk/bin:$PATH
+
 # rbenv
 eval "$(rbenv init -)"
