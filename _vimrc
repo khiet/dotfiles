@@ -268,6 +268,7 @@ let g:closetag_filenames = '*.html,*.erb,*.js,*.jsx'
 " let g:ale_linters_explicit = 1
 let g:ale_fixers = {}
 let g:ale_fixers['javascript'] = ['prettier', 'eslint']
+let g:ale_fix_on_save = 1
 
 " -----------------------------------------------
 "    OS specifics
