@@ -265,9 +265,9 @@ endif
 let g:closetag_filenames = '*.html,*.erb,*.js,*.jsx'
 
 " ale
-let g:ale_linters_explicit = 1
+" let g:ale_linters_explicit = 1
 let g:ale_fixers = {}
-let g:ale_fixers['javascript'] = ['prettier']
+let g:ale_fixers['javascript'] = ['prettier', 'eslint']
 
 " -----------------------------------------------
 "    OS specifics

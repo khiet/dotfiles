@@ -10,7 +10,7 @@ brew install fzf
 
 gem install tmuxinator
 
-npm install --global prettier
+npm install --g prettier
 ```
 
 ### git clone
