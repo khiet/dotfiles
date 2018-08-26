@@ -1,1 +1,0 @@
-excludeInFolderSearch = "{$excludeInFolderSearch,$extraExcludes,log,tmp,coverage,bin,tags,node_modules,db/migrate}"
