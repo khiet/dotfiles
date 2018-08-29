@@ -26,6 +26,7 @@ ln -s dotfiles/_gitconfig ~/.gitconfig
 ln -s dotfiles/_bash_profile ~/.bash_profile
 ln -s dotfiles/_ctags ~/.ctags
 ln -s dotfiles/_tmux.conf ~/.tmux.conf
+ln -s dotfiles/_tm_properties ~/.tm_properties
 ln -s dotfiles/_hushlogin ~/.hushlogin
 ln -s dotfiles/_ignore ~/.ignore
 ln -s dotfiles/_prettierrc ~/.prettierrc
