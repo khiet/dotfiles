@@ -42,3 +42,11 @@ https://github.com/jimeh/git-aware-prompt
 
 ### Install reattach-to-user-namespace
 https://robots.thoughtbot.com/tmux-copy-paste-on-os-x-a-better-future
+
+### Other software
+```
+brew cask install textmate
+brew cask install visual-studio-code
+brew cask install kdiff3
+brew cask install firefox
+```
