@@ -1,7 +1,7 @@
-dotfiles
-=======================
+# dotfiles
 
 ### Install vim, tmux, ad, etc.
+
 ```
 brew install vim
 brew install tmux
@@ -14,11 +14,13 @@ npm install --g prettier
 ```
 
 ### git clone
+
 ```
 cd; git clone git@github.com:khiet/dotfiles.git
 ```
 
 ### Symlink config files
+
 ```
 ln -s dotfiles ~/.vim
 ln -s dotfiles/_vimrc ~/.vimrc
@@ -33,17 +35,21 @@ ln -s dotfiles/_prettierrc ~/.prettierrc
 ```
 
 ### Install plugins
+
 ```
 :PlugInstall
 ```
 
 ### Install git-aware-prompt
+
 https://github.com/jimeh/git-aware-prompt
 
 ### Install reattach-to-user-namespace
+
 https://robots.thoughtbot.com/tmux-copy-paste-on-os-x-a-better-future
 
 ### Other software
+
 ```
 brew cask install textmate
 brew cask install visual-studio-code
