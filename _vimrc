@@ -313,14 +313,25 @@ function! <SID>StripTrailingWhitespaces()
   let @/=_s
   call cursor(l, c)
 endfunction
+
+function! <SID>ReplaceCurlyQuotes()
+  let _s=@/
+  let l = line(".")
+  let c = col(".")
+  %s/[’‘]/'/g
+  %s/[”“]/"/g
+  let @/=_s
+  call cursor(l, c)
+endfunction
 " -----------------------------------------------
 
 nnoremap <silent> <leader>t :call <SID>StripTrailingWhitespaces()<CR>
+nnoremap <silent> <leader>c :call <SID>ReplaceCurlyQuotes()<CR>
 " highlight trailing whitespaces
 au BufWritePre * match ExtraWhitespace /\s\+$/
 highlight ExtraWhitespace ctermbg=red guibg=red
 
-" replace rails params hash into { foo: "bar", ... }
+" replace rails params hash into { foo: 'bar', ... }
 " nnoremap <leader>h :%s/"\(\w*\)"\s*=>/\1: /g <bar> :%s/,/,\r/g <bar> :noh <CR>
 
 " -----------------------------------------------
