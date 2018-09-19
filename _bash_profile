@@ -30,6 +30,7 @@ alias agg='ag --u -g'
 alias calm='cal -3'
 alias caly='cal -y'
 alias kill='kill -9'
+alias tns="tmux new -s"
 alias public_ip="curl ipinfo.io/ip"
 
 export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
