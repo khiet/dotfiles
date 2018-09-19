@@ -8,8 +8,6 @@ brew install tmux
 brew install the_silver_searcher
 brew install fzf
 
-gem install tmuxinator
-
 npm install --g prettier
 ```
 
