@@ -53,4 +53,5 @@ brew cask install textmate
 brew cask install visual-studio-code
 brew cask install kdiff3
 brew cask install firefox
+brew cask install skype
 ```
