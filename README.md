@@ -54,4 +54,7 @@ brew cask install visual-studio-code
 brew cask install kdiff3
 brew cask install firefox
 brew cask install skype
+brew cask install sequel-pro
+brew install ffmpeg
+brew install youtube-dl
 ```
