@@ -56,5 +56,6 @@ brew cask install firefox
 brew cask install skype
 brew cask install sequel-pro
 brew install ffmpeg
+brew install ctags
 brew install youtube-dl
 ```
