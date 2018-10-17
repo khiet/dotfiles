@@ -32,6 +32,8 @@ alias caly='cal -y'
 alias kill='kill -9'
 alias tns="tmux new -s"
 alias public_ip="curl ipinfo.io/ip"
+alias fela='flutter emulators --launch Pixel_2_API_28'
+alias feli='flutter emulators --launch apple_ios_simulator'
 
 export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 
