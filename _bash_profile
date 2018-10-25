@@ -37,11 +37,6 @@ alias feli='flutter emulators --launch apple_ios_simulator'
 
 export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 
-# brew mysql@5.6 used for sozai.co.uk
-export PATH="/usr/local/opt/mysql@5.6/bin:$PATH"
-export LDFLAGS="-L/usr/local/opt/mysql@5.6/lib"
-export CPPFLAGS="-I/usr/local/opt/mysql@5.6/include"
-
 # fzf
 if type "fzf" > /dev/null 2>&1; then
   source "/usr/local/opt/fzf/shell/key-bindings.bash"
