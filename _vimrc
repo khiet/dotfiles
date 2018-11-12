@@ -46,11 +46,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'https://github.com/othree/yajs.vim'
   Plug 'https://github.com/othree/es.next.syntax.vim'
 
-  " Snippet
-  Plug 'https://github.com/SirVer/ultisnips'
-  Plug 'https://github.com/epilande/vim-es2015-snippets'
-  Plug 'https://github.com/epilande/vim-react-snippets'
-
   " Language Server
   Plug 'https://github.com/w0rp/ale'
 call plug#end()
