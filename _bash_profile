@@ -24,6 +24,7 @@ alias pg="ps aux | grep"
 alias ct="ctags -R ."
 alias gdel="git branch --merged | egrep -v '(^\*|master)' | xargs git branch -d"
 alias gg="git grep"
+alias ag="ag --color-match '1;31'"
 alias agu='ag -u'
 alias agg='ag --u -g'
 alias agc='ag --hidden --path-to-ignore ~/.ignore -C 5'
