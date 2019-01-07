@@ -25,8 +25,8 @@ alias ct="ctags -R ."
 alias gdel="git branch --merged | egrep -v '(^\*|master)' | xargs git branch -d"
 alias gg="git grep"
 alias agu='ag -u'
-alias agc='ag --hidden --path-to-ignore ~/.ignore -C 5'
 alias agg='ag --u -g'
+alias agc='ag --hidden --path-to-ignore ~/.ignore -C 5'
 alias calm='cal -3'
 alias caly='cal -y'
 alias kill='kill -9'
@@ -81,3 +81,5 @@ export PATH=/Users/khietle/Library/Python/3.7/bin:$PATH
 
 # rbenv
 eval "$(rbenv init -)"
+
+function agr { ag -0 -l "$1" | AGR_FROM="$1" AGR_TO="$2" xargs -0 perl -pi -e 's/$ENV{AGR_FROM}/$ENV{AGR_TO}/g'; }

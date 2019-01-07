@@ -8,6 +8,10 @@
 **.woff2
 
 **.min.js
+**.min.css
+
+yarn.lock
+Gemfile.lock
 
 /.git
 .keep
