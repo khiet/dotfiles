@@ -60,9 +60,9 @@ let mapleader=","
 inoremap jj <esc>
 
 " edit config files
-nmap <leader>ev :tabedit $MYVIMRC<CR>
-nmap <leader>eb :tabedit <C-R>=expand($HOME."/.bash_profile")<CR><CR>
-nmap <leader>et :tabedit <C-R>=expand($HOME."/.tmux.conf")<CR><CR>
+nmap <leader>ev :vs $MYVIMRC<CR>
+nmap <leader>eb :vs <C-R>=expand($HOME."/.bash_profile")<CR><CR>
+nmap <leader>et :vs <C-R>=expand($HOME."/.tmux.conf")<CR><CR>
 " open schema.rb (from vim-rails)
 nmap <leader>vs :Vschema <CR>
 
@@ -203,6 +203,14 @@ if &t_Co > 2 || has("gui_running") " &t_Co > 2 # if colors exist
   set hlsearch
 endif
 
+" ale
+
+" see :h ale-support for a list of linters
+let g:ale_fixers = { 'javascript': ['prettier', 'eslint'] }
+" ['eslint', 'flow', 'jscs', 'jshint', 'prettier', 'prettier-eslint', 'prettier-standard', 'standard', 'xo']
+let g:ale_linters = { 'javascript': 'all' }
+let g:ale_linters_explicit = 1
+let g:ale_fix_on_save = 1
 " -----------------------------------------------
 "    GUI
 " -----------------------------------------------
@@ -258,16 +266,6 @@ endif
 
 " vim-closetag
 let g:closetag_filenames = '*.html,*.erb,*.js,*.jsx'
-
-" ale
-let g:ale_linters_explicit = 1
-let g:ale_linters = {}
-let g:ale_linters['javascript'] = ['eslint']
-
-let g:ale_fixers = {}
-let g:ale_fixers['javascript'] = ['prettier']
-let g:ale_fixers['markdown'] = ['prettier']
-let g:ale_fix_on_save = 1
 
 " -----------------------------------------------
 "    OS specifics
