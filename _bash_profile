@@ -80,6 +80,8 @@ export PATH=~/google-cloud-sdk/bin:$PATH
 # aws - https://docs.aws.amazon.com/cli/latest/userguide/cli-install-macos.html
 export PATH=/Users/khietle/Library/Python/3.7/bin:$PATH
 
+export PATH="/usr/local/opt/mysql@5.6/bin:$PATH"
+
 # rbenv
 eval "$(rbenv init -)"
 
