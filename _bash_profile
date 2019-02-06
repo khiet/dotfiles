@@ -31,10 +31,18 @@ alias agc='ag --hidden --path-to-ignore ~/.ignore -C 5'
 alias calm='cal -3'
 alias caly='cal -y'
 alias kill='kill -9'
-alias tns="tmux new -s"
 alias public_ip="curl ipinfo.io/ip"
+
+# flutter
 alias fela='flutter emulators --launch Pixel_2_API_28'
 alias feli='flutter emulators --launch apple_ios_simulator'
+
+# rails
+alias rr="bin/rails restart"
+alias rc="bin/rails console"
+alias rl="tail -f -n 1000 log/development.log"
+alias be="bundle exec"
+# alias fs="foreman start"
 
 export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 
@@ -51,13 +59,6 @@ else
   # enable forward (C-s) - http://askubuntu.com/questions/60071/how-to-forward-search-history-with-the-reverse-i-search-command-ctrlr
   stty stop undef
 fi
-
-# rails
-alias rr="bin/rails restart"
-alias rc="bin/rails console"
-alias rl="tail -f -n 1000 log/development.log"
-alias be="bundle exec"
-# alias fs="foreman start"
 
 # bundler
 export BUNDLER_EDITOR=vim
