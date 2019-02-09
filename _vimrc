@@ -166,6 +166,9 @@ set tabstop=2 " spaces when tab is pressed
 set shiftwidth=2 " spaces for indentation
 set softtabstop=2 " treat spaces like a tab when backspace is pressed
 
+" coc
+set cmdheight=2
+
 " filetype
 au BufRead,BufNewFile *.inky-haml set ft=haml
 
