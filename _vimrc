@@ -21,18 +21,6 @@ call plug#begin('~/.vim/plugged')
   " Colorscheme
   Plug 'https://github.com/morhetz/gruvbox'
 
-  " Rails
-  Plug 'https://github.com/tpope/vim-rails'
-
-  " Note
-  Plug 'https://github.com/glidenote/memolist.vim'
-
-  " HTML
-  Plug 'https://github.com/alvan/vim-closetag'
-
-  " CSS
-  Plug 'https://github.com/ap/vim-css-color'
-
   " Tmux
   Plug 'https://github.com/christoomey/vim-tmux-navigator'
   Plug 'https://github.com/janko-m/vim-test'
@@ -42,13 +30,24 @@ call plug#begin('~/.vim/plugged')
   Plug 'https://github.com/tpope/vim-fugitive'
   Plug 'https://github.com/airblade/vim-gitgutter'
 
+  " Rails
+  Plug 'https://github.com/tpope/vim-rails'
+
+  " HTML
+  Plug 'https://github.com/alvan/vim-closetag'
+
+  " CSS
+  Plug 'https://github.com/ap/vim-css-color'
+
   " JS, JSX, ES
   Plug 'https://github.com/mxw/vim-jsx'
   Plug 'https://github.com/othree/yajs.vim'
   Plug 'https://github.com/othree/es.next.syntax.vim'
 
-  " Language Server
   Plug 'https://github.com/w0rp/ale'
+
+  " Note
+  Plug 'https://github.com/glidenote/memolist.vim'
 call plug#end()
 " ----------------------------------------
 
