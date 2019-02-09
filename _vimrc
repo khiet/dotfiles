@@ -50,6 +50,10 @@ call plug#begin('~/.vim/plugged')
 
   " Note
   Plug 'https://github.com/glidenote/memolist.vim'
+
+  " CoC
+  " CocInstall coc-tsserver
+  Plug 'https://github.com/neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install() }}
 call plug#end()
 " ----------------------------------------
 
