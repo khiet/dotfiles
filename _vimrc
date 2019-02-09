@@ -267,6 +267,8 @@ endif
 " vim-closetag
 let g:closetag_filenames = '*.html,*.erb,*.js,*.jsx'
 
+" vim-highlight-cursor-words
+let g:HiCursorWords_linkStyle='StatusLine'
 " -----------------------------------------------
 "    OS specifics
 " -----------------------------------------------
