@@ -17,6 +17,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'https://github.com/scrooloose/nerdtree'
   Plug 'https://github.com/mileszs/ack.vim'
   Plug 'https://github.com/itchyny/lightline.vim'
+  Plug 'https://github.com/tpope/vim-surround'
 
   " Colorscheme
   Plug 'https://github.com/morhetz/gruvbox'
@@ -351,4 +352,10 @@ highlight ExtraWhitespace ctermbg=red guibg=red
 " Ctrl-I  jump to next cursor position (after Ctrl-O)
 " Ctrl-Y  move view pane up
 " Ctrl-E  move view pane down
+"
+" vim-surround
+" cs"'
+" cst'
+" ysiw
+" yss e.g. yss[ to surround with space and ] without space
 " -----------------------------------------------
