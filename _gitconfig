@@ -7,6 +7,8 @@
 	st  = status
 	co  = checkout
 	br  = branch
+	ps  = push
+	pl  = pull
 	aa  = add -A
   ci  = commit -av
   ft  = fetch
