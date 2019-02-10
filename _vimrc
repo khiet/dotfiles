@@ -232,6 +232,10 @@ else " terminal
     colorscheme gruvbox
   endif
 endif
+
+if (has("termguicolors"))
+  set termguicolors
+endif
 " -----------------------------------------------
 
 if has("autocmd")
