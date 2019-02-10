@@ -60,9 +60,9 @@ let mapleader=","
 inoremap jj <esc>
 
 " edit config files
-nmap <leader>ev :vs $MYVIMRC<CR>
-nmap <leader>eb :vs <C-R>=expand($HOME."/.bash_profile")<CR><CR>
-nmap <leader>et :vs <C-R>=expand($HOME."/.tmux.conf")<CR><CR>
+nmap <leader>ev :tabedit $MYVIMRC<CR>
+nmap <leader>eb :tabedit <C-R>=expand($HOME."/.bash_profile")<CR><CR>
+nmap <leader>et :tabedit <C-R>=expand($HOME."/.tmux.conf")<CR><CR>
 " open schema.rb (from vim-rails)
 nmap <leader>vs :Vschema <CR>
 
