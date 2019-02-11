@@ -64,8 +64,30 @@ inoremap jj <esc>
 nmap <leader>ev :tabedit $MYVIMRC<CR>
 nmap <leader>eb :tabedit <C-R>=expand($HOME."/.bash_profile")<CR><CR>
 nmap <leader>et :tabedit <C-R>=expand($HOME."/.tmux.conf")<CR><CR>
-" open schema.rb (from vim-rails)
+
+" vim-rails
+
+" open schema.rb
 nmap <leader>vs :Vschema <CR>
+" https://github.com/tpope/vim-rails/issues/368#issuecomment-265086019
+let g:rails_projections = {
+  \  "app/controllers/*_controller.rb": {
+  \      "test": [
+  \        "spec/requests/{}_spec.rb",
+  \        "spec/controllers/{}_controller_spec.rb",
+  \      ],
+  \      "alternate": [
+  \        "spec/requests/{}_spec.rb",
+  \        "spec/controllers/{}_controller_spec.rb",
+  \      ],
+  \   },
+  \   "spec/requests/*_spec.rb": {
+  \      "command": "request",
+  \      "alternate": "app/controllers/{}_controller.rb",
+  \      "template": "require 'rails_helper'" .
+  \        "RSpec.describe '{}' do\nend",
+  \   },
+  \ }
 
 " buffers
 nmap <leader>bu :buffers<cr>:buffer<space>
@@ -231,10 +253,6 @@ else " terminal
   if (&t_Co == 256) " if terminal supports 256 colours
     colorscheme gruvbox
   endif
-endif
-
-if (has("termguicolors"))
-  set termguicolors
 endif
 " -----------------------------------------------
 
