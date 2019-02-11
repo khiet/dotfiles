@@ -18,6 +18,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'https://github.com/mileszs/ack.vim'
   Plug 'https://github.com/itchyny/lightline.vim'
   Plug 'https://github.com/tpope/vim-surround'
+  Plug 'https://github.com/takac/vim-hardtime'
 
   " Colorscheme
   Plug 'https://github.com/morhetz/gruvbox'
@@ -59,6 +60,10 @@ noremap <Right> <NOP>
 
 let mapleader=","
 inoremap jj <esc>
+
+" vim-hardtime
+" http://vimcasts.org/blog/2013/02/habit-breaking-habit-making/
+let g:hardtime_default_on = 0
 
 " edit config files
 nmap <leader>ev :tabedit $MYVIMRC<CR>
