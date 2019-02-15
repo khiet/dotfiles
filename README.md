@@ -1,6 +1,6 @@
 # dotfiles
 
-### Install vim, tmux, ad, etc.
+### Install vim, tmux, ag, and fzf
 
 ```
 brew install vim
@@ -34,6 +34,19 @@ ln -s dotfiles/_prettierrc ~/.prettierrc
 
 ```
 :PlugInstall
+```
+
+### Install zsh
+
+```
+brew install zsh zsh-completions
+chsh -s /bin/zsh
+```
+
+### Install oh my zsh
+
+```
+sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 ```
 
 ### Install reattach-to-user-namespace
