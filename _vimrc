@@ -68,6 +68,7 @@ let g:hardtime_default_on = 0
 " edit config files
 nmap <leader>ev :tabedit $MYVIMRC<CR>
 nmap <leader>eb :tabedit <C-R>=expand($HOME."/.bash_profile")<CR><CR>
+nmap <leader>ez :tabedit <C-R>=expand($HOME."/.zshrc")<CR><CR>
 nmap <leader>et :tabedit <C-R>=expand($HOME."/.tmux.conf")<CR><CR>
 
 " vim-rails

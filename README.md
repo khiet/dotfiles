@@ -39,7 +39,7 @@ ln -s dotfiles/_prettierrc ~/.prettierrc
 ### Install zsh
 
 ```
-brew install zsh zsh-completions
+brew install zsh
 chsh -s /bin/zsh
 ```
 
@@ -47,6 +47,9 @@ chsh -s /bin/zsh
 
 ```
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
+# add zsh-completions plugin
+git clone https://github.com/zsh-users/zsh-completions ~/.oh-my-zsh/custom/plugins/zsh-completions
 ```
 
 ### Install reattach-to-user-namespace
