@@ -7,8 +7,6 @@ brew install vim
 brew install tmux
 brew install the_silver_searcher
 brew install fzf
-
-npm install --g prettier
 ```
 
 ### git clone
@@ -37,10 +35,6 @@ ln -s dotfiles/_prettierrc ~/.prettierrc
 ```
 :PlugInstall
 ```
-
-### Install git-aware-prompt
-
-https://github.com/jimeh/git-aware-prompt
 
 ### Install reattach-to-user-namespace
 
