@@ -40,7 +40,7 @@ ln -s dotfiles/_prettierrc ~/.prettierrc
 ### chsh to zsh
 
 ```
-chsh -s /bin/zsh
+chsh -s $(which zsh)
 ```
 
 ### Install oh my zsh
