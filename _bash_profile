@@ -28,7 +28,6 @@ alias ag="ag --color-match '1;31'"
 alias agu='ag -u'
 alias agg='ag --u -g'
 alias agc='ag --hidden --path-to-ignore ~/.ignore -C 5'
-alias calm='cal -3'
 alias caly='cal -y'
 alias kill='kill -9'
 alias public_ip="curl ipinfo.io/ip"
@@ -44,7 +43,7 @@ alias rl="tail -f -n 1000 log/development.log"
 alias be="bundle exec"
 # alias fs="foreman start"
 
-export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
+export PATH="/usr/local/bin:$PATH"
 
 # fzf
 if type "fzf" > /dev/null 2>&1; then
@@ -60,16 +59,12 @@ else
   stty stop undef
 fi
 
-# bundler
-export BUNDLER_EDITOR=vim
-
 # flutter
 export PATH=~/flutter/bin:$PATH
 # dart
 export PATH=~/flutter/bin/cache/dart-sdk/bin:$PATH
 # gcloud - https://cloud.google.com/sdk/docs/quickstart-macos
 export PATH=~/google-cloud-sdk/bin:$PATH
-
 # aws - https://docs.aws.amazon.com/cli/latest/userguide/cli-install-macos.html
 export PATH=/Users/khietle/Library/Python/3.7/bin:$PATH
 
@@ -78,4 +73,5 @@ export PATH="/usr/local/opt/mysql@5.6/bin:$PATH"
 # rbenv
 eval "$(rbenv init -)"
 
+# find and replace with ag
 function agr { ag -0 -l "$1" | AGR_FROM="$1" AGR_TO="$2" xargs -0 perl -pi -e 's/$ENV{AGR_FROM}/$ENV{AGR_TO}/g'; }

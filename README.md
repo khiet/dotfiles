@@ -22,6 +22,7 @@ ln -s dotfiles ~/.vim
 ln -s dotfiles/_vimrc ~/.vimrc
 ln -s dotfiles/_gitconfig ~/.gitconfig
 ln -s dotfiles/_bash_profile ~/.bash_profile
+ln -s dotfiles/_zshrc ~/.zshrc
 ln -s dotfiles/_ctags ~/.ctags
 ln -s dotfiles/_tmux.conf ~/.tmux.conf
 ln -s dotfiles/_tm_properties ~/.tm_properties
@@ -47,9 +48,6 @@ chsh -s /bin/zsh
 
 ```
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-
-# add zsh-completions plugin
-git clone https://github.com/zsh-users/zsh-completions ~/.oh-my-zsh/custom/plugins/zsh-completions
 ```
 
 ### Install reattach-to-user-namespace

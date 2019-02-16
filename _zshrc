@@ -1,3 +1,4 @@
+# https://github.com/robbyrussell/oh-my-zsh/blob/master/templates/zshrc.zsh-template
 export ZSH="/Users/khietle/.oh-my-zsh"
 
 # https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
@@ -16,15 +17,73 @@ ENABLE_CORRECTION="true"
 # display red dots whilst waiting for completion
 COMPLETION_WAITING_DOTS="true"
 
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-HIST_STAMPS="mm/dd/yyyy"
+# https://github.com/robbyrussell/oh-my-zsh/issues/3466
+HIST_STAMPS="%d/%m/%y %T "
 alias history='fc -il 1'
 
 # standard plugins can be found in ~/.oh-my-zsh/plugins/*
-plugins=(git zsh-completions vi-mode)
+plugins=(git vi-mode)
 
 source $ZSH/oh-my-zsh.sh
+
+# "ls" color
+# LSCOLORS=Gxfxcxdxbxegedabagacad
+
+export LESS=-RFX
+export EDITOR='vim'
+
+alias dl="youtube-dl -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4' -o '~/youtube/%(title)s-%(id)s.%(ext)s'"
+alias grep="grep --color"
+alias pg="ps aux | grep"
+alias ct="ctags -R ."
+alias gdel="git branch --merged | egrep -v '(^\*|master)' | xargs git branch -d"
+alias gg="git grep"
+alias ag="ag --color-match '1;31'"
+alias agu='ag -u'
+alias agg='ag --u -g'
+alias agc='ag --hidden --path-to-ignore ~/.ignore -C 5'
+alias caly='cal -y'
+alias kill='kill -9'
+alias public_ip="curl ipinfo.io/ip"
+
+# flutter
+alias fela='flutter emulators --launch Pixel_2_API_28'
+alias feli='flutter emulators --launch apple_ios_simulator'
+
+# rails
+alias rr="bin/rails restart"
+alias rc="bin/rails console"
+alias rl="tail -f -n 1000 log/development.log"
+alias be="bundle exec"
+# alias fs="foreman start"
+
+# fzf
+if type "fzf" > /dev/null 2>&1; then
+  source "/usr/local/opt/fzf/shell/key-bindings.zsh"
+  export FZF_DEFAULT_OPTS='--height 50% --reverse'
+  # use ag instead of find
+  # used in fzf and vim
+  export FZF_DEFAULT_COMMAND='ag -l --no-color -g "" --hidden --path-to-ignore ~/.ignore'
+  # used in fzf in <c-t>
+  export FZF_CTRL_T_COMMAND='ag -l --no-color -g "" --hidden'
+else
+  # enable forward (C-s) - http://askubuntu.com/questions/60071/how-to-forward-search-history-with-the-reverse-i-search-command-ctrlr
+  stty stop undef
+fi
+
+# flutter
+export PATH=~/flutter/bin:$PATH
+# dart
+export PATH=~/flutter/bin/cache/dart-sdk/bin:$PATH
+# gcloud - https://cloud.google.com/sdk/docs/quickstart-macos
+export PATH=~/google-cloud-sdk/bin:$PATH
+# aws - https://docs.aws.amazon.com/cli/latest/userguide/cli-install-macos.html
+export PATH=/Users/khietle/Library/Python/3.7/bin:$PATH
+
+export PATH="/usr/local/opt/mysql@5.6/bin:$PATH"
+
+# rbenv
+eval "$(rbenv init -)"
+
+# find and replace with ag
+function agr { ag -0 -l "$1" | AGR_FROM="$1" AGR_TO="$2" xargs -0 perl -pi -e 's/$ENV{AGR_FROM}/$ENV{AGR_TO}/g'; }
