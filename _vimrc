@@ -12,7 +12,7 @@ endif
 " https://github.com/junegunn/vim-plug#commands
 call plug#begin('~/.vim/plugged')
   " Utilities
-  Plug 'https://github.com/pboettch/vim-highlight-cursor-words'
+  Plug 'https://github.com/dominikduda/vim_current_word'
   Plug 'https://github.com/pbrisbin/vim-mkdir'
   Plug 'https://github.com/scrooloose/nerdtree'
   Plug 'https://github.com/mileszs/ack.vim'
@@ -271,6 +271,10 @@ else " terminal
   endif
 endif
 " -----------------------------------------------
+
+" vim_current_word
+hi CurrentWord ctermbg=53
+hi CurrentWordTwins ctermbg=237
 
 if has("autocmd")
   " http://stackoverflow.com/questions/2400264/is-it-possible-to-apply-vim-configurations-without-restarting/2400289#2400289
