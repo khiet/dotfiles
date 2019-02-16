@@ -37,10 +37,9 @@ ln -s dotfiles/_prettierrc ~/.prettierrc
 :PlugInstall
 ```
 
-### Install zsh
+### chsh to zsh
 
 ```
-brew install zsh
 chsh -s /bin/zsh
 ```
 
