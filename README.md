@@ -1,14 +1,12 @@
 # dotfiles
 
-### Install vim, tmux, ad, etc.
+### Install vim, tmux, ag, and fzf
 
 ```
 brew install vim
 brew install tmux
 brew install the_silver_searcher
 brew install fzf
-
-npm install --g prettier
 ```
 
 ### git clone
@@ -24,6 +22,7 @@ ln -s dotfiles ~/.vim
 ln -s dotfiles/_vimrc ~/.vimrc
 ln -s dotfiles/_gitconfig ~/.gitconfig
 ln -s dotfiles/_bash_profile ~/.bash_profile
+ln -s dotfiles/_zshrc ~/.zshrc
 ln -s dotfiles/_ctags ~/.ctags
 ln -s dotfiles/_tmux.conf ~/.tmux.conf
 ln -s dotfiles/_tm_properties ~/.tm_properties
@@ -38,9 +37,21 @@ ln -s dotfiles/_prettierrc ~/.prettierrc
 :PlugInstall
 ```
 
-### Install git-aware-prompt
+### chsh to zsh
 
-https://github.com/jimeh/git-aware-prompt
+```
+chsh -s $(which zsh)
+```
+
+### Install oh my zsh
+
+```
+sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
+
+git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
+```
 
 ### Install reattach-to-user-namespace
 

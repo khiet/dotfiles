@@ -1,22 +1,54 @@
-# home
-set -o vi
+# https://github.com/robbyrussell/oh-my-zsh/blob/master/templates/zshrc.zsh-template
+export ZSH="/Users/khietle/.oh-my-zsh"
+
+# https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+ZSH_THEME="robbyrussell"
+
+CASE_SENSITIVE="true"
+# HYPHEN_INSENSITIVE="true"
+
+# auto-update
+# DISABLE_AUTO_UPDATE="true"
+# export UPDATE_ZSH_DAYS=13
+
+# enable command auto-correction
+# ENABLE_CORRECTION="true"
+
+# display red dots whilst waiting for completion
+COMPLETION_WAITING_DOTS="true"
+
+# https://github.com/robbyrussell/oh-my-zsh/issues/3466
+HIST_STAMPS="%d/%m/%y %T "
+alias history='fc -il 1'
+
+# standard plugins can be found in ~/.oh-my-zsh/plugins/*
+plugins=(
+  zsh-syntax-highlighting
+  zsh-autosuggestions
+)
+
+# https://github.com/zsh-users/zsh-autosuggestions#key-bindings
+# bindkey '^ ' autosuggest-accept
+
+source $ZSH/oh-my-zsh.sh
 
 # "ls" color
-export CLICOLOR=1
-export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
+# LSCOLORS=Gxfxcxdxbxegedabagacad
+
+# zle -al
+
+# find bindkey
+# bindkey | fgrep 'end-of-line'
+
+# vim mode
+bindkey -v
+export KEYTIMEOUT=1
+bindkey '^N' history-search-forward
+bindkey '^P' history-search-backward
+bindkey '^F' forward-char
 
 export LESS=-RFX
 export EDITOR='vim'
-
-# history
-export HISTCONTROL='ignoredups:erasedups'
-export HISTSIZE=100000
-export HISTIGNORE='clear:exit:vim:ls:history'
-export HISTFILESIZE=100000
-export HISTTIMEFORMAT="%d/%m/%y %T "
-shopt -s histappend # append to history
-# save and reload the history after each command finishes
-export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
 alias dl="youtube-dl -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4' -o '~/youtube/%(title)s-%(id)s.%(ext)s'"
 alias grep="grep --color"
@@ -29,7 +61,6 @@ alias agu='ag -u'
 alias agg='ag --u -g'
 alias agc='ag --hidden --path-to-ignore ~/.ignore -C 5'
 alias caly='cal -y'
-alias kill='kill -9'
 alias public_ip="curl ipinfo.io/ip"
 
 # flutter
@@ -39,15 +70,15 @@ alias feli='flutter emulators --launch apple_ios_simulator'
 # rails
 alias rr="bin/rails restart"
 alias rc="bin/rails console"
+alias rS="bin/rails server"
 alias rl="tail -f -n 1000 log/development.log"
+alias rlc="tail -f -n 1000 log/development.log | grep -C 5 Controller"
 alias be="bundle exec"
 # alias fs="foreman start"
 
-export PATH="/usr/local/bin:$PATH"
-
 # fzf
 if type "fzf" > /dev/null 2>&1; then
-  source "/usr/local/opt/fzf/shell/key-bindings.bash"
+  source "/usr/local/opt/fzf/shell/key-bindings.zsh"
   export FZF_DEFAULT_OPTS='--height 50% --reverse'
   # use ag instead of find
   # used in fzf and vim
@@ -58,14 +89,6 @@ else
   # enable forward (C-s) - http://askubuntu.com/questions/60071/how-to-forward-search-history-with-the-reverse-i-search-command-ctrlr
   stty stop undef
 fi
-
-# git-aware-prompt
-# https://github.com/jimeh/git-aware-prompt
-export GITAWAREPROMPT=~/.bash/git-aware-prompt
-source $GITAWAREPROMPT/main.sh
-
-# terminal colour
-export PS1="\[$bldylw\]\\w \[$txtgrn\]\$git_branch\[$txtred\]\$git_dirty\[$txtrst\]\$ "
 
 # flutter
 export PATH=~/flutter/bin:$PATH
