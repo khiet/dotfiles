@@ -130,7 +130,7 @@ nnoremap <leader>s :%s//
 " noh
 nnoremap <leader>h :noh<CR>
 " reload
-nnoremap <leader>r :e!<CR>
+nnoremap <leader>e :e!<CR>
 
 " allow backspacing over everything in i-mode
 set backspace=indent,eol,start
@@ -167,7 +167,10 @@ set shiftwidth=2 " spaces for indentation
 set softtabstop=2 " treat spaces like a tab when backspace is pressed
 
 " coc
+" https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions
 set cmdheight=2
+nmap <leader>rn <Plug>(coc-rename)
+nmap <silent>gd <Plug>(coc-definition)
 
 " filetype
 au BufRead,BufNewFile *.inky-haml set ft=haml
