@@ -59,6 +59,14 @@ else
   stty stop undef
 fi
 
+# git-aware-prompt
+# https://github.com/jimeh/git-aware-prompt
+export GITAWAREPROMPT=~/.bash/git-aware-prompt
+source $GITAWAREPROMPT/main.sh
+
+# terminal colour
+export PS1="\[$bldylw\]\\w \[$txtgrn\]\$git_branch\[$txtred\]\$git_dirty\[$txtrst\]\$ "
+
 # flutter
 export PATH=~/flutter/bin:$PATH
 # dart
