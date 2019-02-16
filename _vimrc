@@ -125,6 +125,8 @@ nnoremap <leader>s :%s//
 
 " noh
 nnoremap <leader>h :noh<CR>
+" reload
+nnoremap <leader>r :e!<CR>
 
 " allow backspacing over everything in i-mode
 set backspace=indent,eol,start
