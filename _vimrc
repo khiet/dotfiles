@@ -169,6 +169,20 @@ set softtabstop=2 " treat spaces like a tab when backspace is pressed
 " coc
 " https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions
 set cmdheight=2
+
+" use tab for trigger completion with characters ahead and navigate
+" https://github.com/neoclide/coc.nvim#example-vim-configuration
+inoremap <silent><expr> <TAB>
+  \ pumvisible() ? "\<C-n>" :
+  \ <SID>check_back_space() ? "\<TAB>" :
+  \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
 nmap <leader>rn <Plug>(coc-rename)
 nmap <silent>gd <Plug>(coc-definition)
 
