@@ -22,7 +22,12 @@ HIST_STAMPS="%d/%m/%y %T "
 alias history='fc -il 1'
 
 # standard plugins can be found in ~/.oh-my-zsh/plugins/*
-plugins=(git vi-mode)
+plugins=(
+  git
+  vi-mode
+  zsh-syntax-highlighting
+  zsh-autosuggestions
+)
 
 source $ZSH/oh-my-zsh.sh
 
