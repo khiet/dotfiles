@@ -172,11 +172,7 @@ set cmdheight=2
 
 " use tab for trigger completion with characters ahead and navigate
 " https://github.com/neoclide/coc.nvim#example-vim-configuration
-inoremap <silent><expr> <TAB>
-  \ pumvisible() ? "\<C-n>" :
-  \ <SID>check_back_space() ? "\<TAB>" :
-  \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+inoremap <silent><expr> <TAB> <SID>check_back_space() ? "\<TAB>" : coc#refresh()
 
 function! s:check_back_space() abort
   let col = col('.') - 1
