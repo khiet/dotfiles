@@ -12,7 +12,7 @@ CASE_SENSITIVE="true"
 # export UPDATE_ZSH_DAYS=13
 
 # enable command auto-correction
-ENABLE_CORRECTION="true"
+# ENABLE_CORRECTION="true"
 
 # display red dots whilst waiting for completion
 COMPLETION_WAITING_DOTS="true"
@@ -23,16 +23,29 @@ alias history='fc -il 1'
 
 # standard plugins can be found in ~/.oh-my-zsh/plugins/*
 plugins=(
-  git
-  vi-mode
   zsh-syntax-highlighting
   zsh-autosuggestions
 )
+
+# https://github.com/zsh-users/zsh-autosuggestions#key-bindings
+# bindkey '^ ' autosuggest-accept
 
 source $ZSH/oh-my-zsh.sh
 
 # "ls" color
 # LSCOLORS=Gxfxcxdxbxegedabagacad
+
+# zle -al
+
+# find bindkey
+# bindkey | fgrep 'end-of-line'
+
+# vim mode
+bindkey -v
+export KEYTIMEOUT=1
+bindkey '^N' history-search-forward
+bindkey '^P' history-search-backward
+bindkey '^F' forward-char
 
 export LESS=-RFX
 export EDITOR='vim'
