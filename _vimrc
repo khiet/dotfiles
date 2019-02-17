@@ -75,30 +75,6 @@ nmap <leader>eb :tabedit <C-R>=expand($HOME."/.bash_profile")<CR><CR>
 nmap <leader>ez :tabedit <C-R>=expand($HOME."/.zshrc")<CR><CR>
 nmap <leader>et :tabedit <C-R>=expand($HOME."/.tmux.conf")<CR><CR>
 
-" vim-rails
-
-" open schema.rb
-nmap <leader>vs :Vschema <CR>
-" https://github.com/tpope/vim-rails/issues/368#issuecomment-265086019
-let g:rails_projections = {
-  \  "app/controllers/*_controller.rb": {
-  \      "test": [
-  \        "spec/requests/{}_spec.rb",
-  \        "spec/controllers/{}_controller_spec.rb",
-  \      ],
-  \      "alternate": [
-  \        "spec/requests/{}_spec.rb",
-  \        "spec/controllers/{}_controller_spec.rb",
-  \      ],
-  \   },
-  \   "spec/requests/*_spec.rb": {
-  \      "command": "request",
-  \      "alternate": "app/controllers/{}_controller.rb",
-  \      "template": "require 'rails_helper'" .
-  \        "RSpec.describe '{}' do\nend",
-  \   },
-  \ }
-
 " buffers
 nmap <leader>bu :buffers<cr>:buffer<space>
 nmap <leader>bd :buffers<cr>:bdelete<space>
@@ -296,6 +272,10 @@ endif
 hi CurrentWord ctermbg=53
 hi CurrentWordTwins ctermbg=237
 
+" highlight trailing whitespaces
+au BufWritePre * match ExtraWhitespace /\s\+$/
+highlight ExtraWhitespace ctermbg=red guibg=red
+
 if has("autocmd")
   " http://stackoverflow.com/questions/2400264/is-it-possible-to-apply-vim-configurations-without-restarting/2400289#2400289
   augroup myvimrc
@@ -382,13 +362,41 @@ function! <SID>ReplaceCurlyQuotes()
   let @/=_s
   call cursor(l, c)
 endfunction
+
+" ctags - http://vim.wikia.com/wiki/Autocmd_to_update_ctags_file
+function! UpdateTags()
+  let cwd = getcwd()
+  let tagfilename = cwd . "/tags"
+  let cmd = 'ctags -f ' . tagfilename
+  let resp = system(cmd)
+endfunction
+
 " -----------------------------------------------
 
 nnoremap <silent> <leader>t :call <SID>StripTrailingWhitespaces()<CR>
 nnoremap <silent> <leader>c :call <SID>ReplaceCurlyQuotes()<CR>
-" highlight trailing whitespaces
-au BufWritePre * match ExtraWhitespace /\s\+$/
-highlight ExtraWhitespace ctermbg=red guibg=red
+nnoremap <script> <leader>ct :call UpdateTags()<CR>
+
+" vim-rails
+" https://github.com/tpope/vim-rails/issues/368#issuecomment-265086019
+let g:rails_projections = {
+  \  "app/controllers/*_controller.rb": {
+  \      "test": [
+  \        "spec/requests/{}_spec.rb",
+  \        "spec/controllers/{}_controller_spec.rb",
+  \      ],
+  \      "alternate": [
+  \        "spec/requests/{}_spec.rb",
+  \        "spec/controllers/{}_controller_spec.rb",
+  \      ],
+  \   },
+  \   "spec/requests/*_spec.rb": {
+  \      "command": "request",
+  \      "alternate": "app/controllers/{}_controller.rb",
+  \      "template": "require 'rails_helper'" .
+  \        "RSpec.describe '{}' do\nend",
+  \   },
+  \ }
 
 " replace rails params hash into { foo: 'bar', ... }
 " nnoremap <leader>h :%s/"\(\w*\)"\s*=>/\1: /g <bar> :%s/,/,\r/g <bar> :noh <CR>
