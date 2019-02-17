@@ -43,9 +43,12 @@ source $ZSH/oh-my-zsh.sh
 # vim mode
 bindkey -v
 export KEYTIMEOUT=1
-bindkey '^N' history-search-forward
-bindkey '^P' history-search-backward
-bindkey '^F' forward-char
+# mapping - https://github.com/robbyrussell/oh-my-zsh/blob/master/plugins/vi-mode/vi-mode.plugin.zsh
+bindkey '^P' up-history
+bindkey '^N' down-history
+bindkey '^a' beginning-of-line
+bindkey '^e' end-of-line
+bindkey '^h' backward-delete-char
 
 export LESS=-RFX
 export EDITOR='vim'
