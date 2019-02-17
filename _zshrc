@@ -11,15 +11,12 @@ CASE_SENSITIVE="true"
 # DISABLE_AUTO_UPDATE="true"
 # export UPDATE_ZSH_DAYS=13
 
-# enable command auto-correction
-# ENABLE_CORRECTION="true"
-
 # display red dots whilst waiting for completion
 COMPLETION_WAITING_DOTS="true"
 
 # https://github.com/robbyrussell/oh-my-zsh/issues/3466
 HIST_STAMPS="%d/%m/%y %T "
-alias history='fc -il 1'
+alias hs='fc -il 1'
 
 # standard plugins can be found in ~/.oh-my-zsh/plugins/*
 plugins=(
@@ -55,7 +52,6 @@ export LESS=-RFX
 export EDITOR='vim'
 
 alias dl="youtube-dl -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4' -o '~/youtube/%(title)s-%(id)s.%(ext)s'"
-alias grep="grep --color"
 alias pg="ps aux | grep"
 alias ct="ctags -R ."
 alias gdel="git branch --merged | egrep -v '(^\*|master)' | xargs git branch -d"
