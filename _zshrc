@@ -49,6 +49,7 @@ bindkey '^N' down-history
 bindkey '^a' beginning-of-line
 bindkey '^e' end-of-line
 bindkey '^h' backward-delete-char
+bindkey -M vicmd 'v' edit-command-line
 
 export LESS=-RFX
 export EDITOR='vim'
