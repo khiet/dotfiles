@@ -74,6 +74,7 @@ alias rS="bin/rails server"
 alias rl="tail -f -n 1000 log/development.log"
 alias rlc="tail -f -n 1000 log/development.log | grep -C 5 Controller"
 alias be="bundle exec"
+alias lr="bundle exec guard -G Guardfile.livereload"
 # alias fs="foreman start"
 
 # fzf
