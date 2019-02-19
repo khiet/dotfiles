@@ -390,11 +390,10 @@ let g:rails_projections = {
   \        "spec/controllers/{}_controller_spec.rb",
   \      ],
   \   },
-  \   "spec/requests/*_spec.rb": {
-  \      "command": "request",
-  \      "alternate": "app/controllers/{}_controller.rb",
-  \      "template": "require 'rails_helper'" .
-  \        "RSpec.describe '{}' do\nend",
+  \  "app/queries/*_query.rb": {
+  \      "test": [
+  \        "spec/queries/{}_spec.rb",
+  \      ],
   \   },
   \ }
 
