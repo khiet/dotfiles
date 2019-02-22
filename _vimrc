@@ -270,7 +270,7 @@ endif
 
 " vim_current_word
 hi CurrentWord ctermbg=53
-hi CurrentWordTwins ctermbg=237
+" hi CurrentWordTwins ctermbg=237
 
 " highlight trailing whitespaces
 au BufWritePre * match ExtraWhitespace /\s\+$/
@@ -310,8 +310,6 @@ endif
 " vim-closetag
 let g:closetag_filenames = '*.html,*.erb,*.js,*.jsx'
 
-" vim-highlight-cursor-words
-" let g:HiCursorWords_linkStyle='StatusLine'
 " -----------------------------------------------
 "    OS specifics
 " -----------------------------------------------
