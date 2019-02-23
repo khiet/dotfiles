@@ -303,11 +303,9 @@ highlight SpellBad cterm=underline ctermfg=red gui=underline guifg=red
 " gitgutter
 let g:gitgutter_map_keys = 0 " turn off all key mappings
 " https://github.com/airblade/vim-gitgutter#sign-column
-if exists('&signcolumn')
-  set signcolumn=yes
-else
-  let g:gitgutter_sign_column_always = 1
-endif
+set signcolumn=yes
+let g:gitgutter_grep = 'ag'
+autocmd BufWritePost * GitGutter
 
 " vim-closetag
 let g:closetag_filenames = '*.html,*.erb,*.js,*.jsx'
