@@ -94,7 +94,7 @@ vmap << <gv
 vmap >> >gv
 
 " indent file
-nmap <leader>= ggvG=<C-o><C-o>
+nnoremap <leader>= ggvG=<C-o><C-o>
 
 " saving
 nnoremap <leader>w :w<cr>
@@ -107,6 +107,8 @@ nnoremap <leader>s :%s//
 nnoremap <leader>h :noh<CR>
 " reload
 nnoremap <leader>e :e!<CR>
+" set cursorcolumn
+nnoremap <leader>cc :set cursorcolumn!<CR>
 
 " allow backspacing over everything in i-mode
 set backspace=indent,eol,start
@@ -372,7 +374,7 @@ endfunction
 " -----------------------------------------------
 
 nnoremap <silent> <leader>t :call <SID>StripTrailingWhitespaces()<CR>
-nnoremap <silent> <leader>c :call <SID>ReplaceCurlyQuotes()<CR>
+nnoremap <silent> <leader>cq :call <SID>ReplaceCurlyQuotes()<CR>
 nnoremap <script> <leader>ct :call UpdateTags()<CR>
 
 " vim-rails
