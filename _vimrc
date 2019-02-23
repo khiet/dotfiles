@@ -62,7 +62,7 @@ noremap <Down>  <NOP>
 noremap <Left>  <NOP>
 noremap <Right> <NOP>
 
-let mapleader=","
+let mapleader=" "
 inoremap jj <esc>
 
 " vim-hardtime
