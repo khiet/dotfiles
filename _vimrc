@@ -113,6 +113,10 @@ nnoremap <leader>a :Ack!<space>
 " http://vim.wikia.com/wiki/Replace_a_word_with_yanked_text
 xnoremap <silent> p p:let @+=@0<CR>:let @"=@0<CR>
 
+" switch between the last two files
+" https://github.com/thoughtbot/dotfiles/blob/master/vimrc#L128
+nnoremap <Leader><Leader> <C-^>
+
 " indenting
 vnoremap << <gv
 vnoremap >> >gv
@@ -184,6 +188,8 @@ au BufRead,BufNewFile *.inky-haml set ft=haml
 au BufRead,BufNewFile *.md set filetype=markdown
 au FileType markdown setlocal spell
 au FileType gitcommit setlocal spell
+" autocomplete with dictionary words when spell check is on
+set complete+=kspell
 
 " enable mouse in terminal emulators
 if has("mouse")
