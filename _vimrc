@@ -104,7 +104,7 @@ nnoremap <leader>cF :let @*=expand("%:p")<CR>
 nnoremap <leader>ls :set list!<CR>
 
 " enable spell check
-nnoremap <leader>sp :set spell!<CR>
+"nnoremap <leader>sp :set spell!<CR>
 
 " Ack
 nnoremap <leader>a :Ack!<space>
