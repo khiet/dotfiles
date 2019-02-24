@@ -63,11 +63,6 @@ noremap <Left>  <NOP>
 noremap <Right> <NOP>
 
 let mapleader=" "
-inoremap jj <esc>
-
-" vim-hardtime
-" http://vimcasts.org/blog/2013/02/habit-breaking-habit-making/
-let g:hardtime_default_on = 0
 
 " edit config files
 nnoremap <leader>ev :tabedit $MYVIMRC<CR>
@@ -81,18 +76,6 @@ nnoremap <leader>bd :buffers<cr>:bdelete<space>
 nnoremap <leader>bn :bn<CR>
 nnoremap <leader>bp :bp<CR>
 
-" yank
-" http://vim.wikia.com/wiki/Replace_a_word_with_yanked_text
-xnoremap <silent> p p:let @+=@0<CR>:let @"=@0<CR>
-
-" gf
-" recognize .js without extension
-set suffixesadd=.js
-
-" indenting
-vmap << <gv
-vmap >> >gv
-
 " indent file
 nnoremap <leader>= ggvG=<C-o><C-o>
 
@@ -105,11 +88,45 @@ nnoremap <leader>s :%s//
 
 " noh
 nnoremap <leader>h :noh<CR>
+
 " reload
 nnoremap <leader>e :e!<CR>
+
 " set cursorcolumn
 nnoremap <leader>cc :set cursorcolumn!<CR>
 
+" copy relative path
+nnoremap <leader>cf :let @*=expand("%")<CR>
+" copy absolute path
+nnoremap <leader>cF :let @*=expand("%:p")<CR>
+
+" list invisibles
+nnoremap <leader>ls :set list!<CR>
+
+" enable spell check
+nnoremap <leader>sp :set spell!<CR>
+
+" Ack
+nnoremap <leader>a :Ack!<space>
+
+" yank
+" http://vim.wikia.com/wiki/Replace_a_word_with_yanked_text
+xnoremap <silent> p p:let @+=@0<CR>:let @"=@0<CR>
+
+" indenting
+vnoremap << <gv
+vnoremap >> >gv
+
+inoremap jj <esc>
+
+" byebug
+noremap <leader>dr obyebug<esc>:w<cr>
+" debugger
+noremap <leader>dj odebugger;<esc>:w<cr>
+
+" gf
+" recognize .js without extension
+set suffixesadd=.js
 " allow backspacing over everything in i-mode
 set backspace=indent,eol,start
 " consider '-' as part of a word
@@ -168,16 +185,6 @@ au BufRead,BufNewFile *.md set filetype=markdown
 au FileType markdown setlocal spell
 au FileType gitcommit setlocal spell
 
-" byebug
-map <leader>dr obyebug<esc>:w<cr>
-" debugger
-map <leader>dj odebugger;<esc>:w<cr>
-
-" copy relative path
-nnoremap <leader>cf :let @*=expand("%")<CR>
-" copy absolute path
-nnoremap <leader>cF :let @*=expand("%:p")<CR>
-
 " enable mouse in terminal emulators
 if has("mouse")
   set mouse=a
@@ -197,9 +204,6 @@ if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
 
-" Ack
-nnoremap <leader>a :Ack!<space>
-
 " fzf
 set rtp+=/usr/local/opt/fzf
 nnoremap <silent> <c-t> :FZF<cr>
@@ -207,7 +211,7 @@ let g:fzf_action = { 'ctrl-t': 'tab split', 'ctrl-x': 'split', 'ctrl-v': 'vsplit
 let g:fzf_layout = { 'down': '~25%' }
 
 " NERDTree
-map <C-n> :NERDTreeToggle<CR>
+noremap <C-n> :NERDTreeToggle<CR>
 let g:NERDTreeWinSize=35
 
 " lightline
@@ -292,11 +296,6 @@ let g:memolist_memo_suffix = "txt"
 let g:memolist_memo_date = "%d %b %Y"
 nnoremap <leader>m :exe 'FZF' g:memolist_path<CR>
 
-" list invisibles
-"nnoremap <leader>l :set list!<CR>
-" enable spell check
-"nnoremap <leader>s :set spell!<CR>
-
 highlight clear SpellBad
 highlight SpellBad cterm=underline ctermfg=red gui=underline guifg=red
 
@@ -320,7 +319,7 @@ if has("mac") " Mac
   " set dictionary-=/usr/share/dict/words dictionary+=/usr/share/dict/words
   " set complete-=k complete+=k
 
-  " #1 - invisibles
+  " invisibles
   set listchars=tab:»\ ,eol:$,nbsp:%,trail:~,extends:>,precedes:<
 
   "clipboard - http://vim.wikia.com/wiki/Mac_OS_X_clipboard_sharing
@@ -368,7 +367,6 @@ function! UpdateTags()
   let cmd = 'ctags -f ' . tagfilename
   let resp = system(cmd)
 endfunction
-
 " -----------------------------------------------
 
 nnoremap <silent> <leader>t :call <SID>StripTrailingWhitespaces()<CR>
@@ -386,8 +384,9 @@ let g:rails_projections = {
   \   },
   \ }
 
-" replace rails params hash into { foo: 'bar', ... }
-" nnoremap <leader>h :%s/"\(\w*\)"\s*=>/\1: /g <bar> :%s/,/,\r/g <bar> :noh <CR>
+" vim-hardtime
+" http://vimcasts.org/blog/2013/02/habit-breaking-habit-making/
+let g:hardtime_default_on = 0
 
 " -----------------------------------------------
 "    cheat sheets
