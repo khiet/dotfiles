@@ -221,7 +221,7 @@ noremap <C-n> :NERDTreeToggle<CR>
 let g:NERDTreeWinSize=35
 
 " lightline
-let g:lightline = { 'component_function': { 'filename': 'LightLineFilename' } }
+let g:lightline = { 'component_function': { 'filename': 'LightLineFilename' }, 'colorscheme': 'gruvbox' }
 function! LightLineFilename()
   return expand('%')
 endfunction
