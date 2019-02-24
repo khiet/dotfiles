@@ -52,14 +52,14 @@ export LESS=-RFX
 export EDITOR='vim'
 
 alias dl="youtube-dl -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4' -o '~/youtube/%(title)s-%(id)s.%(ext)s'"
-alias pg="ps aux | grep"
 alias ct="ctags -R ."
 alias gdel="git branch --merged | egrep -v '(^\*|master)' | xargs git branch -d"
 alias gg="git grep"
 alias ag="ag --color-match '1;31'"
 alias agu='ag -u'
-alias agg='ag --u -g'
-alias agc='ag --hidden --path-to-ignore ~/.ignore -C 5'
+alias agug='ag -u -g'
+alias agg='ag -g'
+alias agc='ag -C 5'
 alias caly='cal -y'
 alias public_ip="curl ipinfo.io/ip"
 
@@ -85,7 +85,7 @@ if type "fzf" > /dev/null 2>&1; then
   source "/usr/local/opt/fzf/shell/key-bindings.zsh"
   export FZF_DEFAULT_OPTS='--height 50% --reverse'
   # use ag instead of find
-  # used in fzf and vim
+  # used in fzf in vim
   export FZF_DEFAULT_COMMAND='ag -l --no-color -g "" --hidden --path-to-ignore ~/.ignore'
   # used in fzf in <c-t>
   export FZF_CTRL_T_COMMAND='ag -l --no-color -g "" --hidden'

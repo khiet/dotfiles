@@ -370,7 +370,7 @@ endfunction
 function! UpdateTags()
   let cwd = getcwd()
   let tagfilename = cwd . "/tags"
-  let cmd = 'ctags -f ' . tagfilename
+  let cmd = 'ctags -R -f ' . tagfilename
   let resp = system(cmd)
 endfunction
 " -----------------------------------------------
