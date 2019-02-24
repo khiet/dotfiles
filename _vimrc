@@ -70,16 +70,16 @@ inoremap jj <esc>
 let g:hardtime_default_on = 0
 
 " edit config files
-nmap <leader>ev :tabedit $MYVIMRC<CR>
-nmap <leader>eb :tabedit <C-R>=expand($HOME."/.bash_profile")<CR><CR>
-nmap <leader>ez :tabedit <C-R>=expand($HOME."/.zshrc")<CR><CR>
-nmap <leader>et :tabedit <C-R>=expand($HOME."/.tmux.conf")<CR><CR>
+nnoremap <leader>ev :tabedit $MYVIMRC<CR>
+nnoremap <leader>eb :tabedit <C-R>=expand($HOME."/.bash_profile")<CR><CR>
+nnoremap <leader>ez :tabedit <C-R>=expand($HOME."/.zshrc")<CR><CR>
+nnoremap <leader>et :tabedit <C-R>=expand($HOME."/.tmux.conf")<CR><CR>
 
 " buffers
-nmap <leader>bu :buffers<cr>:buffer<space>
-nmap <leader>bd :buffers<cr>:bdelete<space>
-nmap <leader>bn :bn<CR>
-nmap <leader>bp :bp<CR>
+nnoremap <leader>bu :buffers<cr>:buffer<space>
+nnoremap <leader>bd :buffers<cr>:bdelete<space>
+nnoremap <leader>bn :bn<CR>
+nnoremap <leader>bp :bp<CR>
 
 " yank
 " http://vim.wikia.com/wiki/Replace_a_word_with_yanked_text
@@ -157,8 +157,8 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-nmap <leader>rn <Plug>(coc-rename)
-nmap <silent>gd <Plug>(coc-definition)
+nnoremap <leader>rn <Plug>(coc-rename)
+nnoremap <silent>gd <Plug>(coc-definition)
 
 " filetype
 au BufRead,BufNewFile *.inky-haml set ft=haml
@@ -174,9 +174,9 @@ map <leader>dr obyebug<esc>:w<cr>
 map <leader>dj odebugger;<esc>:w<cr>
 
 " copy relative path
-nmap <leader>cf :let @*=expand("%")<CR>
+nnoremap <leader>cf :let @*=expand("%")<CR>
 " copy absolute path
-nmap <leader>cF :let @*=expand("%:p")<CR>
+nnoremap <leader>cF :let @*=expand("%:p")<CR>
 
 " enable mouse in terminal emulators
 if has("mouse")
@@ -290,12 +290,12 @@ endif
 let g:memolist_path = "$HOME/Dropbox/memolist"
 let g:memolist_memo_suffix = "txt"
 let g:memolist_memo_date = "%d %b %Y"
-nmap <leader>m :exe 'FZF' g:memolist_path<CR>
+nnoremap <leader>m :exe 'FZF' g:memolist_path<CR>
 
 " list invisibles
-"nmap <leader>l :set list!<CR>
+"nnoremap <leader>l :set list!<CR>
 " enable spell check
-"nmap <leader>s :set spell!<CR>
+"nnoremap <leader>s :set spell!<CR>
 
 highlight clear SpellBad
 highlight SpellBad cterm=underline ctermfg=red gui=underline guifg=red
