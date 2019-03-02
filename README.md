@@ -60,13 +60,15 @@ https://robots.thoughtbot.com/tmux-copy-paste-on-os-x-a-better-future
 ### Other software
 
 ```
-brew cask install textmate
-brew cask install visual-studio-code
+brew cask install iterm2
 brew cask install kdiff3
 brew cask install firefox
+brew cask install textmate
+brew cask install visual-studio-code
 brew cask install skype
 brew cask install sequel-pro
 brew install ffmpeg
 brew install ctags
+brew install tldr
 brew install youtube-dl
 ```
