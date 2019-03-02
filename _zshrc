@@ -23,6 +23,7 @@ plugins=(
   zsh-syntax-highlighting
   zsh-autosuggestions
   colored-man-pages
+  urltools
 )
 
 # https://github.com/zsh-users/zsh-autosuggestions#key-bindings
