@@ -21,13 +21,9 @@ alias hs='fc -il 1'
 # standard plugins can be found in ~/.oh-my-zsh/plugins/*
 plugins=(
   zsh-syntax-highlighting
-  zsh-autosuggestions
   colored-man-pages
   urltools
 )
-
-# https://github.com/zsh-users/zsh-autosuggestions#key-bindings
-# bindkey '^ ' autosuggest-accept
 
 source $ZSH/oh-my-zsh.sh
 
@@ -45,8 +41,6 @@ export KEYTIMEOUT=1
 # mapping - https://github.com/robbyrussell/oh-my-zsh/blob/master/plugins/vi-mode/vi-mode.plugin.zsh
 bindkey '^P' up-history
 bindkey '^N' down-history
-bindkey '^a' beginning-of-line
-bindkey '^e' end-of-line
 bindkey '^h' backward-delete-char
 bindkey -M vicmd 'v' edit-command-line
 
