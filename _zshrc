@@ -20,10 +20,10 @@ alias hs='fc -il 1'
 
 # standard plugins can be found in ~/.oh-my-zsh/plugins/*
 plugins=(
-  zsh-syntax-highlighting
   colored-man-pages
-  k
   urltools
+  zsh-syntax-highlighting
+  k
 )
 
 source $ZSH/oh-my-zsh.sh
