@@ -22,6 +22,7 @@ alias hs='fc -il 1'
 plugins=(
   zsh-syntax-highlighting
   colored-man-pages
+  k
   urltools
 )
 
@@ -46,6 +47,8 @@ bindkey -M vicmd 'v' edit-command-line
 
 export LESS=-RFX
 export EDITOR='vim'
+
+alias k="k -a"
 
 alias dl="youtube-dl -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4' -o '~/youtube/%(title)s-%(id)s.%(ext)s'"
 alias ct="ctags -R ."
