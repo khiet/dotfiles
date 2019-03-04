@@ -93,6 +93,9 @@ else
   stty stop undef
 fi
 
+source ~/dotfiles/tmuxinator/tmuxinator.zsh
+export TMUXINATOR_CONFIG=~/dotfiles/tmuxinator
+
 # flutter
 export PATH=~/flutter/bin:$PATH
 # dart

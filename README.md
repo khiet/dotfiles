@@ -59,6 +59,8 @@ https://robots.thoughtbot.com/tmux-copy-paste-on-os-x-a-better-future
 ### Other software
 
 ```
+gem install tmuxinator
+
 brew cask install iterm2
 brew cask install kdiff3
 brew cask install firefox
