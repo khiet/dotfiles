@@ -69,5 +69,6 @@ brew cask install sequel-pro
 brew install ffmpeg
 brew install ctags
 brew install tldr
+brew install htop
 brew install youtube-dl
 ```
