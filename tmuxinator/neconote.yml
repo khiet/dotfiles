@@ -3,6 +3,7 @@
 name: neconote
 root: ~/neconote
 
+on_project_start: if ! lsof -i :1025 > /dev/null; then mailcatcher; fi;
 on_project_stop: pkill -9 -f puma
 
 startup_window: editor
