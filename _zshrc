@@ -61,6 +61,7 @@ alias agg='ag -g'
 alias agc='ag -C 5'
 alias caly='cal -y'
 alias public_ip="curl ipinfo.io/ip"
+alias private_ip="ipconfig getifaddr en0"
 
 # flutter
 alias fela='flutter emulators --launch Pixel_2_API_28'
