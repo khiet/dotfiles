@@ -128,6 +128,7 @@ noremap <leader>dr obyebug<esc>:w<cr>
 " debugger
 noremap <leader>dj odebugger;<esc>:w<cr>
 
+set hlsearch
 " gf
 " recognize .js without extension
 set suffixesadd=.js
@@ -238,10 +239,6 @@ if $TMUX != '' " tmux specific settings
   nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
 end
 
-if &t_Co > 2 || has("gui_running") " &t_Co > 2 # if colors exist
-  set hlsearch
-endif
-
 " ale
 
 " see :h ale-support for a list of linters
@@ -258,12 +255,6 @@ if has("gui_running")
   set guioptions-=m   "remove menu bar
   set guioptions-=T   "remove toolbar
   "set guioptions-=r  "remove right-hand scroll bar
-
-  if has("gui_macvim")
-      " set guifont=Monaco:h10
-  elseif has("gui_win32")
-      set guifont=Lucida_Console:h10:w6 " Notepad's default
-  endif
 else " terminal
   set t_Co=256
   if (&t_Co == 256) " if terminal supports 256 colours
@@ -331,14 +322,6 @@ if has("mac") " Mac
 
   "clipboard - http://vim.wikia.com/wiki/Mac_OS_X_clipboard_sharing
   set clipboard=unnamed " yank to "* register i.e. system clipboard
-elseif has("win32") " Windows
-  " from mswin.vim
-  " CTRL-X is Cut
-  vnoremap <C-X> "+x
-  " CTRL-C is Copy
-  vnoremap <C-C> "+y
-  " CTRL-V is Paste
-  vnoremap <C-V> "+gP
 endif
 
 " -----------------------------------------------
