@@ -50,10 +50,6 @@ call plug#begin('~/.vim/plugged')
 
   " Note
   Plug 'https://github.com/glidenote/memolist.vim'
-
-  " CoC
-  " CocInstall coc-tsserver
-  Plug 'https://github.com/neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install() }}
 call plug#end()
 " ----------------------------------------
 
@@ -165,22 +161,6 @@ set expandtab " insert spaces when tab is pressed
 set tabstop=2 " spaces when tab is pressed
 set shiftwidth=2 " spaces for indentation
 set softtabstop=2 " treat spaces like a tab when backspace is pressed
-
-" coc
-" https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions
-set cmdheight=2
-
-" use tab for trigger completion with characters ahead and navigate
-" https://github.com/neoclide/coc.nvim#example-vim-configuration
-inoremap <silent><expr> <TAB> <SID>check_back_space() ? "\<TAB>" : coc#refresh()
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-nnoremap <leader>rn <Plug>(coc-rename)
-nnoremap <silent>gd <Plug>(coc-definition)
 
 " filetype
 au BufRead,BufNewFile *.inky-haml set ft=haml
