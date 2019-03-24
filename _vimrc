@@ -18,7 +18,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'https://github.com/mileszs/ack.vim'
   Plug 'https://github.com/itchyny/lightline.vim'
   Plug 'https://github.com/tpope/vim-surround'
-  Plug 'https://github.com/takac/vim-hardtime'
 
   " Colorscheme
   Plug 'https://github.com/morhetz/gruvbox'
@@ -353,10 +352,6 @@ let g:rails_projections = {
   \     "alternate": "app/queries/{}_query.rb",
   \   },
   \ }
-
-" vim-hardtime
-" http://vimcasts.org/blog/2013/02/habit-breaking-habit-making/
-let g:hardtime_default_on = 0
 
 " -----------------------------------------------
 "    cheat sheets
