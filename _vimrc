@@ -345,13 +345,20 @@ nnoremap <script> <leader>ct :call UpdateTags()<CR>
 " vim-rails
 " https://github.com/tpope/vim-rails/issues/368#issuecomment-265086019
 let g:rails_projections = {
-  \   "spec/requests/*_spec.rb": {
-  \     "alternate": "app/controllers/{}_controller.rb",
-  \   },
-  \   "spec/queries/*_query.rb": {
-  \     "alternate": "app/queries/{}_query.rb",
-  \   },
-  \ }
+      \  "app/controllers/*_controller.rb": {
+      \      "test": [
+      \        "spec/requests/{}_spec.rb",
+      \        "spec/controllers/{}_controller_spec.rb",
+      \      ],
+      \      "alternate": [
+      \        "spec/requests/{}_spec.rb",
+      \        "spec/controllers/{}_controller_spec.rb",
+      \      ],
+      \   },
+      \   "spec/requests/*_spec.rb": {
+      \      "alternate": "app/controllers/{}_controller.rb"
+      \   },
+      \ }
 
 " -----------------------------------------------
 "    cheat sheets
