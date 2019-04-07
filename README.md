@@ -3,7 +3,9 @@
 ### Install vim, tmux, ag, and fzf
 
 ```
+brew install git
 brew install vim
+brew install reattach-to-user-namespace
 brew install tmux
 brew install the_silver_searcher
 brew install fzf
@@ -52,11 +54,7 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/p
 git clone https://github.com/supercrabtree/k $ZSH_CUSTOM/plugins/k
 ```
 
-### Install reattach-to-user-namespace
-
-https://robots.thoughtbot.com/tmux-copy-paste-on-os-x-a-better-future
-
-### Other software
+### Mac software
 
 ```
 gem install tmuxinator
@@ -65,9 +63,12 @@ brew cask install iterm2
 brew cask install kdiff3
 brew cask install firefox
 brew cask install textmate
-brew cask install visual-studio-code
 brew cask install skype
 brew cask install sequel-pro
+brew cask install spectacle
+brew cask install vlc
+brew cask install zoomus
+brew cask install visual-studio-code
 brew install ffmpeg
 brew install ctags
 brew install tldr
