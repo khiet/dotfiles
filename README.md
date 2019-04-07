@@ -65,6 +65,7 @@ brew cask install firefox
 brew cask install textmate
 brew cask install skype
 brew cask install sequel-pro
+brew cask install dropbox
 brew cask install spectacle
 brew cask install vlc
 brew cask install zoomus

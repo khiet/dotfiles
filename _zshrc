@@ -108,7 +108,9 @@ export PATH=/Users/khietle/Library/Python/3.7/bin:$PATH
 export PATH="/usr/local/opt/mysql@5.6/bin:$PATH"
 
 # rbenv
-eval "$(rbenv init -)"
+if type "rbenv" > /dev/null 2>&1; then
+  eval "$(rbenv init -)"
+fi
 
 # find and replace with ag
 function agr { ag -0 -l "$1" | AGR_FROM="$1" AGR_TO="$2" xargs -0 perl -pi -e 's/$ENV{AGR_FROM}/$ENV{AGR_TO}/g'; }
