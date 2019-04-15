@@ -22,6 +22,7 @@ call plug#begin('~/.vim/plugged')
 
   " Colorscheme
   Plug 'https://github.com/morhetz/gruvbox'
+  Plug 'https://github.com/joshdick/onedark.vim'
 
   " Tmux
   Plug 'https://github.com/christoomey/vim-tmux-navigator'
@@ -202,7 +203,7 @@ noremap <C-n> :NERDTreeToggle<CR>
 let g:NERDTreeWinSize=35
 
 " lightline
-let g:lightline = { 'component_function': { 'filename': 'LightLineFilename' }, 'colorscheme': 'gruvbox' }
+let g:lightline = { 'component_function': { 'filename': 'LightLineFilename' }, 'colorscheme': 'onedark' }
 function! LightLineFilename()
   return expand('%')
 endfunction
@@ -231,7 +232,7 @@ let g:ale_fix_on_save = 1
 "    GUI
 " -----------------------------------------------
 if has("gui_running")
-  colorscheme gruvbox
+  colorscheme onedark
   set guioptions-=m   "remove menu bar
   set guioptions-=T   "remove toolbar
   "set guioptions-=r  "remove right-hand scroll bar
@@ -246,7 +247,7 @@ else " terminal
       set termguicolors
     endif
 
-    colorscheme gruvbox
+    colorscheme onedark
   endif
 endif
 " -----------------------------------------------
