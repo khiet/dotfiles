@@ -106,6 +106,8 @@ export PATH=~/google-cloud-sdk/bin:$PATH
 export PATH=/Users/khietle/Library/Python/3.7/bin:$PATH
 
 export PATH="/usr/local/opt/mysql@5.6/bin:$PATH"
+export LDFLAGS="-L/usr/local/opt/mysql@5.6/lib"
+export CPPFLAGS="-I/usr/local/opt/mysql@5.6/include"
 
 # rbenv
 if type "rbenv" > /dev/null 2>&1; then
