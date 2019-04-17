@@ -139,8 +139,8 @@ set backspace=indent,eol,start
 set iskeyword+=-
 " show status
 set laststatus=2
-" full path in status
-" set statusline=%F
+set title
+set titlestring=%F
 " 20 lines of command history
 set history=20
 " show cursor position at all time
