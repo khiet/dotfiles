@@ -18,7 +18,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'https://github.com/mileszs/ack.vim'
   Plug 'https://github.com/itchyny/lightline.vim'
   Plug 'https://github.com/tpope/vim-surround'
-  Plug 'https://github.com/tpope/vim-endwise'
+  Plug 'https://github.com/junegunn/vim-easy-align'
 
   " Colorscheme
   Plug 'https://github.com/morhetz/gruvbox'
@@ -105,6 +105,10 @@ nnoremap <leader>ls :set list!<CR>
 
 " Ack
 nnoremap <leader>a :Ack!<space>
+
+" vim-easy-align
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
 
 " yank
 " http://vim.wikia.com/wiki/Replace_a_word_with_yanked_text
