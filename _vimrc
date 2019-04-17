@@ -257,7 +257,7 @@ endif
 " -----------------------------------------------
 
 " vim_current_word
-hi CurrentWord ctermbg=53
+hi CurrentWord ctermbg=56
 " hi CurrentWordTwins ctermbg=237
 
 " highlight trailing whitespaces
