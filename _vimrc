@@ -227,11 +227,10 @@ end
 " ale
 
 " see :h ale-support for a list of linters
-let g:ale_fixers = { 'javascript': ['prettier', 'eslint'] }
-" ['eslint', 'flow', 'jscs', 'jshint', 'prettier', 'prettier-eslint', 'prettier-standard', 'standard', 'xo']
-let g:ale_linters = { 'javascript': 'all' }
+let g:ale_fixers           = { 'javascript': ['prettier', 'eslint'], 'ruby': 'rubocop' }
+let g:ale_linters          = { 'javascript': 'all', 'ruby': 'all' }
 let g:ale_linters_explicit = 1
-let g:ale_fix_on_save = 1
+let g:ale_fix_on_save      = 1
 " -----------------------------------------------
 "    GUI
 " -----------------------------------------------
