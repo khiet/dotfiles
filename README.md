@@ -75,4 +75,5 @@ brew install ctags
 brew install tldr
 brew install htop
 brew install youtube-dl
+brew install awscli
 ```
