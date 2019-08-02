@@ -207,7 +207,7 @@ noremap <C-n> :NERDTreeToggle<CR>
 let g:NERDTreeWinSize=35
 
 " lightline
-let g:lightline = { 'component_function': { 'filename': 'LightLineFilename' }, 'colorscheme': 'onedark' }
+let g:lightline = { 'component_function': { 'filename': 'LightLineFilename' }, 'colorscheme': 'gruvbox' }
 function! LightLineFilename()
   return expand('%')
 endfunction
@@ -235,7 +235,7 @@ let g:ale_fix_on_save      = 1
 "    GUI
 " -----------------------------------------------
 if has("gui_running")
-  colorscheme onedark
+  colorscheme gruvbox
   set guioptions-=m   "remove menu bar
   set guioptions-=T   "remove toolbar
   "set guioptions-=r  "remove right-hand scroll bar
@@ -250,7 +250,7 @@ else " terminal
       set termguicolors
     endif
 
-    colorscheme onedark
+    colorscheme gruvbox
   endif
 endif
 " -----------------------------------------------
