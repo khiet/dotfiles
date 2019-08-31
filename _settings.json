@@ -1,0 +1,13 @@
+{
+  "workbench.iconTheme": "material-icon-theme",
+  "vim.incsearch": true,
+  "vim.hlsearch": true,
+  "vim.useSystemClipboard": true,
+  "vim.useCtrlKeys": true,
+  "vim.insertModeKeyBindings": [
+    {
+      "before": ["j", "j"],
+      "after": ["<Esc>"]
+    }
+  ]
+}
