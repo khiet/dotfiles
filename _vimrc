@@ -57,8 +57,8 @@ call plug#begin('~/.vim/plugged')
   Plug 'https://github.com/thosakwe/vim-flutter'
 
   " LSC
-  Plug 'https://github.com/natebosch/vim-lsc'
-  Plug 'https://github.com/natebosch/vim-lsc-dart'
+  " Plug 'https://github.com/natebosch/vim-lsc'
+  " Plug 'https://github.com/natebosch/vim-lsc-dart'
 call plug#end()
 " ----------------------------------------
 
@@ -195,7 +195,7 @@ let dart_style_guide = 2
 let dart_format_on_save = 1
 
 " lsc
-let g:lsc_auto_map = v:true
+" let g:lsc_auto_map = v:true
 
 " vim-test
 let test#strategy = "vimux"
