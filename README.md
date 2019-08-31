@@ -32,6 +32,7 @@ ln -s ~/dotfiles/_hushlogin ~/.hushlogin
 ln -s ~/dotfiles/_ignore ~/.ignore
 ln -s ~/dotfiles/_prettierrc ~/.prettierrc
 rm ~/Library/Application\ Support/Code/User/settings.json; ln -s ~/dotfiles/_settings.json ~/Library/Application\ Support/Code/User/settings.json
+rm ~/Library/Application\ Support/Code/User/keybindings.json; ln -s ~/dotfiles/_keybindings.json ~/Library/Application\ Support/Code/User/keybindings.json
 ```
 
 ### Install plugins
