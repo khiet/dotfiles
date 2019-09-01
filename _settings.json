@@ -1,7 +1,15 @@
 {
   "workbench.iconTheme": "material-icon-theme",
+  "editor.formatOnSave": true,
   "vim.incsearch": true,
   "vim.hlsearch": true,
   "vim.useSystemClipboard": true,
-  "vim.useCtrlKeys": true
+  "vim.useCtrlKeys": true,
+  "vim.leader": "<space>",
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": ["<leader>", "w"],
+      "commands": [":w"]
+    }
+  ]
 }
