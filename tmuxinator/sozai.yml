@@ -17,5 +17,6 @@ windows:
       layout: main-vertical
       panes:
         - bin/rails s -p <%= ARGV[2] || 3000 %>
+        - ngrok http -subdomain=sozai.eu.ngrok.io <%= ARGV[2] || 3000 %>
         - bundle exec guard -G Guardfile.livereload
         - bundle exec sidekiq -c 1 -q mailers, -q default
