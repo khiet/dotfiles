@@ -11,5 +11,6 @@
       "before": ["<leader>", "w"],
       "commands": [":w"]
     }
-  ]
+  ],
+  "window.zoomLevel": 0
 }
