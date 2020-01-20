@@ -24,13 +24,14 @@ ln -s dotfiles ~/.vim
 ln -s ~/dotfiles/_vimrc ~/.vimrc
 ln -s ~/dotfiles/_gitconfig ~/.gitconfig
 ln -s ~/dotfiles/_bash_profile ~/.bash_profile
-ln -s ~/dotfiles/_zshrc ~/.zshrc
 ln -s ~/dotfiles/_ctags ~/.ctags
 ln -s ~/dotfiles/_tmux.conf ~/.tmux.conf
 ln -s ~/dotfiles/_tm_properties ~/.tm_properties
 ln -s ~/dotfiles/_hushlogin ~/.hushlogin
 ln -s ~/dotfiles/_ignore ~/.ignore
 ln -s ~/dotfiles/_prettierrc ~/.prettierrc
+
+# vscode
 rm ~/Library/Application\ Support/Code/User/settings.json; ln -s ~/dotfiles/_settings.json ~/Library/Application\ Support/Code/User/settings.json
 rm ~/Library/Application\ Support/Code/User/keybindings.json; ln -s ~/dotfiles/_keybindings.json ~/Library/Application\ Support/Code/User/keybindings.json
 ```
@@ -45,6 +46,12 @@ rm ~/Library/Application\ Support/Code/User/keybindings.json; ln -s ~/dotfiles/_
 
 ```
 chsh -s $(which zsh)
+```
+
+### Symlink config file
+
+```
+cd; rm .zshrc; ln -s ~/dotfiles/_zshrc ~/.zshrc
 ```
 
 ### Install oh my zsh
