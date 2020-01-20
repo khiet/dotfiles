@@ -69,7 +69,6 @@ git clone https://github.com/supercrabtree/k $ZSH_CUSTOM/plugins/k
 gem install tmuxinator
 
 brew cask install iterm2
-brew cask install kdiff3
 brew cask install firefox
 brew cask install textmate
 brew cask install skype
