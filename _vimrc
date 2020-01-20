@@ -21,7 +21,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'https://github.com/junegunn/vim-easy-align'
 
   " Colorscheme
-  Plug 'https://github.com/morhetz/onedark'
+  Plug 'https://github.com/morhetz/gruvbox'
   Plug 'https://github.com/joshdick/onedark.vim'
 
   " Tmux
