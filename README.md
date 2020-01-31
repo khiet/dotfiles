@@ -1,8 +1,11 @@
 # dotfiles
 
+### Install [Homebrew](http://brew.sh/index.html)
+
 ### Install vim, tmux, ag, and fzf
 
 ```
+brew cask install iterm2
 brew install git
 brew install vim
 brew install reattach-to-user-namespace
@@ -30,10 +33,6 @@ ln -s ~/dotfiles/_tm_properties ~/.tm_properties
 ln -s ~/dotfiles/_hushlogin ~/.hushlogin
 ln -s ~/dotfiles/_ignore ~/.ignore
 ln -s ~/dotfiles/_prettierrc ~/.prettierrc
-
-# vscode
-rm ~/Library/Application\ Support/Code/User/settings.json; ln -s ~/dotfiles/_settings.json ~/Library/Application\ Support/Code/User/settings.json
-rm ~/Library/Application\ Support/Code/User/keybindings.json; ln -s ~/dotfiles/_keybindings.json ~/Library/Application\ Support/Code/User/keybindings.json
 ```
 
 ### Install plugins
@@ -54,7 +53,7 @@ chsh -s $(which zsh)
 cd; rm .zshrc; ln -s ~/dotfiles/_zshrc ~/.zshrc
 ```
 
-### Install oh my zsh
+### Install oh my zsh and plugins
 
 ```
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
@@ -66,9 +65,6 @@ git clone https://github.com/supercrabtree/k $ZSH_CUSTOM/plugins/k
 ### Mac software
 
 ```
-gem install tmuxinator
-
-brew cask install iterm2
 brew cask install firefox
 brew cask install textmate
 brew cask install skype
@@ -78,11 +74,23 @@ brew cask install dropbox
 brew cask install spectacle
 brew cask install vlc
 brew cask install zoomus
-brew cask install visual-studio-code
 brew install ffmpeg
 brew install ctags
 brew install tldr
 brew install htop
 brew install youtube-dl
 brew install awscli
+```
+
+### Install Visual Studio Code
+
+```
+brew cask install visual-studio-code
+```
+
+### Symlink config file
+
+```
+rm ~/Library/Application\ Support/Code/User/settings.json; ln -s ~/dotfiles/_settings.json ~/Library/Application\ Support/Code/User/settings.json
+rm ~/Library/Application\ Support/Code/User/keybindings.json; ln -s ~/dotfiles/_keybindings.json ~/Library/Application\ Support/Code/User/keybindings.json
 ```
