@@ -12,5 +12,6 @@
       "commands": [":w"]
     }
   ],
-  "window.zoomLevel": 0
+  "window.zoomLevel": 0,
+  "dart.previewFlutterUiGuides": true
 }
