@@ -13,5 +13,6 @@
     }
   ],
   "window.zoomLevel": 0,
-  "dart.previewFlutterUiGuides": true
+  "dart.previewFlutterUiGuides": true,
+  "todo-tree.highlights.enabled": true
 }

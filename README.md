@@ -65,6 +65,7 @@ git clone https://github.com/supercrabtree/k $ZSH_CUSTOM/plugins/k
 ### Mac software
 
 ```
+brew cask install copyq
 brew cask install firefox
 brew cask install textmate
 brew cask install skype
