@@ -22,7 +22,6 @@ call plug#begin('~/.vim/plugged')
 
   " Colorscheme
   Plug 'https://github.com/morhetz/gruvbox'
-  Plug 'https://github.com/joshdick/gruvbox.vim'
 
   " Tmux
   Plug 'https://github.com/christoomey/vim-tmux-navigator'
@@ -51,14 +50,6 @@ call plug#begin('~/.vim/plugged')
 
   " Note
   Plug 'https://github.com/glidenote/memolist.vim'
-
-  " Flutter
-  Plug 'https://github.com/dart-lang/dart-vim-plugin'
-  Plug 'https://github.com/thosakwe/vim-flutter'
-
-  " LSC
-  " Plug 'https://github.com/natebosch/vim-lsc'
-  " Plug 'https://github.com/natebosch/vim-lsc-dart'
 call plug#end()
 " ----------------------------------------
 
@@ -167,7 +158,7 @@ set smartindent
 " disable ~ files
 set nobackup
 set nowritebackup
- " disable .swap files
+" disable .swap files
 set noswapfile
 " tabs and spaces
 set expandtab " insert spaces when tab is pressed
@@ -189,13 +180,6 @@ set complete+=kspell
 if has("mouse")
   set mouse=a
 endif
-
-" dart
-let dart_style_guide = 2
-let dart_format_on_save = 1
-
-" lsc
-" let g:lsc_auto_map = v:true
 
 " vim-test
 let test#strategy = "vimux"
