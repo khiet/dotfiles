@@ -22,7 +22,8 @@
   lgg = log --graph --decorate --oneline
   dom = diff origin/master
   rmc = rm -r --cached .
-  rma = "!git reset --hard HEAD && git clean -fd"
+  rma = !git reset --hard HEAD && git clean -fd
+  su = !git branch --set-upstream-to=origin/$(git symbolic-ref --short HEAD)
 [filter "lfs"]
 	smudge = git-lfs smudge %f
 	required = true
