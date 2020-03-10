@@ -79,6 +79,8 @@ nnoremap <leader>= ggvG=<C-o><C-o>
 nnoremap <leader>w :w<cr>
 nnoremap <leader>x :x<cr>
 
+" search with grouping and backreferences
+nnoremap <leader>/ /\(\w\+\)
 " replace
 nnoremap <leader>s :%s//
 

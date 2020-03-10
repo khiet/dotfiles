@@ -75,6 +75,7 @@ brew cask install dropbox
 brew cask install spectacle
 brew cask install vlc
 brew cask install zoomus
+brew cask install postman
 brew install ffmpeg
 brew install ctags
 brew install tldr

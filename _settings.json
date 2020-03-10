@@ -31,5 +31,6 @@
   "vim.handleKeys": {
     "<C-a>": false,
     "<C-f>": false
-  }
+  },
+  "todo-tree.tree.showScanModeButton": false
 }
