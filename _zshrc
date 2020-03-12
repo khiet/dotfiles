@@ -79,6 +79,11 @@ alias roc="open coverage/index.html"
 # bundle exec guard -G Guardfile.livereload
 # foreman start
 
+# nvim
+# if type nvim > /dev/null 2>&1; then
+#   alias vim='nvim'
+# fi
+
 # fzf
 if type "fzf" > /dev/null 2>&1; then
   source "/usr/local/opt/fzf/shell/key-bindings.zsh"

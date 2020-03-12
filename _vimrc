@@ -242,6 +242,12 @@ if (&t_Co == 256) " if terminal supports 256 colours
   colorscheme gruvbox
 endif
 
+if has('nvim')
+  " https://neovim.io/doc/user/nvim.html#nvim-from-vim
+  set runtimepath^=~/.vim runtimepath+=~/.vim/after
+  let &packpath = &runtimepath
+endif
+
 " vim_current_word
 hi CurrentWord ctermbg=56
 " hi CurrentWordTwins ctermbg=237
