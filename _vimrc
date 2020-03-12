@@ -41,11 +41,7 @@ call plug#begin('~/.vim/plugged')
   " CSS
   Plug 'https://github.com/ap/vim-css-color'
 
-  " JS, JSX, ES
-  Plug 'https://github.com/mxw/vim-jsx'
-  Plug 'https://github.com/othree/yajs.vim'
-  Plug 'https://github.com/othree/es.next.syntax.vim'
-
+  Plug 'https://github.com/sheerun/vim-polyglot'
   Plug 'https://github.com/w0rp/ale'
 
   " Note
@@ -59,6 +55,8 @@ noremap <Left>  <NOP>
 noremap <Right> <NOP>
 
 let mapleader=" "
+
+inoremap jj <esc>
 
 " edit config files
 nnoremap <leader>ev :tabedit $MYVIMRC<CR>
@@ -101,9 +99,6 @@ nnoremap <leader>cF :let @*=expand("%:p")<CR>
 " list invisibles
 nnoremap <leader>ls :set list!<CR>
 
-" enable spell check
-"nnoremap <leader>sp :set spell!<CR>
-
 " Ack
 nnoremap <leader>a :Ack!<space>
 
@@ -123,28 +118,25 @@ nnoremap <Leader><Leader> <C-^>
 vnoremap << <gv
 vnoremap >> >gv
 
-inoremap jj <esc>
-
 " byebug
 noremap <leader>dr obyebug<esc>:w<cr>
 " debugger
 noremap <leader>dj odebugger;<esc>:w<cr>
 
 set hlsearch
-" gf
-" recognize .js without extension
+" recognize .js without extension when gf
 set suffixesadd=.js
 " allow backspacing over everything in i-mode
 set backspace=indent,eol,start
 " consider '-' as part of a word
 set iskeyword+=-
-" show status
+" status display
 set laststatus=2
 set title
 set titlestring=%F
 " 20 lines of command history
 set history=20
-" show cursor position at all time
+" always show cursor position
 set ruler
 " search
 set ignorecase
@@ -178,6 +170,12 @@ au FileType gitcommit setlocal spell
 " autocomplete with dictionary words when spell check is on
 set complete+=kspell
 
+highlight clear SpellBad
+highlight SpellBad cterm=underline ctermfg=red gui=underline guifg=red
+
+" enable spell check
+"nnoremap <leader>sp :set spell!<CR>
+
 " enable mouse in terminal emulators
 if has("mouse")
   set mouse=a
@@ -189,6 +187,7 @@ nnoremap <leader>T :TestNearest<CR>
 nnoremap <leader>tl :TestLast<CR>
 nnoremap <leader>tf :TestFile<CR>
 
+" ag
 if executable('ag')
   " https://robots.thoughtbot.com/faster-grepping-in-vim
   " use ag over grep
@@ -214,9 +213,7 @@ function! LightLineFilename()
 endfunction
 
 if $TMUX != '' " tmux specific settings
-  " enable mouse in tmux
-  set ttymouse=xterm2
-
+  " https://github.com/christoomey/vim-tmux-navigator#vim-1
   let g:tmux_navigator_no_mappings = 1
 
   nnoremap <silent> <c-h> :TmuxNavigateLeft<cr>
@@ -226,35 +223,24 @@ if $TMUX != '' " tmux specific settings
 end
 
 " ale
-
 " see :h ale-support for a list of linters
 let g:ale_fixers           = { 'javascript': ['prettier', 'eslint'], 'ruby': 'rubocop' }
 let g:ale_linters          = { 'javascript': 'all', 'ruby': 'all' }
 let g:ale_linters_explicit = 1
 let g:ale_fix_on_save      = 1
-" -----------------------------------------------
-"    GUI
-" -----------------------------------------------
-if has("gui_running")
-  colorscheme gruvbox
-  set guioptions-=m   "remove menu bar
-  set guioptions-=T   "remove toolbar
-  "set guioptions-=r  "remove right-hand scroll bar
-else " terminal
-  set t_Co=256
-  if (&t_Co == 256) " if terminal supports 256 colours
 
-    " true colour
-    if exists('+termguicolors')
-      let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-      let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-      set termguicolors
-    endif
+set t_Co=256
+if (&t_Co == 256) " if terminal supports 256 colours
 
-    colorscheme gruvbox
+  " true colour
+  if exists('+termguicolors')
+    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+    set termguicolors
   endif
+
+  colorscheme gruvbox
 endif
-" -----------------------------------------------
 
 " vim_current_word
 hi CurrentWord ctermbg=56
@@ -278,9 +264,6 @@ let g:memolist_memo_suffix = "txt"
 let g:memolist_memo_date = "%d %b %Y"
 nnoremap <leader>m :exe 'FZF' g:memolist_path<CR>
 
-highlight clear SpellBad
-highlight SpellBad cterm=underline ctermfg=red gui=underline guifg=red
-
 " gitgutter
 let g:gitgutter_map_keys = 0 " turn off all key mappings
 " https://github.com/airblade/vim-gitgutter#sign-column
@@ -299,8 +282,8 @@ let g:closetag_filenames = '*.html,*.erb,*.js,*.jsx'
 if has("mac") " Mac
   " <C-x><C-k> to complete
   " location of dictionary on Mac
-  " set dictionary-=/usr/share/dict/words dictionary+=/usr/share/dict/words
-  " set complete-=k complete+=k
+  set dictionary-=/usr/share/dict/words dictionary+=/usr/share/dict/words
+  set complete-=k complete+=k
 
   " invisibles
   set listchars=tab:»\ ,eol:$,nbsp:%,trail:~,extends:>,precedes:<
@@ -365,32 +348,3 @@ let g:rails_projections = {
       \      "alternate": "app/controllers/{}_controller.rb"
       \   },
       \ }
-
-" -----------------------------------------------
-"    cheat sheets
-" -----------------------------------------------
-" gx # open URL
-"
-" macro
-" qd	start recording to register d
-" ...
-" q	stop recording
-"
-" @d	execute your macro
-" @@	execute your macro again
-"
-" Ctrl-D  move half-page down
-" Ctrl-U  move half-page up
-" Ctrl-B  page up
-" Ctrl-F  page down
-" Ctrl-O  jump to last (older) cursor position
-" Ctrl-I  jump to next cursor position (after Ctrl-O)
-" Ctrl-Y  move view pane up
-" Ctrl-E  move view pane down
-"
-" vim-surround
-" cs"'
-" cst'
-" ysiw
-" yss e.g. yss[ to surround with space and ] without space
-" -----------------------------------------------
