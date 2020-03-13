@@ -1,12 +1,20 @@
-" ----------------------------------------
-"    vim-plug
-" ----------------------------------------
-" automatic installation - https://github.com/junegunn/vim-plug/wiki/tips#automatic-installation
-if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+if has('nvim')
+  " https://neovim.io/doc/user/nvim.html#nvim-from-vim
+  set runtimepath^=~/.vim runtimepath+=~/.vim/after
+  let &packpath = &runtimepath
+
+  " automatic installation - https://github.com/junegunn/vim-plug/wiki/tips#automatic-installation
+  if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
+    silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
+      \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  end
+else
+  if empty(glob('~/.vim/autoload/plug.vim'))
+    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+      \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  endif
 endif
+
 " PlugInstall to install plugins, PlugClean to delete plugins, PlugUpdate to
 " update plugins
 " https://github.com/junegunn/vim-plug#commands
@@ -46,8 +54,11 @@ call plug#begin('~/.vim/plugged')
 
   " Note
   Plug 'https://github.com/glidenote/memolist.vim'
+
+  if has('nvim')
+    Plug 'https://github.com/neoclide/coc.nvim', {'branch': 'release'}
+  endif
 call plug#end()
-" ----------------------------------------
 
 noremap <Up>    <NOP>
 noremap <Down>  <NOP>
@@ -112,7 +123,7 @@ xnoremap <silent> p p:let @+=@0<CR>:let @"=@0<CR>
 
 " switch between the last two files
 " https://github.com/thoughtbot/dotfiles/blob/master/vimrc#L128
-nnoremap <Leader><Leader> <C-^>
+nnoremap <leader><leader> <C-^>
 
 " indenting
 vnoremap << <gv
@@ -270,10 +281,49 @@ let g:gitgutter_map_keys = 0 " turn off all key mappings
 set signcolumn=yes
 let g:gitgutter_grep = 'ag'
 " https://github.com/airblade/vim-gitgutter#getting-started
-set updatetime=400
+set updatetime=300
 
 " vim-closetag
 let g:closetag_filenames = '*.html,*.erb,*.js,*.jsx'
+
+if has('nvim')
+  " :CocInstall coc-tsserver coc-json coc-html coc-css
+  " :CocConfig
+  " :checkhealth
+  " :CocInfo
+  " coc
+  set cmdheight=2
+  set shortmess+=c
+
+  " trigger completion
+  inoremap <silent><expr> <TAB> coc#refresh()
+
+  " navigate diagnostics
+  nmap <silent> [g <Plug>(coc-diagnostic-prev)
+  nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+  nmap <silent> gd <Plug>(coc-definition)
+  " nmap <silent> gy <Plug>(coc-type-definition)
+  " nmap <silent> gi <Plug>(coc-implementation)
+  nmap <silent> gr <Plug>(coc-references)
+
+  " rename symbols
+  nmap <leader>rn <Plug>(coc-rename)
+
+  " format
+  nmap <leader>f  <Plug>(coc-format)
+
+  " show documentation
+  nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+  function! s:show_documentation()
+    if (index(['vim','help'], &filetype) >= 0)
+      execute 'h '.expand('<cword>')
+    else
+      call CocAction('doHover')
+    endif
+  endfunction
+end
 
 " -----------------------------------------------
 "    OS specifics
@@ -291,6 +341,7 @@ if has("mac") " Mac
   "clipboard - http://vim.wikia.com/wiki/Mac_OS_X_clipboard_sharing
   set clipboard=unnamed " yank to "* register i.e. system clipboard
 endif
+" -----------------------------------------------
 
 " -----------------------------------------------
 "    function

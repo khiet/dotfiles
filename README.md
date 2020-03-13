@@ -7,7 +7,7 @@
 ```
 brew cask install iterm2
 brew install git
-brew install vim
+brew install nvim
 brew install reattach-to-user-namespace
 brew install tmux
 brew install the_silver_searcher
@@ -33,6 +33,10 @@ ln -s ~/dotfiles/_tm_properties ~/.tm_properties
 ln -s ~/dotfiles/_hushlogin ~/.hushlogin
 ln -s ~/dotfiles/_ignore ~/.ignore
 ln -s ~/dotfiles/_prettierrc ~/.prettierrc
+
+mkdir -p ${XDG_CONFIG_HOME:=$HOME/.config}
+ln -s ~/.vim $XDG_CONFIG_HOME/nvim
+ln -s ~/.vimrc $XDG_CONFIG_HOME/nvim/init.vim
 ```
 
 ### Install plugins
