@@ -1,0 +1,124 @@
+# https://github.com/robbyrussell/oh-my-zsh/blob/master/templates/zshrc.zsh-template
+export ZSH="/Users/khietle/.oh-my-zsh"
+
+# https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+ZSH_THEME="robbyrussell"
+
+CASE_SENSITIVE="true"
+# HYPHEN_INSENSITIVE="true"
+
+# auto-update
+# DISABLE_AUTO_UPDATE="true"
+# export UPDATE_ZSH_DAYS=13
+
+# display red dots whilst waiting for completion
+COMPLETION_WAITING_DOTS="true"
+
+# https://github.com/robbyrussell/oh-my-zsh/issues/3466
+HIST_STAMPS="%d/%m/%y %T "
+alias hs='fc -il 1'
+
+# standard plugins can be found in ~/.oh-my-zsh/plugins/*
+plugins=(
+  colored-man-pages
+  urltools
+  zsh-syntax-highlighting
+  k
+)
+
+source $ZSH/oh-my-zsh.sh
+
+# "ls" color
+# LSCOLORS=Gxfxcxdxbxegedabagacad
+
+# zle -al
+
+# find bindkey
+# bindkey | fgrep 'end-of-line'
+
+# vim mode
+bindkey -v
+export KEYTIMEOUT=1
+# mapping - https://github.com/robbyrussell/oh-my-zsh/blob/master/plugins/vi-mode/vi-mode.plugin.zsh
+bindkey '^P' up-history
+bindkey '^N' down-history
+bindkey '^h' backward-delete-char
+bindkey -M vicmd 'v' edit-command-line
+
+export LESS=-RFX
+export EDITOR='vim'
+
+alias k="k -a"
+
+alias dl="youtube-dl -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4' -o '~/youtube/%(title)s-%(id)s.%(ext)s'"
+alias ct="ctags -R ."
+alias gdel="git branch --merged | egrep -v '(^\*|master)' | xargs git branch -d"
+alias gg="git grep"
+alias ag="ag --color-match '1;31'"
+alias agu='ag -u'
+alias agug='ag -u -g'
+alias agg='ag -g'
+alias agc='ag -C 5'
+alias caly='cal -y'
+alias public_ip="curl ipinfo.io/ip"
+alias private_ip="ipconfig getifaddr en0"
+
+# flutter
+alias fela='flutter emulators --launch Pixel_2_API_28'
+alias feli='flutter emulators --launch apple_ios_simulator'
+
+# rails
+alias be="bundle exec"
+alias rr="bin/rails restart"
+alias rc="bin/rails console"
+alias rl="tail -f -n 1000 log/development.log"
+alias rlc="tail -f -n 1000 log/development.log | grep -C 5 Controller"
+alias rlt="tail -f -n 1000 log/test.log"
+alias rltc="tail -f -n 1000 log/test.log | grep -C 5 Controller"
+alias roc="open coverage/index.html"
+# bundle exec guard -G Guardfile.livereload
+# foreman start
+
+# fzf
+if type "fzf" > /dev/null 2>&1; then
+  source "/usr/local/opt/fzf/shell/key-bindings.zsh"
+  export FZF_DEFAULT_OPTS='--height 50% --reverse'
+  # use ag instead of find
+  # used in fzf in vim
+  export FZF_DEFAULT_COMMAND='ag -l --no-color -g "" --hidden --path-to-ignore ~/.ignore'
+  # used in fzf in <c-t>
+  export FZF_CTRL_T_COMMAND='ag -l --no-color -g "" --hidden'
+else
+  # enable forward (C-s) - http://askubuntu.com/questions/60071/how-to-forward-search-history-with-the-reverse-i-search-command-ctrlr
+  stty stop undef
+fi
+
+source ~/Dropbox/Apps/developmennt/tmuxinator/tmuxinator.zsh
+export TMUXINATOR_CONFIG=~/Dropbox/Apps/developmennt/tmuxinator
+
+# flutter
+export PATH=~/flutter/bin:$PATH
+# dart
+export PATH=~/flutter/bin/cache/dart-sdk/bin:$PATH
+# gcloud - https://cloud.google.com/sdk/docs/quickstart-macos
+export PATH=~/google-cloud-sdk/bin:$PATH
+# aws - https://docs.aws.amazon.com/cli/latest/userguide/cli-install-macos.html
+export PATH=/Users/khietle/Library/Python/3.7/bin:$PATH
+
+export PATH="/usr/local/opt/mysql@5.6/bin:$PATH"
+export LDFLAGS="-L/usr/local/opt/mysql@5.6/lib"
+export CPPFLAGS="-I/usr/local/opt/mysql@5.6/include"
+
+# rbenv
+if type "rbenv" > /dev/null 2>&1; then
+  eval "$(rbenv init -)"
+fi
+
+# find and replace with ag
+function agfr { ag -0 -l "$1" | AGR_FROM="$1" AGR_TO="$2" xargs -0 perl -pi -e 's/$ENV{AGR_FROM}/$ENV{AGR_TO}/g'; }
+
+function mv2 { dirname "$2" | xargs mkdir -p; mv "$1" "$2"; }
+function cp2 { dirname "$2" | xargs mkdir -p; cp "$1" "$2"; }
+
+# suppress ruby 2.7 warnnings
+export RUBYOPT='-W0'
