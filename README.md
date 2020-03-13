@@ -7,7 +7,7 @@
 ```
 brew cask install iterm2
 brew install git
-brew install vim
+brew install nvim
 brew install reattach-to-user-namespace
 brew install tmux
 brew install the_silver_searcher
