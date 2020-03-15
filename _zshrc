@@ -91,7 +91,7 @@ if type "fzf" > /dev/null 2>&1; then
   # use ag instead of find
   # used in fzf in vim
   export FZF_DEFAULT_COMMAND='ag -l --no-color -g "" --hidden --path-to-ignore ~/.ignore'
-  # used in fzf in <c-t>
+  # used in fzf in command-line
   export FZF_CTRL_T_COMMAND='ag -l --no-color -g "" --hidden'
 else
   # enable forward (C-s) - http://askubuntu.com/questions/60071/how-to-forward-search-history-with-the-reverse-i-search-command-ctrlr

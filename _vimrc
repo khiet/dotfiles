@@ -207,10 +207,8 @@ if executable('ag')
 endif
 
 " fzf
-set rtp+=/usr/local/opt/fzf
+set runtimepath+=/usr/local/opt/fzf
 nnoremap <silent> <c-t> :FZF<cr>
-let g:fzf_action = { 'ctrl-t': 'tab split', 'ctrl-x': 'split', 'ctrl-v': 'vsplit' }
-let g:fzf_layout = { 'down': '~25%' }
 
 " NERDTree
 noremap <C-n> :NERDTreeToggle<CR>
