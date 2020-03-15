@@ -1,6 +1,0 @@
--R
---exclude=.git
---exclude=tmp
---exclude=log
---exclude=node_modules
---languages=-javascript,-sql

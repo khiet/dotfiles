@@ -50,7 +50,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'https://github.com/ap/vim-css-color'
 
   Plug 'https://github.com/sheerun/vim-polyglot'
-  Plug 'https://github.com/w0rp/ale'
 
   " Note
   Plug 'https://github.com/glidenote/memolist.vim'
@@ -218,10 +217,7 @@ noremap <C-n> :NERDTreeToggle<CR>
 let g:NERDTreeWinSize=35
 
 " lightline
-let g:lightline = { 'component_function': { 'filename': 'LightLineFilename' }, 'colorscheme': 'gruvbox' }
-function! LightLineFilename()
-  return expand('%')
-endfunction
+" https://github.com/itchyny/lightline.vim
 
 if $TMUX != '' " tmux specific settings
   " https://github.com/christoomey/vim-tmux-navigator#vim-1
@@ -232,13 +228,6 @@ if $TMUX != '' " tmux specific settings
   nnoremap <silent> <c-k> :TmuxNavigateUp<cr>
   nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
 end
-
-" ale
-" see :h ale-support for a list of linters
-let g:ale_fixers           = { 'javascript': ['prettier', 'eslint'], 'ruby': 'rubocop' }
-let g:ale_linters          = { 'javascript': 'all', 'ruby': 'all' }
-let g:ale_linters_explicit = 1
-let g:ale_fix_on_save      = 1
 
 set t_Co=256
 if (&t_Co == 256) " if terminal supports 256 colours
@@ -287,7 +276,8 @@ set updatetime=300
 let g:closetag_filenames = '*.html,*.erb,*.js,*.jsx'
 
 if has('nvim')
-  " :CocInstall coc-tsserver coc-json coc-html coc-css
+  " gem install solargraph
+  " :CocInstall coc-tsserver coc-solargraph
   " :CocConfig
   " :checkhealth
   " :CocInfo
@@ -307,11 +297,10 @@ if has('nvim')
   " nmap <silent> gi <Plug>(coc-implementation)
   nmap <silent> gr <Plug>(coc-references)
 
-  " rename symbols
   nmap <leader>rn <Plug>(coc-rename)
-
-  " format
   nmap <leader>f  <Plug>(coc-format)
+  " auto-fixing
+  nmap <leader>c  <Plug>(coc-codeaction)
 
   " show documentation
   nnoremap <silent> K :call <SID>show_documentation()<CR>
@@ -367,14 +356,6 @@ function! <SID>ReplaceCurlyQuotes()
   %s/[”“]/"/g
   let @/=_s
   call cursor(l, c)
-endfunction
-
-" ctags - http://vim.wikia.com/wiki/Autocmd_to_update_ctags_file
-function! UpdateTags()
-  let cwd = getcwd()
-  let tagfilename = cwd . "/tags"
-  let cmd = 'ctags -R -f ' . tagfilename
-  let resp = system(cmd)
 endfunction
 " -----------------------------------------------
 
