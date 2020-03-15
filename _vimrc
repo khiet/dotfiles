@@ -73,10 +73,11 @@ nnoremap <leader>ev :tabedit $MYVIMRC<CR>
 nnoremap <leader>eb :tabedit <C-R>=expand($HOME."/.bash_profile")<CR><CR>
 nnoremap <leader>ez :tabedit <C-R>=expand($HOME."/.zshrc")<CR><CR>
 nnoremap <leader>et :tabedit <C-R>=expand($HOME."/.tmux.conf")<CR><CR>
+nnoremap <leader>% :source %<CR>
 
 " buffers
-nnoremap <leader>bu :buffers<cr>:buffer<space>
-nnoremap <leader>bd :buffers<cr>:bdelete<space>
+nnoremap <leader>bu :buffers<CR>:buffer<space>
+" nnoremap <leader>bd :buffers<CR>:bdelete<space>
 nnoremap <leader>bn :bn<CR>
 nnoremap <leader>bp :bp<CR>
 
@@ -84,11 +85,9 @@ nnoremap <leader>bp :bp<CR>
 nnoremap <leader>= ggvG=<C-o><C-o>
 
 " saving
-nnoremap <leader>w :w<cr>
-nnoremap <leader>x :x<cr>
+nnoremap <leader>w :w<CR>
+nnoremap <leader>x :x<CR>
 
-" search with grouping and backreferences
-nnoremap <leader>/ /\(\w\+\)
 " replace
 nnoremap <leader>s :%s//
 
@@ -129,9 +128,9 @@ vnoremap << <gv
 vnoremap >> >gv
 
 " byebug
-noremap <leader>dr obyebug<esc>:w<cr>
+noremap <leader>dr obyebug<esc>:w<CR>
 " debugger
-noremap <leader>dj odebugger;<esc>:w<cr>
+noremap <leader>dj odebugger;<esc>:w<CR>
 
 set hlsearch
 " recognize .js without extension when gf
@@ -208,7 +207,7 @@ endif
 
 " fzf
 set runtimepath+=/usr/local/opt/fzf
-nnoremap <silent> <c-t> :FZF<cr>
+nnoremap <silent> <c-t> :FZF<CR>
 
 " NERDTree
 noremap <C-n> :NERDTreeToggle<CR>
@@ -218,7 +217,7 @@ let g:NERDTreeWinSize=35
 " https://github.com/itchyny/lightline.vim
 " https://github.com/itchyny/lightline.vim/blob/master/colorscheme.md
 let g:lightline = {
-  \ 'colorscheme': 'jellybeans',
+  \ 'colorscheme': 'powerline',
   \ 'active': { 'left': [ [ 'mode', 'paste' ], [ 'gitbranch', 'readonly', 'filename', 'modified' ] ] },
   \ 'component_function': { 'gitbranch': 'FugitiveHead' },
   \ }
@@ -227,10 +226,10 @@ if $TMUX != '' " tmux specific settings
   " https://github.com/christoomey/vim-tmux-navigator#vim-1
   let g:tmux_navigator_no_mappings = 1
 
-  nnoremap <silent> <c-h> :TmuxNavigateLeft<cr>
-  nnoremap <silent> <c-j> :TmuxNavigateDown<cr>
-  nnoremap <silent> <c-k> :TmuxNavigateUp<cr>
-  nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
+  nnoremap <silent> <c-h> :TmuxNavigateLeft<CR>
+  nnoremap <silent> <c-j> :TmuxNavigateDown<CR>
+  nnoremap <silent> <c-k> :TmuxNavigateUp<CR>
+  nnoremap <silent> <c-l> :TmuxNavigateRight<CR>
 end
 
 set t_Co=256
@@ -253,14 +252,6 @@ hi CurrentWord ctermbg=56
 " highlight trailing whitespaces
 au BufWritePre * match ExtraWhitespace /\s\+$/
 highlight ExtraWhitespace ctermbg=red guibg=red
-
-if has("autocmd")
-  " http://stackoverflow.com/questions/2400264/is-it-possible-to-apply-vim-configurations-without-restarting/2400289#2400289
-  augroup myvimrc
-    au!
-    autocmd BufWritePost .vimrc source ~/.vimrc
-  augroup END
-endif
 
 " memolist
 let g:memolist_path = "$HOME/Dropbox/memolist"
