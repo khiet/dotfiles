@@ -218,6 +218,12 @@ let g:NERDTreeWinSize=35
 
 " lightline
 " https://github.com/itchyny/lightline.vim
+" https://github.com/itchyny/lightline.vim/blob/master/colorscheme.md
+let g:lightline = {
+  \ 'colorscheme': 'jellybeans',
+  \ 'active': { 'left': [ [ 'mode', 'paste' ], [ 'gitbranch', 'readonly', 'filename', 'modified' ] ] },
+  \ 'component_function': { 'gitbranch': 'FugitiveHead' },
+  \ }
 
 if $TMUX != '' " tmux specific settings
   " https://github.com/christoomey/vim-tmux-navigator#vim-1
