@@ -246,8 +246,8 @@ if (&t_Co == 256) " if terminal supports 256 colours
 endif
 
 " vim_current_word
-hi CurrentWord ctermbg=56
-" hi CurrentWordTwins ctermbg=237
+hi CurrentWord guifg=#ffffff guibg=#721b65
+hi CurrentWordTwins gui=underline cterm=underline
 
 " highlight trailing whitespaces
 au BufWritePre * match ExtraWhitespace /\s\+$/
