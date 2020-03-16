@@ -46,9 +46,6 @@ call plug#begin('~/.vim/plugged')
   " HTML
   Plug 'https://github.com/alvan/vim-closetag'
 
-  " CSS
-  Plug 'https://github.com/ap/vim-css-color'
-
   Plug 'https://github.com/sheerun/vim-polyglot'
 
   " Note
@@ -272,7 +269,7 @@ let g:closetag_filenames = '*.html,*.erb,*.js,*.jsx'
 
 if has('nvim')
   " gem install solargraph
-  " :CocInstall coc-tsserver coc-solargraph
+  " :CocInstall coc-tsserver coc-solargraph coc-highlight
   " :CocConfig
   " :checkhealth
   " :CocInfo
@@ -306,6 +303,9 @@ if has('nvim')
       call CocAction('doHover')
     endif
   endfunction
+
+  ":call CocAction('pickColor')
+  ":call CocAction('colorPresentation')
 end
 
 " -----------------------------------------------

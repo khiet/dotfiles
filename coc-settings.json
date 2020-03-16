@@ -1,8 +1,10 @@
 {
   "coc.preferences.formatOnSaveFiletypes": [
-    "javascript", "ruby"
+    "javascript",
+    "ruby"
   ],
   "javascript.validate.enable": true,
   "solargraph.diagnostics": true,
-  "solargraph.formatting": true
+  "solargraph.formatting": true,
+  "highlight.document.enable": false
 }
