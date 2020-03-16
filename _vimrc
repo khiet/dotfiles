@@ -281,8 +281,7 @@ if has('nvim')
   set shortmess+=c
 
   " trigger completion
-  inoremap <silent><expr> <TAB> coc#refresh()
-
+  inoremap <silent><expr> <c-t> coc#refresh()
   " navigate diagnostics
   nmap <silent> [g <Plug>(coc-diagnostic-prev)
   nmap <silent> ]g <Plug>(coc-diagnostic-next)
