@@ -268,7 +268,7 @@ let g:closetag_filenames = '*.html,*.erb,*.js,*.jsx'
 
 if has('nvim')
   " gem install solargraph
-  " :CocInstall coc-tsserver coc-solargraph coc-highlight
+  " :CocInstall coc-tsserver coc-solargraph coc-highlight coc-emmet
   " :CocConfig
   " :checkhealth
   " :CocInfo
@@ -303,8 +303,12 @@ if has('nvim')
     endif
   endfunction
 
+  " coc-css
   ":call CocAction('pickColor')
   ":call CocAction('colorPresentation')
+
+  " coc-emmet
+  " <c-y> to select
 end
 
 " -----------------------------------------------
