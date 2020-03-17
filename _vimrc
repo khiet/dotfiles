@@ -267,12 +267,13 @@ set updatetime=300
 let g:closetag_filenames = '*.html,*.erb,*.js,*.jsx'
 
 if has('nvim')
+  " coc
+  let g:coc_global_extensions = ['coc-tsserver', 'coc-solargraph', 'coc-highlight', 'coc-emmet']
   " gem install solargraph
-  " :CocInstall coc-tsserver coc-solargraph coc-highlight coc-emmet
+
   " :CocConfig
   " :checkhealth
   " :CocInfo
-  " coc
   set cmdheight=2
   set shortmess+=c
 
