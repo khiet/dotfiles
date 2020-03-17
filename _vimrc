@@ -268,7 +268,7 @@ let g:closetag_filenames = '*.html,*.erb,*.js,*.jsx'
 
 if has('nvim')
   " coc
-  let g:coc_global_extensions = ['coc-tsserver', 'coc-solargraph', 'coc-highlight', 'coc-emmet']
+  let g:coc_global_extensions = ['coc-tsserver', 'coc-solargraph', 'coc-highlight', 'coc-emmet', 'coc-html']
   " gem install solargraph
 
   " :CocConfig
