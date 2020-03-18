@@ -270,7 +270,7 @@ let g:closetag_filenames = '*.html,*.erb,*.js,*.jsx'
 
 if has('nvim')
   " coc
-  let g:coc_global_extensions = ['coc-tsserver', 'coc-solargraph', 'coc-highlight', 'coc-emmet', 'coc-html']
+  let g:coc_global_extensions = ['coc-tsserver', 'coc-solargraph', 'coc-highlight', 'coc-emmet', 'coc-html', 'coc-css']
   " gem install solargraph
 
   " :CocConfig
@@ -306,7 +306,7 @@ if has('nvim')
     endif
   endfunction
 
-  " coc-css
+  " coc-highlight
   ":call CocAction('pickColor')
   ":call CocAction('colorPresentation')
 
@@ -366,17 +366,17 @@ nnoremap <script> <leader>ct :call UpdateTags()<CR>
 " vim-rails
 " https://github.com/tpope/vim-rails/issues/368#issuecomment-265086019
 let g:rails_projections = {
-      \  "app/controllers/*_controller.rb": {
-      \      "test": [
-      \        "spec/requests/{}_spec.rb",
-      \        "spec/controllers/{}_controller_spec.rb",
-      \      ],
-      \      "alternate": [
-      \        "spec/requests/{}_spec.rb",
-      \        "spec/controllers/{}_controller_spec.rb",
-      \      ],
-      \   },
-      \   "spec/requests/*_spec.rb": {
-      \      "alternate": "app/controllers/{}_controller.rb"
-      \   },
-      \ }
+  \ "app/controllers/*_controller.rb": {
+  \     "test": [
+  \       "spec/requests/{}_spec.rb",
+  \       "spec/controllers/{}_controller_spec.rb",
+  \     ],
+  \     "alternate": [
+  \       "spec/requests/{}_spec.rb",
+  \       "spec/controllers/{}_controller_spec.rb",
+  \     ],
+  \   },
+  \   "spec/requests/*_spec.rb": {
+  \      "alternate": "app/controllers/{}_controller.rb"
+  \   },
+  \ }
