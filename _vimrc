@@ -314,6 +314,9 @@ if has('nvim')
   " <c-y> to select
 end
 
+" vim-polyglot
+let g:csv_no_conceal = 1
+
 " -----------------------------------------------
 "    OS specifics
 " -----------------------------------------------
