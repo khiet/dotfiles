@@ -62,10 +62,6 @@ alias caly='cal -y'
 alias public_ip="curl ipinfo.io/ip"
 alias private_ip="ipconfig getifaddr en0"
 
-# flutter
-alias fela='flutter emulators --launch Pixel_2_API_28'
-alias feli='flutter emulators --launch apple_ios_simulator'
-
 # rails
 alias be="bundle exec"
 alias rr="bin/rails restart"

@@ -217,8 +217,18 @@ let g:NERDTreeWinSize=35
 let g:lightline = {
   \ 'colorscheme': 'gruvbox',
   \ 'active': { 'left': [ [ 'mode', 'paste' ], [ 'gitbranch', 'readonly', 'filename', 'modified' ] ] },
-  \ 'component_function': { 'gitbranch': 'FugitiveHead' },
+  \ 'component_function': { 'gitbranch': 'FugitiveHead', 'filename': 'LightlineFilename' },
   \ }
+
+" https://github.com/itchyny/lightline.vim/issues/293#issuecomment-373710096
+function! LightlineFilename()
+  let root = fnamemodify(get(b:, 'gitbranch_path'), ':h:h')
+  let path = expand('%:p')
+  if path[:len(root)-1] ==# root
+    return path[len(root)+1:]
+  endif
+  return expand('%')
+endfunction
 
 if $TMUX != '' " tmux specific settings
   " https://github.com/christoomey/vim-tmux-navigator#vim-1
