@@ -215,7 +215,7 @@ let g:NERDTreeWinSize=35
 " https://github.com/itchyny/lightline.vim
 " https://github.com/itchyny/lightline.vim/blob/master/colorscheme.md
 let g:lightline = {
-  \ 'colorscheme': 'powerline',
+  \ 'colorscheme': 'gruvbox',
   \ 'active': { 'left': [ [ 'mode', 'paste' ], [ 'gitbranch', 'readonly', 'filename', 'modified' ] ] },
   \ 'component_function': { 'gitbranch': 'FugitiveHead' },
   \ }
