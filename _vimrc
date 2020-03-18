@@ -157,6 +157,8 @@ set smartindent
 " disable ~ files
 set nobackup
 set nowritebackup
+" avoid 'safe write' - https://webpack.js.org/guides/development/#adjusting-your-text-editor
+set backupcopy=yes
 " disable .swap files
 set noswapfile
 " tabs and spaces
