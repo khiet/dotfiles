@@ -271,7 +271,7 @@ let g:gitgutter_map_keys = 0 " turn off all key mappings
 set signcolumn=yes
 let g:gitgutter_grep = 'ag'
 " https://github.com/airblade/vim-gitgutter#getting-started
-set updatetime=300
+set updatetime=200
 
 " vim-closetag
 let g:closetag_filenames = '*.html,*.erb,*.js,*.jsx'
