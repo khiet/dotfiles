@@ -2,7 +2,7 @@
 
 ### Install [Homebrew](http://brew.sh/index.html)
 
-### Install vim, tmux, ag, and fzf
+### Install nvim, tmux, ag, and fzf
 
 ```
 brew cask install iterm2

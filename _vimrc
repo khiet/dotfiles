@@ -19,7 +19,7 @@ endif
 " update plugins
 " https://github.com/junegunn/vim-plug#commands
 call plug#begin('~/.vim/plugged')
-  " Utilities
+  " General
   Plug 'https://github.com/dominikduda/vim_current_word'
   Plug 'https://github.com/pbrisbin/vim-mkdir'
   Plug 'https://github.com/scrooloose/nerdtree'
@@ -27,6 +27,10 @@ call plug#begin('~/.vim/plugged')
   Plug 'https://github.com/itchyny/lightline.vim'
   Plug 'https://github.com/tpope/vim-surround'
   Plug 'https://github.com/junegunn/vim-easy-align'
+  Plug 'https://github.com/sheerun/vim-polyglot'
+  if has('nvim')
+    Plug 'https://github.com/neoclide/coc.nvim', {'branch': 'release'}
+  endif
 
   " Colorscheme
   Plug 'https://github.com/morhetz/gruvbox'
@@ -46,14 +50,8 @@ call plug#begin('~/.vim/plugged')
   " HTML
   Plug 'https://github.com/alvan/vim-closetag'
 
-  Plug 'https://github.com/sheerun/vim-polyglot'
-
   " Note
   Plug 'https://github.com/glidenote/memolist.vim'
-
-  if has('nvim')
-    Plug 'https://github.com/neoclide/coc.nvim', {'branch': 'release'}
-  endif
 call plug#end()
 
 noremap <Up>    <NOP>
