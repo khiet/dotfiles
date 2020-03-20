@@ -280,7 +280,7 @@ if has('nvim')
   " :CocConfig
   " :checkhealth
   " :CocInfo
-  set cmdheight=2
+  " set cmdheight=2
   set shortmess+=c
 
   " trigger completion
