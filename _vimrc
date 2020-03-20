@@ -364,7 +364,6 @@ endfunction
 
 nnoremap <silent> <leader>t :call <SID>StripTrailingWhitespaces()<CR>
 nnoremap <silent> <leader>cq :call <SID>ReplaceCurlyQuotes()<CR>
-nnoremap <script> <leader>ct :call UpdateTags()<CR>
 
 " vim-rails
 " https://github.com/tpope/vim-rails/issues/368#issuecomment-265086019
