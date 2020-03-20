@@ -76,6 +76,10 @@ nnoremap <leader>bu :buffers<CR>:buffer<space>
 nnoremap <leader>bn :bn<CR>
 nnoremap <leader>bp :bp<CR>
 
+" tabs
+nnoremap <leader>tn :tabn<CR>
+nnoremap <leader>tp :tabp<CR>
+
 " indent file
 nnoremap <leader>= ggvG=<C-o><C-o>
 
