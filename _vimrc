@@ -71,8 +71,6 @@ nnoremap <leader>ez :tabedit <C-R>=expand($HOME."/.zshrc")<CR><CR>
 nnoremap <leader>et :tabedit <C-R>=expand($HOME."/.tmux.conf")<CR><CR>
 
 " buffers
-nnoremap <leader>bu :buffers<CR>:buffer<space>
-" nnoremap <leader>bd :buffers<CR>:bdelete<space>
 nnoremap <leader>bn :bn<CR>
 nnoremap <leader>bp :bp<CR>
 
