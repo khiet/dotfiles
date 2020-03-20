@@ -98,6 +98,8 @@ export TMUXINATOR_CONFIG=~/Dropbox/Apps/developmennt/tmuxinator
 
 # flutter
 export PATH=~/flutter/bin:$PATH
+# pub
+export PATH=~/.pub-cache/bin:$PATH
 # dart
 export PATH=~/flutter/bin/cache/dart-sdk/bin:$PATH
 # gcloud - https://cloud.google.com/sdk/docs/quickstart-macos

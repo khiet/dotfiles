@@ -129,11 +129,6 @@ nnoremap <leader><leader> <C-^>
 vnoremap << <gv
 vnoremap >> >gv
 
-" byebug
-noremap <leader>dr obyebug<esc>:w<CR>
-" debugger
-noremap <leader>dj odebugger;<esc>:w<CR>
-
 set hlsearch
 " recognize .js without extension when gf
 set suffixesadd=.js
@@ -276,7 +271,16 @@ let g:closetag_filenames = '*.html,*.erb,*.js,*.jsx'
 
 if has('nvim')
   " coc
-  let g:coc_global_extensions = ['coc-tsserver', 'coc-solargraph', 'coc-highlight', 'coc-emmet', 'coc-html', 'coc-css']
+  let g:coc_global_extensions = [
+    \ 'coc-tsserver',
+    \ 'coc-solargraph',
+    \ 'coc-highlight',
+    \ 'coc-emmet',
+    \ 'coc-html',
+    \ 'coc-css',
+    \ 'coc-snippets',
+    \ 'coc-flutter'
+    \ ]
   " gem install solargraph
 
   " :CocConfig
@@ -297,9 +301,9 @@ if has('nvim')
   nmap <silent> gr <Plug>(coc-references)
 
   nmap <leader>rn <Plug>(coc-rename)
-  nmap <leader>f  <Plug>(coc-format)
+  " nmap <leader>f <Plug>(coc-format)
   " auto-fixing
-  nmap <leader>c  <Plug>(coc-codeaction)
+  nmap <leader>f <Plug>(coc-codeaction)
 
   " show documentation
   nnoremap <silent> K :call <SID>show_documentation()<CR>
@@ -318,6 +322,13 @@ if has('nvim')
 
   " coc-emmet
   " <c-y> to select
+
+  " coc-snippets
+  set runtimepath+=~/.vim/custom_snippets
+  nnoremap <leader>es :<C-u>CocCommand snippets.editSnippets<CR>
+
+  nnoremap <leader>cc :<C-u>CocCommand<space>
+  nnoremap <leader>cl :<C-u>CocList<space>
 end
 
 " vim-polyglot
