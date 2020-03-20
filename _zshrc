@@ -23,7 +23,6 @@ plugins=(
   colored-man-pages
   urltools
   zsh-syntax-highlighting
-  k
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -46,8 +45,6 @@ bindkey '^h' backward-delete-char
 bindkey -M vicmd 'v' edit-command-line
 
 export LESS=-RFX
-
-alias k="k -a"
 
 alias dl="youtube-dl -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4' -o '~/youtube/%(title)s-%(id)s.%(ext)s'"
 alias ct="ctags -R ."
