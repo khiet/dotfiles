@@ -267,6 +267,7 @@ set updatetime=200
 
 " vim-fugitive
 nnoremap <leader>g :Git<space>
+nnoremap <leader>gp :Gpush<CR>
 
 " vim-closetag
 let g:closetag_filenames = '*.html,*.erb,*.js,*.jsx'
