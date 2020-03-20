@@ -24,7 +24,8 @@ call plug#begin('~/.vim/plugged')
   Plug 'https://github.com/pbrisbin/vim-mkdir'
   Plug 'https://github.com/scrooloose/nerdtree'
   Plug 'https://github.com/mileszs/ack.vim'
-  Plug 'https://github.com/itchyny/lightline.vim'
+  Plug 'https://github.com/vim-airline/vim-airline'
+  Plug 'https://github.com/vim-airline/vim-airline-themes'
   Plug 'https://github.com/tpope/vim-surround'
   Plug 'https://github.com/junegunn/vim-easy-align'
   Plug 'https://github.com/sheerun/vim-polyglot'
@@ -209,24 +210,10 @@ nnoremap <silent> <c-t> :FZF<CR>
 noremap <C-n> :NERDTreeToggle<CR>
 let g:NERDTreeWinSize=35
 
-" lightline
-" https://github.com/itchyny/lightline.vim
-" https://github.com/itchyny/lightline.vim/blob/master/colorscheme.md
-let g:lightline = {
-  \ 'colorscheme': 'gruvbox',
-  \ 'active': { 'left': [ [ 'mode', 'paste' ], [ 'gitbranch', 'readonly', 'filename', 'modified' ] ] },
-  \ 'component_function': { 'gitbranch': 'FugitiveHead', 'filename': 'LightlineFilename' },
-  \ }
-
-" https://github.com/itchyny/lightline.vim/issues/293#issuecomment-373710096
-function! LightlineFilename()
-  let root = fnamemodify(get(b:, 'gitbranch_path'), ':h:h')
-  let path = expand('%:p')
-  if path[:len(root)-1] ==# root
-    return path[len(root)+1:]
-  endif
-  return expand('%')
-endfunction
+" airline
+let g:airline_theme='base16'
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#formatter = 'unique_tail'
 
 if $TMUX != '' " tmux specific settings
   " https://github.com/christoomey/vim-tmux-navigator#vim-1
