@@ -85,6 +85,9 @@ nnoremap <leader>= ggvG=<C-o><C-o>
 nnoremap <leader>w :w<CR>
 nnoremap <leader>x :x<CR>
 
+" quitting
+nnoremap <leader>q :q<CR>
+
 " replace
 nnoremap <leader>s :%s//
 
