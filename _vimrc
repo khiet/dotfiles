@@ -77,6 +77,8 @@ nnoremap <leader>bp :bp<CR>
 " tabs
 " :tabn gt
 " :tabp gT
+nnoremap <leader>te :tabedit<CR>
+nnoremap <leader>tc :tabclose<CR>
 
 " indent file
 nnoremap <leader>= ggvG=<C-o><C-o>
