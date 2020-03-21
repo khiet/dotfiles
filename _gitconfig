@@ -18,6 +18,7 @@
   ds  = diff --staged
   dsn  = diff --staged --name-only
   dsw = diff --staged --word-diff
+  dhh = diff HEAD~
   lg  = log --pretty=format:'%C(yellow)%h%Creset %s %Cgreen(%cd) %C(red)%an%Creset'
   lgg = log --graph --decorate --oneline
   dom = diff origin/master
