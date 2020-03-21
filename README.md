@@ -33,7 +33,7 @@ ln -s ~/dotfiles/_hushlogin ~/.hushlogin
 ln -s ~/dotfiles/_ignore ~/.ignore
 ln -s ~/dotfiles/_prettierrc ~/.prettierrc
 
-mkdir -p ${XDG_CONFIG_HOME:=$HOME/.config}
+mkdir -p $XDG_CONFIG_HOME
 ln -s ~/.vim $XDG_CONFIG_HOME/nvim
 ln -s ~/.vimrc $XDG_CONFIG_HOME/nvim/init.vim
 ```
