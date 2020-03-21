@@ -75,8 +75,8 @@ nnoremap <leader>bn :bn<CR>
 nnoremap <leader>bp :bp<CR>
 
 " tabs
-nnoremap <leader>tn :tabn<CR>
-nnoremap <leader>tp :tabp<CR>
+" :tabn gt
+" :tabp gT
 
 " indent file
 nnoremap <leader>= ggvG=<C-o><C-o>
