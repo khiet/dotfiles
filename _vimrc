@@ -70,6 +70,7 @@ nnoremap <leader>ez :tabedit <C-R>=expand($HOME."/.zshrc")<CR><CR>
 nnoremap <leader>et :tabedit <C-R>=expand($HOME."/.tmux.conf")<CR><CR>
 
 " buffers
+nnoremap <leader>bd :bd<CR>
 nnoremap <leader>bn :bn<CR>
 nnoremap <leader>bp :bp<CR>
 
@@ -85,9 +86,6 @@ nnoremap <leader>= ggvG=<C-o><C-o>
 " saving
 nnoremap <leader>w :w<CR>
 nnoremap <leader>x :x<CR>
-
-" quitting
-nnoremap <leader>q :q<CR>
 
 " replace
 nnoremap <leader>s :%s//
