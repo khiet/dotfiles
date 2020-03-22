@@ -26,7 +26,6 @@ cd; git clone git@github.com:khiet/dotfiles.git
 ln -s dotfiles ~/.vim
 ln -s ~/dotfiles/_vimrc ~/.vimrc
 ln -s ~/dotfiles/_gitconfig ~/.gitconfig
-ln -s ~/dotfiles/_bash_profile ~/.bash_profile
 ln -s ~/dotfiles/_tmux.conf ~/.tmux.conf
 ln -s ~/dotfiles/_tm_properties ~/.tm_properties
 ln -s ~/dotfiles/_hushlogin ~/.hushlogin

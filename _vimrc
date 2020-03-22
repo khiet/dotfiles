@@ -66,7 +66,6 @@ inoremap jj <esc>
 
 " edit config files
 nnoremap <leader>ev :tabedit $MYVIMRC<CR>
-nnoremap <leader>eb :tabedit <C-R>=expand($HOME."/.bash_profile")<CR><CR>
 nnoremap <leader>ez :tabedit <C-R>=expand($HOME."/.zshrc")<CR><CR>
 nnoremap <leader>et :tabedit <C-R>=expand($HOME."/.tmux.conf")<CR><CR>
 
