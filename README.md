@@ -96,9 +96,3 @@ brew cask install visual-studio-code
 rm ~/Library/Application\ Support/Code/User/settings.json; ln -s ~/dotfiles/_settings.json ~/Library/Application\ Support/Code/User/settings.json
 rm ~/Library/Application\ Support/Code/User/keybindings.json; ln -s ~/dotfiles/_keybindings.json ~/Library/Application\ Support/Code/User/keybindings.json
 ```
-
-### UltiSnips
-Custom snippets are placed in custom_snippets/ and some snippets are taken from [vim-snippets](https://github.com/honza/vim-snippets) e.g.
-```
-curl https://raw.githubusercontent.com/honza/vim-snippets/master/UltiSnips/javascript.snippets > ~/.vim/UltiSnips/javascript.snippets
-```
