@@ -8,5 +8,10 @@
   "solargraph.diagnostics": true,
   "solargraph.formatting": true,
   "highlight.document.enable": false,
-  "snippets.userSnippetsDirectory": "~/.vim/custom_snippets"
+  "snippets.userSnippetsDirectory": "~/.vim/custom_snippets",
+  "snippets.extends": {
+    "haml": [
+      "javascript"
+    ]
+  }
 }

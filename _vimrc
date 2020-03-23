@@ -286,6 +286,7 @@ if has('nvim')
     \ 'coc-emmet',
     \ 'coc-html',
     \ 'coc-css',
+    \ 'coc-json',
     \ 'coc-snippets',
     \ 'coc-flutter'
     \ ]
