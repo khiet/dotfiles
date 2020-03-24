@@ -81,6 +81,11 @@ nnoremap <leader>bp :bp<CR>
 nnoremap <leader>te :tabedit<CR>
 nnoremap <leader>tc :tabclose<CR>
 
+" windows
+nnoremap <leader>vs :vs<CR>
+nnoremap <leader>sp :sp<CR>
+nnoremap <leader>q :q<CR>
+
 " indent file
 nnoremap <leader>= ggvG=<C-o><C-o>
 
