@@ -28,7 +28,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'https://github.com/tpope/vim-surround'
   Plug 'https://github.com/junegunn/vim-easy-align'
   Plug 'https://github.com/sheerun/vim-polyglot'
-  Plug 'https://github.com/luochen1990/rainbow'
   if has('nvim')
     Plug 'https://github.com/neoclide/coc.nvim', {'branch': 'release'}
   endif
@@ -118,16 +117,6 @@ nnoremap <leader>a :Ack!<space>
 " vim-easy-align
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
-
-" rainbow
-let g:rainbow_active = 1
-" enable rainbow for dart
-let g:rainbow_conf = {
-  \   'separately': {
-  \     '*': 0,
-  \     'dart': {},
-  \   }
-  \ }
 
 " yank
 " http://vim.wikia.com/wiki/Replace_a_word_with_yanked_text
