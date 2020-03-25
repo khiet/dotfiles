@@ -35,7 +35,6 @@ call plug#begin('~/.vim/plugged')
 
   " Colorscheme
   Plug 'https://github.com/morhetz/gruvbox'
-  Plug 'https://github.com/joshdick/onedark.vim'
 
   " Tmux
   Plug 'https://github.com/christoomey/vim-tmux-navigator'
@@ -226,7 +225,7 @@ noremap <C-n> :NERDTreeToggle<CR>
 let g:NERDTreeWinSize=35
 
 " airline
-let g:airline_theme='onedark'
+let g:airline_theme='gruvbox'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 
@@ -250,7 +249,7 @@ if (&t_Co == 256) " if terminal supports 256 colours
     set termguicolors
   endif
 
-  colorscheme onedark
+  colorscheme gruvbox
 endif
 
 " vim_current_word

@@ -1,5 +1,12 @@
 snippet stless "Flutter stateless widget"
+import 'package:flutter/material.dart';
+
 class $1 extends StatelessWidget {
+
+	$1({
+		Key key,
+	}) : super(key: key);
+
 	@override
 	Widget build(BuildContext context) {
 		return Container(
@@ -10,6 +17,9 @@ class $1 extends StatelessWidget {
 endsnippet
 
 snippet stful "Flutter stateful widget"
+
+import 'package:flutter/material.dart';
+
 class $1 extends StatefulWidget {
 	@override
 	_$1State createState() => _$1State();
