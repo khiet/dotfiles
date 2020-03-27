@@ -330,6 +330,8 @@ if has('nvim')
   nnoremap <leader>es :<C-u>CocCommand snippets.editSnippets<CR>
 
   nnoremap <leader>cc :<C-u>CocCommand<space>
+  nnoremap <leader>ccf :<C-u>CocCommand flutter.
+  nnoremap <leader>ccfd :<C-u>CocCommand flutter.dev.
   nnoremap <leader>cl :<C-u>CocList<space>
 end
 
