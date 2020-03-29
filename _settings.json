@@ -23,6 +23,14 @@
       "commands": [":w"]
     },
     {
+      "before": ["leader", "s", "p"],
+      "commands": [":sp"]
+    },
+    {
+      "before": ["leader", "v", "s"],
+      "commands": [":vs"]
+    },
+    {
       "before": ["leader", "r", "n"],
       "commands": ["editor.action.rename"]
     },
