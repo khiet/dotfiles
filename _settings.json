@@ -15,22 +15,32 @@
   ],
   "vim.normalModeKeyBindingsNonRecursive": [
     {
-      "before": ["<leader>", "d"],
-      "after": ["d", "d"]
-    },
-    {
       "before": ["<C-n>"],
       "commands": [":nohl"]
     },
     {
-      "before": ["<leader>", "w"],
+      "before": ["<C-w>"],
       "commands": [":w"]
+    },
+    {
+      "before": ["leader", "r", "n"],
+      "commands": ["editor.action.rename"]
+    },
+    {
+      "before": ["g", "r"],
+      "commands": ["editor.action.goToReferences"]
+    },
+    {
+      "before": ["<C-t>"],
+      "commands": ["workbench.action.quickOpen"]
+    }
+  ],
+  "vim.insertModeKeyBindingsNonRecursive": [
+    {
+      "before": ["<C-t>"],
+      "commands": ["editor.action.triggerSuggest"]
     }
   ],
   "vim.leader": "<space>",
-  "vim.handleKeys": {
-    "<C-a>": false,
-    "<C-f>": false
-  },
   "todo-tree.tree.showScanModeButton": false
 }
