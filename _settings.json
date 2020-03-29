@@ -50,5 +50,6 @@
     }
   ],
   "vim.leader": "<space>",
-  "todo-tree.tree.showScanModeButton": false
+  "todo-tree.tree.showScanModeButton": false,
+  "window.title": "${activeEditorLong}${separator}${rootName}"
 }
