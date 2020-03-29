@@ -7,12 +7,6 @@
   "vim.useSystemClipboard": true,
   "vim.useCtrlKeys": true,
   "vim.hlsearch": true,
-  "vim.insertModeKeyBindings": [
-    {
-      "before": ["j", "j"],
-      "after": ["<Esc>"]
-    }
-  ],
   "vim.normalModeKeyBindingsNonRecursive": [
     {
       "before": ["<C-n>"],
@@ -39,11 +33,19 @@
       "commands": ["editor.action.goToReferences"]
     },
     {
+      "before": ["leader", "t"],
+      "commands": ["workbench.action.terminal.toggleTerminal"]
+    },
+    {
       "before": ["<C-t>"],
       "commands": ["workbench.action.quickOpen"]
     }
   ],
   "vim.insertModeKeyBindingsNonRecursive": [
+    {
+      "before": ["j", "j"],
+      "after": ["<Esc>"]
+    },
     {
       "before": ["<C-t>"],
       "commands": ["editor.action.triggerSuggest"]
