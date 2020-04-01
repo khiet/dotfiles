@@ -84,9 +84,6 @@ nnoremap <leader>vs :vs<CR>
 nnoremap <leader>sp :sp<CR>
 nnoremap <leader>q :q<CR>
 
-" indent file
-nnoremap <leader>= ggvG=<C-o><C-o>
-
 " saving
 nnoremap <leader>w :w<CR>
 nnoremap <leader>x :x<CR>
@@ -303,7 +300,7 @@ if has('nvim')
   nmap <silent> gr <Plug>(coc-references)
 
   nmap <leader>rn <Plug>(coc-rename)
-  " nmap <leader>f <Plug>(coc-format)
+  nmap <leader>= <Plug>(coc-format)
   " auto-fixing
   nmap <leader>f <Plug>(coc-codeaction)
 
