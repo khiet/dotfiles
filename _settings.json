@@ -9,11 +9,7 @@
   "vim.hlsearch": true,
   "vim.normalModeKeyBindingsNonRecursive": [
     {
-      "before": ["<C-n>"],
-      "commands": [":nohl"]
-    },
-    {
-      "before": ["<C-w>"],
+      "before": ["leader", "w"],
       "commands": [":w"]
     },
     {
@@ -29,26 +25,34 @@
       "commands": ["editor.action.rename"]
     },
     {
-      "before": ["g", "r"],
-      "commands": ["editor.action.goToReferences"]
-    },
-    {
       "before": ["leader", "t"],
       "commands": ["workbench.action.terminal.toggleTerminal"]
     },
     {
+      "before": ["leader", "a"],
+      "commands": ["workbench.action.findInFiles"]
+    },
+    {
+      "before": ["<C-n>"],
+      "commands": [":nohl"]
+    },
+    {
       "before": ["<C-t>"],
       "commands": ["workbench.action.quickOpen"]
+    },
+    {
+      "before": ["g", "r"],
+      "commands": ["editor.action.goToReferences"]
     }
   ],
   "vim.insertModeKeyBindingsNonRecursive": [
     {
-      "before": ["j", "j"],
-      "after": ["<Esc>"]
-    },
-    {
       "before": ["<C-t>"],
       "commands": ["editor.action.triggerSuggest"]
+    },
+    {
+      "before": ["j", "j"],
+      "after": ["<Esc>"]
     }
   ],
   "vim.leader": "<space>",
