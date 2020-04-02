@@ -43,6 +43,14 @@
     {
       "before": ["g", "r"],
       "commands": ["editor.action.goToReferences"]
+    },
+    {
+      "before": ["g", "]"],
+      "commands": ["editor.action.marker.next"]
+    },
+    {
+      "before": ["g", "["],
+      "commands": ["editor.action.marker.prev"]
     }
   ],
   "vim.insertModeKeyBindingsNonRecursive": [
