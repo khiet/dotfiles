@@ -41,8 +41,8 @@ call plug#begin('~/.vim/plugged')
   Plug 'https://github.com/benmills/vimux'
 
   " Git
-  Plug 'https://github.com/tpope/vim-fugitive'
   Plug 'https://github.com/airblade/vim-gitgutter'
+  Plug 'https://github.com/tpope/vim-fugitive'
 
   " Rails
   Plug 'https://github.com/tpope/vim-rails'
@@ -264,10 +264,6 @@ set signcolumn=yes
 let g:gitgutter_grep = 'ag'
 " https://github.com/airblade/vim-gitgutter#getting-started
 set updatetime=200
-
-" vim-fugitive
-nnoremap <leader>g :Git<space>
-nnoremap <leader>gp :Gpush<CR>
 
 " vim-closetag
 let g:closetag_filenames = '*.html,*.erb,*.js,*.jsx'
