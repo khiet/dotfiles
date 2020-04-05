@@ -69,20 +69,23 @@ nnoremap <leader>ez :tabedit <C-R>=expand($HOME."/.zshrc")<CR><CR>
 nnoremap <leader>et :tabedit <C-R>=expand($HOME."/.tmux.conf")<CR><CR>
 
 " buffers
-nnoremap <leader>bd :bd<CR>
-nnoremap <leader>bn :bn<CR>
+nnoremap <silent> ]b :bn<CR>
+nnoremap <silent> [b :bp<CR>
 nnoremap <leader>bp :bp<CR>
 
 " tabs
-" :tabn gt
-" :tabp gT
+nnoremap <silent> ]t :tabn<CR>
+nnoremap <silent> [t :tabp<CR>
 nnoremap <leader>te :tabedit<CR>
 nnoremap <leader>tc :tabclose<CR>
 
 " windows
 nnoremap <leader>vs :vs<CR>
-nnoremap <leader>sp :sp<CR>
 nnoremap <leader>q :q<CR>
+
+" quickfix
+nnoremap <silent> ]q :cnext<CR>
+nnoremap <silent> [q :cprev<CR>
 
 " saving
 nnoremap <leader>w :w<CR>
@@ -293,8 +296,8 @@ if has('nvim')
   " trigger completion
   inoremap <silent><expr> <c-t> coc#refresh()
   " navigate diagnostics
-  nmap <silent> [g <Plug>(coc-diagnostic-prev)
-  nmap <silent> ]g <Plug>(coc-diagnostic-next)
+  nnoremap <silent> [g <Plug>(coc-diagnostic-prev)
+  nnoremap <silent> ]g <Plug>(coc-diagnostic-next)
 
   nmap <silent> gd <Plug>(coc-definition)
   " nmap <silent> gy <Plug>(coc-type-definition)
