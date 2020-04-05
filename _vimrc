@@ -176,8 +176,6 @@ au BufRead,BufNewFile *.inky-haml set ft=haml
 au BufRead,BufNewFile *.md set filetype=markdown
 au FileType markdown setlocal spell
 au FileType gitcommit setlocal spell
-" autocomplete with dictionary words when spell check is on
-set complete+=kspell
 
 highlight clear SpellBad
 highlight SpellBad cterm=underline ctermfg=red gui=underline guifg=red
@@ -341,8 +339,8 @@ let g:csv_no_conceal = 1
 if has("mac") " Mac
   " <C-x><C-k> to complete
   " location of dictionary on Mac
-  set dictionary-=/usr/share/dict/words dictionary+=/usr/share/dict/words
-  set complete-=k complete+=k
+  set dictionary+=/usr/share/dict/words
+  set complete+=kspell
 
   " invisibles
   set listchars=tab:»\ ,eol:$,nbsp:%,trail:~,extends:>,precedes:<
