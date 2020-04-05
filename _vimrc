@@ -243,8 +243,6 @@ endif
 hi CurrentWord guifg=#ffffff guibg=#721b65
 hi CurrentWordTwins gui=underline cterm=underline
 
-hi Search guifg=#f06292 guibg=#ffffff
-
 " highlight trailing whitespaces
 au BufWritePre * match ExtraWhitespace /\s\+$/
 highlight ExtraWhitespace ctermbg=red guibg=red
