@@ -261,9 +261,6 @@ let g:gitgutter_grep = 'ag'
 " https://github.com/airblade/vim-gitgutter#getting-started
 set updatetime=200
 
-" vim-fugitive
-set diffopt=vertical
-
 " vim-closetag
 let g:closetag_filenames = '*.html,*.erb,*.js,*.jsx'
 
