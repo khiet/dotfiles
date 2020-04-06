@@ -51,6 +51,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'https://github.com/alvan/vim-closetag'
 
   " Note
+  Plug 'https://github.com/vimwiki/vimwiki'
   Plug 'https://github.com/glidenote/memolist.vim'
 call plug#end()
 
@@ -252,6 +253,13 @@ let g:memolist_path = "$HOME/Dropbox/memolist"
 let g:memolist_memo_suffix = "txt"
 let g:memolist_memo_date = "%d %b %Y"
 nnoremap <leader>m :exe 'FZF' g:memolist_path<CR>
+
+set nocompatible
+filetype plugin on
+syntax on
+
+let g:vimwiki_list = [{'path': "$HOME/Dropbox/vimwiki", 'syntax': 'markdown', 'ext': '.md'}]
+" nmap <Leader>ww <Plug>VimwikiIndex
 
 " gitgutter
 let g:gitgutter_map_keys = 0 " turn off all key mappings
