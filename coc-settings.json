@@ -13,5 +13,8 @@
     "haml": [
       "javascript"
     ]
+  },
+  "emmet.includeLanguages": {
+    "eruby": "html"
   }
 }
