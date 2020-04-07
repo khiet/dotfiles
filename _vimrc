@@ -65,9 +65,9 @@ let mapleader=" "
 inoremap jj <esc>
 
 " edit config files
-nnoremap <leader>ev :tabedit $MYVIMRC<CR>
-nnoremap <leader>ez :tabedit <C-R>=expand($HOME."/.zshrc")<CR><CR>
-nnoremap <leader>et :tabedit <C-R>=expand($HOME."/.tmux.conf")<CR><CR>
+nnoremap <leader>ev :tabedit <C-R>=expand($HOME."/dotfiles/_vimrc")<CR><CR>
+nnoremap <leader>ez :tabedit <C-R>=expand($HOME."/dotfiles/_zshrc")<CR><CR>
+nnoremap <leader>et :tabedit <C-R>=expand($HOME."/dotfiles/_tmux.conf")<CR><CR>
 
 " buffers
 nnoremap <silent> ]b :bn<CR>
