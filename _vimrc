@@ -87,6 +87,8 @@ nnoremap <leader>q :q<CR>
 " quickfix
 nnoremap <silent> ]q :cnext<CR>
 nnoremap <silent> [q :cprev<CR>
+nnoremap <silent> ]l :lnext<CR>
+nnoremap <silent> [l :lprev<CR>
 
 " saving
 nnoremap <leader>w :w<CR>
@@ -250,8 +252,6 @@ highlight ExtraWhitespace ctermbg=red guibg=red
 
 " memolist
 let g:memolist_path = "$HOME/Dropbox/memolist"
-let g:memolist_memo_suffix = "txt"
-let g:memolist_memo_date = "%d %b %Y"
 nnoremap <leader>m :exe 'FZF' g:memolist_path<CR>
 
 set nocompatible
