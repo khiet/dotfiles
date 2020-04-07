@@ -254,12 +254,10 @@ highlight ExtraWhitespace ctermbg=red guibg=red
 let g:memolist_path = "$HOME/Dropbox/memolist"
 nnoremap <leader>m :exe 'FZF' g:memolist_path<CR>
 
-set nocompatible
-filetype plugin on
-syntax on
-
 let g:vimwiki_list = [{'path': "$HOME/Dropbox/vimwiki", 'syntax': 'markdown', 'ext': '.md'}]
-" nmap <Leader>ww <Plug>VimwikiIndex
+let g:vimwiki_map_prefix = '<leader>m'
+" :VWS
+" :VimwikiTable
 
 " gitgutter
 let g:gitgutter_map_keys = 0 " turn off all key mappings
