@@ -52,7 +52,6 @@ call plug#begin('~/.vim/plugged')
 
   " Note
   Plug 'https://github.com/vimwiki/vimwiki'
-  Plug 'https://github.com/glidenote/memolist.vim'
 call plug#end()
 
 noremap <Up>    <NOP>
@@ -250,10 +249,8 @@ hi CurrentWordTwins gui=underline cterm=underline
 au BufWritePre * match ExtraWhitespace /\s\+$/
 highlight ExtraWhitespace ctermbg=red guibg=red
 
-" memolist
-let g:memolist_path = "$HOME/Dropbox/memolist"
-nnoremap <leader>m :exe 'FZF' g:memolist_path<CR>
-
+" vimwiki
+nnoremap <leader>m :exe 'FZF' g:vimwiki_list[0].path<CR>
 let g:vimwiki_list = [{'path': "$HOME/Dropbox/vimwiki", 'syntax': 'markdown', 'ext': '.md'}]
 let g:vimwiki_map_prefix = '<leader>m'
 " :VWS
