@@ -1,9 +1,7 @@
 {
   "coc.preferences.formatOnSaveFiletypes": [
-    "javascript",
     "dart"
   ],
-  "javascript.validate.enable": true,
   "highlight.document.enable": false,
   "snippets.userSnippetsDirectory": "~/.vim/custom_snippets",
   "snippets.extends": {
