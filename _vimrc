@@ -250,7 +250,7 @@ au BufWritePre * match ExtraWhitespace /\s\+$/
 highlight ExtraWhitespace ctermbg=red guibg=red
 
 " vimwiki
-nnoremap <leader>m :exe 'FZF' g:vimwiki_list[0].path<CR>
+nnoremap <leader>mf :exe 'FZF' g:vimwiki_list[0].path<CR>
 let g:vimwiki_list = [{'path': "$HOME/Dropbox/vimwiki", 'syntax': 'markdown', 'ext': '.md'}]
 let g:vimwiki_map_prefix = '<leader>m'
 " :VWS
