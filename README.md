@@ -26,6 +26,7 @@ cd; git clone git@github.com:khiet/dotfiles.git
 ln -s dotfiles ~/.vim
 ln -s ~/dotfiles/_vimrc ~/.vimrc
 ln -s ~/dotfiles/_gitconfig ~/.gitconfig
+ln -s ~/dotfiles/_ctags ~/.ctags
 ln -s ~/dotfiles/_tmux.conf ~/.tmux.conf
 ln -s ~/dotfiles/_tm_properties ~/.tm_properties
 ln -s ~/dotfiles/_hushlogin ~/.hushlogin
@@ -78,6 +79,7 @@ brew cask install vlc
 brew cask install zoomus
 brew cask install postman
 brew install ffmpeg
+brew install ctags
 brew install tldr
 brew install htop
 brew install youtube-dl

@@ -367,9 +367,9 @@ function! <SID>StripTrailingWhitespaces()
   let _s=@/
   let l = line(".")
   let c = col(".")
-  " Do the business:
+  " do the business:
   %s/\s\+$//e
-  " Clean up: restore previous search history, and cursor position
+  " clean up: restore previous search history, and cursor position
   let @/=_s
   call cursor(l, c)
 endfunction
@@ -383,10 +383,19 @@ function! <SID>ReplaceCurlyQuotes()
   let @/=_s
   call cursor(l, c)
 endfunction
+
+" ctags: http://vim.wikia.com/wiki/Autocmd_to_update_ctags_file
+function! UpdateTags()
+  let cwd = getcwd()
+  let tagfilename = cwd . "/tags"
+  let cmd = 'ctags -R -f ' . tagfilename
+  let resp = system(cmd)
+endfunction
 " -----------------------------------------------
 
 nnoremap <silent> <leader>t :call <SID>StripTrailingWhitespaces()<CR>
 nnoremap <silent> <leader>cq :call <SID>ReplaceCurlyQuotes()<CR>
+nnoremap <script> <leader>ct :call UpdateTags()<CR>
 
 " vim-rails
 " https://github.com/tpope/vim-rails/issues/368#issuecomment-265086019
