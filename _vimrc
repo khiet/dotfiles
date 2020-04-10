@@ -268,6 +268,14 @@ set updatetime=200
 let g:closetag_filenames = '*.html,*.erb,*.js,*.jsx'
 
 if has('nvim')
+  " prerequisites
+  "
+  " * solargraph gem
+  "   gem install solargraph
+  " * python provider
+  "   sudo easy_install pip
+  "   python2 -m pip install --user --upgrade pynvim
+
   " coc
   let g:coc_global_extensions = [
     \ 'coc-tsserver',
@@ -280,7 +288,6 @@ if has('nvim')
     \ 'coc-snippets',
     \ 'coc-flutter'
     \ ]
-  " gem install solargraph
 
   " :CocConfig
   " :checkhealth
