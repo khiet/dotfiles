@@ -71,7 +71,7 @@ nnoremap <leader>et :e <C-R>=expand($HOME."/dotfiles/_tmux.conf")<CR><CR>
 " buffers
 nnoremap <silent> ]b :bn<CR>
 nnoremap <silent> [b :bp<CR>
-nnoremap <leader>bd :bd<CR>
+nnoremap <leader>b :bd<CR>
 
 " tabs
 nnoremap <silent> ]t :tabn<CR>
@@ -292,7 +292,7 @@ if has('nvim')
   " :CocConfig
   " :checkhealth
   " :CocInfo
-  " set cmdheight=2
+  set cmdheight=2
   set shortmess+=c
 
   " trigger completion
