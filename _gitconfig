@@ -23,7 +23,7 @@
   dom = diff origin/master
   lg  = log --pretty=format:'%C(yellow)%h%Creset %s %Cgreen(%cd) %C(red)%an%Creset'
   lgg = log --graph --decorate --oneline
-  rms = rm -r --staged .
+  rmc = rm -r --cached .
   rma = !git reset --hard HEAD && git clean -fd
   su = !git branch --set-upstream-to=origin/$(git symbolic-ref --short HEAD)
   r = rebase
