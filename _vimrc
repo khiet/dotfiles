@@ -366,7 +366,7 @@ endif
 "    function
 " -----------------------------------------------
 " http://vimcasts.org/episodes/tidying-whitespace/
-function! <SID>StripTrailingWhitespaces()
+function! <SID>RemoveTrailingWhitespaces()
   " Preparation: save last search, and cursor position.
   let _s=@/
   let l = line(".")
@@ -389,7 +389,7 @@ function! <SID>ReplaceCurlyQuotes()
 endfunction
 
 " ctags: http://vim.wikia.com/wiki/Autocmd_to_update_ctags_file
-function! UpdateTags()
+function! RunCtags()
   let cwd = getcwd()
   let tagfilename = cwd . "/tags"
   let cmd = 'ctags -R -f ' . tagfilename
@@ -397,9 +397,9 @@ function! UpdateTags()
 endfunction
 " -----------------------------------------------
 
-nnoremap <silent> <leader>t :call <SID>StripTrailingWhitespaces()<CR>
+nnoremap <silent> <leader>t :call <SID>RemoveTrailingWhitespaces()<CR>
 nnoremap <silent> <leader>cq :call <SID>ReplaceCurlyQuotes()<CR>
-nnoremap <script> <leader>ct :call UpdateTags()<CR>
+nnoremap <script> <leader>ct :call RunCtags()<CR>
 
 " vim-rails
 " https://github.com/tpope/vim-rails/issues/368#issuecomment-265086019
