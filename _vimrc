@@ -132,10 +132,6 @@ nnoremap <leader><leader> <C-^>
 vnoremap << <gv
 vnoremap >> >gv
 
-" move highlighted block
-vnoremap J :m '>+1<CR>gv=gv
-vnoremap K :m '<-2<CR>gv=gv
-
 set hlsearch
 " recognize .js without extension when gf
 set suffixesadd=.js
