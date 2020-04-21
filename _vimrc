@@ -22,7 +22,8 @@ call plug#begin('~/.vim/plugged')
   " General
   Plug 'https://github.com/dominikduda/vim_current_word'
   Plug 'https://github.com/pbrisbin/vim-mkdir'
-  Plug 'https://github.com/scrooloose/nerdtree'
+  Plug 'https://github.com/preservim/nerdcommenter'
+  Plug 'https://github.com/tpope/vim-commentary'
   Plug 'https://github.com/mileszs/ack.vim'
   Plug 'https://github.com/vim-airline/vim-airline'
   Plug 'https://github.com/tpope/vim-surround'
@@ -213,6 +214,14 @@ nnoremap <silent> <c-t> :FZF<CR>
 " NERDTree
 noremap <C-n> :NERDTreeToggle<CR>
 let g:NERDTreeWinSize=35
+
+" NERDCommenter
+let g:NERDCreateDefaultMappings = 0
+let g:NERDSpaceDelims = 1
+let g:NERDDefaultAlign = 'left'
+
+nmap <leader>c<Space> <Plug>NERDCommenterToggle
+xmap <leader>c<Space> <Plug>NERDCommenterToggle
 
 " airline
 let g:airline_theme='dark'
