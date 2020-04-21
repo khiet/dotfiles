@@ -13,10 +13,6 @@
       "commands": [":w"]
     },
     {
-      "before": ["leader", "s", "p"],
-      "commands": [":sp"]
-    },
-    {
       "before": ["leader", "v", "s"],
       "commands": [":vs"]
     },
@@ -65,5 +61,6 @@
   ],
   "vim.leader": "<space>",
   "todo-tree.tree.showScanModeButton": false,
-  "window.title": "${activeEditorLong}${separator}${rootName}"
+  "window.title": "${activeEditorLong}${separator}${rootName}",
+  "workbench.colorTheme": "Dracula"
 }
