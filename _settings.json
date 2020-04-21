@@ -29,6 +29,10 @@
       "commands": ["workbench.action.findInFiles"]
     },
     {
+      "before": ["leader", "c", "space"],
+      "commands": ["editor.action.commentLine"]
+    },
+    {
       "before": ["<C-n>"],
       "commands": [":nohl"]
     },
@@ -57,6 +61,12 @@
     {
       "before": ["j", "j"],
       "after": ["<Esc>"]
+    }
+  ],
+  "vim.visualModeKeyBindingsNonRecursive": [
+    {
+      "before": ["leader", "c", "space"],
+      "commands": ["editor.action.commentLine"]
     }
   ],
   "vim.leader": "<space>",

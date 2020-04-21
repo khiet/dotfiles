@@ -220,8 +220,8 @@ let g:NERDCreateDefaultMappings = 0
 let g:NERDSpaceDelims = 1
 let g:NERDDefaultAlign = 'left'
 
-nmap <leader>c<Space> <Plug>NERDCommenterToggle
-xmap <leader>c<Space> <Plug>NERDCommenterToggle
+nmap <leader>c<space> <Plug>NERDCommenterToggle
+xmap <leader>c<space> <Plug>NERDCommenterToggle
 
 " airline
 let g:airline_theme='dark'
