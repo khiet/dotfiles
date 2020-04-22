@@ -22,8 +22,8 @@ call plug#begin('~/.vim/plugged')
   " General
   Plug 'https://github.com/dominikduda/vim_current_word'
   Plug 'https://github.com/pbrisbin/vim-mkdir'
+  Plug 'https://github.com/preservim/nerdtree'
   Plug 'https://github.com/preservim/nerdcommenter'
-  Plug 'https://github.com/tpope/vim-commentary'
   Plug 'https://github.com/mileszs/ack.vim'
   Plug 'https://github.com/vim-airline/vim-airline'
   Plug 'https://github.com/tpope/vim-surround'
