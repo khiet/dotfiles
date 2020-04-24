@@ -401,11 +401,20 @@ function! RunCtags()
   let cmd = 'ctags -R -f ' . tagfilename
   let resp = system(cmd)
 endfunction
+
+function! AddBreakpoint()
+  if &filetype == 'javascript' || &filetype == 'html'
+    r!echo 'debugger;'
+  elseif &filetype == 'ruby'
+    r!echo 'byebug;'
+  endif
+endfunction
 " -----------------------------------------------
 
 nnoremap <silent> <leader>t :call <SID>RemoveTrailingWhitespaces()<CR>
 nnoremap <silent> <leader>cq :call <SID>ReplaceCurlyQuotes()<CR>
 nnoremap <script> <leader>ct :call RunCtags()<CR>
+nnoremap <script> <leader>d :call AddBreakpoint()<CR>
 
 " vim-rails
 " https://github.com/tpope/vim-rails/issues/368#issuecomment-265086019
