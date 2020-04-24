@@ -13,6 +13,7 @@
   },
   // https://github.com/neoclide/coc-solargraph/blob/master/package.json
   "solargraph.formatting": true,
+  "solargraph.diagnostics": true,
   // https://github.com/neoclide/coc-emmet/blob/master/package.json
   "emmet.includeLanguages": {
     "eruby": "html"
