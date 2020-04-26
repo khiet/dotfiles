@@ -125,6 +125,7 @@ function agfr { ag -0 -l "$1" | AGR_FROM="$1" AGR_TO="$2" xargs -0 perl -pi -e '
 
 function mv2 { dirname "$2" | xargs mkdir -p; mv "$1" "$2"; }
 function cp2 { dirname "$2" | xargs mkdir -p; cp "$1" "$2"; }
+function brewls { brew list | while read cask; do echo -n $fg[blue] $cask $fg[white]; brew deps $cask | awk '{printf(" %s ", $0)}'; echo ""; done; }
 
 # suppress ruby 2.7 warnnings
 export RUBYOPT='-W0'
