@@ -1,6 +1,7 @@
 {
   "coc.preferences.formatOnSaveFiletypes": [
     "dart",
+    "javascript",
     "ruby"
   ],
   "highlight.document.enable": false,
