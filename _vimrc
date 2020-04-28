@@ -52,7 +52,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'https://github.com/alvan/vim-closetag'
 
   " Note
-  Plug 'https://github.com/vimwiki/vimwiki'
+  Plug 'https://github.com/vimwiki/vimwiki', {'branch': 'dev'}
 call plug#end()
 
 noremap <Up>    <NOP>
@@ -260,9 +260,23 @@ au BufWritePre * match ExtraWhitespace /\s\+$/
 highlight ExtraWhitespace ctermbg=red guibg=red
 
 " vimwiki
-nnoremap <leader>mf :exe 'FZF' g:vimwiki_list[0].path<CR>
 let g:vimwiki_list = [{'path': "$HOME/Dropbox/vimwiki", 'syntax': 'markdown', 'ext': '.md'}]
-let g:vimwiki_map_prefix = '<leader>m'
+" https://github.com/vimwiki/vimwiki/blob/dev/doc/vimwiki.txt#L3329
+let g:vimwiki_key_mappings =
+  \ {
+  \   'all_maps': 1,
+  \   'global': 0,
+  \   'headers': 0,
+  \   'text_objs': 0,
+  \   'table_format': 0,
+  \   'table_mappings': 0,
+  \   'lists': 0,
+  \   'links': 1,
+  \   'html': 0,
+  \   'mouse': 0,
+  \ }
+nmap <leader>mw <Plug>VimwikiIndex
+nnoremap <leader>mf :exe 'FZF' g:vimwiki_list[0].path<CR>
 " :VWS
 " :VimwikiTable
 
