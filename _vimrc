@@ -420,7 +420,7 @@ function! AddBreakpoint()
   if &filetype == 'javascript' || &filetype == 'html'
     r!echo 'debugger;'
   elseif &filetype == 'ruby'
-    r!echo 'byebug;'
+    r!echo 'byebug'
   endif
 endfunction
 " -----------------------------------------------
