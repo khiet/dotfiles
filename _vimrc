@@ -324,6 +324,7 @@ if has('nvim')
   " navigate diagnostics
   nnoremap <silent> [g <Plug>(coc-diagnostic-prev)
   nnoremap <silent> ]g <Plug>(coc-diagnostic-next)
+  nnoremap <silent> <space>g  :<C-u>CocList diagnostics<cr>
 
   nmap <silent> gd <Plug>(coc-definition)
   " nmap <silent> gy <Plug>(coc-type-definition)
