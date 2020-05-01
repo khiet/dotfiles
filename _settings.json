@@ -72,5 +72,6 @@
   "vim.leader": "<space>",
   "todo-tree.tree.showScanModeButton": false,
   "window.title": "${activeEditorLong}${separator}${rootName}",
-  "workbench.colorTheme": "Noctis Uva"
+  "workbench.colorTheme": "Dracula",
+  "workbench.editor.enablePreview": false
 }
