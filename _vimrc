@@ -81,7 +81,6 @@ nnoremap <leader>te :tabedit<CR>
 nnoremap <leader>tc :tabclose<CR>
 
 " windows
-nnoremap <leader>vs :vs<CR>
 nnoremap <leader>q :q<CR>
 
 " quickfix

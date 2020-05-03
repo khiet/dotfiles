@@ -28,6 +28,7 @@
   su = !git branch --set-upstream-to=origin/$(git symbolic-ref --short HEAD)
   r = rebase
   ri = rebase -i
+  o = !sh ~/dotfiles/scripts/git_open_in_github.sh
 [filter "lfs"]
 	smudge = git-lfs smudge %f
 	required = true
