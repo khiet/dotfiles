@@ -27,7 +27,9 @@
   rma = !git reset --hard HEAD && git clean -fd
   su = !git branch --set-upstream-to=origin/$(git symbolic-ref --short HEAD)
   r = rebase
+  rom = rebase origin/master
   ri = rebase -i
+  riom = rebase -i origin/master
   o = !sh ~/dotfiles/scripts/git_open_in_github.sh
 [filter "lfs"]
 	smudge = git-lfs smudge %f
