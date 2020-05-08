@@ -62,8 +62,6 @@ noremap <Right> <NOP>
 
 let mapleader=" "
 
-inoremap jj <esc>
-
 " edit config files
 nnoremap <leader>ev :e <C-R>=expand($HOME."/dotfiles/_vimrc")<CR><CR>
 nnoremap <leader>ez :e <C-R>=expand($HOME."/dotfiles/_zshrc")<CR><CR>
