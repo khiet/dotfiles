@@ -37,7 +37,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'https://github.com/morhetz/gruvbox'
 
   " Tmux
-  Plug 'https://github.com/christoomey/vim-tmux-navigator'
   Plug 'https://github.com/janko-m/vim-test'
   Plug 'https://github.com/benmills/vimux'
 
@@ -59,6 +58,15 @@ noremap <Up>    <NOP>
 noremap <Down>  <NOP>
 noremap <Left>  <NOP>
 noremap <Right> <NOP>
+
+" https://thoughtbot.com/blog/vim-splits-move-faster-and-more-naturally
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+set splitbelow
+set splitright
 
 let mapleader=" "
 
@@ -224,16 +232,6 @@ xmap <leader>c<space> <Plug>NERDCommenterToggle
 let g:airline_theme='dark'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
-
-if $TMUX != '' " tmux specific settings
-  " https://github.com/christoomey/vim-tmux-navigator#vim-1
-  let g:tmux_navigator_no_mappings = 1
-
-  nnoremap <silent> <c-h> :TmuxNavigateLeft<CR>
-  nnoremap <silent> <c-j> :TmuxNavigateDown<CR>
-  nnoremap <silent> <c-k> :TmuxNavigateUp<CR>
-  nnoremap <silent> <c-l> :TmuxNavigateRight<CR>
-end
 
 set t_Co=256
 if (&t_Co == 256) " if terminal supports 256 colours
