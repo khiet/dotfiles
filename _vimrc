@@ -271,8 +271,8 @@ let g:vimwiki_key_mappings =
   \   'mouse': 0,
   \ }
 nmap <leader>mw <Plug>VimwikiIndex
+nmap <leader>ms <Plug>VimwikiIndex :VWS<space>
 nnoremap <leader>mf :exe 'FZF' g:vimwiki_list[0].path<CR>
-" :VWS
 " :VimwikiTable
 
 " gitgutter
