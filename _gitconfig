@@ -11,6 +11,7 @@
 	pl  = pull
 	aa  = add -A
   ci  = commit -av
+  cia  = commit -av --amend
   ft  = fetch
   d   = diff
   dw  = diff --word-diff
