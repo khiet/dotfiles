@@ -1,9 +1,4 @@
 {
-  "coc.preferences.formatOnSaveFiletypes": [
-    "dart",
-    "javascript",
-    "ruby"
-  ],
   "highlight.document.enable": false,
   // https://github.com/neoclide/coc-snippets/blob/master/package.json
   "snippets.userSnippetsDirectory": "~/.vim/custom_snippets",

@@ -96,7 +96,8 @@ nnoremap <silent> [q :cprev<CR>
 nnoremap <silent> ]l :lnext<CR>
 nnoremap <silent> [l :lprev<CR>
 
-" saving
+" save
+nnoremap <leader>W :w<CR>
 nnoremap <leader>w :w<CR>
 nnoremap <leader>x :x<CR>
 
@@ -320,7 +321,7 @@ if has('nvim')
   " navigate diagnostics
   nnoremap <silent> [g <Plug>(coc-diagnostic-prev)
   nnoremap <silent> ]g <Plug>(coc-diagnostic-next)
-  " nnoremap <silent> <space>g  :<C-u>CocList diagnostics<cr>
+  nnoremap <silent> <space>g  :<C-u>CocList diagnostics<CR>
 
   nmap <silent> gd <Plug>(coc-definition)
   " nmap <silent> gy <Plug>(coc-type-definition)
@@ -328,7 +329,9 @@ if has('nvim')
   nmap <silent> gr <Plug>(coc-references)
 
   nmap <leader>rn <Plug>(coc-rename)
-  nmap <leader>= <Plug>(coc-format)
+  " format and save
+  nmap <leader>w <Plug>(coc-format) :w<CR>
+
   " auto-fixing
   nmap <leader>f <Plug>(coc-codeaction)
 
