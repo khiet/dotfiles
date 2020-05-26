@@ -203,6 +203,7 @@ let test#strategy = "vimux"
 nnoremap <leader>T :TestNearest<CR>
 nnoremap <leader>tl :TestLast<CR>
 nnoremap <leader>tf :TestFile<CR>
+nnoremap <Leader>tL :call VimuxRunCommand("clear; bin/rake factory_bot:lint")<CR>
 
 " ag
 if executable('ag')
