@@ -451,20 +451,6 @@
 	<true/>
 	<key>GlobalKeyMap</key>
 	<dict>
-		<key>0xf700-0x300000</key>
-		<dict>
-			<key>Action</key>
-			<integer>7</integer>
-			<key>Text</key>
-			<string></string>
-		</dict>
-		<key>0xf701-0x300000</key>
-		<dict>
-			<key>Action</key>
-			<integer>6</integer>
-			<key>Text</key>
-			<string></string>
-		</dict>
 		<key>0xf702-0x300000</key>
 		<dict>
 			<key>Action</key>
@@ -472,24 +458,10 @@
 			<key>Text</key>
 			<string></string>
 		</dict>
-		<key>0xf702-0x320000</key>
-		<dict>
-			<key>Action</key>
-			<integer>33</integer>
-			<key>Text</key>
-			<string></string>
-		</dict>
 		<key>0xf703-0x300000</key>
 		<dict>
 			<key>Action</key>
 			<integer>0</integer>
-			<key>Text</key>
-			<string></string>
-		</dict>
-		<key>0xf703-0x320000</key>
-		<dict>
-			<key>Action</key>
-			<integer>34</integer>
 			<key>Text</key>
 			<string></string>
 		</dict>
@@ -574,9 +546,9 @@
 	<key>NSWindow Frame SUUpdateAlert</key>
 	<string>410 363 620 392 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>-2560 -180 2560 1057 -2560 -180 2560 1057 </string>
+	<string>-2560 410 650 467 -2560 -180 2560 1057 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>-1277 410 650 467 -2560 -180 2560 1057 </string>
+	<string>-1284 401 650 467 -2560 -180 2560 1057 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
 	<string>-2002 236 650 467 -2560 -180 2560 1057 </string>
 	<key>New Bookmarks</key>
@@ -1014,14 +986,14 @@
 	<key>NoSyncFrame_SharedPreferences</key>
 	<dict>
 		<key>screenFrame</key>
-		<string>{{0, 0}, {1440, 900}}</string>
+		<string>{{-2560, -180}, {2560, 1080}}</string>
 		<key>topLeft</key>
-		<string>{237, 705}</string>
+		<string>{-1312, 663}</string>
 	</dict>
 	<key>NoSyncInstallationId</key>
 	<string>A074253A-128F-4E85-9CB8-CCE9DD8ECF69</string>
 	<key>NoSyncLaunchExperienceControllerRunCount</key>
-	<integer>165</integer>
+	<integer>184</integer>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
 	<true/>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
@@ -1765,7 +1737,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2020-05-18T16:48:04Z</date>
+	<date>2020-05-27T08:09:13Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>SUUpdateGroupIdentifier</key>
