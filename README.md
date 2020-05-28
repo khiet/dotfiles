@@ -36,6 +36,9 @@ ln -s ~/dotfiles/_prettierrc ~/.prettierrc
 mkdir -p $XDG_CONFIG_HOME
 ln -s ~/.vim $XDG_CONFIG_HOME/nvim
 ln -s ~/.vimrc $XDG_CONFIG_HOME/nvim/init.vim
+
+mkdir -p $XDG_CONFIG_HOME/karabiner
+ln -s ~/dotfiles/_karabiner.json $XDG_CONFIG_HOME/karabiner/karabiner.json
 ```
 
 ### Install plugins
@@ -78,6 +81,7 @@ brew cask install spectacle
 brew cask install vlc
 brew cask install zoomus
 brew cask install postman
+brew cask install karabiner-elements
 brew install ffmpeg
 brew install ctags
 brew install tldr
