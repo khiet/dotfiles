@@ -14,7 +14,32 @@
           "basic.to_if_held_down_threshold_milliseconds": 500,
           "mouse_motion_to_scroll.speed": 100
         },
-        "rules": []
+        "rules": [
+          {
+            "description": "Change [+left_control to escape",
+            "manipulators": [
+              {
+                "from": {
+                  "key_code": "open_bracket",
+                  "modifiers": {
+                    "mandatory": [
+                      "left_control"
+                    ],
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "escape"
+                  }
+                ],
+                "type": "basic"
+              }
+            ]
+          }
+        ]
       },
       "devices": [
         {
