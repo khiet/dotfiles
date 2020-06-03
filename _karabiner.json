@@ -59,6 +59,30 @@
                 "type": "basic"
               }
             ]
+          },
+          {
+            "description": "Disable h+left_command",
+            "manipulators": [
+              {
+                "from": {
+                  "key_code": "h",
+                  "modifiers": {
+                    "mandatory": [
+                      "left_command"
+                    ],
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "h"
+                  }
+                ],
+                "type": "basic"
+              }
+            ]
           }
         ]
       },
