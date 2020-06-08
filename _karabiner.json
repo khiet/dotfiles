@@ -16,7 +16,7 @@
         },
         "rules": [
           {
-            "description": "Change [+left_control to escape",
+            "description": "Change left_control + [ to escape",
             "manipulators": [
               {
                 "from": {
@@ -61,9 +61,10 @@
             ]
           },
           {
-            "description": "Disable h+left_command",
+            "description": "Change left_command + h/j/k/l to Arrows",
             "manipulators": [
               {
+                "type": "basic",
                 "from": {
                   "key_code": "h",
                   "modifiers": {
@@ -77,10 +78,66 @@
                 },
                 "to": [
                   {
-                    "key_code": "h"
+                    "key_code": "left_arrow"
                   }
-                ],
-                "type": "basic"
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "key_code": "j",
+                  "modifiers": {
+                    "mandatory": [
+                      "left_command"
+                    ],
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "down_arrow"
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "key_code": "k",
+                  "modifiers": {
+                    "mandatory": [
+                      "left_command"
+                    ],
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "up_arrow"
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "key_code": "l",
+                  "modifiers": {
+                    "mandatory": [
+                      "left_command"
+                    ],
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "right_arrow"
+                  }
+                ]
               }
             ]
           }
