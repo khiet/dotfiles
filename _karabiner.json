@@ -64,7 +64,6 @@
             "description": "Change left_command + h/j/k/l to Arrows",
             "manipulators": [
               {
-                "type": "basic",
                 "from": {
                   "key_code": "h",
                   "modifiers": {
@@ -80,10 +79,10 @@
                   {
                     "key_code": "left_arrow"
                   }
-                ]
+                ],
+                "type": "basic"
               },
               {
-                "type": "basic",
                 "from": {
                   "key_code": "j",
                   "modifiers": {
@@ -99,10 +98,10 @@
                   {
                     "key_code": "down_arrow"
                   }
-                ]
+                ],
+                "type": "basic"
               },
               {
-                "type": "basic",
                 "from": {
                   "key_code": "k",
                   "modifiers": {
@@ -118,10 +117,10 @@
                   {
                     "key_code": "up_arrow"
                   }
-                ]
+                ],
+                "type": "basic"
               },
               {
-                "type": "basic",
                 "from": {
                   "key_code": "l",
                   "modifiers": {
@@ -137,7 +136,8 @@
                   {
                     "key_code": "right_arrow"
                   }
-                ]
+                ],
+                "type": "basic"
               }
             ]
           }
@@ -268,6 +268,22 @@
           },
           "to": {
             "key_code": "left_control"
+          }
+        },
+        {
+          "from": {
+            "key_code": "right_option"
+          },
+          "to": {
+            "key_code": "right_command"
+          }
+        },
+        {
+          "from": {
+            "key_code": "application"
+          },
+          "to": {
+            "key_code": "right_option"
           }
         }
       ],
