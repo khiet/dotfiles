@@ -312,7 +312,7 @@ if has('nvim')
   " navigate diagnostics
   nnoremap <silent> [g <Plug>(coc-diagnostic-prev)
   nnoremap <silent> ]g <Plug>(coc-diagnostic-next)
-  nnoremap <silent> <space>g  :<C-u>CocList diagnostics<CR>
+  nnoremap <silent> <space>g  :<C-u>CocDiagnostics<CR>
 
   nmap <silent> gd <Plug>(coc-definition)
   " nmap <silent> gy <Plug>(coc-type-definition)
@@ -356,7 +356,7 @@ end
 let g:csv_no_conceal = 1
 
 " vim-fugitive
-nnoremap <leader>g  :0GcLog<CR>
+nnoremap <leader>gd0  :0GcLog<CR>
 nnoremap <leader>gd  :Gdiff<CR>
 nnoremap <leader>gl  :Glog<CR>
 
