@@ -72,8 +72,10 @@ alias rlc="tail -f -n 1000 log/development.log | grep -C 5 Controller"
 alias rlt="tail -f -n 1000 log/test.log"
 alias rltc="tail -f -n 1000 log/test.log | grep -C 5 Controller"
 alias roc="open coverage/index.html"
-# bundle exec guard -G Guardfile.livereload
-# foreman start
+
+if type ccat > /dev/null 2>&1; then
+  alias cat='ccat'
+fi
 
 export EDITOR='vim'
 
@@ -114,8 +116,6 @@ export PATH=~/google-cloud-sdk/bin:$PATH
 export PATH="/usr/local/opt/mysql@5.6/bin:$PATH"
 export LDFLAGS="-L/usr/local/opt/mysql@5.6/lib"
 export CPPFLAGS="-I/usr/local/opt/mysql@5.6/include"
-
-export PATH="/usr/local/opt/postgresql@10/bin:$PATH"
 
 # rbenv
 if type "rbenv" > /dev/null 2>&1; then
