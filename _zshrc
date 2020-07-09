@@ -43,9 +43,6 @@ export XDG_CACHE_HOME=$HOME/.cache
 bindkey -v
 export KEYTIMEOUT=1
 # mapping - https://github.com/robbyrussell/oh-my-zsh/blob/master/plugins/vi-mode/vi-mode.plugin.zsh
-bindkey '^P' up-history
-bindkey '^N' down-history
-bindkey '^h' backward-delete-char
 bindkey -M vicmd 'v' edit-command-line
 
 export LESS=-RFX
