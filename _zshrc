@@ -44,6 +44,7 @@ bindkey -v
 export KEYTIMEOUT=1
 # mapping - https://github.com/robbyrussell/oh-my-zsh/blob/master/plugins/vi-mode/vi-mode.plugin.zsh
 bindkey -M vicmd 'v' edit-command-line
+bindkey '^h' backward-delete-char
 
 export LESS=-RFX
 
