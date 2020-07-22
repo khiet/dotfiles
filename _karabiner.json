@@ -156,6 +156,19 @@
           "ignore": true,
           "manipulate_caps_lock_led": false,
           "simple_modifications": []
+        },
+        {
+          "disable_built_in_keyboard_if_exists": false,
+          "fn_function_keys": [],
+          "identifiers": {
+            "is_keyboard": true,
+            "is_pointing_device": true,
+            "product_id": 45091,
+            "vendor_id": 1133
+          },
+          "ignore": true,
+          "manipulate_caps_lock_led": false,
+          "simple_modifications": []
         }
       ],
       "fn_function_keys": [
@@ -272,18 +285,10 @@
         },
         {
           "from": {
-            "key_code": "right_option"
+            "key_code": "left_control"
           },
           "to": {
             "key_code": "right_command"
-          }
-        },
-        {
-          "from": {
-            "key_code": "application"
-          },
-          "to": {
-            "key_code": "right_option"
           }
         }
       ],
