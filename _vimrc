@@ -109,7 +109,7 @@ nnoremap <leader>h :noh<CR>
 nnoremap <leader>e :e!<CR>
 
 " set cursorcolumn
-nnoremap <leader>cc :set cursorcolumn!<CR>
+" nnoremap <leader>cc :set cuc!<CR>
 
 " copy relative path
 nnoremap <leader>cf :let @*=expand("%")<CR>
@@ -314,12 +314,12 @@ if has('nvim')
   nnoremap <silent> ]g <Plug>(coc-diagnostic-next)
   nnoremap <silent> <space>g  :<C-u>CocDiagnostics<CR>
 
-  nmap <silent> gd <Plug>(coc-definition)
+  " nmap <silent> gd <Plug>(coc-definition)
   " nmap <silent> gy <Plug>(coc-type-definition)
   " nmap <silent> gi <Plug>(coc-implementation)
-  nmap <silent> gr <Plug>(coc-references)
+  " nmap <silent> gr <Plug>(coc-references)
 
-  nmap <leader>rn <Plug>(coc-rename)
+  nmap <leader>cr <Plug>(coc-rename)
   " format and save
   nmap <leader>w <Plug>(coc-format) :w<CR>
 
@@ -427,6 +427,7 @@ nnoremap <script> <leader>ct :call RunCtags()<CR>
 nnoremap <script> <leader>d :call AddBreakpoint()<CR>
 
 " vim-rails
+nnoremap <leader>r :R<CR>
 " https://github.com/tpope/vim-rails/issues/368#issuecomment-265086019
 let g:rails_projections = {
   \ "app/controllers/*_controller.rb": {
