@@ -109,7 +109,7 @@ nnoremap <leader>h :noh<CR>
 nnoremap <leader>e :e!<CR>
 
 " set cursorcolumn
-" nnoremap <leader>cc :set cuc!<CR>
+nnoremap <leader>lc :set cuc!<CR>
 
 " copy relative path
 nnoremap <leader>cf :let @*=expand("%")<CR>
@@ -427,7 +427,8 @@ nnoremap <script> <leader>ct :call RunCtags()<CR>
 nnoremap <script> <leader>d :call AddBreakpoint()<CR>
 
 " vim-rails
-nnoremap <leader>r :R<CR>
+nnoremap <leader>rr :R<CR>
+nnoremap <leader>ra :A<CR>
 " https://github.com/tpope/vim-rails/issues/368#issuecomment-265086019
 let g:rails_projections = {
   \ "app/controllers/*_controller.rb": {
