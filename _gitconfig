@@ -42,6 +42,7 @@
 	email = khiet.le@ehochef.com
 [pull]
 	default = current
+	ff = only
 [push]
   default = current
 [fetch]
