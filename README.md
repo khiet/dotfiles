@@ -47,12 +47,6 @@ ln -s ~/dotfiles/_karabiner.json $XDG_CONFIG_HOME/karabiner/karabiner.json
 :PlugInstall
 ```
 
-### chsh to zsh
-
-```
-chsh -s $(which zsh)
-```
-
 ### Symlink config file
 
 ```
