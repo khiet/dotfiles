@@ -1,18 +1,12 @@
 # https://github.com/robbyrussell/oh-my-zsh/blob/master/templates/zshrc.zsh-template
-export ZSH="/Users/khietle/.oh-my-zsh"
+export ZSH=$HOME/.oh-my-zsh
 
 # https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="robbyrussell"
 
 CASE_SENSITIVE="true"
-# HYPHEN_INSENSITIVE="true"
 
-# auto-update
-# DISABLE_AUTO_UPDATE="true"
-# export UPDATE_ZSH_DAYS=13
-
-# display red dots whilst waiting for completion
-COMPLETION_WAITING_DOTS="true"
+DISABLE_UPDATE_PROMPT="true"
 
 # https://github.com/robbyrussell/oh-my-zsh/issues/3466
 HIST_STAMPS="%d/%m/%y %T "
