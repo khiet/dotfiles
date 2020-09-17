@@ -46,14 +46,16 @@ alias dl="youtube-dl -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4' -o '~/youtub
 alias ct="ctags -R ."
 alias gdel="git branch --merged | egrep -v '(^\*|master)' | xargs git branch -d"
 alias gg="git grep"
+alias caly='cal -y'
+alias public_ip="curl ipinfo.io/ip"
+alias private_ip="ipconfig getifaddr en0"
+
+# ag
 alias ag="ag --color-match '1;31'"
 alias agu='ag -u'
 alias agg='ag -g'
 alias agug='ag -u -g'
 alias agc='ag -C 5'
-alias caly='cal -y'
-alias public_ip="curl ipinfo.io/ip"
-alias private_ip="ipconfig getifaddr en0"
 
 # rails
 alias be="bundle exec"
