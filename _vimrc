@@ -419,12 +419,21 @@ function! AddBreakpoint()
     r!echo 'byebug'
   endif
 endfunction
+
+function! RunScript()
+  if &filetype == 'javascript'
+    call VimuxRunCommand("node " . bufname("%"))
+  elseif &filetype == 'ruby'
+    call VimuxRunCommand("ruby " . bufname("%"))
+  endif
+endfunction
 " -----------------------------------------------
 
 nnoremap <silent> <leader>t :call <SID>RemoveTrailingWhitespaces()<CR>
+nnoremap <script> <leader>d :call AddBreakpoint()<CR>
 nnoremap <silent> <leader>cq :call <SID>ReplaceCurlyQuotes()<CR>
 nnoremap <script> <leader>ct :call RunCtags()<CR>
-nnoremap <script> <leader>d :call AddBreakpoint()<CR>
+nnoremap <script> <leader>cs :call RunScript()<CR>
 
 " vim-rails
 nnoremap <leader>rr :R<CR>
