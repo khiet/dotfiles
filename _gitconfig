@@ -1,8 +1,6 @@
 [core]
 	editor = $EDITOR
 	ignorecase = false
-[color]
-	ui = true
 [alias]
 	st  = status
 	co  = checkout

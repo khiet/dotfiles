@@ -1,0 +1,6 @@
+--smart-case
+--colors=path:fg:120
+--colors=line:fg:yellow
+
+--glob=!.git/*
+--glob=!.keep

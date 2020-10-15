@@ -2,7 +2,7 @@
 
 ### Install [Homebrew](http://brew.sh/index.html)
 
-### Install nvim, tmux, ag, and fzf
+### Install nvim, tmux, rg, and fzf
 
 ```
 brew cask install iterm2
@@ -10,7 +10,7 @@ brew install git
 brew install nvim
 brew install reattach-to-user-namespace
 brew install tmux
-brew install the_silver_searcher
+brew install ripgrep
 brew install fzf
 ```
 
@@ -30,8 +30,8 @@ ln -s ~/dotfiles/_ctags ~/.ctags
 ln -s ~/dotfiles/_tmux.conf ~/.tmux.conf
 ln -s ~/dotfiles/_tm_properties ~/.tm_properties
 ln -s ~/dotfiles/_hushlogin ~/.hushlogin
-ln -s ~/dotfiles/_ignore ~/.ignore
 ln -s ~/dotfiles/_prettierrc ~/.prettierrc
+ln -s ~/dotfiles/_ripgreprc ~/.ripgreprc
 
 mkdir -p $XDG_CONFIG_HOME
 ln -s ~/.vim $XDG_CONFIG_HOME/nvim
