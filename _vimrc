@@ -102,6 +102,10 @@ nnoremap <leader>x :x<CR>
 " replace
 nnoremap <leader>s :%s//
 
+" quickfix replace ('find and replace all')
+" http://brendandawes.com/blog/what-the-ack
+nnoremap <leader>ca :cdo s///g \| update<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
+
 " noh
 nnoremap <leader>h :noh<CR>
 
