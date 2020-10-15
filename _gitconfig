@@ -1,8 +1,8 @@
 [core]
 	editor = $EDITOR
 	ignorecase = false
-[color]
-	ui = true
+[color "grep"]
+	filename = 120 italic
 [alias]
 	st  = status
 	co  = checkout
