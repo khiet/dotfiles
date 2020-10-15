@@ -66,8 +66,6 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/p
 ```
 brew cask install copyq
 brew cask install firefox
-brew cask install textmate
-brew cask install skype
 brew cask install sequel-pro
 brew cask install postico
 brew cask install dropbox
@@ -76,6 +74,7 @@ brew cask install vlc
 brew cask install zoomus
 brew cask install postman
 brew cask install karabiner-elements
+brew cask install evernote
 brew install ffmpeg
 brew install ctags
 brew install tldr
