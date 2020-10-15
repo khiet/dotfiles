@@ -213,6 +213,10 @@ nnoremap <Leader>tL :call VimuxRunCommand("clear; bin/rake factory_bot:lint")<CR
 set runtimepath+=/usr/local/opt/fzf
 nnoremap <silent> <c-t> :FZF<CR>
 
+" ack
+let g:ackprg ='git grep -n --color=never'
+let g:ackhighlight = 1
+
 " NERDTree
 noremap <C-n> :NERDTreeToggle<CR>
 let g:NERDTreeWinSize=35
