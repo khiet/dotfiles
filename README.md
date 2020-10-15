@@ -10,7 +10,7 @@ brew install git
 brew install nvim
 brew install reattach-to-user-namespace
 brew install tmux
-brew install the_silver_searcher
+brew install ripgrep
 brew install fzf
 ```
 
