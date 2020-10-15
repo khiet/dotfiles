@@ -44,10 +44,15 @@ export LESS=-RFX
 alias dl="youtube-dl -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4' -o '~/youtube/%(title)s-%(id)s.%(ext)s'"
 alias ct="ctags -R ."
 alias gdel="git branch --merged | egrep -v '(^\*|master)' | xargs git branch -d"
-alias gg="git grep"
 alias caly='cal -y'
 alias public_ip="curl ipinfo.io/ip"
 alias private_ip="ipconfig getifaddr en0"
+
+# git grep
+alias gg="git grep -i --break --heading"
+alias ggc="git grep -i --break --heading -C 5"
+alias ggl="git grep -i -l"
+function ggg { git ls-files "*$1*" }
 
 # ag
 alias ag="ag --color-match '1;31'"
@@ -90,9 +95,9 @@ if type "fzf" > /dev/null 2>&1; then
   export FZF_DEFAULT_OPTS='--no-mouse --height 50% --reverse --multi --info=inline'
   # use ag instead of find
   # used in fzf in vim
-  export FZF_DEFAULT_COMMAND='ag -l --no-color -g "" --hidden --path-to-ignore ~/.ignore'
+  export FZF_DEFAULT_COMMAND='git ls-files "*" ":!*.jpg" ":!*.png" ":!*.gif" ":!*.keep"'
   # used in console
-  export FZF_CTRL_T_COMMAND='ag -l --no-color -g "" --hidden'
+  export FZF_CTRL_T_COMMAND='git ls-files "*"'
 fi
 
 source ~/Dropbox/Apps/developmennt/tmuxinator/tmuxinator.zsh
