@@ -87,6 +87,7 @@ nnoremap <leader>tc :tabclose<CR>
 
 " windows
 nnoremap <leader>q :q<CR>
+nnoremap <leader>Q :q!<CR>
 
 " quickfix
 nnoremap <silent> ]q :cnext<CR>
@@ -318,7 +319,7 @@ if has('nvim')
   nnoremap <silent> ]g <Plug>(coc-diagnostic-next)
   nnoremap <silent> <space>g  :<C-u>CocDiagnostics<CR>
 
-  " nmap <silent> gd <Plug>(coc-definition)
+  nmap <silent> gd <Plug>(coc-definition)
   " nmap <silent> gy <Plug>(coc-type-definition)
   " nmap <silent> gi <Plug>(coc-implementation)
   " nmap <silent> gr <Plug>(coc-references)
