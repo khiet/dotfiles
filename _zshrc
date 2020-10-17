@@ -11,6 +11,13 @@ DISABLE_UPDATE_PROMPT="true"
 # https://github.com/robbyrussell/oh-my-zsh/issues/3466
 HIST_STAMPS="%d/%m/%y %T "
 alias hs='fc -il 1'
+# https://www.soberkoder.com/better-zsh-history/
+export HISTFILESIZE=20000 # history size during a session
+export HISTSIZE=20000 # history size at start of a session
+export SAVEHIST=20000 # history size in a file
+# export HISTFILE=~/.zsh_history
+setopt HIST_FIND_NO_DUPS
+setopt INC_APPEND_HISTORY
 
 # standard plugins can be found in ~/.oh-my-zsh/plugins/*
 plugins=(
