@@ -30,6 +30,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'https://github.com/sheerun/vim-polyglot'
   if has('nvim')
     Plug 'https://github.com/neoclide/coc.nvim', {'branch': 'release'}
+    Plug 'https://github.com/norcalli/nvim-colorizer.lua'
   endif
 
   " Colorscheme
@@ -296,7 +297,6 @@ if has('nvim')
   let g:coc_global_extensions = [
     \ 'coc-tsserver',
     \ 'coc-solargraph',
-    \ 'coc-highlight',
     \ 'coc-emmet',
     \ 'coc-json',
     \ 'coc-snippets',
@@ -336,16 +336,14 @@ if has('nvim')
     endif
   endfunction
 
-  " coc-highlight
-  ":call CocAction('pickColor')
-  ":call CocAction('colorPresentation')
-
   " coc-snippets
   set runtimepath+=~/.vim/custom_snippets
   nnoremap <leader>es :<C-u>CocCommand snippets.editSnippets<CR>
 
   nnoremap <leader>cc :<C-u>CocCommand<space>
   nnoremap <leader>cl :<C-u>CocList<space>
+
+  lua require'colorizer'.setup()
 end
 
 " vim-polyglot
