@@ -314,16 +314,12 @@ if has('nvim')
   nnoremap <silent> <space>cg  :<C-u>CocDiagnostics<CR>
 
   nmap <silent> gd <Plug>(coc-definition)
-  " nmap <silent> gy <Plug>(coc-type-definition)
-  " nmap <silent> gi <Plug>(coc-implementation)
-  " nmap <silent> gr <Plug>(coc-references)
+  "nmap <silent> gy <Plug>(coc-type-definition)
+  "nmap <silent> gi <Plug>(coc-implementation)
+  nmap <silent> gr <Plug>(coc-references)
 
   nmap <leader>cr <Plug>(coc-rename)
-  " format and save
-  nmap <leader>w <Plug>(coc-format) :w<CR>
-
-  " auto-fixing
-  nmap <leader>f <Plug>(coc-codeaction)
+  nmap <leader>cc <Plug>(coc-codeaction)
 
   " show documentation
   nnoremap <silent> K :call <SID>show_documentation()<CR>
@@ -331,17 +327,19 @@ if has('nvim')
   function! s:show_documentation()
     if (index(['vim','help'], &filetype) >= 0)
       execute 'h '.expand('<cword>')
+    elseif (coc#rpc#ready())
+      call CocActionAsync('doHover')
     else
-      call CocAction('doHover')
+      execute '!' . &keywordprg . " " . expand('<cword>')
     endif
   endfunction
 
+  " format and save
+  nmap <leader>w <Plug>(coc-format) :w<CR>
+
   " coc-snippets
   set runtimepath+=~/.vim/custom_snippets
-  nnoremap <leader>es :<C-u>CocCommand snippets.editSnippets<CR>
-
-  nnoremap <leader>cc :<C-u>CocCommand<space>
-  nnoremap <leader>cl :<C-u>CocList<space>
+  "nnoremap <leader>es :<C-u>CocCommand snippets.editSnippets<CR>
 
   lua require'colorizer'.setup()
 end
