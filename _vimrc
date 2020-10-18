@@ -301,7 +301,6 @@ if has('nvim')
     \ 'coc-css',
     \ 'coc-json',
     \ 'coc-snippets',
-    \ 'coc-flutter'
     \ ]
 
   " :CocConfig
@@ -345,7 +344,7 @@ if has('nvim')
   ":call CocAction('colorPresentation')
 
   " coc-emmet
-  " <c-y> to select
+  " <c-y> to select, <c-j> and <c-k> to move around
 
   " coc-snippets
   set runtimepath+=~/.vim/custom_snippets
