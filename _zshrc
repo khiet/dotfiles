@@ -51,9 +51,10 @@ alias public_ip="curl ipinfo.io/ip"
 alias private_ip="ipconfig getifaddr en0"
 
 # ripgrep
-alias rgc="rg -C 5"
-alias rgw="rg -w"
-function rgf { rg --files --sort path | rg --regexp $1 }
+alias g="rg"
+alias gc="rg -C 5"
+alias gw="rg -w"
+function gf { rg --files --sort path | rg --regexp $1 }
 
 # rails
 alias be="bundle exec"

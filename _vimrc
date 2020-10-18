@@ -71,9 +71,9 @@ set splitright
 let mapleader=" "
 
 " edit config files
-nnoremap <leader>ev :e <C-R>=expand($HOME."/dotfiles/_vimrc")<CR><CR>
-nnoremap <leader>ez :e <C-R>=expand($HOME."/dotfiles/_zshrc")<CR><CR>
-nnoremap <leader>et :e <C-R>=expand($HOME."/dotfiles/_tmux.conf")<CR><CR>
+nnoremap <leader>ev :e <C-R>=expand($HOME."/.vimrc")<CR><CR>
+nnoremap <leader>ez :e <C-R>=expand($HOME."/.zshrc")<CR><CR>
+nnoremap <leader>et :e <C-R>=expand($HOME."/.tmux.conf")<CR><CR>
 
 " buffers
 nnoremap <silent> ]b :bn<CR>
