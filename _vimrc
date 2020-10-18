@@ -64,9 +64,6 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
-set splitbelow
-set splitright
-
 let mapleader=" "
 
 " edit config files
@@ -124,9 +121,6 @@ nnoremap <leader>cF :let @*=expand("%:p")<CR>
 " list invisibles
 nnoremap <leader>ls :set list!<CR>
 
-" Ack
-nnoremap <leader>a :Ack!<space>
-
 " vim-easy-align
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
@@ -143,6 +137,11 @@ nnoremap <leader><leader> <C-^>
 " indenting
 vnoremap << <gv
 vnoremap >> >gv
+
+" https://github.com/ChristianChiarulli/nvim/blob/master/general/settings.vim
+
+set splitbelow
+set splitright
 
 set hlsearch
 " recognize .js without extension when gf
@@ -170,18 +169,32 @@ set autoindent
 set hidden
 " indenting
 set smartindent
-" disable ~ files
+
 set nobackup
 set nowritebackup
-" avoid 'safe write': https://webpack.js.org/guides/development/#adjusting-your-text-editor
-set backupcopy=yes
-" disable .swap files
 set noswapfile
+set backupcopy=yes " avoid 'safe write': https://webpack.js.org/guides/development/#adjusting-your-text-editor
 " tabs and spaces
 set expandtab " insert spaces when tab is pressed
 set tabstop=2 " spaces when tab is pressed
 set shiftwidth=2 " spaces for indentation
 set softtabstop=2 " treat spaces like a tab when backspace is pressed
+
+set signcolumn=yes
+set updatetime=200
+
+set t_Co=256
+if (&t_Co == 256) " if terminal supports 256 colours
+
+  " true colour: https://github.com/tmux/tmux/issues/1246
+  if exists('+termguicolors')
+    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+    set termguicolors
+  endif
+
+  colorscheme gruvbox
+endif
 
 " filetype
 au BufRead,BufNewFile *.inky-haml set ft=haml
@@ -193,9 +206,6 @@ au FileType gitcommit setlocal spell
 
 highlight clear SpellBad
 highlight SpellBad cterm=underline ctermfg=red gui=underline guifg=red
-
-" enable spell check
-"nnoremap <leader>sp :set spell!<CR>
 
 " enable mouse in terminal emulators
 if has("mouse")
@@ -214,6 +224,7 @@ set runtimepath+=/usr/local/opt/fzf
 nnoremap <silent> <c-t> :FZF<CR>
 
 " ack
+nnoremap <leader>a :Ack!<space>
 if executable('rg')
   let g:ackprg = 'rg --vimgrep'
 endif
@@ -223,19 +234,6 @@ let g:ackhighlight = 1
 let g:airline_theme='dark'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
-
-set t_Co=256
-if (&t_Co == 256) " if terminal supports 256 colours
-
-  " true colour: https://github.com/tmux/tmux/issues/1246
-  if exists('+termguicolors')
-    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-    set termguicolors
-  endif
-
-  colorscheme gruvbox
-endif
 
 " vim_current_word
 hi CurrentWord guifg=#ffffff guibg=#721b65
@@ -268,10 +266,6 @@ nnoremap <leader>mf :exe 'FZF' g:vimwiki_list[0].path<CR>
 
 " gitgutter
 let g:gitgutter_map_keys = 0 " turn off all key mappings
-" https://github.com/airblade/vim-gitgutter#sign-column
-set signcolumn=yes
-" https://github.com/airblade/vim-gitgutter#getting-started
-set updatetime=200
 
 let g:gitgutter_grep = 'rg'
 
@@ -281,13 +275,18 @@ let g:closetag_filenames = '*.html,*.erb,*.js,*.jsx'
 if has('nvim')
   " prerequisites
   "
-  " * solargraph gem
-  "   gem install solargraph
   " * python provider
   "   sudo easy_install pip
   "   python2 -m pip install --user --upgrade pynvim
+  "
+  " :CocConfig to open coc-settings.json
+  " :checkhealth and :CocInfo to get information about installation
 
-  " global extentions are automatically installed when tye are not installed, CocUpdate to update extensions
+  set cmdheight=2
+  set shortmess+=c
+
+  " global extentions are automatically installed when tye are not installed,
+  " CocUninstall to uninstall extensions, CocUpdate to update extensions
   " https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions#update-extensions
   let g:coc_global_extensions = [
     \ 'coc-tsserver',
@@ -297,12 +296,6 @@ if has('nvim')
     \ 'coc-snippets',
     \ 'coc-explorer',
     \ ]
-
-  " :CocConfig
-  " :checkhealth
-  " :CocInfo
-  set cmdheight=2
-  set shortmess+=c
 
   " navigate diagnostics
   nmap <silent> [g <Plug>(coc-diagnostic-prev)
@@ -340,6 +333,7 @@ if has('nvim')
   " coc-explorer
   noremap <C-n> :CocCommand explorer<CR>
 
+  " nvim-colorizer
   lua require'colorizer'.setup()
 end
 

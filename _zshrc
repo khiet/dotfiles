@@ -83,8 +83,8 @@ if type "fzf" > /dev/null 2>&1; then
   # key bindings
   source "/usr/local/opt/fzf/shell/key-bindings.zsh"
 
+  # --multi to select multiple files with TAB
   export FZF_DEFAULT_OPTS='--no-mouse --height 50% --reverse --multi --info=inline'
-  # use rg instead of find
   # used in fzf in vim
   export FZF_DEFAULT_COMMAND='rg --files --hidden'
   # used in console
