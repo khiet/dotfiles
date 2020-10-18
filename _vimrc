@@ -291,15 +291,13 @@ if has('nvim')
   "   sudo easy_install pip
   "   python2 -m pip install --user --upgrade pynvim
 
-  " CocUpdate to update all extensions to the latest version
+  " global extentions are automatically installed when tye are not installed, CocUpdate to update extensions
   " https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions#update-extensions
   let g:coc_global_extensions = [
     \ 'coc-tsserver',
     \ 'coc-solargraph',
     \ 'coc-highlight',
     \ 'coc-emmet',
-    \ 'coc-html',
-    \ 'coc-css',
     \ 'coc-json',
     \ 'coc-snippets',
     \ ]
