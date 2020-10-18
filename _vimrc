@@ -291,7 +291,8 @@ if has('nvim')
   "   sudo easy_install pip
   "   python2 -m pip install --user --upgrade pynvim
 
-  " coc
+  " CocUpdate to update all extensions to the latest version
+  " https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions#update-extensions
   let g:coc_global_extensions = [
     \ 'coc-tsserver',
     \ 'coc-solargraph',
@@ -340,9 +341,6 @@ if has('nvim')
   " coc-highlight
   ":call CocAction('pickColor')
   ":call CocAction('colorPresentation')
-
-  " coc-emmet
-  " <c-y> to select, <c-j> and <c-k> to move around
 
   " coc-snippets
   set runtimepath+=~/.vim/custom_snippets
