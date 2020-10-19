@@ -22,7 +22,6 @@ call plug#begin('~/.vim/plugged')
   " General
   Plug 'https://github.com/dominikduda/vim_current_word'
   Plug 'https://github.com/pbrisbin/vim-mkdir'
-  Plug 'https://github.com/preservim/nerdtree'
   Plug 'https://github.com/mileszs/ack.vim'
   Plug 'https://github.com/vim-airline/vim-airline'
   Plug 'https://github.com/tpope/vim-surround'
@@ -220,10 +219,6 @@ if executable('rg')
 endif
 let g:ackhighlight = 1
 
-" NERDTree
-noremap <C-n> :NERDTreeToggle<CR>
-let g:NERDTreeWinSize=35
-
 " airline
 let g:airline_theme='dark'
 let g:airline#extensions#tabline#enabled = 1
@@ -300,6 +295,7 @@ if has('nvim')
     \ 'coc-emmet',
     \ 'coc-json',
     \ 'coc-snippets',
+    \ 'coc-explorer',
     \ ]
 
   " :CocConfig
@@ -340,6 +336,9 @@ if has('nvim')
   " coc-snippets
   set runtimepath+=~/.vim/custom_snippets
   "nnoremap <leader>es :<C-u>CocCommand snippets.editSnippets<CR>
+
+  " coc-explorer
+  noremap <C-n> :CocCommand explorer<CR>
 
   lua require'colorizer'.setup()
 end

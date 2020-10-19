@@ -6,6 +6,7 @@
 
 ```
 brew cask install iterm2
+brew tap homebrew/cask-fonts; brew cask install font-hack-nerd-font
 brew install git
 brew install nvim
 brew install reattach-to-user-namespace

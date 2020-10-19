@@ -1,5 +1,12 @@
 {
   "highlight.document.enable": false,
+  // https://github.com/weirongxu/coc-explorer#configuration
+  "explorer.width": 35,
+  "explorer.icon.enableNerdfont": true,
+  "explorer.previewAction.onHover": false,
+  "explorer.keyMappings": {
+    "v": "open:vsplit"
+  },
   // https://github.com/neoclide/coc-snippets/blob/master/package.json
   "snippets.userSnippetsDirectory": "~/.vim/custom_snippets",
   "snippets.extends": {
@@ -13,6 +20,6 @@
   },
   // https://github.com/neoclide/coc-solargraph/blob/master/package.json
   "solargraph.formatting": true,
-  "solargraph.diagnostics": true,
+  "solargraph.diagnostics": true
   // https://github.com/neoclide/coc-tsserver#configuration-options
 }
