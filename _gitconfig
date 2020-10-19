@@ -1,13 +1,15 @@
 [core]
-	editor = $EDITOR
-	ignorecase = false
+  editor = $EDITOR
+  ignorecase = false
 [alias]
-	st  = status
-	co  = checkout
-	br  = branch
-	ps  = push
-	pl  = pull
-	aa  = add -A
+  st  = status
+  co  = checkout
+  br  = branch
+  ps  = push
+  pl  = pull
+  aa  = add -A
+  ap  = add -p
+  c  = commit -v
   ci  = commit -av
   cia = commit -av --amend
   cp  = cherry-pick
@@ -32,15 +34,15 @@
   riom = rebase -i origin/master
   o = !sh ~/dotfiles/scripts/git_open_in_github.sh
 [filter "lfs"]
-	smudge = git-lfs smudge %f
-	required = true
-	clean = git-lfs clean %f
+  smudge = git-lfs smudge %f
+  required = true
+  clean = git-lfs clean %f
 [user]
-	name = Khiet Le
-	email = khiet.le@ehochef.com
+  name = Khiet Le
+  email = khiet.le@ehochef.com
 [pull]
-	default = current
-	ff = only
+  default = current
+  ff = only
 [push]
   default = current
 [fetch]
