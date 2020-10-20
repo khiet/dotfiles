@@ -27,6 +27,8 @@ call plug#begin('~/.vim/plugged')
   Plug 'https://github.com/tpope/vim-surround'
   Plug 'https://github.com/junegunn/vim-easy-align'
   Plug 'https://github.com/sheerun/vim-polyglot'
+  Plug 'https://github.com/junegunn/fzf'
+  Plug 'https://github.com/junegunn/fzf.vim'
   if has('nvim')
     Plug 'https://github.com/neoclide/coc.nvim', {'branch': 'release'}
     Plug 'https://github.com/norcalli/nvim-colorizer.lua'
@@ -74,7 +76,6 @@ nnoremap <leader>et :e <C-R>=expand($HOME."/.tmux.conf")<CR><CR>
 " buffers
 nnoremap <silent> ]b :bn<CR>
 nnoremap <silent> [b :bp<CR>
-nnoremap <leader>b :bd<CR>
 
 " tabs
 nnoremap <silent> ]t :tabn<CR>
@@ -218,8 +219,10 @@ nnoremap <leader>tf :TestFile<CR>
 nnoremap <Leader>tL :call VimuxRunCommand("clear; bin/rake factory_bot:lint")<CR>
 
 " fzf
-set runtimepath+=/usr/local/opt/fzf
-nnoremap <silent> <c-t> :FZF<CR>
+nnoremap <silent> <c-t> :Files<CR>
+nnoremap <leader>b :Buffers<CR>
+nnoremap <leader>rg :Rg<CR>
+let g:fzf_action = { 'ctrl-l': 'edit', 'ctrl-x': 'split', 'ctrl-v': 'vsplit' }
 
 " ack
 nnoremap <leader>a :Ack!<space>
