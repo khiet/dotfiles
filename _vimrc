@@ -93,8 +93,6 @@ nnoremap <silent> ]l :lnext<CR>
 nnoremap <silent> [l :lprev<CR>
 
 " save
-nnoremap <leader>W :w<CR>
-nnoremap <leader>w :w<CR>
 nnoremap <leader>x :x<CR>
 
 " replace
@@ -290,6 +288,7 @@ if has('nvim')
   " https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions#update-extensions
   let g:coc_global_extensions = [
     \ 'coc-tsserver',
+    \ 'coc-eslint',
     \ 'coc-solargraph',
     \ 'coc-emmet',
     \ 'coc-json',
@@ -322,9 +321,6 @@ if has('nvim')
       execute '!' . &keywordprg . " " . expand('<cword>')
     endif
   endfunction
-
-  " format and save
-  nmap <leader>w <Plug>(coc-format) :w<CR>
 
   " coc-snippets
   set runtimepath+=~/.vim/custom_snippets
@@ -412,6 +408,15 @@ function! RunScript()
     call VimuxRunCommand("ruby " . bufname("%"))
   endif
 endfunction
+
+function! RunSave()
+  if &filetype == 'ruby'
+  " format and save
+    call CocAction('format')
+  endif
+
+  write
+endfunction
 " -----------------------------------------------
 
 nnoremap <silent> <leader>t :call <SID>RemoveTrailingWhitespaces()<CR>
@@ -419,7 +424,7 @@ nnoremap <script> <leader>d :call AddBreakpoint()<CR>
 nnoremap <silent> <leader>cq :call <SID>ReplaceCurlyQuotes()<CR>
 nnoremap <script> <leader>ct :call RunCtags()<CR>
 nnoremap <script> <leader>cs :call RunScript()<CR>
-
+nnoremap <script> <leader>w :call RunSave()<CR>
 " vim-rails
 nnoremap <leader>rr :R<CR>
 nnoremap <leader>ra :A<CR>

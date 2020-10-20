@@ -4,6 +4,7 @@
   "explorer.width": 35,
   "explorer.icon.enableNerdfont": true,
   "explorer.previewAction.onHover": false,
+  "explorer.file.showHiddenFiles": true,
   "explorer.keyMappings": {
     "v": "open:vsplit"
   },
@@ -20,6 +21,7 @@
   },
   // https://github.com/neoclide/coc-solargraph/blob/master/package.json
   "solargraph.formatting": true,
-  "solargraph.diagnostics": true
+  "solargraph.diagnostics": true,
   // https://github.com/neoclide/coc-tsserver#configuration-options
+  "eslint.autoFixOnSave": true
 }
