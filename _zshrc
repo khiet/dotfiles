@@ -52,7 +52,7 @@ alias private_ip="ipconfig getifaddr en0"
 
 # ripgrep
 alias g="rg"
-alias gc="rg -C 5"
+alias gc="rg -C 3"
 alias gw="rg -w"
 function gf { rg --files --sort path | rg --regexp $1 }
 
@@ -60,8 +60,8 @@ function gf { rg --files --sort path | rg --regexp $1 }
 alias be="bundle exec"
 alias rr="bin/rails restart"
 alias rc="bin/rails console"
-alias rl="tail -f -n 1000 log/development.log | rg -v ActiveStorage | rg -C 5 Controller"
-alias rlt="tail -f -n 1000 log/test.log | rg -v ActiveStorage | rg -C 5 Controller"
+alias rl="tail -f -n 1000 log/development.log | rg -v ActiveStorage | rg -A 6 Controller"
+alias rlt="tail -f -n 1000 log/test.log | rg -v ActiveStorage | rg -A 6 Controller"
 
 if type ccat > /dev/null 2>&1; then
   alias cat='ccat'
