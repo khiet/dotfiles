@@ -344,11 +344,6 @@ end
 " vim-polyglot
 let g:csv_no_conceal = 1
 
-" vim-fugitive
-nnoremap <leader>gd0  :0GcLog<CR>
-nnoremap <leader>gd  :Gdiff<CR>
-nnoremap <leader>gl  :Glog<CR>
-
 " -----------------------------------------------
 "    OS specifics
 " -----------------------------------------------

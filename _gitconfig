@@ -23,6 +23,7 @@
   dhh = diff HEAD~
   do = !git diff origin/$(git symbolic-ref --short HEAD)
   dom = diff origin/master
+  lp  = log -p
   lg  = log --pretty=format:'%C(yellow)%h%Creset %s %Cgreen(%cd) %C(red)%an%Creset'
   lgg = log --graph --decorate --oneline
   rmc = rm -r --cached .
