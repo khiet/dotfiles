@@ -235,6 +235,11 @@ let g:ackhighlight = 1
 let g:airline_theme='dark'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
+function! AirlineInit()
+  let g:airline_section_b = airline#section#create([])
+  let g:airline_section_c = airline#section#create(['file'])
+endfunction
+autocmd User AirlineAfterInit call AirlineInit()
 
 " vim_current_word
 hi CurrentWord guifg=#ffffff guibg=#721b65
