@@ -112,11 +112,6 @@ nnoremap <leader>e :e!<CR>
 " set cursorcolumn
 nnoremap <leader>lc :set cuc!<CR>
 
-" copy relative path
-nnoremap <leader>cf :let @*=expand("%")<CR>
-" copy absolute path
-nnoremap <leader>cF :let @*=expand("%:p")<CR>
-
 " list invisibles
 nnoremap <leader>ls :set list!<CR>
 
