@@ -86,10 +86,7 @@ if type "fzf" > /dev/null 2>&1; then
 
   # --multi to select multiple files with TAB
   export FZF_DEFAULT_OPTS='--no-mouse --height 50% --reverse --multi --info=inline'
-  # used in fzf in vim
   export FZF_DEFAULT_COMMAND='rg --files --hidden'
-  # used in console
-  export FZF_CTRL_T_COMMAND='rg --files --hidden'
 fi
 
 source ~/Dropbox/Apps/developmennt/tmuxinator/tmuxinator.zsh
