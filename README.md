@@ -13,6 +13,7 @@ brew install reattach-to-user-namespace
 brew install tmux
 brew install ripgrep
 brew install fzf
+brew install ansiweather
 ```
 
 ### git clone

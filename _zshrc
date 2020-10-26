@@ -44,11 +44,13 @@ bindkey '^h' backward-delete-char
 export LESS=-RFX
 
 alias dl="youtube-dl -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4' -o '~/youtube/%(title)s-%(id)s.%(ext)s'"
-alias ct="ctags -R ."
+alias ct='ctags -R .'
 alias gdel="git branch --merged | egrep -v '(^\*|master)' | xargs git branch -d"
 alias caly='cal -y'
-alias public_ip="curl ipinfo.io/ip"
-alias private_ip="ipconfig getifaddr en0"
+alias wx='ansiweather -l Teddington,UK  -s true -a false -i false -p false'
+alias wX='ansiweather -l Teddington,UK  -s true -a false -i false -p false -f 7'
+alias public_ip='curl ipinfo.io/ip'
+alias private_ip='ipconfig getifaddr en0'
 
 # ripgrep
 alias g="rg"
