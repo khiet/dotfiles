@@ -192,6 +192,7 @@ endif
 
 " filetype
 au BufRead,BufNewFile *.inky-haml set ft=haml
+au BufRead,BufNewFile tsconfig.json set filetype=jsonc
 
 " spell-checking
 au BufRead,BufNewFile *.md set filetype=markdown

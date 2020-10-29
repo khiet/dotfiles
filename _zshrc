@@ -113,10 +113,10 @@ if type "rbenv" > /dev/null 2>&1; then
 fi
 
 # find and replace with rg
-function gr  { rg -0 -l "$1" | AGR_FROM="$1" AGR_TO="$2" xargs -0 perl -pi -e 's/$ENV{AGR_FROM}/$ENV{AGR_TO}/g'; }
+function gR  { rg -0 -l "$1" | AGR_FROM="$1" AGR_TO="$2" xargs -0 perl -pi -e 's/$ENV{AGR_FROM}/$ENV{AGR_TO}/g'; }
 # https://stackoverflow.com/a/48280659
-function gfr { rg --files | rg --regexp "$1" | AGR_FROM="$1" AGR_TO="$2" perl -p -e 'print $_; s/$ENV{AGR_FROM}/$ENV{AGR_TO}/' | xargs -n2 mv }
-function gfd { rg --files | rg --regexp "$1" | xargs rm }
+function gfR { rg --files | rg --regexp "$1" | AGR_FROM="$1" AGR_TO="$2" perl -p -e 'print $_; s/$ENV{AGR_FROM}/$ENV{AGR_TO}/' | xargs -n2 mv }
+function gfD { rg --files | rg --regexp "$1" | xargs rm }
 
 function mv2 { dirname "$2" | xargs mkdir -p; mv "$1" "$2"; }
 function cp2 { dirname "$2" | xargs mkdir -p; cp "$1" "$2"; }

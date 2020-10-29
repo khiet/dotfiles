@@ -1,17 +1,19 @@
 {
-  "highlight.document.enable": false,
   // https://github.com/weirongxu/coc-explorer#configuration
   "explorer.width": 40,
   "explorer.icon.enableNerdfont": true,
   "explorer.previewAction.onHover": false,
   "explorer.file.showHiddenFiles": true,
-  "explorer.keyMappings": {
+  "explorer.keyMappings.global": {
     "v": "open:vsplit"
   },
   // https://github.com/neoclide/coc-snippets/blob/master/package.json
   "snippets.userSnippetsDirectory": "~/.vim/custom_snippets",
   "snippets.extends": {
     "haml": [
+      "javascript"
+    ],
+    "typescript": [
       "javascript"
     ]
   },
