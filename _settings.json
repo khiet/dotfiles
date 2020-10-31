@@ -73,5 +73,6 @@
   "todo-tree.tree.showScanModeButton": false,
   "window.title": "${activeEditorLong}${separator}${rootName}",
   "workbench.editor.enablePreview": false,
-  "workbench.colorTheme": "Shades of Purple"
+  "workbench.colorTheme": "Shades of Purple",
+  "workbench.startupEditor": "newUntitledFile"
 }
