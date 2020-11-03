@@ -87,6 +87,8 @@ nnoremap <leader>tc :tabclose<CR>
 " windows
 nnoremap <leader>q :q<CR>
 nnoremap <leader>Q :q!<CR>
+" resize to equal width/height
+nmap <leader>= <C-w>=
 
 " quickfix
 nnoremap <silent> ]q :cnext<CR>
