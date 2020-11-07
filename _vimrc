@@ -309,8 +309,9 @@ if has('nvim')
   nnoremap <silent> <space>cg  :<C-u>CocDiagnostics<CR>
 
   nmap <silent> gd <Plug>(coc-definition)
-  "nmap <silent> gy <Plug>(coc-type-definition)
-  "nmap <silent> gi <Plug>(coc-implementation)
+  nmap <silent> gt <Plug>(coc-type-definition)
+  nmap <silent> gi <Plug>(coc-implementation)
+  " j and k to move up and down, esc to escape
   nmap <silent> gr <Plug>(coc-references)
 
   nmap <leader>cr <Plug>(coc-rename)
@@ -331,7 +332,7 @@ if has('nvim')
 
   " coc-snippets
   set runtimepath+=~/.vim/custom_snippets
-  "nnoremap <leader>es :<C-u>CocCommand snippets.editSnippets<CR>
+  nnoremap <leader>es :<C-u>CocCommand snippets.editSnippets<CR>
 
   " coc-explorer
   noremap <C-n> :CocCommand explorer<CR>
