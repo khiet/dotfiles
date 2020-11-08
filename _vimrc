@@ -295,6 +295,8 @@ if has('nvim')
   " https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions#update-extensions
   let g:coc_global_extensions = [
     \ 'coc-tsserver',
+    \ 'coc-html',
+    \ 'coc-css',
     \ 'coc-eslint',
     \ 'coc-solargraph',
     \ 'coc-emmet',
@@ -397,7 +399,7 @@ function! RunCtags()
 endfunction
 
 function! AddBreakpoint()
-  if &filetype == 'javascript' || &filetype == 'html'
+  if &filetype == 'javascript' || &filetype == 'typescript' || &filetype == 'html'
     r!echo 'debugger;'
   elseif &filetype == 'ruby'
     r!echo 'byebug'
