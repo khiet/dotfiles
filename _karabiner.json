@@ -17,10 +17,34 @@
         "rules": [
           {
             "description": "Change left_control + [ to escape",
+              "manipulators": [
+                {
+                  "from": {
+                    "key_code": "open_bracket",
+                    "modifiers": {
+                      "mandatory": [
+                        "left_control"
+                      ],
+                      "optional": [
+                        "any"
+                      ]
+                    }
+                  },
+                  "to": [
+                    {
+                      "key_code": "escape"
+                    }
+                  ],
+                  "type": "basic"
+                }
+              ]
+          },
+          {
+            "description": "Change left_control + h to delete_or_backspace",
             "manipulators": [
               {
                 "from": {
-                  "key_code": "open_bracket",
+                  "key_code": "h",
                   "modifiers": {
                     "mandatory": [
                       "left_control"
@@ -32,7 +56,7 @@
                 },
                 "to": [
                   {
-                    "key_code": "escape"
+                    "key_code": "delete_or_backspace"
                   }
                 ],
                 "type": "basic"
