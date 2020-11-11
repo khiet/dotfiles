@@ -341,6 +341,9 @@ if has('nvim')
   " coc-explorer
   noremap <C-n> :CocCommand explorer<CR>
 
+  " coc-tsserver
+  noremap <leader>ci :CocCommand tsserver.organizeImports<CR>
+
   " nvim-colorizer
   lua require'colorizer'.setup()
 end
