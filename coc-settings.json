@@ -15,6 +15,9 @@
     ],
     "typescript": [
       "javascript"
+    ],
+    "typescriptreact": [
+      "javascript"
     ]
   },
   // https://github.com/neoclide/coc-emmet/blob/master/package.json

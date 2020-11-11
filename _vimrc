@@ -28,6 +28,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'https://github.com/AndrewRadev/splitjoin.vim'
   Plug 'https://github.com/junegunn/vim-easy-align'
   Plug 'https://github.com/sheerun/vim-polyglot'
+  Plug 'https://github.com/neoclide/jsonc.vim'
   Plug 'https://github.com/junegunn/fzf'
   Plug 'https://github.com/junegunn/fzf.vim'
   if has('nvim')
@@ -196,6 +197,7 @@ endif
 " filetype
 au BufRead,BufNewFile *.inky-haml set ft=haml
 au BufRead,BufNewFile tsconfig.json set filetype=jsonc
+au BufRead,BufNewFile coc-settings.json set filetype=jsonc
 
 " spell-checking
 au BufRead,BufNewFile *.md set filetype=markdown
