@@ -40,30 +40,6 @@
               ]
           },
           {
-            "description": "Change left_control + h to delete_or_backspace",
-            "manipulators": [
-              {
-                "from": {
-                  "key_code": "h",
-                  "modifiers": {
-                    "mandatory": [
-                      "left_control"
-                    ],
-                    "optional": [
-                      "any"
-                    ]
-                  }
-                },
-                "to": [
-                  {
-                    "key_code": "delete_or_backspace"
-                  }
-                ],
-                "type": "basic"
-              }
-            ]
-          },
-          {
             "description": "Change escape to grave accent and tilde",
             "manipulators": [
               {
