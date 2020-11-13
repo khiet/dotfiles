@@ -140,8 +140,58 @@
                 "type": "basic"
               }
             ]
+          },
+          {
+            "description": "left_command + left_shift + o to open Chrome",
+            "manipulators": [
+              {
+                "type": "basic",
+                "from": {
+                  "key_code": "o",
+                  "modifiers": {
+                    "mandatory": [
+                      "left_command",
+                      "left_shift"
+                    ],
+                    "optional": [
+                      "caps_lock"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "shell_command": "open -a 'Google Chrome.app'"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "description": "left_command + left_shift + u to open iTerm",
+            "manipulators": [
+              {
+                "type": "basic",
+                "from": {
+                  "key_code": "u",
+                  "modifiers": {
+                    "mandatory": [
+                      "left_command",
+                      "left_shift"
+                    ],
+                    "optional": [
+                      "caps_lock"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "shell_command": "open -a 'iTerm.app'"
+                  }
+                ]
+              }
+            ]
           }
-        ]
+            ]
       },
       "devices": [
         {
@@ -305,5 +355,5 @@
         "mouse_key_xy_scale": 100
       }
     }
-  ]
+        ]
 }
