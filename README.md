@@ -74,9 +74,7 @@ brew cask install dropbox
 brew cask install rectangle
 brew cask install vlc
 brew cask install zoomus
-brew cask install postman
 brew cask install karabiner-elements
-brew cask install evernote
 brew install ffmpeg
 brew install ctags
 brew install tldr
