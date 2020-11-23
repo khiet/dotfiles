@@ -404,7 +404,8 @@ function! RunCtags()
 endfunction
 
 function! AddBreakpoint()
-  if &filetype == 'javascript' || &filetype == 'typescript' || &filetype == 'html'
+  let fts = ['javascript', 'typescript', 'typescriptreact', 'html']
+  if index(fts, &filetype) != -1
     r!echo 'debugger;'
   elseif &filetype == 'ruby'
     r!echo 'byebug'
@@ -430,7 +431,7 @@ endfunction
 " -----------------------------------------------
 
 nnoremap <silent> <leader>t :call <SID>RemoveTrailingWhitespaces()<CR>
-nnoremap <script> <leader>d :call AddBreakpoint()<CR>
+nnoremap <script> <leader>cd :call AddBreakpoint()<CR>
 nnoremap <silent> <leader>cq :call <SID>ReplaceCurlyQuotes()<CR>
 nnoremap <script> <leader>ct :call RunCtags()<CR>
 nnoremap <script> <leader>cs :call RunScript()<CR>
