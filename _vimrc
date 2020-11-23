@@ -336,7 +336,7 @@ if has('nvim')
 
   " coc-snippets
   set runtimepath+=~/.vim/custom_snippets
-  nnoremap <leader>es :<C-u>CocCommand snippets.editSnippets<CR>
+  nnoremap <leader>es :CocCommand snippets.openSnippetFiles<CR>
 
   " coc-explorer
   noremap <C-n> :CocCommand explorer<CR>
