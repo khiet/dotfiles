@@ -336,7 +336,7 @@ if has('nvim')
 
   " coc-snippets
   set runtimepath+=~/.vim/custom_snippets
-  nnoremap <leader>es :CocCommand snippets.openSnippetFiles<CR>
+  nnoremap <leader>es :<C-u>CocCommand snippets.editSnippets<CR>
 
   " coc-explorer
   noremap <C-n> :CocCommand explorer<CR>
@@ -403,6 +403,14 @@ function! RunCtags()
   let resp = system(cmd)
 endfunction
 
+function! AddBreakpoint()
+  if &filetype == 'javascript' || &filetype == 'typescript' || &filetype == 'html'
+    r!echo 'debugger;'
+  elseif &filetype == 'ruby'
+    r!echo 'byebug'
+  endif
+endfunction
+
 function! RunScript()
   if &filetype == 'javascript'
     call VimuxRunCommand("node " . bufname("%"))
@@ -422,6 +430,7 @@ endfunction
 " -----------------------------------------------
 
 nnoremap <silent> <leader>t :call <SID>RemoveTrailingWhitespaces()<CR>
+nnoremap <script> <leader>d :call AddBreakpoint()<CR>
 nnoremap <silent> <leader>cq :call <SID>ReplaceCurlyQuotes()<CR>
 nnoremap <script> <leader>ct :call RunCtags()<CR>
 nnoremap <script> <leader>cs :call RunScript()<CR>
