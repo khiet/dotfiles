@@ -26,6 +26,7 @@ plugins=(
   zsh-syntax-highlighting
 )
 
+ZSH_DISABLE_COMPFIX="true"
 source $ZSH/oh-my-zsh.sh
 
 export XDG_DATA_HOME=$HOME/.local/share
@@ -91,8 +92,10 @@ if type "fzf" > /dev/null 2>&1; then
   export FZF_DEFAULT_COMMAND='rg --files --hidden'
 fi
 
-source ~/Dropbox/Apps/developmennt/tmuxinator/tmuxinator.zsh
-export TMUXINATOR_CONFIG=~/Dropbox/Apps/developmennt/tmuxinator
+if [ -f ~/Dropbox/Apps/developmennt/tmuxinator/tmuxinator.zsh ]; then
+  source ~/Dropbox/Apps/developmennt/tmuxinator/tmuxinator.zsh
+  export TMUXINATOR_CONFIG=~/Dropbox/Apps/developmennt/tmuxinator
+fi
 
 # colorls
 alias l='colorls --group-directories-first'
