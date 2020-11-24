@@ -90,9 +90,9 @@ if type "fzf" > /dev/null 2>&1; then
   export FZF_DEFAULT_COMMAND='rg --files --hidden'
 fi
 
-if [ -f ~/Dropbox/Apps/developmennt/tmuxinator/tmuxinator.zsh ]; then
-  source ~/Dropbox/Apps/developmennt/tmuxinator/tmuxinator.zsh
-  export TMUXINATOR_CONFIG=~/Dropbox/Apps/developmennt/tmuxinator
+if [ -f ~/Dropbox/Apps/development/tmuxinator/tmuxinator.zsh ]; then
+  source ~/Dropbox/Apps/development/tmuxinator/tmuxinator.zsh
+  export TMUXINATOR_CONFIG=~/Dropbox/Apps/development/tmuxinator
 fi
 
 # colorls
