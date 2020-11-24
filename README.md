@@ -83,6 +83,7 @@ brew install ccat
 brew install youtube-dl
 brew install awscli
 brew install watch
+gem install colorls
 ```
 
 ### Install Visual Studio Code

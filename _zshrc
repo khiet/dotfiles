@@ -94,6 +94,12 @@ fi
 source ~/Dropbox/Apps/developmennt/tmuxinator/tmuxinator.zsh
 export TMUXINATOR_CONFIG=~/Dropbox/Apps/developmennt/tmuxinator
 
+# colorls
+alias l='colorls --group-directories-first'
+alias ll='colorls --group-directories-first --long'
+alias la='colorls --group-directories-first --almost-all'
+alias lal='colorls --group-directories-first --almost-all --long'
+
 # flutter
 export PATH=~/flutter/bin:$PATH
 # pub
