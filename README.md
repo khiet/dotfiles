@@ -99,6 +99,7 @@ rbenv global 2.7.2
 
 ```
 gem install colorls
+gem install tmuxinator
 
 brew install git
 brew install yarn
