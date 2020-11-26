@@ -102,8 +102,9 @@ gem install colorls
 gem install tmuxinator
 
 brew install git
-brew install yarn
 brew install ctags
+brew install yarn
+brew install parallel
 brew install tldr
 brew install htop
 brew install ccat
