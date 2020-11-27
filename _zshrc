@@ -101,19 +101,6 @@ alias ll='colorls --group-directories-first --long'
 alias la='colorls --group-directories-first --almost-all'
 alias lal='colorls --group-directories-first --almost-all --long'
 
-# flutter
-export PATH=~/flutter/bin:$PATH
-# pub
-export PATH=~/.pub-cache/bin:$PATH
-# dart
-export PATH=~/flutter/bin/cache/dart-sdk/bin:$PATH
-# https://cloud.google.com/sdk/docs/quickstart-macos
-export PATH=~/google-cloud-sdk/bin:$PATH
-
-export PATH="/usr/local/opt/mysql@5.6/bin:$PATH"
-export LDFLAGS="-L/usr/local/opt/mysql@5.6/lib"
-export CPPFLAGS="-I/usr/local/opt/mysql@5.6/include"
-
 # rbenv
 if type "rbenv" > /dev/null 2>&1; then
   eval "$(rbenv init -)"
