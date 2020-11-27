@@ -38,7 +38,7 @@ export RIPGREP_CONFIG_PATH=$HOME/.ripgreprc
 # vim mode
 bindkey -v
 export KEYTIMEOUT=1
-# mapping - https://github.com/robbyrussell/oh-my-zsh/blob/master/plugins/vi-mode/vi-mode.plugin.zsh
+# https://github.com/robbyrussell/oh-my-zsh/blob/master/plugins/vi-mode/vi-mode.plugin.zsh
 bindkey -M vicmd 'v' edit-command-line
 bindkey '^h' backward-delete-char
 
@@ -107,7 +107,7 @@ export PATH=~/flutter/bin:$PATH
 export PATH=~/.pub-cache/bin:$PATH
 # dart
 export PATH=~/flutter/bin/cache/dart-sdk/bin:$PATH
-# gcloud - https://cloud.google.com/sdk/docs/quickstart-macos
+# https://cloud.google.com/sdk/docs/quickstart-macos
 export PATH=~/google-cloud-sdk/bin:$PATH
 
 export PATH="/usr/local/opt/mysql@5.6/bin:$PATH"

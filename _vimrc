@@ -404,11 +404,12 @@ function! RunCtags()
 endfunction
 
 function! AddBreakpoint()
-  let fts = ['javascript', 'typescript', 'typescriptreact', 'html']
-  if index(fts, &filetype) != -1
+  if index(['javascript', 'typescript', 'typescriptreact', 'html'], &filetype) != -1
     r!echo 'debugger;'
-  elseif &filetype == 'ruby'
+    write
+  elseif index(['ruby', 'haml'], &filetype) != -1
     r!echo 'byebug'
+    write
   endif
 endfunction
 
