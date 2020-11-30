@@ -113,10 +113,11 @@ brew install ffmpeg
 brew install youtube-dl
 
 brew cask install firefox
-brew cask install sequel-pro
 brew cask install postico
+brew cask install postman
 brew cask install zoomus
 brew cask install vlc
+brew cask install sequel-pro
 ```
 
 ## Install Visual Studio Code
