@@ -61,14 +61,14 @@
             ]
           },
           {
-            "description": "Change left_command + h/j/k/l to Arrows",
+            "description": "Change left_option + h/j/k/l to Arrows",
             "manipulators": [
               {
                 "from": {
                   "key_code": "h",
                   "modifiers": {
                     "mandatory": [
-                      "left_command"
+                      "left_option"
                     ],
                     "optional": [
                       "any"
@@ -87,7 +87,7 @@
                   "key_code": "j",
                   "modifiers": {
                     "mandatory": [
-                      "left_command"
+                      "left_option"
                     ],
                     "optional": [
                       "any"
@@ -106,7 +106,7 @@
                   "key_code": "k",
                   "modifiers": {
                     "mandatory": [
-                      "left_command"
+                      "left_option"
                     ],
                     "optional": [
                       "any"
@@ -125,7 +125,7 @@
                   "key_code": "l",
                   "modifiers": {
                     "mandatory": [
-                      "left_command"
+                      "left_option"
                     ],
                     "optional": [
                       "any"
@@ -145,7 +145,6 @@
             "description": "left_command + left_shift + o to open Chrome",
             "manipulators": [
               {
-                "type": "basic",
                 "from": {
                   "key_code": "o",
                   "modifiers": {
@@ -162,7 +161,8 @@
                   {
                     "shell_command": "open -a 'Google Chrome.app'"
                   }
-                ]
+                ],
+                "type": "basic"
               }
             ]
           },
@@ -170,7 +170,6 @@
             "description": "left_command + left_shift + u to open iTerm",
             "manipulators": [
               {
-                "type": "basic",
                 "from": {
                   "key_code": "u",
                   "modifiers": {
@@ -187,7 +186,8 @@
                   {
                     "shell_command": "open -a 'iTerm.app'"
                   }
-                ]
+                ],
+                "type": "basic"
               }
             ]
           },
@@ -195,7 +195,6 @@
             "description": "left_command + left_shift + i to open Bear",
             "manipulators": [
               {
-                "type": "basic",
                 "from": {
                   "key_code": "i",
                   "modifiers": {
@@ -212,7 +211,8 @@
                   {
                     "shell_command": "open -a 'Bear.app'"
                   }
-                ]
+                ],
+                "type": "basic"
               }
             ]
           }
@@ -356,14 +356,6 @@
           },
           "to": {
             "key_code": "left_control"
-          }
-        },
-        {
-          "from": {
-            "key_code": "left_control"
-          },
-          "to": {
-            "key_code": "fn"
           }
         },
         {
