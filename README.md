@@ -40,18 +40,18 @@ ln -s ~/dotfiles/_tmux.conf ~/.tmux.conf
 ln -s ~/dotfiles/_hushlogin ~/.hushlogin
 ln -s ~/dotfiles/_ripgreprc ~/.ripgreprc
 
-mkdir -p $XDG_CONFIG_HOME/karabiner
-ln -s ~/dotfiles/_karabiner.json $XDG_CONFIG_HOME/karabiner/karabiner.json
+mkdir -p ~/.hammerspoon
+ln -s ~/dotfiles/_hammerspoon ~/.hammerspoon/init.lua
 
 mkdir -p $XDG_CONFIG_HOME
 ln -s ~/.vim $XDG_CONFIG_HOME/nvim
 ln -s ~/.vimrc $XDG_CONFIG_HOME/nvim/init.vim
 ```
 
-## Install Karabiner-Elements
+## Install Hammerspoon
 
 ```
-brew cask install karabiner-elements
+brew cask install hammerspoon
 ```
 
 ## Install nvim and plugins
