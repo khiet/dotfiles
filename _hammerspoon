@@ -1,5 +1,7 @@
 -- https://www.hammerspoon.org/docs/index.html
 
+logger = hs.logger.new('logger', 'debug')
+
 local function remap(mods, key, message, pressedfn, releasedfn, repeatfn)
   -- https://www.hammerspoon.org/docs/hs.hotkey.html#bind
   hs.hotkey.bind(mods, key, message, nil, message, nil)
@@ -21,7 +23,15 @@ end)
 
 -- bind control + [ to escape
 hs.hotkey.bind({'control'}, '[', function()
-  hs.eventtap.keyStroke({}, 'escape', 1000)
+  hs.eventtap.keyStroke({}, 'escape')
+end)
+
+-- hs.hotkey.bind({}, 'escape', function()
+--   hs.eventtap.keyStroke({}, '`')
+-- end)
+
+hs.hotkey.bind({'shift'}, 'escape', function()
+  hs.eventtap.keyStrokes('~')
 end)
 
 hs.hotkey.bind({'command', 'shift'}, 'u', function()
