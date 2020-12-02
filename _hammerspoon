@@ -1,16 +1,21 @@
 -- https://www.hammerspoon.org/docs/index.html
 
+local function remap(mods, key, message, pressedfn, releasedfn, repeatfn)
+  -- https://www.hammerspoon.org/docs/hs.hotkey.html#bind
+  hs.hotkey.bind(mods, key, message, nil, message, nil)
+end
+
 -- bind option + h/j/k/l to arrows
-hs.hotkey.bind({'option'}, 'h', function()
+remap({'option'}, 'h', function()
   hs.eventtap.keyStroke({}, 'left', 1000)
 end)
-hs.hotkey.bind({'option'}, 'j', function()
+remap({'option'}, 'j', function()
   hs.eventtap.keyStroke({}, 'down', 1000)
 end)
-hs.hotkey.bind({'option'}, 'k', function()
+remap({'option'}, 'k', function()
   hs.eventtap.keyStroke({}, 'up', 1000)
 end)
-hs.hotkey.bind({'option'}, 'l', function()
+remap({'option'}, 'l', function()
   hs.eventtap.keyStroke({}, 'right', 1000)
 end)
 
@@ -19,10 +24,14 @@ hs.hotkey.bind({'control'}, '[', function()
   hs.eventtap.keyStroke({}, 'escape', 1000)
 end)
 
-hs.hotkey.bind({'command', 'shift'}, 'o', function()
-  hs.application.launchOrFocus('Google Chrome.app')
-end)
-
 hs.hotkey.bind({'command', 'shift'}, 'u', function()
   hs.application.launchOrFocus('iTerm.app')
+end)
+
+hs.hotkey.bind({'command', 'shift'}, 'i', function()
+  hs.application.launchOrFocus('Bear.app')
+end)
+
+hs.hotkey.bind({'command', 'shift'}, 'o', function()
+  hs.application.launchOrFocus('Google Chrome.app')
 end)
