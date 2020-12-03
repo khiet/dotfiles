@@ -15,18 +15,18 @@ brew tap homebrew/cask-fonts; brew cask install font-hack-nerd-font
 cd; git clone git@github.com:khiet/dotfiles.git
 ```
 
-## Symlink config file for zsh
-
-```
-cd; rm .zshrc; ln -s ~/dotfiles/_zshrc ~/.zshrc
-```
-
 ## Install oh my zsh and plugins
 
 ```
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
+```
+
+## Symlink config file for zsh
+
+```
+cd; rm .zshrc; ln -s ~/dotfiles/_zshrc ~/.zshrc
 ```
 
 ## Symlink config files
