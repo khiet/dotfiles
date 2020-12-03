@@ -46,10 +46,6 @@ hs.hotkey.bind({'command', 'shift'}, 'o', function()
   hs.application.launchOrFocus('Google Chrome.app')
 end)
 
-hs.hotkey.bind({'command', 'shift'}, 'h', function()
-  -- disable hiding an application
-end)
-
 hs.hotkey.bind({"command", "option"}, "[", function()
   local win = hs.window.focusedWindow()
   local f = win:frame()
