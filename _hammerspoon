@@ -39,11 +39,11 @@ hs.hotkey.bind({'command', 'shift'}, 'u', function()
 end)
 
 hs.hotkey.bind({'command', 'shift'}, 'i', function()
-  local nextAppMap = { Bear = 'Things3', Things3 = 'Bear' }
-  local currentApp = hs.application.frontmostApplication()
-  local nextApp = nextAppMap[currentApp:name()] or 'Bear'
+  hs.application.launchOrFocus('Bear')
+end)
 
-  hs.application.launchOrFocus(nextApp)
+hs.hotkey.bind({'command', 'shift'}, 'k', function()
+  hs.application.launchOrFocus('Things3')
 end)
 
 hs.hotkey.bind({'command', 'shift'}, 'o', function()
