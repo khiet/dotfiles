@@ -115,6 +115,7 @@ brew cask install firefox
 brew cask install postico
 brew cask install postman
 brew cask install zoomus
+brew cask install appcleaner
 brew cask install vlc
 brew cask install sequel-pro
 ```
