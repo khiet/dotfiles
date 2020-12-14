@@ -56,6 +56,7 @@ alias g="rg"
 alias gc="rg -C 3"
 alias gw="rg -w"
 function gf { rg --files --sort path | rg --regexp $1 }
+function gF { rg --files --no-ignore --sort path | rg --regexp $1 }
 
 # rails
 alias be="bundle exec"
