@@ -42,10 +42,6 @@ hs.hotkey.bind({'command', 'shift'}, 'i', function()
   hs.application.launchOrFocus('Bear')
 end)
 
-hs.hotkey.bind({'command', 'shift'}, 'k', function()
-  hs.application.launchOrFocus('Things3')
-end)
-
 hs.hotkey.bind({'command', 'shift'}, 'o', function()
   hs.application.launchOrFocus('Google Chrome')
 end)
