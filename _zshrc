@@ -63,8 +63,8 @@ alias be="bundle exec"
 alias rr="bin/rails restart"
 alias rc="bin/rails console"
 alias rG="bin/rails generate"
-alias rl="tail -f -n 1000 log/development.log | rg -v ActiveStorage | rg -A 6 Controller"
-alias rlt="tail -f -n 1000 log/test.log | rg -v ActiveStorage | rg -A 6 Controller"
+alias rl="tail -f -n 1000 log/development.log | rg -A 6 Controller"
+alias rlt="tail -f -n 1000 log/test.log | rg -A 6 Controller"
 
 if type ccat > /dev/null 2>&1; then
   alias cat='ccat'
