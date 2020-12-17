@@ -1,6 +1,7 @@
 [core]
   editor = $EDITOR
   ignorecase = false
+  excludesfile = ~/dotfiles/_global_gitignore
 [alias]
   st  = status
   co  = checkout
