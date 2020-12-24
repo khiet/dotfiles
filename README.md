@@ -106,7 +106,7 @@ brew install yarn
 brew install parallel
 brew install tldr
 brew install htop
-brew install ccat
+brew install bat
 brew install watch
 brew install ffmpeg
 brew install youtube-dl
