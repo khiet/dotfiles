@@ -35,6 +35,7 @@
   ri = rebase -i
   rc = rebase --continue
   riom = rebase -i origin/master
+  coom = checkout origin/master
   o = !sh ~/dotfiles/scripts/git_open_in_github.sh
 [filter "lfs"]
   smudge = git-lfs smudge %f
