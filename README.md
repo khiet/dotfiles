@@ -5,8 +5,8 @@
 ## Install iterm and nerd font
 
 ```
-brew cask install iterm2
-brew tap homebrew/cask-fonts; brew cask install font-hack-nerd-font
+brew install --cask iterm2
+brew tap homebrew/cask-fonts; brew install --cask font-hack-nerd-font
 ```
 
 ## Clone dotfiles
@@ -51,7 +51,7 @@ ln -s ~/.vimrc $XDG_CONFIG_HOME/nvim/init.vim
 ## Install Hammerspoon
 
 ```
-brew cask install hammerspoon
+brew install --cask hammerspoon
 ```
 
 ## Install nvim and plugins
@@ -79,8 +79,8 @@ brew install fzf
 ## Install Mac apps
 
 ```
-brew cask install copyq
-brew cask install dropbox
+brew install --cask copyq
+brew install --cask dropbox
 ```
 
 ## Install rbenv and Ruby
@@ -111,19 +111,20 @@ brew install watch
 brew install ffmpeg
 brew install youtube-dl
 
-brew cask install firefox
-brew cask install postico
-brew cask install postman
-brew cask install zoomus
-brew cask install appcleaner
-brew cask install vlc
-brew cask install sequel-pro
+brew install --cask beyond-compare
+brew install --cask firefox
+brew install --cask postico
+brew install --cask postman
+brew install --cask zoomus
+brew install --cask appcleaner
+brew install --cask vlc
+brew install --cask sequel-pro
 ```
 
 ## Install Visual Studio Code
 
 ```
-brew cask install visual-studio-code
+brew install --cask visual-studio-code
 ```
 
 ## Symlink config file
