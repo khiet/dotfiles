@@ -320,6 +320,7 @@ if has('nvim')
 
   nmap <leader>cr <Plug>(coc-rename)
   nmap <leader>cc <Plug>(coc-codeaction)
+  nmap <leader>ce :CocList extensions<CR>
 
   " show documentation
   nnoremap <silent> K :call <SID>show_documentation()<CR>
