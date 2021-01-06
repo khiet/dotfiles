@@ -79,7 +79,7 @@ brew install fzf
 ## Install Mac apps
 
 ```
-brew install --cask copyq
+brew install --cask maccy
 brew install --cask dropbox
 ```
 
