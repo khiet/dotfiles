@@ -2,7 +2,6 @@
   // https://github.com/weirongxu/coc-explorer#configuration
   "explorer.width": 40,
   "explorer.icon.enableNerdfont": true,
-  "explorer.previewAction.onHover": false,
   "explorer.file.showHiddenFiles": true,
   "explorer.keyMappings.global": {
     "v": "open:vsplit",
