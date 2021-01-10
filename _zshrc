@@ -67,7 +67,7 @@ alias rl="tail -f -n 1000 log/development.log | rg -A 6 Controller"
 alias rlt="tail -f -n 1000 log/test.log | rg -A 6 Controller"
 
 if type bat > /dev/null 2>&1; then
-  alias cat='bat --paging=never'
+  alias cat='bat -p --paging=never'
 fi
 
 export EDITOR='vim'
