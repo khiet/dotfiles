@@ -318,6 +318,7 @@ if has('nvim')
   " j and k to move up and down, esc to escape
   nmap <silent> gr <Plug>(coc-references)
 
+  nmap <leader>cf <Plug>(coc-fix-current)
   nmap <leader>cr <Plug>(coc-rename)
   nmap <leader>cc <Plug>(coc-codeaction)
   nmap <leader>ce :CocList extensions<CR>

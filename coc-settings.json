@@ -2,6 +2,11 @@
   // https://github.com/weirongxu/coc-explorer#configuration
   "explorer.width": 40,
   "explorer.icon.enableNerdfont": true,
+  "explorer.git.enable": true,
+  "explorer.filename.colored.enable": {
+    "diagnosticError": true,
+    "git": true
+  },
   "explorer.file.showHiddenFiles": true,
   "explorer.keyMappings.global": {
     "v": "open:vsplit",
