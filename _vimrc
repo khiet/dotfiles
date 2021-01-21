@@ -251,7 +251,7 @@ au BufWritePre * match ExtraWhitespace /\s\+$/
 highlight ExtraWhitespace ctermbg=red guibg=red
 
 " vimwiki
-let g:vimwiki_list = [{'path': "$HOME/Dropbox/vimwiki", 'syntax': 'markdown', 'ext': '.md'}]
+let g:vimwiki_list = [{'path': "$HOME/Dropbox/Apps/vim/vimwiki", 'syntax': 'markdown', 'ext': '.md'}]
 " https://github.com/vimwiki/vimwiki/blob/dev/doc/vimwiki.txt#L3329
 let g:vimwiki_key_mappings =
   \ {

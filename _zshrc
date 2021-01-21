@@ -51,6 +51,10 @@ alias caly='cal -y'
 alias public_ip='curl ipinfo.io/ip'
 alias private_ip='ipconfig getifaddr en0'
 
+# tmux
+alias ta='tmux attach -t'
+alias tls='tmux ls'
+
 # ripgrep
 alias g="rg"
 alias G="rg --no-ignore"
