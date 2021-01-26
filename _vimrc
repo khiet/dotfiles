@@ -273,8 +273,10 @@ nnoremap <leader>mf :exe 'FZF' g:vimwiki_list[0].path<CR>
 
 " gitgutter
 let g:gitgutter_map_keys = 0 " turn off all key mappings
-
 let g:gitgutter_grep = 'rg'
+
+" open file in github
+nnoremap <leader>go :! ~/dotfiles/scripts/git_open_file_in_github.sh %<CR>
 
 " vim-closetag
 let g:closetag_filenames = '*.html,*.erb,*.js,*.jsx'
