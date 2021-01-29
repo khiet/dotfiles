@@ -138,6 +138,7 @@ set splitbelow
 set splitright
 
 set hlsearch
+
 " recognize .js without extension when gf
 set suffixesadd=.js
 " allow backspacing over everything in i-mode
@@ -200,9 +201,6 @@ au BufRead,BufNewFile *.md set filetype=markdown
 au FileType markdown setlocal spell
 au FileType gitcommit setlocal spell
 
-highlight clear SpellBad
-highlight SpellBad cterm=underline ctermfg=red gui=underline guifg=red
-
 " enable mouse in terminal emulators
 if has("mouse")
   set mouse=a
@@ -238,13 +236,17 @@ function! AirlineInit()
 endfunction
 autocmd User AirlineAfterInit call AirlineInit()
 
+hi clear SpellBad
+hi SpellBad gui=underline guifg=red
+
 " vim_current_word
-hi CurrentWord guifg=#ffffff guibg=#721b65
-hi CurrentWordTwins gui=underline cterm=underline
+hi CurrentWord guifg=#ffffff guibg=#721b65 gui=none
+hi CurrentWordTwins gui=underline
+hi QuickFixLine guifg=#ffffff guibg=#721b65 gui=none
 
 " highlight trailing whitespaces
 au BufWritePre * match ExtraWhitespace /\s\+$/
-highlight ExtraWhitespace ctermbg=red guibg=red
+hi ExtraWhitespace guibg=red
 
 " vimwiki
 let g:vimwiki_list = [{'path': "$HOME/Dropbox/Apps/vim/vimwiki", 'syntax': 'markdown', 'ext': '.md'}]
