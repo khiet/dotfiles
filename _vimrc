@@ -72,6 +72,7 @@ let mapleader=" "
 
 " edit config files
 nnoremap <leader>ev :e <C-R>=expand($HOME."/.vimrc")<CR><CR>
+nnoremap <leader>eV :source $MYVIMRC<CR>
 nnoremap <leader>ez :e <C-R>=expand($HOME."/.zshrc")<CR><CR>
 nnoremap <leader>et :e <C-R>=expand($HOME."/.tmux.conf")<CR><CR>
 
@@ -379,20 +380,7 @@ endif
 " -----------------------------------------------
 "    function
 " -----------------------------------------------
-" http://vimcasts.org/episodes/tidying-whitespace/
-function! <SID>RemoveTrailingWhitespaces()
-  " Preparation: save last search, and cursor position.
-  let _s=@/
-  let l = line(".")
-  let c = col(".")
-  " do the business:
-  %s/\s\+$//e
-  " clean up: restore previous search history, and cursor position
-  let @/=_s
-  call cursor(l, c)
-endfunction
-
-function! <SID>ReplaceCurlyQuotes()
+function! ReplaceCurlyQuotes()
   let _s=@/
   let l = line(".")
   let c = col(".")
@@ -410,7 +398,7 @@ function! RunCtags()
   let resp = system(cmd)
 endfunction
 
-function! AddBreakpoint()
+function! AddDebugBreakpoint()
   if index(['javascript', 'typescript', 'typescriptreact', 'html'], &filetype) != -1
     r!echo 'debugger;'
     write
@@ -428,6 +416,19 @@ function! RunScript()
   endif
 endfunction
 
+" http://vimcasts.org/episodes/tidying-whitespace/
+function! RemoveTrailingWhitespaces()
+  " Preparation: save last search, and cursor position.
+  let _s=@/
+  let l = line(".")
+  let c = col(".")
+  " do the business:
+  %s/\s\+$//e
+  " clean up: restore previous search history, and cursor position
+  let @/=_s
+  call cursor(l, c)
+endfunction
+
 function! RunSave()
   if &filetype == 'ruby'
   " format and save
@@ -438,11 +439,11 @@ function! RunSave()
 endfunction
 " -----------------------------------------------
 
-nnoremap <silent> <leader>t :call <SID>RemoveTrailingWhitespaces()<CR>
-nnoremap <script> <leader>cd :call AddBreakpoint()<CR>
-nnoremap <silent> <leader>cq :call <SID>ReplaceCurlyQuotes()<CR>
+nnoremap <script> <leader>cd :call AddDebugBreakpoint()<CR>
+nnoremap <silent> <leader>cq :call ReplaceCurlyQuotes()<CR>
 nnoremap <script> <leader>ct :call RunCtags()<CR>
 nnoremap <script> <leader>cs :call RunScript()<CR>
+nnoremap <silent> <leader>t :call RemoveTrailingWhitespaces()<CR>
 nnoremap <script> <leader>w :call RunSave()<CR>
 " vim-rails
 nnoremap <leader>rr :R<CR>
