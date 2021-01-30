@@ -37,6 +37,7 @@ call plug#begin('~/.vim/plugged')
 
   " Colorscheme
   Plug 'https://github.com/morhetz/gruvbox'
+  Plug 'https://github.com/dracula/vim'
 
   " Tmux
   Plug 'https://github.com/janko-m/vim-test'
