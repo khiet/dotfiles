@@ -22,7 +22,6 @@ call plug#begin('~/.vim/plugged')
   " General
   Plug 'https://github.com/dominikduda/vim_current_word'
   Plug 'https://github.com/pbrisbin/vim-mkdir'
-  Plug 'https://github.com/mileszs/ack.vim'
   Plug 'https://github.com/vim-airline/vim-airline'
   Plug 'https://github.com/tpope/vim-surround'
   Plug 'https://github.com/AndrewRadev/splitjoin.vim'
@@ -216,15 +215,21 @@ nnoremap <Leader>tL :call VimuxRunCommand("clear; bin/rake factory_bot:lint")<CR
 " fzf
 nnoremap <silent> <c-t> :Files<CR>
 nnoremap <leader>b :Buffers<CR>
-nnoremap <leader>rg :Rg<CR>
+nnoremap <leader>rg :RG 
 let g:fzf_action = { 'ctrl-l': 'edit', 'ctrl-x': 'split', 'ctrl-v': 'vsplit' }
+let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8 } }
+let g:fzf_preview_window = ['down:75%']
 
-" ack
-nnoremap <leader>a :Ack!<space>
-if executable('rg')
-  let g:ackprg = 'rg --vimgrep'
-endif
-let g:ackhighlight = 1
+" https://github.com/junegunn/fzf.vim#example-advanced-ripgrep-integration
+function! RipgrepFzf(query, fullscreen)
+  let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case -- %s || true'
+  let initial_command = printf(command_fmt, shellescape(a:query))
+  let reload_command = printf(command_fmt, '{q}')
+  let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
+  call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
+endfunction
+
+command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
 
 " airline
 let g:airline_theme='dark'
@@ -242,7 +247,6 @@ hi SpellBad gui=underline guifg=red
 " vim_current_word
 hi CurrentWord guifg=#ffffff guibg=#721b65 gui=none
 hi CurrentWordTwins gui=underline
-hi QuickFixLine guifg=#ffffff guibg=#721b65 gui=none
 
 " highlight trailing whitespaces
 au BufWritePre * match ExtraWhitespace /\s\+$/

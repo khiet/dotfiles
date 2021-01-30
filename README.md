@@ -40,12 +40,13 @@ ln -s ~/dotfiles/_tmux.conf ~/.tmux.conf
 ln -s ~/dotfiles/_hushlogin ~/.hushlogin
 ln -s ~/dotfiles/_ripgreprc ~/.ripgreprc
 
-mkdir -p ~/.hammerspoon
-ln -s ~/dotfiles/_hammerspoon ~/.hammerspoon/init.lua
+ln -s ~/dotfiles/.hammerspoon ~/.hammerspoon
 
 mkdir -p $XDG_CONFIG_HOME
 ln -s ~/.vim $XDG_CONFIG_HOME/nvim
 ln -s ~/.vimrc $XDG_CONFIG_HOME/nvim/init.vim
+
+ln -s ~/dotfiles/bat $XDG_CONFIG_HOME/bat
 ```
 
 ## Install Hammerspoon
