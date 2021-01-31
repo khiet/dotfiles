@@ -221,7 +221,7 @@ nnoremap <Leader>tL :call VimuxRunCommand("clear; bin/rake factory_bot:lint")<CR
 " fzf
 nnoremap <silent> <c-t> :Files<CR>
 nnoremap <leader>b :Buffers<CR>
-nnoremap <leader>g :RG 
+nnoremap <leader>g :RG
 let g:fzf_action = { 'ctrl-l': 'edit', 'ctrl-x': 'split', 'ctrl-v': 'vsplit' }
 let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8 } }
 let g:fzf_preview_window = ['down:75%']
@@ -249,15 +249,15 @@ endfunction
 autocmd User AirlineAfterInit call AirlineInit()
 
 hi clear SpellBad
-hi SpellBad gui=underline guifg=red
+hi SpellBad gui=underline guifg=#ff5555
 
 " vim_current_word
-hi CurrentWord guifg=#ffffff guibg=#721b65 gui=none
-hi CurrentWordTwins gui=underline
+hi CurrentWord guifg=#ffffff guibg=#44475a gui=none
+hi CurrentWordTwins gui=underline,bold
 
 " highlight trailing whitespaces
 au BufWritePre * match ExtraWhitespace /\s\+$/
-hi ExtraWhitespace guibg=red
+hi ExtraWhitespace guibg=#ff5555
 
 " vimwiki
 let g:vimwiki_list = [{'path': "$HOME/Dropbox/Apps/vim/vimwiki", 'syntax': 'markdown', 'ext': '.md'}]
