@@ -46,6 +46,7 @@ call plug#begin('~/.vim/plugged')
   " Git
   Plug 'https://github.com/airblade/vim-gitgutter'
   Plug 'https://github.com/tpope/vim-fugitive'
+  Plug 'https://github.com/tpope/vim-rhubarb'
 
   " Rails
   Plug 'https://github.com/tpope/vim-rails'
@@ -281,7 +282,7 @@ let g:gitgutter_map_keys = 0 " turn off all key mappings
 let g:gitgutter_grep = 'rg'
 
 " open file in github
-nnoremap <leader>Go :! ~/dotfiles/scripts/git_open_file_in_github.sh %<CR>
+nnoremap <leader>gb :GBrowse<CR>
 
 " vim-closetag
 let g:closetag_filenames = '*.html,*.erb,*.js,*.jsx'
