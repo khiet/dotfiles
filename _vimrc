@@ -217,10 +217,11 @@ nnoremap <Leader>tL :call VimuxRunCommand("clear; bin/rake factory_bot:lint")<CR
 " fzf
 nnoremap <silent> <c-t> :Files<CR>
 nnoremap <leader>b :Buffers<CR>
-nnoremap <leader>rg :RG 
+nnoremap <leader>g :RG 
 let g:fzf_action = { 'ctrl-l': 'edit', 'ctrl-x': 'split', 'ctrl-v': 'vsplit' }
 let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8 } }
 let g:fzf_preview_window = ['down:75%']
+let g:fzf_colors = {'hl+': ['fg', 'Statement']}
 
 " https://github.com/junegunn/fzf.vim#example-advanced-ripgrep-integration
 function! RipgrepFzf(query, fullscreen)
@@ -280,7 +281,7 @@ let g:gitgutter_map_keys = 0 " turn off all key mappings
 let g:gitgutter_grep = 'rg'
 
 " open file in github
-nnoremap <leader>go :! ~/dotfiles/scripts/git_open_file_in_github.sh %<CR>
+nnoremap <leader>Go :! ~/dotfiles/scripts/git_open_file_in_github.sh %<CR>
 
 " vim-closetag
 let g:closetag_filenames = '*.html,*.erb,*.js,*.jsx'
