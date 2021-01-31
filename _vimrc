@@ -210,6 +210,9 @@ endif
 
 " vim-test
 let test#strategy = "vimux"
+let g:VimuxOrientation = "h"
+let g:VimuxHeight = "50"
+
 nnoremap <leader>T :TestNearest<CR>
 nnoremap <leader>tl :TestLast<CR>
 nnoremap <leader>tf :TestFile<CR>
@@ -283,6 +286,7 @@ let g:gitgutter_grep = 'rg'
 
 " open file in github
 nnoremap <leader>gb :GBrowse<CR>
+nnoremap <leader>gl :call VimuxRunCommand("git lp " . bufname("%"))<CR>
 
 " vim-closetag
 let g:closetag_filenames = '*.html,*.erb,*.js,*.jsx'
