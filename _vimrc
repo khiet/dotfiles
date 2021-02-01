@@ -104,6 +104,7 @@ nnoremap <leader>x :x<CR>
 
 " replace
 nnoremap <leader>s :%s//
+vnoremap <leader>s :s//
 
 " noh
 nnoremap <leader>h :noh<CR>
@@ -322,17 +323,7 @@ if has('nvim')
   " navigate diagnostics
   nmap <silent> [g <Plug>(coc-diagnostic-prev)
   nmap <silent> ]g <Plug>(coc-diagnostic-next)
-  nnoremap <silent> <space>cg  :<C-u>CocDiagnostics<CR>
 
-  nmap <silent> gd <Plug>(coc-definition)
-  nmap <silent> gt <Plug>(coc-type-definition)
-  nmap <silent> gi <Plug>(coc-implementation)
-  " j and k to move up and down, esc to escape
-  nmap <silent> gr <Plug>(coc-references)
-
-  nmap <leader>cf <Plug>(coc-fix-current)
-  nmap <leader>cr <Plug>(coc-rename)
-  nmap <leader>cc <Plug>(coc-codeaction)
   nmap <leader>ce :CocList extensions<CR>
 
   " show documentation
@@ -354,9 +345,6 @@ if has('nvim')
 
   " coc-explorer
   noremap <C-n> :CocCommand explorer<CR>
-
-  " coc-tsserver
-  noremap <leader>ci :CocCommand tsserver.organizeImports<CR>
 
   " nvim-colorizer
   lua require'colorizer'.setup()
