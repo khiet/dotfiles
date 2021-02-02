@@ -191,7 +191,7 @@ if (&t_Co == 256) " if terminal supports 256 colours
     set termguicolors
   endif
 
-  colorscheme gruvbox
+  colorscheme dracula
 endif
 
 " filetype
@@ -226,7 +226,6 @@ nnoremap <leader>g :RG
 let g:fzf_action = { 'ctrl-l': 'edit', 'ctrl-x': 'split', 'ctrl-v': 'vsplit' }
 let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8 } }
 let g:fzf_preview_window = ['down:75%']
-let g:fzf_colors = {'hl+': ['fg', 'Statement']}
 
 " https://github.com/junegunn/fzf.vim#example-advanced-ripgrep-integration
 function! RipgrepFzf(query, fullscreen)
@@ -253,7 +252,7 @@ hi clear SpellBad
 hi SpellBad gui=underline guifg=#ff5555
 
 " vim_current_word
-hi CurrentWord guifg=#ffffff guibg=#44475a gui=none
+hi CurrentWord guifg=#ffffff guibg=#6272a4
 hi CurrentWordTwins gui=underline,bold
 
 " highlight trailing whitespaces
