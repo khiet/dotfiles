@@ -285,7 +285,7 @@ nnoremap <leader>mf :exe 'FZF' g:vimwiki_list[0].path<CR>
 let g:gitgutter_map_keys = 0 " turn off all key mappings
 let g:gitgutter_grep = 'rg'
 
-" open file in github
+nnoremap <leader>Gf :GFiles?<CR>
 nnoremap <leader>Gb :GBrowse<CR>
 nnoremap <leader>Gl :call VimuxRunCommand("git lp " . bufname("%"))<CR>
 
