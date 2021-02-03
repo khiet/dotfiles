@@ -3,7 +3,7 @@
   ignorecase = false
   excludesfile = ~/dotfiles/_global_gitignore
 [alias]
-  st  = status
+  st  = status --short
   co  = checkout
   br  = branch
   ps  = push
