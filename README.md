@@ -120,6 +120,8 @@ brew install --cask zoomus
 brew install --cask appcleaner
 brew install --cask vlc
 brew install --cask sequel-pro
+
+npm install -g vtop
 ```
 
 ## Install Visual Studio Code
