@@ -126,7 +126,7 @@ function brewls { brew list | while read cask; do echo -n $fg[blue] $cask $fg[wh
 
 function rhs { LC_CTYPE=C sed -i '' -e "s/$1//" ~/.zsh_history }
 
-function kebab { echo  "$1" | sed 's/ /-/g' | tr "[:upper:]" "[:lower:]" }
+function kebab { echo  "$1" | sed 's/ /-/g' | tr "[:upper:]" "[:lower:]" | tr -d ",:" }
 
 # suppress ruby 2.7 warnnings
 export RUBYOPT='-W0'
