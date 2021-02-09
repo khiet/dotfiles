@@ -8,8 +8,8 @@
   br  = branch
   ps  = push
   pl  = pull
+  a  = add -p
   aa  = add -A
-  ap  = add -p
   c  = commit -v
   ci  = commit -av
   cia = commit -av --amend
