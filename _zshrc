@@ -50,6 +50,7 @@ alias gdel="git branch --merged | egrep -v '(^\*|master)' | xargs git branch -d"
 alias caly='cal -y'
 alias public_ip='curl ipinfo.io/ip'
 alias private_ip='ipconfig getifaddr en0'
+alias open='open -R'
 
 # tmux
 alias ta='tmux attach -t'
