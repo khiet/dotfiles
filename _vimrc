@@ -397,6 +397,8 @@ function! AddDebugBreakpoint()
     write
   elseif index(['ruby', 'haml'], &filetype) != -1
     r!echo 'byebug'
+    call CocAction('format')
+
     write
   endif
 endfunction
