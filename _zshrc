@@ -53,7 +53,6 @@ alias ct='ctags -R .'
 alias caly='cal -y'
 alias public_ip='curl ipinfo.io/ip'
 alias private_ip='ipconfig getifaddr en0'
-alias open='open -R'
 
 # tmux
 alias ta='tmux attach -t'
@@ -144,6 +143,14 @@ function dl {
     youtube-dl -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best' -o "~/youtube/$2" "$1.%(ext)s"
   elif [[ $1 ]]; then
     youtube-dl -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best' -o '~/youtube/%(title)s-%(id)s.%(ext)s' $1
+  fi
+}
+
+function open {
+  if [[ -d $1 ]]; then
+    open $1
+  else
+    open -R $1
   fi
 }
 
