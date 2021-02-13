@@ -49,9 +49,7 @@ bindkey '^h' backward-delete-char
 
 export LESS=-RFX
 
-alias dl="youtube-dl -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4' -o '~/youtube/%(title)s-%(id)s.%(ext)s'"
 alias ct='ctags -R .'
-alias gdel="git branch --merged | egrep -v '(^\*|master)' | xargs git branch -d"
 alias caly='cal -y'
 alias public_ip='curl ipinfo.io/ip'
 alias private_ip='ipconfig getifaddr en0'
@@ -134,8 +132,20 @@ function brewls { brew list | while read cask; do echo -n $fg[blue] $cask $fg[wh
 
 function rhs { LC_CTYPE=C sed -i '' -e "s/$1//" ~/.zsh_history }
 
-function gbr { git co -b $(kebab "$1") }
 function kebab { echo  "$1" | sed 's/ /-/g' | tr "[:upper:]" "[:lower:]" | tr -d ",:" }
+
+# git
+alias gdel="git branch --merged | egrep -v '(^\*|master)' | xargs git branch -d"
+function gbr { git co -b $(kebab "$1") }
+
+# youtube-dl
+function dl {
+  if [[ $1 && $2 ]]; then
+    youtube-dl -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best' -o "~/youtube/$2" "$1.%(ext)s"
+  elif [[ $1 ]]; then
+    youtube-dl -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best' -o '~/youtube/%(title)s-%(id)s.%(ext)s' $1
+  fi
+}
 
 # suppress ruby 2.7 warnnings
 export RUBYOPT='-W0'
