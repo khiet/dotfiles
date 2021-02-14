@@ -129,7 +129,7 @@ function cp2 { dirname "$2" | xargs mkdir -p; cp "$1" "$2"; }
 # list brew dependencies
 function brewls { brew list | while read cask; do echo -n $fg[blue] $cask $fg[white]; brew deps $cask | awk '{printf(" %s ", $0)}'; echo ""; done; }
 
-function rhs { LC_CTYPE=C sed -i '' -e "s/$1//" ~/.zsh_history }
+function rhs { LC_CTYPE=C sed -i '' -e "s/$1//i" ~/.zsh_history }
 
 function kebab { echo  "$1" | sed 's/ /-/g' | tr "[:upper:]" "[:lower:]" | tr -d ",:" }
 
