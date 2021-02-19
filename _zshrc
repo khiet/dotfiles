@@ -146,7 +146,7 @@ function dl {
   fi
 }
 
-function open {
+function dir {
   if [[ -d $1 ]]; then
     open $1
   else
