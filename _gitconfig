@@ -15,6 +15,7 @@
   ci  = commit -av
   cia = commit -av --amend
   cp  = cherry-pick
+  cpc  = cherry-pick --continue
   ft  = fetch
   d   = diff
   dw  = diff --word-diff
