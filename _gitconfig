@@ -45,7 +45,7 @@
   clean = git-lfs clean %f
 [user]
   name = Khiet Le
-  email = khiet.le@ehochef.com
+  email = khiet@outlook.com
 [pull]
   default = current
   ff = only
