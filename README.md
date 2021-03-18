@@ -120,6 +120,7 @@ brew install --cask zoomus
 brew install --cask appcleaner
 brew install --cask vlc
 brew install --cask sequel-pro
+brew install --cask kap
 
 npm install -g vtop
 ```
