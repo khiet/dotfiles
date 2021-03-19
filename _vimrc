@@ -24,12 +24,12 @@ call plug#begin('~/.vim/plugged')
   Plug 'https://github.com/pbrisbin/vim-mkdir'
   Plug 'https://github.com/vim-airline/vim-airline'
   Plug 'https://github.com/tpope/vim-surround'
-  Plug 'https://github.com/AndrewRadev/splitjoin.vim'
   Plug 'https://github.com/junegunn/vim-easy-align'
   Plug 'https://github.com/sheerun/vim-polyglot'
   Plug 'https://github.com/neoclide/jsonc.vim'
   Plug 'https://github.com/junegunn/fzf'
   Plug 'https://github.com/junegunn/fzf.vim'
+  Plug 'https://github.com/FooSoft/vim-argwrap'
   if has('nvim')
     Plug 'https://github.com/neoclide/coc.nvim', {'branch': 'release'}
     Plug 'https://github.com/norcalli/nvim-colorizer.lua'
@@ -218,6 +218,9 @@ nnoremap <leader>T :TestNearest<CR>
 nnoremap <leader>tl :TestLast<CR>
 nnoremap <leader>tf :TestFile<CR>
 nnoremap <Leader>tL :call VimuxRunCommand("clear; bin/rake factory_bot:lint")<CR>
+
+" argwrap
+nnoremap <silent> <silent>gS :ArgWrap<CR>
 
 " fzf
 nnoremap <silent> <c-t> :Files<CR>
@@ -440,6 +443,7 @@ nnoremap <script> <leader>ct :call RunCtags()<CR>
 nnoremap <script> <leader>cs :call RunScript()<CR>
 nnoremap <silent> <leader>t :call RemoveTrailingWhitespaces()<CR>
 nnoremap <script> <leader>w :call RunSave()<CR>
+
 " vim-rails
 nnoremap <leader>rr :R<CR>
 nnoremap <leader>ra :A<CR>
