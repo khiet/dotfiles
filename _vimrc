@@ -104,7 +104,6 @@ nnoremap <leader>x :x<CR>
 
 " replace
 nnoremap <leader>s :%s//
-vnoremap <leader>s :s//
 
 " noh
 nnoremap <leader>h :noh<CR>
@@ -326,6 +325,10 @@ if has('nvim')
   " navigate diagnostics
   nmap <silent> [g <Plug>(coc-diagnostic-prev)
   nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+  " https://github.com/neoclide/coc.nvim/wiki/Multiple-cursors-support
+  hi CocCursorRange guibg=#ffb86c guifg=#282a36
+  nmap <silent> <C-s> <Plug>(coc-cursors-word)*
 
   nmap <leader>ce :CocList extensions<CR>
 
