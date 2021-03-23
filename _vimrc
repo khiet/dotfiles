@@ -332,19 +332,6 @@ if has('nvim')
 
   nmap <leader>ce :CocList extensions<CR>
 
-  " show documentation
-  nnoremap <silent> K :call <SID>show_documentation()<CR>
-
-  function! s:show_documentation()
-    if (index(['vim','help'], &filetype) >= 0)
-      execute 'h '.expand('<cword>')
-    elseif (coc#rpc#ready())
-      call CocActionAsync('doHover')
-    else
-      execute '!' . &keywordprg . " " . expand('<cword>')
-    endif
-  endfunction
-
   " coc-snippets
   set runtimepath+=~/.vim/custom_snippets
   nnoremap <leader>es :CocCommand snippets.openSnippetFiles<CR>
