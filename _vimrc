@@ -329,6 +329,7 @@ if has('nvim')
   " https://github.com/neoclide/coc.nvim/wiki/Multiple-cursors-support
   hi CocCursorRange guibg=#ffb86c guifg=#282a36
   nmap <silent> <C-m> <Plug>(coc-cursors-word)*
+  nmap <leader>f :CocSearch 
 
   nmap <leader>ce :CocList extensions<CR>
 
