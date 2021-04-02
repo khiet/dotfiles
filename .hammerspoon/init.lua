@@ -34,20 +34,7 @@ hs.hotkey.bind({'shift'}, 'escape', function()
   hs.eventtap.keyStrokes('~')
 end)
 
-hs.hotkey.bind({'command', 'shift'}, 'u', function()
-  hs.application.launchOrFocus('iTerm')
-end)
-
-hs.hotkey.bind({'command', 'shift'}, 'i', function()
-  local nextAppMap = { Bear = 'Things3', Things3 = 'Bear' }
-  local currentApp = hs.application.frontmostApplication()
-  local nextApp = nextAppMap[currentApp:name()] or 'Bear'
-
-  hs.application.launchOrFocus(nextApp)
-end)
-
-hs.hotkey.bind({'command', 'shift'}, 'o', function()
-  hs.application.launchOrFocus('Google Chrome')
+hs.hotkey.bind({'command'}, 'h', function()
 end)
 
 hs.hotkey.bind({"command", "option"}, "[", function()
