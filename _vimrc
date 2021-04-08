@@ -223,8 +223,9 @@ nnoremap <silent> <silent>gS :ArgWrap<CR>
 
 " fzf
 nnoremap <silent> <c-t> :Files<CR>
-nnoremap <c-b> :Buffers<CR>
-nnoremap <c-g> :GFiles?<CR>
+nnoremap <silent> <c-b> :Buffers<CR>
+nnoremap <silent><c-g> :GFiles?<CR>
+nnoremap <silent> <c-h> :History<CR>
 nnoremap <leader>g :RG 
 let g:fzf_action = { 'ctrl-l': 'edit', 'ctrl-x': 'split', 'ctrl-v': 'vsplit' }
 let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8 } }
@@ -286,10 +287,6 @@ nnoremap <leader>mf :exe 'FZF' g:vimwiki_list[0].path<CR>
 " gitgutter
 let g:gitgutter_map_keys = 0 " turn off all key mappings
 let g:gitgutter_grep = 'rg'
-
-nnoremap <leader>Gf :GFiles?<CR>
-nnoremap <leader>Gb :GBrowse<CR>
-nnoremap <leader>Gl :call VimuxRunCommand("git lp " . bufname("%"))<CR>
 
 " vim-closetag
 let g:closetag_filenames = '*.html,*.erb,*.js,*.jsx'
