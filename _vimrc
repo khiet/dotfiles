@@ -22,7 +22,6 @@ call plug#begin('~/.vim/plugged')
   " General
   Plug 'https://github.com/dominikduda/vim_current_word'
   Plug 'https://github.com/pbrisbin/vim-mkdir'
-  Plug 'https://github.com/vim-airline/vim-airline'
   Plug 'https://github.com/tpope/vim-surround'
   Plug 'https://github.com/junegunn/vim-easy-align'
   Plug 'https://github.com/sheerun/vim-polyglot'
@@ -242,16 +241,6 @@ function! RipgrepFzf(query, fullscreen)
 endfunction
 
 command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
-
-" airline
-let g:airline_theme='dracula'
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#formatter = 'unique_tail'
-function! AirlineInit()
-  let g:airline_section_b = airline#section#create([])
-  let g:airline_section_c = airline#section#create(['file'])
-endfunction
-autocmd User AirlineAfterInit call AirlineInit()
 
 hi clear SpellBad
 hi SpellBad gui=underline guifg=#ff5555
