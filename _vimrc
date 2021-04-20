@@ -297,7 +297,7 @@ if has('nvim')
   " :CocConfig to open coc-settings.json
   " :checkhealth and :CocInfo to get information about installation
 
-  set cmdheight=2
+  set cmdheight=1
   set shortmess+=c
 
   " global extentions are automatically installed when tye are not installed,
