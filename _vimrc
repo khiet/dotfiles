@@ -2,22 +2,17 @@ if has('nvim')
   " https://neovim.io/doc/user/nvim.html#nvim-from-vim
   set runtimepath^=~/.vim runtimepath+=~/.vim/after
   let &packpath = &runtimepath
-
-  " automatic installation: https://github.com/junegunn/vim-plug/wiki/tips#automatic-installation
-  if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
-    silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
-      \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  end
-else
-  if empty(glob('~/.vim/autoload/plug.vim'))
-    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-      \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  endif
 endif
 
-" PlugInstall to install plugins, PlugClean to delete plugins, PlugUpdate to
-" update plugins
-" https://github.com/junegunn/vim-plug#commands
+" vim-plug
+" automatic installation: https://github.com/junegunn/vim-plug/wiki/tips#automatic-installation
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+" PlugInstall, PlugClean, PlugUpdate
 call plug#begin('~/.vim/plugged')
   " General
   Plug 'https://github.com/dominikduda/vim_current_word'
@@ -132,8 +127,6 @@ nnoremap <leader><leader> <C-^>
 " indenting
 vnoremap << <gv
 vnoremap >> >gv
-
-" https://github.com/ChristianChiarulli/nvim/blob/master/general/settings.vim
 
 set splitbelow
 set splitright
