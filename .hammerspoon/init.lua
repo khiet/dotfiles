@@ -34,6 +34,14 @@ hs.hotkey.bind({'shift'}, 'escape', function()
   hs.eventtap.keyStrokes('~')
 end)
 
+hs.hotkey.bind({'command', 'shift'}, 'u', function()
+  hs.application.launchOrFocus('iTerm')
+end)
+
+hs.hotkey.bind({'command', 'shift'}, 'o', function()
+  hs.application.launchOrFocus('Google Chrome')
+end)
+
 hs.hotkey.bind({'command'}, 'h', function()
 end)
 
