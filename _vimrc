@@ -28,6 +28,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'https://github.com/junegunn/fzf'
   Plug 'https://github.com/junegunn/fzf.vim'
   Plug 'https://github.com/FooSoft/vim-argwrap'
+  Plug 'https://github.com/itchyny/lightline.vim'
   if has('nvim')
     Plug 'https://github.com/neoclide/coc.nvim', {'branch': 'release'}
     Plug 'https://github.com/norcalli/nvim-colorizer.lua'
@@ -218,6 +219,12 @@ nnoremap <Leader>tL :call VimuxRunCommand("clear; bin/rake factory_bot:lint")<CR
 
 " argwrap
 nnoremap <silent> <silent>gS :ArgWrap<CR>
+
+" lightline
+set noshowmode
+let g:lightline = {
+  \ 'colorscheme': 'dracula',
+  \ }
 
 " fzf
 nnoremap <silent> <c-t> :Files<CR>
