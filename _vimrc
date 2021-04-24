@@ -24,10 +24,15 @@ call plug#begin('~/.vim/plugged')
   Plug 'https://github.com/junegunn/fzf.vim'
   Plug 'https://github.com/FooSoft/vim-argwrap'
   Plug 'https://github.com/itchyny/lightline.vim'
+
   if has('nvim')
     Plug 'https://github.com/neoclide/coc.nvim', {'branch': 'release'}
     Plug 'https://github.com/norcalli/nvim-colorizer.lua'
   endif
+
+  if has('mac')
+    Plug 'xfyuan/vim-mac-dictionary'
+  end
 
   " Colorscheme
   Plug 'https://github.com/morhetz/gruvbox'
@@ -279,6 +284,9 @@ let g:gitgutter_grep = 'rg'
 
 " vim-closetag
 let g:closetag_filenames = '*.html,*.erb,*.js,*.jsx'
+
+" vim-mac-dictionary
+nnoremap <silent><leader>d :MacDictWord<CR>
 
 if has('nvim')
   " prerequisites
