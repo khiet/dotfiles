@@ -69,7 +69,7 @@ function gF { rg --files --no-ignore --sort path | rg --regexp $1 }
 # rails
 alias be="bundle exec"
 alias rr="bin/rails restart"
-alias rc="bin/rails console"
+alias rc="bin/rails console -- --nomultiline"
 alias rG="bin/rails generate"
 alias rl="tail -f -n 1000 log/development.log"
 alias rlc="tail -f -n 1000 log/development.log | rg -A 6 Controller"
