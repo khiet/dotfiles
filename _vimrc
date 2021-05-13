@@ -208,7 +208,7 @@ endif
 " vim-test
 let test#strategy = "vimux"
 let g:VimuxOrientation = "h"
-let g:VimuxHeight = "50"
+let g:VimuxHeight = "25"
 
 nnoremap <leader>T :TestNearest<CR>
 nnoremap <leader>tl :TestLast<CR>
