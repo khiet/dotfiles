@@ -155,6 +155,3 @@ function dir {
     open -R $1
   fi
 }
-
-# suppress ruby 2.7 warnnings
-export RUBYOPT='-W0'
