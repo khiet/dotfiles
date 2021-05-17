@@ -54,7 +54,6 @@ hs.hotkey.bind({"command", "option"}, "[", function()
   local halfWidth = max.w / 2
   local oneQuarterWidth = halfWidth / 2
   local threeQuarterWidth = halfWidth + oneQuarterWidth
-  local sevenEighthWidth = threeQuarterWidth + (oneQuarterWidth / 2)
 
   f.x = max.x
   f.y = max.y
@@ -64,8 +63,6 @@ hs.hotkey.bind({"command", "option"}, "[", function()
     f.w = halfWidth
   elseif f.w >= halfWidth and f.w < threeQuarterWidth then
     f.w = threeQuarterWidth
-  elseif f.w >= threeQuarterWidth and f.w < sevenEighthWidth then
-    f.w = sevenEighthWidth
   else
     f.w = oneQuarterWidth
   end
@@ -84,7 +81,6 @@ hs.hotkey.bind({"command", "option"}, "]", function()
   local halfWidth = max.w / 2
   local oneQuarterWidth = halfWidth / 2
   local threeQuarterWidth = halfWidth + oneQuarterWidth
-  local sevenEighthWidth = threeQuarterWidth + (oneQuarterWidth / 2)
 
   if f.w >= 0 and f.w < oneQuarterWidth then
     f.x = max.x + threeQuarterWidth
@@ -95,9 +91,6 @@ hs.hotkey.bind({"command", "option"}, "]", function()
   elseif f.w >= halfWidth and f.w < threeQuarterWidth then
     f.x = max.x + oneQuarterWidth
     f.w = threeQuarterWidth
-  elseif f.w >= threeQuarterWidth and f.w < sevenEighthWidth then
-    f.x = max.x + (oneQuarterWidth / 2)
-    f.w = sevenEighthWidth
   else
     f.x = max.x + threeQuarterWidth
     f.w = oneQuarterWidth
