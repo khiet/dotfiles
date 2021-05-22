@@ -397,7 +397,7 @@ function! RunScript()
   if &filetype == 'javascript'
     call VimuxRunCommand("node " . bufname("%"))
   elseif &filetype == 'ruby'
-    call VimuxRunCommand("ruby " . bufname("%"))
+    call VimuxRunCommand("ruby -w " . bufname("%"))
   elseif &filetype == 'rust'
     call VimuxRunCommand("cargo run")
   endif
