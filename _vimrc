@@ -438,17 +438,10 @@ nnoremap <leader>rr :R<CR>
 nnoremap <leader>ra :A<CR>
 " https://github.com/tpope/vim-rails/issues/368#issuecomment-265086019
 let g:rails_projections = {
-  \ "app/controllers/*_controller.rb": {
-  \     "test": [
-  \       "spec/requests/{}_spec.rb",
-  \       "spec/controllers/{}_controller_spec.rb",
-  \     ],
-  \     "alternate": [
-  \       "spec/requests/{}_spec.rb",
-  \       "spec/controllers/{}_controller_spec.rb",
-  \     ],
-  \   },
-  \   "spec/requests/*_spec.rb": {
-  \      "alternate": "app/controllers/{}_controller.rb"
-  \   },
-  \ }
+\   "app/controllers/*_controller.rb": {
+\     "test": "spec/requests/{}_request_spec.rb",
+\   },
+\   "spec/requests/*_request_spec.rb": {
+\     "alternate": "app/controllers/{}_controller.rb"
+\   },
+\ }
