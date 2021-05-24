@@ -200,7 +200,10 @@ au BufRead,BufNewFile *.md set filetype=markdown
 au FileType markdown setlocal spell
 au FileType gitcommit setlocal spell
 " https://www.youtube.com/watch?v=lwD8G1P52Sk&t=147s
-nnoremap <leader>S :normal! mm[s1z=`m<CR>
+function! FixLastSpellingError()
+  normal! mm[s1z=`m
+endfunction
+nnoremap <leader>S :call FixLastSpellingError()<CR>
 
 " enable mouse in terminal emulators
 if has("mouse")
