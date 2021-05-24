@@ -441,7 +441,10 @@ nnoremap <leader>ra :A<CR>
 " https://github.com/tpope/vim-rails/issues/368#issuecomment-265086019
 let g:rails_projections = {
 \   "app/controllers/*_controller.rb": {
-\     "test": "spec/requests/{}_request_spec.rb",
+\     "test": ["spec/requests/{}_request_spec.rb", "spec/requests/{}_spec.rb"]
+\   },
+\   "spec/requests/*_spec.rb": {
+\     "alternate": "app/controllers/{}_controller.rb"
 \   },
 \   "spec/requests/*_request_spec.rb": {
 \     "alternate": "app/controllers/{}_controller.rb"
