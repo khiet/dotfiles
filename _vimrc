@@ -31,7 +31,7 @@ call plug#begin('~/.vim/plugged')
   endif
 
   if has('mac')
-    Plug 'xfyuan/vim-mac-dictionary'
+    Plug 'https://github.com/xfyuan/vim-mac-dictionary'
   end
 
   " Colorscheme
