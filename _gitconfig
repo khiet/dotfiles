@@ -12,8 +12,6 @@
   aa  = add -A
   c  = commit -v
   ca = commit -v --amend
-  ci  = commit -av
-  cia = commit -av --amend
   cp  = cherry-pick
   cpc  = cherry-pick --continue
   ft  = fetch
