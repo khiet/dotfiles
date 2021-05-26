@@ -28,7 +28,7 @@
     "enumMember": "  "
   },
   // https://github.com/weirongxu/coc-explorer#configuration
-  "explorer.width": 40,
+  "explorer.width": 50,
   "explorer.icon.enableNerdfont": true,
   "explorer.git.enable": true,
   "explorer.filename.colored.enable": {
