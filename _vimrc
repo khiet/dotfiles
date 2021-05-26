@@ -431,12 +431,17 @@ function! RunSave()
 endfunction
 " -----------------------------------------------
 
-nnoremap <script> <leader>cd :call AddDebugBreakpoint()<CR>
+function! OpenInExplorer()
+  silent execute '!open' expand("%:p:h")
+endfunction
+
+nnoremap <silent> <leader>cd :call AddDebugBreakpoint()<CR>
 nnoremap <silent> <leader>cq :call ReplaceCurlyQuotes()<CR>
-nnoremap <script> <leader>ct :call RunCtags()<CR>
-nnoremap <script> <leader>cs :call RunScript()<CR>
+nnoremap <silent> <leader>ct :call RunCtags()<CR>
+nnoremap <silent> <leader>cs :call RunScript()<CR>
+nnoremap <silent> <leader>co :call OpenInExplorer()<CR>
 nnoremap <silent> <leader>t :call RemoveTrailingWhitespaces()<CR>
-nnoremap <script> <leader>w :call RunSave()<CR>
+nnoremap <silent> <leader>w :call RunSave()<CR>
 
 " vim-rails
 nnoremap <leader>rr :R<CR>
