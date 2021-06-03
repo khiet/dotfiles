@@ -12,6 +12,8 @@
   aa  = add -A
   c  = commit -v
   ca = commit -v --amend
+  aac  = !git add -A && git commit -v
+  aaca  = !git add -A && git commit -v --amend
   cp  = cherry-pick
   cpc  = cherry-pick --continue
   ft  = fetch
