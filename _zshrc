@@ -57,6 +57,7 @@ alias private_ip='ipconfig getifaddr en0'
 # tmux
 alias ta='tmux attach -t'
 alias tls='tmux ls'
+alias tkill='tmux kill-session -t'
 
 # ripgrep
 alias g="rg --sort-files"
