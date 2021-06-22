@@ -24,6 +24,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'https://github.com/junegunn/fzf.vim'
   Plug 'https://github.com/FooSoft/vim-argwrap'
   Plug 'https://github.com/itchyny/lightline.vim'
+  Plug 'https://github.com/yggdroot/indentline'
 
   if has('nvim')
     Plug 'https://github.com/neoclide/coc.nvim', {'branch': 'release'}
@@ -105,9 +106,6 @@ nnoremap <leader>h :noh<CR>
 
 " reload
 nnoremap <leader>e :e!<CR>
-
-" set cursorcolumn
-nnoremap <leader>lc :set cuc!<CR>
 
 " list invisibles
 nnoremap <leader>ls :set list!<CR>
