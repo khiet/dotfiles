@@ -117,7 +117,7 @@ nmap ga <Plug>(EasyAlign)
 " yank
 " http://vim.wikia.com/wiki/Replace_a_word_with_yanked_text
 xnoremap <silent> p p:let @+=@0<CR>:let @"=@0<CR>
-nnoremap yi ^y$
+nnoremap Y y$
 
 " switch between the last two files
 " https://github.com/thoughtbot/dotfiles/blob/master/vimrc#L128
