@@ -25,6 +25,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'https://github.com/FooSoft/vim-argwrap'
   Plug 'https://github.com/itchyny/lightline.vim'
   Plug 'https://github.com/yggdroot/indentline'
+  Plug 'https://github.com/easymotion/vim-easymotion'
 
   if has('nvim')
     Plug 'https://github.com/neoclide/coc.nvim', {'branch': 'release'}
@@ -223,6 +224,19 @@ set noshowmode
 let g:lightline = {
   \ 'colorscheme': 'dracula',
   \ }
+
+" easymotion
+let g:EasyMotion_do_mapping = 0
+" nmap s <Plug>(easymotion-overwin-f)
+nmap s <Plug>(easymotion-overwin-f2)
+
+let g:EasyMotion_smartcase = 1
+
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
+
+hi EasyMotionTarget guibg=none guifg=red
+hi EasyMotionShade guibg=none guifg=none
 
 " fzf
 nnoremap <silent> <c-t> :Files<CR>
