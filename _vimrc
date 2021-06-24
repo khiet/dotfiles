@@ -80,6 +80,7 @@ nnoremap <silent> [b :bp<CR>
 " tabs
 nnoremap <silent> ]t :tabn<CR>
 nnoremap <silent> [t :tabp<CR>
+nnoremap <leader>ts :tab split<CR>
 nnoremap <leader>te :tabedit<CR>
 nnoremap <leader>tc :tabclose<CR>
 
@@ -230,7 +231,7 @@ nnoremap <silent> <c-g> :GFiles?<CR>
 " nnoremap <silent> <c-?> :Commits<CR>
 nnoremap <silent> <c-s> :History<CR>
 nnoremap <leader>g :RG 
-let g:fzf_action = { 'ctrl-l': 'edit', 'ctrl-x': 'split', 'ctrl-v': 'vsplit' }
+let g:fzf_action = { 'ctrl-l': 'edit', 'ctrl-t': 'tab split' }
 let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.9 } }
 let g:fzf_preview_window = ['down:75%']
 
