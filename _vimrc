@@ -331,6 +331,17 @@ if has('nvim')
   nmap <silent> [g <Plug>(coc-diagnostic-prev)
   nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
+  nnoremap <silent> K :call <SID>show_documentation()<CR>
+  function! s:show_documentation()
+    if (index(['vim','help'], &filetype) >= 0)
+      execute 'h '.expand('<cword>')
+    elseif (coc#rpc#ready())
+      call CocActionAsync('doHover')
+    else
+      execute '!' . &keywordprg . " " . expand('<cword>')
+    endif
+  endfunction
+
   " https://github.com/neoclide/coc.nvim/wiki/Multiple-cursors-support
   hi CocCursorRange guibg=#ffb86c guifg=#282a36
   nmap <silent> <C-m> <Plug>(coc-cursors-word)*
