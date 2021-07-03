@@ -30,6 +30,7 @@ call plug#begin('~/.vim/plugged')
   if has('nvim')
     Plug 'https://github.com/neoclide/coc.nvim', {'branch': 'release'}
     Plug 'https://github.com/norcalli/nvim-colorizer.lua'
+    Plug 'https://github.com/romgrk/barbar.nvim'
   endif
 
   " Colorscheme
@@ -77,13 +78,6 @@ nnoremap <leader>et :e <C-R>=expand($HOME."/.tmux.conf")<CR><CR>
 " buffers
 nnoremap <silent> ]b :bn<CR>
 nnoremap <silent> [b :bp<CR>
-
-" tabs
-nnoremap <silent> ]t :tabn<CR>
-nnoremap <silent> [t :tabp<CR>
-nnoremap <leader>ts :tab split<CR>
-nnoremap <leader>te :tabedit<CR>
-nnoremap <leader>tc :tabclose<CR>
 
 " windows
 nnoremap <leader>q :q<CR>
@@ -245,7 +239,7 @@ nnoremap <silent> <c-g> :GFiles?<CR>
 " nnoremap <silent> <c-?> :Commits<CR>
 nnoremap <silent> <c-s> :History<CR>
 nnoremap <leader>g :RG 
-let g:fzf_action = { 'ctrl-l': 'edit', 'ctrl-t': 'tab split' }
+let g:fzf_action = { 'ctrl-l': 'edit', 'ctrl-x': 'split', 'ctrl-v': 'vsplit' }
 let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.9 } }
 let g:fzf_preview_window = ['down:75%']
 
@@ -358,6 +352,18 @@ if has('nvim')
 
   " nvim-colorizer
   lua require'colorizer'.setup()
+
+  " barbar
+  let bufferline = get(g:, 'bufferline', {})
+  let bufferline.animation = v:false
+  let bufferline.closable = v:false
+  let bufferline.icons = v:false
+  let bufferline.maximum_padding = 1
+  let bufferline.maximum_length = 45
+
+  nmap <silent> ]b :BufferNext<CR>
+  nmap <silent> [b :BufferPrevious<CR>
+  nnoremap <leader>bd :BufferClose<CR>
 end
 
 " vim-polyglot
