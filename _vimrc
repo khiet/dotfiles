@@ -321,7 +321,6 @@ if has('nvim')
     \ 'coc-css',
     \ 'coc-eslint',
     \ 'coc-solargraph',
-    \ 'coc-emmet',
     \ 'coc-json',
     \ 'coc-snippets',
     \ 'coc-explorer',
