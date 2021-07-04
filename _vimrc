@@ -453,8 +453,16 @@ function! RunSave()
 endfunction
 " -----------------------------------------------
 
-function! OpenInExplorer()
-  silent execute '!open' expand("%:p:h")
+function! OpenIn()
+  " yank current word in register
+  normal! viWy
+  let word = getreg("0")
+  if word =~ "http"
+    let escaped = escape(word, '#&+?%[]')
+    silent execute '!open' escaped
+  else
+    silent execute '!open' expand("%:p:h")
+  end
 endfunction
 
 function! CreateSpecFile()
@@ -465,7 +473,7 @@ nnoremap <silent> <leader>cd :call AddDebugBreakpoint()<CR>
 nnoremap <silent> <leader>cq :call ReplaceCurlyQuotes()<CR>
 nnoremap <silent> <leader>ct :call RunCtags()<CR>
 nnoremap <silent> <leader>cs :call RunScript()<CR>
-nnoremap <silent> <leader>co :call OpenInExplorer()<CR>
+nnoremap <silent> <leader>co :call OpenIn()<CR>
 nnoremap <silent> <leader>rc :call CreateSpecFile()<CR>
 nnoremap <silent> <leader>t :call RemoveTrailingWhitespaces()<CR>
 nnoremap <silent> <leader>w :call RunSave()<CR>
