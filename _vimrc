@@ -324,6 +324,8 @@ if has('nvim')
   nmap <silent> [g <Plug>(coc-diagnostic-prev)
   nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
+  nmap <silent> gd <Plug>(coc-definition)
+
   nnoremap <silent> K :call <SID>show_documentation()<CR>
   function! s:show_documentation()
     if (index(['vim','help'], &filetype) >= 0)
