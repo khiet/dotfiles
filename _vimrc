@@ -245,7 +245,7 @@ nnoremap <silent> <c-g> :GFiles?<CR>
 " nnoremap <silent> <c-?> :Commits<CR>
 nnoremap <silent> <c-s> :History<CR>
 nnoremap <leader>g :RG 
-let g:fzf_action = { 'ctrl-l': 'edit', 'ctrl-t': 'tab split' }
+let g:fzf_action = { 'ctrl-l': 'edit', 'ctrl-t': 'tab split', 'ctrl-x': 'split', 'ctrl-v': 'vsplit' }
 let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.9 } }
 let g:fzf_preview_window = ['down:75%']
 
