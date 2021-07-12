@@ -102,6 +102,7 @@ nnoremap <leader>x :x<CR>
 
 " replace
 nnoremap <leader>s :%s//
+vnoremap <leader>s :s//
 
 " noh
 nnoremap <leader>h :noh<CR>
