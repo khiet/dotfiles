@@ -77,6 +77,7 @@ nnoremap <leader>et :e <C-R>=expand($HOME."/.tmux.conf")<CR><CR>
 " buffers
 nnoremap <silent> ]b :bn<CR>
 nnoremap <silent> [b :bp<CR>
+nnoremap <leader>bd :bd<CR>
 
 " tabs
 nnoremap <silent> ]t :tabn<CR>
