@@ -467,11 +467,12 @@ function! CreateSpecFile()
   silent execute '!ruby ~/dotfiles/scripts/create_spec_file.rb' expand("%:p")
 endfunction
 
+nnoremap <silent> gx :call OpenIn()<CR>
+
 nnoremap <silent> <leader>cd :call AddDebugBreakpoint()<CR>
 nnoremap <silent> <leader>cq :call ReplaceCurlyQuotes()<CR>
 nnoremap <silent> <leader>ct :call RunCtags()<CR>
 nnoremap <silent> <leader>cs :call RunScript()<CR>
-nnoremap <silent> <leader>co :call OpenIn()<CR>
 nnoremap <silent> <leader>rc :call CreateSpecFile()<CR>
 nnoremap <silent> <leader>t :call RemoveTrailingWhitespaces()<CR>
 nnoremap <silent> <leader>w :call RunSave()<CR>
