@@ -63,6 +63,6 @@
   // https://github.com/neoclide/coc-solargraph/blob/master/package.json
   "solargraph.formatting": true,
   "solargraph.diagnostics": true,
-  // https://github.com/neoclide/coc-tsserver#configuration-options
+  // https://github.com/neoclide/coc-eslint#configuration-options
   "eslint.autoFixOnSave": true
 }
