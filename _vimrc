@@ -322,6 +322,7 @@ if has('nvim')
     \ 'coc-html',
     \ 'coc-css',
     \ 'coc-eslint',
+    \ 'coc-prettier',
     \ 'coc-solargraph',
     \ 'coc-json',
     \ 'coc-snippets',
@@ -412,8 +413,6 @@ function! AddDebugBreakpoint()
     write
   elseif index(['ruby', 'haml'], &filetype) != -1
     r!echo 'byebug'
-    call CocAction('format')
-
     write
   endif
 endfunction
@@ -445,6 +444,10 @@ function! RunSave()
   if &filetype == 'ruby'
   " format and save
     call CocAction('format')
+  elseif &filetype == 'javascript'
+  " format and save
+    execute 'CocCommand' 'eslint.executeAutofix'
+    execute 'CocCommand' 'prettier.formatFile'
   endif
 
   write

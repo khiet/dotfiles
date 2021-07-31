@@ -64,5 +64,7 @@
   "solargraph.formatting": true,
   "solargraph.diagnostics": true,
   // https://github.com/neoclide/coc-eslint#configuration-options
-  "eslint.autoFixOnSave": true
+  "eslint.autoFixOnSave": false,
+  // https://github.com/neoclide/coc-prettier#settings
+  "prettier.onlyUseLocalVersion": true
 }
