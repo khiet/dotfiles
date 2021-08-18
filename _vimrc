@@ -212,6 +212,7 @@ endif
 let test#strategy = "vimux"
 let g:VimuxOrientation = "h"
 let g:VimuxHeight = "25"
+let g:test#javascript#runner = 'jest'
 
 nnoremap <leader>T :TestNearest<CR>
 nnoremap <leader>tl :TestLast<CR>
