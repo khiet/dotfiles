@@ -18,6 +18,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'https://github.com/dominikduda/vim_current_word'
   Plug 'https://github.com/pbrisbin/vim-mkdir'
   Plug 'https://github.com/tpope/vim-surround'
+  Plug 'https://github.com/tpope/vim-repeat'
   Plug 'https://github.com/junegunn/vim-easy-align'
   Plug 'https://github.com/sheerun/vim-polyglot'
   Plug 'https://github.com/junegunn/fzf'
