@@ -102,6 +102,7 @@ gem install colorls
 gem install tmuxinator
 
 brew install git
+brew install diff-so-fancy
 brew install ctags
 brew install yarn
 brew install parallel

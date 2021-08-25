@@ -2,6 +2,7 @@
   editor = $EDITOR
   ignorecase = false
   excludesfile = ~/dotfiles/_global_gitignore
+  pager = diff-so-fancy | less --tabs=4 -RFX
 [alias]
   st  = status --short
   co  = checkout
@@ -54,3 +55,22 @@
   default = current
 [fetch]
   prune = true
+[interactive]
+  diffFilter = diff-so-fancy --patch
+[color]
+	ui = true
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22
+[color "diff"]
+	meta = 11
+	frag = magenta bold
+	func = 146 bold
+	commit = yellow bold
+	old = red bold
+	new = green bold
+	whitespace = red reverse
+[diff-so-fancy]
+	markEmptyLines = false
