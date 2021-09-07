@@ -27,7 +27,7 @@
   dsn  = diff --staged --name-only
   dhh = diff HEAD~
   do = !git diff origin/$(git symbolic-ref --short HEAD)
-  dom = diff origin/master
+  dom = !git diff $(git branch -r | rg '^\\s+origin/(master|main)$')
   lp  = log -p
   lg  = log --pretty=format:'%C(yellow)%h%Creset %s %Cgreen%cd %C(red)%aN%Creset' --date=format:'%a %d %b %Y %H:%M:%S'
   lgg = log --graph --decorate --oneline
@@ -35,11 +35,10 @@
   rma = !git reset --hard HEAD && git clean -fd
   su = !git branch --set-upstream-to=origin/$(git symbolic-ref --short HEAD)
   r = rebase
-  rom = rebase origin/master
   ri = rebase -i
   rc = rebase --continue
-  riom = rebase -i origin/master
-  coom = checkout origin/master
+  riom = !git rebase -i $(git branch -r | rg '^\\s+origin/(master|main)$')
+  coom = !git checkout $(git branch -r | rg '^\\s+origin/(master|main)$')
   o = !sh ~/dotfiles/scripts/git_open_in_github.sh
 [filter "lfs"]
   smudge = git-lfs smudge %f
