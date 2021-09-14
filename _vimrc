@@ -294,6 +294,7 @@ let g:vimwiki_key_mappings =
 nmap <leader>mw <Plug>VimwikiIndex
 nmap <leader>ms <Plug>VimwikiIndex :VWS<space>
 nnoremap <leader>mf :exe 'FZF' g:vimwiki_list[0].path<CR>
+nnoremap <leader>mn :exe 'FZF' "$HOME/Dropbox/Apps/vim/notes"<CR>
 " :VimwikiTable
 
 " gitgutter
