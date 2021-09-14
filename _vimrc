@@ -302,7 +302,7 @@ let g:gitgutter_map_keys = 0 " turn off all key mappings
 let g:gitgutter_grep = 'rg'
 
 " vim-fugitive
-nnoremap <leader>b :Git blame<CR>
+nnoremap <leader>G :Git 
 
 " vim-closetag
 let g:closetag_filenames = '*.html,*.erb,*.js,*.jsx'
