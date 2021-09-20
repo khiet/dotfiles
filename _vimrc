@@ -395,6 +395,10 @@ endif
 " -----------------------------------------------
 "    function
 " -----------------------------------------------
+function IsAJavascript()
+  return index(['javascript', 'typescript', 'typescriptreact', 'html'], &filetype) != -1
+endfunction
+
 function! ReplaceCurlyQuotes()
   let _s=@/
   let l = line(".")
@@ -414,7 +418,7 @@ function! RunCtags()
 endfunction
 
 function! AddDebugBreakpoint()
-  if index(['javascript', 'typescript', 'typescriptreact', 'html'], &filetype) != -1
+  if IsAJavascript()
     r!echo 'debugger;'
     write
   elseif index(['ruby', 'haml'], &filetype) != -1
@@ -450,7 +454,7 @@ function! RunSave()
   if &filetype == 'ruby'
   " format and save
     call CocAction('format')
-  elseif &filetype == 'javascript'
+  elseif IsAJavascript()
   " format and save
     execute 'CocCommand' 'eslint.executeAutofix'
     execute 'CocCommand' 'prettier.formatFile'
