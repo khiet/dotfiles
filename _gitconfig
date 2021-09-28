@@ -71,5 +71,3 @@
 	old = red bold
 	new = green bold
 	whitespace = red reverse
-[diff-so-fancy]
-	markEmptyLines = false
