@@ -151,6 +151,6 @@ function dl {
 }
 
 # postgres
-function ls_db_dump { ls -1r ~/Dropbox/Devs/dumps/ }
+function ls_db_dump { ls -lt1 ~/Dropbox/Devs/dumps/ }
 function db_dump    { pg_dump -Fc --no-acl --no-owner -h localhost -U root portify-api_development > ~/Dropbox/Devs/dumps/$(date +%d%m%y_%H%M)_$1.dump }
 function db_restore { pg_restore --verbose --clean --no-acl --no-owner -h localhost -U root -d portify-api_development ~/Dropbox/Devs/dumps/$1 }
