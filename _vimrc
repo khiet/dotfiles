@@ -231,13 +231,13 @@ let g:lightline = {
 
 " easymotion
 let g:EasyMotion_do_mapping = 0
-" nmap s <Plug>(easymotion-overwin-f)
-nmap s <Plug>(easymotion-overwin-f2)
+nmap s <Plug>(easymotion-overwin-f)
+" nmap s <Plug>(easymotion-overwin-f2)
 
 let g:EasyMotion_smartcase = 1
 
-map <Leader>j <Plug>(easymotion-j)
-map <Leader>k <Plug>(easymotion-k)
+nmap <silent>J <Plug>(easymotion-j)
+nmap <silent>K <Plug>(easymotion-k)
 
 hi EasyMotionTarget guibg=none guifg=red
 hi EasyMotionShade guibg=none guifg=none
@@ -340,17 +340,6 @@ if has('nvim')
   nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
   nmap <silent> gd <Plug>(coc-definition)
-
-  nnoremap <silent> K :call <SID>show_documentation()<CR>
-  function! s:show_documentation()
-    if (index(['vim','help'], &filetype) >= 0)
-      execute 'h '.expand('<cword>')
-    elseif (coc#rpc#ready())
-      call CocActionAsync('doHover')
-    else
-      execute '!' . &keywordprg . " " . expand('<cword>')
-    endif
-  endfunction
 
   " https://github.com/neoclide/coc.nvim/wiki/Multiple-cursors-support
   hi CocCursorRange guibg=#ffb86c guifg=#282a36
