@@ -59,7 +59,7 @@ brew install --cask hammerspoon
 
 ### Install Prerequisites
 ```
-brew install node
+brew install nvm
 python3 -m pip install --user --upgrade pynvim
 ```
 
