@@ -36,6 +36,7 @@ call plug#begin('~/.vim/plugged')
   " Colorscheme
   Plug 'https://github.com/morhetz/gruvbox'
   Plug 'https://github.com/dracula/vim'
+  Plug 'git@github.com:khiet/dracula-pro.git', {'branch': 'main'}
 
   " Tmux
   Plug 'https://github.com/janko-m/vim-test'
@@ -186,7 +187,7 @@ if (&t_Co == 256) " if terminal supports 256 colours
     set termguicolors
   endif
 
-  colorscheme dracula
+  colorscheme dracula_pro
 endif
 
 " filetype
