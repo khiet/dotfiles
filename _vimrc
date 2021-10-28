@@ -62,6 +62,8 @@ noremap <Down>  <NOP>
 noremap <Left>  <NOP>
 noremap <Right> <NOP>
 
+noremap q: <Nop>
+
 " https://thoughtbot.com/blog/vim-splits-move-faster-and-more-naturally
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
