@@ -269,8 +269,8 @@ hi clear SpellBad
 hi SpellBad gui=underline guifg=#ff5555
 
 " vim_current_word
-hi CurrentWord guifg=#ffffff guibg=#6272a4
-hi CurrentWordTwins gui=underline,bold
+hi CurrentWord gui=underline
+hi CurrentWordTwins gui=underline
 
 " highlight trailing whitespaces
 au BufWritePre * match ExtraWhitespace /\s\+$/
