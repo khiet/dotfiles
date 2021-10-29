@@ -59,6 +59,7 @@
   // https://github.com/neoclide/coc-solargraph/blob/master/package.json
   "solargraph.formatting": true,
   "solargraph.diagnostics": true,
+  "solargraph.checkGemVersion": false,
   // https://github.com/neoclide/coc-eslint#configuration-options
   "eslint.autoFixOnSave": false,
   // https://github.com/neoclide/coc-prettier#settings
