@@ -114,6 +114,7 @@ brew install ffmpeg
 brew install youtube-dl
 
 brew install --cask beyond-compare
+brew install --cask maccy
 brew install --cask firefox
 brew install --cask postico
 brew install --cask postman
