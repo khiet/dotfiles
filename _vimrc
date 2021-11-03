@@ -26,11 +26,11 @@ call plug#begin('~/.vim/plugged')
   Plug 'https://github.com/FooSoft/vim-argwrap'
   Plug 'https://github.com/itchyny/lightline.vim'
   Plug 'https://github.com/yggdroot/indentline'
-  Plug 'https://github.com/easymotion/vim-easymotion'
 
   if has('nvim')
     Plug 'https://github.com/neoclide/coc.nvim', {'branch': 'release'}
     Plug 'https://github.com/norcalli/nvim-colorizer.lua'
+    Plug 'https://github.com/phaazon/hop.nvim'
   endif
 
   " Colorscheme
@@ -232,18 +232,9 @@ let g:lightline = {
   \ 'colorscheme': 'dracula',
   \ }
 
-" easymotion
-let g:EasyMotion_do_mapping = 0
-nmap s <Plug>(easymotion-overwin-f)
-" nmap s <Plug>(easymotion-overwin-f2)
-
-let g:EasyMotion_smartcase = 1
-
-nmap <silent>J <Plug>(easymotion-j)
-nmap <silent>K <Plug>(easymotion-k)
-
-hi EasyMotionTarget guibg=none guifg=red
-hi EasyMotionShade guibg=none guifg=none
+" hop
+nmap <silent>s :HopChar2<CR>
+nmap <silent>S :HopLine<CR>
 
 " fzf
 nnoremap <silent> <c-t> :Files<CR>
@@ -371,6 +362,9 @@ if has('nvim')
 
   " nvim-colorizer
   lua require'colorizer'.setup()
+
+  " hop
+  lua require'hop'.setup()
 end
 
 " vim-polyglot
