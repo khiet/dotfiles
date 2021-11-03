@@ -224,7 +224,7 @@ nnoremap <leader>tf :TestFile<CR>
 nnoremap <Leader>tL :call VimuxRunCommand("clear; bin/rake factory_bot:lint")<CR>
 
 " argwrap
-nnoremap <silent> <silent>gS :ArgWrap<CR>
+nnoremap <silent>gS :ArgWrap<CR>
 
 " lightline
 set noshowmode
@@ -351,6 +351,16 @@ if has('nvim')
   nmap <leader>f :CocSearch 
 
   nmap <leader>ce :CocList extensions<CR>
+  nnoremap <silent> K :call <SID>show_documentation()<CR>
+  function! s:show_documentation()
+    if (index(['vim','help'], &filetype) >= 0)
+      execute 'h '.expand('<cword>')
+    elseif (coc#rpc#ready())
+      call CocActionAsync('doHover')
+    else
+      execute '!' . &keywordprg . " " . expand('<cword>')
+    endif
+  endfunction
 
   " coc-snippets
   set runtimepath+=~/.vim/custom_snippets
