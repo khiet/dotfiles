@@ -138,8 +138,6 @@ vnoremap >> >gv
 set splitbelow
 set splitright
 
-set hlsearch
-
 " recognize .js without extension when gf
 set suffixesadd=.js
 " allow backspacing over everything in i-mode
@@ -155,12 +153,15 @@ set history=20
 " always show cursor position
 set ruler
 " search
+set hlsearch
 set ignorecase
 set incsearch
 set smartcase
 set number
 set cursorline
 set autoindent
+nnoremap * :normal! *Nyw<CR>
+
 " allow opening a new file even if there are unsaved files
 set hidden
 " indenting
