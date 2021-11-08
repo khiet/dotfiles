@@ -63,6 +63,8 @@ noremap <Left>  <NOP>
 noremap <Right> <NOP>
 
 noremap q: <Nop>
+" disable ex-mode
+noremap Q <Nop>
 
 " https://thoughtbot.com/blog/vim-splits-move-faster-and-more-naturally
 nnoremap <C-J> <C-W><C-J>
