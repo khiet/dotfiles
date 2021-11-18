@@ -343,8 +343,6 @@ if has('nvim')
   " https://github.com/neoclide/coc.nvim/wiki/Multiple-cursors-support
   hi CocCursorRange guibg=#ffb86c guifg=#282a36
   nmap <silent> <C-m> <Plug>(coc-cursors-word)*
-  " e.g. :CocSearch keyword -g !db/**, :CocSearch keyword -g spec/**
-  nmap <leader>f :CocSearch 
 
   nmap <leader>ce :CocList extensions<CR>
   nmap <leader>cf :CocFix<CR>
@@ -358,6 +356,8 @@ if has('nvim')
       execute '!' . &keywordprg . " " . expand('<cword>')
     endif
   endfunction
+
+  nmap <leader>f :CocCommand eslint.executeAutofix<CR>
 
   " coc-snippets
   set runtimepath+=~/.vim/custom_snippets
@@ -457,7 +457,6 @@ function! RunSave()
     call CocAction('format')
   elseif IsAJavascript()
   " format and save
-    execute 'CocCommand' 'eslint.executeAutofix'
     execute 'CocCommand' 'prettier.formatFile'
   endif
 
