@@ -243,6 +243,8 @@ nmap <silent>S :HopLine<CR>
 nnoremap <silent> <c-t> :Files<CR>
 nnoremap <silent> <c-b> :Buffers<CR>
 nnoremap <silent> <c-g> :GFiles?<CR>
+nnoremap <leader>B :BCommits<CR>
+
 " nnoremap <silent> <c-?> :Commits<CR>
 nnoremap <silent> <c-s> :History<CR>
 nnoremap <leader>g :RG 
@@ -299,7 +301,7 @@ let g:gitgutter_map_keys = 0 " turn off all key mappings
 let g:gitgutter_grep = 'rg'
 
 " vim-fugitive
-nnoremap <leader>G :Git 
+nnoremap <leader>b :Git blame<CR>
 
 " vim-closetag
 let g:closetag_filenames = '*.html,*.erb,*.js,*.jsx'
