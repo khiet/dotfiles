@@ -52,6 +52,7 @@ call plug#begin('~/.vim/plugged')
 
   " HTML
   Plug 'https://github.com/alvan/vim-closetag'
+  Plug 'https://github.com/AndrewRadev/tagalong.vim'
 
   " Note
   Plug 'https://github.com/vimwiki/vimwiki', {'branch': 'dev'}
@@ -305,6 +306,8 @@ nnoremap <leader>b :Git blame<CR>
 
 " vim-closetag
 let g:closetag_filenames = '*.html,*.erb,*.js,*.jsx'
+" tagalong
+let g:tagalong_filetypes = ['html', 'xml', 'eruby', 'javascript', 'javascriptreact', 'typescriptreact']
 
 if has('nvim')
   " prerequisites
