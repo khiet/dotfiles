@@ -301,6 +301,9 @@ nnoremap <leader>mn :exe 'FZF' "$HOME/Dropbox/Apps/vim/notes"<CR>
 let g:gitgutter_map_keys = 0 " turn off all key mappings
 let g:gitgutter_grep = 'rg'
 
+nmap <silent>[c <Plug>(GitGutterPrevHunk)
+nmap <silent>]c <Plug>(GitGutterNextHunk)
+
 " vim-fugitive
 nnoremap <silent>gb :Git blame<CR>
 
