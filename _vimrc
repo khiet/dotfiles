@@ -30,7 +30,7 @@ call plug#begin('~/.vim/plugged')
   if has('nvim')
     Plug 'https://github.com/neoclide/coc.nvim', {'branch': 'release'}
     Plug 'https://github.com/norcalli/nvim-colorizer.lua'
-    Plug 'https://github.com/phaazon/hop.nvim'
+    Plug 'https://github.com/justinmk/vim-sneak'
   endif
 
   " Colorscheme
@@ -236,9 +236,14 @@ let g:lightline = {
   \ 'colorscheme': 'dracula',
   \ }
 
-" hop
-nmap <silent>s :HopChar2<CR>
-nmap <silent>S :HopLine<CR>
+" vim-sneak
+let g:sneak#label = 1
+let g:sneak#use_ic_scs = 1
+
+map f <Plug>Sneak_f
+map F <Plug>Sneak_F
+map t <Plug>Sneak_t
+map T <Plug>Sneak_T
 
 " fzf
 nnoremap <silent> <c-t> :Files<CR>
@@ -374,9 +379,6 @@ if has('nvim')
 
   " nvim-colorizer
   lua require'colorizer'.setup()
-
-  " hop
-  lua require'hop'.setup()
 end
 
 " vim-polyglot
