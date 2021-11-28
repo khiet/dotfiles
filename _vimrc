@@ -197,7 +197,7 @@ if (&t_Co == 256) " if terminal supports 256 colours
 endif
 
 " filetype
-au BufRead,BufNewFile *.inky-haml set ft=haml
+au BufRead,BufNewFile *.inky-haml set filetype=haml
 au BufRead,BufNewFile tsconfig.json set filetype=jsonc
 au BufRead,BufNewFile coc-settings.json set filetype=jsonc
 
