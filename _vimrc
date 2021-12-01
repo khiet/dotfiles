@@ -405,7 +405,7 @@ endif
 "    function
 " -----------------------------------------------
 function IsAJavascript()
-  return index(['javascript', 'typescript', 'typescriptreact', 'html'], &filetype) != -1
+  return index(['javascript', 'typescript', 'typescriptreact', 'html', 'json'], &filetype) != -1
 endfunction
 
 function! ReplaceCurlyQuotes()
