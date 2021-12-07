@@ -121,11 +121,13 @@ fi
 # nvm
 export NVM_DIR="$HOME/.nvm"
 [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh" --no-use
-chpwd() {
+function nvm_use {
   if [[ -f ".nvmrc" && ($(nvm current) = "system")]]; then
     nvm use 1> /dev/null
   fi
 }
+nvm_use
+function chpwd { nvm_use }
 
 # find and replace with rg
 function gR  { rg -0 -l "$1" | AGR_FROM="$1" AGR_TO="$2" xargs -0 perl -pi -e 's/$ENV{AGR_FROM}/$ENV{AGR_TO}/g' }
