@@ -2,13 +2,6 @@
 
 ## Install [Homebrew](http://brew.sh/index.html)
 
-## Install iterm and nerd font
-
-```
-brew install --cask iterm2
-brew tap homebrew/cask-fonts; brew install --cask font-hack-nerd-font
-```
-
 ## Clone dotfiles
 
 ```
@@ -49,95 +42,21 @@ ln -s ~/.vimrc $XDG_CONFIG_HOME/nvim/init.vim
 ln -s ~/dotfiles/bat $XDG_CONFIG_HOME/bat
 ```
 
-## Install Hammerspoon
+## Install brew software
 
 ```
-brew install --cask hammerspoon
+cd ~/dotfiles; brew bundle
 ```
 
-## Install nvim and plugins
+## Install neovim dependencies
 
-### Install Prerequisites
 ```
-brew install nvm
 python3 -m pip install --user --upgrade pynvim
 ```
 
-```
-brew install nvim
-
-:PlugInstall
-```
-
-## Install development packages
-
-```
-brew install tmux
-brew install ripgrep
-brew install fzf
-```
-
-## Install Mac apps
-
-```
-brew install --cask maccy
-brew install --cask dropbox
-```
-
-## Install rbenv and Ruby
-
-```
-brew install rbenv
-```
-
-```
-rbenv install 2.7.2
-rbenv global 2.7.2
-```
-
-## Install other packages and apps
+## Install gems
 
 ```
 gem install colorls
 gem install tmuxinator
-
-brew install git
-brew install diff-so-fancy
-brew install ctags
-brew install yarn
-brew install parallel
-brew install tldr
-brew install htop
-brew install bat
-brew install watch
-brew install ffmpeg
-brew install youtube-dl
-
-brew install --cask beyond-compare
-brew install --cask maccy
-brew install --cask firefox
-brew install --cask postico
-brew install --cask postman
-brew install --cask zoomus
-brew install --cask appcleaner
-brew install --cask vlc
-brew install --cask sequel-pro
-brew install --cask kap
-
-npm install -g vtop
-```
-
-## Install Visual Studio Code
-
-```
-brew install --cask visual-studio-code
-```
-
-## Symlink config file
-
-```
-rm ~/Library/Application\ Support/Code/User/settings.json
-ln -s ~/dotfiles/_settings.json ~/Library/Application\ Support/Code/User/settings.json
-rm ~/Library/Application\ Support/Code/User/keybindings.json
-ln -s ~/dotfiles/_keybindings.json ~/Library/Application\ Support/Code/User/keybindings.json
 ```
