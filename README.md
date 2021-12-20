@@ -16,7 +16,7 @@ sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/i
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
 ```
 
-## Symlink config file for zsh
+#### Symlink config file for zsh
 
 ```
 cd; rm .zshrc; ln -s ~/dotfiles/_zshrc ~/.zshrc
@@ -52,10 +52,4 @@ cd ~/dotfiles; brew bundle
 
 ```
 python3 -m pip install --user --upgrade pynvim
-```
-
-## Install gems
-
-```
-gem install colorls
 ```
