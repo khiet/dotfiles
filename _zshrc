@@ -165,6 +165,8 @@ function dl {
 }
 
 # postgres
+export PATH="/opt/homebrew/opt/postgresql@13/bin:$PATH"
+
 function ls_db_dump { ls -lt1 ~/Dropbox/Devs/dumps/ }
 function cd_db_dump { cd ~/Dropbox/Devs/dumps/ }
 function db_dump    { pg_dump -Fc --no-acl --no-owner -h localhost -U root portify-api_development > ~/Dropbox/Devs/dumps/$(date +%d%m%y_%H%M)_$1.dump }
