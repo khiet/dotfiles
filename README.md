@@ -58,5 +58,4 @@ python3 -m pip install --user --upgrade pynvim
 
 ```
 gem install colorls
-gem install tmuxinator
 ```
