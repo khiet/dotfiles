@@ -459,12 +459,14 @@ function! RemoveTrailingWhitespaces()
 endfunction
 
 function! RunSave()
-  if &filetype == 'ruby'
-  " format and save
-    call CocAction('format')
-  elseif IsAJavascript()
-  " format and save
-    execute 'CocCommand' 'prettier.formatFile'
+  if has('nvim')
+    if &filetype == 'ruby'
+    " format and save
+      call CocAction('format')
+    elseif IsAJavascript()
+    " format and save
+      execute 'CocCommand' 'prettier.formatFile'
+    endif
   endif
 
   write
