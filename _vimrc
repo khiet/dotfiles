@@ -53,9 +53,6 @@ call plug#begin('~/.vim/plugged')
   " HTML
   Plug 'https://github.com/alvan/vim-closetag'
   Plug 'https://github.com/AndrewRadev/tagalong.vim'
-
-  " Note
-  Plug 'https://github.com/vimwiki/vimwiki', {'branch': 'dev'}
 call plug#end()
 
 noremap <Up>    <NOP>
@@ -244,6 +241,9 @@ map F <Plug>Sneak_F
 map t <Plug>Sneak_t
 map T <Plug>Sneak_T
 
+hi clear SpellBad
+hi SpellBad gui=underline guifg=#ff5555
+
 " fzf
 nnoremap <silent> <c-t> :Files<CR>
 nnoremap <silent> <c-b> :Buffers<CR>
@@ -258,8 +258,8 @@ let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.9 } }
 let g:fzf_preview_window = ['down:75%']
 
 " https://github.com/junegunn/fzf.vim#example-advanced-ripgrep-integration
-function! RipgrepFzf(query, fullscreen)
-  let command_fmt = 'rg --sort-files --column --line-number --no-heading --color=always --smart-case -- %s || true'
+function! RipgrepFzf(query, fullscreen, directory = '.')
+  let command_fmt = 'rg --sort-files --column --line-number --no-heading --color=always --smart-case -- %s --files ' . a:directory . ' || true'
   let initial_command = printf(command_fmt, shellescape(a:query))
   let reload_command = printf(command_fmt, '{q}')
   let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
@@ -267,9 +267,11 @@ function! RipgrepFzf(query, fullscreen)
 endfunction
 
 command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
+command! -nargs=* -bang RGW call RipgrepFzf(<q-args>, <bang>0, '$HOME/Dropbox/Apps/vim/wiki')
 
-hi clear SpellBad
-hi SpellBad gui=underline guifg=#ff5555
+" wiki
+nnoremap <leader>mf :exe 'FZF' "$HOME/Dropbox/Apps/vim/wiki"<CR>
+nnoremap <leader>mg :RGW 
 
 " vim_current_word
 hi CurrentWord gui=underline
@@ -278,28 +280,6 @@ hi CurrentWordTwins gui=underline
 " highlight trailing whitespaces
 au BufWritePre * match ExtraWhitespace /\s\+$/
 hi ExtraWhitespace guibg=#ff5555
-
-" vimwiki
-let g:vimwiki_list = [{'path': "$HOME/Dropbox/Apps/vim/vimwiki", 'syntax': 'markdown', 'ext': '.md'}]
-" https://github.com/vimwiki/vimwiki/blob/dev/doc/vimwiki.txt#L3329
-let g:vimwiki_key_mappings =
-  \ {
-  \   'all_maps': 1,
-  \   'global': 0,
-  \   'headers': 0,
-  \   'text_objs': 0,
-  \   'table_format': 0,
-  \   'table_mappings': 0,
-  \   'lists': 0,
-  \   'links': 1,
-  \   'html': 0,
-  \   'mouse': 0,
-  \ }
-nmap <leader>mw <Plug>VimwikiIndex
-nmap <leader>ms <Plug>VimwikiIndex :VWS<space>
-nnoremap <leader>mf :exe 'FZF' g:vimwiki_list[0].path<CR>
-nnoremap <leader>mn :exe 'FZF' "$HOME/Dropbox/Apps/vim/notes"<CR>
-" :VimwikiTable
 
 " gitgutter
 let g:gitgutter_map_keys = 0 " turn off all key mappings

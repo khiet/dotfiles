@@ -2478,7 +2478,7 @@
 				<real>0.0</real>
 			</dict>
 			<key>Mouse Reporting</key>
-			<true/>
+			<false/>
 			<key>Name</key>
 			<string>Custom</string>
 			<key>Non Ascii Font</key>
