@@ -43,6 +43,8 @@ export XDG_CACHE_HOME=$HOME/.cache
 
 export RIPGREP_CONFIG_PATH=$HOME/.ripgreprc
 
+export DEVS_HOME=$HOME/Dropbox/Devs
+
 # vim mode
 bindkey -v
 export KEYTIMEOUT=1
@@ -105,9 +107,9 @@ if which fzf &>/dev/null; then
   export FZF_DEFAULT_COMMAND='rg --files --hidden'
 fi
 
-if [ -f ~/Dropbox/Apps/tmuxinator/tmuxinator.zsh ]; then
-  source ~/Dropbox/Apps/tmuxinator/tmuxinator.zsh
-  export TMUXINATOR_CONFIG=~/Dropbox/Apps/tmuxinator
+if [ -f $DEVS_HOME//tmuxinator/tmuxinator.zsh ]; then
+  source $DEVS_HOME//tmuxinator/tmuxinator.zsh
+  export TMUXINATOR_CONFIG=$DEVS_HOME/tmuxinator
 fi
 
 # rbenv
@@ -160,5 +162,5 @@ function dl {
 # postgres
 export PATH="/opt/homebrew/opt/postgresql@13/bin:$PATH"
 
-function db_dump    { pg_dump -Fc --no-acl --no-owner -h localhost portify-api_development > ~/Dropbox/Devs/dumps/$(date +%d%m%y_%H%M)_$1.dump }
-function db_restore { pg_restore --verbose --clean --no-acl --no-owner -h localhost -d portify-api_development ~/Dropbox/Devs/dumps/$1 }
+function db_dump    { pg_dump -Fc --no-acl --no-owner -h localhost portify-api_development > $DEVS_HOME/dumps/$(date +%b_%d_%a_%H%M).dump }
+function db_restore { pg_restore --verbose --clean --no-acl --no-owner -h localhost -d portify-api_development $DEVS_HOME/dumps/$1 }

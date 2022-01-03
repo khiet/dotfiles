@@ -267,10 +267,10 @@ function! RipgrepFzf(query, fullscreen, directory = '.')
 endfunction
 
 command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
-command! -nargs=* -bang RGW call RipgrepFzf(<q-args>, <bang>0, '$HOME/Dropbox/Apps/vim/wiki')
+command! -nargs=* -bang RGW call RipgrepFzf(<q-args>, <bang>0, '$DEVS_HOME/vim/wiki')
 
 " wiki
-nnoremap <leader>mf :exe 'FZF' "$HOME/Dropbox/Apps/vim/wiki"<CR>
+nnoremap <leader>mf :exe 'FZF' "$DEVS_HOME/vim/wiki"<CR>
 nnoremap <leader>mg :RGW 
 
 " vim_current_word
