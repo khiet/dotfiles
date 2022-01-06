@@ -160,7 +160,7 @@ function dl {
 }
 
 # postgres
-export PATH="/opt/homebrew/opt/postgresql@13/bin:$PATH"
+export PATH="/opt/homebrew/opt/postgresql@10/bin:$PATH"
 
 function db_dump    { pg_dump -Fc --no-acl --no-owner -h localhost portify-api_development > $DEVS_HOME/dumps/$(date +%b_%d_%a_%H%M).dump }
 function db_restore { pg_restore --verbose --clean --no-acl --no-owner -h localhost -d portify-api_development $DEVS_HOME/dumps/$1 }
