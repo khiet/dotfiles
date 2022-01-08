@@ -26,6 +26,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'https://github.com/FooSoft/vim-argwrap'
   Plug 'https://github.com/itchyny/lightline.vim'
   Plug 'https://github.com/yggdroot/indentline'
+  Plug 'https://github.com/simeji/winresizer'
 
   if has('nvim')
     Plug 'https://github.com/neoclide/coc.nvim', {'branch': 'release'}
@@ -206,11 +207,6 @@ function! FixLastSpellingError()
   normal! mm[s1z=`m
 endfunction
 nnoremap <leader>S :call FixLastSpellingError()<CR>
-
-" enable mouse in terminal emulators
-if has("mouse")
-  set mouse=a
-endif
 
 " vim-test
 let test#strategy = "vimux"
