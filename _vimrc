@@ -414,6 +414,18 @@ function! AddDebugBreakpoint()
   endif
 endfunction
 
+function! DisableLintRule()
+  if IsAJavascript()
+    r!echo '/* eslint-disable rule-name */'
+    r!echo '/* eslint-enable rule-name */'
+    write
+  elseif index(['ruby'], &filetype) != -1
+    r!echo '\# rubocop:disable RuleName'
+    r!echo '\# rubocop:enable RuleName'
+    write
+  endif
+endfunction
+
 function! RunScript()
   if &filetype == 'javascript'
     call VimuxRunCommand("node " . bufname("%"))
@@ -476,6 +488,7 @@ endfunction
 nnoremap <silent> gx :call OpenIn()<CR>
 
 nnoremap <silent> <leader>cd :call AddDebugBreakpoint()<CR>
+nnoremap <silent> <leader>cl :call DisableLintRule()<CR>
 nnoremap <silent> <leader>cq :call ReplaceCurlyQuotes()<CR>
 nnoremap <silent> <leader>ct :call RunCtags()<CR>
 nnoremap <silent> <leader>cs :call RunScript()<CR>
