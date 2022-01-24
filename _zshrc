@@ -141,7 +141,7 @@ function brewls { brew list | while read cask; do echo -n $fg[blue] $cask $fg[wh
 
 function rhs { LC_CTYPE=C sed -i '' -e "s/$1//i" ~/.zsh_history }
 
-function kebab    { echo  "$1" | sed 's/ /-/g' | sed -r 's/([a-z0-9])([A-Z])/\1-\2/g' | tr "[:upper:]" "[:lower:]" | sed -r "s/[,:'‘’()#\"]/-/g" }
+function kebab    { echo  "$1" | sed 's/ /-/g' | sed -r 's/([a-z0-9])([A-Z])/\1-\2/g' | tr "[:upper:]" "[:lower:]" | sed -r "s/[,:'‘’()#\"]/-/g" | sed "s|[][-]|-|g" }
 function sentence { echo  "$1" | sed 's/-/ /g' | awk -vFS="" -vOFS="" '{$1=toupper($1);print $0}' }
 function sp       { sentence "$1" | pbcopy }
 
