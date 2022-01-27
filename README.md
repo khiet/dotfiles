@@ -32,6 +32,7 @@ ln -s ~/dotfiles/_ctags ~/.ctags
 ln -s ~/dotfiles/_tmux.conf ~/.tmux.conf
 ln -s ~/dotfiles/_hushlogin ~/.hushlogin
 ln -s ~/dotfiles/_ripgreprc ~/.ripgreprc
+ln -s ~/dotfiles/_pryrc ~/.pryrc
 
 ln -s ~/dotfiles/.hammerspoon ~/.hammerspoon
 

@@ -409,7 +409,7 @@ function! AddDebugBreakpoint()
     r!echo 'debugger;'
     write
   elseif index(['ruby', 'haml'], &filetype) != -1
-    r!echo 'byebug'
+    r!echo 'binding.pry'
     write
   endif
 endfunction
