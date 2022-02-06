@@ -32,7 +32,6 @@ ln -s ~/dotfiles/_ctags ~/.ctags
 ln -s ~/dotfiles/_tmux.conf ~/.tmux.conf
 ln -s ~/dotfiles/_hushlogin ~/.hushlogin
 ln -s ~/dotfiles/_ripgreprc ~/.ripgreprc
-ln -s ~/dotfiles/_pryrc ~/.pryrc
 
 ln -s ~/dotfiles/.hammerspoon ~/.hammerspoon
 
@@ -41,6 +40,8 @@ ln -s ~/.vim $XDG_CONFIG_HOME/nvim
 ln -s ~/.vimrc $XDG_CONFIG_HOME/nvim/init.vim
 
 ln -s ~/dotfiles/bat $XDG_CONFIG_HOME/bat
+
+ln -s ~/dotfiles/pry $XDG_CONFIG_HOME/pry
 ```
 
 ## Install brew software
