@@ -6,7 +6,7 @@
 [alias]
   st  = status --short
   co  = checkout
-  br  = branch
+  br  = branch --sort=-committerdate
   ps  = push
   psd = !git push origin --delete $(git symbolic-ref --short HEAD)
   pl  = pull
