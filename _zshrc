@@ -67,7 +67,6 @@ alias tkill='tmux kill-session -t'
 # ripgrep
 alias g="rg --sort-files"
 alias G="rg --sort-files --no-ignore"
-alias gc="rg --sort-files -C 3"
 alias gw="rg --sort-files -w"
 function gf { rg --files --sort path | rg --regexp $1 }
 function gF { rg --files --no-ignore --sort path | rg --regexp $1 }
@@ -130,7 +129,6 @@ function chpwd { nvm_use }
 
 # find and replace with rg
 function gR  { rg -0 -l "$1" | AGR_FROM="$1" AGR_TO="$2" xargs -0 perl -pi -e 's/$ENV{AGR_FROM}/$ENV{AGR_TO}/g' }
-function gwR  { rg -0 -l -w "$1" | AGR_FROM="$1" AGR_TO="$2" xargs -0 perl -pi -e 's/$ENV{AGR_FROM}/$ENV{AGR_TO}/g' }
 function gfR { rg --files | rg --regexp "$1" | AGR_FROM="$1" AGR_TO="$2" perl -p -e 'print $_; s/$ENV{AGR_FROM}/$ENV{AGR_TO}/' | xargs -n2 mv }
 function gfD { rg --files | rg --regexp "$1" | xargs rm }
 
