@@ -40,6 +40,8 @@
   rc = rebase --continue
   rim = !git rebase -i $(git branch | rg '^\\s+(master|main)$')
   com = !git checkout $(git branch -r | rg '^\\s+(master|main)$')
+  riom = !git rebase -i $(git branch -r | rg '^\\s+origin/(master|main)$')
+  coom = !git checkout $(git branch -r | rg '^\\s+origin/(master|main)$')
   o = !sh ~/dotfiles/scripts/git_open_in_github.sh
 [filter "lfs"]
   smudge = git-lfs smudge %f
