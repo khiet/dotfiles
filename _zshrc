@@ -158,7 +158,7 @@ function dl {
 }
 
 # postgres
-export PATH="/opt/homebrew/opt/postgresql@10/bin:$PATH"
+export PATH="/opt/homebrew/opt/postgresql@13/bin:$PATH"
 
 function db_restore { pg_restore --verbose --clean --no-acl --no-owner -h localhost -d portify-api_development $DEVS_HOME/dumps/$1 }
 
