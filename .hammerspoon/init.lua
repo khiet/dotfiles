@@ -37,6 +37,9 @@ end)
 hs.hotkey.bind({'command'}, 'h', function()
 end)
 
+hs.hotkey.bind({'command', 'control'}, 'f', function()
+end)
+
 hs.hotkey.bind({"command", "option"}, "[", function()
   local win = hs.window.focusedWindow()
   local f = win:frame()
