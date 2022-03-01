@@ -473,10 +473,13 @@ function! SwitchCases()
   exe 'normal! ciw' . word
   exe 'normal! b'
 endfunction
-
+function! ConsoleLog()
+  execute "normal! yiwo" . "console.log" . "('')\<C-[>F';a\<C-[>pf'a, \<C-[>p<CR>"
+endfunction
 nnoremap <silent> gx :call OpenIn()<CR>
 
 nnoremap <silent> <leader>cd :call AddDebugBreakpoint()<CR>
+nnoremap <silent> <leader>cl :call ConsoleLog()<CR>
 nnoremap <silent> <leader>cq :call ReplaceCurlyQuotes()<CR>
 nnoremap <silent> <leader>ct :call RunCtags()<CR>
 nnoremap <silent> <leader>cs :call RunScript()<CR>
