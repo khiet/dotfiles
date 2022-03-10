@@ -84,6 +84,10 @@ if which bat &>/dev/null; then
   alias cat='bat'
 fi
 
+if which exa &>/dev/null; then
+  alias ls='exa'
+fi
+
 export EDITOR='vim'
 
 # nvim
