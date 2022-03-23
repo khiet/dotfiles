@@ -324,8 +324,10 @@ if has('nvim')
   " navigate diagnostics
   nmap <silent> [g <Plug>(coc-diagnostic-prev)
   nmap <silent> ]g <Plug>(coc-diagnostic-next)
+  nmap <silent> <space>d :<C-u>CocList diagnostics<CR>
 
   nmap <silent> gd <Plug>(coc-definition)
+  nmap <leader>rn <Plug>(coc-rename)
 
   " https://github.com/neoclide/coc.nvim/wiki/Multiple-cursors-support
   hi CocCursorRange guibg=#ffb86c guifg=#282a36
