@@ -424,6 +424,8 @@ function! RunScript()
     call VimuxRunCommand("ruby -w " . bufname("%"))
   elseif &filetype == 'rust'
     call VimuxRunCommand("cargo run")
+  elseif &filetype == 'sh'
+    call VimuxRunCommand("./" . bufname("%"))
   endif
 endfunction
 
