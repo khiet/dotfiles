@@ -43,5 +43,7 @@ brew "nvm"
 brew "awscli"
 brew "ffmpeg"
 brew "youtube-dl"
+brew "figlet"
+brew "lolcat"
 
 brew "heroku"
