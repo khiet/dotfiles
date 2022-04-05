@@ -54,6 +54,9 @@ call plug#begin('~/.vim/plugged')
   " HTML
   Plug 'https://github.com/alvan/vim-closetag'
   Plug 'https://github.com/AndrewRadev/tagalong.vim'
+
+  " Markdown
+  Plug 'https://github.com/iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 call plug#end()
 
 noremap <Up>    <NOP>
@@ -78,6 +81,7 @@ nnoremap <leader>ev :e <C-R>=expand($HOME."/.vimrc")<CR><CR>
 nnoremap <leader>eV :source $MYVIMRC<CR>
 nnoremap <leader>ez :e <C-R>=expand($HOME."/.zshrc")<CR><CR>
 nnoremap <leader>et :e <C-R>=expand($HOME."/.tmux.conf")<CR><CR>
+nnoremap <leader>em :MarkdownPreviewToggle<CR>
 
 " buffers
 nnoremap <silent> ]b :bn<CR>
