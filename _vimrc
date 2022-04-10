@@ -449,10 +449,10 @@ endfunction
 function! RunSave()
   if has('nvim')
     if &filetype == 'ruby'
-    " format and save
       call CocAction('format')
+    elseif &filetype == 'eruby'
+      execute "normal! ggVG=\<C-O>"
     elseif IsAJavascript()
-    " format and save
       execute 'CocCommand' 'prettier.formatFile'
     endif
   endif
