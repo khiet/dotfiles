@@ -43,7 +43,10 @@ brew "nvm"
 brew "awscli"
 brew "ffmpeg"
 brew "youtube-dl"
+# fun sutff
+brew "cowsay"
 brew "figlet"
 brew "lolcat"
+brew "fortune"
 
 brew "heroku"
