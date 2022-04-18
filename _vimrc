@@ -101,6 +101,10 @@ nnoremap <leader>Q :q!<CR>
 " resize to equal width/height
 nmap <leader>= <C-w>=
 
+" marks
+nnoremap <silent> ]m ]'
+nnoremap <silent> [m ['
+
 " quickfix
 nnoremap <silent> ]q :cnext<CR>
 nnoremap <silent> [q :cprev<CR>
