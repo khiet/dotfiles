@@ -110,8 +110,8 @@ if which fzf &>/dev/null; then
   export FZF_DEFAULT_COMMAND='rg --files --hidden'
 fi
 
-if [ -f $DEVS_HOME//tmuxinator/tmuxinator.zsh ]; then
-  source $DEVS_HOME//tmuxinator/tmuxinator.zsh
+if which tmuxinator &>/dev/null; then
+  alias mux=tmuxinator
   export TMUXINATOR_CONFIG=$DEVS_HOME/tmuxinator
 fi
 
