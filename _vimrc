@@ -295,6 +295,7 @@ nmap <silent>]c <Plug>(GitGutterNextHunk)
 
 " vim-fugitive
 nnoremap <silent>gb :Git blame<CR>
+nnoremap <silent>gB :GBrowse<CR>
 
 " vim-closetag
 let g:closetag_filenames = '*.html,*.erb,*.js,*.jsx'
