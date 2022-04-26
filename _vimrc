@@ -32,7 +32,6 @@ call plug#begin('~/.vim/plugged')
     Plug 'https://github.com/neoclide/coc.nvim', {'branch': 'release'}
     Plug 'https://github.com/norcalli/nvim-colorizer.lua'
     Plug 'https://github.com/justinmk/vim-sneak'
-    Plug 'https://github.com/tpope/vim-endwise'
   endif
 
   " Colorscheme
