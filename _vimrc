@@ -454,7 +454,7 @@ endfunction
 function! RunSave()
   if has('nvim')
     if &filetype == 'ruby'
-      call CocAction('format')
+      call CocActionAsync('format')
     elseif &filetype == 'eruby'
       execute "normal! ggVG=\<C-O>"
     elseif IsAJavascript()
