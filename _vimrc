@@ -32,6 +32,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'https://github.com/neoclide/coc.nvim', {'branch': 'release'}
     Plug 'https://github.com/norcalli/nvim-colorizer.lua'
     Plug 'https://github.com/ggandor/lightspeed.nvim'
+    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
   endif
 
   " Colorscheme
@@ -357,6 +358,12 @@ if has('nvim')
 
   " nvim-colorizer
   lua require'colorizer'.setup()
+
+  " nvim-tree-sitter
+  lua require'nvim-treesitter.configs'.setup({
+        \ ensure_installed = { "javascript", "typescript" },
+        \ highlight = { enable = true, additional_vim_regex_highlighting = false, },
+        \ })
 end
 
 " vim-polyglot
