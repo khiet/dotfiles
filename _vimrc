@@ -31,7 +31,7 @@ call plug#begin('~/.vim/plugged')
   if has('nvim')
     Plug 'https://github.com/neoclide/coc.nvim', {'branch': 'release'}
     Plug 'https://github.com/norcalli/nvim-colorizer.lua'
-    Plug 'https://github.com/justinmk/vim-sneak'
+    Plug 'https://github.com/ggandor/lightspeed.nvim'
   endif
 
   " Colorscheme
@@ -235,15 +235,6 @@ set noshowmode
 let g:lightline = {
   \ 'colorscheme': 'dracula',
   \ }
-
-" vim-sneak
-let g:sneak#label = 1
-let g:sneak#use_ic_scs = 1
-
-map f <Plug>Sneak_f
-map F <Plug>Sneak_F
-map t <Plug>Sneak_t
-map T <Plug>Sneak_T
 
 hi clear SpellBad
 hi SpellBad gui=underline guifg=#ff5555
