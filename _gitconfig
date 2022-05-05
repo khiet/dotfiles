@@ -27,6 +27,7 @@
   dsw = diff --staged --word-diff
   dsn  = diff --staged --name-only
   dhh = diff HEAD~
+  dm = !git diff master
   do = !git diff origin/$(git symbolic-ref --short HEAD)
   dom = !git diff $(git branch -r | rg '^\\s+origin/(master|main)$')
   l  = lg -20
