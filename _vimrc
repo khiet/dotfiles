@@ -242,7 +242,6 @@ nnoremap <silent> <c-g> :GFiles?<CR>
 nnoremap <silent>gc :BCommits<CR>
 
 " nnoremap <silent> <c-?> :Commits<CR>
-nnoremap <silent> <c-s> :History<CR>
 nnoremap <leader>g :RG 
 let g:fzf_action = { 'ctrl-l': 'edit', 'ctrl-t': 'tab split', 'ctrl-x': 'split', 'ctrl-v': 'vsplit' }
 let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.9 } }
@@ -327,7 +326,7 @@ if has('nvim')
 
   " https://github.com/neoclide/coc.nvim/wiki/Multiple-cursors-support
   hi CocCursorRange guibg=#ffb86c guifg=#282a36
-  nmap <silent> <C-m> <Plug>(coc-cursors-word)*
+  nmap <silent> <C-s> <Plug>(coc-cursors-word)*
 
   nmap <leader>ce :CocList extensions<CR>
   nmap <leader>cf :CocFix<CR>
