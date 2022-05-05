@@ -211,11 +211,6 @@ au BufRead,BufNewFile coc-settings.json set filetype=jsonc
 au BufRead,BufNewFile *.md set filetype=markdown
 au FileType markdown setlocal spell
 au FileType gitcommit setlocal spell
-" https://www.youtube.com/watch?v=lwD8G1P52Sk&t=147s
-function! FixLastSpellingError()
-  normal! mm[s1z=`m
-endfunction
-nnoremap <leader>S :call FixLastSpellingError()<CR>
 
 " vim-test
 let test#strategy = "vimux"
