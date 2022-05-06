@@ -155,8 +155,6 @@ set backspace=indent,eol,start
 set iskeyword+=-
 " status display
 set laststatus=2
-set title
-set titlestring=%F
 " 20 lines of command history
 set history=20
 " always show cursor position
