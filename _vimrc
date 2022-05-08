@@ -353,7 +353,7 @@ if has('nvim')
 
   " nvim-tree-sitter
   lua require'nvim-treesitter.configs'.setup({
-        \ ensure_installed = { "javascript", "typescript" },
+        \ ensure_installed = { "javascript", "typescript", "rust" },
         \ highlight = { enable = true, additional_vim_regex_highlighting = false, },
         \ })
 end
@@ -444,6 +444,8 @@ endfunction
 function! RunSave()
   if has('nvim')
     if &filetype == 'ruby'
+      call CocActionAsync('format')
+    elseif &filetype == 'rust'
       call CocActionAsync('format')
     elseif &filetype == 'eruby'
       execute "normal! ggVG=\<C-O>"
