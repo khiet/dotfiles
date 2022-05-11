@@ -167,7 +167,6 @@ set smartcase
 set number
 set cursorline
 set autoindent
-nnoremap # :normal! #Nyiw<CR>
 
 " allow opening a new file even if there are unsaved files
 set hidden
