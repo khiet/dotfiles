@@ -7,7 +7,8 @@ local function remap(mods, key, message, pressedfn, releasedfn, repeatfn)
   hs.hotkey.bind(mods, key, message, nil, message, nil)
 end
 
--- bind option + h/j/k/l to arrows
+-- Bind option + h/j/k/l to arrows
+
 remap({'option'}, 'h', function()
   hs.eventtap.keyStroke({}, 'left', 1000)
 end)
@@ -21,18 +22,22 @@ remap({'option'}, 'l', function()
   hs.eventtap.keyStroke({}, 'right', 1000)
 end)
 
+-- Map ESC, ` and ~ as:
+--
+-- ESC	ESC or control + [
+-- `	fn1 + ESC
+-- ~	shift + ESC
+
 -- bind control + [ to escape
 hs.hotkey.bind({'control'}, '[', function()
   hs.eventtap.keyStroke({}, 'escape')
 end)
 
--- hs.hotkey.bind({}, 'escape', function()
---   hs.eventtap.keyStroke({}, '`')
--- end)
-
 hs.hotkey.bind({'shift'}, 'escape', function()
   hs.eventtap.keyStrokes('~')
 end)
+
+-- Disable default bindings
 
 hs.hotkey.bind({'command'}, 'h', function()
 end)
@@ -40,6 +45,18 @@ hs.hotkey.bind({'command'}, 'm', function()
 end)
 hs.hotkey.bind({'command', 'control'}, 'f', function()
 end)
+
+-- Switch apps
+
+hs.hotkey.bind({'command'}, '1', function()
+  hs.application.launchOrFocus('iTerm')
+end)
+
+hs.hotkey.bind({'command'}, '2', function()
+  hs.application.launchOrFocus('Google Chrome Beta')
+end)
+
+-- Manage windows
 
 hs.hotkey.bind({"command", "option"}, "[", function()
   local win = hs.window.focusedWindow()
