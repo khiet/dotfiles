@@ -128,6 +128,8 @@ nnoremap <leader>e :e!<CR>
 " list invisibles
 nnoremap <leader>ls :set list!<CR>
 
+nnoremap <C-P> <C-G>
+
 " vim-easy-align
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
