@@ -235,9 +235,9 @@ hi clear SpellBad
 hi SpellBad gui=underline guifg=#ff5555
 
 " fzf
-nnoremap <silent> <c-t> :Files<CR>
-nnoremap <silent> <c-b> :Buffers<CR>
-nnoremap <silent>gF :GFiles?<CR>
+nnoremap <silent> <C-T> :Files<CR>
+nnoremap <silent> <C-B> :Buffers<CR>
+nnoremap <silent> <C-G> :GFiles?<CR>
 nnoremap <silent>gC :BCommits<CR>
 
 " nnoremap <silent> <c-?> :Commits<CR>
