@@ -313,6 +313,7 @@ if has('nvim')
     \ 'coc-snippets',
     \ 'coc-explorer',
     \ 'coc-rust-analyzer',
+    \ 'coc-docker',
     \ ]
 
   " navigate diagnostics
