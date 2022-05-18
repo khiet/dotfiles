@@ -38,6 +38,7 @@
   rmc = rm -r --cached .
   rma = !git reset --hard HEAD && git clean -fd
   su = !git branch --set-upstream-to=origin/$(git symbolic-ref --short HEAD)
+  rg = reflog --pretty=format:'%C(yellow)%h%Creset %C(green)%cd%Creset %s%C(red)%d%Creset'
   r = rebase
   ri = rebase -i
   rc = rebase --continue
