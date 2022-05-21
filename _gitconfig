@@ -42,6 +42,8 @@
   r = rebase
   ri = rebase -i
   rc = rebase --continue
+  ra = rebase --abort
+  rs = rebase --skip
   rim = !git rebase -i $(git branch | rg '^\\s+(master|main)$')
   com = !git checkout $(git branch -r | rg '^\\s+(master|main)$')
   riom = !git rebase -i $(git branch -r | rg '^\\s+origin/(master|main)$')
