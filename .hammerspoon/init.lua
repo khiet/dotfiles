@@ -53,7 +53,7 @@ hs.hotkey.bind({'command'}, '1', function()
 end)
 
 hs.hotkey.bind({'command'}, '2', function()
-  hs.application.launchOrFocus('Google Chrome Beta')
+  hs.application.launchOrFocus('Simulator')
 end)
 
 -- Manage windows
