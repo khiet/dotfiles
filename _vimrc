@@ -21,7 +21,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'https://github.com/tpope/vim-repeat'
   Plug 'https://github.com/junegunn/vim-easy-align'
   Plug 'https://github.com/sheerun/vim-polyglot'
-  Plug 'https://github.com/junegunn/fzf'
+  Plug 'https://github.com/junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
   Plug 'https://github.com/junegunn/fzf.vim'
   Plug 'https://github.com/FooSoft/vim-argwrap'
   Plug 'https://github.com/itchyny/lightline.vim'
