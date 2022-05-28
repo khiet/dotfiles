@@ -7,6 +7,12 @@ local function remap(mods, key, message, pressedfn, releasedfn, repeatfn)
   hs.hotkey.bind(mods, key, message, nil, message, nil)
 end
 
+local function sendSystemKey(key)
+  -- https://www.hammerspoon.org/docs/hs.eventtap.event.html#newSystemKeyEvent
+  hs.eventtap.event.newSystemKeyEvent(key, true):post()
+  hs.eventtap.event.newSystemKeyEvent(key, false):post()
+end
+
 -- Bind option + h/j/k/l to arrows
 
 remap({'option'}, 'h', function()
@@ -60,17 +66,12 @@ end)
 
 hs.eventtap.new({hs.eventtap.event.types.scrollWheel}, function(e)
   local horizontalScrolDelta = e:getProperty(hs.eventtap.event.properties.scrollWheelEventDeltaAxis2)
-  local current = hs.audiodevice.defaultOutputDevice():volume()
 
-  -- if horizontal scroll
-  if horizontalScrolDelta ~= 0 then
-    -- flip the value as + is horizontal left scroll and - is horizontal right scroll
-    if horizontalScrolDelta < -1 or horizontalScrolDelta > 1 then
-      local newVolume = current + -(horizontalScrolDelta * 2)
-      hs.audiodevice.defaultOutputDevice():setVolume(newVolume)
-    end
+  if horizontalScrolDelta < 0 then
+    sendSystemKey("SOUND_UP")
+  elseif horizontalScrolDelta > 0 then
+    sendSystemKey("SOUND_DOWN")
   end
-
 end):start()
 
 -- Manage windows
