@@ -56,6 +56,23 @@ hs.hotkey.bind({'command'}, '2', function()
   hs.application.launchOrFocus('Simulator')
 end)
 
+-- Control volumes
+
+hs.eventtap.new({hs.eventtap.event.types.scrollWheel}, function(e)
+  local horizontalScrolDelta = e:getProperty(hs.eventtap.event.properties.scrollWheelEventDeltaAxis2)
+  local current = hs.audiodevice.defaultOutputDevice():volume()
+
+  -- if horizontal scroll
+  if horizontalScrolDelta ~= 0 then
+    -- flip the value as + is horizontal left scroll and - is horizontal right scroll
+    if horizontalScrolDelta < -1 or horizontalScrolDelta > 1 then
+      local newVolume = current + -(horizontalScrolDelta * 2)
+      hs.audiodevice.defaultOutputDevice():setVolume(newVolume)
+    end
+  end
+
+end):start()
+
 -- Manage windows
 
 hs.hotkey.bind({"command", "option"}, "[", function()
