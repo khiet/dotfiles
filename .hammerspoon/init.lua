@@ -65,12 +65,17 @@ end)
 -- Control volumes
 
 hs.eventtap.new({hs.eventtap.event.types.scrollWheel}, function(e)
-  local horizontalScrolDelta = e:getProperty(hs.eventtap.event.properties.scrollWheelEventDeltaAxis2)
+  -- event from mouse and not trackpad
+  if e:getProperty(hs.eventtap.event.properties.scrollWheelEventMomentumPhase) == 0 then
+    if e:getProperty(hs.eventtap.event.properties.scrollWheelEventScrollPhase) == 0 then
+      local horizontalScrolDelta = e:getProperty(hs.eventtap.event.properties.scrollWheelEventDeltaAxis2)
 
-  if horizontalScrolDelta < 0 then
-    sendSystemKey("SOUND_UP")
-  elseif horizontalScrolDelta > 0 then
-    sendSystemKey("SOUND_DOWN")
+      if horizontalScrolDelta < 0 then
+        sendSystemKey("SOUND_UP")
+      elseif horizontalScrolDelta > 0 then
+        sendSystemKey("SOUND_DOWN")
+      end
+    end
   end
 end):start()
 
