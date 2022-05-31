@@ -23,6 +23,7 @@ cask "notion"
 # cask "sequel-pro"
 
 brew "git"
+brew "lazygit"
 brew "diff-so-fancy"
 brew "nvim"
 brew "tmux"
