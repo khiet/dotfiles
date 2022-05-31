@@ -78,8 +78,6 @@ alias rr="bin/rails restart"
 alias rc="bin/rails console -- --nomultiline"
 alias rl="tail -f -n 1000 log/development.log"
 alias rlc="tail -f -n 1000 log/development.log | rg -A 6 Controller"
-alias rlt="tail -f -n 1000 log/test.log"
-alias rltc="tail -f -n 1000 log/test.log | rg -A 6 Controller"
 
 if which bat &>/dev/null; then
   alias cat='bat'
