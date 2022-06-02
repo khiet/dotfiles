@@ -135,7 +135,7 @@ function cp2 { dirname "$2" | xargs mkdir -p; cp "$1" "$2" }
 # list brew dependencies
 function brewls { brew list | while read cask; do echo -n $fg[blue] $cask $fg[white]; brew deps $cask | awk '{printf(" %s ", $0)}'; echo ""; done }
 
-function rhs { sed -i '' -e "/$1/d" ~/.zsh_history }
+function rhs { LC_CTYPE=C sed -i '' -e "/$1/d" ~/.zsh_history }
 
 function kebab    { echo  "$1" | sed 's/ /-/g' | sed -r 's/([a-z0-9])([A-Z])/\1-\2/g' | tr "[:upper:]" "[:lower:]" | sed -r "s/[,:'‘’()#\"]/-/g" | sed "s|[][-]|-|g" }
 function sentence { echo  "$1" | sed 's/-/ /g' | awk -vFS="" -vOFS="" '{$1=toupper($1);print $0}' }
