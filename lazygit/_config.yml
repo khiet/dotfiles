@@ -1,3 +1,11 @@
+gui:
+  scrollHeight: 8
+  scrollPastBottom: false
+  showFileTree: false
+  showRandomTip: false
+  showBottomLine: false
+  showCommandLog: false
+  splitDiff: 'always'
 git:
   branchLogCmd: "git lg"
   paging:
