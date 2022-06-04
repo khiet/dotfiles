@@ -27,6 +27,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'https://github.com/itchyny/lightline.vim'
   Plug 'https://github.com/yggdroot/indentline'
   Plug 'https://github.com/simeji/winresizer'
+  Plug 'https://github.com/voldikss/vim-floaterm'
 
   if has('nvim')
     Plug 'https://github.com/neoclide/coc.nvim', {'branch': 'release'}
@@ -238,7 +239,6 @@ hi SpellBad gui=underline guifg=#ff5555
 nnoremap <silent> <C-T> :Files<CR>
 nnoremap <silent> <C-B> :Buffers<CR>
 nnoremap <silent> <C-G> :GFiles?<CR>
-nnoremap <silent>gC :BCommits<CR>
 
 " nnoremap <silent> <c-?> :Commits<CR>
 nnoremap <leader>g :RG 
@@ -276,6 +276,12 @@ let g:gitgutter_grep = 'rg'
 
 nmap <silent>[c <Plug>(GitGutterPrevHunk)
 nmap <silent>]c <Plug>(GitGutterNextHunk)
+
+" vim-floaterm
+nnoremap <silent>gl :FloatermNew lazygit<CR>
+let g:floaterm_keymap_toggle = '<C-F>'
+let g:floaterm_height=0.9
+let g:floaterm_width=0.8
 
 " vim-fugitive
 nnoremap <silent>gb :Git blame<CR>
