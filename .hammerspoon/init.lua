@@ -51,15 +51,11 @@ hs.hotkey.bind({'command'}, 'm', function()
 end)
 hs.hotkey.bind({'command', 'control'}, 'f', function()
 end)
-
--- Switch apps
-
-hs.hotkey.bind({'command'}, '1', function()
-  hs.application.launchOrFocus('iTerm')
-end)
-
-hs.hotkey.bind({'command'}, '2', function()
-  hs.application.launchOrFocus('Simulator')
+hs.hotkey.bind({'command'}, 'return', function()
+  local focusedAppName = hs.window.focusedWindow():application():name()
+  if focusedAppName ~= 'iTerm2' then
+    hs.eventtap.keyStroke({'command'}, 'return', 1000)
+  end
 end)
 
 -- Control volumes
