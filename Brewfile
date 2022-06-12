@@ -20,6 +20,7 @@ cask "around"
 cask "slack"
 cask "trailer"
 cask "notion"
+cask "fantastical"
 # cask "sequel-pro"
 
 brew "git"
