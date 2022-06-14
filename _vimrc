@@ -23,6 +23,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'https://github.com/sheerun/vim-polyglot'
   Plug 'https://github.com/junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
   Plug 'https://github.com/junegunn/fzf.vim'
+  Plug 'https://github.com/justinmk/vim-sneak'
   Plug 'https://github.com/FooSoft/vim-argwrap'
   Plug 'https://github.com/itchyny/lightline.vim'
   Plug 'https://github.com/yggdroot/indentline'
@@ -32,7 +33,6 @@ call plug#begin('~/.vim/plugged')
   if has('nvim')
     Plug 'https://github.com/neoclide/coc.nvim', {'branch': 'release'}
     Plug 'https://github.com/norcalli/nvim-colorizer.lua'
-    Plug 'https://github.com/ggandor/lightspeed.nvim'
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
   endif
 
@@ -257,6 +257,16 @@ endfunction
 
 command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
 command! -nargs=* -bang RGW call RipgrepFzf(<q-args>, <bang>0, '$DEVS_HOME/vim/wiki')
+
+" vim-sneak
+let g:sneak#label = 1
+" smartcase
+let g:sneak#use_ic_scs = 1
+
+map f <Plug>Sneak_f
+map F <Plug>Sneak_F
+map t <Plug>Sneak_t
+map T <Plug>Sneak_T
 
 " wiki
 nnoremap <leader>mf :exe 'FZF' "$DEVS_HOME/vim/wiki"<CR>
