@@ -21,7 +21,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'https://github.com/tpope/vim-repeat'
   Plug 'https://github.com/junegunn/vim-easy-align'
   Plug 'https://github.com/sheerun/vim-polyglot'
-  Plug 'https://github.com/junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+  Plug 'https://github.com/junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
   Plug 'https://github.com/junegunn/fzf.vim'
   Plug 'https://github.com/justinmk/vim-sneak'
   Plug 'https://github.com/FooSoft/vim-argwrap'
@@ -57,7 +57,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'https://github.com/AndrewRadev/tagalong.vim'
 
   " Markdown
-  Plug 'https://github.com/iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
+  Plug 'https://github.com/iamcco/markdown-preview.nvim', {'do': 'cd app && yarn install'}
 call plug#end()
 
 noremap <Up>    <NOP>
