@@ -37,7 +37,6 @@ call plug#begin('~/.vim/plugged')
   endif
 
   " Colorscheme
-  Plug 'https://github.com/morhetz/gruvbox'
   Plug 'https://github.com/dracula/vim'
   Plug 'git@github.com:khiet/dracula-pro.git', {'branch': 'main'}
 
