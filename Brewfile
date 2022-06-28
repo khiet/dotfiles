@@ -44,6 +44,7 @@ brew "node"
 brew "nvm"
 brew "jq"
 brew "awscli"
+brew "amazon-ecs-cli"
 brew "ffmpeg"
 brew "youtube-dl"
 # fun sutff
