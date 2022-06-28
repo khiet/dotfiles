@@ -127,6 +127,7 @@ nnoremap <leader>e :e!<CR>
 
 " list invisibles
 nnoremap <leader>ls :set list!<CR>
+nnoremap <leader>= ggVG=
 
 nnoremap <C-P> <C-G>
 
@@ -480,8 +481,6 @@ function! RunSave()
       call CocActionAsync('format')
     elseif &filetype == 'rust'
       call CocActionAsync('format')
-    elseif &filetype == 'eruby'
-      execute "normal! ggVG=\<C-O>"
     elseif IsAJavascript()
       execute 'CocCommand' 'prettier.formatFile'
     endif
