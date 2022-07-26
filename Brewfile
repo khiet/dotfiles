@@ -21,6 +21,7 @@ cask "slack"
 cask "trailer"
 cask "notion"
 cask "fantastical"
+cask "bitwarden"
 # cask "sequel-pro"
 
 brew "git"
