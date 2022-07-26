@@ -355,13 +355,13 @@ if has('nvim')
 
   nmap <silent> gd <Plug>(coc-definition)
   nmap <leader>rn <Plug>(coc-rename)
+  nmap <leader>cf <Plug>(coc-fix-current)
 
   " https://github.com/neoclide/coc.nvim/wiki/Multiple-cursors-support
   hi CocCursorRange guibg=#ffb86c guifg=#282a36
   nmap <silent> <C-s> <Plug>(coc-cursors-word)*
 
   nmap <leader>ce :CocList extensions<CR>
-  nmap <leader>cf :CocFix<CR>
   nnoremap <silent> K :call <SID>show_documentation()<CR>
   function! s:show_documentation()
     if (index(['vim','help'], &filetype) >= 0)
