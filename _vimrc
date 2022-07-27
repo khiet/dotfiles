@@ -490,18 +490,6 @@ function! RunSave()
 endfunction
 " -----------------------------------------------
 
-function! OpenIn()
-  " yank current word in register
-  normal! viWy
-  let word = getreg("0")
-  if word =~ "http"
-    let escaped = escape(word, '#&+?%[]')
-    silent execute '!open' escaped
-  else
-    silent execute '!open' expand("%:p:h")
-  end
-endfunction
-
 function! CreateSpecFile()
   silent execute '!ruby ~/dotfiles/scripts/create_spec_file.rb' expand("%:p")
 endfunction
@@ -513,7 +501,6 @@ endfunction
 function! ConsoleLog()
   execute "normal! yiwo" . "console.log" . "('')\<C-[>F';a\<C-[>pf'a, \<C-[>p<CR>"
 endfunction
-nnoremap <silent> gx :call OpenIn()<CR>
 
 nnoremap <silent> <leader>cd :call AddDebugBreakpoint()<CR>
 nnoremap <silent> <leader>cl :call ConsoleLog()<CR>
