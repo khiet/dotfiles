@@ -445,7 +445,7 @@ function! AddDebugBreakpoint()
     r!echo 'debugger;'
     write
   elseif index(['ruby', 'haml'], &filetype) != -1
-    r!echo 'binding.break'
+    r!echo "require 'debug'; binding.break"
     write
   endif
 endfunction
