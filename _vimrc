@@ -294,8 +294,8 @@ let g:floaterm_height=0.9
 let g:floaterm_width=0.8
 
 " vim-fugitive
-nnoremap <silent>gb :Git blame<CR>
-nnoremap <silent>gB :GBrowse<CR>
+nnoremap <silent>gb :GBrowse<CR>
+nnoremap <silent>gB :GBrowse!<CR>
 
 " vim-closetag
 let g:closetag_filenames = '*.html,*.erb,*.js,*.jsx'
