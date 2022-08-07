@@ -127,7 +127,6 @@ nnoremap <leader>e :e!<CR>
 
 " list invisibles
 nnoremap <leader>ls :set list!<CR>
-nnoremap <leader>= ggVG=
 
 nnoremap <C-P> <C-G>
 
