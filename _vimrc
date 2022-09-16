@@ -317,10 +317,17 @@ let g:rails_projections = {
 \ }
 
 if has('nvim')
-  set cmdheight=1
-  set shortmess+=c
-
+  " https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
   lua require'lspconfig'.solargraph.setup{}
+  lua local opts = { noremap=true, silent=true }
+  lua vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
+  lua vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
+
+  lua  local bufopts = { noremap=true, silent=true, buffer=bufnr }
+  lua vim.keymap.set('n', '<leader>f', vim.lsp.buf.formatting, bufopts)
+  lua vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
+  lua vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
+  lua vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
 
   " nvim-colorizer
   lua require'colorizer'.setup()
