@@ -31,7 +31,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'https://github.com/voldikss/vim-floaterm'
 
   if has('nvim')
-    Plug 'https://github.com/neoclide/coc.nvim', {'branch': 'release'}
     Plug 'https://github.com/norcalli/nvim-colorizer.lua'
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
   endif
@@ -204,7 +203,6 @@ endif
 " filetype
 au BufRead,BufNewFile *.inky-haml set filetype=haml
 au BufRead,BufNewFile tsconfig.json set filetype=jsonc
-au BufRead,BufNewFile coc-settings.json set filetype=jsonc
 
 " spell-checking
 au BufRead,BufNewFile *.md set filetype=markdown
@@ -318,68 +316,8 @@ let g:rails_projections = {
 \ }
 
 if has('nvim')
-  " prerequisites
-  "
-  " * python provider
-  "   sudo easy_install pip
-  "   python2 -m pip install --user --upgrade pynvim
-  "
-  " :CocConfig to open coc-settings.json
-  " :checkhealth and :CocInfo to get information about installation
-
   set cmdheight=1
   set shortmess+=c
-
-  " global extentions are automatically installed when tye are not installed,
-  " CocUninstall to uninstall extensions, CocUpdate to update extensions
-  " https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions#update-extensions
-  let g:coc_global_extensions = [
-    \ 'coc-tsserver',
-    \ 'coc-html',
-    \ 'coc-css',
-    \ 'coc-eslint',
-    \ 'coc-prettier',
-    \ 'coc-solargraph',
-    \ 'coc-json',
-    \ 'coc-snippets',
-    \ 'coc-explorer',
-    \ 'coc-rust-analyzer',
-    \ 'coc-docker',
-    \ ]
-
-  " navigate diagnostics
-  nmap <silent> [g <Plug>(coc-diagnostic-prev)
-  nmap <silent> ]g <Plug>(coc-diagnostic-next)
-  nmap <silent> <space>d :<C-u>CocList diagnostics<CR>
-
-  nmap <silent> gd <Plug>(coc-definition)
-  nmap <leader>rn <Plug>(coc-rename)
-  nmap <leader>cf <Plug>(coc-fix-current)
-
-  " https://github.com/neoclide/coc.nvim/wiki/Multiple-cursors-support
-  hi CocCursorRange guibg=#ffb86c guifg=#282a36
-  nmap <silent> <C-s> <Plug>(coc-cursors-word)*
-
-  nmap <leader>ce :CocList extensions<CR>
-  nnoremap <silent> K :call <SID>show_documentation()<CR>
-  function! s:show_documentation()
-    if (index(['vim','help'], &filetype) >= 0)
-      execute 'h '.expand('<cword>')
-    elseif (coc#rpc#ready())
-      call CocActionAsync('doHover')
-    else
-      execute '!' . &keywordprg . " " . expand('<cword>')
-    endif
-  endfunction
-
-  nmap <leader>f :CocCommand eslint.executeAutofix<CR>
-
-  " coc-snippets
-  set runtimepath+=~/.vim/custom_snippets
-  nnoremap <leader>es :CocCommand snippets.openSnippetFiles<CR>
-
-  " coc-explorer
-  noremap <C-n> :CocCommand explorer<CR>
 
   " nvim-colorizer
   lua require'colorizer'.setup()
@@ -477,11 +415,8 @@ endfunction
 function! RunSave()
   if has('nvim')
     if &filetype == 'ruby'
-      call CocActionAsync('format')
     elseif &filetype == 'rust'
-      call CocActionAsync('format')
     elseif IsAJavascript()
-      execute 'CocCommand' 'prettier.formatFile'
     endif
   endif
 
