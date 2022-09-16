@@ -33,6 +33,7 @@ call plug#begin('~/.vim/plugged')
   if has('nvim')
     Plug 'https://github.com/norcalli/nvim-colorizer.lua'
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+    Plug 'https://github.com/neovim/nvim-lspconfig'
 
     " Markdown
     Plug 'https://github.com/iamcco/markdown-preview.nvim', {'do': 'cd app && yarn install'}
@@ -318,6 +319,8 @@ let g:rails_projections = {
 if has('nvim')
   set cmdheight=1
   set shortmess+=c
+
+  lua require'lspconfig'.solargraph.setup{}
 
   " nvim-colorizer
   lua require'colorizer'.setup()
