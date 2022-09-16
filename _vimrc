@@ -33,6 +33,9 @@ call plug#begin('~/.vim/plugged')
   if has('nvim')
     Plug 'https://github.com/norcalli/nvim-colorizer.lua'
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
+    " Markdown
+    Plug 'https://github.com/iamcco/markdown-preview.nvim', {'do': 'cd app && yarn install'}
   endif
 
   " Colorscheme
@@ -54,9 +57,6 @@ call plug#begin('~/.vim/plugged')
   " HTML
   Plug 'https://github.com/alvan/vim-closetag'
   Plug 'https://github.com/AndrewRadev/tagalong.vim'
-
-  " Markdown
-  Plug 'https://github.com/iamcco/markdown-preview.nvim', {'do': 'cd app && yarn install'}
 call plug#end()
 
 noremap <Up>    <NOP>
