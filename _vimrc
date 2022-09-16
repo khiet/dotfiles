@@ -316,29 +316,6 @@ let g:rails_projections = {
 \   },
 \ }
 
-if has('nvim')
-  " https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
-  lua require'lspconfig'.solargraph.setup{}
-  lua local opts = { noremap=true, silent=true }
-  lua vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
-  lua vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
-
-  lua  local bufopts = { noremap=true, silent=true, buffer=bufnr }
-  lua vim.keymap.set('n', '<leader>f', vim.lsp.buf.formatting, bufopts)
-  lua vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
-  lua vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
-  lua vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
-
-  " nvim-colorizer
-  lua require'colorizer'.setup()
-
-  " nvim-tree-sitter
-  lua require'nvim-treesitter.configs'.setup({
-        \ ensure_installed = { "javascript", "typescript", "rust" },
-        \ highlight = { enable = true, additional_vim_regex_highlighting = false, },
-        \ })
-end
-
 " vim-polyglot
 let g:csv_no_conceal = 1
 let g:vim_markdown_conceal_code_blocks = 0
@@ -455,3 +432,9 @@ nnoremap <silent> <leader>cc :call SwitchCases()<CR>
 nnoremap <silent> <leader>rc :call CreateSpecFile()<CR>
 nnoremap <silent> <leader>t :call RemoveTrailingWhitespaces()<CR>
 nnoremap <silent> <leader>w :call RunSave()<CR>
+
+if has('nvim')
+  lua require('lua_config')
+
+  autocmd BufWritePre *.tsx,*.ts,*.jsx,*.js EslintFixAll
+end
