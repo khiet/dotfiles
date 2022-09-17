@@ -77,6 +77,8 @@ nnoremap <C-H> <C-W><C-H>
 
 let mapleader=" "
 
+nnoremap <leader>w :w<CR>
+
 " edit config files
 nnoremap <leader>ev :e <C-R>=expand($HOME."/.vimrc")<CR><CR>
 nnoremap <leader>eV :source $MYVIMRC<CR>
@@ -398,17 +400,6 @@ function! RemoveTrailingWhitespaces()
   let @/=_s
   call cursor(l, c)
 endfunction
-
-function! RunSave()
-  if has('nvim')
-    if &filetype == 'ruby'
-    elseif &filetype == 'rust'
-    elseif IsAJavascript()
-    endif
-  endif
-
-  write
-endfunction
 " -----------------------------------------------
 
 function! CreateSpecFile()
@@ -431,10 +422,7 @@ nnoremap <silent> <leader>cs :call RunScript()<CR>
 nnoremap <silent> <leader>cc :call SwitchCases()<CR>
 nnoremap <silent> <leader>rc :call CreateSpecFile()<CR>
 nnoremap <silent> <leader>t :call RemoveTrailingWhitespaces()<CR>
-nnoremap <silent> <leader>w :call RunSave()<CR>
 
 if has('nvim')
   lua require('lua_config')
-
-  autocmd BufWritePre *.tsx,*.ts,*.jsx,*.js EslintFixAll
 end
