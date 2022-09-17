@@ -1,7 +1,27 @@
+-- nvim-tree
+vim.g.loaded = 1
+vim.g.loaded_netrwPlugin = 1
+
+require("nvim-tree").setup({
+  view = {
+    adaptive_size = true,
+  },
+})
+
+-- nvim-colorizer
+require'colorizer'.setup()
+
+-- nvim-tree-sitter
+require'nvim-treesitter.configs'.setup({
+    ensure_installed = { "javascript", "typescript", "rust" },
+    highlight = { enable = true, additional_vim_regex_highlighting = false, },
+  })
+
 -- nvim-lspconfig
 local opts = { noremap=true, silent=true }
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
+
 
 local on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
@@ -21,13 +41,4 @@ require'lspconfig'.tsserver.setup({
   })
 require'lspconfig'.eslint.setup({
     on_attach = on_attach,
-  })
-
--- nvim-colorizer
-require'colorizer'.setup()
-
--- nvim-tree-sitter
-require'nvim-treesitter.configs'.setup({
-    ensure_installed = { "javascript", "typescript", "rust" },
-    highlight = { enable = true, additional_vim_regex_highlighting = false, },
   })

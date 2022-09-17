@@ -34,6 +34,8 @@ call plug#begin('~/.vim/plugged')
     Plug 'https://github.com/norcalli/nvim-colorizer.lua'
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
     Plug 'https://github.com/neovim/nvim-lspconfig'
+    Plug 'https://github.com/kyazdani42/nvim-web-devicons'
+    Plug 'https://github.com/kyazdani42/nvim-tree.lua'
 
     " Markdown
     Plug 'https://github.com/iamcco/markdown-preview.nvim', {'do': 'cd app && yarn install'}
@@ -425,4 +427,6 @@ nnoremap <silent> <leader>t :call RemoveTrailingWhitespaces()<CR>
 
 if has('nvim')
   lua require('lua_config')
+
+  noremap <C-n> :NvimTreeFindFileToggle<CR>
 end
