@@ -34,7 +34,6 @@ call plug#begin('~/.vim/plugged')
     Plug 'https://github.com/norcalli/nvim-colorizer.lua'
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
     Plug 'https://github.com/neovim/nvim-lspconfig'
-    Plug 'https://github.com/kyazdani42/nvim-web-devicons'
     Plug 'https://github.com/kyazdani42/nvim-tree.lua'
 
     " Markdown
