@@ -235,7 +235,7 @@ hi clear SpellBad
 hi SpellBad gui=underline guifg=#ff5555
 
 " fzf
-nnoremap <silent> <C-T> :Files<CR>
+nnoremap <silent> <C-F> :Files<CR>
 nnoremap <silent> <C-B> :Buffers<CR>
 nnoremap <silent> <C-G> :GFiles?<CR>
 
@@ -288,7 +288,7 @@ nmap <silent>]c <Plug>(GitGutterNextHunk)
 
 " vim-floaterm
 nnoremap <silent>gl :FloatermNew lazygit<CR>
-let g:floaterm_keymap_toggle = '<C-F>'
+" let g:floaterm_keymap_toggle = '<C-F>'
 let g:floaterm_height=0.9
 let g:floaterm_width=0.8
 
