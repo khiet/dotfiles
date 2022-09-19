@@ -23,7 +23,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'https://github.com/sheerun/vim-polyglot'
   Plug 'https://github.com/junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
   Plug 'https://github.com/junegunn/fzf.vim'
-  Plug 'https://github.com/justinmk/vim-sneak'
+  Plug 'https://github.com/phaazon/hop.nvim'
   Plug 'https://github.com/FooSoft/vim-argwrap'
   Plug 'https://github.com/itchyny/lightline.vim'
   Plug 'https://github.com/yggdroot/indentline'
@@ -259,16 +259,6 @@ endfunction
 command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
 command! -nargs=* -bang RGW call RipgrepFzf(<q-args>, <bang>0, '$DEVS_HOME/vim/wiki')
 
-" vim-sneak
-let g:sneak#label = 1
-" smartcase
-let g:sneak#use_ic_scs = 1
-
-map f <Plug>Sneak_f
-map F <Plug>Sneak_F
-map t <Plug>Sneak_t
-map T <Plug>Sneak_T
-
 " wiki
 nnoremap <leader>mf :exe 'FZF' "$DEVS_HOME/vim/wiki"<CR>
 nnoremap <leader>mg :RGW 
@@ -428,4 +418,6 @@ if has('nvim')
   lua require('vimrc_lua_config')
 
   noremap <C-n> :NvimTreeFindFileToggle<CR>
+
+  nmap <silent>s :HopChar2<CR>
 end
