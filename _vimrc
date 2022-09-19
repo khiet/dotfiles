@@ -425,7 +425,7 @@ nnoremap <silent> <leader>rc :call CreateSpecFile()<CR>
 nnoremap <silent> <leader>t :call RemoveTrailingWhitespaces()<CR>
 
 if has('nvim')
-  lua require('lua_config')
+  lua require('vimrc_lua_config')
 
   noremap <C-n> :NvimTreeFindFileToggle<CR>
 end

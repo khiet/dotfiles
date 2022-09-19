@@ -5,6 +5,26 @@ vim.g.loaded_netrwPlugin = 1
 require("nvim-tree").setup({
   view = {
     adaptive_size = true,
+    mappings = {
+      list = {
+        { key = "l", action = "edit" },
+      },
+    },
+  },
+  renderer = {
+    icons = {
+      glyphs = {
+        git = {
+          unstaged = "✗",
+          staged = "✓",
+          unmerged = "",
+          renamed = "R",
+          untracked = "??",
+          deleted = "D",
+          ignored = "!!",
+        },
+      },
+    },
   },
 })
 
