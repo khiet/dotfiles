@@ -67,3 +67,6 @@ require'lspconfig'.eslint.setup({
 require'lspconfig'.tailwindcss.setup({
     on_attach = on_attach,
   })
+require'lspconfig'.jsonls.setup({
+    on_attach = on_attach,
+  })
