@@ -8,6 +8,8 @@ require("nvim-tree").setup({
     mappings = {
       list = {
         { key = "l", action = "edit" },
+        { key = "Y", action = "copy_absolute_path" },
+        { key = "o", action = "system_open" },
       },
     },
   },

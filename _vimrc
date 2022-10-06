@@ -417,7 +417,7 @@ nnoremap <silent> <leader>t :call RemoveTrailingWhitespaces()<CR>
 if has('nvim')
   lua require('vimrc_lua_config')
 
-  noremap <C-n> :NvimTreeFindFileToggle<CR>
+  noremap <C-n> :NvimTreeFindFileToggle!<CR>
 
   nmap <silent>s :HopChar2<CR>
 end
