@@ -32,7 +32,7 @@ call plug#begin('~/.vim/plugged')
 
   if has('nvim')
     Plug 'https://github.com/norcalli/nvim-colorizer.lua'
-    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+    Plug 'https://github.com/nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
     Plug 'https://github.com/neovim/nvim-lspconfig'
     Plug 'https://github.com/kyazdani42/nvim-tree.lua'
 
