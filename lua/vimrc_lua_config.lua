@@ -81,3 +81,6 @@ require'lspconfig'.jsonls.setup({
 require'lspconfig'.yamlls.setup({
     on_attach = on_attach,
   })
+
+-- general
+vim.o.ch = 0
