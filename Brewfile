@@ -48,6 +48,7 @@ brew "awscli"
 brew "amazon-ecs-cli"
 brew "ffmpeg"
 brew "youtube-dl"
+brew "marp-cli"
 # fun sutff
 brew "cowsay"
 brew "figlet"
