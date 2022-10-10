@@ -127,9 +127,6 @@ nnoremap <leader>h :noh<CR>
 " reload
 nnoremap <leader>e :e!<CR>
 
-" list invisibles
-nnoremap <leader>ls :set list!<CR>
-
 nnoremap <C-P> <C-G>
 
 " vim-easy-align
