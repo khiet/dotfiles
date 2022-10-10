@@ -23,7 +23,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'https://github.com/sheerun/vim-polyglot'
   Plug 'https://github.com/junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
   Plug 'https://github.com/junegunn/fzf.vim'
-  Plug 'https://github.com/phaazon/hop.nvim'
   Plug 'https://github.com/FooSoft/vim-argwrap'
   Plug 'https://github.com/itchyny/lightline.vim'
   Plug 'https://github.com/yggdroot/indentline'
@@ -35,6 +34,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'https://github.com/nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
     Plug 'https://github.com/neovim/nvim-lspconfig'
     Plug 'https://github.com/kyazdani42/nvim-tree.lua'
+    Plug 'https://github.com/ggandor/leap.nvim', {'branch': 'main'}
 
     " Markdown
     Plug 'https://github.com/iamcco/markdown-preview.nvim', {'do': 'cd app && yarn install'}
@@ -69,7 +69,6 @@ noremap <Right> <NOP>
 noremap q: <Nop>
 " disable ex-mode
 noremap Q <Nop>
-
 " https://thoughtbot.com/blog/vim-splits-move-faster-and-more-naturally
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
@@ -418,6 +417,4 @@ if has('nvim')
   lua require('vimrc_lua_config')
 
   noremap <C-n> :NvimTreeFindFileToggle!<CR>
-
-  nmap <silent>s :HopChar2<CR>
 end
