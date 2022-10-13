@@ -276,6 +276,7 @@ nmap <silent>]c <Plug>(GitGutterNextHunk)
 
 " vim-floaterm
 nnoremap <silent>gl :FloatermNew lazygit<CR>
+nnoremap <silent>tn :FloatermNew<CR>
 " let g:floaterm_keymap_toggle = '<C-F>'
 let g:floaterm_height=0.9
 let g:floaterm_width=0.8
