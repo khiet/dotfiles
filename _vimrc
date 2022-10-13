@@ -377,7 +377,7 @@ function! RunScript()
 endfunction
 
 " http://vimcasts.org/episodes/tidying-whitespace/
-function! RemoveTrailingWhitespaces()
+function! DeleteTrailingWhitespaces()
   " Preparation: save last search, and cursor position.
   let _s=@/
   let l = line(".")
@@ -409,7 +409,7 @@ nnoremap <silent> <leader>ct :call RunCtags()<CR>
 nnoremap <silent> <leader>cs :call RunScript()<CR>
 nnoremap <silent> <leader>cc :call SwitchCases()<CR>
 nnoremap <silent> <leader>rc :call CreateSpecFile()<CR>
-nnoremap <silent> <leader>t :call RemoveTrailingWhitespaces()<CR>
+nnoremap <silent> <leader>td :call DeleteTrailingWhitespaces()<CR>
 
 if has('nvim')
   lua require('vimrc_lua_config')
