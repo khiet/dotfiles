@@ -35,7 +35,7 @@ require'colorizer'.setup()
 
 -- nvim-tree-sitter
 require'nvim-treesitter.configs'.setup({
-    ensure_installed = { "javascript", "typescript", "rust" },
+    ensure_installed = { "ruby", "javascript", "typescript", "lua", "rust", "toml" },
     highlight = { enable = true, additional_vim_regex_highlighting = false, },
   })
 
@@ -72,6 +72,9 @@ require'lspconfig'.jsonls.setup({
     on_attach = on_attach,
   })
 require'lspconfig'.yamlls.setup({
+    on_attach = on_attach,
+  })
+require'lspconfig'.rust_analyzer.setup({
     on_attach = on_attach,
   })
 
