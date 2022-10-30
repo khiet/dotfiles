@@ -11,3 +11,4 @@ git:
   paging:
     colorArg: always
     pager: diff-so-fancy
+notARepository: 'skip'
