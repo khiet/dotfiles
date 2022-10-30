@@ -43,7 +43,7 @@ export XDG_CACHE_HOME=$HOME/.cache
 
 export RIPGREP_CONFIG_PATH=$HOME/.ripgreprc
 
-export DEVS_HOME=$HOME/Dropbox/Devs
+export DEVS_HOME=$HOME/Library/CloudStorage/Dropbox/Devs
 
 # vim mode
 bindkey -v
