@@ -1,6 +1,7 @@
 -- https://www.hammerspoon.org/docs/index.html
 
-logger = hs.logger.new('logger', 'debug')
+local logger = hs.logger.new('logger', 'debug')
+-- e.g. logger.i('debug info')
 
 local function remap(mods, key, message, pressedfn, releasedfn, repeatfn)
   -- https://www.hammerspoon.org/docs/hs.hotkey.html#bind
@@ -51,12 +52,36 @@ hs.hotkey.bind({'command'}, 'm', function()
 end)
 hs.hotkey.bind({'command', 'control'}, 'f', function()
 end)
--- hs.hotkey.bind({'command'}, 'return', function()
---   local focusedAppName = hs.window.focusedWindow():application():name()
---   if focusedAppName ~= 'iTerm2' then
---     hs.eventtap.keyStroke({'command'}, 'return', 1000)
+
+-- local function getBrowserUrl(browserName)
+--     local _, url = hs.osascript.applescript('tell application "' .. browserName .. '" to return URL of active tab of front window')
+-- 
+--     return url
+-- end
+-- 
+-- local mapInlineCode = false
+-- local inlineCode = hs.hotkey.bind({'command'}, 'e', function()
+--   if mapInlineCode then
+--     local focusedAppName = hs.window.focusedWindow():application():name()
+--     local url = getBrowserUrl(focusedAppName)
+--     if string.find(url, "linear.app") then
+--       hs.eventtap.keyStroke({'command', 'shift'}, 'c')
+--     end
 --   end
 -- end)
+-- 
+-- local function toggleInlineCode(appName)
+--   hs.window.filter.new(appName)
+--     :subscribe(hs.window.filter.windowFocused, function()
+--       inlineCode:enable()
+--     end)
+--     :subscribe(hs.window.filter.windowUnfocused, function()
+--       inlineCode:disable()
+--     end)
+-- end
+-- 
+-- toggleInlineCode("Google Chrome")
+-- toggleInlineCode("Slack")
 
 -- Control volumes
 
