@@ -28,6 +28,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'https://github.com/yggdroot/indentline'
   Plug 'https://github.com/simeji/winresizer'
   Plug 'https://github.com/voldikss/vim-floaterm'
+  Plug 'https://github.com/lervag/wiki.vim'
 
   if has('nvim')
     Plug 'https://github.com/norcalli/nvim-colorizer.lua'
@@ -258,6 +259,12 @@ command! -nargs=* -bang RGW call RipgrepFzf(<q-args>, <bang>0, '$DEVS_HOME/vim/w
 " wiki
 nnoremap <leader>mf :exe 'FZF' "$DEVS_HOME/vim/wiki"<CR>
 nnoremap <leader>mg :RGW 
+
+let g:wiki_root = '$DEVS_HOME/vim/wiki/wiki_vim'
+let g:wiki_filetypes = ['md']
+let g:wiki_link_extension = '.md'
+let g:wiki_link_target_type = 'md'
+let g:wiki_mappings_use_defaults = 'local'
 
 " vim_current_word
 hi CurrentWord gui=underline
