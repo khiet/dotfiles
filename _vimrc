@@ -35,6 +35,13 @@ call plug#begin('~/.vim/plugged')
     Plug 'https://github.com/neovim/nvim-lspconfig'
     Plug 'https://github.com/kyazdani42/nvim-tree.lua'
     Plug 'https://github.com/ggandor/leap.nvim', {'branch': 'main'}
+    Plug 'https://github.com/hrsh7th/nvim-cmp', {'branch': 'main'}
+    Plug 'https://github.com/hrsh7th/cmp-nvim-lsp', {'branch': 'main'}
+    Plug 'https://github.com/saadparwaiz1/cmp_luasnip'
+    Plug 'https://github.com/L3MON4D3/LuaSnip', {'tag': '*'}
+
+    " Rust
+    Plug 'https://github.com/simrat39/rust-tools.nvim'
 
     " Markdown
     Plug 'https://github.com/iamcco/markdown-preview.nvim', {'do': 'cd app && yarn install'}
