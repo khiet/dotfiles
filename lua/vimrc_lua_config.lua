@@ -108,6 +108,9 @@ require'lspconfig'.tailwindcss.setup({
 require'lspconfig'.jsonls.setup({
   on_attach = on_attach,
 })
+require'lspconfig'.volar.setup({
+  on_attach = on_attach,
+})
 
 -- rust-tools
 local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
