@@ -39,6 +39,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'https://github.com/hrsh7th/cmp-nvim-lsp', {'branch': 'main'}
     Plug 'https://github.com/saadparwaiz1/cmp_luasnip'
     Plug 'https://github.com/L3MON4D3/LuaSnip', {'tag': '*'}
+    Plug 'https://github.com/johmsalas/text-case.nvim', {'branch': 'main'}
 
     " Rust
     Plug 'https://github.com/simrat39/rust-tools.nvim'
@@ -400,11 +401,6 @@ endfunction
 function! CreateSpecFile()
   silent execute '!ruby ~/dotfiles/scripts/create_spec_file.rb' expand("%:p")
 endfunction
-function! SwitchCases()
-  let word = system('ruby ~/dotfiles/scripts/switch_cases.rb' . ' ' . expand('<cword>'))
-  exe 'normal! ciw' . word
-  exe 'normal! b'
-endfunction
 function! ConsoleLog()
   execute "normal! yiwo" . "console.log" . "('')\<C-[>F';a\<C-[>pf'a, \<C-[>p<CR>"
 endfunction
@@ -414,7 +410,6 @@ nnoremap <silent> <leader>cl :call ConsoleLog()<CR>
 nnoremap <silent> <leader>cq :call ReplaceCurlyQuotes()<CR>
 nnoremap <silent> <leader>ct :call RunCtags()<CR>
 nnoremap <silent> <leader>cs :call RunScript()<CR>
-nnoremap <silent> <leader>cc :call SwitchCases()<CR>
 nnoremap <silent> <leader>rc :call CreateSpecFile()<CR>
 nnoremap <silent> <leader>td :call DeleteTrailingWhitespaces()<CR>
 
@@ -423,4 +418,10 @@ if has('nvim')
 
   nnoremap <C-n> :NvimTreeFindFileToggle!<CR>
   nnoremap <leader>ls :LspStop<CR>
+
+  " text-case
+  nnoremap gas :lua require('textcase').current_word('to_snake_case')<CR>
+  nnoremap gak :lua require('textcase').current_word('to_dash_case')<CR>
+  nnoremap gac :lua require('textcase').current_word('to_camel_case')<CR>
+  nnoremap gap :lua require('textcase').current_word('to_pascal_case')<CR>
 end
