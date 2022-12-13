@@ -10,7 +10,7 @@
   ps  = push
   psd = !git push origin --delete $(git symbolic-ref --short HEAD)
   pl  = pull
-  s   = !git --no-pager show
+  s   = show
   a  = add -p
   aa  = add -A
   c  = commit -v
