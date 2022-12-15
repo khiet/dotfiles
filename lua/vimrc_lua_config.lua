@@ -81,6 +81,13 @@ local opts = { noremap=true, silent=true }
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
 
+-- https://neovim.io/doc/user/diagnostic.html#diagnostic-api
+local diagnostic_format = function(diagnostic)
+  return string.format("(%s: %s) %s", diagnostic.code, diagnostic.source, diagnostic.message)
+end
+
+vim.diagnostic.config({virtual_text = { format = diagnostic_format, spacing = 0 }})
+
 local on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
