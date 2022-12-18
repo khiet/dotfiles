@@ -294,9 +294,9 @@ nnoremap <silent>gb :GBrowse<CR>
 nnoremap <silent>gB :GBrowse!<CR>
 
 " vim-closetag
-let g:closetag_filenames = '*.html,*.erb,*.js,*.jsx'
+let g:closetag_filenames = '*.html,*.erb,*.js,*.jsx,*.vue'
 " tagalong
-let g:tagalong_filetypes = ['html', 'xml', 'eruby', 'javascript', 'javascriptreact', 'typescriptreact']
+let g:tagalong_filetypes = ['html', 'xml', 'eruby', 'javascript', 'javascriptreact', 'typescriptreact', 'vue']
 
 " vim-rails
 nnoremap <leader>rr :R<CR>
