@@ -117,6 +117,11 @@ require'lspconfig'.jsonls.setup({
 })
 require'lspconfig'.volar.setup({
   on_attach = on_attach,
+  init_options = {
+    typescript = {
+      tsdk = "/opt/homebrew/lib/node_modules/typescript/lib"
+    }
+  }
 })
 
 -- rust-tools
