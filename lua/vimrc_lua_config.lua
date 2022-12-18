@@ -48,6 +48,9 @@ require'nvim-treesitter.configs'.setup({
   highlight = { enable = true, additional_vim_regex_highlighting = false, },
 })
 
+-- mason
+require("mason").setup()
+
 -- cmp
 vim.o.completeopt="menu,menuone,noselect"
 
