@@ -31,6 +31,7 @@ call plug#begin('~/.vim/plugged')
 
   if has('nvim')
     Plug 'https://github.com/williamboman/mason.nvim', {'branch': 'main'}
+    Plug 'https://github.com/williamboman/mason-lspconfig.nvim', {'branch': 'main'}
     Plug 'https://github.com/norcalli/nvim-colorizer.lua'
     Plug 'https://github.com/nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
     Plug 'https://github.com/neovim/nvim-lspconfig'
