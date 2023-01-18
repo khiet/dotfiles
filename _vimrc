@@ -223,7 +223,8 @@ au FileType gitcommit setlocal spell
 let test#strategy = "vimux"
 let g:VimuxOrientation = "h"
 let g:VimuxHeight = "25"
-let g:test#javascript#runner = 'jest'
+let g:test#javascript#runner = 'vitest'
+let test#javascript#vitest#executable = 'pnpm run test'
 
 nnoremap <leader>T :TestNearest<CR>
 nnoremap <leader>tl :TestLast<CR>
