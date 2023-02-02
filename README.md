@@ -44,6 +44,8 @@ ln -s ~/dotfiles/bat $XDG_CONFIG_HOME/bat
 
 ln -s ~/dotfiles/pry $XDG_CONFIG_HOME/pry
 ln -s ~/dotfiles/lazygit/_config.yml $XDG_CONFIG_HOME/lazygit/config.yml
+
+ln -s ~/dotfiles/alacritty/_alacritty.yml $XDG_CONFIG_HOME/alacritty.yml
 ```
 
 ## Install brew software
