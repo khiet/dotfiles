@@ -51,12 +51,6 @@ hs.hotkey.bind({'command'}, 'm', function()
 end)
 hs.hotkey.bind({'command', 'control'}, 'f', function()
 end)
--- hs.hotkey.bind({'command'}, 'return', function()
---   local focusedAppName = hs.window.focusedWindow():application():name()
---   if focusedAppName ~= 'iTerm2' then
---     hs.eventtap.keyStroke({'command'}, 'return', 1000)
---   end
--- end)
 
 -- Control volumes
 
