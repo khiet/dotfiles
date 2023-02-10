@@ -61,6 +61,7 @@ alias private_ip='ipconfig getifaddr en0'
 
 # tmux
 alias ta='tmux attach -t'
+alias tn='tmux new -s'
 alias tls='tmux ls'
 alias tkill='tmux kill-session -t'
 
@@ -169,3 +170,7 @@ function db_dump {
     echo "<database> must be specified"
   fi
 }
+
+# kafka
+
+alias rpc="docker run -p 8080:8080 -e KAFKA_BROKERS=$KAFKA_BOOTSTRAP_SERVERS -e KAFKA_TLS_ENABLED=true -e KAFKA_SASL_ENABLED=true -e KAFKA_SASL_USERNAME=$KAFKA_SASL_USERNAME -e KAFKA_SASL_PASSWORD=$KAFKA_SASL_PASSWORD -e KAFKA_SASL_MECHANISM=SCRAM-SHA-512 docker.redpanda.com/vectorized/console:latest"
