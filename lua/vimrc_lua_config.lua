@@ -89,7 +89,12 @@ local diagnostic_format = function(diagnostic)
   return string.format("(%s: %s) %s", diagnostic.code, diagnostic.source, diagnostic.message)
 end
 
-vim.diagnostic.config({virtual_text = { format = diagnostic_format, spacing = 0 }})
+vim.diagnostic.config({
+  virtual_text = { spacing = 0, },
+  float = {
+    format = diagnostic_format,
+  },
+})
 
 local on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
