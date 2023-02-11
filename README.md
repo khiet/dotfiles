@@ -8,14 +8,6 @@
 cd; git clone git@github.com:khiet/dotfiles.git
 ```
 
-## Install oh my zsh and plugins
-
-```
-sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
-```
-
 #### Symlink config file for zsh
 
 ```
@@ -46,6 +38,7 @@ ln -s ~/dotfiles/pry $XDG_CONFIG_HOME/pry
 ln -s ~/dotfiles/lazygit/_config.yml $XDG_CONFIG_HOME/lazygit/config.yml
 
 ln -s ~/dotfiles/alacritty/_alacritty.yml $XDG_CONFIG_HOME/alacritty.yml
+ln -s ~/dotfiles/alacritty/_starship.toml $XDG_CONFIG_HOME/starship.toml
 ```
 
 ## Install brew software
