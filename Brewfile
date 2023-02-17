@@ -4,7 +4,7 @@ tap "homebrew/cask-versions"
 tap "heroku/brew"
 
 cask "iterm2"
-cask "alacritty"
+cask "wez/wezterm/wezterm-nightly"
 cask "font-hack-nerd-font"
 cask "hammerspoon"
 cask "google-chrome"
