@@ -219,6 +219,8 @@ au BufRead,BufNewFile *.md set filetype=markdown
 au FileType markdown setlocal spell
 au FileType gitcommit setlocal spell
 
+nnoremap <leader>k :normal! #N<CR>
+
 " vim-test
 let test#strategy = "vimux"
 let g:VimuxOrientation = "h"
