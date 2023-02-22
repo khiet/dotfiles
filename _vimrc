@@ -137,8 +137,6 @@ nnoremap <leader>h :noh<CR>
 " reload
 nnoremap <leader>e :e!<CR>
 
-nnoremap <C-P> <C-G>
-
 " vim-easy-align
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
