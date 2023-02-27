@@ -3,6 +3,10 @@ local act = wezterm.action
 
 return {
     color_scheme = "Dracula (Official)",
+    colors = {
+        selection_fg = '#21222c',
+        selection_bg = '#50fa7b',
+    },
     tab_bar_at_bottom = false,
     use_fancy_tab_bar = false,
     window_decorations = "RESIZE",
