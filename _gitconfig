@@ -4,48 +4,49 @@
   excludesfile = ~/dotfiles/_global_gitignore
   pager = diff-so-fancy | less --tabs=4 -RFX
 [alias]
-  st  = status --short
-  co  = checkout
-  br  = branch --sort=-committerdate
-  ps  = push
-  psd = !git push origin --delete $(git symbolic-ref --short HEAD)
-  pl  = pull
-  s   = show
-  a  = add -p
-  aa  = add -A
-  c  = commit -v
-  ca = commit -v --amend
+  st   = status --short
+  co   = checkout
+  br   = branch --sort=-committerdate
+  ps   = push
+  psd  = !git push origin --delete $(git symbolic-ref --short HEAD)
+  pl   = pull
+  s    = show
+  a    = add -p
+  aa   = add -A
+  c    = commit -v
+  ca   = commit -v --amend
   aac  = !git add -A && git commit -v
-  aaca  = !git add -A && git commit -v --amend
-  cp  = cherry-pick
+  aaca = !git add -A && git commit -v --amend
+  cp   = cherry-pick
   cpc  = cherry-pick --continue
-  ft  = fetch
-  d   = diff
-  dw  = diff --word-diff
-  dn  = diff --name-only
-  ds  = diff --staged
-  dsw = diff --staged --word-diff
+  ft   = fetch
+  d    = diff
+  dw   = diff --word-diff
+  dn   = diff --name-only
+  ds   = diff --staged
+  dsw  = diff --staged --word-diff
   dsn  = diff --staged --name-only
-  dhh = diff HEAD~
-  dm = !git diff master
-  do = !git diff origin/$(git symbolic-ref --short HEAD)
-  dom = !git diff $(git branch -r | rg '^\\s+origin/(master|main)$')
-  l  = lg -20
-  lp  = log --patch --follow
-  lg  = log --graph --pretty=format:'%C(yellow)%h%Creset %s %C(green)%cd %C(red)%aN%Creset' --date=format:'%a %d %b %Y %H:%M:%S'
-  lgg = lg --graph
-  sl = stash list --pretty=format:'%C(yellow)%h%Creset %C(green)%cd%Creset %s%' --date=format:'%a %d %b %Y %H:%M:%S'
-  rmc = rm -r --cached .
-  rma = !git reset --hard HEAD && git clean -fd
-  su = !git branch --set-upstream-to=origin/$(git symbolic-ref --short HEAD)
-  rl = reflog --pretty=format:'%C(yellow)%h%Creset %C(green)%cd%Creset %s%C(red)%d%Creset' --date=format:'%a %d %b %Y %H:%M:%S'
-  r = rebase
-  ri = rebase -i
-  rc = rebase --continue
-  ra = rebase --abort
-  rs = rebase --skip
-  rim = !git rebase -i $(git branch | rg '^\\s+(master|main)$')
-  com = !git checkout $(git branch -r | rg '^\\s+(master|main)$')
+  dhh  = diff HEAD~
+  dm   = !git diff master
+  do   = !git diff origin/$(git symbolic-ref --short HEAD)
+  dom  = !git diff $(git branch -r | rg '^\\s+origin/(master|main)$')
+  l    = lg -20
+  lp   = log --patch --follow
+  lg   = log --graph --pretty=format:'%C(yellow)%h%Creset %s %C(green)%cd %C(red)%aN%Creset' --date=format:'%a %d %b %Y %H:%M:%S'
+  lgg  = lg --graph
+  sl   = stash list --pretty=format:'%C(yellow)%h%Creset %C(green)%cd%Creset %s%' --date=format:'%a %d %b %Y %H:%M:%S'
+  rmc  = rm -r --cached .
+  rma  = !git reset --hard HEAD && git clean -fd
+  su   = !git branch --set-upstream-to=origin/$(git symbolic-ref --short HEAD)
+  rl   = reflog --pretty=format:'%C(yellow)%h%Creset %C(green)%cd%Creset %s%C(red)%d%Creset' --date=format:'%a %d %b %Y %H:%M:%S'
+  r    = rebase
+  ri   = rebase -i
+  rir  = rebase -i --root
+  rc   = rebase --continue
+  ra   = rebase --abort
+  rs   = rebase --skip
+  rim  = !git rebase -i $(git branch | rg '^\\s+(master|main)$')
+  com  = !git checkout $(git branch -r | rg '^\\s+(master|main)$')
   riom = !git rebase -i $(git branch -r | rg '^\\s+origin/(master|main)$')
   coom = !git checkout $(git branch -r | rg '^\\s+origin/(master|main)$')
   o = !sh ~/dotfiles/scripts/git_open_in_github.sh
