@@ -14,6 +14,8 @@ return {
     font_size = 14.0,
     scrollback_lines = 50000,
     window_close_confirmation = 'NeverPrompt',
+    selection_word_boundary = ' \t\n{}[]()\"\'`:│',
+
     keys = {
         { key = 'H', mods = 'SHIFT|CMD', action = act.ActivateTabRelative(-1) },
         { key = 'L', mods = 'SHIFT|CMD', action = act.ActivateTabRelative(1) },
