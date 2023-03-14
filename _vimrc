@@ -42,6 +42,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'https://github.com/saadparwaiz1/cmp_luasnip'
     Plug 'https://github.com/L3MON4D3/LuaSnip', {'tag': '*'}
     Plug 'https://github.com/johmsalas/text-case.nvim', {'branch': 'main'}
+    Plug 'https://github.com/numToStr/Comment.nvim'
 
     " Rust
     Plug 'https://github.com/simrat39/rust-tools.nvim'
