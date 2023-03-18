@@ -70,6 +70,9 @@ call plug#begin('~/.vim/plugged')
   " HTML
   Plug 'https://github.com/alvan/vim-closetag'
   Plug 'https://github.com/AndrewRadev/tagalong.vim'
+
+  " Wiki
+  Plug 'https://github.com/vimwiki/vimwiki', {'branch': 'dev'}
 call plug#end()
 
 noremap <Up>    <NOP>
@@ -265,11 +268,27 @@ function! RipgrepFzf(query, fullscreen, directory = '.')
 endfunction
 
 command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
-command! -nargs=* -bang RGW call RipgrepFzf(<q-args>, <bang>0, '$DEVS_HOME/vim/wiki')
+command! -nargs=* -bang RGW call RipgrepFzf(<q-args>, <bang>0, '$DEVS_HOME/vim/notes')
 
 " wiki
-nnoremap <leader>mf :exe 'FZF' "$DEVS_HOME/vim/wiki"<CR>
+nnoremap <leader>mf :exe 'FZF' "$DEVS_HOME/vim/notes"<CR>
 nnoremap <leader>mg :RGW 
+" vimwiki
+let g:vimwiki_list = [{'path': "$DEVS_HOME/vim/notes/vimwiki", 'syntax': 'markdown', 'ext': '.md'}]
+let g:vimwiki_key_mappings =
+  \ {
+  \   'all_maps': 1,
+  \   'global': 0,
+  \   'headers': 0,
+  \   'text_objs': 0,
+  \   'table_format': 0,
+  \   'table_mappings': 0,
+  \   'lists': 0,
+  \   'links': 1,
+  \   'html': 0,
+  \   'mouse': 0,
+  \ }
+au BufWinEnter *.md setlocal syntax=markdown
 
 " vim_current_word
 hi CurrentWord gui=underline
