@@ -252,6 +252,8 @@ nnoremap <silent> <C-F> :Files<CR>
 nnoremap <silent> <C-B> :Buffers<CR>
 nnoremap <silent> <C-G> :GFiles?<CR>
 
+nnoremap <silent> <D-E> :GFiles?<CR>
+
 " nnoremap <silent> <c-?> :Commits<CR>
 nnoremap <leader>g :RG 
 let g:fzf_action = { 'ctrl-l': 'edit', 'ctrl-t': 'tab split', 'ctrl-x': 'split', 'ctrl-v': 'vsplit' }
@@ -419,20 +421,26 @@ function! DeleteTrailingWhitespaces()
   let @/=_s
   call cursor(l, c)
 endfunction
-" -----------------------------------------------
 
 function! CreateSpecFile()
   silent execute '!ruby ~/dotfiles/scripts/create_spec_file.rb' expand("%:p")
 endfunction
+
 function! ConsoleLog()
   execute "normal! yiwo" . "console.log" . "('')\<C-[>F';a\<C-[>pf'a, \<C-[>p<CR>"
 endfunction
+
+function! SearchDictionary()
+  silent execute '!open "https://dictionary.cambridge.org/dictionary/english/' . expand('<cword>') . '"'
+endfunction
+" -----------------------------------------------
 
 nnoremap <silent> <leader>cd :call AddDebugBreakpoint()<CR>
 nnoremap <silent> <leader>cl :call ConsoleLog()<CR>
 nnoremap <silent> <leader>cq :call ReplaceCurlyQuotes()<CR>
 nnoremap <silent> <leader>ct :call RunCtags()<CR>
 nnoremap <silent> <leader>cs :call RunScript()<CR>
+nnoremap <silent> <leader>cD :call SearchDictionary()<CR>
 nnoremap <silent> <leader>rc :call CreateSpecFile()<CR>
 nnoremap <silent> <leader>td :call DeleteTrailingWhitespaces()<CR>
 
