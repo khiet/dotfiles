@@ -273,7 +273,7 @@ command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
 command! -nargs=* -bang RGW call RipgrepFzf(<q-args>, <bang>0, '$DEVS_HOME/vim/notes')
 
 " wiki
-nnoremap <leader>mf :exe 'FZF' "$DEVS_HOME/vim/notes"<CR>
+nnoremap <silent> <leader>mf :Files $DEVS_HOME/vim/notes<CR>
 nnoremap <leader>mg :RGW 
 " vimwiki
 let g:vimwiki_list = [{'path': "$DEVS_HOME/vim/notes/vimwiki", 'syntax': 'markdown', 'ext': '.md'}]
