@@ -98,7 +98,7 @@ nnoremap <leader>ev :e <C-R>=expand($HOME."/.vimrc")<CR><CR>
 nnoremap <leader>eV :source $MYVIMRC<CR>
 nnoremap <leader>ez :e <C-R>=expand($HOME."/.zshrc")<CR><CR>
 nnoremap <leader>et :e <C-R>=expand($HOME."/.tmux.conf")<CR><CR>
-nnoremap <leader>em :MarkdownPreviewToggle<CR>
+nnoremap <leader>em <Plug>MarkdownPreviewToggle
 
 " buffers
 nnoremap <silent> ]b :bn<CR>
