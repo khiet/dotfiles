@@ -101,8 +101,9 @@ local diagnostic_format = function(diagnostic)
 end
 
 vim.diagnostic.config({
-  virtual_text = { spacing = 0, },
-  float = {
+  virtual_text = {
+    severity = vim.diagnostic.severity.ERROR,
+    spacing = 0,
     format = diagnostic_format,
   },
 })
