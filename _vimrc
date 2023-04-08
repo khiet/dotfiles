@@ -221,8 +221,6 @@ au BufRead,BufNewFile *.md set filetype=markdown
 au FileType markdown setlocal spell
 au FileType gitcommit setlocal spell
 
-nnoremap <leader>k :normal! #N<CR>
-
 " vim-test
 let test#strategy = "vimux"
 let g:VimuxOrientation = "h"
@@ -445,6 +443,9 @@ nnoremap <silent> <leader>rc :call CreateSpecFile()<CR>
 nnoremap <silent> <leader>td :call DeleteTrailingWhitespaces()<CR>
 
 if has('nvim')
+  " https://vi.stackexchange.com/a/22889
+  nnoremap <leader>k <Cmd>let @/='\<'.expand('<cword>').'\>'<bar>set hlsearch<CR>
+
   lua require('vimrc_lua_config')
 
   set cmdheight=1
