@@ -116,7 +116,7 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
   vim.keymap.set('n', 'gt', vim.lsp.buf.type_definition, bufopts)
   vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
-  vim.keymap.set('n', 'ca', vim.lsp.buf.code_action, bufopts)
+  vim.keymap.set('n', '<leader>F', vim.lsp.buf.code_action, bufopts)
   vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
 end
 
