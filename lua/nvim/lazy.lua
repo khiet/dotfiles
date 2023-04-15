@@ -16,6 +16,8 @@ require("lazy").setup({
   'Mofiqul/dracula.nvim',
   { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
   'ThePrimeagen/harpoon',
+  'tpope/vim-fugitive',
+  'tpope/vim-rhubarb',
 })
 
 vim.cmd('colorscheme dracula')
