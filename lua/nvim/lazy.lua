@@ -13,7 +13,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({ 
   { 'nvim-telescope/telescope.nvim', tag = '0.1.1', dependencies = { 'nvim-lua/plenary.nvim' } },
-  { 'Mofiqul/dracula.nvim' },
+  { url = "git@github.com:khiet/dracula-pro.git" },
   { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
   { 'ThePrimeagen/harpoon' },
   { 'tpope/vim-fugitive' },

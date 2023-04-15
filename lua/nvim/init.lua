@@ -11,7 +11,7 @@ vim.cmd("set splitbelow")
 vim.cmd("set splitright")
 
 vim.cmd([[set listchars=tab:»\ ,eol:$,nbsp:%,trail:~,extends:>,precedes:<]])
-vim.cmd('colorscheme dracula')
+vim.cmd('colorscheme dracula_pro')
 
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { noremap = true })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { noremap = true })

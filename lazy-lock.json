@@ -1,5 +1,5 @@
 {
-  "dracula.nvim": { "branch": "main", "commit": "b5bd9c7e4c6c8f4712610bda92140c735fe90521" },
+  "dracula-pro": { "branch": "main", "commit": "ffb0d17eebfb000a9ad8aeb46fd8a276f0eab3c2" },
   "harpoon": { "branch": "master", "commit": "f7040fd0c44e7a4010369136547de5604b9c22a1" },
   "lazy.nvim": { "branch": "main", "commit": "57cce98dfdb2f2dd05a0567d89811e6d0505e13b" },
   "nvim-tree.lua": { "branch": "master", "commit": "6ad5c26f4d44791699c5538d9773cb141ba033e7" },
