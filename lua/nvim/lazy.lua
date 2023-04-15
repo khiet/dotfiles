@@ -19,4 +19,5 @@ require("lazy").setup({
   'tpope/vim-fugitive',
   'tpope/vim-rhubarb',
   'kyazdani42/nvim-tree.lua',
+  'voldikss/vim-floaterm',
 })
