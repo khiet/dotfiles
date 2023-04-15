@@ -10,6 +10,16 @@ vim.cmd("set complete+=kspell")
 vim.cmd("set splitbelow")
 vim.cmd("set splitright")
 
+vim.cmd("set number")
+vim.cmd("set cursorline")
+vim.cmd("set autoindent")
+
+vim.cmd("set hlsearch")
+vim.cmd("set incsearch")
+vim.cmd("set smartcase")
+
+vim.cmd("set cmdheight=1")
+
 vim.cmd([[set listchars=tab:»\ ,eol:$,nbsp:%,trail:~,extends:>,precedes:<]])
 vim.cmd('colorscheme dracula_pro')
 
@@ -40,3 +50,10 @@ vim.keymap.set('n', '<leader><leader>', '<C-^>', { noremap = true })
 
 vim.keymap.set('n', '<leader>s', ":%s//", { noremap = true })
 -- ❓vim.keymap.set({'n', 'v'}, '<leader>s', ":s//", { noremap = true })
+
+-- https://vi.stackexchange.com/a/22889
+-- ❓vim.keymap.set('n', '<leader>k', "<Cmd>let @/='\<'.expand('<cword>').'\>'<bar>set hlsearch<CR>", { noremap = true })
+
+vim.cmd([[hi CurrentWord gui=underline]])
+vim.cmd([[hi CurrentWordTwins gui=underline]])
+

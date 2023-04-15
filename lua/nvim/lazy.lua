@@ -20,4 +20,5 @@ require("lazy").setup({
   { 'tpope/vim-rhubarb' },
   { 'kyazdani42/nvim-tree.lua' },
   { 'voldikss/vim-floaterm' },
+  { 'dominikduda/vim_current_word' },
 })
