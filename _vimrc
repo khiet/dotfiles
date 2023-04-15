@@ -114,49 +114,8 @@ nmap ga <Plug>(EasyAlign)
 " http://vim.wikia.com/wiki/Replace_a_word_with_yanked_text
 xnoremap <silent> p p:let @+=@0<CR>:let @"=@0<CR>
 
-" indenting
-vnoremap << <gv
-vnoremap >> >gv
-
 " recognize .js without extension when gf
 set suffixesadd=.js
-" allow backspacing over everything in i-mode
-set backspace=indent,eol,start
-" consider '-' as part of a word
-set iskeyword+=-
-" status display
-set laststatus=2
-" 20 lines of command history
-set history=20
-" always show cursor position
-set ruler
-
-" allow opening a new file even if there are unsaved files
-set hidden
-" indenting
-set smartindent
-
-" tabs and spaces
-set expandtab " insert spaces when tab is pressed
-set tabstop=2 " spaces when tab is pressed
-set shiftwidth=2 " spaces for indentation
-set softtabstop=2 " treat spaces like a tab when backspace is pressed
-
-set signcolumn=yes
-set updatetime=200
-
-set t_Co=256
-if (&t_Co == 256) " if terminal supports 256 colours
-
-  " true colour: https://github.com/tmux/tmux/issues/1246
-  if exists('+termguicolors')
-    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-    set termguicolors
-  endif
-
-  colorscheme dracula_pro
-endif
 
 " filetype
 au BufRead,BufNewFile *.inky-haml set filetype=haml
