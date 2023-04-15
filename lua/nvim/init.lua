@@ -10,6 +10,12 @@ vim.cmd("set complete+=kspell")
 vim.cmd("set splitbelow")
 vim.cmd("set splitright")
 
+vim.cmd("set nobackup")
+vim.cmd("set nowritebackup")
+vim.cmd("set noswapfile")
+-- avoid 'safe write': https://webpack.js.org/guides/development/#adjusting-your-text-editor
+vim.cmd("set backupcopy=yes")
+
 vim.cmd("set number")
 vim.cmd("set cursorline")
 vim.cmd("set autoindent")
@@ -43,6 +49,9 @@ vim.keymap.set('n', '<Up>', '<NOP>', { noremap = true })
 vim.keymap.set('n', '<Down>', '<NOP>', { noremap = true })
 vim.keymap.set('n', '<Left>', '<NOP>', { noremap = true })
 vim.keymap.set('n', '<Right>', '<NOP>', { noremap = true })
+
+vim.keymap.set('n', 'Q', 'q', { noremap = true })
+vim.keymap.set('n', 'q', '<NOP>', { noremap = true })
 
 vim.keymap.set('n', '<leader>h', vim.cmd.noh, { noremap = true })
 -- switch between the last two files
