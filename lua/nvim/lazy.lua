@@ -13,11 +13,11 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({ 
   { 'nvim-telescope/telescope.nvim', tag = '0.1.1', dependencies = { 'nvim-lua/plenary.nvim' } },
-  'Mofiqul/dracula.nvim',
+  { 'Mofiqul/dracula.nvim' },
   { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
-  'ThePrimeagen/harpoon',
-  'tpope/vim-fugitive',
-  'tpope/vim-rhubarb',
-  'kyazdani42/nvim-tree.lua',
-  'voldikss/vim-floaterm',
+  { 'ThePrimeagen/harpoon' },
+  { 'tpope/vim-fugitive' },
+  { 'tpope/vim-rhubarb' },
+  { 'kyazdani42/nvim-tree.lua' },
+  { 'voldikss/vim-floaterm' },
 })
