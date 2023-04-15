@@ -18,4 +18,5 @@ require("lazy").setup({
   'ThePrimeagen/harpoon',
   'tpope/vim-fugitive',
   'tpope/vim-rhubarb',
+  'kyazdani42/nvim-tree.lua',
 })
