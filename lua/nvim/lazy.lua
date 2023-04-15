@@ -19,5 +19,3 @@ require("lazy").setup({
   'tpope/vim-fugitive',
   'tpope/vim-rhubarb',
 })
-
-vim.cmd('colorscheme dracula')
