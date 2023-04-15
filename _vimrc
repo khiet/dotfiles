@@ -14,18 +14,8 @@ endif
 
 " PlugInstall, PlugClean, PlugUpdate
 call plug#begin('~/.vim/plugged')
-  " General
-  Plug 'https://github.com/dominikduda/vim_current_word'
-  Plug 'https://github.com/pbrisbin/vim-mkdir'
-  Plug 'https://github.com/tpope/vim-surround'
-  Plug 'https://github.com/tpope/vim-repeat'
-  Plug 'https://github.com/junegunn/vim-easy-align'
-  Plug 'https://github.com/sheerun/vim-polyglot'
-  Plug 'https://github.com/FooSoft/vim-argwrap'
-  Plug 'https://github.com/itchyny/lightline.vim'
-  Plug 'https://github.com/yggdroot/indentline'
   Plug 'https://github.com/simeji/winresizer'
-  Plug 'https://github.com/voldikss/vim-floaterm'
+  Plug 'https://github.com/itchyny/lightline.vim'
 
   if has('nvim')
     Plug 'https://github.com/williamboman/mason.nvim', {'branch': 'main'}
@@ -49,18 +39,9 @@ call plug#begin('~/.vim/plugged')
     Plug 'https://github.com/iamcco/markdown-preview.nvim', {'do': 'cd app && yarn install'}
   endif
 
-  " Colorscheme
-  Plug 'https://github.com/dracula/vim'
-  Plug 'git@github.com:khiet/dracula-pro.git', {'branch': 'main'}
-
   " Tmux
   Plug 'https://github.com/janko-m/vim-test'
   Plug 'https://github.com/benmills/vimux'
-
-  " Git
-  Plug 'https://github.com/airblade/vim-gitgutter'
-  Plug 'https://github.com/tpope/vim-fugitive'
-  Plug 'https://github.com/tpope/vim-rhubarb'
 
   " Rails
   Plug 'https://github.com/tpope/vim-rails'
@@ -80,11 +61,6 @@ nnoremap <leader>ez :e <C-R>=expand($HOME."/.zshrc")<CR><CR>
 nnoremap <leader>et :e <C-R>=expand($HOME."/.tmux.conf")<CR><CR>
 nnoremap <leader>em <Plug>MarkdownPreviewToggle
 
-" buffers
-nnoremap <silent> ]b :bn<CR>
-nnoremap <silent> [b :bp<CR>
-nnoremap <leader>bd :bd<CR>
-
 " tabs
 nnoremap <silent> ]t :tabn<CR>
 nnoremap <silent> [t :tabp<CR>
@@ -98,17 +74,8 @@ nnoremap <silent> [q :cprev<CR>
 nnoremap <silent> ]l :lnext<CR>
 nnoremap <silent> [l :lprev<CR>
 
-
-" replace
-nnoremap <leader>s :%s//
-vnoremap <leader>s :s//
-
 " reload
 nnoremap <leader>e :e!<CR>
-
-" vim-easy-align
-xmap ga <Plug>(EasyAlign)
-nmap ga <Plug>(EasyAlign)
 
 " yank
 " http://vim.wikia.com/wiki/Replace_a_word_with_yanked_text
@@ -202,13 +169,6 @@ hi CurrentWordTwins gui=underline
 au BufWritePre * match ExtraWhitespace /\s\+$/
 hi ExtraWhitespace guibg=#ff5555
 
-" gitgutter
-let g:gitgutter_map_keys = 0 " turn off all key mappings
-let g:gitgutter_grep = 'rg'
-
-nmap <silent>[c <Plug>(GitGutterPrevHunk)
-nmap <silent>]c <Plug>(GitGutterNextHunk)
-
 " vim-closetag
 let g:closetag_filenames = '*.html,*.erb,*.js,*.jsx,*.vue'
 " tagalong
@@ -229,11 +189,6 @@ let g:rails_projections = {
 \     "alternate": "app/controllers/{}_controller.rb"
 \   },
 \ }
-
-" vim-polyglot
-let g:csv_no_conceal = 1
-let g:vim_markdown_conceal_code_blocks = 0
-let g:vim_markdown_conceal = 0
 
 " -----------------------------------------------
 "    OS specifics

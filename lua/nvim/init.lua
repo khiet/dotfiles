@@ -69,6 +69,10 @@ vim.keymap.set('n', '<leader>=', "<C-w>=", { noremap = true })
 vim.keymap.set({'n', 'v'}, '<<', '<gv', { noremap = true })
 vim.keymap.set({'n', 'v'}, '>>', '>gv', { noremap = true })
 
+vim.keymap.set('n', '[b', vim.cmd.bp, { silent = true, noremap = true })
+vim.keymap.set('n', ']b', vim.cmd.bn, { silent = true, noremap = true })
+vim.keymap.set('n', '<leader>bd', vim.cmd.bd, { noremap = true })
+
 vim.keymap.set('n', '<leader>h', vim.cmd.noh, { noremap = true })
 -- switch between the last two files
 vim.keymap.set('n', '<leader><leader>', '<C-^>', { noremap = true })
@@ -79,5 +83,15 @@ vim.keymap.set('n', '<leader>s', ":%s//", { noremap = true })
 -- https://vi.stackexchange.com/a/22889
 -- ❓vim.keymap.set('n', '<leader>k', "<Cmd>let @/='\<'.expand('<cword>').'\>'<bar>set hlsearch<CR>", { noremap = true })
 
+-- vim_current_word
 vim.cmd("hi CurrentWord gui=underline")
 vim.cmd("hi CurrentWordTwins gui=underline")
+
+-- vim-easy-align
+vim.keymap.set({'n', 'x'}, 'ga', "<Plug>(EasyAlign)", { noremap = true })
+vim.keymap.set('n', 'ga', "<Plug>(EasyAlign)", { noremap = true })
+
+-- vim-polyglot
+vim.g.csv_no_conceal = 1
+vim.g.vim_markdown_conceal_code_blocks = 0
+vim.g.vim_markdown_conceal = 0

@@ -12,13 +12,19 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({ 
-  { 'nvim-telescope/telescope.nvim', tag = '0.1.1', dependencies = { 'nvim-lua/plenary.nvim' } },
+  { "nvim-telescope/telescope.nvim", tag = "0.1.1", dependencies = { "nvim-lua/plenary.nvim" } },
   { url = "git@github.com:khiet/dracula-pro.git" },
   { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
-  { 'ThePrimeagen/harpoon' },
-  { 'tpope/vim-fugitive' },
-  { 'tpope/vim-rhubarb' },
-  { 'kyazdani42/nvim-tree.lua' },
-  { 'voldikss/vim-floaterm' },
-  { 'dominikduda/vim_current_word' },
+  { "ThePrimeagen/harpoon" },
+  { "tpope/vim-fugitive" },
+  { "tpope/vim-rhubarb" },
+  { "airblade/vim-gitgutter" },
+  { "kyazdani42/nvim-tree.lua" },
+  { "voldikss/vim-floaterm" },
+  { "dominikduda/vim_current_word" },
+  { "tpope/vim-surround" },
+  { "tpope/vim-repeat" },
+  { "junegunn/vim-easy-align" },
+  { "FooSoft/vim-argwrap" },
+  { "sheerun/vim-polyglot" },
 })
