@@ -21,8 +21,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'https://github.com/tpope/vim-repeat'
   Plug 'https://github.com/junegunn/vim-easy-align'
   Plug 'https://github.com/sheerun/vim-polyglot'
-  Plug 'https://github.com/junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
-  Plug 'https://github.com/junegunn/fzf.vim'
   Plug 'https://github.com/FooSoft/vim-argwrap'
   Plug 'https://github.com/itchyny/lightline.vim'
   Plug 'https://github.com/yggdroot/indentline'
@@ -75,24 +73,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'https://github.com/vimwiki/vimwiki', {'branch': 'dev'}
 call plug#end()
 
-noremap <Up>    <NOP>
-noremap <Down>  <NOP>
-noremap <Left>  <NOP>
-noremap <Right> <NOP>
-
-noremap q: <Nop>
-" disable ex-mode
-noremap Q <Nop>
-" https://thoughtbot.com/blog/vim-splits-move-faster-and-more-naturally
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
-
-let mapleader=" "
-
-nnoremap <leader>w :w<CR>
-
 " edit config files
 nnoremap <leader>ev :e <C-R>=expand($HOME."/.vimrc")<CR><CR>
 nnoremap <leader>eV :source $MYVIMRC<CR>
@@ -112,31 +92,16 @@ nnoremap <leader>ts :tab split<CR>
 nnoremap <leader>te :tabedit<CR>
 nnoremap <leader>tc :tabclose<CR>
 
-" windows
-nnoremap <leader>q :q<CR>
-nnoremap <leader>Q :q!<CR>
-" resize to equal width/height
-nmap <leader>= <C-w>=
-
-" marks
-nnoremap <silent> ]m ]'
-nnoremap <silent> [m ['
-
 " quickfix
 nnoremap <silent> ]q :cnext<CR>
 nnoremap <silent> [q :cprev<CR>
 nnoremap <silent> ]l :lnext<CR>
 nnoremap <silent> [l :lprev<CR>
 
-" save
-nnoremap <leader>x :x<CR>
 
 " replace
 nnoremap <leader>s :%s//
 vnoremap <leader>s :s//
-
-" noh
-nnoremap <leader>h :noh<CR>
 
 " reload
 nnoremap <leader>e :e!<CR>
@@ -149,16 +114,9 @@ nmap ga <Plug>(EasyAlign)
 " http://vim.wikia.com/wiki/Replace_a_word_with_yanked_text
 xnoremap <silent> p p:let @+=@0<CR>:let @"=@0<CR>
 
-" switch between the last two files
-" https://github.com/thoughtbot/dotfiles/blob/master/vimrc#L128
-nnoremap <leader><leader> <C-^>
-
 " indenting
 vnoremap << <gv
 vnoremap >> >gv
-
-set splitbelow
-set splitright
 
 " recognize .js without extension when gf
 set suffixesadd=.js
@@ -172,24 +130,12 @@ set laststatus=2
 set history=20
 " always show cursor position
 set ruler
-" search
-set hlsearch
-set ignorecase
-set incsearch
-set smartcase
-set number
-set cursorline
-set autoindent
 
 " allow opening a new file even if there are unsaved files
 set hidden
 " indenting
 set smartindent
 
-set nobackup
-set nowritebackup
-set noswapfile
-set backupcopy=yes " avoid 'safe write': https://webpack.js.org/guides/development/#adjusting-your-text-editor
 " tabs and spaces
 set expandtab " insert spaces when tab is pressed
 set tabstop=2 " spaces when tab is pressed
@@ -271,7 +217,6 @@ command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
 command! -nargs=* -bang RGW call RipgrepFzf(<q-args>, <bang>0, '$DEVS_HOME/vim/notes')
 
 " wiki
-nnoremap <silent> <leader>mf :Files $DEVS_HOME/vim/notes<CR>
 nnoremap <leader>mg :RGW 
 " vimwiki
 let g:vimwiki_list = [{'path': "$DEVS_HOME/vim/notes/vimwiki", 'syntax': 'markdown', 'ext': '.md'}]
@@ -304,17 +249,6 @@ let g:gitgutter_grep = 'rg'
 
 nmap <silent>[c <Plug>(GitGutterPrevHunk)
 nmap <silent>]c <Plug>(GitGutterNextHunk)
-
-" vim-floaterm
-nnoremap <silent>gl :FloatermNew lazygit<CR>
-nnoremap <silent>tn :FloatermNew<CR>
-" let g:floaterm_keymap_toggle = '<C-F>'
-let g:floaterm_height=0.9
-let g:floaterm_width=0.8
-
-" vim-fugitive
-nnoremap <silent>gb :GBrowse<CR>
-nnoremap <silent>gB :GBrowse!<CR>
 
 " vim-closetag
 let g:closetag_filenames = '*.html,*.erb,*.js,*.jsx,*.vue'
@@ -443,15 +377,7 @@ nnoremap <silent> <leader>rc :call CreateSpecFile()<CR>
 nnoremap <silent> <leader>td :call DeleteTrailingWhitespaces()<CR>
 
 if has('nvim')
-  " https://vi.stackexchange.com/a/22889
-  nnoremap <leader>k <Cmd>let @/='\<'.expand('<cword>').'\>'<bar>set hlsearch<CR>
-
   lua require('vimrc_lua_config')
-
-  set cmdheight=1
-
-  nnoremap <C-n> :NvimTreeFindFileToggle!<CR>
-  nnoremap <leader>ls :LspStop<CR>
 
   " text-case
   nnoremap gas :lua require('textcase').current_word('to_snake_case')<CR>
