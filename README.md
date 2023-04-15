@@ -17,8 +17,6 @@ cd; rm .zshrc; ln -s ~/dotfiles/_zshrc ~/.zshrc
 ## Symlink config files
 
 ```
-ln -s dotfiles ~/.vim
-ln -s ~/dotfiles/_vimrc ~/.vimrc
 ln -s ~/dotfiles/_gitconfig ~/.gitconfig
 ln -s ~/dotfiles/_ctags ~/.ctags
 ln -s ~/dotfiles/_tmux.conf ~/.tmux.conf
@@ -29,8 +27,7 @@ ln -s ~/dotfiles/_rgignore ~/.rgignore
 ln -s ~/dotfiles/.hammerspoon ~/.hammerspoon
 
 mkdir -p $XDG_CONFIG_HOME
-ln -s ~/.vim $XDG_CONFIG_HOME/nvim
-ln -s ~/.vimrc $XDG_CONFIG_HOME/nvim/init.vim
+ln -s ~/dotfiles $XDG_CONFIG_HOME/nvim
 
 ln -s ~/dotfiles/bat $XDG_CONFIG_HOME/bat
 
@@ -45,10 +42,4 @@ ln -s ~/dotfiles/_starship.toml $XDG_CONFIG_HOME/starship.toml
 
 ```
 cd ~/dotfiles; brew bundle
-```
-
-## Install neovim dependencies
-
-```
-python3 -m pip install --user --upgrade pynvim
 ```
