@@ -93,18 +93,6 @@ au BufRead,BufNewFile *.md set filetype=markdown
 au FileType markdown setlocal spell
 au FileType gitcommit setlocal spell
 
-" vim-test
-let test#strategy = "vimux"
-let g:VimuxOrientation = "h"
-let g:VimuxHeight = "25"
-let g:test#javascript#runner = 'vitest'
-let test#javascript#vitest#executable = 'pnpm run test'
-
-nnoremap <leader>T :TestNearest<CR>
-nnoremap <leader>tl :TestLast<CR>
-nnoremap <leader>tf :TestFile<CR>
-nnoremap <Leader>tL :call VimuxRunCommand("clear; bin/rake factory_bot:lint")<CR>
-
 " argwrap
 nnoremap <silent>gS :ArgWrap<CR>
 

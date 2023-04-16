@@ -27,4 +27,6 @@ require("lazy").setup({
   { "junegunn/vim-easy-align" },
   { "FooSoft/vim-argwrap" },
   { "sheerun/vim-polyglot" },
+  { "janko-m/vim-test" },
+  { "benmills/vimux" },
 })

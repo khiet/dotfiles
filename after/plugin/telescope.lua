@@ -21,8 +21,8 @@ require('telescope').setup({
   },
 })
 
-vim.keymap.set('n', '<C-f>', builtin.find_files, {})
-vim.keymap.set('n', '<C-b>', builtin.git_status, {})
+vim.keymap.set('n', '<C-f>', builtin.find_files, { noremap = true })
+vim.keymap.set('n', '<C-b>', builtin.git_status, { noremap = true })
 
 vim.keymap.set('n', '<leader>mf', function()
   require("telescope.builtin").find_files({cwd = (os.getenv("DEVS_HOME") .. "/vim/notes")})
