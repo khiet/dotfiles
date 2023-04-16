@@ -4,6 +4,7 @@ require("nvim.functions")
 require("nvim.lazy")
 
 vim.cmd('colorscheme dracula_pro')
+vim.o.ch = 0
 
 vim.cmd("au BufWinEnter *.md setlocal syntax=markdown")
 

@@ -2,16 +2,6 @@
 call plug#begin('~/.vim/plugged')
   Plug 'https://github.com/simeji/winresizer'
 
-  if has('nvim')
-
-    Plug 'https://github.com/norcalli/nvim-colorizer.lua'
-    Plug 'https://github.com/ggandor/leap.nvim', {'branch': 'main'}
-    Plug 'https://github.com/numToStr/Comment.nvim'
-
-    " Rust
-    Plug 'https://github.com/simrat39/rust-tools.nvim'
-  endif
-
   " HTML
   Plug 'https://github.com/alvan/vim-closetag'
   Plug 'https://github.com/AndrewRadev/tagalong.vim'

@@ -39,6 +39,8 @@ require("lazy").setup({
   },
   { "johmsalas/text-case.nvim" },
   { "nvim-lualine/lualine.nvim" },
+  { "norcalli/nvim-colorizer.lua" },
+  { "ggandor/leap.nvim" },
   -- LSP
   { 'neovim/nvim-lspconfig' },
   { 'williamboman/mason.nvim' },

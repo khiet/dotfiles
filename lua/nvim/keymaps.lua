@@ -43,6 +43,6 @@ vim.keymap.set('n', '<leader>s', [[:%s//]], { noremap = true })
 -- https://vi.stackexchange.com/a/22889
 vim.keymap.set('n', '<leader>k', [[<Cmd>let @/='\<'.expand('<cword>').'\>'<bar>set hlsearch<CR>]], { noremap = true })
 
-vim.keymap.set("n", "<leader>ev", ':e <C-R>=expand($HOME."/dotfiles/lua/nvim/")<CR><CR>', { noremap = true })
+vim.keymap.set("n", "<leader>ev", ':e <C-R>=expand($HOME."/dotfiles/")<CR><CR>', { noremap = true })
 vim.keymap.set("n", "<leader>ez", ':e <C-R>=expand($HOME."/dotfiles/_zshrc")<CR><CR>', { noremap = true })
 vim.keymap.set("n", "<leader>et", ':e <C-R>=expand($HOME."/dotfiles/_tmux.conf")<CR><CR>', { noremap = true })
