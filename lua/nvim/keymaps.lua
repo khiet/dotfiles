@@ -29,8 +29,8 @@ vim.keymap.set('x', 'p', [["_dP]], { silent = true, noremap = true })
 -- switch between the last two files
 vim.keymap.set('n', '<leader><leader>', '<C-^>', { noremap = true })
 
-vim.keymap.set({'n', 'v'}, '<<', '<gv', { noremap = true })
-vim.keymap.set({'n', 'v'}, '>>', '>gv', { noremap = true })
+vim.keymap.set({ 'n', 'v' }, '<<', '<gv', { noremap = true })
+vim.keymap.set({ 'n', 'v' }, '>>', '>gv', { noremap = true })
 
 vim.keymap.set('n', '<leader>=', "<C-w>=", { noremap = true })
 
@@ -40,7 +40,7 @@ vim.keymap.set('n', '<leader>bd', vim.cmd.bd, { noremap = true })
 
 vim.keymap.set('n', '<leader>h', vim.cmd.noh, { noremap = true })
 
-vim.keymap.set({'n', 'v'}, '<leader>s', [[:s//]], { noremap = true })
+vim.keymap.set({ 'n', 'v' }, '<leader>s', [[:s//]], { noremap = true })
 vim.keymap.set('n', '<leader>s', [[:%s//]], { noremap = true })
 
 -- https://vi.stackexchange.com/a/22889
