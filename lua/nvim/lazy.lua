@@ -38,4 +38,5 @@ require("lazy").setup({
     ft = { "markdown" }
   },
   { "johmsalas/text-case.nvim" },
+  { "nvim-lualine/lualine.nvim" },
 })

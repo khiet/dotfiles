@@ -1,7 +1,6 @@
 " PlugInstall, PlugClean, PlugUpdate
 call plug#begin('~/.vim/plugged')
   Plug 'https://github.com/simeji/winresizer'
-  Plug 'https://github.com/itchyny/lightline.vim'
 
   if has('nvim')
     Plug 'https://github.com/williamboman/mason.nvim', {'branch': 'main'}
