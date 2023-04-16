@@ -8,6 +8,11 @@ vim.o.ch = 0
 
 vim.cmd("au BufWinEnter *.md setlocal syntax=markdown")
 
+-- spellcheck
+vim.cmd("au BufRead,BufNewFile *.md set filetype=markdown")
+vim.cmd("au FileType markdown setlocal spell")
+vim.cmd("au FileType gitcommit setlocal spell")
+
 -- highlight trailing whitespaces
 vim.cmd([[au BufWritePre * match ExtraWhitespace /\s\+$/]])
 vim.cmd("hi ExtraWhitespace guibg=#ff5555")

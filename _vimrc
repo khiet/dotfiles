@@ -1,30 +1,3 @@
-" tabs
-nnoremap <silent> ]t :tabn<CR>
-nnoremap <silent> [t :tabp<CR>
-nnoremap <leader>ts :tab split<CR>
-nnoremap <leader>te :tabedit<CR>
-nnoremap <leader>tc :tabclose<CR>
-
-" quickfix
-nnoremap <silent> ]q :cnext<CR>
-nnoremap <silent> [q :cprev<CR>
-nnoremap <silent> ]l :lnext<CR>
-nnoremap <silent> [l :lprev<CR>
-
-" reload
-nnoremap <leader>e :e!<CR>
-
-" yank
-" http://vim.wikia.com/wiki/Replace_a_word_with_yanked_text
-xnoremap <silent> p p:let @+=@0<CR>:let @"=@0<CR>
-
-" recognize .js without extension when gf
-set suffixesadd=.js
-
-" filetype
-au BufRead,BufNewFile *.inky-haml set filetype=haml
-au BufRead,BufNewFile tsconfig.json set filetype=jsonc
-
 " spell-checking
 au BufRead,BufNewFile *.md set filetype=markdown
 au FileType markdown setlocal spell

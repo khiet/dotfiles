@@ -21,7 +21,10 @@ vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { noremap = true })
 vim.keymap.set('n', '<leader>w', vim.cmd.w, { noremap = true })
 vim.keymap.set('n', '<leader>x', vim.cmd.x, { noremap = true })
 vim.keymap.set('n', '<leader>q', vim.cmd.q, { noremap = true })
+vim.keymap.set('n', '<leader>e', ":e!<CR>", { noremap = true })
 vim.keymap.set('n', '<leader>Q', ":q!<CR>", { noremap = true })
+
+vim.keymap.set('x', 'p', [["_dP]], { silent = true, noremap = true })
 
 -- switch between the last two files
 vim.keymap.set('n', '<leader><leader>', '<C-^>', { noremap = true })
