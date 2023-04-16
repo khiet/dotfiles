@@ -22,6 +22,7 @@ cask "trailer"
 cask "notion"
 cask "fantastical"
 cask "bitwarden"
+cask "vincelwt-chatgpt"
 # cask "sequel-pro"
 
 brew "git"
