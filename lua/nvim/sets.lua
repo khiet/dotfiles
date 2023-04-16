@@ -36,9 +36,3 @@ vim.cmd("set cmdheight=1")
 vim.cmd("set laststatus=2")
 
 vim.cmd('set termguicolors')
-
-vim.cmd("au BufWinEnter *.md setlocal syntax=markdown")
-
--- highlight trailing whitespaces
-vim.cmd([[au BufWritePre * match ExtraWhitespace /\s\+$/]])
-vim.cmd("hi ExtraWhitespace guibg=#ff5555")
