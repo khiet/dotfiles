@@ -77,10 +77,10 @@ vim.keymap.set('n', '<leader>h', vim.cmd.noh, { noremap = true })
 vim.keymap.set('n', '<leader><leader>', '<C-^>', { noremap = true })
 
 vim.keymap.set('n', '<leader>s', ":%s//", { noremap = true })
--- ❓vim.keymap.set({'n', 'v'}, '<leader>s', ":s//", { noremap = true })
+vim.keymap.set({'n', 'v'}, '<leader>s', [[:s//]], { noremap = true })
 
 -- https://vi.stackexchange.com/a/22889
--- ❓vim.keymap.set('n', '<leader>k', "<Cmd>let @/='\<'.expand('<cword>').'\>'<bar>set hlsearch<CR>", { noremap = true })
+vim.keymap.set('n', '<leader>k', [[<Cmd>let @/='\<'.expand('<cword>').'\>'<bar>set hlsearch<CR>]], { noremap = true })
 
 vim.cmd("au BufWinEnter *.md setlocal syntax=markdown")
 
