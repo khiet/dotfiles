@@ -7,6 +7,7 @@
   "nvim-treesitter": { "branch": "master", "commit": "f90a80a5a5b8c4b54be96e91a10d774d60afccc1" },
   "plenary.nvim": { "branch": "master", "commit": "9ac3e9541bbabd9d73663d757e4fe48a675bb054" },
   "telescope.nvim": { "branch": "master", "commit": "c1a2af0af69e80e14e6b226d3957a064cd080805" },
+  "text-case.nvim": { "branch": "main", "commit": "cd7cc65a412beb713e68f3b84e45990a939b7b6b" },
   "vim-argwrap": { "branch": "master", "commit": "feaba6b8b6ca099d267c81ee2c4ba43ce6de8499" },
   "vim-easy-align": { "branch": "master", "commit": "12dd6316974f71ce333e360c0260b4e1f81169c3" },
   "vim-floaterm": { "branch": "master", "commit": "ff6a8719baf17ab79df730b7ee9227444ee6a088" },

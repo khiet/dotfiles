@@ -15,7 +15,6 @@ call plug#begin('~/.vim/plugged')
     Plug 'https://github.com/hrsh7th/cmp-nvim-lsp', {'branch': 'main'}
     Plug 'https://github.com/saadparwaiz1/cmp_luasnip'
     Plug 'https://github.com/L3MON4D3/LuaSnip', {'tag': '*'}
-    Plug 'https://github.com/johmsalas/text-case.nvim', {'branch': 'main'}
     Plug 'https://github.com/numToStr/Comment.nvim'
 
     " Rust
@@ -178,10 +177,4 @@ nnoremap <silent> <leader>td :call DeleteTrailingWhitespaces()<CR>
 
 if has('nvim')
   lua require('vimrc_lua_config')
-
-  " text-case
-  nnoremap gas :lua require('textcase').current_word('to_snake_case')<CR>
-  nnoremap gak :lua require('textcase').current_word('to_dash_case')<CR>
-  nnoremap gac :lua require('textcase').current_word('to_camel_case')<CR>
-  nnoremap gap :lua require('textcase').current_word('to_pascal_case')<CR>
 end

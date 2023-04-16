@@ -37,4 +37,5 @@ require("lazy").setup({
     init = function() vim.g.mkdp_filetypes = { "markdown" } end,
     ft = { "markdown" }
   },
+  { "johmsalas/text-case.nvim" },
 })
