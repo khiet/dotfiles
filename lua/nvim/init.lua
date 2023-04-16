@@ -95,3 +95,6 @@ vim.keymap.set('n', 'ga', "<Plug>(EasyAlign)", { noremap = true })
 vim.g.csv_no_conceal = 1
 vim.g.vim_markdown_conceal_code_blocks = 0
 vim.g.vim_markdown_conceal = 0
+
+-- vim-argwrap
+vim.keymap.set('n', 'gS', vim.cmd.ArgWrap, { silent = true, noremap = true })

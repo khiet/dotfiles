@@ -93,9 +93,6 @@ au BufRead,BufNewFile *.md set filetype=markdown
 au FileType markdown setlocal spell
 au FileType gitcommit setlocal spell
 
-" argwrap
-nnoremap <silent>gS :ArgWrap<CR>
-
 " lightline
 set noshowmode
 let g:lightline = {
