@@ -28,7 +28,7 @@ function has_character(char)
 end
 
 function search_dictionary()
-  os.execute('open "https://dictionary.cambridge.org/dictionary/english/'..vim.fn.expand('<cword>')..'"')
+  os.execute('open "https://dictionary.cambridge.org/dictionary/english/' .. vim.fn.expand('<cword>') .. '"')
 end
 
 function create_spec_file()

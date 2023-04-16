@@ -34,8 +34,18 @@ return {
 
       vim.keymap.set('n', '<C-f>', builtin.find_files, { noremap = true })
       vim.keymap.set('n', '<C-g>', builtin.git_status, { noremap = true })
-      vim.keymap.set('n', '<leader>g', function() builtin.live_grep({ disable_coordinates = true }) end, { noremap = true })
-      vim.keymap.set('n', '<leader>G', function() builtin.grep_string({ disable_coordinates = true }) end, { noremap = true })
+      vim.keymap.set(
+        'n',
+        '<leader>g',
+        function() builtin.live_grep({ disable_coordinates = true }) end,
+        { noremap = true }
+      )
+      vim.keymap.set(
+        'n',
+        '<leader>G',
+        function() builtin.grep_string({ disable_coordinates = true }) end,
+        { noremap = true }
+      )
 
       vim.keymap.set(
         'n',
