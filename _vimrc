@@ -166,9 +166,6 @@ function! ConsoleLog()
   execute "normal! yiwo" . "console.log" . "('')\<C-[>F';a\<C-[>pf'a, \<C-[>p<CR>"
 endfunction
 
-function! SearchDictionary()
-  silent execute '!open "https://dictionary.cambridge.org/dictionary/english/' . expand('<cword>') . '"'
-endfunction
 " -----------------------------------------------
 
 nnoremap <silent> <leader>cd :call AddDebugBreakpoint()<CR>
@@ -176,7 +173,6 @@ nnoremap <silent> <leader>cl :call ConsoleLog()<CR>
 nnoremap <silent> <leader>cq :call ReplaceCurlyQuotes()<CR>
 nnoremap <silent> <leader>ct :call RunCtags()<CR>
 nnoremap <silent> <leader>cs :call RunScript()<CR>
-nnoremap <silent> <leader>cD :call SearchDictionary()<CR>
 nnoremap <silent> <leader>rc :call CreateSpecFile()<CR>
 nnoremap <silent> <leader>td :call DeleteTrailingWhitespaces()<CR>
 
