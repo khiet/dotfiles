@@ -31,4 +31,10 @@ require("lazy").setup({
   { "janko-m/vim-test" },
   { "benmills/vimux" },
   { "vimwiki/vimwiki", branch = "dev" },
+  {
+    "iamcco/markdown-preview.nvim",
+    build = "cd app && npm install",
+    init = function() vim.g.mkdp_filetypes = { "markdown" } end,
+    ft = { "markdown" }
+  },
 })

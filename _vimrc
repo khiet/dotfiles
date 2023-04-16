@@ -20,17 +20,11 @@ call plug#begin('~/.vim/plugged')
 
     " Rust
     Plug 'https://github.com/simrat39/rust-tools.nvim'
-
-    " Markdown
-    Plug 'https://github.com/iamcco/markdown-preview.nvim', {'do': 'cd app && yarn install'}
   endif
 
   " HTML
   Plug 'https://github.com/alvan/vim-closetag'
   Plug 'https://github.com/AndrewRadev/tagalong.vim'
-
-  " Wiki
-  Plug 'https://github.com/vimwiki/vimwiki', {'branch': 'dev'}
 call plug#end()
 
 " tabs

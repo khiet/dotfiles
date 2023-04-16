@@ -104,6 +104,9 @@ vim.g.vim_markdown_conceal = 0
 -- vim-argwrap
 vim.keymap.set('n', 'gS', vim.cmd.ArgWrap, { silent = true, noremap = true })
 
+-- markdown-preview
+vim.keymap.set('n', '<leader>em', "<Plug>MarkdownPreviewToggle", { noremap = true })
+
 -- functions
 function delete_trailing_whitespaces()
   local s = vim.fn.getreg('/')
