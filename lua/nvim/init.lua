@@ -51,7 +51,6 @@ vim.cmd("set updatetime=200")
 vim.cmd("set cmdheight=1")
 vim.cmd("set laststatus=2")
 
-vim.cmd([[set listchars=tab:»\ ,eol:$,nbsp:%,trail:~,extends:>,precedes:<]])
 vim.cmd('colorscheme dracula_pro')
 vim.cmd('set termguicolors')
 

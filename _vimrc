@@ -25,9 +25,6 @@ call plug#begin('~/.vim/plugged')
     Plug 'https://github.com/iamcco/markdown-preview.nvim', {'do': 'cd app && yarn install'}
   endif
 
-  " Rails
-  Plug 'https://github.com/tpope/vim-rails'
-
   " HTML
   Plug 'https://github.com/alvan/vim-closetag'
   Plug 'https://github.com/AndrewRadev/tagalong.vim'
@@ -125,40 +122,6 @@ au BufWinEnter *.md setlocal syntax=markdown
 let g:closetag_filenames = '*.html,*.erb,*.js,*.jsx,*.vue'
 " tagalong
 let g:tagalong_filetypes = ['html', 'xml', 'eruby', 'javascript', 'javascriptreact', 'typescriptreact', 'vue']
-
-" vim-rails
-nnoremap <leader>rr :R<CR>
-nnoremap <leader>ra :A<CR>
-" https://github.com/tpope/vim-rails/issues/368#issuecomment-265086019
-let g:rails_projections = {
-\   "app/controllers/*_controller.rb": {
-\     "test": ["spec/requests/{}_request_spec.rb", "spec/requests/{}_spec.rb"]
-\   },
-\   "spec/requests/*_spec.rb": {
-\     "alternate": "app/controllers/{}_controller.rb"
-\   },
-\   "spec/requests/*_request_spec.rb": {
-\     "alternate": "app/controllers/{}_controller.rb"
-\   },
-\ }
-
-" -----------------------------------------------
-"    OS specifics
-" -----------------------------------------------
-" :h feature-list to check OS for specific settings
-if has("mac") " Mac
-  " <C-x><C-k> to complete
-  " location of dictionary on Mac
-  set dictionary+=/usr/share/dict/words
-  set complete+=kspell
-
-  " invisibles
-  set listchars=tab:»\ ,eol:$,nbsp:%,trail:~,extends:>,precedes:<
-
-  "clipboard: http://vim.wikia.com/wiki/Mac_OS_X_clipboard_sharing
-  set clipboard=unnamed " yank to "* register i.e. system clipboard
-endif
-" -----------------------------------------------
 
 " -----------------------------------------------
 "    function
