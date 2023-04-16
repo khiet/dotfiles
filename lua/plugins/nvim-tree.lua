@@ -1,6 +1,7 @@
 return {
   {
     "kyazdani42/nvim-tree.lua",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
       require("nvim-tree").setup({
         view = {
@@ -34,7 +35,7 @@ return {
         },
       })
 
-      vim.keymap.set('n', '<C-n>', ":NvimTreeFindFileToggle!<CR>", { noremap = true })
+      vim.keymap.set('n', '<C-n>', vim.cmd.NvimTreeFindFileToggle, { noremap = true })
     end
   }
 }
