@@ -11,7 +11,7 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup({ 
+require("lazy").setup({
   { "nvim-telescope/telescope.nvim", tag = "0.1.1", dependencies = { "nvim-lua/plenary.nvim" } },
   { url = "git@github.com:khiet/dracula-pro.git" },
   { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
@@ -39,4 +39,13 @@ require("lazy").setup({
   },
   { "johmsalas/text-case.nvim" },
   { "nvim-lualine/lualine.nvim" },
+  -- LSP
+  { 'neovim/nvim-lspconfig' },
+  { 'williamboman/mason.nvim' },
+  { 'williamboman/mason-lspconfig.nvim' },
+  { 'hrsh7th/nvim-cmp' },
+  { 'hrsh7th/cmp-nvim-lsp' },
+  { 'saadparwaiz1/cmp_luasnip' },
+  { 'L3MON4D3/LuaSnip' },
+  { 'simrat39/rust-tools.nvim' },
 })

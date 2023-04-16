@@ -3,17 +3,9 @@ call plug#begin('~/.vim/plugged')
   Plug 'https://github.com/simeji/winresizer'
 
   if has('nvim')
-    Plug 'https://github.com/williamboman/mason.nvim', {'branch': 'main'}
-    Plug 'https://github.com/williamboman/mason-lspconfig.nvim', {'branch': 'main'}
+
     Plug 'https://github.com/norcalli/nvim-colorizer.lua'
-    Plug 'https://github.com/nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-    Plug 'https://github.com/neovim/nvim-lspconfig'
-    Plug 'https://github.com/kyazdani42/nvim-tree.lua'
     Plug 'https://github.com/ggandor/leap.nvim', {'branch': 'main'}
-    Plug 'https://github.com/hrsh7th/nvim-cmp', {'branch': 'main'}
-    Plug 'https://github.com/hrsh7th/cmp-nvim-lsp', {'branch': 'main'}
-    Plug 'https://github.com/saadparwaiz1/cmp_luasnip'
-    Plug 'https://github.com/L3MON4D3/LuaSnip', {'tag': '*'}
     Plug 'https://github.com/numToStr/Comment.nvim'
 
     " Rust
