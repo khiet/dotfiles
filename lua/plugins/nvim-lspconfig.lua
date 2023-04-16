@@ -88,6 +88,9 @@ return {
       require'lspconfig'.jsonls.setup({
           on_attach = on_attach,
         })
+      require'lspconfig'.lua_ls.setup({
+          on_attach = on_attach,
+        })
       require'lspconfig'.volar.setup({
           on_attach = on_attach,
           init_options = {
