@@ -66,31 +66,6 @@ let g:lightline = {
 hi clear SpellBad
 hi SpellBad gui=underline guifg=#ff5555
 
-" fzf
-nnoremap <silent> <C-F> :Files<CR>
-nnoremap <silent> <C-B> :Buffers<CR>
-nnoremap <silent> <C-G> :GFiles?<CR>
-
-nnoremap <silent> <D-E> :GFiles?<CR>
-
-" nnoremap <silent> <c-?> :Commits<CR>
-nnoremap <leader>g :RG 
-let g:fzf_action = { 'ctrl-l': 'edit', 'ctrl-t': 'tab split', 'ctrl-x': 'split', 'ctrl-v': 'vsplit' }
-let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.9 } }
-let g:fzf_preview_window = ['down:75%']
-
-" https://github.com/junegunn/fzf.vim#example-advanced-ripgrep-integration
-function! RipgrepFzf(query, fullscreen, directory = '.')
-  let command_fmt = 'rg --sort-files --column --line-number --no-heading --color=always --smart-case -- %s --files ' . a:directory . ' || true'
-  let initial_command = printf(command_fmt, shellescape(a:query))
-  let reload_command = printf(command_fmt, '{q}')
-  let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
-  call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
-endfunction
-
-command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
-command! -nargs=* -bang RGW call RipgrepFzf(<q-args>, <bang>0, '$DEVS_HOME/vim/notes')
-
 " vim-closetag
 let g:closetag_filenames = '*.html,*.erb,*.js,*.jsx,*.vue'
 " tagalong
