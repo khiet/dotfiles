@@ -11,44 +11,4 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup({
-  { "nvim-telescope/telescope.nvim", tag = "0.1.1", dependencies = { "nvim-lua/plenary.nvim" } },
-  { url = "git@github.com:khiet/dracula-pro.git" },
-  { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
-  { "ThePrimeagen/harpoon" },
-  { "airblade/vim-gitgutter" },
-  { "kyazdani42/nvim-tree.lua" },
-  { "voldikss/vim-floaterm" },
-  { "dominikduda/vim_current_word" },
-  { "tpope/vim-fugitive" },
-  { "tpope/vim-rhubarb" },
-  { "tpope/vim-surround" },
-  { "tpope/vim-repeat" },
-  { "tpope/vim-rails" },
-  { "junegunn/vim-easy-align" },
-  { "FooSoft/vim-argwrap" },
-  { "sheerun/vim-polyglot" },
-  { "janko-m/vim-test" },
-  { "benmills/vimux" },
-  { "vimwiki/vimwiki", branch = "dev" },
-  {
-    "iamcco/markdown-preview.nvim",
-    build = "cd app && npm install",
-    init = function() vim.g.mkdp_filetypes = { "markdown" } end,
-    ft = { "markdown" }
-  },
-  { "johmsalas/text-case.nvim" },
-  { "nvim-lualine/lualine.nvim" },
-  { "norcalli/nvim-colorizer.lua" },
-  { "ggandor/leap.nvim" },
-  { 'windwp/nvim-ts-autotag' },
-  -- LSP
-  { 'neovim/nvim-lspconfig' },
-  { 'williamboman/mason.nvim' },
-  { 'williamboman/mason-lspconfig.nvim' },
-  { 'hrsh7th/nvim-cmp' },
-  { 'hrsh7th/cmp-nvim-lsp' },
-  { 'saadparwaiz1/cmp_luasnip' },
-  { 'L3MON4D3/LuaSnip' },
-  { 'simrat39/rust-tools.nvim' },
-})
+require("lazy").setup("plugins")

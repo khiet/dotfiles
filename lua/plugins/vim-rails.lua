@@ -1,5 +1,12 @@
-vim.keymap.set('n', '<leader>rr', vim.cmd.R, { noremap = true })
-vim.keymap.set('n', '<leader>ra', vim.cmd.A, { noremap = true })
+return {
+  {
+    "tpope/vim-rails",
+    config = function()
+      vim.keymap.set('n', '<leader>rr', vim.cmd.R, { noremap = true })
+      vim.keymap.set('n', '<leader>ra', vim.cmd.A, { noremap = true })
+    end
+  }
+}
 
 -- let g:rails_projections = {
 -- \   "app/controllers/*_controller.rb": {
