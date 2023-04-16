@@ -1,5 +1,3 @@
-vim.opt.termguicolors = true
-
 require("nvim-tree").setup({
   view = {
     adaptive_size = true,
@@ -11,7 +9,7 @@ require("nvim-tree").setup({
       },
     },
   },
-  renderer = { 
+  renderer = {
     group_empty = true,
     icons = {
       glyphs = {

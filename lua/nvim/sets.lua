@@ -35,4 +35,4 @@ vim.cmd("set updatetime=200")
 vim.cmd("set cmdheight=1")
 vim.cmd("set laststatus=2")
 
-vim.cmd('set termguicolors')
+vim.opt.termguicolors = true
