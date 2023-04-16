@@ -30,4 +30,5 @@ require("lazy").setup({
   { "sheerun/vim-polyglot" },
   { "janko-m/vim-test" },
   { "benmills/vimux" },
+  { "vimwiki/vimwiki", branch = "dev" },
 })

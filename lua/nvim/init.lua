@@ -82,6 +82,8 @@ vim.keymap.set('n', '<leader>s', ":%s//", { noremap = true })
 -- https://vi.stackexchange.com/a/22889
 -- ❓vim.keymap.set('n', '<leader>k', "<Cmd>let @/='\<'.expand('<cword>').'\>'<bar>set hlsearch<CR>", { noremap = true })
 
+vim.cmd("au BufWinEnter *.md setlocal syntax=markdown")
+
 -- highlight trailing whitespaces
 vim.cmd([[au BufWritePre * match ExtraWhitespace /\s\+$/]])
 vim.cmd("hi ExtraWhitespace guibg=#ff5555")

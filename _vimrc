@@ -99,25 +99,6 @@ endfunction
 command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
 command! -nargs=* -bang RGW call RipgrepFzf(<q-args>, <bang>0, '$DEVS_HOME/vim/notes')
 
-" wiki
-nnoremap <leader>mg :RGW 
-" vimwiki
-let g:vimwiki_list = [{'path': "$DEVS_HOME/vim/notes/vimwiki", 'syntax': 'markdown', 'ext': '.md'}]
-let g:vimwiki_key_mappings =
-  \ {
-  \   'all_maps': 1,
-  \   'global': 0,
-  \   'headers': 0,
-  \   'text_objs': 0,
-  \   'table_format': 0,
-  \   'table_mappings': 0,
-  \   'lists': 0,
-  \   'links': 1,
-  \   'html': 0,
-  \   'mouse': 0,
-  \ }
-au BufWinEnter *.md setlocal syntax=markdown
-
 " vim-closetag
 let g:closetag_filenames = '*.html,*.erb,*.js,*.jsx,*.vue'
 " tagalong
