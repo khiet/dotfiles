@@ -1,12 +1,3 @@
-" PlugInstall, PlugClean, PlugUpdate
-call plug#begin('~/.vim/plugged')
-  Plug 'https://github.com/simeji/winresizer'
-
-  " HTML
-  Plug 'https://github.com/alvan/vim-closetag'
-  Plug 'https://github.com/AndrewRadev/tagalong.vim'
-call plug#end()
-
 " tabs
 nnoremap <silent> ]t :tabn<CR>
 nnoremap <silent> [t :tabp<CR>
@@ -48,12 +39,7 @@ let g:lightline = {
 hi clear SpellBad
 hi SpellBad gui=underline guifg=#ff5555
 
-" vim-closetag
-let g:closetag_filenames = '*.html,*.erb,*.js,*.jsx,*.vue'
-" tagalong
-let g:tagalong_filetypes = ['html', 'xml', 'eruby', 'javascript', 'javascriptreact', 'typescriptreact', 'vue']
-
-" -----------------------------------------------
+" " -----------------------------------------------
 "    function
 " -----------------------------------------------
 function IsAJavascript()

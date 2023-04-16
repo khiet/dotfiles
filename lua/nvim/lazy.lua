@@ -41,6 +41,7 @@ require("lazy").setup({
   { "nvim-lualine/lualine.nvim" },
   { "norcalli/nvim-colorizer.lua" },
   { "ggandor/leap.nvim" },
+  { 'windwp/nvim-ts-autotag' },
   -- LSP
   { 'neovim/nvim-lspconfig' },
   { 'williamboman/mason.nvim' },
