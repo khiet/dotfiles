@@ -4,9 +4,8 @@ require("nvim.functions")
 require("nvim.lazy")
 
 vim.cmd('colorscheme dracula_pro')
-vim.o.ch = 0
 
-vim.cmd("au BufWinEnter *.md setlocal syntax=markdown")
+vim.o.ch = 0
 
 -- spellcheck
 vim.cmd("au BufRead,BufNewFile *.md set filetype=markdown")

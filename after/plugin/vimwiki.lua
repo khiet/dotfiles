@@ -16,3 +16,5 @@ vim.g.vimwiki_key_mappings = {{
   html = 0,
   mouse = 0,
 }}
+
+vim.cmd("au BufWinEnter *.md setlocal syntax=markdown")
