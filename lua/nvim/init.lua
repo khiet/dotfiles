@@ -63,7 +63,7 @@ vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { noremap = true })
 vim.keymap.set('n', '<leader>w', vim.cmd.w, { noremap = true })
 vim.keymap.set('n', '<leader>x', vim.cmd.x, { noremap = true })
 vim.keymap.set('n', '<leader>q', vim.cmd.q, { noremap = true })
-vim.keymap.set('n', '<leader>Q', "vim.cmd.q!", { noremap = true })
+vim.keymap.set('n', '<leader>Q', ":q!<CR>", { noremap = true })
 vim.keymap.set('n', '<leader>=', "<C-w>=", { noremap = true })
 
 vim.keymap.set({'n', 'v'}, '<<', '<gv', { noremap = true })
@@ -82,6 +82,10 @@ vim.keymap.set('n', '<leader>s', ":%s//", { noremap = true })
 
 -- https://vi.stackexchange.com/a/22889
 -- ❓vim.keymap.set('n', '<leader>k', "<Cmd>let @/='\<'.expand('<cword>').'\>'<bar>set hlsearch<CR>", { noremap = true })
+
+-- highlight trailing whitespaces
+vim.cmd([[au BufWritePre * match ExtraWhitespace /\s\+$/]])
+vim.cmd("hi ExtraWhitespace guibg=#ff5555")
 
 -- vim_current_word
 vim.cmd("hi CurrentWord gui=underline")

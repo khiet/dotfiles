@@ -1,17 +1,3 @@
-if has('nvim')
-  " https://neovim.io/doc/user/nvim.html#nvim-from-vim
-  set runtimepath^=~/.vim runtimepath+=~/.vim/after
-  let &packpath = &runtimepath
-endif
-
-" vim-plug
-" automatic installation: https://github.com/junegunn/vim-plug/wiki/tips#automatic-installation
-let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
-if empty(glob(data_dir . '/autoload/plug.vim'))
-  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-endif
-
 " PlugInstall, PlugClean, PlugUpdate
 call plug#begin('~/.vim/plugged')
   Plug 'https://github.com/simeji/winresizer'
@@ -39,10 +25,6 @@ call plug#begin('~/.vim/plugged')
     Plug 'https://github.com/iamcco/markdown-preview.nvim', {'do': 'cd app && yarn install'}
   endif
 
-  " Tmux
-  Plug 'https://github.com/janko-m/vim-test'
-  Plug 'https://github.com/benmills/vimux'
-
   " Rails
   Plug 'https://github.com/tpope/vim-rails'
 
@@ -53,13 +35,6 @@ call plug#begin('~/.vim/plugged')
   " Wiki
   Plug 'https://github.com/vimwiki/vimwiki', {'branch': 'dev'}
 call plug#end()
-
-" edit config files
-nnoremap <leader>ev :e <C-R>=expand($HOME."/.vimrc")<CR><CR>
-nnoremap <leader>eV :source $MYVIMRC<CR>
-nnoremap <leader>ez :e <C-R>=expand($HOME."/.zshrc")<CR><CR>
-nnoremap <leader>et :e <C-R>=expand($HOME."/.tmux.conf")<CR><CR>
-nnoremap <leader>em <Plug>MarkdownPreviewToggle
 
 " tabs
 nnoremap <silent> ]t :tabn<CR>
@@ -145,14 +120,6 @@ let g:vimwiki_key_mappings =
   \   'mouse': 0,
   \ }
 au BufWinEnter *.md setlocal syntax=markdown
-
-" vim_current_word
-hi CurrentWord gui=underline
-hi CurrentWordTwins gui=underline
-
-" highlight trailing whitespaces
-au BufWritePre * match ExtraWhitespace /\s\+$/
-hi ExtraWhitespace guibg=#ff5555
 
 " vim-closetag
 let g:closetag_filenames = '*.html,*.erb,*.js,*.jsx,*.vue'
