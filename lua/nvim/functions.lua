@@ -27,6 +27,23 @@ function has_character(char)
   return false
 end
 
+function pretty_print_table(tbl, indent)
+  if not indent then indent = 0 end
+
+  for k, v in pairs(tbl) do
+    formatting = string.rep("  ", indent) .. k .. ": "
+
+    if type(v) == "table" then
+      print(formatting)
+      pretty_print_table(v, indent + 1)
+    elseif type(v) == "boolean" then
+      print(formatting .. tostring(v))
+    else
+      print(formatting .. v)
+    end
+  end
+end
+
 function search_dictionary()
   os.execute('open "https://dictionary.cambridge.org/dictionary/english/' .. vim.fn.expand('<cword>') .. '"')
 end
