@@ -11,9 +11,6 @@ vim.opt.number = true
 
 vim.opt.swapfile = false
 vim.opt.backup = false
-vim.opt.writebackup = false
--- avoid 'safe write': https://webpack.js.org/guides/development/#adjusting-your-text-editor
-vim.opt.backupcopy = "yes"
 
 vim.opt.expandtab = true
 vim.opt.tabstop = 2
@@ -22,15 +19,13 @@ vim.opt.softtabstop = 2
 
 vim.opt.hlsearch = true
 vim.opt.incsearch = true
+vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
 vim.opt.termguicolors = true
 
 vim.opt.signcolumn = "yes"
 vim.opt.updatetime = 200
-
-vim.opt.backspace = "indent,eol,start"
-vim.opt.iskeyword:append("-")
-
-vim.opt.cmdheight = 1
 vim.opt.laststatus = 2
+
+vim.opt.iskeyword:append("-")
