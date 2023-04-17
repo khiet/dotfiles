@@ -2,14 +2,14 @@ return {
   {
     "vimwiki/vimwiki",
     branch = "dev",
-    config = function()
+    init = function()
       vim.g.vimwiki_list = { {
         path = (os.getenv("DEVS_HOME") .. "/vim/notes/vimwiki"),
         syntax = 'markdown',
         ext = '.md'
       } }
 
-      vim.g.vimwiki_key_mappings = { {
+      vim.g.vimwiki_key_mappings = {
         all_maps = 1,
         global = 0,
         headers = 0,
@@ -20,8 +20,9 @@ return {
         links = 1,
         html = 0,
         mouse = 0,
-      } }
-
+      }
+    end,
+    config = function()
       vim.cmd("au BufWinEnter *.md setlocal syntax=markdown")
     end
   }
