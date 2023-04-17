@@ -1,7 +1,7 @@
 return {
   {
     "airblade/vim-gitgutter",
-    config = function()
+    init = function()
       -- turn off all key mappings
       vim.g.gitgutter_map_keys = 0
       vim.g.gitgutter_grep = 'rg'
