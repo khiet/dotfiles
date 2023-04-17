@@ -2,7 +2,7 @@ return {
   { "benmills/vimux" },
   {
     "janko-m/vim-test",
-    config = function()
+    init = function()
       vim.g.VimuxOrientation = "h"
       vim.g.VimuxHeight = "25"
       vim.g['test#strategy'] = 'vimux'

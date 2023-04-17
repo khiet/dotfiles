@@ -1,7 +1,7 @@
 return {
   {
     "tpope/vim-rails",
-    config = function()
+    init = function()
       vim.keymap.set('n', '<leader>rr', vim.cmd.R, { noremap = true })
       vim.keymap.set('n', '<leader>ra', vim.cmd.A, { noremap = true })
     end

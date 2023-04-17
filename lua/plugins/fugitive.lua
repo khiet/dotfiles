@@ -1,7 +1,7 @@
 return {
   {
     "tpope/vim-fugitive",
-    config = function()
+    init = function()
       vim.keymap.set("n", "gb", vim.cmd.GBrowse, { silent = true })
     end
   }
