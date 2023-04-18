@@ -47,9 +47,11 @@ vim.keymap.set("n", "<leader>S", [[:%s/\<<C-r><C-w>\>/]], { noremap = true })
 -- https://vi.stackexchange.com/a/22889
 vim.keymap.set('n', '<leader>k', [[<Cmd>let @/='\<'.expand('<cword>').'\>'<bar>set hlsearch<CR>]], { noremap = true })
 
+vim.keymap.set("n", "<C-d>", "<C-d>zz", { noremap = true })
+vim.keymap.set("n", "<C-u>", "<C-u>zz", { noremap = true })
+
 vim.keymap.set("n", "<leader>ev", ':e <C-R>=expand($HOME."/dotfiles/")<CR><CR>', { noremap = true })
 vim.keymap.set("n", "<leader>ez", ':e <C-R>=expand($HOME."/dotfiles/_zshrc")<CR><CR>', { noremap = true })
 vim.keymap.set("n", "<leader>et", ':e <C-R>=expand($HOME."/dotfiles/_tmux.conf")<CR><CR>', { noremap = true })
-
-vim.keymap.set("n", "<C-d>", "<C-d>zz", { noremap = true })
-vim.keymap.set("n", "<C-u>", "<C-u>zz", { noremap = true })
+vim.cmd([[au BufEnter,BufWinEnter _zshrc set filetype=zsh]])
+vim.cmd([[au BufEnter,BufWinEnter _tmux.conf set filetype=tmux]])
