@@ -24,7 +24,8 @@ vim.keymap.set('n', '<leader>q', vim.cmd.q, { noremap = true })
 vim.keymap.set('n', '<leader>e', ":e!<CR>", { noremap = true })
 vim.keymap.set('n', '<leader>Q', ":q!<CR>", { noremap = true })
 
-vim.keymap.set('x', 'p', [["_dP]], { silent = true, noremap = true })
+-- http://vim.wikia.com/wiki/Replace_a_word_with_yanked_text
+vim.keymap.set('x', 'p', [[p:let @+=@0<CR>:let @"=@0<CR>]], { silent = true, noremap = true })
 
 -- switch between the last two files
 vim.keymap.set('n', '<leader><leader>', '<C-^>', { noremap = true })
