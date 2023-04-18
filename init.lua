@@ -6,7 +6,6 @@ require("nvim.lazy")
 vim.o.ch = 1
 
 -- spellcheck
-vim.cmd("au BufRead,BufNewFile *.md set filetype=markdown")
 vim.cmd("au FileType markdown setlocal spell")
 vim.cmd("au FileType gitcommit setlocal spell")
 

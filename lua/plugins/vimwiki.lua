@@ -6,7 +6,7 @@ return {
       vim.g.vimwiki_list = { {
         path = (os.getenv("DEVS_HOME") .. "/vim/notes/vimwiki"),
         syntax = 'markdown',
-        ext = '.md'
+        ext = '.md',
       } }
 
       vim.g.vimwiki_key_mappings = {
@@ -23,7 +23,7 @@ return {
       }
     end,
     config = function()
-      vim.cmd("au BufWinEnter *.md setlocal syntax=markdown")
+      vim.cmd("au BufEnter,BufWinEnter *.md setlocal syntax=markdown")
     end
   }
 }
