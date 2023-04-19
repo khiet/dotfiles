@@ -49,6 +49,7 @@ vim.keymap.set("n", "<leader>S", [[:%s/\<<C-r><C-w>\>/]], { noremap = true })
 vim.keymap.set('n', '<leader>k', [[<Cmd>let @/='\<'.expand('<cword>').'\>'<bar>set hlsearch<CR>]], { noremap = true })
 
 vim.keymap.set("n", "J", "mzJ`z")
+vim.keymap.set({ "n", "v" }, "K", [[:s/ /\r/g<CR>]])
 vim.keymap.set("n", "<C-d>", "<C-d>zz", { noremap = true })
 vim.keymap.set("n", "<C-u>", "<C-u>zz", { noremap = true })
 
