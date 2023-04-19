@@ -57,8 +57,8 @@ alias be="bundle exec"
 alias dc="docker compose"
 alias rr="bin/rails restart"
 alias rc="bin/rails console -- --nomultiline"
-alias rl="tail -f -n 1000 log/development.log"
-alias rlc="tail -f -n 1000 log/development.log | rg -A 6 Controller"
+alias rl="tail -f -n 1000 log/development.log | lnav"
+alias rlc="tail -f -n 1000 log/development.log | rg -A 10 Controller | lnav"
 
 if which bat &>/dev/null; then
   alias cat='bat'
