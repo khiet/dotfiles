@@ -1,3 +1,26 @@
+local function on_attach(bufnr)
+  local api = require('nvim-tree.api')
+
+  local function opts(desc)
+    return { desc = 'nvim-tree: ' .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
+  end
+
+  -- https://github.com/nvim-tree/nvim-tree.lua/wiki/Migrating-To-on_attach
+  vim.keymap.set('n', 'a', api.fs.create, opts('Create'))
+  vim.keymap.set('n', 'c', api.fs.copy.node, opts('Copy'))
+  vim.keymap.set('n', 'd', api.fs.remove, opts('Delete'))
+  vim.keymap.set('n', 'g?', api.tree.toggle_help, opts('Help'))
+  vim.keymap.set('n', 'p', api.fs.paste, opts('Paste'))
+  vim.keymap.set('n', 'r', api.fs.rename, opts('Rename'))
+  vim.keymap.set('n', 'x', api.fs.cut, opts('Cut'))
+  vim.keymap.set('n', 'yf', api.fs.copy.filename, opts('Copy Name'))
+  vim.keymap.set('n', 'yp', api.fs.copy.relative_path, opts('Copy Relative Path'))
+
+  vim.keymap.set('n', 'yP', api.fs.copy.absolute_path, opts('Copy Absolute Path'))
+  vim.keymap.set('n', 'l', api.node.open.edit, opts('Open'))
+  vim.keymap.set('n', 'o', api.node.run.system, opts('Run System'))
+end
+
 return {
   {
     "kyazdani42/nvim-tree.lua",
@@ -5,15 +28,9 @@ return {
     keys = { "<C-n>" },
     config = function()
       require("nvim-tree").setup({
+        on_attach = on_attach,
         view = {
           adaptive_size = true,
-          mappings = {
-            list = {
-              { key = "l", action = "edit" },
-              { key = "Y", action = "copy_absolute_path" },
-              { key = "o", action = "system_open" },
-            },
-          },
         },
         renderer = {
           group_empty = true,
