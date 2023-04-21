@@ -5,7 +5,6 @@
   "dracula-pro": { "branch": "main", "commit": "ffb0d17eebfb000a9ad8aeb46fd8a276f0eab3c2" },
   "harpoon": { "branch": "master", "commit": "f7040fd0c44e7a4010369136547de5604b9c22a1" },
   "lazy.nvim": { "branch": "main", "commit": "eddee830ede0f95ced9802ca9abd3f8f662e5cc5" },
-  "leap.nvim": { "branch": "main", "commit": "98a72ad93c629c49bd7127d342960cc1b159b620" },
   "lualine.nvim": { "branch": "master", "commit": "84ffb80e452d95e2c46fa29a98ea11a240f7843e" },
   "markdown-preview.nvim": { "branch": "master", "commit": "02cc3874738bc0f86e4b91f09b8a0ac88aef8e96" },
   "mason-lspconfig.nvim": { "branch": "main", "commit": "6c8f7afd6162fa27719f9da9792e4314da41c501" },
