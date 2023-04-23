@@ -44,8 +44,12 @@ function pretty_print_table(tbl, indent)
   end
 end
 
-function search_dictionary()
-  os.execute('open "https://dictionary.cambridge.org/dictionary/english/' .. vim.fn.expand('<cword>') .. '"')
+function search_dictionary(lang)
+  if lang == 'en' then
+    os.execute('open "https://dictionary.cambridge.org/dictionary/english/' .. vim.fn.expand('<cword>') .. '"')
+  elseif lang == 'jp' then
+    os.execute('open "https://www.google.com/search?q=' .. vim.fn.expand('<cword>') .. '+意味"')
+  end
 end
 
 function create_spec_file()
@@ -67,8 +71,10 @@ function run_script()
   end
 end
 
-vim.keymap.set('n', '<leader>td', delete_trailing_whitespaces, { noremap = true })
-vim.keymap.set('n', '<leader>cd', search_dictionary, { noremap = true })
+vim.keymap.set('n', '<leader>cd', function() search_dictionary('en') end, { noremap = true })
+vim.keymap.set('n', '<leader>cD', function() search_dictionary('jp') end, { noremap = true })
+vim.keymap.set('n', '<leader>cw', delete_trailing_whitespaces, { noremap = true })
 vim.keymap.set('n', '<leader>cq', replace_curly_quotes, { noremap = true })
-vim.keymap.set('n', '<leader>rc', create_spec_file, { noremap = true })
 vim.keymap.set('n', '<leader>cs', run_script, { noremap = true })
+
+vim.keymap.set('n', '<leader>rc', create_spec_file, { noremap = true })
