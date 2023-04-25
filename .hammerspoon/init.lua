@@ -15,63 +15,36 @@ end
 
 -- Bind option + h/j/k/l to arrows
 
-remap({'option'}, 'h', function()
+remap({ 'option' }, 'h', function()
   hs.eventtap.keyStroke({}, 'left', 1000)
 end)
-remap({'option'}, 'j', function()
+remap({ 'option' }, 'j', function()
   hs.eventtap.keyStroke({}, 'down', 1000)
 end)
-remap({'option'}, 'k', function()
+remap({ 'option' }, 'k', function()
   hs.eventtap.keyStroke({}, 'up', 1000)
 end)
-remap({'option'}, 'l', function()
+remap({ 'option' }, 'l', function()
   hs.eventtap.keyStroke({}, 'right', 1000)
 end)
 
--- Map ESC, ` and ~ as:
---
--- ESC	ESC or control + [
--- `	fn1 + ESC
--- ~	shift + ESC
-
 -- bind control + [ to escape
-hs.hotkey.bind({'control'}, '[', function()
+hs.hotkey.bind({ 'control' }, '[', function()
   hs.eventtap.keyStroke({}, 'escape')
-end)
-
-hs.hotkey.bind({'shift'}, 'escape', function()
-  hs.eventtap.keyStrokes('~')
 end)
 
 -- Disable default bindings
 
-hs.hotkey.bind({'command'}, 'h', function()
+hs.hotkey.bind({ 'command' }, 'h', function()
 end)
-hs.hotkey.bind({'command'}, 'm', function()
+hs.hotkey.bind({ 'command' }, 'm', function()
 end)
-hs.hotkey.bind({'command', 'control'}, 'f', function()
+hs.hotkey.bind({ 'command', 'control' }, 'f', function()
 end)
-
--- Control volumes
-
-hs.eventtap.new({hs.eventtap.event.types.scrollWheel}, function(e)
-  -- event from mouse and not trackpad
-  if e:getProperty(hs.eventtap.event.properties.scrollWheelEventMomentumPhase) == 0 then
-    if e:getProperty(hs.eventtap.event.properties.scrollWheelEventScrollPhase) == 0 then
-      local horizontalScrolDelta = e:getProperty(hs.eventtap.event.properties.scrollWheelEventDeltaAxis2)
-
-      if horizontalScrolDelta < 0 then
-        sendSystemKey("SOUND_UP")
-      elseif horizontalScrolDelta > 0 then
-        sendSystemKey("SOUND_DOWN")
-      end
-    end
-  end
-end):start()
 
 -- Manage windows
 
-hs.hotkey.bind({"command", "option"}, "[", function()
+hs.hotkey.bind({ "command", "option" }, "[", function()
   local win = hs.window.focusedWindow()
   local f = win:frame()
   local screen = win:screen()
@@ -98,7 +71,7 @@ hs.hotkey.bind({"command", "option"}, "[", function()
   win:setFrame(f)
 end)
 
-hs.hotkey.bind({"command", "option"}, "]", function()
+hs.hotkey.bind({ "command", "option" }, "]", function()
   local win = hs.window.focusedWindow()
   local f = win:frame()
   local screen = win:screen()
@@ -128,7 +101,7 @@ hs.hotkey.bind({"command", "option"}, "]", function()
   win:setFrame(f)
 end)
 
-hs.hotkey.bind({"command", "option"}, "return", function()
+hs.hotkey.bind({ "command", "option" }, "return", function()
   local win = hs.window.focusedWindow()
   local f = win:frame()
   local screen = win:screen()
