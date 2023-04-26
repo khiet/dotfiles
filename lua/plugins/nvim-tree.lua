@@ -7,7 +7,7 @@ local function on_attach(bufnr)
 
   -- https://github.com/nvim-tree/nvim-tree.lua/wiki/Migrating-To-on_attach
   vim.keymap.set('n', 'a', api.fs.create, opts('Create'))
-  vim.keymap.set('n', 'c', api.fs.copy.node, opts('Copy'))
+  vim.keymap.set('n', 'yy', api.fs.copy.node, opts('Copy'))
   vim.keymap.set('n', 'd', api.fs.remove, opts('Delete'))
   vim.keymap.set('n', 'g?', api.tree.toggle_help, opts('Help'))
   vim.keymap.set('n', 'p', api.fs.paste, opts('Paste'))
@@ -15,6 +15,7 @@ local function on_attach(bufnr)
   vim.keymap.set('n', 'x', api.fs.cut, opts('Cut'))
   vim.keymap.set('n', 'yf', api.fs.copy.filename, opts('Copy Name'))
   vim.keymap.set('n', 'yp', api.fs.copy.relative_path, opts('Copy Relative Path'))
+  vim.keymap.set('n', 'q', api.tree.close, opts('Close'))
 
   vim.keymap.set('n', 'yP', api.fs.copy.absolute_path, opts('Copy Absolute Path'))
   vim.keymap.set('n', 'l', api.node.open.edit, opts('Open'))
