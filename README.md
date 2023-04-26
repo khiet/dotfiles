@@ -24,7 +24,7 @@ ln -s ~/dotfiles/_hushlogin ~/.hushlogin
 ln -s ~/dotfiles/_ripgreprc ~/.ripgreprc
 ln -s ~/dotfiles/_rgignore ~/.rgignore
 
-ln -s ~/dotfiles/.hammerspoon ~/.hammerspoon
+ln -s ~/dotfiles/_hammerspoon ~/.hammerspoon
 
 mkdir -p $XDG_CONFIG_HOME
 ln -s ~/dotfiles $XDG_CONFIG_HOME/nvim
