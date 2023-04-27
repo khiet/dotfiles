@@ -19,3 +19,5 @@ vim.cmd("hi CurrentWordTwins gui=underline")
 
 -- set filetype
 vim.cmd([[au BufRead,BufNewFile *.inky-haml set filetype=haml]])
+-- set filetype overwriting plugins
+vim.cmd("au BufEnter,BufWinEnter *.yml set syntax=yaml")
