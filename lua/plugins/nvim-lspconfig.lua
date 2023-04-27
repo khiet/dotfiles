@@ -73,25 +73,14 @@ return {
         vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
       end
 
-      require('lspconfig').solargraph.setup({
-        on_attach = on_attach,
-      })
-      require('lspconfig').tsserver.setup({
-        on_attach = on_attach,
-      })
-      require('lspconfig').eslint.setup({
-        on_attach = on_attach,
-      })
-      require('lspconfig').tailwindcss.setup({
-        on_attach = on_attach,
-      })
-      require('lspconfig').jsonls.setup({
-        on_attach = on_attach,
-      })
-      require('lspconfig').lua_ls.setup({
-        on_attach = on_attach,
-      })
-      require('lspconfig').volar.setup({
+      local lspconfig = require('lspconfig')
+
+      local servers = { 'solargraph', 'tsserver', 'eslint', 'tailwindcss', 'jsonls', 'lua_ls' }
+      for _, server in ipairs(servers) do
+        lspconfig[server].setup({ on_attach = on_attach })
+      end
+
+      lspconfig.volar.setup({
         on_attach = on_attach,
         init_options = {
           typescript = {
@@ -101,7 +90,7 @@ return {
       })
 
       -- rust-tools
-      local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
+      local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
       require("rust-tools").setup({
         server = {
