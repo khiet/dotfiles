@@ -5,20 +5,22 @@ return {
     dependencies = {
       'williamboman/mason.nvim',
       'williamboman/mason-lspconfig.nvim',
-      'hrsh7th/nvim-cmp',
-      'hrsh7th/cmp-nvim-lsp',
-      'saadparwaiz1/cmp_luasnip',
-      'L3MON4D3/LuaSnip',
+      'hrsh7th/nvim-cmp',         -- autocompletion
+      'hrsh7th/cmp-nvim-lsp',     -- LSP source
+      'saadparwaiz1/cmp_luasnip', -- snippet source
+      'L3MON4D3/LuaSnip',         -- snippet
       'simrat39/rust-tools.nvim',
     },
     config = function()
-      -- mason
       require("mason").setup()
 
-      -- nvim-cmp
       vim.o.completeopt = "menu,menuone,noselect"
 
+      local luasnip = require("luasnip")
+      require("snippets.all")
+
       -- https://github.com/hrsh7th/nvim-cmp/wiki/Language-Server-Specific-Samples#rust-with-rust-toolsnvim
+      -- https://github.com/neovim/nvim-lspconfig/wiki/Snippets
       local cmp = require('cmp')
       cmp.setup({
         completion = {
@@ -26,20 +28,36 @@ return {
         },
         mapping = {
           ["<C-Space>"] = cmp.mapping.complete(),
-          ["<C-n>"] = cmp.mapping.select_next_item(),
-          ["<C-p>"] = cmp.mapping.select_prev_item(),
+          ["<C-n>"] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+              cmp.select_next_item()
+            elseif luasnip.expand_or_locally_jumpable() then
+              luasnip.expand_or_jump()
+            else
+              fallback()
+            end
+          end, { "i", "s" }),
+          ["<C-p>"] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+              cmp.select_prev_item()
+            elseif luasnip.jumpable(-1) then
+              luasnip.jump(-1)
+            else
+              fallback()
+            end
+          end, { 'i', 's' }),
           ['<C-b>'] = cmp.mapping.scroll_docs(-4),
           ['<C-f>'] = cmp.mapping.scroll_docs(4),
-          ['<C-e>'] = cmp.mapping.abort(),
           ['<CR>'] = cmp.mapping.confirm({ select = true }),
         },
         snippet = {
           expand = function(args)
-            require("luasnip").lsp_expand(args.body)
+            luasnip.lsp_expand(args.body)
           end,
         },
         sources = cmp.config.sources({
           { name = "nvim_lsp" },
+          { name = 'luasnip' },
         }),
       })
 
