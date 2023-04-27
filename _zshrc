@@ -55,6 +55,7 @@ function gF { rg --files --no-ignore --sort path | rg --regexp $1 }
 # rails
 alias be="bundle exec"
 alias dc="docker compose"
+alias dcr="docker compose run -i web"
 alias rr="bin/rails restart"
 alias rc="bin/rails console -- --nomultiline"
 alias rl="tail -f -n 1000 log/development.log | lnav"
