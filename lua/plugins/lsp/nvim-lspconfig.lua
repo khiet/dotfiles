@@ -3,8 +3,6 @@ return {
   {
     'neovim/nvim-lspconfig',
     dependencies = {
-      'williamboman/mason.nvim',
-      'williamboman/mason-lspconfig.nvim',
       'hrsh7th/nvim-cmp',         -- autocompletion
       'hrsh7th/cmp-nvim-lsp',     -- LSP source
       'saadparwaiz1/cmp_luasnip', -- snippet source
@@ -12,8 +10,6 @@ return {
       'simrat39/rust-tools.nvim',
     },
     config = function()
-      require("mason").setup()
-
       vim.o.completeopt = "menu,menuone,noselect"
 
       local luasnip = require("luasnip")
