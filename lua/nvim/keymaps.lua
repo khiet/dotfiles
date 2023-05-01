@@ -53,8 +53,7 @@ set("n", "<leader>S", [[:%s/\<<C-r><C-w>\>/]], opt_n)
 -- https://vi.stackexchange.com/a/22889
 set('n', '<leader>k', [[<Cmd>let @/='\<'.expand('<cword>').'\>'<bar>set hlsearch<CR>]], opt_n)
 
-set("n", "J", "mzJ`z")
-set({ "n", "v" }, "K", [[:s/ /\r/g<CR>]])
+set("n", "J", "mzJ`z", opt_n)
 set("n", "<C-d>", "<C-d>zz", opt_n)
 set("n", "<C-u>", "<C-u>zz", opt_n)
 
