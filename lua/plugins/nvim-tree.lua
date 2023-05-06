@@ -16,6 +16,7 @@ local function on_attach(bufnr)
   vim.keymap.set('n', 'yf', api.fs.copy.filename, opts('Copy Name'))
   vim.keymap.set('n', 'yp', api.fs.copy.relative_path, opts('Copy Relative Path'))
   vim.keymap.set('n', 'q', api.tree.close, opts('Close'))
+  vim.keymap.set('n', 'R', api.tree.reload, opts('Refresh'))
 
   vim.keymap.set('n', 'yP', api.fs.copy.absolute_path, opts('Copy Absolute Path'))
   vim.keymap.set('n', 'l', api.node.open.edit, opts('Open'))
