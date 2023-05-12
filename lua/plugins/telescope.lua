@@ -4,7 +4,7 @@ return {
     tag = "0.1.1",
     dependencies = { "nvim-lua/plenary.nvim" },
     init = function()
-      local builtin = require('telescope.builtin')
+      local builtin = require("telescope.builtin")
 
       vim.keymap.set('n', '<C-f>', builtin.find_files, { noremap = true })
       vim.keymap.set('n', '<C-g>', builtin.git_status, { noremap = true })
@@ -34,6 +34,7 @@ return {
     config = function()
       local actions = require("telescope.actions")
 
+      -- default_mappings: https://github.com/nvim-telescope/telescope.nvim/blob/master/lua/telescope/mappings.lua#L133
       require('telescope').setup({
         defaults = {
           sorting_strategy = 'ascending',
@@ -44,6 +45,7 @@ return {
             i = {
               ["<esc>"] = actions.close,
               ["<C-u>"] = false,
+              ["<C-o>"] = actions.send_selected_to_qflist + actions.open_qflist,
             },
           },
         },
