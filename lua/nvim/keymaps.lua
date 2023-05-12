@@ -44,6 +44,9 @@ set('n', '[b', vim.cmd.bp, opt_sn)
 set('n', ']b', vim.cmd.bn, opt_sn)
 set('n', '<leader>bd', vim.cmd.bd, opt_n)
 
+set('n', '[q', vim.cmd.cn, opt_sn)
+set('n', ']q', vim.cmd.cp, opt_sn)
+
 set('n', '<leader>h', vim.cmd.noh, opt_n)
 
 set({ 'n', 'v' }, '<leader>s', [[:s//]], opt_n)
