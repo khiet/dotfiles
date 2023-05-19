@@ -20,4 +20,16 @@ luasnip.add_snippets("all", {
     "cl",
     {t("console.log('"), i(1, "message"), t("');")}
   ),
+  s(
+    "obr",
+    {t("open_banking_reports")}
+  ),
+  s(
+    "rt",
+    {t("recurring_transactions")}
+  ),
+  s(
+    "et",
+    {t("enriched_transactions")}
+  ),
 })
