@@ -24,7 +24,6 @@ cask "fantastical"
 cask "bitwarden"
 cask "vincelwt-chatgpt"
 cask "lnav"
-cask "zoxide"
 cask "procs"
 # cask "sequel-pro"
 
