@@ -57,8 +57,8 @@ alias dc="docker compose"
 alias dcr="docker compose run -i web"
 alias rr="bin/rails restart"
 alias rc="bin/rails console -- --nomultiline"
-alias rl="tail -f -n 1000 log/development.log | lnav"
-alias rlc="tail -f -n 1000 log/development.log | rg -A 10 Controller | lnav"
+alias rl="tail -f -n 1000 log/development.log"
+alias rlc="tail -f -n 1000 log/development.log | rg -A 10 Controller"
 
 if which bat &>/dev/null; then
   alias cat='bat'

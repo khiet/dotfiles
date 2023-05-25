@@ -23,7 +23,6 @@ cask "notion"
 cask "fantastical"
 cask "bitwarden"
 cask "vincelwt-chatgpt"
-cask "lnav"
 cask "procs"
 # cask "sequel-pro"
 
