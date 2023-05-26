@@ -38,27 +38,7 @@ alias caly='cal -y'
 alias public_ip='curl ipinfo.io/ip'
 alias private_ip='ipconfig getifaddr en0'
 
-# tmux
-alias ta='tmux attach -t'
-alias tn='tmux new -s'
-alias tls='tmux ls'
-alias tkill='tmux kill-session -t'
-
-# ripgrep
-alias g="rg --sort-files --hidden"
-alias G="rg --sort-files --no-ignore --hidden"
-alias gw="rg --sort-files -w --hidden"
-function gf { rg --files --sort path | rg --regexp $1 }
-function gF { rg --files --no-ignore --sort path | rg --regexp $1 }
-
-# rails
-alias be="bundle exec"
 alias dc="docker compose"
-alias dcr="docker compose run -i web"
-alias rr="bin/rails restart"
-alias rc="bin/rails console -- --nomultiline"
-alias rl="tail -f -n 1000 log/development.log"
-alias rlc="tail -f -n 1000 log/development.log | rg -A 10 Controller"
 
 if which bat &>/dev/null; then
   alias cat='bat'
@@ -74,30 +54,6 @@ if which nvim &>/dev/null; then
   alias vim=''
   export EDITOR='nvim'
 fi
-
-# fzf
-if which fzf &>/dev/null; then
-  export FZF_DEFAULT_COMMAND='rg --files --hidden'
-  export FZF_DEFAULT_OPTS='--height 50% --layout=reverse --no-info --border=rounded'
-
-  [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-fi
-
-if which tmuxinator &>/dev/null; then
-  alias mux=tmuxinator
-  export TMUXINATOR_CONFIG=$DEVS_HOME/tmuxinator
-fi
-
-# nvm
-export NVM_DIR="$HOME/.nvm"
-[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && . "/opt/homebrew/opt/nvm/nvm.sh" --no-use
-function nvm_use {
-  if [[ -f ".nvmrc" && ($(nvm current) = "system")]]; then
-    nvm use 1> /dev/null
-  fi
-}
-nvm_use
-function chpwd { nvm_use }
 
 # find and replace with rg
 function gR  { rg -0 -l "$1" | AGR_FROM="$1" AGR_TO="$2" xargs -0 perl -pi -e 's/$ENV{AGR_FROM}/$ENV{AGR_TO}/g' }
@@ -120,27 +76,6 @@ alias gdel="git branch --merged | egrep -v '(^\*|master)' | xargs git branch -d"
 function gbr { git co -b $(kebab "$1") }
 function gsp { sp $(git rev-parse --abbrev-ref HEAD) }
 
-# youtube-dl
-function dl {
-  if [[ $1 && $2 ]]; then
-    youtube-dl -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best' -o "~/youtube/$2.%(ext)s" $1
-  elif [[ $1 ]]; then
-    youtube-dl -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best' -o '~/youtube/%(title)s-%(id)s.%(ext)s' $1
-  fi
-}
-
-function db_restore { pg_restore --verbose --clean --no-acl --no-owner -h localhost -d $1 $DEVS_HOME/dumps/$2 }
-
-function db_dump {
-  if [[ $1 && $2 ]]; then
-    pg_dump -Fc --no-acl --no-owner -h localhost $1 > $DEVS_HOME/dumps/$(kebab $(date +%b_%d_%a_%H%M)-$(kebab $2)).dump
-  elif [[ $1 ]]; then
-    pg_dump -Fc --no-acl --no-owner -h localhost $1 > $DEVS_HOME/dumps/$(kebab $(date +%b_%d_%a_%H%M)).dump
-  else
-    echo "<database> must be specified"
-  fi
-}
-
 # kafka
 alias rpc='docker run -p 8080:8080 -e KAFKA_BROKERS="$KAFKA_BOOTSTRAP_SERVERS" -e KAFKA_TLS_ENABLED=true -e KAFKA_SASL_ENABLED=true -e KAFKA_SASL_USERNAME="$KAFKA_SASL_USERNAME" -e KAFKA_SASL_PASSWORD="$KAFKA_SASL_PASSWORD" -e KAFKA_SASL_MECHANISM=SCRAM-SHA-512 docker.redpanda.com/vectorized/console:latest'
 
@@ -148,4 +83,20 @@ eval "$(rbenv init -)"
 PATH="$XDG_DATA_HOME/nvim/mason/bin:$PATH"
 
 eval "$(starship init zsh)"
-eval "$(zoxide init zsh)"
+eval "$(fnm env --use-on-cd)"
+
+external_source_files=(
+  "$HOME/dotfiles/zshrc/fzf.zsh"
+  "$HOME/dotfiles/zshrc/wezterm.zsh"
+  "$HOME/dotfiles/zshrc/ripgrep.zsh"
+  "$HOME/dotfiles/zshrc/tmux.zsh"
+  "$HOME/dotfiles/zshrc/tmuxinator.zsh"
+  "$HOME/dotfiles/zshrc/rails.zsh"
+  "$HOME/dotfiles/zshrc/youtube-dl.zsh"
+  "$HOME/dotfiles/zshrc/psql.zsh"
+  "$HOME/dotfiles/zshrc/private/pave.zsh"
+)
+
+for file in "${external_source_files[@]}"; do
+  source "$file"
+done
