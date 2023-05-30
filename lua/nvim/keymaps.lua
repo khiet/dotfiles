@@ -51,7 +51,6 @@ set('n', '<leader>h', vim.cmd.noh, opt_n)
 
 set({ 'n', 'v' }, '<leader>s', [[:s//]], opt_n)
 set('n', '<leader>s', [[:%s//]], opt_n)
-set("n", "<leader>S", [[:%s/\<<C-r><C-w>\>/]], opt_n)
 
 -- https://vi.stackexchange.com/a/22889
 set('n', '<leader>k', [[<Cmd>let @/='\<'.expand('<cword>').'\>'<bar>set hlsearch<CR>]], opt_n)
