@@ -1,5 +1,4 @@
 return {
-  { "tpope/vim-rhubarb" },
   {
     "voldikss/vim-floaterm",
     init = function()
