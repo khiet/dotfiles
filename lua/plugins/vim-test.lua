@@ -10,6 +10,7 @@ return {
       vim.g['test#javascript#runner'] = 'vitest'
 
       vim.g['test#javascript#vitest#executable'] = 'pnpm run test'
+      vim.g['test#rust#cargotest#test_options'] = '-- --nocapture'
 
       vim.keymap.set('n', '<leader>T', vim.cmd.TestNearest, { noremap = true })
       vim.keymap.set('n', '<leader>tl', vim.cmd.TestLast, { noremap = true })
