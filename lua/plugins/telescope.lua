@@ -8,8 +8,7 @@ return {
 
       vim.keymap.set('n', '<C-f>', builtin.find_files, { noremap = true })
       vim.keymap.set('n', '<C-g>', builtin.git_status, { noremap = true })
-      vim.keymap.set('n', '<C-b>', builtin.buffers, { noremap = true })
-      vim.keymap.set('n', '<leader>r', builtin.resume, { noremap = true })
+      vim.keymap.set('n', '<C-b>', builtin.resume, { noremap = true })
       vim.keymap.set(
         'n',
         '<leader>g',
