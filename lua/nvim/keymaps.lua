@@ -2,7 +2,7 @@ vim.g.mapleader = " "
 
 local set = vim.keymap.set
 
-local opt_n =  { noremap = true }
+local opt_n = { noremap = true }
 local opt_sn = { silent = true, noremap = true }
 
 -- disable command-line window
@@ -58,6 +58,11 @@ set('n', '<leader>k', [[<Cmd>let @/='\<'.expand('<cword>').'\>'<bar>set hlsearch
 set("n", "J", "mzJ`z", opt_n)
 set("n", "<C-d>", "<C-d>zz", opt_n)
 set("n", "<C-u>", "<C-u>zz", opt_n)
+
+set('n', '+', '<C-w>5+', opt_n)
+set('n', '_', '<C-w>5-', opt_n)
+set('n', '-', '<C-w>5<', opt_n)
+set('n', '=', '<C-w>5>', opt_n)
 
 set("n", "<leader>ev", ':e <C-R>=expand($HOME."/dotfiles/")<CR><CR>', opt_n)
 set("n", "<leader>ez", ':e <C-R>=expand($HOME."/dotfiles/_zshrc")<CR><CR>', opt_n)
