@@ -18,6 +18,7 @@ local function on_attach(bufnr)
   vim.keymap.set('n', 'q', api.tree.close, opts('Close'))
   vim.keymap.set('n', 'R', api.tree.reload, opts('Refresh'))
   vim.keymap.set('n', '-', api.tree.change_root_to_parent, opts('Up'))
+  vim.keymap.set('n', 'I', api.tree.toggle_gitignore_filter, opts('Toggle Git Ignore'))
 
   vim.keymap.set('n', 'yP', api.fs.copy.absolute_path, opts('Copy Absolute Path'))
   vim.keymap.set('n', 'l', api.node.open.edit, opts('Open'))
