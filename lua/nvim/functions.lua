@@ -12,6 +12,20 @@ function replace_curly_quotes()
   end
 end
 
+function convert_to_emojis_and_symbols()
+  if has_character('->') then
+    vim.cmd([[%s/->/→/g]])
+  end
+
+  if has_character(':bulb:') then
+    vim.cmd([[%s/:bulb:/💡/g]])
+  end
+
+  if has_character(':warning:') then
+    vim.cmd([[%s/:warning:/⚠️/g]])
+  end
+end
+
 function has_character(char)
   local character = char
 
@@ -75,6 +89,7 @@ vim.keymap.set('n', '<leader>cd', function() search_dictionary('en') end, { nore
 vim.keymap.set('n', '<leader>cD', function() search_dictionary('jp') end, { noremap = true })
 vim.keymap.set('n', '<leader>cw', delete_trailing_whitespaces, { noremap = true })
 vim.keymap.set('n', '<leader>cq', replace_curly_quotes, { noremap = true })
+vim.keymap.set('n', '<leader>cm', convert_to_emojis_and_symbols, { noremap = true })
 vim.keymap.set('n', '<leader>cs', run_script, { noremap = true })
 
 vim.keymap.set('n', '<leader>rc', create_spec_file, { noremap = true })
