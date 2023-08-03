@@ -4,17 +4,15 @@ hs.hotkey.bind({ "command", "option" }, "[", function()
   local win = hs.window.focusedWindow()
   local f = win:frame()
   local screen = win:screen()
-  local max = screen:frame()
+  local screenFrame = screen:frame()
 
-  local halfWidth = max.w / 2
-  local oneQuarterWidth = halfWidth / 2
-  local threeQuarterWidth = halfWidth + oneQuarterWidth
+  local fullWidth = screenFrame.w
+  local halfWidth = math.floor(fullWidth / 2)
+  local oneQuarterWidth = math.floor(fullWidth  / 4)
+  local threeQuarterWidth = fullWidth - oneQuarterWidth
 
-  f.x = max.x
-  f.y = max.y
-  if f.w >= 0 and f.w < oneQuarterWidth then
-    f.w = oneQuarterWidth
-  elseif f.w >= oneQuarterWidth and f.w < halfWidth then
+  f.x = screenFrame.x
+  if f.w >= 0 and f.w < halfWidth then
     f.w = halfWidth
   elseif f.w >= halfWidth and f.w < threeQuarterWidth then
     f.w = threeQuarterWidth
@@ -22,7 +20,8 @@ hs.hotkey.bind({ "command", "option" }, "[", function()
     f.w = oneQuarterWidth
   end
 
-  f.h = max.h
+  f.y = screenFrame.y
+  f.h = screenFrame.h
 
   win:setFrame(f)
 end)
@@ -31,28 +30,26 @@ hs.hotkey.bind({ "command", "option" }, "]", function()
   local win = hs.window.focusedWindow()
   local f = win:frame()
   local screen = win:screen()
-  local max = screen:frame()
+  local screenFrame = screen:frame()
 
-  local halfWidth = max.w / 2
-  local oneQuarterWidth = halfWidth / 2
-  local threeQuarterWidth = halfWidth + oneQuarterWidth
+  local fullWidth = screenFrame.w
+  local halfWidth = math.floor(fullWidth / 2)
+  local oneQuarterWidth = math.floor(fullWidth  / 4)
+  local threeQuarterWidth = fullWidth - oneQuarterWidth
 
-  if f.w >= 0 and f.w < oneQuarterWidth then
-    f.x = max.x + threeQuarterWidth
-    f.w = oneQuarterWidth
-  elseif f.w >= oneQuarterWidth and f.w < halfWidth then
-    f.x = max.x + halfWidth
+  if f.w >= 0 and f.w < halfWidth then
+    f.x = screenFrame.x + halfWidth
     f.w = halfWidth
   elseif f.w >= halfWidth and f.w < threeQuarterWidth then
-    f.x = max.x + oneQuarterWidth
+    f.x = screenFrame.x + oneQuarterWidth
     f.w = threeQuarterWidth
   else
-    f.x = max.x + threeQuarterWidth
+    f.x = screenFrame.x + threeQuarterWidth
     f.w = oneQuarterWidth
   end
 
-  f.y = max.y
-  f.h = max.h
+  f.y = screenFrame.y
+  f.h = screenFrame.h
 
   win:setFrame(f)
 end)
@@ -61,11 +58,11 @@ hs.hotkey.bind({ "command", "option" }, "return", function()
   local win = hs.window.focusedWindow()
   local f = win:frame()
   local screen = win:screen()
-  local max = screen:frame()
+  local screenFrame = screen:frame()
 
-  f.x = max.x
-  f.y = max.y
-  f.w = max.w
-  f.h = max.h
+  f.x = screenFrame.x
+  f.y = screenFrame.y
+  f.w = screenFrame.w
+  f.h = screenFrame.h
   win:setFrame(f)
 end)
