@@ -16,7 +16,7 @@ setopt INC_APPEND_HISTORY
 
 export STARSHIP_CONFIG=$XDG_CONFIG_HOME/starship.toml
 export RIPGREP_CONFIG_PATH=$HOME/.ripgreprc
-export DEVS_HOME=$HOME/Library/CloudStorage/Dropbox/Devs
+export DEVS_HOME=$HOME/Dropbox/Devs
 
 bindkey '^h' backward-delete-char
 
