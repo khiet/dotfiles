@@ -89,7 +89,14 @@ return {
 
       local lspconfig = require('lspconfig')
 
-      local servers = { 'solargraph', 'tsserver', 'eslint', 'tailwindcss', 'jsonls', 'lua_ls' }
+      local servers = {
+        'solargraph',
+        'tsserver',
+        'eslint',
+        'tailwindcss',
+        'jsonls',
+        'lua_ls'
+      }
       for _, server in ipairs(servers) do
         lspconfig[server].setup({ on_attach = on_attach })
       end
