@@ -22,7 +22,7 @@ cask "slack"
 cask "trailer"
 cask "notion"
 cask "bitwarden"
-# cask "sequel-pro"
+cask "orbstack"
 
 brew "git"
 brew "lazygit"
