@@ -23,6 +23,7 @@ cask "trailer"
 cask "notion"
 cask "bitwarden"
 cask "orbstack"
+cask "meetingbar"
 
 brew "git"
 brew "lazygit"
