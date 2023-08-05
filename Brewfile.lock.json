@@ -134,6 +134,12 @@
         "options": {
           "full_name": "orbstack"
         }
+      },
+      "meetingbar": {
+        "version": "4.5.1",
+        "options": {
+          "full_name": "meetingbar"
+        }
       }
     },
     "brew": {
