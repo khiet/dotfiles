@@ -24,6 +24,14 @@ function convert_to_emojis_and_symbols()
   if has_character(':warning:') then
     vim.cmd([[%s/:warning:/⚠️/g]])
   end
+
+  if has_character('（') then
+    vim.cmd([[%s/（/(/g]])
+  end
+
+  if has_character('）') then
+    vim.cmd([[%s/）/)/g]])
+  end
 end
 
 function has_character(char)
