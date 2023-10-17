@@ -45,6 +45,7 @@ return {
               ["<esc>"] = actions.close,
               ["<C-k>"] = actions.cycle_history_prev,
               ["<C-j>"] = actions.cycle_history_next,
+              ["<C-d>"] = actions.delete_buffer,
             },
           },
         },
