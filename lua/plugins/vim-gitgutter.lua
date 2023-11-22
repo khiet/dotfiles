@@ -1,13 +1,35 @@
 return {
   {
-    "airblade/vim-gitgutter",
-    init = function()
-      -- turn off all key mappings
-      vim.g.gitgutter_map_keys = 0
-      vim.g.gitgutter_grep = 'rg'
+    "lewis6991/gitsigns.nvim",
+    config = function()
+      require('gitsigns').setup {
+        signs = {
+          add    = { text = '+' },
+          change = { text = '~' },
+          delete = { text = '_' },
+        },
+        on_attach = function(bufnr)
+          local gs = package.loaded.gitsigns
 
-      vim.keymap.set('n', '[c', '<Plug>(GitGutterPrevHunk)', { silent = true, noremap = true })
-      vim.keymap.set('n', ']c', '<Plug>(GitGutterNextHunk)', { silent = true, noremap = true })
+          local function map(mode, l, r, opts)
+            opts = opts or {}
+            opts.buffer = bufnr
+            vim.keymap.set(mode, l, r, opts)
+          end
+
+          map('n', ']c', function()
+            if vim.wo.diff then return ']c' end
+            vim.schedule(function() gs.next_hunk() end)
+            return '<Ignore>'
+          end, { expr = true })
+
+          map('n', '[c', function()
+            if vim.wo.diff then return '[c' end
+            vim.schedule(function() gs.prev_hunk() end)
+            return '<Ignore>'
+          end, { expr = true })
+        end
+      }
     end
   }
 }
