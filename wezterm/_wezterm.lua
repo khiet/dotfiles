@@ -16,6 +16,9 @@ config.scrollback_lines = 50000
 config.window_close_confirmation = 'NeverPrompt'
 config.selection_word_boundary = ' \t\n{}[]()\"\'`:│'
 
+-- enable option key
+config.send_composed_key_when_left_alt_is_pressed = true
+
 config.keys = {
   { key = 'H', mods = 'SHIFT|CMD', action = act.ActivateTabRelative(-1) },
   { key = 'L', mods = 'SHIFT|CMD', action = act.ActivateTabRelative(1) },
