@@ -40,6 +40,16 @@ return {
           layout_config = {
             prompt_position = 'top',
           },
+          vimgrep_arguments = {
+            "rg",
+            "--no-heading",
+            "--with-filename",
+            "--line-number",
+            "--column",
+            "--hidden",
+            "--sort",
+            "path",
+          },
           mappings = {
             i = {
               ["<esc>"] = actions.close,
