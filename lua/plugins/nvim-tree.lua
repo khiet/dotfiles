@@ -5,8 +5,8 @@ local function on_attach(bufnr)
     return { desc = 'nvim-tree: ' .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
   end
 
-  -- https://github.com/nvim-tree/nvim-tree.lua/wiki/Migrating-To-on_attach
-  vim.keymap.set('n', 'a', api.fs.create, opts('Create'))
+  -- https://github.com/nvim-tree/nvim-tree.lua/blob/8f92e1edd399f839a23776dcc6eee4ba18030370/lua/nvim-tree/keymap.lua#L37
+  vim.keymap.set('n', 'a', api.fs.create, opts('Create File Or Directory'))
   vim.keymap.set('n', 'yy', api.fs.copy.node, opts('Copy'))
   vim.keymap.set('n', 'd', api.fs.remove, opts('Delete'))
   vim.keymap.set('n', 'g?', api.tree.toggle_help, opts('Help'))
@@ -28,6 +28,8 @@ end
 return {
   {
     "kyazdani42/nvim-tree.lua",
+    version = "*",
+    lazy = false,
     dependencies = { "nvim-tree/nvim-web-devicons" },
     keys = { "<C-n>" },
     config = function()
