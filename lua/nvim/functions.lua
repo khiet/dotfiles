@@ -100,4 +100,6 @@ vim.keymap.set('n', '<leader>cq', replace_curly_quotes, { noremap = true })
 vim.keymap.set('n', '<leader>cm', convert_to_emojis_and_symbols, { noremap = true })
 vim.keymap.set('n', '<leader>cs', run_script, { noremap = true })
 
+vim.keymap.set('n', '<leader>Z', function() vim.cmd([[normal 1z=]]) end, { noremap = true })
+
 vim.keymap.set('n', '<leader>rc', create_spec_file, { noremap = true })
