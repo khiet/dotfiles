@@ -5,6 +5,7 @@ return {
     ft = { "markdown" },
     config = function()
       vim.g.mkdp_filetypes = { "markdown" }
+      vim.g.mkdp_images_path = (os.getenv("DEVS_HOME") .. "/vim/notes/images")
 
       vim.keymap.set('n', '<leader>em', "<Plug>MarkdownPreviewToggle", { noremap = true })
     end
