@@ -25,7 +25,7 @@ return {
         'n',
         '<leader>mf',
         function()
-          require("telescope.builtin").find_files({ cwd = (os.getenv("DEVS_HOME") .. "/vim/notes") })
+          require("telescope.builtin").find_files({ cwd = (os.getenv("HOME") .. "/notes") })
         end,
         { noremap = true }
       )
