@@ -51,6 +51,7 @@ brew "amazon-ecs-cli"
 brew "ffmpeg"
 brew "youtube-dl"
 brew "marp-cli"
+brew "dust"
 # fun sutff
 brew "cowsay"
 brew "figlet"
