@@ -4,6 +4,7 @@ tap "heroku/brew"
 
 cask "wez/wezterm/wezterm-nightly"
 cask "font-hack-nerd-font"
+cask "font-monaspace"
 cask "hammerspoon"
 cask "google-chrome"
 cask "google-chrome-beta"
