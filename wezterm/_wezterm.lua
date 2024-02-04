@@ -10,7 +10,7 @@ config.colors = {
 config.tab_bar_at_bottom = false
 config.use_fancy_tab_bar = false
 config.window_decorations = "RESIZE"
-config.font = wezterm.font('Hack Nerd Font', { weight = 'Regular' })
+config.font = wezterm.font('Monaspace Neon', { weight = 'Regular' })
 config.font_size = 14.0
 config.scrollback_lines = 50000
 config.window_close_confirmation = 'NeverPrompt'
