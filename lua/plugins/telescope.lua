@@ -37,8 +37,21 @@ return {
       require('telescope').setup({
         defaults = {
           sorting_strategy = 'ascending',
+          layout_strategy = 'flex',
           layout_config = {
-            prompt_position = 'top',
+            horizontal = {
+              height = 0.9,
+              preview_cutoff = 120,
+              prompt_position = "top",
+              width = 0.8
+            },
+            vertical = {
+              height = 0.9,
+              preview_cutoff = 40,
+              prompt_position = "top",
+              mirror = true,
+              width = 0.8
+            }
           },
           vimgrep_arguments = {
             "rg",
