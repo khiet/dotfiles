@@ -7,9 +7,9 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 # history
 alias hs='fc -il 1'
 
-export HISTFILESIZE=20000 # history size during a session
-export HISTSIZE=20000 # history size at start of a session
-export SAVEHIST=20000 # history size in a file
+export HISTFILESIZE=40000 # history size during a session
+export HISTSIZE=40000 # history size at start of a session
+export SAVEHIST=40000 # history size in a file
 # export HISTFILE=~/.zsh_history
 setopt HIST_FIND_NO_DUPS
 setopt INC_APPEND_HISTORY
