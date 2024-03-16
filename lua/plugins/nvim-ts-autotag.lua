@@ -9,7 +9,8 @@ return {
       'tsx',
       'typescript',
       'vue',
-      'xml'
+      'xml',
+      'eruby'
     },
     config = function()
       require('nvim-ts-autotag').setup()
