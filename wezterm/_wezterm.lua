@@ -20,8 +20,8 @@ config.selection_word_boundary = ' \t\n{}[]()\"\'`:│,'
 config.send_composed_key_when_left_alt_is_pressed = true
 
 config.keys = {
-  { key = 'H', mods = 'SHIFT|CMD', action = act.ActivateTabRelative(-1) },
-  { key = 'L', mods = 'SHIFT|CMD', action = act.ActivateTabRelative(1) },
+  { key = '[', mods = 'SHIFT|CMD', action = act.ActivateTabRelative(-1) },
+  { key = ']', mods = 'SHIFT|CMD', action = act.ActivateTabRelative(1) },
   { key = 'w', mods = 'CMD',       action = wezterm.action.CloseCurrentPane { confirm = false } },
 }
 
