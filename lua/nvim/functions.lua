@@ -10,6 +10,14 @@ function replace_curly_quotes()
   if has_character('”') or has_character('“') then
     vim.cmd([[%s/[”“]/"/g]])
   end
+
+  if has_character('）') then
+    vim.cmd([[%s/[)]/)/g]])
+  end
+
+  if has_character('（') then
+    vim.cmd([[%s/[（]/(/g]])
+  end
 end
 
 function convert_to_emojis_and_symbols()
