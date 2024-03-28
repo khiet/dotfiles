@@ -9,27 +9,15 @@ local i = luasnip.insert_node
 
 luasnip.add_snippets("all", {
   s(
-    "debug",
+    "de",
     {t("require 'debug'; debugger")}
   ),
   s(
-    "pry",
+    "pr",
     {t("require 'pry'; binding.pry")}
   ),
   s(
     "cl",
     {t("console.log('"), i(1, "message"), t("');")}
-  ),
-  s(
-    "obr",
-    {t("open_banking_reports")}
-  ),
-  s(
-    "rt",
-    {t("recurring_transactions")}
-  ),
-  s(
-    "et",
-    {t("enriched_transactions")}
   ),
 })
