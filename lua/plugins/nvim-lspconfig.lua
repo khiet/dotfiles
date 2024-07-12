@@ -57,19 +57,6 @@ return {
         }),
       })
 
-      -- https://neovim.io/doc/user/diagnostic.html#diagnostic-api
-      local diagnostic_format = function(diagnostic)
-        return string.format("(%s: %s) %s", diagnostic.code, diagnostic.source, diagnostic.message)
-      end
-
-      vim.diagnostic.config({
-        virtual_text = {
-          severity = vim.diagnostic.severity.ERROR,
-          spacing = 0,
-          format = diagnostic_format,
-        },
-      })
-
       local on_attach = function(_, bufnr)
         vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
