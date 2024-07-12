@@ -94,7 +94,7 @@ external_source_files=(
   "$HOME/dotfiles/zshrc/rails.zsh"
   "$HOME/dotfiles/zshrc/youtube-dl.zsh"
   "$HOME/dotfiles/zshrc/psql.zsh"
-  "$HOME/dotfiles/zshrc/private/pave.zsh"
+  "$HOME/dotfiles/zshrc/aws.zsh"
 )
 
 for file in "${external_source_files[@]}"; do
