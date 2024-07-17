@@ -26,6 +26,8 @@ config.keys = {
   { key = '[', mods = 'SHIFT|CMD', action = act.ActivateTabRelative(-1) },
   { key = ']', mods = 'SHIFT|CMD', action = act.ActivateTabRelative(1) },
   { key = 'w', mods = 'CMD',       action = wezterm.action.CloseCurrentPane { confirm = false } },
+  { key = '(', mods = 'SHIFT|CMD', action = act.MoveTabRelative(-1) },
+  { key = ')', mods = 'SHIFT|CMD', action = act.MoveTabRelative(1) },
 }
 
 config.key_tables = {
