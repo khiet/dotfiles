@@ -1,3 +1,3 @@
-alias aws_ss='aws ssm start-session --document-name AWS-StartInteractiveCommand --parameters command="bash -l" --target'
-alias aws_di="aws ec2 describe-instances --filters Name=instance-state-name,Values=running Name=tag:Name,Values=pave-api-production-env --query 'Reservations[].Instances[].InstanceId' --output json"
-alias aws_ssh="aws_ss $(aws_di | jq -r '.[0]')"
+alias aws_ssh='aws ssm start-session --document-name AWS-StartInteractiveCommand --parameters command="bash -l" --target'
+# connect to an instance protected from scale in in the specified auto scaling group
+alias aws_ssh_pi="aws_ssh $(aws autoscaling describe-auto-scaling-instances | jq -r '.AutoScalingInstances[] | select(.ProtectedFromScaleIn == true and .AutoScalingGroupName == "awseb-e-363wrq8hu8-stack-AWSEBAutoScalingGroup-1gC39UdauRcl") | .InstanceId')"
