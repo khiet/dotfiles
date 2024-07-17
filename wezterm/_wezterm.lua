@@ -16,6 +16,9 @@ config.scrollback_lines = 50000
 config.window_close_confirmation = 'NeverPrompt'
 config.selection_word_boundary = ' \t\n{}[]()\"\'`:│,'
 
+-- disable generating clickable links
+config.hyperlink_rules = {}
+
 -- enable option key
 config.send_composed_key_when_left_alt_is_pressed = true
 
