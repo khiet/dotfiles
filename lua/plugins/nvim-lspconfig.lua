@@ -68,6 +68,7 @@ return {
         vim.keymap.set('n', '<leader>F', vim.lsp.buf.code_action, bufopts)
       end
 
+      -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
       local lspconfig = require('lspconfig')
 
       local servers = {
@@ -82,6 +83,7 @@ return {
         lspconfig[server].setup({ on_attach = on_attach })
       end
 
+      -- npm install -g typescript
       lspconfig.volar.setup({
         on_attach = on_attach,
         init_options = {
