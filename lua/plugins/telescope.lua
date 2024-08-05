@@ -22,9 +22,18 @@ return {
       )
       vim.keymap.set(
         'n',
+        '<leader>F',
+        function()
+          local word = vim.fn.expand('<cword>')
+          builtin.find_files({ search_file = vim.fn.expand('<cword>') })
+        end,
+        { noremap = true }
+      )
+      vim.keymap.set(
+        'n',
         '<leader>mf',
         function()
-          require("telescope.builtin").find_files({ cwd = (os.getenv("HOME") .. "/notes") })
+          builtin.find_files({ cwd = (os.getenv("HOME") .. "/notes") })
         end,
         { noremap = true }
       )
