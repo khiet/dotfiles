@@ -4,16 +4,6 @@ export XDG_CACHE_HOME=$HOME/.cache
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
-# history
-alias hs='fc -il 1'
-
-export HISTFILESIZE=40000 # history size during a session
-export HISTSIZE=40000 # history size at start of a session
-export SAVEHIST=40000 # history size in a file
-# export HISTFILE=~/.zsh_history
-setopt HIST_FIND_NO_DUPS
-setopt INC_APPEND_HISTORY
-
 export STARSHIP_CONFIG=$XDG_CONFIG_HOME/starship.toml
 export RIPGREP_CONFIG_PATH=$HOME/.ripgreprc
 export DEVS_HOME=$HOME/Dropbox/Devs
@@ -65,8 +55,6 @@ function cp2 { dirname "$2" | xargs mkdir -p; cp "$1" "$2" }
 # list brew dependencies
 function brewls { brew list | while read cask; do echo -n $fg[blue] $cask $fg[white]; brew deps $cask | awk '{printf(" %s ", $0)}'; echo ""; done }
 
-function rhs { LC_CTYPE=C sed -i '' -e "/$1/d" ~/.zsh_history }
-
 function kebab    { echo  "$1" | sed 's/ /-/g' | sed -r 's/([a-z0-9])([A-Z])/\1-\2/g' | tr "[:upper:]" "[:lower:]" | sed -r "s/[,:'‘’()#\"]/-/g" | sed "s|[][-]|-|g" }
 function sentence { echo  "$1" | sed 's/-/ /g' | awk -vFS="" -vOFS="" '{$1=toupper($1);print $0}' }
 function sp       { sentence "$1" | pbcopy }
@@ -85,8 +73,10 @@ PATH="$XDG_DATA_HOME/nvim/mason/bin:$PATH"
 eval "$(starship init zsh)"
 eval "$(fnm env --use-on-cd)"
 
+# tuin
+eval "$(atuin init zsh --disable-up-arrow)"
+
 external_source_files=(
-  "$HOME/dotfiles/zshrc/fzf.zsh"
   "$HOME/dotfiles/zshrc/wezterm.zsh"
   "$HOME/dotfiles/zshrc/ripgrep.zsh"
   "$HOME/dotfiles/zshrc/tmux.zsh"
