@@ -5,12 +5,9 @@ return {
     init = function()
       local builtin = require("telescope.builtin")
 
-      vim.keymap.set('n', '<C-f>', builtin.find_files, { noremap = true })
-      vim.keymap.set('n', '<C-g>', builtin.git_status, { noremap = true })
-      vim.keymap.set('n', '<C-b>', builtin.buffers, { noremap = true })
       vim.keymap.set(
         'n',
-        '<leader>g',
+        '<C-g>',
         function() builtin.live_grep({ disable_coordinates = true }) end,
         { noremap = true }
       )
@@ -18,6 +15,12 @@ return {
         'n',
         '<leader>G',
         function() builtin.grep_string({ disable_coordinates = true }) end,
+        { noremap = true }
+      )
+      vim.keymap.set(
+        'n',
+        '<C-f>',
+        builtin.find_files,
         { noremap = true }
       )
       vim.keymap.set(
@@ -37,6 +40,8 @@ return {
         end,
         { noremap = true }
       )
+      vim.keymap.set('n', '<leader>g', builtin.git_status, { noremap = true })
+      vim.keymap.set('n', '<leader>b', builtin.buffers, { noremap = true })
     end,
     config = function()
       local actions = require("telescope.actions")
