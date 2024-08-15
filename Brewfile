@@ -3,7 +3,6 @@ tap "homebrew/cask-versions"
 tap "heroku/brew"
 
 cask "font-hack-nerd-font"
-cask "wezterm@nightly"
 cask "font-monaspace"
 cask "hammerspoon"
 cask "google-chrome"
