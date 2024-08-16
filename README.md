@@ -45,5 +45,5 @@ rm $XDG_CONFIG_HOME/atuin/config.toml && ln -s ~/dotfiles/_atuin_config.toml $XD
 ## Install brew software
 
 ```
-cd ~/dotfiles; brew bundle
+cd ~/dotfiles; brew bundle --no-lock
 ```
