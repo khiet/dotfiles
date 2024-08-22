@@ -5,6 +5,7 @@ return {
     dependencies = {
       'hrsh7th/nvim-cmp',         -- autocompletion
       'hrsh7th/cmp-nvim-lsp',     -- LSP source
+      'hrsh7th/cmp-buffer',       -- buffer source
       'saadparwaiz1/cmp_luasnip', -- snippet source
       'L3MON4D3/LuaSnip',         -- snippet
       'simrat39/rust-tools.nvim',
@@ -23,35 +24,31 @@ return {
           autocomplete = false,
         },
         mapping = {
-          ["<C-Space>"] = cmp.mapping.complete(),
-          ["<C-n>"] = cmp.mapping(function(fallback)
+          ['<C-y>'] = cmp.mapping.confirm({ select = true }),
+          ['<C-p>'] = cmp.mapping(function()
             if cmp.visible() then
-              cmp.select_next_item()
-            elseif luasnip.expand_or_locally_jumpable() then
-              luasnip.expand_or_jump()
+              cmp.select_prev_item({ behavior = 'insert' })
             else
-              fallback()
+              cmp.complete()
             end
-          end, { "i", "s" }),
-          ["<C-p>"] = cmp.mapping(function(fallback)
+          end),
+          ['<C-n>'] = cmp.mapping(function()
             if cmp.visible() then
-              cmp.select_prev_item()
-            elseif luasnip.jumpable(-1) then
-              luasnip.jump(-1)
+              cmp.select_next_item({ behavior = 'insert' })
             else
-              fallback()
+              cmp.complete()
             end
-          end, { 'i', 's' }),
-          ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-          ['<C-f>'] = cmp.mapping.scroll_docs(4),
-          ['<CR>'] = cmp.mapping.confirm({ select = true }),
+          end),
         },
+        ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+        ['<C-f>'] = cmp.mapping.scroll_docs(4),
         snippet = {
           expand = function(args)
             luasnip.lsp_expand(args.body)
           end,
         },
         sources = cmp.config.sources({
+          { name = 'buffer' },
           { name = "nvim_lsp" },
           { name = 'luasnip' },
         }),
