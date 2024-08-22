@@ -8,6 +8,7 @@ return {
       'markdown',
       'tsx',
       'typescript',
+      'typescriptreact',
       'vue',
       'xml',
       'eruby'
