@@ -7,6 +7,7 @@ return {
   config = function()
     require("ibl").setup()
 
-    vim.cmd([[IBLToggle]]) -- vim.keymap.set("n", "<leader>a", mark.add_file)
+    -- call IBLToggle so that next time IBLToggle is called, it enables it
+    vim.cmd([[IBLToggle]])
   end
 }
