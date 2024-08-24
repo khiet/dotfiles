@@ -27,7 +27,6 @@ return {
         'n',
         '<leader>F',
         function()
-          local word = vim.fn.expand('<cword>')
           builtin.find_files({ search_file = vim.fn.expand('<cword>') })
         end,
         { noremap = true }
