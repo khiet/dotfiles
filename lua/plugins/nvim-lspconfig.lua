@@ -6,6 +6,7 @@ return {
       'hrsh7th/nvim-cmp',         -- autocompletion
       'hrsh7th/cmp-nvim-lsp',     -- LSP source
       'hrsh7th/cmp-buffer',       -- buffer source
+      'hrsh7th/cmp-path',         -- path source
       'saadparwaiz1/cmp_luasnip', -- snippet source
       'L3MON4D3/LuaSnip',         -- snippet
       'simrat39/rust-tools.nvim',
@@ -49,6 +50,7 @@ return {
         },
         sources = cmp.config.sources({
           { name = 'buffer' },
+          { name = 'path' },
           { name = "nvim_lsp" },
           { name = 'luasnip' },
         }),
