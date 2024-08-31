@@ -9,7 +9,6 @@ return {
       'hrsh7th/cmp-path',         -- path source
       'saadparwaiz1/cmp_luasnip', -- snippet source
       'L3MON4D3/LuaSnip',         -- snippet
-      'simrat39/rust-tools.nvim',
     },
     config = function()
       vim.o.completeopt = "menu,menuone,noselect"
@@ -17,7 +16,6 @@ return {
       local luasnip = require("luasnip")
       require("snippets.all")
 
-      -- https://github.com/hrsh7th/nvim-cmp/wiki/Language-Server-Specific-Samples#rust-with-rust-toolsnvim
       -- https://github.com/neovim/nvim-lspconfig/wiki/Snippets
       local cmp = require('cmp')
       cmp.setup({
@@ -96,16 +94,6 @@ return {
           typescript = {
             tsdk = "/opt/homebrew/lib/node_modules/typescript/lib"
           }
-        }
-      })
-
-      -- rust-tools
-      local capabilities = require("cmp_nvim_lsp").default_capabilities()
-
-      require("rust-tools").setup({
-        server = {
-          capabilities = capabilities,
-          on_attach = on_attach,
         }
       })
     end
