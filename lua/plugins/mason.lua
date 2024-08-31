@@ -15,7 +15,6 @@ return {
         'tailwindcss',
         'jsonls',
         'lua_ls',
-        'rust_analyzer',
         'volar'
       },
       automatic_installation = true,

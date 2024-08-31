@@ -94,8 +94,6 @@ function run_script()
     vim.fn.VimuxRunCommand("node " .. vim.fn.bufname("%"))
   elseif filetype == 'ruby' then
     vim.fn.VimuxRunCommand("ruby -w " .. vim.fn.bufname("%"))
-  elseif filetype == 'rust' then
-    vim.fn.VimuxRunCommand("cargo run")
   elseif filetype == 'sh' then
     vim.fn.VimuxRunCommand("./" .. vim.fn.bufname("%"))
   end
