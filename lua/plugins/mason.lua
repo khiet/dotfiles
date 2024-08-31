@@ -9,7 +9,7 @@ return {
 
     require("mason-lspconfig").setup {
       ensure_installed = {
-        'solargraph',
+        'ruby_lsp',
         'tsserver',
         'eslint',
         'tailwindcss',

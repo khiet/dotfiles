@@ -78,7 +78,7 @@ return {
       local lspconfig = require('lspconfig')
 
       local servers = {
-        'solargraph',
+        'ruby_lsp',
         'tsserver',
         'eslint',
         'tailwindcss',
