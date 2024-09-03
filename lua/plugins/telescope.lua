@@ -7,7 +7,7 @@ return {
 
       vim.keymap.set(
         'n',
-        '<C-g>',
+        '<leader>g',
         function() builtin.live_grep({ disable_coordinates = true }) end,
         { noremap = true }
       )
@@ -39,8 +39,8 @@ return {
         end,
         { noremap = true }
       )
-      vim.keymap.set('n', '<leader>g', builtin.git_status, { noremap = true })
-      vim.keymap.set('n', '<leader>b', builtin.buffers, { noremap = true })
+      vim.keymap.set('n', '<C-g>', builtin.git_status, { noremap = true })
+      vim.keymap.set('n', '<C-b>', builtin.buffers, { noremap = true })
     end,
     config = function()
       local actions = require("telescope.actions")
