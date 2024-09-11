@@ -7,7 +7,7 @@ return {
 
       vim.keymap.set(
         'n',
-        '<leader>g',
+        '<C-g>',
         function() builtin.live_grep({ disable_coordinates = true }) end,
         { noremap = true }
       )
@@ -33,14 +33,26 @@ return {
       )
       vim.keymap.set(
         'n',
-        '<leader>mf',
+        '<leader>gw',
         function()
           builtin.find_files({ cwd = (os.getenv("HOME") .. "/notes") })
         end,
         { noremap = true }
       )
-      vim.keymap.set('n', '<C-g>', builtin.git_status, { noremap = true })
-      vim.keymap.set('n', '<C-b>', builtin.buffers, { noremap = true })
+      vim.keymap.set('n', '<leader>gg', builtin.git_status, { noremap = true })
+      vim.keymap.set('n', '<leader>gb', builtin.buffers, { noremap = true })
+      vim.keymap.set(
+        'n',
+        '<leader>gm',
+        function()
+          builtin.find_files({
+            prompt_title = "Git Status (main)",
+            cwd = vim.fn.systemlist("git rev-parse --show-toplevel")[1],
+            find_command = { "zsh", "-c", "git diff --name-only main" },
+          })
+        end,
+        { noremap = true }
+      )
     end,
     config = function()
       local actions = require("telescope.actions")
