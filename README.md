@@ -36,9 +36,14 @@ ln -s ~/dotfiles/pry $XDG_CONFIG_HOME/pry
 mkdir -p $XDG_CONFIG_HOME/lazygit
 ln -s ~/dotfiles/lazygit/_config.yml $XDG_CONFIG_HOME/lazygit/config.yml
 
-mkdir -p $XDG_CONFIG_HOME/wezterm
-ln -s ~/dotfiles/wezterm/_wezterm.lua $XDG_CONFIG_HOME/wezterm/wezterm.lua
+mkdir -p $XDG_CONFIG_HOME/kitty
+for file in ~/dotfiles/kitty/_*; do
+  filename=$(basename "$file" | sed 's/^_//')
+  ln -s "$file" "$XDG_CONFIG_HOME/kitty/$filename"
+done
+
 ln -s ~/dotfiles/_starship.toml $XDG_CONFIG_HOME/starship.toml
+
 rm $XDG_CONFIG_HOME/atuin/config.toml && ln -s ~/dotfiles/_atuin_config.toml $XDG_CONFIG_HOME/atuin/config.toml
 ```
 
