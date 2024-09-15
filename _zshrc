@@ -76,8 +76,11 @@ eval "$(fnm env --use-on-cd)"
 # tuin
 eval "$(atuin init zsh --disable-up-arrow)"
 
+# brew
+export HOMEBREW_BUNDLE_NO_LOCK=1
+export HOMEBREW_NO_INSTALL_CLEANUP=1
+
 external_source_files=(
-  "$HOME/dotfiles/zshrc/wezterm.zsh"
   "$HOME/dotfiles/zshrc/ripgrep.zsh"
   "$HOME/dotfiles/zshrc/tmux.zsh"
   "$HOME/dotfiles/zshrc/tmuxinator.zsh"
