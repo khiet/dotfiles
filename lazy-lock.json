@@ -19,6 +19,7 @@
   "nvim-cmp": { "branch": "main", "commit": "ae644feb7b67bf1ce4260c231d1d4300b19c6f30" },
   "nvim-colorizer.lua": { "branch": "master", "commit": "a065833f35a3a7cc3ef137ac88b5381da2ba302e" },
   "nvim-lspconfig": { "branch": "master", "commit": "a7f0f9c18baa70a3970ea18f9984e03b6f6c2e8a" },
+  "nvim-surround": { "branch": "main", "commit": "ec2dc7671067e0086cdf29c2f5df2dd909d5f71f" },
   "nvim-tree.lua": { "branch": "master", "commit": "ad0b95dee55955817af635fa121f6e2486b10583" },
   "nvim-treesitter": { "branch": "master", "commit": "8724e7d028ba11604dde94dc4be63f70cccf16e0" },
   "nvim-ts-autotag": { "branch": "main", "commit": "0cb76eea80e9c73b88880f0ca78fbd04c5bdcac7" },
@@ -33,9 +34,7 @@
   "vim-fugitive": { "branch": "master", "commit": "0444df68cd1cdabc7453d6bd84099458327e5513" },
   "vim-markdown": { "branch": "master", "commit": "a657e697376909c41475a686eeef7fc7a4972d94" },
   "vim-rails": { "branch": "master", "commit": "2fba7907f585819a8653f0bc7dd7f437a822d9c6" },
-  "vim-repeat": { "branch": "master", "commit": "65846025c15494983dafe5e3b46c8f88ab2e9635" },
   "vim-rhubarb": { "branch": "master", "commit": "ee69335de176d9325267b0fd2597a22901d927b1" },
-  "vim-surround": { "branch": "master", "commit": "3d188ed2113431cf8dac77be61b842acb64433d9" },
   "vim-test": { "branch": "master", "commit": "75b64f23c923d34b56e47846a026210feb57146a" },
   "vim_current_word": { "branch": "master", "commit": "967c73804e38e5b2ceaa536328a4f76f1157a482" },
   "vimux": { "branch": "master", "commit": "b110cd95062f5d83a4cb58b807783d783e1fbcd8" }
