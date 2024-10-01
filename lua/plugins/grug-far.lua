@@ -4,6 +4,10 @@ return {
     vim.keymap.set('n', '<leader>S', ':GrugFar<CR>', { silent = true, noremap = true })
   end,
   config = function()
-    require('grug-far').setup({});
+    require('grug-far').setup({
+      keymaps = {
+        qflist = false,
+      }
+    });
   end
 }
