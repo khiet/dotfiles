@@ -57,7 +57,7 @@ return {
           builtin.find_files({
             prompt_title = "Git Status (main)",
             cwd = vim.fn.systemlist("git rev-parse --show-toplevel")[1],
-            find_command = { "zsh", "-c", "git diff --name-only main" },
+            find_command = { "zsh", "-c", "git diff --name-only origin/main" },
           })
         end,
         { noremap = true }
