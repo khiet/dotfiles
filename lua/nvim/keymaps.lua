@@ -25,10 +25,12 @@ set('n', '<C-l>', '<C-w><C-l>', opt_n)
 set('n', '<C-h>', '<C-w><C-h>', opt_n)
 
 set('n', '<leader>w', vim.cmd.w, opt_n)
+set('n', '<leader>W', vim.cmd.wa, opt_n)
 set('n', '<leader>x', vim.cmd.x, opt_n)
+set('n', '<leader>X', vim.cmd.xa, opt_n)
 set('n', '<leader>q', vim.cmd.q, opt_n)
-set('n', '<leader>e', ":e!<CR>", opt_n)
 set('n', '<leader>Q', ":q!<CR>", opt_n)
+set('n', '<leader>e', ":e!<CR>", opt_n)
 
 -- http://vim.wikia.com/wiki/Replace_a_word_with_yanked_text
 set('x', 'p', [[p:let @+=@0<CR>:let @"=@0<CR>]], opt_sn)
