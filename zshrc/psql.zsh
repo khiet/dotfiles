@@ -10,4 +10,4 @@ function db_dump {
   fi
 }
 
-export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
+# export PATH configured in ./private/psql.zsh
