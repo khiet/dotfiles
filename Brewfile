@@ -53,6 +53,7 @@ brew "ffmpeg"
 brew "youtube-dl"
 brew "marp-cli"
 brew "dust"
+brew "pdftk"
 # fun sutff
 brew "cowsay"
 brew "figlet"
