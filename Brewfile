@@ -24,6 +24,7 @@ cask "orbstack"
 cask "meetingbar"
 cask "chatgpt"
 
+brew "zsh-vi-mode"
 brew "git"
 brew "lazygit"
 brew "diff-so-fancy"
