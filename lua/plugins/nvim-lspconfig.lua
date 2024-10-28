@@ -70,6 +70,16 @@ return {
         vim.keymap.set('n', 'gt', vim.lsp.buf.type_definition, bufopts)
         vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
         vim.keymap.set('n', 'gc', vim.lsp.buf.code_action, bufopts)
+
+        -- toggle diagnostics
+        local isLspDiagnosticsVisible = true
+        vim.keymap.set("n", "<leader>gd", function()
+          isLspDiagnosticsVisible = not isLspDiagnosticsVisible
+          vim.diagnostic.config({
+            virtual_text = isLspDiagnosticsVisible,
+            underline = isLspDiagnosticsVisible
+          })
+        end)
       end
 
       -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
