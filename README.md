@@ -4,19 +4,19 @@
 
 ## Clone dotfiles
 
-```
+```bash
 cd; git clone git@github.com:khiet/dotfiles.git
 ```
 
 #### Symlink config file for zsh
 
-```
+```bash
 cd; rm .zshrc; ln -s ~/dotfiles/_zshrc ~/.zshrc
 ```
 
 ## Symlink config files
 
-```
+```bash
 ln -s ~/dotfiles/_gitconfig ~/.gitconfig
 ln -s ~/dotfiles/_ctags ~/.ctags
 ln -s ~/dotfiles/_hushlogin ~/.hushlogin
@@ -50,6 +50,6 @@ rm $XDG_CONFIG_HOME/atuin/config.toml && ln -s ~/dotfiles/_atuin_config.toml $XD
 
 ## Install brew software
 
-```
+```bash
 cd ~/dotfiles; brew bundle --no-lock
 ```
