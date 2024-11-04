@@ -10,6 +10,10 @@ export DEVS_HOME=$HOME/Dropbox/Devs
 
 bindkey '^h' backward-delete-char
 
+# vim mode
+bindkey -v
+export KEYTIMEOUT=1
+
 # https://thevaluable.dev/zsh-install-configure-mouseless/
 autoload -Uz edit-command-line
 zle -N edit-command-line
@@ -71,12 +75,14 @@ PATH="$XDG_DATA_HOME/nvim/mason/bin:$PATH"
 eval "$(starship init zsh)"
 eval "$(fnm env --use-on-cd)"
 
+# tuin
+eval "$(atuin init zsh --disable-up-arrow)"
+
 # brew
 export HOMEBREW_BUNDLE_NO_LOCK=1
 export HOMEBREW_NO_INSTALL_CLEANUP=1
 
 external_source_files=(
-  "$HOME/dotfiles/zshrc/vi-mode.zsh"
   "$HOME/dotfiles/zshrc/ripgrep.zsh"
   "$HOME/dotfiles/zshrc/tmux.zsh"
   "$HOME/dotfiles/zshrc/tmuxinator.zsh"
