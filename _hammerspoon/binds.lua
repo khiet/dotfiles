@@ -11,6 +11,11 @@ end)
 hs.hotkey.bind({ 'command', 'control' }, 'f', function()
 end)
 
+-- control + [ to escape
+hs.hotkey.bind({ 'control' }, '[', function()
+  hs.eventtap.keyStroke({}, 'escape')
+end)
+
 -- option + h/j/k/l to arrows
 remap({ 'option' }, 'h', function()
   hs.eventtap.keyStroke({}, 'left', 1000)
