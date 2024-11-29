@@ -1,3 +1,4 @@
+-- :help lspconfig-all to list available servers
 return {
   'williamboman/mason.nvim',
   dependencies = {
@@ -10,7 +11,7 @@ return {
     require("mason-lspconfig").setup {
       ensure_installed = {
         'ruby_lsp',
-        'tsserver',
+        'ts_ls',
         'eslint',
         'tailwindcss',
         'jsonls',

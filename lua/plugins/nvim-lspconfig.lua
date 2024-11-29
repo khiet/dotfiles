@@ -87,7 +87,7 @@ return {
 
       local servers = {
         'ruby_lsp',
-        'tsserver',
+        'ts_ls',
         'eslint',
         'tailwindcss',
         'jsonls',
