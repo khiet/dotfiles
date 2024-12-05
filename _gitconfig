@@ -38,6 +38,7 @@
   sl   = stash list --pretty=format:'%C(yellow)%h%Creset %C(green)%cd%Creset %s%' --date=format:'%a %d %b %Y %H:%M:%S'
   rmc  = rm -r --cached .
   rma  = !git reset --hard HEAD && git clean -fd
+  rh   = !git reset --hard
   su   = !git branch --set-upstream-to=origin/$(git symbolic-ref --short HEAD)
   rl   = reflog --pretty=format:'%C(yellow)%h%Creset %C(green)%cd%Creset %s%C(red)%d%Creset' --date=format:'%a %d %b %Y %H:%M:%S'
   r    = rebase
