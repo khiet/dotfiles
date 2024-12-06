@@ -9,6 +9,7 @@
   "dracula-pro": { "branch": "main", "commit": "a1818092ce183f5859e0f0b4c428571cd5dba366" },
   "gitsigns.nvim": { "branch": "main", "commit": "5f808b5e4fef30bd8aca1b803b4e555da07fc412" },
   "grug-far.nvim": { "branch": "main", "commit": "9a2f78219390b47d67795ab09390d7f092e23976" },
+  "harpoon": { "branch": "harpoon2", "commit": "a84ab829eaf3678b586609888ef52f7779102263" },
   "indent-blankline.nvim": { "branch": "master", "commit": "7871a88056f7144defca9c931e311a3134c5d509" },
   "kitty-scrollback.nvim": { "branch": "main", "commit": "d52825b2a076586d1af156a066db2d18cd1fd8cb" },
   "lazy.nvim": { "branch": "main", "commit": "56ead98e05bb37a4ec28930a54d836d033cf00f2" },

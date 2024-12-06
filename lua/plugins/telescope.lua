@@ -36,7 +36,7 @@ return {
       )
       vim.keymap.set(
         'n',
-        '<C-e>',
+        '<leader>ge',
         ":Telescope emoji<CR>",
         { noremap = true }
       )
