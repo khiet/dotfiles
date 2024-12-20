@@ -18,7 +18,7 @@ ls.add_snippets("all", {
   ),
   s(
     "cl",
-    { t("console.log('"), i(1, "message"), t("');") }
+    { t("console.log('"), i(1, "message"), t("'); // eslint-disable-line no-console") }
   ),
   s(
     "ta",
