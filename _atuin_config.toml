@@ -14,7 +14,8 @@ prefers_reduced_motion = true
 ## https://docs.rs/regex/latest/regex/#syntax
 history_filter = [
   "^clear",
-  "^exit"
+  "^exit",
+  "^vi"
 ]
 
 ## Defaults to true. This matches history against a set of default regex, and will not save it if we get a match. Defaults include
