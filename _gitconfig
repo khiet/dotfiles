@@ -53,9 +53,10 @@
   coom = !git checkout $(git branch -r | rg '^\\s+origin/(master|main)$')
   o = !sh ~/dotfiles/scripts/git_open_in_github.sh
 [filter "lfs"]
-  smudge = git-lfs smudge %f
+	smudge = git-lfs smudge -- %f
   required = true
-  clean = git-lfs clean %f
+	clean = git-lfs clean -- %f
+	process = git-lfs filter-process
 [user]
   name = Khiet Le
   email = khiet@outlook.com
