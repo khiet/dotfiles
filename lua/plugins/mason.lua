@@ -13,7 +13,6 @@ return {
         'ruby_lsp',
         'ts_ls',
         'eslint',
-        'tailwindcss',
         'jsonls',
         'lua_ls',
         'volar'
