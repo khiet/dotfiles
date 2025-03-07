@@ -86,7 +86,6 @@ return {
       local lspconfig = require('lspconfig')
 
       local servers = {
-        'ruby_lsp',
         'ts_ls',
         'eslint',
         'jsonls',
@@ -95,6 +94,12 @@ return {
       for _, server in ipairs(servers) do
         lspconfig[server].setup({ on_attach = on_attach })
       end
+
+      -- npm install -g typescript
+      lspconfig.ruby_lsp.setup({
+        on_attach = on_attach,
+        filetypes = { "ruby" }
+      })
 
       -- npm install -g typescript
       lspconfig.volar.setup({

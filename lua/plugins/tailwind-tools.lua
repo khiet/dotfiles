@@ -9,5 +9,6 @@ return {
   opts = {},
   init = function()
     vim.keymap.set('n', '<leader>gc', ':TailwindConcealToggle<CR>', { silent = true, noremap = true })
+    vim.keymap.set('n', '<leader>f', ':TailwindSort<CR>', { silent = true, noremap = true })
   end,
 }
