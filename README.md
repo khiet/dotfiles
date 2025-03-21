@@ -37,11 +37,8 @@ ln -s ~/dotfiles/tmux/_tmux.conf $XDG_CONFIG_HOME/tmux/tmux.conf
 mkdir -p $XDG_CONFIG_HOME/lazygit
 ln -s ~/dotfiles/lazygit/_config.yml $XDG_CONFIG_HOME/lazygit/config.yml
 
-mkdir -p $XDG_CONFIG_HOME/kitty
-for file in ~/dotfiles/kitty/_*; do
-  filename=$(basename "$file" | sed 's/^_//')
-  ln -s "$file" "$XDG_CONFIG_HOME/kitty/$filename"
-done
+mkdir -p $XDG_CONFIG_HOME/ghostty
+ln -s ~/dotfiles/ghostty/_config $XDG_CONFIG_HOME/ghostty/config
 
 ln -s ~/dotfiles/_starship.toml $XDG_CONFIG_HOME/starship.toml
 
