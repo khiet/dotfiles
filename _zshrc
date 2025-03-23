@@ -78,6 +78,9 @@ eval "$(fnm env --use-on-cd)"
 # tuin
 eval "$(atuin init zsh --disable-up-arrow)"
 
+# direnv
+eval "$(direnv hook zsh)"
+
 # brew
 export HOMEBREW_BUNDLE_NO_LOCK=1
 export HOMEBREW_NO_INSTALL_CLEANUP=1
