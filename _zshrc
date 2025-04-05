@@ -62,7 +62,7 @@ function sentence { echo  "$1" | sed 's/-/ /g' | awk -vFS="" -vOFS="" '{$1=toupp
 function sp       { sentence "$1" | pbcopy }
 
 # git
-alias gdel="git branch --merged | egrep -v '(^\*|master)' | xargs git branch -d"
+alias gdel="git co main && git pull && git branch --merged | egrep -v '(^\*|master)' | xargs git branch -d"
 function gbr { git co -b $(kebab "$1") }
 function gsp { sp $(git rev-parse --abbrev-ref HEAD) }
 
