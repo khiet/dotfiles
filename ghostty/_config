@@ -1,8 +1,14 @@
+# cmd + shift + , to reload config
+#
 font-family = "Monaspace Neon"
 font-size   = 15
 theme = Dracula
 # https://github.com/googlefonts/morisawa-biz-ud-gothic/issues/43
 font-feature = -dlig
+
+# https://ghostty.org/docs/config/reference#macos-option-as-alt
+# do not treat the Option key as Alt.
+macos-option-as-alt = false
 
 cursor-style = block
 cursor-style-blink = false
