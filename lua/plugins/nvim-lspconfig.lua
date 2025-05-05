@@ -98,7 +98,14 @@ return {
       -- npm install -g typescript
       lspconfig.ruby_lsp.setup({
         on_attach = on_attach,
-        filetypes = { "ruby" }
+        filetypes = { "ruby" },
+        init_options = {
+          addonSettings = {
+            ["Ruby LSP Rails"] = {
+              enablePendingMigrationsPrompt = false,
+            },
+          },
+        },
       })
 
       -- npm install -g typescript
