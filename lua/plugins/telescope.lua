@@ -2,8 +2,7 @@ return {
   {
     "nvim-telescope/telescope.nvim",
     dependencies = {
-      "nvim-lua/plenary.nvim",
-      "xiyaowong/telescope-emoji.nvim",
+      "nvim-lua/plenary.nvim"
     },
     init = function()
       local builtin = require("telescope.builtin")
@@ -36,8 +35,8 @@ return {
       )
       vim.keymap.set(
         'n',
-        '<leader>ge',
-        ":Telescope emoji<CR>",
+        '<leader>re',
+        ":Telescope rest select_env<CR>",
         { noremap = true }
       )
       vim.keymap.set(
@@ -66,7 +65,7 @@ return {
     config = function()
       local actions = require("telescope.actions")
 
-      require('telescope').load_extension("emoji")
+      require("telescope").load_extension("rest")
       -- default_mappings: https://github.com/nvim-telescope/telescope.nvim/blob/master/lua/telescope/mappings.lua#L133
       require('telescope').setup({
         defaults = {
