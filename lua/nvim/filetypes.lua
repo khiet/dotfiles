@@ -39,6 +39,13 @@ vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
 vim.api.nvim_create_autocmd("FileType", {
   pattern = { "json" },
   callback = function()
-    vim.api.nvim_set_option_value("formatprg", "jq", { scope = 'local' })
+    vim.opt_local.formatprg = "jq"
   end
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "html",
+  callback = function()
+    vim.opt_local.formatprg = "prettier --stdin-filepath %"
+  end,
 })
