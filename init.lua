@@ -3,6 +3,7 @@ require("nvim.keymaps")
 require("nvim.functions")
 require("nvim.lazy")
 require("nvim.filetypes")
+require("nvim.fold")
 
 vim.o.ch = 1
 
