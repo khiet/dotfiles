@@ -41,5 +41,6 @@
   "vim-rhubarb": { "branch": "master", "commit": "386daa2e9d98e23e27ad089afcbe5c5a903e488d" },
   "vim-test": { "branch": "master", "commit": "62a13a84671829ecd5db1438aaec4903c964ff2e" },
   "vim_current_word": { "branch": "master", "commit": "967c73804e38e5b2ceaa536328a4f76f1157a482" },
-  "vimux": { "branch": "master", "commit": "7db6b2f79d432ee3820668b1d4625311dbe1d0ad" }
+  "vimux": { "branch": "master", "commit": "7db6b2f79d432ee3820668b1d4625311dbe1d0ad" },
+  "which-key.nvim": { "branch": "main", "commit": "370ec46f710e058c9c1646273e6b225acf47cbed" }
 }
