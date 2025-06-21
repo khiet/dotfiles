@@ -6,13 +6,11 @@ return {
     build = ":TSUpdate",
     config = function()
       require('nvim-treesitter.configs').setup({
-        ensure_installed = { "ruby", "javascript", "typescript", "lua" },
-        sync_install = false,
+        ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "ruby", "javascript", "typescript", "lua" },
         auto_install = true,
         highlight = {
           enable = true,
           disable = { "markdown" },
-          additional_vim_regex_highlighting = false,
         },
       })
     end
