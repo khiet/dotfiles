@@ -33,6 +33,7 @@ return {
         end,
         { noremap = true }
       )
+      vim.keymap.set('n', '<C-b>', builtin.buffers, { noremap = true })
       vim.keymap.set(
         'n',
         '<leader>re',
@@ -48,7 +49,6 @@ return {
         { noremap = true }
       )
       vim.keymap.set('n', '<leader>gg', builtin.git_status, { noremap = true })
-      vim.keymap.set('n', '<leader>gb', builtin.buffers, { noremap = true })
       vim.keymap.set(
         'n',
         '<leader>gm',
