@@ -78,16 +78,6 @@ return {
             apply = true,
           })
         end, { desc = "Auto import missing imports" })
-
-        -- toggle diagnostics
-        local isLspDiagnosticsVisible = true
-        vim.keymap.set("n", "<leader>gd", function()
-          isLspDiagnosticsVisible = not isLspDiagnosticsVisible
-          vim.diagnostic.config({
-            virtual_text = isLspDiagnosticsVisible,
-            underline = isLspDiagnosticsVisible
-          })
-        end)
       end
 
       -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
