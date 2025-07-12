@@ -6,7 +6,11 @@ return {
     "nvim-treesitter/nvim-treesitter",
     "neovim/nvim-lspconfig",
   },
-  opts = {},
+  opts = {
+    conceal = {
+      enabled = false,
+    }
+  },
   init = function()
     vim.keymap.set('n', '<leader>gc', ':TailwindConcealToggle<CR>', { silent = true, noremap = true })
     vim.keymap.set('n', '<leader>f', ':TailwindSort<CR>', { silent = true, noremap = true })
