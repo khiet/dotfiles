@@ -95,6 +95,7 @@ external_source_files=(
   "$HOME/dotfiles/zshrc/aws.zsh"
 
   "$HOME/dotfiles/zshrc/private/psql.zsh"
+  "$HOME/dotfiles/zshrc/private/anthropic_api_key.zsh"
 )
 
 for file in "${external_source_files[@]}"; do
