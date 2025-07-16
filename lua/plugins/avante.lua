@@ -23,3 +23,5 @@ return {
     "MunifTanjim/nui.nvim",
   },
 }
+
+-- remove avante state: rm -rf ~/.local/state/nvim/avante
