@@ -11,6 +11,7 @@
   psd  = !git push origin --delete $(git symbolic-ref --short HEAD)
   pl   = pull
   s    = show
+  aa   = add -A
   aac  = !git add -A && git commit -v
   aaca = !git add -A && git commit -v --amend
   ca   = commit -v --amend
