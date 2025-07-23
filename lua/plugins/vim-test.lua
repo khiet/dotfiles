@@ -1,15 +1,12 @@
 return {
-  { "benmills/vimux" },
   {
     "janko-m/vim-test",
     keys = { '<leader>T', '<leader>tl', '<leader>tf' },
     config = function()
-      vim.g.VimuxOrientation = "h"
-      vim.g.VimuxHeight = "25"
-      vim.g['test#strategy'] = 'vimux'
-      vim.g['test#javascript#runner'] = 'vitest'
-
-      vim.g['test#javascript#vitest#executable'] = 'pnpm run test'
+      vim.g['test#preserve_screen'] = 0
+      vim.g['test#neovim_sticky#kill_previous'] = 1
+      vim.g['test#strategy'] = 'neovim_sticky'
+      vim.g['test#neovim#term_position'] = 'vert'
 
       vim.keymap.set('n', '<leader>T', vim.cmd.TestNearest, { noremap = true })
       vim.keymap.set('n', '<leader>tl', vim.cmd.TestLast, { noremap = true })

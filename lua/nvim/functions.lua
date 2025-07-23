@@ -87,24 +87,11 @@ function create_spec_file()
   vim.api.nvim_command("silent execute '" .. cmd .. "'")
 end
 
-function run_script()
-  local filetype = vim.bo.filetype
-
-  if filetype == 'javascript' then
-    vim.fn.VimuxRunCommand("node " .. vim.fn.bufname("%"))
-  elseif filetype == 'ruby' then
-    vim.fn.VimuxRunCommand("ruby -w " .. vim.fn.bufname("%"))
-  elseif filetype == 'sh' then
-    vim.fn.VimuxRunCommand("./" .. vim.fn.bufname("%"))
-  end
-end
-
 vim.keymap.set('n', '<leader>cd', function() search_dictionary('en') end, { noremap = true })
 vim.keymap.set('n', '<leader>cD', function() search_dictionary('jp') end, { noremap = true })
 vim.keymap.set('n', '<leader>cw', delete_trailing_whitespaces, { noremap = true })
 vim.keymap.set('n', '<leader>cq', replace_curly_quotes, { noremap = true })
 vim.keymap.set('n', '<leader>cm', convert_to_emojis_and_symbols, { noremap = true })
-vim.keymap.set('n', '<leader>cs', run_script, { noremap = true })
 
 vim.keymap.set('n', '<leader>Z', function() vim.cmd([[normal 1z=]]) end, { noremap = true })
 
