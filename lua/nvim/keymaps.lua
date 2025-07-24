@@ -66,6 +66,8 @@ set('n', '_', '<C-w>5-', opt_n)
 set('n', '-', '<C-w>5<', opt_n)
 set('n', '=', '<C-w>5>', opt_n)
 
+set("n", "<leader>yp", ":let @+ = expand('%:.')<CR>", opt_n)
+
 set("n", "<leader>ev", ':e <C-R>=expand($HOME."/dotfiles/lua/nvim/keymaps.lua")<CR><CR>', opt_n)
 set("n", "<leader>ez", ':e <C-R>=expand($HOME."/dotfiles/_zshrc")<CR><CR>', opt_n)
 set("n", "<leader>et", ':e <C-R>=expand($HOME."/dotfiles/tmux/_tmux.conf")<CR><CR>', opt_n)
