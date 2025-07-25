@@ -20,6 +20,10 @@ require("lazy").setup({
     { import = "plugins" },
   },
   install = { colorscheme = { "habamax" } },
+  change_detection = {
+    enabled = true,
+    notify = false,
+  },
   -- automatically check for plugin updates
   checker = { enabled = false },
 })
