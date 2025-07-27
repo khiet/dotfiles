@@ -1,5 +1,6 @@
 tap "homebrew/cask-fonts"
 tap "heroku/brew"
+tap "mobile-dev-inc/tap"
 
 cask "font-hack-nerd-font"
 cask "font-monaspace"
@@ -56,6 +57,7 @@ brew "youtube-dl"
 brew "marp-cli"
 brew "dust"
 brew "posting"
+brew "maestro"
 # fun sutff
 brew "cowsay"
 brew "figlet"
