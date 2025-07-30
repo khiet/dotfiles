@@ -95,7 +95,6 @@ external_source_files=(
   "$HOME/dotfiles/zshrc/tmuxinator.zsh"
   "$HOME/dotfiles/zshrc/rails.zsh"
   "$HOME/dotfiles/zshrc/youtube-dl.zsh"
-  "$HOME/dotfiles/zshrc/psql.zsh"
   "$HOME/dotfiles/zshrc/aws.zsh"
 
   "$HOME/dotfiles/zshrc/private/psql.zsh"
