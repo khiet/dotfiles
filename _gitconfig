@@ -6,6 +6,8 @@
 [alias]
   st   = status --short
   co   = checkout
+  com  = !git checkout $(git branch -r | rg '^\\s+(master|main)$')
+  coom = !git checkout $(git branch -r | rg '^\\s+origin/(master|main)$')
   br   = branch --sort=-committerdate
   ps   = push
   psd  = !git push origin --delete $(git symbolic-ref --short HEAD)
