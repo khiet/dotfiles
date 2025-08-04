@@ -46,6 +46,18 @@ set('n', '<leader>=', "<C-w>=", opt_n)
 set('n', '[b', vim.cmd.bp, opt_sn)
 set('n', ']b', vim.cmd.bn, opt_sn)
 
+vim.api.nvim_create_autocmd("TermOpen", {
+  callback = function(args)
+    local bufnr = args.buf
+    local term_name = vim.api.nvim_buf_get_name(bufnr)
+
+    -- only apply <Esc> mapping if NOT lazygit
+    if not term_name:find("lazygit") then
+      vim.keymap.set('t', '<Esc>', [[<C-\><C-N>]], { buffer = bufnr, noremap = true, silent = true })
+    end
+  end,
+})
+
 set('n', '[q', vim.cmd.cp, opt_sn)
 set('n', ']q', vim.cmd.cn, opt_sn)
 
