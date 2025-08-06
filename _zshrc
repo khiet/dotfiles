@@ -27,6 +27,7 @@ alias ct='ctags -R .'
 alias caly='cal -y'
 alias public_ip='curl ipinfo.io/ip'
 alias private_ip='ipconfig getifaddr en0'
+alias kp='function _kp(){ lsof -ti:$1 | xargs kill -9 2>/dev/null || echo "No process found on port $1"; }; _kp'
 
 alias dc="docker compose"
 
