@@ -90,6 +90,9 @@ eval "$(direnv hook zsh)"
 export HOMEBREW_BUNDLE_NO_LOCK=1
 export HOMEBREW_NO_INSTALL_CLEANUP=1
 
+# cursor CLI
+export PATH="$HOME/.local/bin:$PATH"
+
 external_source_files=(
   "$HOME/dotfiles/zshrc/ripgrep.zsh"
   "$HOME/dotfiles/zshrc/tmux.zsh"
