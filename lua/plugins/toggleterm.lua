@@ -5,12 +5,12 @@ return {
       require("toggleterm").setup({
         float_opts = {
           width = function()
-            return math.floor(vim.go.columns * 0.8)
+            return math.floor(vim.go.columns * 0.9)
           end,
           height = function()
             return math.floor(vim.go.lines * 0.9)
           end,
-          border = 'double'
+          border = 'single'
         }
       })
 
