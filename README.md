@@ -42,6 +42,8 @@ ln -s ~/dotfiles/ghostty/_config $XDG_CONFIG_HOME/ghostty/config
 
 ln -s ~/dotfiles/_starship.toml $XDG_CONFIG_HOME/starship.toml
 
+ln -s ~/dotfiles/_claude_settings.json $HOME/.claude/settings.json
+
 rm $XDG_CONFIG_HOME/atuin/config.toml && ln -s ~/dotfiles/_atuin_config.toml $XDG_CONFIG_HOME/atuin/config.toml
 ```
 
