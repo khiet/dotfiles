@@ -75,6 +75,11 @@ alias cl='fnm use default && claude'
 alias cld='cl --dangerously-skip-permissions'
 alias cldr='cl --dangerously-skip-permissions --resume'
 
+# delta
+DELTA_BASE='delta --diff-so-fancy --line-numbers-left-format "{nm:>4}" --line-numbers-right-format "│{np:>4}"'
+alias d="$DELTA_BASE"
+alias ds="$DELTA_BASE --side-by-side"
+
 eval "$(rbenv init -)"
 PATH="$XDG_DATA_HOME/nvim/mason/bin:$PATH"
 

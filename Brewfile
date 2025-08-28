@@ -27,7 +27,7 @@ cask "claude"
 
 brew "git"
 brew "lazygit"
-brew "diff-so-fancy"
+brew "delta"
 brew "nvim"
 brew "tmux"
 brew "fzf"
