@@ -3,12 +3,10 @@ gui:
   scrollPastBottom: false
   showFileTree: false
   showRandomTip: false
-  showBottomLine: false
-  showCommandLog: false
-  splitDiff: 'always'
+  showBottomLine: true
+notARepository: 'skip'
 git:
   branchLogCmd: "git lg"
   paging:
     colorArg: always
-    pager: diff-so-fancy
-notARepository: 'skip'
+    pager: delta --diff-so-fancy --dark --paging=never

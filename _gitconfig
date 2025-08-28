@@ -2,7 +2,7 @@
   editor = $EDITOR
   ignorecase = false
   excludesfile = ~/dotfiles/_global_gitignore
-  pager = diff-so-fancy | less --tabs=4 -RFX
+  pager = delta --diff-so-fancy
 [alias]
   st   = status --short
   co   = checkout
@@ -39,35 +39,12 @@
   rs   = rebase --skip
   riom = !git rebase -i $(git branch -r | rg '^\\s+origin/(master|main)$')
   o = !sh ~/dotfiles/scripts/git_open_in_github.sh
-[filter "lfs"]
-	smudge = git-lfs smudge -- %f
-  required = true
-	clean = git-lfs clean -- %f
-	process = git-lfs filter-process
 [user]
   name = Khiet Le
   email = khiet@outlook.com
-[pull]
-  default = current
-  ff = only
-[push]
-  default = current
-[fetch]
-  prune = true
 [interactive]
-  diffFilter = diff-so-fancy --patch
-[color]
-	ui = true
-[color "diff-highlight"]
-	oldNormal = red bold
-	oldHighlight = red bold 52
-	newNormal = green bold
-	newHighlight = green bold 22
-[color "diff"]
-	meta = 11
-	frag = magenta bold
-	func = 146 bold
-	commit = yellow bold
-	old = red bold
-	new = green bold
-	whitespace = red reverse
+  diffFilter = delta --diff-so-fancy
+[delta]
+  navigate = true  # use n and N to move between diff sections
+[merge]
+  conflictStyle = zdiff3
