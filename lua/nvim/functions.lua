@@ -87,8 +87,6 @@ function create_spec_file()
   vim.api.nvim_command("silent execute '" .. cmd .. "'")
 end
 
-vim.keymap.set('n', '<leader>cd', function() search_dictionary('en') end, { noremap = true })
-vim.keymap.set('n', '<leader>cD', function() search_dictionary('jp') end, { noremap = true })
 vim.keymap.set('n', '<leader>cw', delete_trailing_whitespaces, { noremap = true })
 vim.keymap.set('n', '<leader>cq', replace_curly_quotes, { noremap = true })
 vim.keymap.set('n', '<leader>cm', convert_to_emojis_and_symbols, { noremap = true })
