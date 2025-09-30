@@ -62,10 +62,17 @@ function kebab    { echo  "$1" | sed 's/ /-/g' | sed -r 's/([a-z0-9])([A-Z])/\1-
 function sentence { echo  "$1" | sed 's/-/ /g' | awk -vFS="" -vOFS="" '{$1=toupper($1);print $0}' }
 function sp       { sentence "$1" | pbcopy }
 
+# delta
+DELTA_BASE='delta --diff-so-fancy --line-numbers-left-format "{nm:>4}" --line-numbers-right-format "│{np:>4}"'
+alias d="$DELTA_BASE"
+alias ds="$DELTA_BASE --side-by-side"
+
 # git
 alias gdel="git co main && git pull && git branch --merged | egrep -v '(^\*|master)' | xargs git branch -d"
 function gbr { git co -b $(kebab "$1") }
 function gsp { sp $(git rev-parse --abbrev-ref HEAD) }
+function gs { git show "$1" | d }
+function gss { git show "$1" | ds }
 
 # kafka
 alias rpc='docker run -p 8080:8080 -e KAFKA_BROKERS="$KAFKA_BOOTSTRAP_SERVERS" -e KAFKA_TLS_ENABLED=true -e KAFKA_SASL_ENABLED=true -e KAFKA_SASL_USERNAME="$KAFKA_SASL_USERNAME" -e KAFKA_SASL_PASSWORD="$KAFKA_SASL_PASSWORD" -e KAFKA_SASL_MECHANISM=SCRAM-SHA-512 docker.redpanda.com/vectorized/console:latest'
@@ -74,11 +81,6 @@ alias rpc='docker run -p 8080:8080 -e KAFKA_BROKERS="$KAFKA_BOOTSTRAP_SERVERS" -
 alias cl='fnm use default && claude'
 alias cld='cl --dangerously-skip-permissions'
 alias cldr='cl --dangerously-skip-permissions --resume'
-
-# delta
-DELTA_BASE='delta --diff-so-fancy --line-numbers-left-format "{nm:>4}" --line-numbers-right-format "│{np:>4}"'
-alias d="$DELTA_BASE"
-alias ds="$DELTA_BASE --side-by-side"
 
 eval "$(rbenv init -)"
 PATH="$XDG_DATA_HOME/nvim/mason/bin:$PATH"
