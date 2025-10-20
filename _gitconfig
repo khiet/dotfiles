@@ -2,7 +2,7 @@
   editor = $EDITOR
   ignorecase = false
   excludesfile = ~/dotfiles/_global_gitignore
-  pager = delta --diff-so-fancy
+  pager = delta --diff-so-fancy --keep-plus-minus-markers
 [alias]
   st   = status --short
   co   = checkout
@@ -50,7 +50,7 @@
 [fetch]
   prune = true
 [interactive]
-  diffFilter = delta --diff-so-fancy
+  diffFilter = delta --diff-so-fancy --keep-plus-minus-markers
 [delta]
   navigate = true  # use n and N to move between diff sections
 [merge]

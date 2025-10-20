@@ -63,7 +63,7 @@ function sentence { echo  "$1" | sed 's/-/ /g' | awk -vFS="" -vOFS="" '{$1=toupp
 function sp       { sentence "$1" | pbcopy }
 
 # delta
-DELTA_BASE='delta --diff-so-fancy --line-numbers-left-format "{nm:>4}" --line-numbers-right-format "│{np:>4}"'
+DELTA_BASE='delta --diff-so-fancy --keep-plus-minus-markers --line-numbers-left-format "{nm:>4}" --line-numbers-right-format "│{np:>4}"'
 alias d="$DELTA_BASE"
 alias ds="$DELTA_BASE --side-by-side"
 
