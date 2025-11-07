@@ -1,5 +1,5 @@
 alias ta='tmux attach -t'
-alias t='tmux new -s tmp'
+t() { tmux new -s "${PWD##*/}" }
 alias tn='tmux new -s'
 alias tls='tmux ls'
 alias td='tmux kill-session -t'
