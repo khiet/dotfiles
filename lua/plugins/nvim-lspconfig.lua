@@ -81,20 +81,20 @@ return {
       end
 
       -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
-      local lspconfig = require('lspconfig')
-
+      -- Migrated to vim.lsp.config (Neovim 0.11+)
       local servers = {
         'ts_ls',
         'eslint',
         'jsonls',
-        'lua_ls'
+        'lua_ls',
       }
       for _, server in ipairs(servers) do
-        lspconfig[server].setup({ on_attach = on_attach })
+        vim.lsp.config(server, { on_attach = on_attach })
+        vim.lsp.enable(server)
       end
 
       -- npm install -g typescript
-      lspconfig.ruby_lsp.setup({
+      vim.lsp.config('ruby_lsp', {
         on_attach = on_attach,
         filetypes = { "ruby" },
         init_options = {
@@ -105,16 +105,7 @@ return {
           },
         },
       })
-
-      -- npm install -g typescript
-      lspconfig.volar.setup({
-        on_attach = on_attach,
-        init_options = {
-          typescript = {
-            tsdk = "/opt/homebrew/lib/node_modules/typescript/lib"
-          }
-        }
-      })
+      vim.lsp.enable('ruby_lsp')
     end
   },
 }

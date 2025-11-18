@@ -14,10 +14,8 @@ return {
         'ts_ls',
         'eslint',
         'jsonls',
-        'lua_ls',
-        'volar'
+        'lua_ls'
       },
-      automatic_installation = true,
     }
   end
 }
