@@ -81,6 +81,8 @@ alias rpc='docker run -p 8080:8080 -e KAFKA_BROKERS="$KAFKA_BOOTSTRAP_SERVERS" -
 alias cl='fnm use default && claude'
 alias cld='cl --dangerously-skip-permissions'
 alias cldr='cl --dangerously-skip-permissions --resume'
+# codex
+alias cx='codex --dangerously-bypass-approvals-and-sandbox'
 
 eval "$(rbenv init -)"
 PATH="$XDG_DATA_HOME/nvim/mason/bin:$PATH"
