@@ -100,8 +100,7 @@ eval "$(direnv hook zsh)"
 export HOMEBREW_BUNDLE_NO_LOCK=1
 export HOMEBREW_NO_INSTALL_CLEANUP=1
 
-# cursor CLI
-export PATH="$HOME/.local/bin:$PATH"
+export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
 
 external_source_files=(
   "$HOME/dotfiles/zshrc/ripgrep.zsh"
@@ -110,8 +109,6 @@ external_source_files=(
   "$HOME/dotfiles/zshrc/rails.zsh"
   "$HOME/dotfiles/zshrc/youtube-dl.zsh"
   "$HOME/dotfiles/zshrc/aws.zsh"
-
-  "$HOME/dotfiles/zshrc/private/psql.zsh"
 )
 
 for file in "${external_source_files[@]}"; do
