@@ -107,7 +107,7 @@ external_source_files=(
   "$HOME/dotfiles/zshrc/tmux.zsh"
   "$HOME/dotfiles/zshrc/tmuxinator.zsh"
   "$HOME/dotfiles/zshrc/rails.zsh"
-  "$HOME/dotfiles/zshrc/youtube-dl.zsh"
+  "$HOME/dotfiles/zshrc/yt-dlp.zsh"
   "$HOME/dotfiles/zshrc/aws.zsh"
 )
 
