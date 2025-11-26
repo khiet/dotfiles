@@ -27,6 +27,7 @@ cask "claude"
 
 brew "git"
 brew "lazygit"
+brew "lazydocker"
 brew "delta"
 brew "nvim"
 brew "tmux"
