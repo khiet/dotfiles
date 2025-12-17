@@ -7,6 +7,6 @@ gui:
 notARepository: 'skip'
 git:
   branchLogCmd: "git lg"
-  paging:
-    colorArg: always
-    pager: delta --diff-so-fancy --dark --paging=never
+  pagers:
+    - colorArg: always
+      pager: delta --diff-so-fancy --dark --paging=never
