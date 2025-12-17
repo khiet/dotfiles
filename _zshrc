@@ -78,7 +78,8 @@ function gss { git show "$1" | ds }
 alias rpc='docker run -p 8080:8080 -e KAFKA_BROKERS="$KAFKA_BOOTSTRAP_SERVERS" -e KAFKA_TLS_ENABLED=true -e KAFKA_SASL_ENABLED=true -e KAFKA_SASL_USERNAME="$KAFKA_SASL_USERNAME" -e KAFKA_SASL_PASSWORD="$KAFKA_SASL_PASSWORD" -e KAFKA_SASL_MECHANISM=SCRAM-SHA-512 docker.redpanda.com/vectorized/console:latest'
 
 # claude
-alias cl='fnm use default && claude'
+export PATH="$HOME/.local/bin:$PATH"
+alias cl='claude'
 alias CL='cl --dangerously-skip-permissions'
 alias CLr='cl --dangerously-skip-permissions --resume'
 # codex
@@ -87,11 +88,9 @@ alias CX='ci --dangerously-bypass-approvals-and-sandbox'
 alias gi='gemini'
 alias GI='gi --approval-mode yolo'
 
-eval "$(rbenv init -)"
 PATH="$XDG_DATA_HOME/nvim/mason/bin:$PATH"
 
 eval "$(starship init zsh)"
-eval "$(fnm env --use-on-cd)"
 
 # tuin
 eval "$(atuin init zsh --disable-up-arrow)"
@@ -117,3 +116,5 @@ external_source_files=(
 for file in "${external_source_files[@]}"; do
   source "$file"
 done
+
+eval "$(mise activate)"
