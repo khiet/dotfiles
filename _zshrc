@@ -68,7 +68,22 @@ alias d="$DELTA_BASE"
 alias ds="$DELTA_BASE --side-by-side"
 
 # git
-alias gdel="git co main && git pull && git branch --merged | egrep -v '(^\*|master)' | xargs git branch -d"
+gdel() {
+  git checkout main && git pull
+
+  # Delete branches that are truly merged
+  git branch --merged | grep -v -E '(^\*|main|master)' | xargs -r git branch -d
+
+  # Delete branches that were squash-merged (content is in main)
+  git for-each-ref refs/heads/ --format='%(refname:short)' | while read branch; do
+  if [[ "$branch" != "main" && "$branch" != "master" ]]; then
+    mergeBase=$(git merge-base main "$branch" 2>/dev/null) &&
+      [[ $(git cherry main "$branch" 2>/dev/null | grep -c '^+') -eq 0 ]] &&
+      git branch -D "$branch"
+  fi
+  done
+}
+
 function gbr { git co -b $(kebab "$1") }
 function gsp { sp $(git rev-parse --abbrev-ref HEAD) }
 function gs { git show "$1" | d }
