@@ -78,7 +78,6 @@ set('n', '_', '<C-w>5-', opt_n)
 set('n', '-', '<C-w>5<', opt_n)
 set('n', '=', '<C-w>5>', opt_n)
 
-set("n", "<leader>Yp", ":let @+ = expand('%:.')<CR>", opt_n)
 set("n", "<leader>yp", ":let @+ = expand('%:.') . ':' . line('.')<CR>", opt_n)
 
 set("n", "<leader>ev", ':e <C-R>=expand($HOME."/dotfiles/lua/nvim/keymaps.lua")<CR><CR>', opt_n)
