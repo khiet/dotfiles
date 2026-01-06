@@ -2,44 +2,32 @@ function delete_trailing_whitespaces()
   vim.cmd('%s/\\s\\+$//e')
 end
 
-function replace_curly_quotes()
-  if has_character('’') or has_character('‘') then
-    vim.cmd([[%s/[’‘]/'/g]])
-  end
-
-  if has_character('”') or has_character('“') then
-    vim.cmd([[%s/[”“]/"/g]])
-  end
-
-  if has_character('）') then
-    vim.cmd([[%s/[)]/)/g]])
-  end
-
-  if has_character('（') then
-    vim.cmd([[%s/[（]/(/g]])
+local function replace_all(replacements)
+  for _, r in ipairs(replacements) do
+    if has_character(r.check or r.pattern) then
+      vim.cmd('%s/' .. r.pattern .. '/' .. r.replacement .. '/g')
+    end
   end
 end
 
+function replace_curly_quotes()
+  replace_all({
+    { pattern = "[''']", replacement = "'" },
+    { pattern = '["""]', replacement = '"' },
+    { pattern = '）', replacement = ')' },
+    { pattern = '（', replacement = '(' },
+    { pattern = '—', replacement = '-' },
+  })
+end
+
 function convert_to_emojis_and_symbols()
-  if has_character('->') then
-    vim.cmd([[%s/->/→/g]])
-  end
-
-  if has_character(':bulb:') then
-    vim.cmd([[%s/:bulb:/💡/g]])
-  end
-
-  if has_character(':warning:') then
-    vim.cmd([[%s/:warning:/⚠️/g]])
-  end
-
-  if has_character('（') then
-    vim.cmd([[%s/（/(/g]])
-  end
-
-  if has_character('）') then
-    vim.cmd([[%s/）/)/g]])
-  end
+  replace_all({
+    { check = '->', pattern = '->', replacement = '→' },
+    { check = ':bulb:', pattern = ':bulb:', replacement = '💡' },
+    { check = ':warning:', pattern = ':warning:', replacement = '⚠️' },
+    { pattern = '（', replacement = '(' },
+    { pattern = '）', replacement = ')' },
+  })
 end
 
 function has_character(char)
