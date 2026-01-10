@@ -95,10 +95,12 @@ alias rpc='docker run -p 8080:8080 -e KAFKA_BROKERS="$KAFKA_BOOTSTRAP_SERVERS" -
 # claude
 export PATH="$HOME/.local/bin:$PATH"
 alias cl='claude --dangerously-skip-permissions'
-alias clr='claude --dangerously-skip-permissions --resume'
 # codex
 alias cx='codex --dangerously-bypass-approvals-and-sandbox'
+# gemini
 alias gi='gemini --approval-mode yolo'
+# opencode
+alias oc='opencode'
 
 PATH="$XDG_DATA_HOME/nvim/mason/bin:$PATH"
 
