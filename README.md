@@ -40,9 +40,10 @@ ln -s ~/dotfiles/lazygit/_config.yml $XDG_CONFIG_HOME/lazygit/config.yml
 mkdir -p $XDG_CONFIG_HOME/ghostty
 ln -s ~/dotfiles/ghostty/_config $XDG_CONFIG_HOME/ghostty/config
 
-ln -s ~/dotfiles/_starship.toml $XDG_CONFIG_HOME/starship.toml
+mkdir -p $XDG_CONFIG_HOME/opencode
+ln -s ~/dotfiles/_opencode.jsonc $XDG_CONFIG_HOME/opencode/opencode.jsonc
 
-ln -s ~/dotfiles/_claude_settings.json $HOME/.claude/settings.json
+ln -s ~/dotfiles/_starship.toml $XDG_CONFIG_HOME/starship.toml
 
 rm $XDG_CONFIG_HOME/atuin/config.toml && ln -s ~/dotfiles/_atuin_config.toml $XDG_CONFIG_HOME/atuin/config.toml
 ```
