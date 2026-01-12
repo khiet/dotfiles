@@ -93,13 +93,6 @@ function gss { git show "$1" | ds }
 # kafka
 alias rpc='docker run -p 8080:8080 -e KAFKA_BROKERS="$KAFKA_BOOTSTRAP_SERVERS" -e KAFKA_TLS_ENABLED=true -e KAFKA_SASL_ENABLED=true -e KAFKA_SASL_USERNAME="$KAFKA_SASL_USERNAME" -e KAFKA_SASL_PASSWORD="$KAFKA_SASL_PASSWORD" -e KAFKA_SASL_MECHANISM=SCRAM-SHA-512 docker.redpanda.com/vectorized/console:latest'
 
-# claude
-export PATH="$HOME/.local/bin:$PATH"
-alias cl='claude --dangerously-skip-permissions'
-# codex
-alias cx='codex --dangerously-bypass-approvals-and-sandbox'
-# gemini
-alias gi='gemini --approval-mode yolo'
 # opencode
 alias oc='opencode'
 
