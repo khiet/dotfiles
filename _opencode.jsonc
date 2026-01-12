@@ -1,0 +1,70 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "permission": {
+    "bash": {
+      "*": "ask",
+      /* Read-only */
+      "head*": "allow",
+      "wc*": "allow",
+      "git show*": "allow",
+      "git log*": "allow",
+      "git branch*": "allow",
+      "git diff*": "allow",
+      "git status*": "allow",
+      "git remote*": "allow",
+      "gh issue view*": "allow",
+      "gh issue list*": "allow",
+      "gh pr view*": "allow",
+      "gh pr diff*": "allow",
+      "gh pr list*": "allow",
+      "gh pr checks*": "allow",
+      "gh repo view*": "allow",
+      "env": "allow",
+      /* Write */
+      "git stash*": "allow",
+      "git checkout*": "allow",
+      "git pull*": "allow",
+      "git add*": "allow",
+      "git commit*": "allow",
+      "git push*": "allow",
+      "gh pr create*": "allow",
+      "gh pr edit*": "allow",
+    },
+    "webfetch": "allow",
+  },
+  "mcp": {
+    "linear": {
+      "type": "remote",
+      "url": "https://mcp.linear.app/sse",
+    },
+    "aws-api": {
+      "type": "local",
+      "command": ["uvx", "awslabs.aws-api-mcp-server@latest"],
+      "environment": {
+        "AWS_REGION": "eu-west-2",
+        "AWS_API_MCP_PROFILE_NAME": "pave",
+        "READ_OPERATIONS_ONLY": "true",
+      },
+    },
+    "aws-knowledge": {
+      "type": "local",
+      "command": [
+        "uvx",
+        "fastmcp",
+        "run",
+        "https://knowledge-mcp.global.api.aws",
+      ],
+    },
+    "context7": {
+      "type": "remote",
+      "url": "https://mcp.context7.com/mcp",
+      "headers": {
+        "CONTEXT7_API_KEY": "{env:CONTEXT7_API_KEY}",
+      },
+    },
+    "sentry": {
+      "type": "remote",
+      "url": "https://mcp.sentry.dev/mcp",
+    },
+  },
+}
