@@ -32,6 +32,10 @@
       "hostname": "allow",
       "env": "allow",
       "printenv*": "allow",
+      /* Tools */
+      "mise*": "allow",
+      "node*": "allow",
+      "open*": "allow",
       /* Git */
       "git show*": "allow",
       "git log*": "allow",
