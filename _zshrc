@@ -126,6 +126,8 @@ external_source_files=(
   "$HOME/dotfiles/zshrc/rails.zsh"
   "$HOME/dotfiles/zshrc/yt-dlp.zsh"
   "$HOME/dotfiles/zshrc/aws.zsh"
+  # api keys
+  "$HOME/dotfiles/zshrc/private/api_keys/context7.zsh"
 )
 
 for file in "${external_source_files[@]}"; do
