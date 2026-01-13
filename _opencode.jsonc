@@ -64,6 +64,8 @@
       "git push*": "allow",
       "gh pr create*": "allow",
       "gh pr edit*": "allow",
+      /* Delete */
+      "rm /tmp/*": "allow",
     },
     "webfetch": "allow",
   },
