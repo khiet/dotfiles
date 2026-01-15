@@ -1,5 +1,13 @@
 {
   "$schema": "https://opencode.ai/config.json",
+  "mode": {
+    "build": {
+      "prompt": "{file:prompts/build.txt}"
+    },
+    "plan": {
+      "prompt": "{file:prompts/plan.txt}"
+    }
+  },
   "permission": {
     "bash": {
       "*": "ask",
@@ -76,7 +84,10 @@
     },
     "aws-api": {
       "type": "local",
-      "command": ["uvx", "awslabs.aws-api-mcp-server@latest"],
+      "command": [
+        "uvx",
+        "awslabs.aws-api-mcp-server@latest"
+      ],
       "environment": {
         "AWS_REGION": "eu-west-2",
         "AWS_API_MCP_PROFILE_NAME": "pave",

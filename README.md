@@ -41,7 +41,8 @@ mkdir -p $XDG_CONFIG_HOME/ghostty
 ln -s ~/dotfiles/ghostty/_config $XDG_CONFIG_HOME/ghostty/config
 
 mkdir -p $XDG_CONFIG_HOME/opencode
-ln -s ~/dotfiles/_opencode.jsonc $XDG_CONFIG_HOME/opencode/opencode.jsonc
+ln -s ~/dotfiles/opencode/prompts $XDG_CONFIG_HOME/opencode/prompts
+ln -s ~/dotfiles/opencode/_opencode.jsonc $XDG_CONFIG_HOME/opencode/opencode.jsonc
 
 ln -s ~/dotfiles/_starship.toml $XDG_CONFIG_HOME/starship.toml
 
