@@ -2,11 +2,11 @@
   "$schema": "https://opencode.ai/config.json",
   "mode": {
     "build": {
-      "prompt": "{file:prompts/build.txt}"
+      "prompt": "{file:prompts/build.txt}",
     },
     "plan": {
-      "prompt": "{file:prompts/plan.txt}"
-    }
+      "prompt": "{file:prompts/plan.txt}",
+    },
   },
   "permission": {
     "bash": {
@@ -84,10 +84,7 @@
     },
     "aws-api": {
       "type": "local",
-      "command": [
-        "uvx",
-        "awslabs.aws-api-mcp-server@latest"
-      ],
+      "command": ["uvx", "awslabs.aws-api-mcp-server@latest"],
       "environment": {
         "AWS_REGION": "eu-west-2",
         "AWS_API_MCP_PROFILE_NAME": "pave",
@@ -113,6 +110,10 @@
     "sentry": {
       "type": "remote",
       "url": "https://mcp.sentry.dev/mcp",
+    },
+    "figma": {
+      "type": "remote",
+      "url": "http://127.0.0.1:3845/mcp",
     },
   },
 }
