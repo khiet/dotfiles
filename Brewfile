@@ -57,6 +57,7 @@ brew "dust"
 brew "posting"
 brew "maestro"
 brew "opencode"
+brew "terminal-notifier"
 # fun sutff
 brew "cowsay"
 brew "figlet"
