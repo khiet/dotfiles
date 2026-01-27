@@ -55,7 +55,6 @@ brew "ffmpeg"
 brew "yt-dlp"
 brew "dust"
 brew "posting"
-brew "maestro"
 brew "opencode"
 brew "terminal-notifier"
 # fun sutff
