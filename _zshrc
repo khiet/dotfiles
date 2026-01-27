@@ -75,14 +75,8 @@ gdel() {
   # Delete branches that are truly merged
   git branch --merged | grep -v -E '(^\*|main|master)' | xargs -r git branch -d
 
-  # Delete branches that were squash-merged (content is in main)
-  git for-each-ref refs/heads/ --format='%(refname:short)' | while read branch; do
-  if [[ "$branch" != "main" && "$branch" != "master" ]]; then
-    mergeBase=$(git merge-base main "$branch" 2>/dev/null) &&
-      [[ $(git cherry main "$branch" 2>/dev/null | grep -c '^+') -eq 0 ]] &&
-      git branch -D "$branch"
-  fi
-  done
+  # Delete branches whose remote tracking branch is gone (squash-merged via GitHub)
+  git branch -vv | grep ': gone]' | awk '{print $1}' | xargs -r git branch -D
 }
 
 function gbr { git co -b $(kebab "$1") }
