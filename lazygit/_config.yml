@@ -10,3 +10,8 @@ git:
   pagers:
     - colorArg: always
       pager: delta --diff-so-fancy --dark --paging=never
+customCommands:
+  - key: 'o'
+    context: 'localBranches'
+    command: 'sh ~/dotfiles/scripts/git_open_in_github.sh'
+    description: 'Open in GitHub'
