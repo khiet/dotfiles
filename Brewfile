@@ -56,7 +56,6 @@ brew "yt-dlp"
 brew "dust"
 brew "posting"
 brew "opencode"
-brew "terminal-notifier"
 # fun sutff
 brew "cowsay"
 brew "figlet"

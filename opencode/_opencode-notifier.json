@@ -1,0 +1,8 @@
+{
+  "notification": false,
+  "command": {
+    "enabled": true,
+    "path": "/Users/khietle/.local/bin/opencode-notify.sh",
+    "args": ["{event}", "{message}"]
+  }
+}
