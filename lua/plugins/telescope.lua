@@ -48,7 +48,7 @@ return {
         end,
         { noremap = true }
       )
-      vim.keymap.set('n', '<leader>gg', builtin.git_status, { noremap = true })
+      vim.keymap.set('n', '<leader>gs', builtin.git_status, { noremap = true })
       vim.keymap.set(
         'n',
         '<leader>gm',
