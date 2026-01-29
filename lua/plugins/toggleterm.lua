@@ -31,7 +31,6 @@ return {
       _lazygit_toggle = create_terminal_toggle("lazygit")
       _lazydocker_toggle = create_terminal_toggle("lazydocker")
 
-      vim.keymap.set('n', 'tt', ":ToggleTerm direction=float<CR>",   { silent = true, noremap = true })
       vim.keymap.set('n', 'tg', "<cmd>lua _lazygit_toggle()<CR>",    { silent = true, noremap = true })
       vim.keymap.set('n', 'td', "<cmd>lua _lazydocker_toggle()<CR>", { silent = true, noremap = true })
     end
