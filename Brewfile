@@ -56,6 +56,7 @@ brew "yt-dlp"
 brew "dust"
 brew "posting"
 brew "opencode"
+brew "qrencode"
 # fun sutff
 brew "cowsay"
 brew "figlet"
