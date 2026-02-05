@@ -107,14 +107,14 @@ export HOMEBREW_NO_INSTALL_CLEANUP=1
 export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
 
 external_source_files=(
-  "$HOME/dotfiles/zshrc/ripgrep.zsh"
-  "$HOME/dotfiles/zshrc/tmux.zsh"
-  "$HOME/dotfiles/zshrc/tmuxinator.zsh"
-  "$HOME/dotfiles/zshrc/rails.zsh"
-  "$HOME/dotfiles/zshrc/yt-dlp.zsh"
-  "$HOME/dotfiles/zshrc/aws.zsh"
+  "$HOME/dotfiles/zshrc/public/ripgrep.zsh"
+  "$HOME/dotfiles/zshrc/public/tmux.zsh"
+  "$HOME/dotfiles/zshrc/public/tmuxinator.zsh"
+  "$HOME/dotfiles/zshrc/public/rails.zsh"
+  "$HOME/dotfiles/zshrc/public/yt-dlp.zsh"
+  "$HOME/dotfiles/zshrc/public/aws.zsh"
   # api keys
-  "$HOME/dotfiles/zshrc/private/api_keys/context7.zsh"
+  "$HOME/dotfiles/zshrc/api_keys/context7.zsh"
 )
 
 for file in "${external_source_files[@]}"; do
