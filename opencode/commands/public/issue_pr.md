@@ -1,12 +1,12 @@
 # PR Description Generator
 
-Generate a concise GitHub PR description based on the current branch and recent commits. If a PR doesn't exist, create one. If it exists, output the generated description for review (do not auto-update to preserve any manual edits like screenshots).
+Generate a concise GitHub PR description based on the current branch and recent commits. If a PR doesn't exist, create one. If it exists, output the generated description for review (do not auto-update to preserve any manual edits like screenshots) and confirm if I want to overwrite.
 
 ## Process
 
-1. **Run linter/formatter and commit any changes**
-   - Run the project's linter with auto-fix enabled
-   - If changes were made, commit with message: "Auto-format and lint fixes"
+1. **Prepare codebase with separate commits**
+   - Whenever making any changes to the codebase (e.g., adding a missing test, linting, or other fixes), create a separate commit for each logical change.
+   - Run the project's linter with auto-fix enabled. If changes were made, commit specifically with message: "Auto-format and lint fixes".
 
 2. **Gather branch information:**
    ```bash
