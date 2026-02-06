@@ -10,23 +10,14 @@ local function replace_all(replacements)
   end
 end
 
-function replace_curly_quotes()
+function convert_to_ascii()
   replace_all({
     { pattern = "[''']", replacement = "'" },
     { pattern = '["""]', replacement = '"' },
     { pattern = '）', replacement = ')' },
     { pattern = '（', replacement = '(' },
     { pattern = '—', replacement = '-' },
-  })
-end
-
-function convert_to_emojis_and_symbols()
-  replace_all({
-    { check = '->', pattern = '->', replacement = '→' },
-    { check = ':bulb:', pattern = ':bulb:', replacement = '💡' },
-    { check = ':warning:', pattern = ':warning:', replacement = '⚠️' },
-    { pattern = '（', replacement = '(' },
-    { pattern = '）', replacement = ')' },
+    { pattern = '…', replacement = '...' },
   })
 end
 
@@ -76,8 +67,7 @@ function create_spec_file()
 end
 
 vim.keymap.set('n', '<leader>cw', delete_trailing_whitespaces, { noremap = true })
-vim.keymap.set('n', '<leader>cq', replace_curly_quotes, { noremap = true })
-vim.keymap.set('n', '<leader>cm', convert_to_emojis_and_symbols, { noremap = true })
+vim.keymap.set('n', '<leader>cq', convert_to_ascii, { noremap = true })
 
 vim.keymap.set('n', '<leader>Z', function() vim.cmd([[normal 1z=]]) end, { noremap = true })
 
