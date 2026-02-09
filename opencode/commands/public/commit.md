@@ -1,6 +1,6 @@
 ---
 description: Create a commit from staged changes
-model: google/gemini-2.0-flash
+model: openai/gpt-5.1-codex-mini
 ---
 
 Create a single git commit for the currently staged changes.
