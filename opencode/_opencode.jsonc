@@ -121,5 +121,10 @@
       "type": "local",
       "command": ["npx", "@playwright/mcp@latest"],
     },
+    "ios-simulator": {
+      "type": "local",
+      "command": ["npx", "ios-simulator-mcp"],
+      "enabled": false,
+    },
   },
 }
