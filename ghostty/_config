@@ -1,3 +1,4 @@
+# Docs: https://ghostty.org/docs
 # cmd + shift + , to reload config
 #
 font-family = "Monaspace Neon"
@@ -18,6 +19,9 @@ cursor-color = #bd93f9
 window-padding-x = 8
 
 confirm-close-surface = false
+
+# Disable command palette shortcut (default: super+shift+p)
+keybind = super+shift+p=unbind
 
 # This is the configuration file for Ghostty.
 #
