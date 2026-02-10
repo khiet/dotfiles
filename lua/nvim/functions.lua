@@ -27,8 +27,8 @@ end
 
 local function convert_to_ascii()
   replace_all({
-    { pattern = "[''']", replacement = "'" },
-    { pattern = '["""]', replacement = '"' },
+    { pattern = "[’‘]", replacement = "'", check = "’" },
+    { pattern = '[”“]', replacement = '"', check = '“' },
     { pattern = '）', replacement = ')' },
     { pattern = '（', replacement = '(' },
     { pattern = '—', replacement = '-' },
