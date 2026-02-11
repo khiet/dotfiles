@@ -84,24 +84,6 @@
       "type": "remote",
       "url": "https://mcp.linear.app/sse",
     },
-    "aws-api": {
-      "type": "local",
-      "command": ["uvx", "awslabs.aws-api-mcp-server@latest"],
-      "environment": {
-        "AWS_REGION": "eu-west-2",
-        "AWS_API_MCP_PROFILE_NAME": "pave",
-        "READ_OPERATIONS_ONLY": "true",
-      },
-    },
-    "aws-knowledge": {
-      "type": "local",
-      "command": [
-        "uvx",
-        "fastmcp",
-        "run",
-        "https://knowledge-mcp.global.api.aws",
-      ],
-    },
     "context7": {
       "type": "remote",
       "url": "https://mcp.context7.com/mcp",
@@ -120,6 +102,51 @@
     "playwright": {
       "type": "local",
       "command": ["npx", "@playwright/mcp@latest"],
+    },
+    "aws-api": {
+      "type": "local",
+      "command": ["uvx", "awslabs.aws-api-mcp-server@latest"],
+      "environment": {
+        "AWS_REGION": "eu-west-2",
+        "AWS_API_MCP_PROFILE_NAME": "pave",
+        "READ_OPERATIONS_ONLY": "true",
+      },
+    },
+    "aws-knowledge": {
+      "type": "local",
+      "command": [
+        "uvx",
+        "fastmcp",
+        "run",
+        "https://knowledge-mcp.global.api.aws",
+      ],
+    },
+    "cloudwatch": {
+      "type": "local",
+      "command": ["uvx", "awslabs.cloudwatch-mcp-server@latest"],
+      "environment": {
+        "AWS_PROFILE": "pave",
+        "AWS_REGION": "eu-west-2",
+        "FASTMCP_LOG_LEVEL": "ERROR",
+      },
+    },
+    "elasticache": {
+      "type": "local",
+      "command": ["uvx", "awslabs.elasticache-mcp-server@latest"],
+      "environment": {
+        "AWS_PROFILE": "pave",
+        "AWS_REGION": "eu-west-2",
+        "FASTMCP_LOG_LEVEL": "ERROR",
+      },
+    },
+    "iam": {
+      "type": "local",
+      "command": ["uvx", "awslabs.iam-mcp-server@latest"],
+      "environment": {
+        "AWS_PROFILE": "pave",
+        "AWS_REGION": "eu-west-2",
+        "FASTMCP_LOG_LEVEL": "ERROR",
+      },
     },
     "ios-simulator": {
       "type": "local",
