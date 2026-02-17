@@ -61,6 +61,18 @@ return {
         end,
         { noremap = true }
       )
+      vim.keymap.set(
+        'n',
+        '<leader>gh',
+        function()
+          builtin.find_files({
+            prompt_title = "Git Diff HEAD~",
+            cwd = vim.fn.systemlist("git rev-parse --show-toplevel")[1],
+            find_command = { "zsh", "-c", "git diff --name-only HEAD~" },
+          })
+        end,
+        { noremap = true }
+      )
     end,
     config = function()
       local actions = require("telescope.actions")
