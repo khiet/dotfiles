@@ -2,10 +2,17 @@
 
 Summarise recent conversation context into a Linear ticket, then execute the work.
 
+Usage: `/ticket [optional instruction]`
+
+If an instruction is provided, treat it as the primary directive — use it to guide what the ticket is about and what work to execute. Still review conversation context for supporting details.
+
+$ARGUMENTS
+
 ## Process
 
 1. **Gather context from the conversation**
-   - Review the last few messages in the conversation to understand what was discussed.
+   - If an instruction was provided above, use it as the primary intent.
+   - Otherwise, review the last few messages in the conversation to understand what was discussed.
    - Identify the specific actions, changes, or fixes that need to be made.
    - Summarise the intent into a clear, actionable task.
 
