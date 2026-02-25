@@ -21,7 +21,7 @@ Generate a concise GitHub PR description based on the current branch and recent 
 
 5. **Handle PR:**
    - Check if PR exists: `gh pr view`
-   - If no PR exists: create with `gh pr create` and open in browser
+   - If no PR exists: create with `gh pr create`, then run `open <pr_url>` to open it in the browser
    - If PR exists: output the generated description for user to review/copy
 
 ## PR Template
