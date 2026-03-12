@@ -106,6 +106,9 @@ export HOMEBREW_NO_INSTALL_CLEANUP=1
 
 export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
 
+# Java (for maestro)
+export JAVA_HOME="/opt/homebrew/opt/openjdk/libexec/openjdk.jdk/Contents/Home"
+
 external_source_files=(
   "$HOME/dotfiles/zshrc/public/ripgrep.zsh"
   "$HOME/dotfiles/zshrc/public/tmux.zsh"
