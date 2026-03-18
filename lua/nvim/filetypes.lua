@@ -35,14 +35,6 @@ vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
   command = 'set filetype=sh'
 })
 
--- https://github.com/rest-nvim/rest.nvim/issues/417#issuecomment-2322786365
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "json" },
-  callback = function()
-    vim.opt_local.formatprg = "jq"
-  end
-})
-
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "html",
   callback = function()
