@@ -36,12 +36,6 @@ return {
       vim.keymap.set('n', '<C-b>', builtin.buffers, { noremap = true })
       vim.keymap.set(
         'n',
-        '<leader>re',
-        ":Telescope rest select_env<CR>",
-        { noremap = true }
-      )
-      vim.keymap.set(
-        'n',
         '<leader>gw',
         function()
           builtin.find_files({ cwd = (os.getenv("HOME") .. "/notes") })
@@ -77,7 +71,6 @@ return {
     config = function()
       local actions = require("telescope.actions")
 
-      require("telescope").load_extension("rest")
       -- default_mappings: https://github.com/nvim-telescope/telescope.nvim/blob/master/lua/telescope/mappings.lua#L133
       require('telescope').setup({
         defaults = {
