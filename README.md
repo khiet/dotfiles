@@ -41,11 +41,11 @@ mkdir -p $XDG_CONFIG_HOME/ghostty
 ln -s ~/dotfiles/ghostty/_config $XDG_CONFIG_HOME/ghostty/config
 
 mkdir -p $XDG_CONFIG_HOME/opencode
-ln -s ~/dotfiles/opencode/prompts $XDG_CONFIG_HOME/opencode/prompts
-ln -s ~/dotfiles/opencode/commands $XDG_CONFIG_HOME/opencode/commands
 ln -s ~/dotfiles/opencode/_opencode.jsonc $XDG_CONFIG_HOME/opencode/opencode.jsonc
 ln -s ~/dotfiles/opencode/_opencode-notifier.json $XDG_CONFIG_HOME/opencode/opencode-notifier.json
-ln -s ~/dotfiles/opencode/plugins/opencode-notifier/opencode-notify.sh ~/.local/bin/opencode-notify.sh
+ln -s ~/dotfiles/opencode/prompts $XDG_CONFIG_HOME/opencode/prompts
+ln -s ~/dotfiles/opencode/commands $XDG_CONFIG_HOME/opencode/commands
+ln -s ~/dotfiles/opencode/plugins $XDG_CONFIG_HOME/opencode/plugins
 
 ln -s ~/dotfiles/_starship.toml $XDG_CONFIG_HOME/starship.toml
 
