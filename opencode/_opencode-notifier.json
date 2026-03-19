@@ -2,7 +2,7 @@
   "notification": false,
   "command": {
     "enabled": true,
-    "path": "/Users/khietle/.local/bin/opencode-notify.sh",
+    "path": "/Users/khietle/.config/opencode/plugins/opencode-notify.sh",
     "args": ["{event}", "{message}"]
   }
 }
