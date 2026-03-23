@@ -60,8 +60,6 @@ function cp2 { dirname "$2" | xargs mkdir -p; cp "$1" "$2" }
 function brewls { brew list | while read cask; do echo -n $fg[blue] $cask $fg[white]; brew deps $cask | awk '{printf(" %s ", $0)}'; echo ""; done }
 
 function kebab    { echo  "$1" | sed 's/ /-/g' | sed -r 's/([a-z0-9])([A-Z])/\1-\2/g' | tr "[:upper:]" "[:lower:]" | sed -r "s/[,:'‘’()#\"]/-/g" | sed "s|[][-]|-|g" }
-function sentence { echo  "$1" | sed 's/-/ /g' | awk -vFS="" -vOFS="" '{$1=toupper($1);print $0}' }
-function sp       { sentence "$1" | pbcopy }
 
 # delta
 DELTA_BASE='delta --diff-so-fancy --keep-plus-minus-markers --line-numbers-left-format "{nm:>4}" --line-numbers-right-format "│{np:>4}"'
@@ -80,7 +78,6 @@ gdel() {
 }
 
 function gbr { git co -b $(kebab "$1") }
-function gsp { sp $(git rev-parse --abbrev-ref HEAD) }
 function gs { git show "$1" | d }
 function gss { git show "$1" | ds }
 
