@@ -7,6 +7,7 @@ return {
   },
   ft = { "http", "rest" },
   opts = {
+    max_response_size = 10485760, -- 10MB
     global_keymaps = false,
     kulala_keymaps_prefix = "",
     ui = {
