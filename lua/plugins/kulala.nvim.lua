@@ -2,8 +2,8 @@
 return {
   "mistweaverco/kulala.nvim",
   keys = {
-    { "<leader>Rr", function() require("kulala").run() end,              desc = "Send request" },
-    { "<leader>Re", function() require("kulala").set_selected_env() end, desc = "Select environment" },
+    { "<leader>rr", function() require("kulala").run() end,              desc = "Send request",       ft = { "http", "rest" } },
+    { "<leader>re", function() require("kulala").set_selected_env() end, desc = "Select environment", ft = { "http", "rest" } },
   },
   ft = { "http", "rest" },
   opts = {
