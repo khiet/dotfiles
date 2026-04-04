@@ -41,6 +41,8 @@
       "mise*": "allow",
       "node*": "allow",
       "open*": "allow",
+      "npm view*": "allow",
+      "npm info*": "allow",
       /* Git */
       "git show*": "allow",
       "git log*": "allow",
