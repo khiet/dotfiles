@@ -38,9 +38,9 @@ return {
               cmp.complete()
             end
           end),
+          ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+          ['<C-f>'] = cmp.mapping.scroll_docs(4),
         },
-        ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-        ['<C-f>'] = cmp.mapping.scroll_docs(4),
         snippet = {
           expand = function(args)
             luasnip.lsp_expand(args.body)
@@ -65,14 +65,14 @@ return {
         group = vim.api.nvim_create_augroup("UserLspConfig", { clear = true }),
         callback = function(args)
           local bufnr = args.buf
-          local client = vim.lsp.get_client_by_id(args.data.client_id)
+          local client = vim.lsp.get_clients({ id = args.data.client_id })[1]
           if not client then return end
 
           -- set omnifunc for LSP completion
           vim.bo[bufnr].omnifunc = "v:lua.vim.lsp.omnifunc"
 
           -- LSP keymaps
-          local bufopts = { noremap = true, silent = true, buffer = bufnr }
+          local bufopts = { noremap = true, silent = true, buf = bufnr }
           vim.keymap.set('n', '<leader>f', function()
             vim.lsp.buf.format()
             vim.cmd('write')

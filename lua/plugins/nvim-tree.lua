@@ -2,7 +2,7 @@ local function on_attach(bufnr)
   local api = require('nvim-tree.api')
 
   local function opts(desc)
-    return { desc = 'nvim-tree: ' .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
+    return { desc = 'nvim-tree: ' .. desc, buf = bufnr, noremap = true, silent = true, nowait = true }
   end
 
   -- https://github.com/nvim-tree/nvim-tree.lua/blob/8f92e1edd399f839a23776dcc6eee4ba18030370/lua/nvim-tree/keymap.lua#L37
