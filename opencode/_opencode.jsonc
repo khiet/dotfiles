@@ -72,7 +72,9 @@
       "gh pr create*": "allow",
       "gh pr edit*": "allow",
       /* Delete */
+      "rm *": "deny",
       "rm /tmp/*": "allow",
+      "./opencode/scripts/safe-rm.sh *": "allow"
     },
     "webfetch": "allow",
   },
@@ -98,11 +100,17 @@
     },
     "playwright": {
       "type": "local",
-      "command": ["npx", "@playwright/mcp@latest"],
+      "command": [
+        "npx",
+        "@playwright/mcp@latest"
+      ],
     },
     "aws-api": {
       "type": "local",
-      "command": ["uvx", "awslabs.aws-api-mcp-server@latest"],
+      "command": [
+        "uvx",
+        "awslabs.aws-api-mcp-server@latest"
+      ],
       "environment": {
         "AWS_REGION": "eu-west-2",
         "AWS_API_MCP_PROFILE_NAME": "pave",
@@ -120,7 +128,10 @@
     },
     "cloudwatch": {
       "type": "local",
-      "command": ["uvx", "awslabs.cloudwatch-mcp-server@latest"],
+      "command": [
+        "uvx",
+        "awslabs.cloudwatch-mcp-server@latest"
+      ],
       "environment": {
         "AWS_PROFILE": "pave",
         "AWS_REGION": "eu-west-2",
@@ -129,7 +140,10 @@
     },
     "elasticache": {
       "type": "local",
-      "command": ["uvx", "awslabs.elasticache-mcp-server@latest"],
+      "command": [
+        "uvx",
+        "awslabs.elasticache-mcp-server@latest"
+      ],
       "environment": {
         "AWS_PROFILE": "pave",
         "AWS_REGION": "eu-west-2",
@@ -138,7 +152,10 @@
     },
     "iam": {
       "type": "local",
-      "command": ["uvx", "awslabs.iam-mcp-server@latest"],
+      "command": [
+        "uvx",
+        "awslabs.iam-mcp-server@latest"
+      ],
       "environment": {
         "AWS_PROFILE": "pave",
         "AWS_REGION": "eu-west-2",
@@ -147,7 +164,10 @@
     },
     "ios-simulator": {
       "type": "local",
-      "command": ["npx", "ios-simulator-mcp"],
+      "command": [
+        "npx",
+        "ios-simulator-mcp"
+      ],
       "enabled": false,
     },
   },
