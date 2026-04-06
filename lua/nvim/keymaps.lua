@@ -53,7 +53,7 @@ vim.api.nvim_create_autocmd("TermOpen", {
 
     -- only apply <Esc> mapping if NOT lazygit
     if not term_name:find("lazygit") then
-      vim.keymap.set('t', '<Esc>', [[<C-\><C-N>]], { buffer = bufnr, noremap = true, silent = true })
+      vim.keymap.set('t', '<Esc>', [[<C-\><C-N>]], { buf = bufnr, noremap = true, silent = true })
     end
   end,
 })
