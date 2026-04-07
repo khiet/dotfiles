@@ -42,6 +42,7 @@
       "open*": "allow",
       "npm view*": "allow",
       "npm info*": "allow",
+      "bundle exec rspec*": "allow",
       /* Git */
       "git show*": "allow",
       "git log*": "allow",
