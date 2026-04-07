@@ -1,17 +1,35 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter",
-    branch = 'master',
+    branch = "main",
     lazy = false,
     build = ":TSUpdate",
     config = function()
-      require('nvim-treesitter.configs').setup({
-        ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "ruby", "javascript", "typescript" },
-        auto_install = true,
-        highlight = {
-          enable = true,
-          disable = { "markdown" },
-        },
+      local treesitter = require("nvim-treesitter")
+
+      treesitter.setup({
+        install_dir = vim.fn.stdpath("data") .. "/site",
+      })
+
+      treesitter.install({
+        "c",
+        "lua",
+        "vim",
+        "vimdoc",
+        "query",
+        "ruby",
+        "javascript",
+        "typescript",
+      })
+
+      vim.api.nvim_create_autocmd("FileType", {
+        callback = function(args)
+          if vim.bo[args.buf].filetype == "markdown" then
+            return
+          end
+
+          pcall(vim.treesitter.start, args.buf)
+        end,
       })
     end
   }
