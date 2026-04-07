@@ -20,6 +20,7 @@ return {
         "ruby",
         "javascript",
         "typescript",
+        "tsx",
       })
 
       vim.api.nvim_create_autocmd("FileType", {
