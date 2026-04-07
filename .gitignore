@@ -3,9 +3,3 @@
 zshrc/*
 !zshrc/public/
 !zshrc/public/**
-
-opencode/prompts/*
-
-opencode/commands/*
-!opencode/commands/public/**
-!opencode/commands/public/
