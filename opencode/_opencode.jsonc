@@ -170,4 +170,18 @@
       "enabled": false,
     },
   },
+  "provider": {
+    "ollama": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "Ollama (local)",
+      "options": {
+        "baseURL": "http://localhost:11434/v1"
+      },
+      "models": {
+        "gemma4:e2b": {
+          "name": "Gemma 4 E2B (local)"
+        }
+      }
+    }
+  },
 }
