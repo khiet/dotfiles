@@ -10,7 +10,8 @@ return {
     -- log_level = 'debug',
   },
   init = function()
-    vim.keymap.set('n', '<leader>br', ":SessionRestore<CR>", { noremap = true })
+    vim.keymap.set('n', '<leader>br', '<cmd>AutoSession restore<CR>', { desc = 'Restore session', noremap = true, silent = true })
+    vim.keymap.set('n', '<leader>bs', '<cmd>AutoSession search<CR>', { desc = 'Search sessions', noremap = true, silent = true })
     vim.keymap.set("n", "<leader>bd", [[:let curr=bufnr() | bufdo if bufnr() != curr && !&modified | bdelete | endif<CR>]], { silent = true })
   end
 }
