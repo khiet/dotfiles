@@ -18,10 +18,13 @@ return {
         "vimdoc",
         "query",
         "ruby",
+        "embedded_template",
         "javascript",
         "typescript",
         "tsx",
       })
+
+      vim.treesitter.language.register("embedded_template", "eruby")
 
       vim.api.nvim_create_autocmd("FileType", {
         callback = function(args)
