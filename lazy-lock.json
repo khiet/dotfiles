@@ -35,10 +35,10 @@
   "treesj": { "branch": "main", "commit": "26bc2a8432ba3ea79ed6aa346fba780a3d372570" },
   "vim-easy-align": { "branch": "master", "commit": "9815a55dbcd817784458df7a18acacc6f82b1241" },
   "vim-fugitive": { "branch": "master", "commit": "3b753cf8c6a4dcde6edee8827d464ba9b8c4a6f0" },
+  "vim-illuminate": { "branch": "master", "commit": "0d1e93684da00ab7c057410fecfc24f434698898" },
   "vim-markdown": { "branch": "master", "commit": "1bc9d0cd8e1cc3e901b0a49c2b50a843f1c89397" },
   "vim-mjml": { "branch": "master", "commit": "cb6249b1b49994ecaebd67a7fb421dce923bcd02" },
   "vim-rails": { "branch": "master", "commit": "b0a5c76f86ea214ade36ab0b811e730c3f0add67" },
   "vim-rhubarb": { "branch": "master", "commit": "5496d7c94581c4c9ad7430357449bb57fc59f501" },
-  "vim-test": { "branch": "master", "commit": "6eb2e5e7b32c321d373d2954199f4510be804713" },
-  "vim_current_word": { "branch": "master", "commit": "967c73804e38e5b2ceaa536328a4f76f1157a482" }
+  "vim-test": { "branch": "master", "commit": "6eb2e5e7b32c321d373d2954199f4510be804713" }
 }
