@@ -1,3 +1,7 @@
+---
+description: Create a Linear ticket from conversation context and execute the work
+---
+
 # Ticket & Execute
 
 Summarise recent conversation context into a Linear ticket, then execute the work.

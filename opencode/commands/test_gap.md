@@ -1,8 +1,12 @@
+---
+description: Find and fill missing tests for the last commit
+---
+
 # Test Gap Filler
 
 Look at the last commit and fill in any missing tests for the changes made.
 
-Usage: `/test [optional instruction]`
+Usage: `/test_gap [optional instruction]`
 
 If an instruction is provided, use it to guide what aspects of the changes to focus testing on. Otherwise, use your best judgement to identify untested or under-tested code paths.
 
@@ -42,7 +46,7 @@ $ARGUMENTS
 6. **Validate**
    - Run the project's test suite to confirm all new and existing tests pass.
    - If any tests fail, fix them and re-run until green.
-   - Make a single commit with all new tests.
+   - If you add tests, make a single commit containing those test changes.
 
 ## Formatting
 
