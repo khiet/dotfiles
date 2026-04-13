@@ -1,6 +1,6 @@
 ---
 description: Create a commit from staged changes
-model: openai/gpt-5.1-codex-mini
+model: openai/gpt-5.4-mini
 ---
 
 Create a single git commit for the currently staged changes.

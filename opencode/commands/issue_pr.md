@@ -1,3 +1,7 @@
+---
+description: Generate or create a pull request description for the current branch
+---
+
 # PR Description Generator
 
 Generate a concise GitHub PR description based on the current branch and recent commits. If a PR doesn't exist, create one. If it exists, output the generated description for review (do not auto-update to preserve any manual edits like screenshots) and confirm if I want to overwrite.
