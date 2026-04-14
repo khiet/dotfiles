@@ -13,7 +13,7 @@ Automatically merge Dependabot pull requests based on version update type.
 ## Usage
 
 ```
-/merge-dependabot-prs [TYPE]
+/merge_dependabot_prs [TYPE]
 ```
 
 Where `TYPE` can be:
