@@ -72,10 +72,10 @@
       "git push*": "allow",
       "gh pr create*": "allow",
       "gh pr edit*": "allow",
-      /* Delete */
-      "rm *": "deny",
+      /* Destructive (tracked) */
       "rm /tmp/*": "allow",
-      "./opencode/scripts/safe-rm.sh *": "allow"
+      "./opencode/scripts/safe-rm.sh *": "allow",
+      "./opencode/scripts/safe-mv.sh *": "allow"
     },
     "webfetch": "allow",
   },

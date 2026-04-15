@@ -22,13 +22,13 @@ for target in "$@"; do
         exit 1
       }
     done < <(find "$abs" -type f -print0)
-    rm -rf -- "$abs"
+    git -C "$repo_root" rm -rf -- "$abs"
   else
     rel="${abs#$repo_root/}"
     git -C "$repo_root" ls-files --error-unmatch "$rel" >/dev/null 2>&1 || {
       echo "Refusing: not git-tracked: $target" >&2
       exit 1
     }
-    rm -f -- "$abs"
+    git -C "$repo_root" rm -f -- "$abs"
   fi
 done

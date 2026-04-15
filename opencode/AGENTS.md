@@ -23,3 +23,12 @@ Example:
    - B. JWT
 2. Should this include tests?
 3. Do you want a minimal patch or a small refactor?
+
+## Destructive file operations
+
+Do not use `rm` or `mv` directly. Use the safe wrapper scripts instead:
+
+- **Delete:** `./opencode/scripts/safe-rm.sh <paths...>`
+- **Move/Rename:** `./opencode/scripts/safe-mv.sh <sources...> <destination>`
+
+These scripts only operate on git-tracked files within the repo root.
