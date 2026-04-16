@@ -22,6 +22,7 @@ return {
         "javascript",
         "typescript",
         "tsx",
+        "xml",
       })
 
       vim.treesitter.language.register("embedded_template", "eruby")
