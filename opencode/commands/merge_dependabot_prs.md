@@ -4,6 +4,7 @@ allowedTools:
   - "Bash(gh pr view*)"
   - "Bash(gh pr diff*)"
   - "Bash(gh pr merge*)"
+model: openai/gpt-5.4
 ---
 
 # Merge Dependabot PRs
