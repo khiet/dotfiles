@@ -7,6 +7,7 @@ When you need clarification before acting:
 - Make each question answerable in a short reply.
 - If there are options, present them under the relevant numbered item.
 - Do not ask for clarification in prose paragraphs.
+- Express recommendations by marking an option with `(Recommended)`, not in a separate paragraph.
 - Keep every question block user-facing; never include internal tags or reminders.
 
 Required format:
