@@ -13,6 +13,7 @@
       "cat*": "allow",
       "head*": "allow",
       "tail*": "allow",
+      "sort*": "allow",
       "wc*": "allow",
       "find*": "allow",
       "file*": "allow",
@@ -46,6 +47,7 @@
       "bundle exec rspec*": "allow",
       /* Git */
       "git show*": "allow",
+      "git pr view*": "allow",
       "git log*": "allow",
       "git branch*": "allow",
       "git diff*": "allow",
