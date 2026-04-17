@@ -5,6 +5,7 @@ allowedTools:
   - "Bash(gh pr diff*)"
   - "Bash(gh pr edit*)"
   - "Bash(gh pr merge*)"
+model: openai/gpt-5.4
 ---
 
 # Merge Renovate PRs
