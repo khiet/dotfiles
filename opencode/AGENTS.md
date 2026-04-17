@@ -32,3 +32,10 @@ Do not use `rm` or `mv` directly. Use the safe wrapper scripts instead:
 - **Move/Rename:** `./opencode/scripts/safe-mv.sh <sources...> <destination>`
 
 These scripts only operate on git-tracked files within the repo root.
+
+## Committing changes
+
+- Create a git commit only after all changes for a task are complete.
+- For large tasks, group changes into logical commits that each capture a coherent change.
+- Follow the [Conventional Commits](https://www.conventionalcommits.org/) format (e.g., `feat:`, `fix:`, `refactor:`, `docs:`, `chore:`).
+- Do not push to the remote repository.
