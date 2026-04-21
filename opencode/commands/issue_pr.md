@@ -1,6 +1,5 @@
 ---
 description: Generate or create a pull request description for the current branch
-description: Create a commit from staged changes
 model: openai/gpt-5.4
 ---
 
