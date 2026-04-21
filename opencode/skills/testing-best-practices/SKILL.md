@@ -5,7 +5,7 @@ compatibility: opencode
 metadata:
   audience: software-engineers
   focus: test-design-and-maintainability
-  additive: true
+  additive: "true"
 ---
 
 ## Scope

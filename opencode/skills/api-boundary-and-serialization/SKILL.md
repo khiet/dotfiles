@@ -5,7 +5,7 @@ compatibility: opencode
 metadata:
   audience: full-stack-rails-and-react-native-engineers
   focus: api-contract-and-data-flow
-  additive: true
+  additive: "true"
 ---
 
 ## Scope
