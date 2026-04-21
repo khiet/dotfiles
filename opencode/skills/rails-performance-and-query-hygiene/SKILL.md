@@ -5,7 +5,7 @@ compatibility: opencode
 metadata:
   audience: rails-engineers
   focus: api-and-db-performance
-  additive: true
+  additive: "true"
 ---
 
 ## Scope

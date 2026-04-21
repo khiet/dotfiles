@@ -5,7 +5,7 @@ compatibility: opencode
 metadata:
   audience: frontend-engineers
   focus: usability-consistency-and-reuse
-  additive: true
+  additive: "true"
 ---
 
 ## Scope

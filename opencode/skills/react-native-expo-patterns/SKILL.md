@@ -5,7 +5,7 @@ compatibility: opencode
 metadata:
   audience: react-native-expo-engineers
   focus: component-architecture-and-state
-  additive: true
+  additive: "true"
 ---
 
 ## Scope

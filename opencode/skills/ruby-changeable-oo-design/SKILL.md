@@ -5,7 +5,7 @@ compatibility: opencode
 metadata:
   audience: ruby-and-rails-engineers
   focus: design-for-change
-  additive: true
+  additive: "true"
 ---
 
 ## Scope
