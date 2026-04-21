@@ -1,10 +1,5 @@
 ---
-allowedTools:
-  - "Bash(gh pr list*)"
-  - "Bash(gh pr view*)"
-  - "Bash(gh pr diff*)"
-  - "Bash(gh pr edit*)"
-  - "Bash(gh pr merge*)"
+description: Merge open Renovate PRs filtered by version update type (patch or minor)
 model: openai/gpt-5.4
 ---
 
@@ -24,7 +19,7 @@ Where `TYPE` can be:
 
 ## Arguments
 
-- `{arg1}` - Update type filter. Defaults to "patch" if not provided.
+- `$ARGUMENTS` - Update type filter. Defaults to "patch" if not provided.
 
 ## Command Implementation
 
