@@ -100,6 +100,7 @@
     "figma": {
       "type": "remote",
       "url": "http://127.0.0.1:3845/mcp",
+      "enabled": false,
     },
     "playwright": {
       "type": "local",
@@ -110,6 +111,7 @@
     },
     "aws-api": {
       "type": "local",
+      "enabled": false,
       "command": [
         "uvx",
         "awslabs.aws-api-mcp-server@latest"
@@ -122,6 +124,7 @@
     },
     "aws-knowledge": {
       "type": "local",
+      "enabled": false,
       "command": [
         "uvx",
         "fastmcp",
@@ -131,6 +134,7 @@
     },
     "cloudwatch": {
       "type": "local",
+      "enabled": false,
       "command": [
         "uvx",
         "awslabs.cloudwatch-mcp-server@latest"
@@ -143,6 +147,7 @@
     },
     "elasticache": {
       "type": "local",
+      "enabled": false,
       "command": [
         "uvx",
         "awslabs.elasticache-mcp-server@latest"
@@ -155,6 +160,7 @@
     },
     "iam": {
       "type": "local",
+      "enabled": false,
       "command": [
         "uvx",
         "awslabs.iam-mcp-server@latest"
