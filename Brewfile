@@ -23,7 +23,7 @@ cask "notion"
 cask "bitwarden"
 cask "orbstack"
 cask "chatgpt"
-cask "ollama"
+cask "ollama-app"
 
 brew "git"
 brew "lazygit"
