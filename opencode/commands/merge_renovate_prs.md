@@ -1,6 +1,6 @@
 ---
 description: Merge open Renovate PRs filtered by version update type (patch or minor)
-model: openai/gpt-5.4
+model: openai/gpt-5.5
 ---
 
 # Merge Renovate PRs

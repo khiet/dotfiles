@@ -1,6 +1,6 @@
 ---
 description: Create a Linear ticket from conversation context and execute the work
-model: openai/gpt-5.4
+model: openai/gpt-5.5
 ---
 
 # Ticket & Execute
