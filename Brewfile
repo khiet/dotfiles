@@ -1,6 +1,7 @@
 tap "homebrew/cask-fonts"
 tap "heroku/brew"
 tap "mobile-dev-inc/tap"
+tap "anomalyco/tap"
 
 cask "font-hack-nerd-font"
 cask "font-monaspace"
@@ -56,8 +57,8 @@ brew "ffmpeg"
 brew "yt-dlp"
 brew "dust"
 brew "posting"
-brew "opencode"
 brew "qrencode"
+brew "anomalyco/tap/opencode"
 # fun sutff
 brew "cowsay"
 brew "figlet"
