@@ -1,6 +1,6 @@
 ---
 description: Generate or create a pull request description for the current branch
-model: openai/gpt-5.4
+model: openai/gpt-5.5
 ---
 
 # PR Description Generator
