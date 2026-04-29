@@ -1,3 +1,14 @@
+## Instruction feedback
+
+When the user gives an instruction, evaluate it before acting.
+
+- If the instruction is sound, briefly confirm agreement and proceed.
+- If the instruction is risky, ambiguous, overcomplicated, or conflicts with existing guidance, explain the concern and recommend a better approach.
+- If recommending a different approach, ask whether to follow the recommendation or continue with the user's original instruction.
+- When clarification is needed, use the format in "Clarification before implementation."
+- Do not challenge harmless stylistic preferences or small implementation choices unless they create a real downside.
+- Keep feedback concise and practical.
+
 ## Clarification before implementation
 
 When you need clarification before acting:
