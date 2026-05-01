@@ -49,6 +49,7 @@ ln -s ~/dotfiles/opencode/agents $XDG_CONFIG_HOME/opencode/agents
 ln -s ~/dotfiles/opencode/commands $XDG_CONFIG_HOME/opencode/commands
 ln -s ~/dotfiles/opencode/plugins $XDG_CONFIG_HOME/opencode/plugins
 ln -s ~/dotfiles/opencode/skills $XDG_CONFIG_HOME/opencode/skills
+ln -s ~/dotfiles/opencode/vibeguard.config.json $XDG_CONFIG_HOME/opencode/vibeguard.config.json
 
 ln -s ~/dotfiles/_starship.toml $XDG_CONFIG_HOME/starship.toml
 

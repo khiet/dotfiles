@@ -1,0 +1,151 @@
+{
+  "enabled": true,
+  "debug": false,
+  "placeholder_prefix": "__VG_",
+  "session": {
+    "ttl": "4h",
+    "max_mappings": 100000
+  },
+  "patterns": {
+    "keywords": [],
+    "regex": [
+      {
+        "pattern": "sk-[A-Za-z0-9]{48}",
+        "category": "OPENAI_KEY"
+      },
+      {
+        "pattern": "sk-proj-[A-Za-z0-9_-]{20,}",
+        "category": "OPENAI_PROJECT_KEY"
+      },
+      {
+        "pattern": "sk-svcacct-[A-Za-z0-9_-]{20,}",
+        "category": "OPENAI_SERVICE_ACCOUNT_KEY"
+      },
+      {
+        "pattern": "sk-ant-[A-Za-z0-9_-]{20,}",
+        "category": "ANTHROPIC_KEY"
+      },
+      {
+        "pattern": "(ghp|gho|ghu|ghs|ghr)_[A-Za-z0-9_]{20,}",
+        "category": "GITHUB_TOKEN"
+      },
+      {
+        "pattern": "github_pat_[A-Za-z0-9_]{20,}",
+        "category": "GITHUB_TOKEN"
+      },
+      {
+        "pattern": "AKIA[0-9A-Z]{16}",
+        "category": "AWS_ACCESS_KEY"
+      },
+      {
+        "pattern": "ASIA[0-9A-Z]{16}",
+        "category": "AWS_TEMP_ACCESS_KEY"
+      },
+      {
+        "pattern": "(?i)aws(.{0,20})?(secret|session)(.{0,20})?[=:][ \\t]*[\"']?[A-Za-z0-9/+=]{30,}[\"']?",
+        "category": "AWS_SECRET"
+      },
+      {
+        "pattern": "xox[baprs]-[A-Za-z0-9-]{10,}",
+        "category": "SLACK_TOKEN"
+      },
+      {
+        "pattern": "xapp-[A-Za-z0-9-]{10,}",
+        "category": "SLACK_APP_TOKEN"
+      },
+      {
+        "pattern": "https://hooks\\.slack\\.com/services/[A-Za-z0-9_-]+/[A-Za-z0-9_-]+/[A-Za-z0-9_-]+",
+        "category": "SLACK_WEBHOOK"
+      },
+      {
+        "pattern": "(sk|pk|rk)_(test|live)_[A-Za-z0-9]{20,}",
+        "category": "STRIPE_KEY"
+      },
+      {
+        "pattern": "npm_[A-Za-z0-9]{36}",
+        "category": "NPM_TOKEN"
+      },
+      {
+        "pattern": "lin_api_[A-Za-z0-9]{20,}",
+        "category": "LINEAR_API_KEY"
+      },
+      {
+        "pattern": "sntrys_[A-Za-z0-9_=-]{20,}",
+        "category": "SENTRY_AUTH_TOKEN"
+      },
+      {
+        "pattern": "https://[A-Fa-f0-9]{32}(@|%40)[^\\s/]+/\\d+",
+        "category": "SENTRY_DSN"
+      },
+      {
+        "pattern": "eyJ[A-Za-z0-9_-]+\\.[A-Za-z0-9_-]+\\.[A-Za-z0-9_-]+",
+        "category": "JWT"
+      },
+      {
+        "pattern": "(?i)bearer[ \\t]+[A-Za-z0-9._~+/-]+=*",
+        "category": "BEARER_TOKEN"
+      },
+      {
+        "pattern": "AIza[0-9A-Za-z_-]{35}",
+        "category": "GOOGLE_API_KEY"
+      },
+      {
+        "pattern": "GOCSPX-[A-Za-z0-9_-]{20,}",
+        "category": "GOOGLE_OAUTH_CLIENT_SECRET"
+      },
+      {
+        "pattern": "SG\\.[A-Za-z0-9_-]{16,}\\.[A-Za-z0-9_-]{16,}",
+        "category": "SENDGRID_API_KEY"
+      },
+      {
+        "pattern": "EAACEdEose0cBA[A-Za-z0-9]+",
+        "category": "FACEBOOK_ACCESS_TOKEN"
+      },
+      {
+        "pattern": "expo_[A-Za-z0-9_-]{20,}",
+        "category": "EXPO_TOKEN"
+      },
+      {
+        "pattern": "ExponentPushToken\\[[A-Za-z0-9_-]+\\]",
+        "category": "EXPO_PUSH_TOKEN"
+      },
+      {
+        "pattern": "(?i)eas(.{0,20})?(token|auth)(.{0,20})?[=:][ \\t]*[\"']?[A-Za-z0-9._~+/-]{20,}[\"']?",
+        "category": "EAS_TOKEN"
+      },
+      {
+        "pattern": "(?i)master\\.key[\\s\\S]{0,80}[A-Fa-f0-9]{32}",
+        "category": "RAILS_MASTER_KEY"
+      },
+      {
+        "pattern": "(?i)(secret_key_base|rails_master_key|credentials_key)[=:][ \\t]*[\"']?[A-Fa-f0-9]{32,128}[\"']?",
+        "category": "RAILS_SECRET"
+      },
+      {
+        "pattern": "(?i)(database_url|redis_url|sidekiq_redis_url)[=:][ \\t]*[\"']?[a-z][a-z0-9+.-]*://[^\\s\"']+[\"']?",
+        "category": "SERVICE_URL"
+      },
+      {
+        "pattern": "(?i)(password|passwd|pwd|secret|token|api[_-]?key|private[_-]?key)[=:][ \\t]*[\"']?[^\\s\"']{12,}[\"']?",
+        "category": "GENERIC_SECRET"
+      },
+      {
+        "pattern": "-----BEGIN [A-Z ]*PRIVATE KEY-----[\\s\\S]*?-----END [A-Z ]*PRIVATE KEY-----",
+        "category": "PRIVATE_KEY"
+      }
+    ],
+    "builtin": [
+      "email",
+      "uuid",
+      "ipv4",
+      "mac"
+    ],
+    "exclude": [
+      "example.com",
+      "localhost",
+      "127.0.0.1",
+      "0.0.0.0",
+      "::1"
+    ]
+  }
+}
