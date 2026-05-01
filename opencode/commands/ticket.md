@@ -27,7 +27,7 @@ $ARGUMENTS
    - Keep asking until the task is unambiguous. Prefer yes/no or multiple-choice questions.
 
 3. **Identify the correct Linear team**
-   - List the user's Linear teams and ask which team to file the ticket under if there is more than one.
+   - List the user's Linear teams and choose the best-fit team based on the repository, requested change, and conversation context. Do not ask for confirmation unless there is no reasonable best guess.
 
 4. **Create the Linear ticket**
    - Title: short, imperative sentence (e.g., "Add retry logic to webhook handler").
