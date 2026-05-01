@@ -1,6 +1,6 @@
 ---
 description: Merge open Dependabot PRs filtered by version update type (patch or minor)
-model: openai/gpt-5.5
+agent: pr-merger
 ---
 
 # Merge Dependabot PRs
