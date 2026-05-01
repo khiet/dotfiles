@@ -45,6 +45,7 @@ ln -s ~/dotfiles/opencode/_opencode.jsonc $XDG_CONFIG_HOME/opencode/opencode.jso
 ln -s ~/dotfiles/opencode/_opencode-notifier.json $XDG_CONFIG_HOME/opencode/opencode-notifier.json
 ln -s ~/dotfiles/opencode/AGENTS.md $XDG_CONFIG_HOME/opencode/AGENTS.md
 ln -s ~/dotfiles/opencode/prompts $XDG_CONFIG_HOME/opencode/prompts
+ln -s ~/dotfiles/opencode/agents $XDG_CONFIG_HOME/opencode/agents
 ln -s ~/dotfiles/opencode/commands $XDG_CONFIG_HOME/opencode/commands
 ln -s ~/dotfiles/opencode/plugins $XDG_CONFIG_HOME/opencode/plugins
 ln -s ~/dotfiles/opencode/skills $XDG_CONFIG_HOME/opencode/skills
