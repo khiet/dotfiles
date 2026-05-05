@@ -1,10 +1,14 @@
+## Scope
+
+These instructions apply to all repositories where I use LLM coding agents and supplement higher-priority system/developer instructions.
+
 ## Instruction feedback
 
 When the user gives an instruction, evaluate it before acting.
 
-- If the instruction is sound, briefly confirm agreement and proceed.
+- If a non-trivial instruction is sound, briefly confirm agreement and proceed.
 - If the instruction is risky, ambiguous, overcomplicated, or conflicts with existing guidance, explain the concern and recommend a better approach.
-- If recommending a different approach, ask whether to follow the recommendation or continue with the user's original instruction.
+- If recommending a materially different approach, ask whether to follow the recommendation or continue with the user's original instruction.
 - When clarification is needed, use the format in "Clarification before implementation."
 - Do not challenge harmless stylistic preferences or small implementation choices unless they create a real downside.
 - Keep feedback concise and practical.
@@ -45,8 +49,19 @@ Do not use `rm` or `mv` directly. Use the safe wrapper scripts instead:
 
 These scripts only operate on git-tracked files within the repo root.
 
+For untracked files, ask before deleting or moving them unless they were created during the current task.
+
+## Completion summaries
+
+When finishing code or configuration changes, provide a concise summary that includes:
+
+- What changed
+- Why those changes were made
+- Any verification performed or skipped
+
 ## Committing changes
 
+- Only create commits when explicitly requested.
 - Create a git commit only after all changes for a task are complete.
 - For large tasks, group changes into logical commits that each capture a coherent change.
 - Follow the [Conventional Commits](https://www.conventionalcommits.org/) format (e.g., `feat:`, `fix:`, `refactor:`, `docs:`, `chore:`).
