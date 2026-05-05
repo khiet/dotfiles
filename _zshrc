@@ -106,18 +106,7 @@ export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
 # Java (for maestro)
 export JAVA_HOME="/opt/homebrew/opt/openjdk/libexec/openjdk.jdk/Contents/Home"
 
-external_source_files=(
-  "$HOME/dotfiles/zshrc/public/ripgrep.zsh"
-  "$HOME/dotfiles/zshrc/public/tmux.zsh"
-  "$HOME/dotfiles/zshrc/public/tmuxinator.zsh"
-  "$HOME/dotfiles/zshrc/public/rails.zsh"
-  "$HOME/dotfiles/zshrc/public/yt-dlp.zsh"
-  "$HOME/dotfiles/zshrc/public/aws.zsh"
-  # api keys
-  "$HOME/dotfiles/zshrc/api_keys/context7.zsh"
-)
-
-for file in "${external_source_files[@]}"; do
+for file in "$HOME"/dotfiles/zshrc/**/*.zsh(.Non); do
   source "$file"
 done
 
