@@ -56,17 +56,17 @@ $ARGUMENTS
 ```markdown
 ## Summary
 
-[1-2 sentence description of what needs to happen and why]
+[Concise 1-2 sentence description of what is changing and why it matters. Must include both what and why.]
 
 ## Actions
 
-- [ ] [Specific action 1]
-- [ ] [Specific action 2]
-- [ ] [Add more as needed]
+- [ ] [Concrete, testable step required to complete the work]
+- [ ] [Another actionable and verifiable step]
+- [ ] [Add more as needed; avoid vague tasks like "fix issue" or "update config"]
 
 ## Context
 
-[Any relevant context from the conversation — file paths, error messages, links, decisions made]
+[Supporting details needed to understand the change. Include where relevant: current behaviour if replacing or fixing something; affected components/services; external dependencies such as APIs or libraries; edge cases, constraints, or implementation notes.]
 ```
 
 ## Formatting
