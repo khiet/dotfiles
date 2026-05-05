@@ -1,6 +1,6 @@
-local function remap(mods, key, message, pressedfn, releasedfn, repeatfn)
+local function remap(mods, key, fn)
   -- https://www.hammerspoon.org/docs/hs.hotkey.html#bind
-  hs.hotkey.bind(mods, key, message, nil, message, nil)
+  hs.hotkey.bind(mods, key, fn, nil, fn)
 end
 
 -- disable default bindings
