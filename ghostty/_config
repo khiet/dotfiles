@@ -23,6 +23,9 @@ confirm-close-surface = false
 # Disable command palette shortcut (default: super+shift+p)
 keybind = super+shift+p=unbind
 
+# Always copy terminal selections as plain text.
+keybind = performable:super+c=copy_to_clipboard:plain
+
 # This is the configuration file for Ghostty.
 #
 # This template file has been automatically created at the following
