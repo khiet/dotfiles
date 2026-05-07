@@ -1,5 +1,5 @@
-db_path = "$DEVS_HOME/atuin/history.db"
-key_path = "$DEVS_HOME/atuin/key"
+db_path = "$DEV_HOME/atuin/history.db"
+key_path = "$DEV_HOME/atuin/key"
 
 show_help = false
 invert = true
