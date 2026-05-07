@@ -7,7 +7,7 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 
 export STARSHIP_CONFIG=$XDG_CONFIG_HOME/starship.toml
 export RIPGREP_CONFIG_PATH=$HOME/.ripgreprc
-export DEVS_HOME=$HOME/Dropbox/Devs
+export DEVS_HOME=$HOME/Library/CloudStorage/Dropbox/Devs
 
 bindkey '^h' backward-delete-char
 
