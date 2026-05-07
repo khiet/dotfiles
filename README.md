@@ -53,11 +53,12 @@ ln -s ~/dotfiles/opencode/vibeguard.config.json $XDG_CONFIG_HOME/opencode/vibegu
 
 ln -s ~/dotfiles/_starship.toml $XDG_CONFIG_HOME/starship.toml
 
-rm $XDG_CONFIG_HOME/atuin/config.toml && ln -s ~/dotfiles/_atuin_config.toml $XDG_CONFIG_HOME/atuin/config.toml
+mkdir -p $XDG_CONFIG_HOME/atuin
+ln -s ~/dotfiles/_atuin_config.toml $XDG_CONFIG_HOME/atuin/config.toml
 ```
 
 ## Install brew software
 
 ```bash
-cd ~/dotfiles; brew bundle --no-lock
+cd ~/dotfiles; brew bundle
 ```
