@@ -1,2 +1,2 @@
 alias mux=tmuxinator
-export TMUXINATOR_CONFIG=$DEVS_HOME/tmuxinator
+export TMUXINATOR_CONFIG=$DEV_HOME/tmuxinator
