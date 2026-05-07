@@ -2,7 +2,7 @@
 # cmd + shift + , to reload config
 #
 font-family = "Monaspace Neon"
-font-size   = 15
+font-size   = 14
 theme = Dracula
 # https://github.com/googlefonts/morisawa-biz-ud-gothic/issues/43
 font-feature = -dlig
