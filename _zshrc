@@ -89,6 +89,24 @@ gdel() {
   # Delete branches whose remote tracking branch is gone (squash-merged via GitHub)
   git branch -vv | grep ': gone]' | awk '{print $1}' | xargs -r git branch -D
 }
+glg() {
+  local query="$1"
+  local context="${2:-10}"
+
+  if [ -z "$query" ]; then
+    echo "Usage: glg <commit-hash | keyword> [context]"
+    return 1
+  fi
+
+  # Detect if input looks like a commit hash (hex string, length >= 7)
+  if [[ "$query" =~ ^[0-9a-f]{7,40}$ ]]; then
+    git log --graph --oneline --decorate --all --color=always \
+      | grep -i -C "$context" --color=always "$query"
+  else
+    git log --graph --oneline --decorate --all --color=always \
+      --grep="$query" -i
+  fi
+}
 
 function gbr { git co -b $(kebab "$1") }
 function gs { git show "$1" | d }
