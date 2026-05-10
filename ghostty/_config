@@ -4,8 +4,6 @@
 font-family = "Monaspace Neon"
 font-size   = 14
 theme = Dracula
-# https://github.com/googlefonts/morisawa-biz-ud-gothic/issues/43
-font-feature = -dlig
 
 # https://ghostty.org/docs/config/reference#macos-option-as-alt
 # treat the left Option key as Alt.
