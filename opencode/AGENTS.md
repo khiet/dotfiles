@@ -61,8 +61,7 @@ When finishing code or configuration changes, provide a concise summary that inc
 
 ## Committing changes
 
-- Only create commits when explicitly requested.
-- Create a git commit only after all changes for a task are complete.
+- Create commits by default after completing all changes for a task, unless explicitly requested not to.
 - For large tasks, group changes into logical commits that each capture a coherent change.
 - Follow the [Conventional Commits](https://www.conventionalcommits.org/) format (e.g., `feat:`, `fix:`, `refactor:`, `docs:`, `chore:`).
 - Do not push to the remote repository.
