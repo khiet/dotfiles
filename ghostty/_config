@@ -24,6 +24,9 @@ keybind = super+shift+p=unbind
 # Always copy terminal selections as plain text.
 keybind = performable:super+c=copy_to_clipboard:plain
 
+mouse-hide-while-typing = true
+selection-clear-on-copy = true
+
 # This is the configuration file for Ghostty.
 #
 # This template file has been automatically created at the following
