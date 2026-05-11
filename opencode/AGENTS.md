@@ -61,7 +61,10 @@ When finishing code or configuration changes, provide a concise summary that inc
 
 ## Committing changes
 
-- Create commits by default after completing all changes for a task, unless explicitly requested not to.
+- **Default action: create a git commit when the task is complete.** Do not stop after editing files unless the user explicitly says not to commit.
+- Before committing, review the working tree and include only changes that belong to the completed task.
+- If unrelated user changes are present, leave them uncommitted and commit only the task-specific files.
+- If there is nothing to commit, say so explicitly in the completion summary.
 - For large tasks, group changes into logical commits that each capture a coherent change.
 - Follow the [Conventional Commits](https://www.conventionalcommits.org/) format (e.g., `feat:`, `fix:`, `refactor:`, `docs:`, `chore:`).
 - Do not push to the remote repository.
