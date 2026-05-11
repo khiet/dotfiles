@@ -46,34 +46,6 @@ if which nvim &>/dev/null; then
   export EDITOR='nvim'
 fi
 
-# ports
-function port { lsof -n -P -i :"$1" }
-function ports { lsof -n -P -i | grep "$1" }
-function kp {
-  local pids
-  pids=$(lsof -ti tcp:"$1")
-
-  if [[ -z "$pids" ]]; then
-    echo "No process found on port $1"
-    return 1
-  fi
-
-  kill $pids
-}
-function kpf { lsof -ti tcp:"$1" | xargs kill -9 }
-
-# find and replace with rg
-function gR  { rg -0 -l "$1" | AGR_FROM="$1" AGR_TO="$2" xargs -0 perl -pi -e 's/$ENV{AGR_FROM}/$ENV{AGR_TO}/g' }
-function gfR { rg --files | rg --regexp "$1" | AGR_FROM="$1" AGR_TO="$2" perl -p -e 'print $_; s/$ENV{AGR_FROM}/$ENV{AGR_TO}/' | xargs -n2 mv }
-function gfD { rg --files | rg --regexp "$1" | xargs rm }
-
-function mv2 { dirname "$2" | xargs mkdir -p; mv "$1" "$2" }
-function cp2 { dirname "$2" | xargs mkdir -p; cp "$1" "$2" }
-# list brew dependencies
-function brewls { brew list | while read cask; do echo -n $fg[blue] $cask $fg[white]; brew deps $cask | awk '{printf(" %s ", $0)}'; echo ""; done }
-
-function kebab    { echo  "$1" | sed 's/ /-/g' | sed -r 's/([a-z0-9])([A-Z])/\1-\2/g' | tr "[:upper:]" "[:lower:]" | sed -r "s/[,:'‘’()#\"]/-/g" | sed "s|[][-]|-|g" }
-
 # delta
 DELTA_BASE='delta --diff-so-fancy --keep-plus-minus-markers --line-numbers-left-format "{nm:>4}" --line-numbers-right-format "│{np:>4}"'
 alias d="$DELTA_BASE"
@@ -101,6 +73,7 @@ export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
 # Java (for maestro)
 export JAVA_HOME="/opt/homebrew/opt/openjdk/libexec/openjdk.jdk/Contents/Home"
 
+# Load modules in name order; numbered files make dependencies explicit.
 for file in "$HOME"/dotfiles/zshrc/**/*.zsh(.Non); do
   source "$file"
 done
