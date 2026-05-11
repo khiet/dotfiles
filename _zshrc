@@ -108,6 +108,40 @@ glg() {
   fi
 }
 
+glp() {
+  local query="$1"
+
+  if [ -z "$query" ]; then
+    echo "Usage: glp <file-path | filename keyword>"
+    return 1
+  fi
+
+  local matches file
+  matches=$(git log --all --name-only --pretty=format: | grep -iF -- "$query" | sort -u)
+
+  if [ -z "$matches" ]; then
+    echo "No files found in git history matching: $query"
+    return 1
+  fi
+
+  if [ "$(echo "$matches" | wc -l | tr -d ' ')" -eq 1 ]; then
+    file="$matches"
+  elif command -v fzf >/dev/null 2>&1; then
+    file=$(echo "$matches" | fzf --prompt="git lp file> ")
+  else
+    echo "Multiple files matched:"
+    echo "$matches"
+    echo "Refine the query or install fzf to choose interactively."
+    return 1
+  fi
+
+  if [ -z "$file" ]; then
+    return 1
+  fi
+
+  git lp -- "$file"
+}
+
 function gbr { git co -b $(kebab "$1") }
 function gs { git show "$1" | d }
 function gss { git show "$1" | ds }
