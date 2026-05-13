@@ -6,8 +6,6 @@ end
 -- disable default bindings
 hs.hotkey.bind({ 'command' }, 'h', function()
 end)
-hs.hotkey.bind({ 'command' }, 'm', function()
-end)
 hs.hotkey.bind({ 'command', 'control' }, 'f', function()
 end)
 
