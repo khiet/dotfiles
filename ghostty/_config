@@ -21,6 +21,9 @@ confirm-close-surface = false
 # Disable command palette shortcut (default: super+shift+p)
 keybind = super+shift+p=unbind
 
+# Disable terminal inspector shortcut (default: super+alt+i)
+keybind = super+alt+i=unbind
+
 # Always copy terminal selections as plain text.
 keybind = performable:super+c=copy_to_clipboard:plain
 
