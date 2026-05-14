@@ -13,9 +13,7 @@ cask "google-chrome@beta"
 
 # desktop utilities
 cask "hammerspoon"
-cask "loop"
-cask "maccy"
-cask "sol"
+cask "raycast"
 cask "dropbox"
 cask "appcleaner"
 cask "iina"
