@@ -37,6 +37,10 @@ scan_app_leftovers () {
 
 	local keyword="$1"
 	local maxdepth="${2:-3}"
+	local xdg_data_home="${XDG_DATA_HOME:-$HOME/.local/share}"
+	local xdg_state_home="${XDG_STATE_HOME:-$HOME/.local/state}"
+	local xdg_config_home="${XDG_CONFIG_HOME:-$HOME/.config}"
+	local xdg_cache_home="${XDG_CACHE_HOME:-$HOME/.cache}"
 
 	# Built-in noise filter: known false-positive paths from Apple/system/other apps
 	local noise_patterns=(
@@ -54,6 +58,12 @@ scan_app_leftovers () {
 		"/Homebrew/Cask/"
 	)
 	local folders=(
+		# XDG base directories
+		"$xdg_data_home"
+		"$xdg_state_home"
+		"$xdg_config_home"
+		"$xdg_cache_home"
+
 		# User-level Library
 		"$HOME/Library/Application Support"
 		"$HOME/Library/Application Scripts"
@@ -160,7 +170,29 @@ scan_app_leftovers () {
 				action_rm_user+=("$p") ;;
 			*)
 				action_rm_sudo+=("$p") ;;
-		esac
+			esac
+	}
+
+	# Helper: keep only top-level matches so rm -rf suggestions do not repeat children.
+	prune_nested_matches () {
+		local -a pruned=()
+		local match parent skip_nested
+
+		for match in "${(@on)@}"; do
+			skip_nested=0
+			for parent in "${pruned[@]}"; do
+				if [[ "$match" == "$parent"/* ]]; then
+					skip_nested=1
+					break
+				fi
+			done
+
+			[ "$skip_nested" -eq 0 ] && pruned+=("$match")
+		done
+
+		for match in "${pruned[@]}"; do
+			print -r -- "$match"
+		done
 	}
 
 	echo ""
@@ -204,6 +236,10 @@ scan_app_leftovers () {
 					[ "$skip" -eq 0 ] && kept+=("$match")
 				done
 				matches=("${kept[@]}")
+			fi
+
+			if [ ${#matches[@]} -gt 0 ]; then
+				matches=("${(@f)$(prune_nested_matches "${matches[@]}")}")
 			fi
 
 			if [ ${#matches[@]} -gt 0 ]; then
