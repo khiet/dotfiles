@@ -42,7 +42,6 @@ ln -s ~/dotfiles/ghostty/_config $XDG_CONFIG_HOME/ghostty/config
 
 mkdir -p $XDG_CONFIG_HOME/opencode
 ln -s ~/dotfiles/opencode/_opencode.jsonc $XDG_CONFIG_HOME/opencode/opencode.jsonc
-ln -s ~/dotfiles/opencode/_opencode-notifier.json $XDG_CONFIG_HOME/opencode/opencode-notifier.json
 ln -s ~/dotfiles/opencode/AGENTS.md $XDG_CONFIG_HOME/opencode/AGENTS.md
 ln -s ~/dotfiles/opencode/prompts $XDG_CONFIG_HOME/opencode/prompts
 ln -s ~/dotfiles/opencode/agents $XDG_CONFIG_HOME/opencode/agents
