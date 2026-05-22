@@ -30,7 +30,7 @@ cask "orbstack"
 # ai
 cask "chatgpt"
 cask "ollama-app"
-cask "superwhisper"
+cask "handy"
 
 # version control
 brew "git"

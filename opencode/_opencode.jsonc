@@ -3,8 +3,7 @@
   "model": "openai/gpt-5.5",
   "plugin": [
     "@tarquinen/opencode-dcp@latest",
-    "opencode-vibeguard@0.1.0",
-    "@superwhisper/opencode"
+    "opencode-vibeguard@0.1.0"
   ],
   "permission": {
     "bash": {
