@@ -108,6 +108,12 @@ return {
       vim.lsp.config('ruby_lsp', {
         capabilities = capabilities,
         filetypes = { "ruby" },
+        -- nvim-lspconfig's ruby_lsp reuse_client check is broken and
+        -- spawns a duplicate client on every FileType=ruby fire.
+        -- Compare root_dir directly instead.
+        reuse_client = function(client, config)
+          return client.name == config.name and client.config.root_dir == config.root_dir
+        end,
         init_options = {
           addonSettings = {
             ["Ruby LSP Rails"] = {
