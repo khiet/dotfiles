@@ -79,3 +79,5 @@ for file in "$HOME"/dotfiles/zshrc/**/*.zsh(.Non); do
 done
 
 eval "$(mise activate)"
+
+if command -v wt >/dev/null 2>&1; then eval "$(command wt config shell init zsh)"; fi
