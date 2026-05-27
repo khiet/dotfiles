@@ -36,6 +36,7 @@ cask "handy"
 brew "git"
 brew "lazygit"
 brew "delta"
+brew "worktrunk"
 
 # shell and terminal
 brew "nvim"
