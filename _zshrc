@@ -1,17 +1,27 @@
-export XDG_DATA_HOME=$HOME/.local/share
-export XDG_STATE_HOME=$HOME/.local/state
-export XDG_CONFIG_HOME=$HOME/.config
-export XDG_CACHE_HOME=$HOME/.cache
+# ── xdg ──────────────────────────────────────────────────────────────
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_STATE_HOME="$HOME/.local/state"
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CACHE_HOME="$HOME/.cache"
 
+# ── homebrew ─────────────────────────────────────────────────────────
 eval "$(/opt/homebrew/bin/brew shellenv)"
+export HOMEBREW_BUNDLE_NO_LOCK=1
+export HOMEBREW_NO_INSTALL_CLEANUP=1
 
-export STARSHIP_CONFIG=$XDG_CONFIG_HOME/starship.toml
-export RIPGREP_CONFIG_PATH=$HOME/.ripgreprc
-export DEV_HOME=$HOME/Library/CloudStorage/Dropbox/Dev
+# ── environment ──────────────────────────────────────────────────────
+export EDITOR="vim"
+export DEV_HOME="$HOME/Library/CloudStorage/Dropbox/Dev"
+export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship.toml"
+export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
+export JAVA_HOME="/opt/homebrew/opt/openjdk/libexec/openjdk.jdk/Contents/Home"
 
-bindkey '^h' backward-delete-char
+# ── path ─────────────────────────────────────────────────────────────
+PATH="$XDG_DATA_HOME/nvim/mason/bin:$PATH"
+PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
 
-# vim mode
+# ── keybindings ──────────────────────────────────────────────────────
+bindkey "^h" backward-delete-char
 bindkey -v
 export KEYTIMEOUT=1
 
@@ -20,64 +30,46 @@ autoload -Uz edit-command-line
 zle -N edit-command-line
 bindkey -M vicmd v edit-command-line
 
+# ── completion ───────────────────────────────────────────────────────
 autoload -U compinit; compinit
 
-export EDITOR='vim'
-
-alias ct='ctags -R .'
-alias caly='cal -y'
-alias public_ip='curl ipinfo.io/ip'
-alias private_ip='ipconfig getifaddr en0'
-
+# ── aliases ──────────────────────────────────────────────────────────
+alias ct="ctags -R ."
+alias caly="cal -y"
+alias public_ip="curl ipinfo.io/ip"
+alias private_ip="ipconfig getifaddr en0"
 alias dc="docker compose"
+alias oc="opencode"
 
-if which bat &>/dev/null; then
-  alias cat='bat'
+# ── conditional aliases ──────────────────────────────────────────────
+if command -v bat >/dev/null 2>&1; then
+  alias cat="bat"
 fi
 
-if which eza &>/dev/null; then
-  alias ls='eza'
+if command -v eza >/dev/null 2>&1; then
+  alias ls="eza"
 fi
 
-# nvim
-if which nvim &>/dev/null; then
-  alias vi='nvim'
-  alias vim=''
-  export EDITOR='nvim'
+if command -v nvim >/dev/null 2>&1; then
+  alias vi="nvim"
+  alias vim=""
+  export EDITOR="nvim"
 fi
 
-# delta
+# ── delta ────────────────────────────────────────────────────────────
 DELTA_BASE='delta --diff-so-fancy --keep-plus-minus-markers --line-numbers-left-format "{nm:>4}" --line-numbers-right-format "│{np:>4}"'
 alias d="$DELTA_BASE"
 alias ds="$DELTA_BASE --side-by-side"
 
-# opencode
-alias oc='opencode'
-
-PATH="$XDG_DATA_HOME/nvim/mason/bin:$PATH"
-
-eval "$(starship init zsh)"
-
-# tuin
-eval "$(atuin init zsh --disable-up-arrow)"
-
-# direnv
-eval "$(direnv hook zsh)"
-
-# brew
-export HOMEBREW_BUNDLE_NO_LOCK=1
-export HOMEBREW_NO_INSTALL_CLEANUP=1
-
-export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
-
-# Java (for maestro)
-export JAVA_HOME="/opt/homebrew/opt/openjdk/libexec/openjdk.jdk/Contents/Home"
-
+# ── modules ──────────────────────────────────────────────────────────
 # Load modules in name order; numbered files make dependencies explicit.
 for file in "$HOME"/dotfiles/zshrc/**/*.zsh(.Non); do
   source "$file"
 done
 
+# ── shell integrations ──────────────────────────────────────────────
+eval "$(starship init zsh)"
+eval "$(atuin init zsh --disable-up-arrow)"
+eval "$(direnv hook zsh)"
 eval "$(mise activate)"
-
 if command -v wt >/dev/null 2>&1; then eval "$(command wt config shell init zsh)"; fi
