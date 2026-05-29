@@ -28,21 +28,13 @@ You are tasked with merging Renovate pull requests based on the specified update
 ### Steps to Execute:
 
 1. **Detect project ecosystem**
-   - Inspect the repository root to determine the package ecosystem(s) in use:
-     - `Gemfile` / `Gemfile.lock` -> Ruby on Rails (Bundler)
-     - `package.json` / `yarn.lock` / `package-lock.json` -> React / React Native (Expo) (npm/yarn)
-   - A repo may contain both (e.g., a Rails API with a JS frontend). Handle each ecosystem's PRs accordingly
-   - This determines how to interpret PR titles and identify likely OTA-safe versus native-affecting dependencies
+   - Determine the package ecosystem(s) in use (see the **dependency-update-safety** skill, "Ecosystem Detection"). This determines how to interpret PR titles and identify likely OTA-safe versus native-affecting dependencies.
 
 2. **List all open Renovate PRs**
    - Use `gh pr list --state open --author app/renovate` to get all open Renovate PRs
 
 3. **Analyze version changes for each PR**
-   - Extract version changes from PR titles (common formats: "Bump [package] from [old] to [new]", "Update dependency [package] to v[new]")
-   - Categorize updates as:
-     - **Patch**: x.y.z -> x.y.z+1 (only z component changes)
-     - **Minor**: x.y.z -> x.y+1.z (y component changes, z may change)
-     - **Major**: x.y.z -> x+1.y.z (x component changes)
+   - Extract the version change from each PR title and categorize it as patch, minor, or major (see the **dependency-update-safety** skill, "Version Categorization").
 
 4. **Filter PRs based on the argument**
    - If argument is "patch" (or no argument): Only include patch updates

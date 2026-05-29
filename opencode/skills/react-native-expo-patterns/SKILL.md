@@ -1,7 +1,6 @@
 ---
 name: react-native-expo-patterns
 description: Write maintainable React Native / Expo code with disciplined component design, hook hygiene, Zustand state management, and platform-aware patterns.
-compatibility: opencode
 metadata:
   audience: react-native-expo-engineers
   focus: component-architecture-and-state
@@ -10,7 +9,7 @@ metadata:
 
 ## Scope
 
-React Native and Expo application code: components, hooks, state management, navigation, and platform-specific behavior. Covers architecture decisions that compound over time — not styling or pixel work (see **ui-ux-implementation** skill for that).
+React Native and Expo application code: components, hooks, state management, navigation, and platform-specific behavior. Covers architecture decisions that compound over time - not styling or pixel work (see **ui-ux-implementation** skill for that).
 
 ## Component Design
 
@@ -21,7 +20,7 @@ React Native and Expo application code: components, hooks, state management, nav
 
 ### Props Discipline
 - Keep prop surfaces small. If a component takes >5-6 props, it's likely doing too much or needs composition (children, render props, compound pattern).
-- **Never spread unknown props** (`{...rest}`) onto native elements without explicit intent — it's a source of silent bugs in RN where invalid props cause yellow-box warnings or crashes.
+- **Never spread unknown props** (`{...rest}`) onto native elements without explicit intent - it's a source of silent bugs in RN where invalid props cause yellow-box warnings or crashes.
 - Prefer explicit prop types over `any`. When typing is inconvenient, that's a signal the interface is unclear.
 
 ### Composition Over Configuration
@@ -32,11 +31,11 @@ React Native and Expo application code: components, hooks, state management, nav
 ## Hook Hygiene
 
 ### Dependency Arrays
-- **Every value from the enclosing scope that the effect/callback/memo reads must be in the dependency array.** No exceptions, no `// eslint-disable-next-line`. If the deps cause too many re-runs, the solution is restructuring — not lying to React.
+- **Every value from the enclosing scope that the effect/callback/memo reads must be in the dependency array.** No exceptions, no `// eslint-disable-next-line`. If the deps cause too many re-runs, the solution is restructuring - not lying to React.
 - `useCallback` and `useMemo`: use them to **stabilize references passed to children or effects**, not as a general performance tool. Memoizing everything is noise; memoize at the boundaries where identity matters (context values, list item renderers, effect deps).
 
 ### Custom Hook Conventions
-- Name hooks `use<Thing>` — no exceptions.
+- Name hooks `use<Thing>` - no exceptions.
 - A hook should return a **stable contract**: ideally an object with named fields, not a positional tuple beyond 2-3 values.
 - Hooks that call APIs should return `{ data, error, isLoading }` at minimum. Don't make callers guess loading/error states.
 - Keep hooks composable: a hook should not assume it's the only hook in the component. Avoid hooks that secretly subscribe to global state the caller doesn't expect.
@@ -70,7 +69,7 @@ React Native and Expo application code: components, hooks, state management, nav
 
 - Use `Platform.select` or `.ios.tsx`/`.android.tsx` file extensions for divergent behavior. Avoid `Platform.OS === 'ios'` conditionals scattered through component bodies.
 - Test on both platforms regularly. Shadows, fonts, keyboard behavior, and safe areas diverge in ways that aren't visible on one platform.
-- Expo-managed APIs over bare RN modules when both exist. Prefer `expo-haptics` over `react-native-haptic-feedback`, etc. — they handle config and linking.
+- Expo-managed APIs over bare RN modules when both exist. Prefer `expo-haptics` over `react-native-haptic-feedback`, etc. - they handle config and linking.
 
 ## Performance
 
@@ -84,7 +83,7 @@ React Native and Expo application code: components, hooks, state management, nav
 
 - Putting API calls in `useEffect` without cleanup/cancellation (race conditions on fast navigation).
 - Storing server state in Zustand that should live in a fetch cache (consider React Query / TanStack Query for server state if it grows complex).
-- Using `useEffect` to sync props to state — this is almost always a bug. Derive instead.
+- Using `useEffect` to sync props to state - this is almost always a bug. Derive instead.
 - Deeply nested ternaries in JSX. Extract to early returns or subcomponents.
 - `setTimeout`/`setInterval` in components without cleanup.
 

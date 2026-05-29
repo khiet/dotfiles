@@ -1,7 +1,6 @@
 ---
 name: api-boundary-and-serialization
 description: Design clean, resilient REST API boundaries between Rails backends and React Native frontends with disciplined serialization, error handling, and offline-aware patterns.
-compatibility: opencode
 metadata:
   audience: full-stack-rails-and-react-native-engineers
   focus: api-contract-and-data-flow
@@ -64,12 +63,12 @@ Rules:
 - Parse and validate responses at the boundary. If the server sends unexpected shape, fail loudly at the API layer, not deep in a component.
 
 ### Response Handling Pattern
-Every API call site should handle exactly 3 states — no shortcuts:
+Every API call site should handle exactly 3 states - no shortcuts:
 
 ```
-1. Loading  → show skeleton/spinner, disable actions
-2. Success  → render data, clear errors
-3. Error    → show user-facing message, preserve prior data when possible
+1. Loading  -> show skeleton/spinner, disable actions
+2. Success  -> render data, clear errors
+3. Error    -> show user-facing message, preserve prior data when possible
 ```
 
 - **Never silently swallow errors.** An empty screen with no error message is worse than an error banner.
@@ -110,19 +109,19 @@ Every API call site should handle exactly 3 states — no shortcuts:
 
 ## Anti-Patterns
 
-- Letting components parse raw API responses — all shaping happens in the API layer or serializer.
-- Returning 200 with `{ success: false }` — use proper HTTP status codes.
-- Nested includes 3+ levels deep (`order.line_items.product.category.parent`) — flatten or split into separate endpoints.
+- Letting components parse raw API responses - all shaping happens in the API layer or serializer.
+- Returning 200 with `{ success: false }` - use proper HTTP status codes.
+- Nested includes 3+ levels deep (`order.line_items.product.category.parent`) - flatten or split into separate endpoints.
 - Paginating with offset on datasets that change frequently (items shift between pages). Use cursors.
-- Caching stale auth state — token refresh must be atomic and synchronized (prevent parallel refresh race).
-- Different error shapes from different endpoints — enforce the envelope in a Rails base controller concern.
+- Caching stale auth state - token refresh must be atomic and synchronized (prevent parallel refresh race).
+- Different error shapes from different endpoints - enforce the envelope in a Rails base controller concern.
 
 ## Quality Bar
 
 Before finishing, confirm:
 - Response shape follows the consistent envelope convention.
 - Serializers are use-case-specific and include only needed fields/associations.
-- Client handles loading, success, and error states explicitly — no silent failures.
+- Client handles loading, success, and error states explicitly - no silent failures.
 - Auth tokens are stored securely and refreshed transparently.
 - Collections are paginated with pagination metadata.
 - The client can render a useful screen even when offline or on slow network.

@@ -1,6 +1,5 @@
 ---
 description: Create a Linear ticket from conversation context and execute the work
-model: openai/gpt-5.5
 ---
 
 # Ticket & Execute
@@ -9,7 +8,7 @@ Summarise recent conversation context into a Linear ticket, then execute the wor
 
 Usage: `/ticket [optional instruction]`
 
-If an instruction is provided, treat it as the primary directive — use it to guide what the ticket is about and what work to execute. Still review conversation context for supporting details.
+If an instruction is provided, treat it as the primary directive - use it to guide what the ticket is about and what work to execute. Still review conversation context for supporting details.
 
 $ARGUMENTS
 
@@ -46,7 +45,6 @@ $ARGUMENTS
 6. **Execute the work**
    - Implement the changes described in the ticket.
    - Make separate commits for each logical change.
-   - Run the project's linter with auto-fix enabled. If changes were made, commit with message: "Auto-format and lint fixes".
 
 7. **Report status**
    - Output one of the status lines below when done.
@@ -77,4 +75,4 @@ Always use backticks for code elements: class names, functions, file paths, comm
 
 Report one of:
 - "✅ **Ticket created & work complete**: <Linear URL> on branch `<branchName>`"
-- "✅ **Ticket created, work in progress**: <Linear URL> on branch `<branchName>` — [brief note on what remains]"
+- "✅ **Ticket created, work in progress**: <Linear URL> on branch `<branchName>` - [brief note on what remains]"

@@ -1,7 +1,6 @@
 ---
 name: rails-performance-and-query-hygiene
 description: Improve Rails performance and query quality by preventing N+1s, reducing allocations, and applying safe, maintainable optimizations.
-compatibility: opencode
 metadata:
   audience: rails-engineers
   focus: api-and-db-performance

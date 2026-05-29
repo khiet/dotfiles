@@ -1,6 +1,5 @@
 ---
 description: Refactor a document for clarity, grammar, and spelling without changing its meaning
-model: openai/gpt-5.5
 ---
 
 # Doc Refactor

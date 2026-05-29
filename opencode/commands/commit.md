@@ -1,6 +1,6 @@
 ---
 description: Create a commit from staged changes
-model: openai/gpt-5.4-mini
+allowed-tools: Bash(git diff:*), Bash(git add:*), Bash(git commit:*), Bash(git status:*)
 ---
 
 Create a single git commit for the currently staged changes.

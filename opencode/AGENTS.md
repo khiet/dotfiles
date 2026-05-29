@@ -66,5 +66,6 @@ When finishing code or configuration changes, provide a concise summary that inc
 - If unrelated user changes are present, leave them uncommitted and commit only the task-specific files.
 - If there is nothing to commit, say so explicitly in the completion summary.
 - For large tasks, group changes into logical commits that each capture a coherent change.
+- After making code changes, run the project's linter with auto-fix. If it changes files, commit those fixes separately with the message `Auto-format and lint fixes`.
 - Follow the [Conventional Commits](https://www.conventionalcommits.org/) format (e.g., `feat:`, `fix:`, `refactor:`, `docs:`, `chore:`).
 - Do not push to the remote repository.

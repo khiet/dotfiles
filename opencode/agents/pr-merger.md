@@ -9,7 +9,7 @@ permission:
     "gh pr view*": allow
     "gh pr diff*": allow
     "gh pr edit*": ask
-    "gh pr merge*": allow
+    "gh pr merge*": ask
   edit: deny
 ---
 

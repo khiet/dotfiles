@@ -1,6 +1,5 @@
 ---
 description: Plan safe remediation for open GitHub Dependabot security alerts
-model: openai/gpt-5.5
 ---
 
 # Plan Dependabot Alerts
@@ -56,14 +55,8 @@ You are tasked with creating a safe remediation plan for open Dependabot securit
      - Any existing Dependabot PR URL
 
 3. **Detect project ecosystem**
-   - Inspect repository files to determine package ecosystems:
-     - `Gemfile` / `Gemfile.lock` -> Ruby / Bundler
-     - `package.json` plus `yarn.lock`, `package-lock.json`, or `pnpm-lock.yaml` -> Node/npm/yarn/pnpm
-     - `requirements.txt`, `poetry.lock`, or `Pipfile.lock` -> Python
-     - `go.mod` / `go.sum` -> Go
-     - `Cargo.toml` / `Cargo.lock` -> Rust
-     - `composer.json` / `composer.lock` -> PHP
-   - A repository may contain multiple ecosystems. Group alerts by ecosystem and manifest path.
+   - Determine the package ecosystem(s) in use (see the **dependency-update-safety** skill, "Ecosystem Detection").
+   - Group alerts by ecosystem and manifest path.
 
 4. **Check existing remediation PRs**
    - Look for open Dependabot PRs:
@@ -75,30 +68,12 @@ You are tasked with creating a safe remediation plan for open Dependabot securit
 
 5. **Determine the safe fixed version**
    - For each alert, identify the minimum patched version from the advisory.
-   - Compare the required update type:
-     - Patch: usually safest
-     - Minor: requires release-note and usage review
-     - Major: requires manual review unless the codebase clearly has no affected usage and tests are strong
+   - Assess the update type (patch/minor/major) and its risk per the **dependency-update-safety** skill ("Version Categorization").
    - If multiple alerts affect the same dependency, choose the lowest version that fixes all relevant alerts unless a higher version is clearly safer or already used by an existing PR.
 
 6. **Perform breaking-change safety review**
    - Review Dependabot PR bodies, advisories, changelogs, release notes, and package migration guides.
-   - Search the codebase for usage of each affected package:
-     - Ruby: `app/`, `lib/`, `config/`, `spec/`, `test/`
-     - JavaScript/TypeScript: `src/`, `app/`, `lib/`, `components/`, `pages/`, `test/`, `__tests__/`
-     - Python: `src/`, `app/`, `tests/`
-     - Go: `*.go`
-     - Rust: `src/`
-     - PHP: `src/`, `app/`, `tests/`
-   - Also check package-specific configuration files and initializers.
-   - Flag risk if release notes mention:
-     - Breaking changes
-     - Removed APIs
-     - Deprecated APIs used by the repo
-     - Changed defaults
-     - Runtime behavior changes
-     - Build/toolchain changes
-     - Required migrations
+   - Search the codebase for usage of each affected package, then flag breaking-change risks, following the **dependency-update-safety** skill ("Codebase-Usage Analysis" and "Breaking-Change Risk Signals").
 
 7. **Assess whether alerts can be addressed together**
    - Prefer a single remediation branch/PR when:

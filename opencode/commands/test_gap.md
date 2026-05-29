@@ -55,6 +55,6 @@ Always use backticks for code elements: class names, functions, file paths, comm
 ## Status
 
 Report one of:
-- "✅ **Tests added**: [brief summary of what was covered] — all passing"
+- "✅ **Tests added**: [brief summary of what was covered] - all passing"
 - "✅ **No gaps found**: existing tests already cover the last commit"
-- "⚠️ **Tests added, issues remain**: [brief summary] — [what still needs attention]"
+- "⚠️ **Tests added, issues remain**: [brief summary] - [what still needs attention]"
