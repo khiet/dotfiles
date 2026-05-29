@@ -1,6 +1,5 @@
 ---
 description: Generate or create a pull request description for the current branch
-model: openai/gpt-5.5
 ---
 
 # PR Description Generator
@@ -11,7 +10,6 @@ Generate a concise GitHub PR description based on the current branch and recent 
 
 1. **Prepare codebase with separate commits**
    - Whenever making any changes to the codebase (e.g., adding a missing test, linting, or other fixes), create a separate commit for each logical change.
-   - Run the project's linter with auto-fix enabled. If changes were made, commit specifically with message: "Auto-format and lint fixes".
 
 2. **Gather branch information:**
    ```bash

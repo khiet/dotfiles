@@ -1,7 +1,6 @@
 ---
 name: ui-ux-implementation
 description: Implement and refine UI/UX from reference artifacts (Figma, screenshots, specs) with usability best practices, design-system enforcement, and maintainable code. Subsumes design-system-enforcement.
-compatibility: opencode
 metadata:
   audience: frontend-engineers
   focus: usability-consistency-and-reuse

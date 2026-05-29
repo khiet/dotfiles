@@ -14,8 +14,8 @@ Automatically merge Dependabot pull requests based on version update type.
 ```
 
 Where `TYPE` can be:
-- `patch` (default): Only merge patch version updates (x.y.z → x.y.z+1)
-- `minor`: Merge both minor (x.y.z → x.y+1.z) and patch version updates
+- `patch` (default): Only merge patch version updates (x.y.z -> x.y.z+1)
+- `minor`: Merge both minor (x.y.z -> x.y+1.z) and patch version updates
 
 ## Arguments
 
@@ -28,21 +28,13 @@ You are tasked with merging Dependabot pull requests based on the specified upda
 ### Steps to Execute:
 
 1. **Detect project ecosystem**
-   - Inspect the repository root to determine the package ecosystem(s) in use:
-     - `Gemfile` / `Gemfile.lock` → Ruby on Rails (Bundler)
-     - `package.json` / `yarn.lock` / `package-lock.json` → React / React Native (Expo) (npm/yarn)
-   - A repo may contain both (e.g., a Rails API with a JS frontend). Handle each ecosystem's PRs accordingly
-   - This determines how to interpret PR titles and where to search for dependency usage
+   - Determine the package ecosystem(s) in use (see the **dependency-update-safety** skill, "Ecosystem Detection"). This determines how to interpret PR titles and where to search for dependency usage.
 
 2. **List all open Dependabot PRs**
    - Use `gh pr list --state open --author app/dependabot` to get all open Dependabot PRs
 
 3. **Analyze version changes for each PR**
-   - Extract version changes from PR titles (common formats: "Bump [package] from [old] to [new]", "Update [package] requirement from [old] to [new]")
-   - Categorize updates as:
-     - **Patch**: x.y.z → x.y.z+1 (only z component changes)
-     - **Minor**: x.y.z → x.y+1.z (y component changes, z may change)
-     - **Major**: x.y.z → x+1.y.z (x component changes)
+   - Extract the version change from each PR title and categorize it as patch, minor, or major (see the **dependency-update-safety** skill, "Version Categorization").
 
 4. **Filter PRs based on the argument**
    - If argument is "patch" (or no argument): Only include patch updates
@@ -58,18 +50,11 @@ You are tasked with merging Dependabot pull requests based on the specified upda
    - Focus on changes to the lockfile and any modified source files
 
    #### 5b. Check the package's CHANGELOG for breaking changes
-   - Use `gh pr view [PR_NUMBER] --json body` to read the PR body — Dependabot often includes a changelog excerpt and release notes
+   - Use `gh pr view [PR_NUMBER] --json body` to read the PR body - Dependabot often includes a changelog excerpt and release notes
    - Look for any mentions of: breaking changes, deprecations, removed methods/functions/components, renamed APIs, changed defaults, changed behaviour, or removed features
 
    #### 5c. Search the codebase for usage of the package
-   - Determine where dependencies are typically used based on the detected ecosystem:
-     - **Ruby**: `app/`, `lib/`, `config/`, `spec/`, `test/` — look for `require`, `include`, class/module usage, initializer config
-     - **JavaScript/TypeScript**: `src/`, `lib/`, `pages/`, `components/`, `app/`, `test/`, `__tests__/` — look for `import`/`require` statements, component usage, config files
-     - **Python**: `src/`, `lib/`, `app/`, `tests/` — look for `import`/`from ... import` statements, config usage
-     - **Go**: `*.go` files — look for `import` statements referencing the module
-     - **Rust**: `src/` — look for `use` statements referencing the crate
-     - **PHP**: `src/`, `app/`, `tests/` — look for `use` statements, `composer` autoloading
-     - For any ecosystem, also check configuration files (e.g., `config/`, dotfiles, `.*rc` files) for package-specific settings
+   - Find where the dependency is used, including package-specific configuration files (see the **dependency-update-safety** skill, "Codebase-Usage Analysis").
    - Cross-reference any CHANGELOG deprecations or removals against actual usage in the codebase
 
    #### 5d. Make a merge/skip decision
@@ -107,18 +92,18 @@ You are tasked with merging Dependabot pull requests based on the specified upda
 Detected ecosystem: Ruby (Bundler)
 
 Successfully merged 8 Dependabot PRs:
-- phonelib 0.10.10 → 0.10.11 (patch)
-- redis 5.4.0 → 5.4.1 (patch)
-- pagy 9.3.0 → 9.4.0 (minor — reviewed, no breaking changes)
+- phonelib 0.10.10 -> 0.10.11 (patch)
+- redis 5.4.0 -> 5.4.1 (patch)
+- pagy 9.3.0 -> 9.4.0 (minor - reviewed, no breaking changes)
 - [etc...]
 
 Failed to merge:
-- flipper-ui 1.3.4 → 1.3.5 (not mergeable — conflicts)
+- flipper-ui 1.3.4 -> 1.3.5 (not mergeable - conflicts)
 
-Skipped (minor — potential breaking changes):
-- sidekiq 7.2.0 → 7.3.0 (CHANGELOG mentions removed `Sidekiq::Worker` alias; codebase uses it in app/workers/)
+Skipped (minor - potential breaking changes):
+- sidekiq 7.2.0 -> 7.3.0 (CHANGELOG mentions removed `Sidekiq::Worker` alias; codebase uses it in app/workers/)
 
 Skipped (requires manual review):
-- stripe 13.5.0 → 15.3.0 (major update)
-- thor 1.3.2 → 1.4.0 (minor update, only merging patch)
+- stripe 13.5.0 -> 15.3.0 (major update)
+- thor 1.3.2 -> 1.4.0 (minor update, only merging patch)
 ```

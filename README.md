@@ -47,11 +47,38 @@ ln -s ~/dotfiles/opencode/agents $XDG_CONFIG_HOME/opencode/agents
 ln -s ~/dotfiles/opencode/commands $XDG_CONFIG_HOME/opencode/commands
 ln -s ~/dotfiles/opencode/skills $XDG_CONFIG_HOME/opencode/skills
 
+mkdir -p ~/.claude
+ln -s ~/dotfiles/opencode/commands ~/.claude/commands
+ln -s ~/dotfiles/opencode/skills ~/.claude/skills
+ln -s ~/dotfiles/.claude/settings.json ~/.claude/settings.json
+ln -s ~/dotfiles/.claude/CLAUDE.md ~/.claude/CLAUDE.md
+
 ln -s ~/dotfiles/_starship.toml $XDG_CONFIG_HOME/starship.toml
 
 mkdir -p $XDG_CONFIG_HOME/atuin
 ln -s ~/dotfiles/_atuin_config.toml $XDG_CONFIG_HOME/atuin/config.toml
 ```
+
+#### Claude Code permissions
+
+`.claude/settings.json` mirrors opencode's permission allowlist. `opencode/_opencode.jsonc`
+is the single source of truth — after editing its permissions, regenerate and commit:
+
+```bash
+scripts/gen-claude-settings.sh
+```
+
+#### Claude Code MCP servers
+
+`opencode/_opencode.jsonc` is also the single source of truth for MCP servers. Claude stores
+user-scope servers in `~/.claude.json` (which it rewrites itself, so it can't be symlinked).
+Instead, register them from the opencode config — re-run after editing the `mcp` block:
+
+```bash
+scripts/gen-claude-mcp.sh
+```
+
+Every server in the `mcp` block is registered at user scope (available in every project).
 
 ## Install brew software
 

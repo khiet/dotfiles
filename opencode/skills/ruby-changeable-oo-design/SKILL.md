@@ -1,7 +1,6 @@
 ---
 name: ruby-changeable-oo-design
 description: Apply practical OO design in Ruby to reduce change cost using SRP, dependency management, message-focused interfaces, and composition.
-compatibility: opencode
 metadata:
   audience: ruby-and-rails-engineers
   focus: design-for-change

@@ -1,7 +1,6 @@
 ---
 name: testing-best-practices
 description: Build fast, resilient test suites by testing interfaces over implementation, using state/behavior verification deliberately, and choosing test doubles with clear intent.
-compatibility: opencode
 metadata:
   audience: software-engineers
   focus: test-design-and-maintainability

@@ -26,6 +26,7 @@ cask "ghostty"
 cask "tableplus"
 cask "ngrok"
 cask "orbstack"
+cask "claude-code@latest"
 
 # ai
 cask "chatgpt"
