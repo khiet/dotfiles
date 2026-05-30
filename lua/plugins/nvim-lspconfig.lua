@@ -123,6 +123,33 @@ return {
         },
       })
       vim.lsp.enable('ruby_lsp')
+
+      -- pyright: type-checking / completion. typeCheckingMode under
+      -- settings.python.analysis; bump "basic" -> "standard"/"strict" later.
+      vim.lsp.config('pyright', {
+        capabilities = capabilities,
+        settings = {
+          python = {
+            analysis = {
+              typeCheckingMode = "basic",
+            },
+          },
+        },
+      })
+      vim.lsp.enable('pyright')
+
+      -- ruff: lint / format. Defer hover to pyright (richer type/doc info).
+      -- Force utf-16 to match pyright (its only encoding); ruff otherwise
+      -- negotiates utf-8, which mismatches and skews multibyte column offsets.
+      vim.lsp.config('ruff', {
+        capabilities = vim.tbl_deep_extend("force", capabilities, {
+          general = { positionEncodings = { "utf-16" } },
+        }),
+        on_attach = function(client)
+          client.server_capabilities.hoverProvider = false
+        end,
+      })
+      vim.lsp.enable('ruff')
     end
   },
 }

@@ -13,7 +13,9 @@ return {
         'ts_ls',
         'eslint',
         'jsonls',
-        'lua_ls'
+        'lua_ls',
+        'pyright',
+        'ruff',
       },
     }
   end
