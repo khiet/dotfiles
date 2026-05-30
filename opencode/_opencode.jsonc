@@ -45,6 +45,16 @@
       "npm view*": "allow",
       "npm info*": "allow",
       "bundle exec rspec*": "allow",
+      /* Python / uv / pip */
+      "uv --version": "allow",
+      "uv tree *": "allow",
+      "uv pip *": "allow",
+      "pip --version": "allow",
+      "pip3 --version": "allow",
+      "pip list*": "allow",
+      "pip3 list*": "allow",
+      "pip show*": "allow",
+      "pip3 show*": "allow",
       /* Git */
       "git show*": "allow",
       "git pr view*": "allow",
