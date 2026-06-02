@@ -96,6 +96,8 @@ return {
       local servers = {
         'ts_ls',
         'eslint',
+        'tailwindcss',
+        'cssls',
         'jsonls',
         'lua_ls',
       }

@@ -12,6 +12,8 @@ return {
         'ruby_lsp',
         'ts_ls',
         'eslint',
+        'tailwindcss',
+        'cssls',
         'jsonls',
         'lua_ls',
         'pyright',
