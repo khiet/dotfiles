@@ -98,6 +98,7 @@ return {
         'eslint',
         'tailwindcss',
         'cssls',
+        'prismals',
         'jsonls',
         'lua_ls',
       }

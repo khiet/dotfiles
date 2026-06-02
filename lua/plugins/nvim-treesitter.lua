@@ -12,6 +12,7 @@ local parsers = {
   "xml",
   "json",
   "markdown",
+  "prisma",
 }
 
 return {
