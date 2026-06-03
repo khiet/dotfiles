@@ -32,6 +32,8 @@ Generate a concise GitHub PR description based on the current branch and recent 
 ```markdown
 ## Summary
 
+TL;DR: [One or two sentence outcome-focused summary]
+
 - [Main change - concise, actionable]
 - [Additional changes if needed]
 - [Max 3 bullets]
