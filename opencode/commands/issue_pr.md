@@ -5,7 +5,7 @@ model: openai/gpt-5.5
 
 # PR Description Generator
 
-Generate a concise GitHub PR description based on the current branch and recent commits. If a PR doesn't exist, create one. If it exists, output the generated description for review (do not auto-update to preserve any manual edits like screenshots) and confirm if I want to overwrite.
+Generate a concise GitHub PR description based on the current branch and recent commits. If a PR doesn't exist, create one as a draft. If it exists, output the generated description for review (do not auto-update to preserve any manual edits like screenshots) and confirm if I want to overwrite.
 
 ## Process
 
@@ -26,7 +26,7 @@ Generate a concise GitHub PR description based on the current branch and recent 
 
 5. **Handle PR:**
    - Check if PR exists: `gh pr view`
-   - If no PR exists: create with `gh pr create`
+   - If no PR exists: create with `gh pr create --draft`
    - If PR exists: output the generated description for user to review/copy
 
 ## PR Template
@@ -52,5 +52,5 @@ Always use backticks for code elements: class names, functions, file paths, comm
 ## Status
 
 Report one of:
-- "✅ **Created new PR**: <URL>"
+- "✅ **Created new draft PR**: <URL>"
 - "📋 **PR exists**: <URL> — Generated description below for review"
