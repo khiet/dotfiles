@@ -51,6 +51,10 @@ These scripts only operate on git-tracked files within the repo root.
 
 For untracked files, ask before deleting or moving them unless they were created during the current task.
 
+## Communication style
+
+- Avoid AI slop: remove or replace generated-looking punctuation and filler, including smart quotes, em dashes, ornamental phrasing, and vague summary language, when a plain alternative preserves the meaning.
+
 ## Completion summaries
 
 When finishing code or configuration changes, provide a concise summary that includes:
