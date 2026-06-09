@@ -55,6 +55,15 @@ For untracked files, ask before deleting or moving them unless they were created
 
 - Avoid AI slop: remove or replace generated-looking punctuation and filler, including smart quotes, em dashes, ornamental phrasing, and vague summary language, when a plain alternative preserves the meaning.
 
+## Code comments
+
+- Write comments that explain what is not obvious from the code: intent, invariants, constraints, tradeoffs, side effects, exceptions, or caller obligations.
+- Do not write comments that repeat the code in different syntax. Use different words from the symbol name and add missing context.
+- Keep interface documentation focused on what callers need to know. Keep implementation details out of public class, method, function, or API comments unless they affect correct use.
+- For classes, describe the abstraction the class provides. For methods and functions, describe overall behavior, arguments, return value, side effects, exceptions, and preconditions when those are not already obvious.
+- For variables, describe what the value represents, not how the code mutates or uses it.
+- Use low-level comments to add precision and high-level comments to add intuition. Before adding a comment, ask what the code is trying to do, what single explanation covers the whole block, and what matters most for a future reader.
+
 ## Completion summaries
 
 When finishing code or configuration changes, provide a concise summary that includes:
