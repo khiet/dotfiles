@@ -76,6 +76,9 @@
     ],
     "defaultMode": "default"
   },
+  "enabledPlugins": {
+    "figma@claude-plugins-official": true
+  },
   "theme": "auto",
   "editorMode": "vim",
   "preferredNotifChannel": "ghostty",
