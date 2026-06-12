@@ -46,6 +46,7 @@ $ARGUMENTS
    - Prefer comments a mid-level engineer new to the project can understand without private domain knowledge.
    - If a domain-specific term is necessary, explain the term briefly in the comment or replace it with plainer language.
    - Use low-level comments for precision and high-level comments for intuition.
+   - Look at similar code in the project, such as comparable service objects, components, controllers, or modules, and align with their established commenting style when it is clear and useful.
    - Before changing a comment, identify what the surrounding code is trying to do, what single explanation covers the whole block, and what matters most for a future reader.
 
 4. **Edit comments in place**
