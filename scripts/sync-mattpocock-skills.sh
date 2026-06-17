@@ -24,6 +24,7 @@ SKILLS=(
   "skills/engineering/improve-codebase-architecture"
   "skills/deprecated/ubiquitous-language"
   "skills/productivity/grill-me"
+  "skills/productivity/grilling"
   "skills/engineering/to-prd"
   "skills/engineering/to-issues"
   "skills/engineering/tdd"
