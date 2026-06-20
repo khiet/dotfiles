@@ -67,7 +67,6 @@ brew "watch"
 # development tools
 brew "universal-ctags"
 brew "gh"
-brew "lazydocker"
 brew "mise"
 brew "tree-sitter-cli"
 brew "uv"
