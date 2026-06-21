@@ -2,6 +2,12 @@ return {
   "esmuellert/codediff.nvim",
   cmd = "CodeDiff",
   opts = {
+    highlights = {
+      line_insert = "#102718",
+      char_insert = "#214d30",
+      line_delete = "#2a1116",
+      char_delete = "#6b2f3a",
+    },
     explorer = {
       auto_open_on_cursor = true
     },
