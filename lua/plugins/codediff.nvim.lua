@@ -5,6 +5,9 @@ return {
     explorer = {
       auto_open_on_cursor = true
     },
+    diff = {
+      layout = "inline", -- toggle between "side-by-side" and "inline" with 't'
+    },
   },
   init = function()
     local opt_sn = { silent = true, noremap = true }
