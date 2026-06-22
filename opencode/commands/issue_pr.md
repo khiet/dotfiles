@@ -18,16 +18,26 @@ Generate a concise GitHub PR description based on the current branch and recent 
    git diff main...HEAD --stat
    ```
 
-3. **Analyze test coverage** for PR changes only (not full codebase)
+3. **Check for a repository PR template:**
+   - Look for `.github/pull_request_template.md`.
+   - If present, read it and use its headings, checklists, prompts, and ordering as the structure for the generated PR description.
+   - Fill template sections with concrete details from the branch, commits, changed files, and verification performed.
+   - Preserve checklist items from the template. Mark an item checked only when the branch evidence or performed verification supports it; otherwise leave it unchecked and add a brief note where useful.
+   - Do not invent answers for compliance, monitoring, rollout, or dependency questions. If the evidence is unclear, keep the item unchecked and state the uncertainty concisely.
+   - If the template has placeholder guidance text, replace it with the generated content when possible rather than leaving generic instructions in the final PR body.
 
-4. **Generate PR description** following the template below
+4. **Analyze test coverage** for PR changes only (not full codebase)
 
-5. **Handle PR:**
+5. **Generate PR description:**
+   - If `.github/pull_request_template.md` exists, follow that repository template.
+   - Otherwise, follow the fallback template below.
+
+6. **Handle PR:**
    - Check if PR exists: `gh pr view`
    - If no PR exists: create with `gh pr create --draft`
    - If PR exists: output the generated description for user to review/copy
 
-## PR Template
+## Fallback PR Template
 
 ```markdown
 ## Summary
