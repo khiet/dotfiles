@@ -67,6 +67,22 @@ return {
         end,
         { noremap = true }
       )
+      vim.keymap.set(
+        'n',
+        '<leader>gc',
+        function()
+          local ref = vim.fn.getreg('+'):match('^%s*(.-)%s*$')
+
+          if ref ~= '' then
+            builtin.find_files({
+              prompt_title = "Git Diff " .. ref,
+              cwd = vim.fn.systemlist("git rev-parse --show-toplevel")[1],
+              find_command = { "git", "diff", "--name-only", ref },
+            })
+          end
+        end,
+        { noremap = true }
+      )
     end,
     config = function()
       local actions = require("telescope.actions")
