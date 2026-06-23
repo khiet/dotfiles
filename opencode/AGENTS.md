@@ -44,8 +44,8 @@ Example:
 
 Do not use `rm` or `mv` directly. Use the safe wrapper scripts instead:
 
-- **Delete:** `./opencode/scripts/safe-rm.sh <paths...>`
-- **Move/Rename:** `./opencode/scripts/safe-mv.sh <sources...> <destination>`
+- **Delete:** `~/dotfiles/opencode/scripts/safe-rm.sh <paths...>`
+- **Move/Rename:** `~/dotfiles/opencode/scripts/safe-mv.sh <sources...> <destination>`
 
 These scripts only operate on git-tracked files within the repo root.
 
@@ -53,16 +53,13 @@ For untracked files, ask before deleting or moving them unless they were created
 
 ## Communication style
 
-- Avoid AI slop: remove or replace generated-looking punctuation and filler, including smart quotes, em dashes, ornamental phrasing, and vague summary language, when a plain alternative preserves the meaning.
+- Do not use smart quotes or em dashes; use plain ASCII punctuation.
+- Cut filler and ornamental phrasing when a plain alternative preserves the meaning.
 
 ## Code comments
 
-- Write comments that explain what is not obvious from the code: intent, invariants, constraints, tradeoffs, side effects, exceptions, or caller obligations.
-- Do not write comments that repeat the code in different syntax. Use different words from the symbol name and add missing context.
-- Keep interface documentation focused on what callers need to know. Keep implementation details out of public class, method, function, or API comments unless they affect correct use.
-- For classes, describe the abstraction the class provides. For methods and functions, describe overall behavior, arguments, return value, side effects, exceptions, and preconditions when those are not already obvious.
-- For variables, describe what the value represents, not how the code mutates or uses it.
-- Use low-level comments to add precision and high-level comments to add intuition. Before adding a comment, ask what the code is trying to do, what single explanation covers the whole block, and what matters most for a future reader.
+- Comment what is not obvious from the code: intent, invariants, constraints, tradeoffs, side effects, exceptions, and caller obligations. Do not restate the code or the symbol name.
+- Keep public interface docs focused on what callers need (behavior, arguments, return, side effects, preconditions); leave implementation detail out unless it affects correct use.
 
 ## Completion summaries
 
