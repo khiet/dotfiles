@@ -1,6 +1,9 @@
 -- https://neovim.getkulala.net/docs/usage
 return {
   "mistweaverco/kulala.nvim",
+  -- Pinned: kulala manages its own tree-sitter parser/queries, and tracking
+  -- `main` silently broke .http highlighting on a grammar/architecture change.
+  version = "v6.16.0",
   keys = {
     { "<leader>rr", "<cmd>lua require('kulala').run()<CR>",              desc = "Send request",       ft = { "http", "rest" } },
     { "<leader>re", "<cmd>lua require('kulala').set_selected_env()<CR>", desc = "Select environment", ft = { "http", "rest" } },
