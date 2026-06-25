@@ -18,7 +18,6 @@ export JAVA_HOME="/opt/homebrew/opt/openjdk/libexec/openjdk.jdk/Contents/Home"
 
 # ── path ─────────────────────────────────────────────────────────────
 PATH="$XDG_DATA_HOME/nvim/mason/bin:$PATH"
-PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
 PATH="$XDG_DATA_HOME/../bin:$PATH"
 
 # ── keybindings ──────────────────────────────────────────────────────
