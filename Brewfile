@@ -38,6 +38,7 @@ brew "git"
 brew "lazygit"
 brew "delta"
 brew "worktrunk"
+cask "trailer"
 
 # shell and terminal
 brew "nvim"
