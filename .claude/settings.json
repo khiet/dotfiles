@@ -82,5 +82,9 @@
   "theme": "auto",
   "editorMode": "vim",
   "preferredNotifChannel": "ghostty",
+  "attribution": {
+    "commit": "",
+    "pr": ""
+  },
   "skipAutoPermissionPrompt": true
 }
