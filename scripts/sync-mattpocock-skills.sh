@@ -23,13 +23,14 @@ DEST_DIR="opencode/skills" # relative to repo root
 SKILLS=(
   "skills/productivity/grill-me"
   "skills/productivity/grilling"
+  "skills/productivity/writing-great-skills"
+  "skills/engineering/grill-with-docs"
   "skills/engineering/to-prd"
   "skills/engineering/to-issues"
   "skills/engineering/tdd"
   "skills/engineering/improve-codebase-architecture"
   "skills/engineering/codebase-design"
   "skills/engineering/domain-modeling"
-  "skills/deprecated/ubiquitous-language"
 )
 
 # ---------------------------------------------------------------------------
