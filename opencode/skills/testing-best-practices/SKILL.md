@@ -1,15 +1,11 @@
 ---
 name: testing-best-practices
 description: Build fast, resilient test suites by testing interfaces over implementation, using state/behavior verification deliberately, and choosing test doubles with clear intent.
-metadata:
-  audience: software-engineers
-  focus: test-design-and-maintainability
-  additive: "true"
 ---
 
-## Scope
+# Testing Best Practices
 
-Unit, service, and integration test work where maintainability, feedback speed, and refactor safety matter.
+Write tests that survive refactoring. A test coupled to *how* code works breaks on harmless internal changes; a test bound to *what* the public interface does survives them. That distinction — interface over implementation — drives every choice below. Use for unit, service, and integration test work where maintainability, feedback speed, and refactor safety matter.
 
 ## Core Principles
 
@@ -49,7 +45,7 @@ Use the simplest double that proves the behavior. Don't mock everything by defau
 
 ## Classical vs Mockist
 
-Either style is fine if the suite stays fast, readable, and refactor-friendly. Always backstop with integration/acceptance tests for cross-object collaboration.
+Either style is fine; whichever you pick, backstop cross-object collaboration with integration/acceptance tests.
 
 ## Workflow
 

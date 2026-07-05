@@ -1,21 +1,17 @@
 ---
 name: ui-ux-implementation
-description: Implement and refine UI/UX from reference artifacts (Figma, screenshots, specs) with usability best practices, design-system enforcement, and maintainable code. Subsumes design-system-enforcement.
-metadata:
-  audience: frontend-engineers
-  focus: usability-consistency-and-reuse
-  additive: "true"
+description: Implement and refine UI/UX from reference artifacts (Figma, screenshots, specs) with usability best practices, design-system enforcement, and maintainable code.
 ---
 
-## Scope
+# UI/UX Implementation
 
-UI/UX tasks: implementing or updating interfaces from reference artifacts (Figma, screenshots, product examples, specs), including interaction design, layout, forms, copy, accessibility, and visual polish.
+**Reuse first.** Before writing anything new, reach for the existing component, variant, token, and interaction pattern — the design system is the default, and inventing outside it is the exception that needs a reason. Use for implementing or updating interfaces from reference artifacts (Figma, screenshots, product examples, specs): interaction design, layout, forms, copy, accessibility, and visual polish.
 
 ## Principles
 
-- **Usability over novelty.** Clarity and predictability beat visual flair.
 - **Reuse first.** Use existing components, variants, tokens, spacing/typography scales, and interaction patterns before creating anything new.
 - **No unauthorized expansion.** Do NOT introduce new colors, component families, grid systems, icon sets, animation systems, or utility frameworks unless explicitly requested.
+- **Usability over novelty.** Clarity and predictability beat visual flair.
 - **Maintainability over perfection.** Prefer readable, testable code over pixel-perfect but complex implementations.
 - **Small diffs.** Identify the smallest change set that achieves the goal.
 

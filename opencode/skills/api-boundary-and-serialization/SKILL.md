@@ -1,15 +1,11 @@
 ---
 name: api-boundary-and-serialization
 description: Design clean, resilient REST API boundaries between Rails backends and React Native frontends with disciplined serialization, error handling, and offline-aware patterns.
-metadata:
-  audience: full-stack-rails-and-react-native-engineers
-  focus: api-contract-and-data-flow
-  additive: "true"
 ---
 
-## Scope
+# API Boundary and Serialization
 
-The seam between Rails API and React Native client: endpoint design, serialization, request/response contracts, error handling, loading states, and network resilience. This is where most cross-team and cross-layer bugs live.
+Most cross-team and cross-layer bugs live at the seam between the Rails API and the React Native client. The defence is a consistent **envelope**: every endpoint returns the same top-level shape, so the client parses one contract instead of guessing per endpoint. Use for endpoint design, serialization, request/response contracts, error handling, loading states, and network resilience across that seam.
 
 ## API Design Principles
 

@@ -1,21 +1,17 @@
 ---
 name: react-native-expo-patterns
 description: Write maintainable React Native / Expo code with disciplined component design, hook hygiene, Zustand state management, and platform-aware patterns.
-metadata:
-  audience: react-native-expo-engineers
-  focus: component-architecture-and-state
-  additive: "true"
 ---
 
-## Scope
+# React Native / Expo Patterns
 
-React Native and Expo application code: components, hooks, state management, navigation, and platform-specific behavior. Covers architecture decisions that compound over time - not styling or pixel work (see **ui-ux-implementation** skill for that).
+Every component does exactly one of two jobs: **orchestrate** (fetch data, manage state, coordinate children) or **render** (accept props, return JSX). Mixing the two is the root of most component rot, and the split below runs through hooks, stores, and screens too. Use for React Native / Expo application code — components, hooks, state, navigation, platform behavior — not styling or pixel work (see the **ui-ux-implementation** skill for that).
 
 ## Component Design
 
 ### Structure
 - **One exported component per file.** Internal subcomponents are fine but should move to their own file once they take props or grow past ~30 lines.
-- Components do one of two jobs: **orchestrate** (fetch data, manage state, coordinate children) or **render** (accept props, return JSX). Mixing both is the root of most component rot.
+- Keep **orchestrate** and **render** separate: an orchestrator wires data and state, a renderer is a pure function of props. Don't fetch inside a presentational component.
 - Extract logic into custom hooks when two or more components need it, or when the logic is complex enough to test independently. Do NOT extract hooks just to make a component file shorter.
 
 ### Props Discipline
@@ -56,7 +52,7 @@ React Native and Expo application code: components, hooks, state management, nav
 ### Async and Side Effects
 - Keep async operations (API calls) in store actions or dedicated hooks, not in components.
 - Store loading/error state alongside the data it describes, not in a separate global flag.
-- Optimistic updates: apply the change immediately, revert on error. Don't make the user wait for the server when you can predict the outcome.
+- For optimistic updates, apply the change to the store immediately and revert on error (full pattern, including when to avoid it, in the **api-boundary-and-serialization** skill).
 
 ## Navigation (Expo Router / React Navigation)
 
