@@ -1,36 +1,30 @@
 ---
 name: rails-performance-and-query-hygiene
 description: Improve Rails performance and query quality by preventing N+1s, reducing allocations, and applying safe, maintainable optimizations.
-metadata:
-  audience: rails-engineers
-  focus: api-and-db-performance
-  additive: "true"
 ---
 
-## Scope
+# Rails Performance and Query Hygiene
 
-Rails performance work in controllers, models, serializers, background jobs, and API endpoints where query count, latency, or memory usage can regress.
+**Measure first.** The most common performance mistake is optimizing a path that isn't hot, or guessing at a cause the numbers would have ruled out. Profile the **hot path**, fix what the baseline shows, re-measure. Use for controllers, models, serializers, background jobs, and API endpoints where query count, latency, or memory can regress.
 
 ## Principles
 
-- **Measure first, optimize second.**
-- Eliminate N+1 queries and unnecessary eager loading.
-- Clear query intent and readable Ruby over clever micro-optimizations.
-- Index and query-shape improvements before caching.
+- Baseline before you touch anything; re-measure after each change.
+- Eliminate **N+1** queries and unnecessary eager loading.
+- Prefer clear query intent and readable Ruby over clever micro-optimizations.
+- Reach for index and query-shape fixes before caching.
 - Keep optimizations safe for production and easy to reason about.
 
 ## OO Design Alignment
 
-> For full OO design guidance, see the **ruby-changeable-oo-design** skill.
+> For full OO design guidance, see the **ruby-changeable-oo-design** skill. Performance-specific points:
 
-Key performance-specific points:
 - Optimize in ways that reduce future change cost, not just current latency.
-- Keep query objects and scopes single-purpose; avoid entangled responsibilities.
-- Keep dependencies explicit and shallow (DI, narrow interfaces).
+- Keep query objects and scopes single-purpose and composable; avoid entangled responsibilities and surprising side effects.
 
-## Reference Tools
+## Tools
 
-- Rails Active Record Query Interface guides.
+- Rails Active Record Query Interface guides for `includes`/`preload`/`eager_load` semantics.
 - Bullet gem for N+1 detection.
 - rack-mini-profiler and `EXPLAIN` plans for bottleneck analysis.
 
@@ -45,18 +39,15 @@ Key performance-specific points:
 
 ## Implementation Rules
 
-- Do NOT hide correctness issues with caching.
-- Avoid premature abstraction while tuning.
-- Keep scopes composable; no surprising side effects.
+- Do NOT hide correctness issues behind caching.
 - Paginate and explicitly order large datasets.
 - Keep SQL fragments understandable and localized.
-- Avoid train-wreck calls and cross-layer leakage.
-- Tests focus on stable interfaces and user-visible behavior.
+- Avoid premature abstraction while tuning.
 
 ## Quality Bar
 
 Before finishing, confirm:
-- Query count and/or latency improved measurably.
+- Query count and/or latency improved measurably against the baseline.
 - Correctness and existing API contracts maintained.
 - Optimizations are readable and maintainable.
 - Required index or migration follow-up is clearly called out.

@@ -1,9 +1,6 @@
 ---
 name: dependency-update-safety
 description: Shared methodology for safely reviewing dependency-update PRs (Dependabot/Renovate) and planning security-alert remediation - ecosystem detection, version categorization, codebase-usage analysis, and breaking-change risk signals.
-metadata:
-  audience: software-engineers
-  focus: dependency-hygiene-and-safety
 ---
 
 ## Scope
