@@ -4,7 +4,7 @@ description: Generate or create a pull request description for the current branc
 
 # PR Description Generator
 
-Generate a concise GitHub PR description based on the current branch and recent commits. If a PR doesn't exist, create one as a draft. If it exists, output the generated description for review (do not auto-update to preserve any manual edits like screenshots) and confirm if I want to overwrite.
+Generate a concise, high-level GitHub PR description based on the current branch and recent commits. Write for a broad audience, including non-technical reviewers. If a PR doesn't exist, create one as a draft. If it exists, output the generated description for review (do not auto-update to preserve any manual edits like screenshots) and confirm if I want to overwrite.
 
 ## Process
 
@@ -31,6 +31,12 @@ Generate a concise GitHub PR description based on the current branch and recent 
 5. **Generate PR description:**
    - If `.github/pull_request_template.md` exists, follow that repository template.
    - Otherwise, follow the fallback template below.
+   - Focus on the outcome, user impact, and review-relevant behavior changes.
+   - Keep the description concise: prefer one short summary paragraph and up to 3 bullets.
+   - Use plain language a non-technical reader can understand.
+   - Avoid implementation details that are obvious from the diff, such as listing renamed functions, touched files, or small mechanical edits.
+   - Mention technical details only when they explain risk, behavior, compatibility, migration, rollout, or verification.
+   - Do not restate the commit log or file list unless it clarifies the change for reviewers.
 
 6. **Handle PR:**
    - Check if PR exists: `gh pr view`
@@ -42,11 +48,15 @@ Generate a concise GitHub PR description based on the current branch and recent 
 ```markdown
 ## Summary
 
-TL;DR: [One or two sentence outcome-focused summary]
+[One or two sentences describing what changed and why it matters]
 
-- [Main change - concise, actionable]
-- [Additional changes if needed]
+- [High-level change or user-facing outcome]
+- [Important behavior, risk, or rollout note if needed]
 - [Max 3 bullets]
+
+## Why It Matters
+
+[One short sentence on the user, product, or operational benefit. Omit if already clear from the summary.]
 
 ## Test Plan
 
