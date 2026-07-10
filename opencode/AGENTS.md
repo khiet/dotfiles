@@ -59,6 +59,7 @@ For untracked files, ask before deleting or moving them unless they were created
 ## Code comments
 
 - Comment what is not obvious from the code: intent, invariants, constraints, tradeoffs, side effects, exceptions, and caller obligations. Do not restate the code or the symbol name.
+- Never include story IDs, ticket IDs, or issue keys in code comments or docstrings, such as `FUS-439` in `Add alarms for structured LLM failure events (FUS-439).` Keep comments focused on durable intent and behavior.
 - Keep public interface docs focused on what callers need (behavior, arguments, return, side effects, preconditions); leave implementation detail out unless it affects correct use.
 
 ## Completion summaries
