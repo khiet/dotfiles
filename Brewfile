@@ -29,7 +29,6 @@ cask "orbstack"
 cask "claude-code@latest"
 
 # ai
-cask "chatgpt"
 cask "ollama-app"
 cask "handy"
 
