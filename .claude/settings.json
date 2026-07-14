@@ -74,7 +74,7 @@
       "Bash(./opencode/scripts/safe-mv.sh *)",
       "WebFetch"
     ],
-    "defaultMode": "default"
+    "defaultMode": "auto"
   },
   "enabledPlugins": {
     "figma@claude-plugins-official": true
