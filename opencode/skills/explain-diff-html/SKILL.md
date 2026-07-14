@@ -14,6 +14,18 @@ It should have these sections:
 - Code: Do a high-level walkthrough of the changes to the code. Group/order the changes in an understandable way.
 - Quiz: Come up with five questions that test the reader's knowledge of this PR. This should be medium difficulty, difficult enough that you actually need to understand the substance of the PR to answer them, but not gotchas. The goal is to help the reader make sure that they've actually understood. These should be presented as interactive multiple-choice questions, and when the user clicks, it tells them whether they were correct and gives feedback.
 
+Audio narration:
+
+- Add a Medium-style audio player near the top of the page: a round play/pause button with a title like "Listen to this explanation", a running timecode, and a seek bar. It should narrate a spoken walkthrough of the explanation.
+- The narration is a real pre-generated audio file, embedded directly in the HTML as a base64 `data:` URI (e.g. `<audio src="data:audio/mp4;base64,...">`) so the file stays fully self-contained. Do not link to an external audio file or a network URL.
+- Produce the audio at skill-run time with these steps:
+  1. Write a narration script: a curated, conversational walkthrough of the key ideas (Background essence, Intuition, and the most important Code changes). Do NOT read the page word-for-word or narrate the quiz. Aim for roughly 2-4 minutes so the embedded audio stays a reasonable size.
+  2. Synthesize it to an audio file. Prefer a high-quality TTS API if the user has one configured (for example an OpenAI TTS call when `OPENAI_API_KEY` is set). Otherwise fall back to the macOS built-in `say` command, which needs no key: `say -v Ava -o /tmp/narration.aiff -f /tmp/narration.txt`.
+  3. Convert to a compact, broadly supported format before embedding, e.g. `afconvert /tmp/narration.aiff /tmp/narration.m4a -f m4af -d aac` (or use `ffmpeg` to produce `.mp3`). This keeps the base64 payload small.
+  4. Base64-encode the audio and inline it into the `<audio>` element's `src`. Verify the data URI's MIME type matches the encoded format (`audio/mp4` for m4a/AAC, `audio/mpeg` for mp3).
+- Drive the player UI from the single `<audio>` element with JavaScript: toggle play/pause, update the timecode and seek bar from `timeupdate`, and allow seeking by clicking the bar. Keep it keyboard-accessible.
+- If synthesis genuinely fails (no TTS available), omit the player rather than embedding a broken one, and note in your summary that audio was skipped and why.
+
 Format:
 
 - Output a single self-contained HTML file which includes CSS and JavaScript. Make the whole thing one long page with section headers and a table of contents. Don't use tabs for the top-level structure. Basic responsive styling so you can view it on a phone is nice too. Put the file in a global place on my computer outside of the code repo, and make sure the filename always starts with today's date in `YYYY-MM-DD-` format, because it helps keep the files time-sorted and out of version control. For example: /tmp/2026-01-12-explanation-<slug>.html
