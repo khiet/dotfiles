@@ -16,15 +16,19 @@ It should have these sections:
 
 Audio narration:
 
-- Add a Medium-style audio player near the top of the page: a round play/pause button with a title like "Listen to this explanation", a running timecode, a seek bar, skip-back-5s and skip-forward-5s buttons, and playback-speed buttons for 1.5x and 2x. It should narrate a spoken walkthrough of the explanation.
+- Add a Medium-style audio player near the top of the page that narrates a spoken walkthrough of the explanation. Copy the widget verbatim from `player-template.html` (the three parts: styles, markup, script) so every generated page's player is identical; fill in only the `<audio src>` with the base64 data URI.
 - The narration is a real pre-generated audio file, embedded directly in the HTML as a base64 `data:` URI (e.g. `<audio src="data:audio/mp4;base64,...">`) so the file stays fully self-contained. Do not link to an external audio file or a network URL.
 - Produce the audio at skill-run time with these steps:
-  1. Write a narration script: a curated, conversational walkthrough of the key ideas (Background essence, Intuition, and the most important Code changes). Do NOT read the page word-for-word or narrate the quiz. Aim for roughly 2-4 minutes so the embedded audio stays a reasonable size.
+  1. Build the narration script from the page's own prose: read out the Background, Intuition, and Code sections as written. Skip the quiz and elements that don't speak (code blocks, diagrams, the table of contents); where a code block or diagram is central, replace it with a one-line spoken description of what it shows. Do not compose a separate summary.
   2. Synthesize it with the macOS built-in `say` command: `say -v Ava -o narration.aiff -f narration.txt`.
   3. Convert to a compact format before embedding: `afconvert narration.aiff narration.m4a -f m4af -d aac`. This keeps the base64 payload small.
   4. Base64-encode the `.m4a` and inline it into the `<audio>` element's `src` with the `audio/mp4` MIME type.
-- Drive the player UI from the single `<audio>` element with JavaScript: toggle play/pause; update the timecode and seek bar from `timeupdate`; seek by clicking the bar; skip buttons adjust `currentTime` by -5 and +5 seconds; speed buttons set `playbackRate` to 1.5 and 2 and show which is active. Keep it keyboard-accessible.
 - If synthesis genuinely fails, omit the player rather than embedding a broken one, and note in your summary that audio was skipped and why.
+
+Theme:
+
+- Style the page with the Dracula Classic (dark) palette. The palette lives as CSS custom properties in the `:root` block of `player-template.html` (part 1); copy that block into the page's `<style>` and use the variables throughout. Do not hardcode ad hoc colors elsewhere, and to retheme edit only that `:root` block.
+- Use Background for the page, Foreground for body text, and Comment for muted/secondary text. Reserve Current Line/Selection for surfaces like cards, callouts, code-block backgrounds, and borders. Draw on the accent hues (Cyan, Green, Purple, Pink, Orange, Yellow) for headings, links, diagram elements, and syntax highlighting, using Red for warnings or errors. Keep contrast readable against the dark background.
 
 Format:
 
