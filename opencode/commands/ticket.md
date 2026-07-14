@@ -36,15 +36,24 @@ $ARGUMENTS
 
 5. **Checkout the ticket branch**
    - After creation, retrieve the issue's `branchName` from Linear.
-   - Run:
-     ```bash
-     git fetch origin
-     git checkout -b <branchName> origin/main
-     ```
+   - First determine the work state:
+     - **Not started** (the usual case): create a fresh branch from `origin/main`.
+       ```bash
+       git fetch origin
+       git checkout -b <branchName> origin/main
+       ```
+     - **Already implemented and committed directly on `main`** (e.g. the work was done during a prior plan session before running `/ticket`): the commits belong on the ticket branch, not on `main`. Move them over and rewind local `main` to the remote.
+       ```bash
+       git fetch origin
+       git branch <branchName>          # capture current HEAD (with the commits) on the ticket branch
+       git checkout <branchName>
+       git branch -f main origin/main   # rewind local main so the work no longer sits on it
+       ```
+       Only rewind `main` for commits that are not yet on `origin/main`. When in doubt about which commits are the ticket's work, state your plan and confirm before rewinding.
 
 6. **Execute the work**
-   - Implement the changes described in the ticket.
-   - Make separate commits for each logical change.
+   - If the work is not yet done, implement the changes described in the ticket, making separate commits for each logical change.
+   - If the work was already committed (moved onto the ticket branch in step 5), do not redo it. Verify the commits are present on the branch and complete any remaining actions from the ticket.
 
 7. **Report status**
    - Output one of the status lines below when done.
