@@ -1,5 +1,8 @@
 -- yank to "* register i.e. system clipboard
 vim.opt.clipboard = "unnamed"
+vim.g.loaded_perl_provider = 0
+
+vim.opt.sessionoptions:append("localoptions")
 
 vim.opt.dictionary:append("/usr/share/dict/words")
 vim.opt.complete:append("kspell")
