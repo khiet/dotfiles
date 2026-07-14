@@ -63,7 +63,7 @@ $ARGUMENTS
 ```markdown
 ## Summary
 
-[Concise 1-2 sentence description of what is changing and why it matters. Must include both what and why.]
+[Concise 1-2 sentence description of what is changing and why it matters. Must include both what and why. Avoid fluff: this section should convey the gist of the ticket in 10 seconds, so lead with the concrete change and cut filler, hedging, and background that does not help a reader grasp it at a glance.]
 
 ## Actions
 
