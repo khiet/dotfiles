@@ -103,7 +103,9 @@
 
 <!--
   PART 3 - PLAYER SCRIPT. Paste before </body>. Drives the single <audio>
-  element; keyboard-accessible.
+  element. Keyboard shortcuts (global, ignored while typing in a field):
+  space = play/pause, left/right = rewind/forward 5s, up/down = speed +/-,
+  home = restart.
 -->
 <script>
 (function () {
@@ -130,8 +132,25 @@
   const skip = (delta) => {
     audio.currentTime = Math.min(audio.duration || 0, Math.max(0, audio.currentTime + delta));
   };
+  const toggle = () => { audio.paused ? audio.play() : audio.pause(); };
 
-  playBtn.addEventListener('click', () => { audio.paused ? audio.play() : audio.pause(); });
+  // Speed steps shared by the speed buttons and the up/down arrow keys. The
+  // active button is highlighted only when playbackRate lands exactly on a step.
+  const SPEEDS = [0.5, 0.75, 1, 1.25, 1.5, 1.75, 2];
+  const setSpeed = (rate) => {
+    rate = Math.min(SPEEDS[SPEEDS.length - 1], Math.max(SPEEDS[0], rate));
+    audio.playbackRate = rate;
+    player.querySelectorAll('.speed-btn').forEach((b) =>
+      b.classList.toggle('active', parseFloat(b.dataset.speed) === rate));
+  };
+  const stepSpeed = (dir) => {
+    // Snap to the nearest step, then move one step in the requested direction.
+    let i = SPEEDS.reduce((best, v, idx) =>
+      Math.abs(v - audio.playbackRate) < Math.abs(SPEEDS[best] - audio.playbackRate) ? idx : best, 0);
+    setSpeed(SPEEDS[Math.min(SPEEDS.length - 1, Math.max(0, i + dir))]);
+  };
+
+  playBtn.addEventListener('click', toggle);
   audio.addEventListener('play', setIcon);
   audio.addEventListener('pause', setIcon);
   audio.addEventListener('loadedmetadata', () => { durTime.textContent = fmt(audio.duration); });
@@ -148,19 +167,33 @@
     if (audio.duration) audio.currentTime = ratio * audio.duration;
   };
   seekWrap.addEventListener('click', (e) => seekTo(e.clientX));
-  seekWrap.addEventListener('keydown', (e) => {
-    if (e.key === 'ArrowRight') { skip(5); e.preventDefault(); }
-    if (e.key === 'ArrowLeft') { skip(-5); e.preventDefault(); }
-  });
 
   backBtn.addEventListener('click', () => skip(-5));
   fwdBtn.addEventListener('click', () => skip(5));
 
   player.querySelectorAll('.speed-btn').forEach((btn) => {
-    btn.addEventListener('click', () => {
-      audio.playbackRate = parseFloat(btn.dataset.speed);
-      player.querySelectorAll('.speed-btn').forEach((b) => b.classList.toggle('active', b === btn));
-    });
+    btn.addEventListener('click', () => setSpeed(parseFloat(btn.dataset.speed)));
+  });
+
+  // Global keyboard shortcuts (work without focusing the widget):
+  //   space       play/pause      left/right  rewind/forward 5s
+  //   up/down     speed +/-       home        restart from 0
+  // Ignored while typing in an input, textarea, or contenteditable element.
+  document.addEventListener('keydown', (e) => {
+    if (e.metaKey || e.ctrlKey || e.altKey) return;
+    const t = e.target;
+    if (t && (t.isContentEditable ||
+        ['INPUT', 'TEXTAREA', 'SELECT'].includes(t.tagName))) return;
+    switch (e.key) {
+      case ' ': case 'Spacebar': toggle(); break;
+      case 'ArrowLeft': skip(-5); break;
+      case 'ArrowRight': skip(5); break;
+      case 'ArrowUp': stepSpeed(1); break;
+      case 'ArrowDown': stepSpeed(-1); break;
+      case 'Home': audio.currentTime = 0; break;
+      default: return;
+    }
+    e.preventDefault();
   });
 })();
 </script>
