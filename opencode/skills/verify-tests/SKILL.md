@@ -12,6 +12,7 @@ Review only. Do not edit tests unless the user explicitly asks for fixes after t
 Judge whether branch-introduced tests are worth keeping as written:
 
 - They follow existing local test patterns.
+- They are consistent with existing test naming, structure, and organization.
 - They verify behavior through the right public seam.
 - They cover probable happy paths and likely failures.
 - They avoid redundant, implementation-coupled, or improbable edge-case coverage.
@@ -25,7 +26,8 @@ Judge whether branch-introduced tests are worth keeping as written:
 
 2. Build the local pattern baseline.
    - Read nearby existing tests for the same feature, layer, framework, or file naming convention.
-   - Note assertion style, setup style, fixture/factory usage, helper usage, mocking style, test naming, file placement, and execution scope.
+   - Note assertion style, setup style, fixture/factory usage, helper usage, mocking style, test naming, test structure, file placement, and execution scope.
+   - Check whether names, describe/context nesting, setup blocks, grouping, and file organization match the closest existing tests.
    - Completion criterion: each reviewed test has a concrete local baseline, not a generic testing preference.
 
 3. Review introduced tests against the baseline.
@@ -55,6 +57,7 @@ Judge whether branch-introduced tests are worth keeping as written:
 - A test is strong when it would fail for a real behavior regression and survive an internal refactor.
 - A test is weak when it mostly freezes current structure, duplicates another test, or documents an input nobody reasonably expects.
 - A new pattern is suspicious when existing tests solve the same problem with established helpers, factories, matchers, or seams.
+- Inconsistent naming or structure is suspicious when nearby tests already provide a clear convention.
 - A new pattern may be justified when the branch introduces a genuinely new seam, integration boundary, domain concept, or test framework capability.
 
 ## Output Shape
@@ -72,6 +75,7 @@ Findings
 Pattern Notes
 - Existing patterns followed: ...
 - New patterns introduced: ...
+- Naming and structure consistency: ...
 - Justified new patterns: ...
 
 Coverage Judgment
