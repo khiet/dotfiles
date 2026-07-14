@@ -80,6 +80,15 @@ scripts/gen-claude-mcp.sh
 
 Every server in the `mcp` block is registered at user scope (available in every project).
 
+#### GitHub skills
+
+`scripts/github-skills.tsv` lists GitHub repos and gists to sync into `opencode/skills`.
+After editing that manifest, regenerate and commit:
+
+```bash
+scripts/sync-github-skills.sh
+```
+
 ## Install brew software
 
 ```bash
