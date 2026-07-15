@@ -1,19 +1,21 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Sync selected skills from GitHub repositories or gists into opencode/skills/.
+# Sync selected skills from GitHub into opencode/vendor/skills/ and symlink them
+# into opencode/skills/, so vendored skills stay distinct from custom ones.
 #
 # The manifest is a tab-separated file with this shape:
 # source  repo_url  ref  source_path  dest
 #
 # source_path may point to either a directory containing SKILL.md or a single
-# markdown file that should become opencode/skills/<dest>/SKILL.md.
+# markdown file that becomes opencode/vendor/skills/<dest>/SKILL.md (symlinked).
 #
 # Usage:
 #   ./scripts/sync-github-skills.sh [--manifest PATH] [--source NAME ...]
 #   ./scripts/sync-github-skills.sh --help
 
-DEST_DIR="opencode/skills"
+LINK_DIR="opencode/skills"
+VENDOR_DIR="opencode/vendor/skills"
 DEFAULT_MANIFEST="scripts/github-skills.tsv"
 
 if [[ -t 1 ]]; then
@@ -28,7 +30,7 @@ error()   { printf '%serror:%s %s\n' "$C_RED" "$C_RESET" "$*" >&2; }
 success() { printf '%sok:%s %s\n' "$C_GREEN" "$C_RESET" "$*"; }
 
 usage() {
-  sed -n '3,14p' "$0" | sed 's/^# \{0,1\}//'
+  sed -n '4,15p' "$0" | sed 's/^# \{0,1\}//'
 }
 
 manifest="$DEFAULT_MANIFEST"
@@ -75,7 +77,8 @@ if ! command -v rsync >/dev/null 2>&1; then
 fi
 
 ROOT="$(git rev-parse --show-toplevel)"
-DEST_ABS="$ROOT/$DEST_DIR"
+LINK_ABS="$ROOT/$LINK_DIR"
+VENDOR_ABS="$ROOT/$VENDOR_DIR"
 manifest_abs="$ROOT/$manifest"
 
 if [[ ! -f "$manifest_abs" ]]; then
@@ -83,7 +86,7 @@ if [[ ! -f "$manifest_abs" ]]; then
   exit 1
 fi
 
-mkdir -p "$DEST_ABS"
+mkdir -p "$VENDOR_ABS" "$LINK_ABS"
 
 tmp="$(mktemp -d)"
 # tmp is task-created scratch outside the repo; safe to remove on exit.
@@ -138,12 +141,25 @@ refuse_untracked_dest_files() {
   fi
 }
 
+# Point opencode/skills/<dest> at the vendored copy via a relative symlink.
+# Custom skills stay as real directories, so a symlink marks a synced skill.
+link_vendored_skill() {
+  local dest="$1"
+  local link_abs="$LINK_ABS/$dest"
+
+  # Replace a pre-existing real directory (pre-vendor layout) with a symlink.
+  if [[ -e "$link_abs" && ! -L "$link_abs" ]]; then
+    rm -rf "$link_abs"
+  fi
+  ln -sfn "../vendor/skills/$dest" "$link_abs"
+}
+
 sync_skill() {
   local repo_dir="$1"
   local source_path="$2"
   local dest="$3"
   local src="$repo_dir/$source_path"
-  local dest_rel="$DEST_DIR/$dest"
+  local vendor_rel="$VENDOR_DIR/$dest"
   local package_dir="$tmp/package/$dest"
 
   if ! ref_dest_is_safe "$dest"; then
@@ -156,7 +172,7 @@ sync_skill() {
     return 1
   fi
 
-  if ! refuse_untracked_dest_files "$dest_rel"; then
+  if ! refuse_untracked_dest_files "$vendor_rel"; then
     return 1
   fi
 
@@ -177,14 +193,77 @@ sync_skill() {
     return 1
   fi
 
-  mkdir -p "$DEST_ABS/$dest"
-  rsync -a --delete "$package_dir/" "$DEST_ABS/$dest/"
+  mkdir -p "$VENDOR_ABS/$dest"
+  rsync -a --delete "$package_dir/" "$VENDOR_ABS/$dest/"
+  link_vendored_skill "$dest"
   success "$dest <- $source_path"
+}
+
+dest_in_manifest() {
+  local needle="$1" d
+
+  if [[ ${#manifest_dests[@]} -eq 0 ]]; then
+    return 1
+  fi
+
+  for d in "${manifest_dests[@]}"; do
+    if [[ "$d" == "$needle" ]]; then
+      return 0
+    fi
+  done
+
+  return 1
+}
+
+# Reconcile the vendored tree against the manifest: drop any vendored skill
+# (and its symlink) whose dest no longer appears in the manifest, so removed
+# rows self-clean. Custom skills are real directories and never symlinks into
+# the vendor tree, so they are left untouched.
+reconcile_vendor() {
+  local pruned=0
+  local entry name target
+
+  if [[ -d "$VENDOR_ABS" ]]; then
+    for entry in "$VENDOR_ABS"/*; do
+      [[ -e "$entry" ]] || continue
+      name="$(basename "$entry")"
+      if ! dest_in_manifest "$name"; then
+        rm -rf "$entry"
+        rm -f "$LINK_ABS/$name"
+        warn "pruned stale vendored skill: $name"
+        pruned=$((pruned + 1))
+      fi
+    done
+  fi
+
+  if [[ -d "$LINK_ABS" ]]; then
+    for entry in "$LINK_ABS"/*; do
+      [[ -L "$entry" ]] || continue
+      target="$(readlink "$entry")"
+      case "$target" in
+        ../vendor/skills/*)
+          name="$(basename "$entry")"
+          if ! dest_in_manifest "$name"; then
+            rm -f "$entry"
+            warn "pruned stale skill symlink: $name"
+            pruned=$((pruned + 1))
+          elif [[ ! -e "$entry" ]]; then
+            rm -f "$entry"
+            warn "pruned dangling skill symlink: $name"
+            pruned=$((pruned + 1))
+          fi
+          ;;
+      esac
+    done
+  fi
+
+  info "Reconcile: $pruned pruned"
 }
 
 copied=0
 failed=0
 selected=0
+manifest_dests=()
 current_repo_url=""
 current_ref=""
 current_repo_dir=""
@@ -198,6 +277,10 @@ while IFS=$'\t' read -r source repo_url ref source_path dest rest; do
     failed=$((failed + 1))
     continue
   fi
+
+  # Track every well-formed dest (ignoring --source filters) so reconcile
+  # prunes against the whole manifest, not just the selected subset.
+  manifest_dests+=("$dest")
 
   if ! source_allowed "$source"; then
     continue
@@ -225,5 +308,7 @@ if [[ $selected -eq 0 ]]; then
   warn "no manifest rows matched the requested source filters"
 fi
 
-info "Done: $copied copied, $failed failed -> $DEST_DIR/"
+reconcile_vendor
+
+info "Done: $copied copied, $failed failed -> $VENDOR_DIR/ (symlinked into $LINK_DIR/)"
 [[ $failed -eq 0 ]]
