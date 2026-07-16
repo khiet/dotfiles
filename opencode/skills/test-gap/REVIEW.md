@@ -1,6 +1,6 @@
 # Test Review Reference
 
-Shared reference for judging branch-introduced tests. Read by [`test-gap`](SKILL.md), which fixes what it finds, and by `verify-tests`, which reports without editing. This file holds the judgment criteria only; each skill sets its own edit policy.
+The criteria [`test-gap`](SKILL.md) judges branch-introduced tests against, consulted at its scope and review steps.
 
 ## Scope
 
@@ -16,7 +16,7 @@ Shared reference for judging branch-introduced tests. Read by [`test-gap`](SKILL
 
 ## Pattern fit
 
-- Classify every new or changed test pattern as existing, justified new, or suspicious new.
+- Classify every new or changed test pattern as existing, justified new, or suspicious new, surfacing each one even when it seems reasonable. Novelty that looks fine on its own is the kind that arrives by accident, and a pattern you wrote yourself is the easiest to talk yourself into.
 - A pattern is suspicious when existing tests solve the same problem with established helpers, factories, matchers, or seams, or when nearby tests already provide a naming and structure convention this test departs from.
 - A pattern is justified when the branch introduces a genuinely new seam, integration boundary, domain concept, or test framework capability.
 

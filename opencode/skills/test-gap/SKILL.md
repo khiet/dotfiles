@@ -33,7 +33,7 @@ Close the coverage gaps the branch left, then hold every branch-introduced test 
    - Add edge cases only when they represent real user behavior, historically buggy behavior, security or data-loss risk, integration boundaries, or domain rules.
    - Extend existing tests rather than duplicating them.
 
-5. Review every branch-introduced test against [`REVIEW.md`](REVIEW.md) — the tests you just wrote and the tests the branch already had, judged the same way.
+5. Review every branch-introduced test against [`REVIEW.md`](REVIEW.md), judging the tests you just wrote and the tests the branch already had the same way.
    - Reviewing your own work is the weak link in this skill: the tests from step 4 get the rubric first and hardest, and having authored one is no evidence it earns its place.
    - Completion criterion: every branch-introduced test carries a verdict backed by a concrete local baseline.
 
@@ -57,3 +57,5 @@ Report what landed, the verdicts applied, and the suite result:
 - `Tests revised`: what was rewritten, merged, moved, or deleted, and why.
 - `No gaps found`: existing tests already cover the branch changes.
 - `Issues remain`: what still needs attention.
+
+Close every run with `Residual risks`: what this run could still be wrong about, such as behavior left uncovered by choice, a baseline read from thin local precedent, or a verdict that was a close call. A run that found nothing owes this section the most.
