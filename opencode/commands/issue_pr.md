@@ -4,7 +4,9 @@ description: Generate or create a pull request description for the current branc
 
 # PR Description Generator
 
-Generate a concise, high-level GitHub PR description based on the current branch and recent commits. Write for a broad audience, including non-technical reviewers. If a PR doesn't exist, create one as a draft. If it exists, output the generated description for review (do not auto-update to preserve any manual edits like screenshots) and confirm if I want to overwrite.
+Generate a short, elevator-pitch-style GitHub PR description based on the current branch and recent commits. Write for a broad audience, including non-technical reviewers. If a PR doesn't exist, create one as a draft. If it exists, output the generated description for review (do not auto-update to preserve any manual edits like screenshots) and confirm if I want to overwrite.
+
+Always use the PR Template below — do not use `.github/pull_request_template.md` or any other repo checklist template, even if one is present. No headers, no checkboxes.
 
 ## Process
 
@@ -18,51 +20,52 @@ Generate a concise, high-level GitHub PR description based on the current branch
    git diff main...HEAD --stat
    ```
 
-3. **Check for a repository PR template:**
-   - Look for `.github/pull_request_template.md`.
-   - If present, read it and use its headings, checklists, prompts, and ordering as the structure for the generated PR description.
-   - Fill template sections with concrete details from the branch, commits, changed files, and verification performed.
-   - Preserve checklist items from the template. Mark an item checked only when the branch evidence or performed verification supports it; otherwise leave it unchecked and add a brief note where useful.
-   - Do not invent answers for compliance, monitoring, rollout, or dependency questions. If the evidence is unclear, keep the item unchecked and state the uncertainty concisely.
-   - If the template has placeholder guidance text, replace it with the generated content when possible rather than leaving generic instructions in the final PR body.
+3. **Analyze test coverage** for PR changes only (not full codebase)
 
-4. **Analyze test coverage** for PR changes only (not full codebase)
+4. **Find a Before/After.** Look through the diff for something observable that changed: an error message, a log line, an API response or payload shape, a function's return value, rendered UI, CLI output. This is almost always findable even for "internal" changes — pull the actual before and after strings/values from the code or tests, don't invent them.
+   - If nothing observable changed (pure refactor, internal-only helper, CI/config-only change), skip the Before/After block and say so in one sentence instead.
 
-5. **Generate PR description:**
-   - If `.github/pull_request_template.md` exists, follow that repository template.
-   - Otherwise, follow the fallback template below.
-   - Focus on the outcome, user impact, and review-relevant behavior changes.
-   - Keep the description concise: prefer one short summary paragraph and up to 3 bullets.
-   - Use plain language a non-technical reader can understand.
-   - Avoid implementation details that are obvious from the diff, such as listing renamed functions, touched files, or small mechanical edits.
-   - Mention technical details only when they explain risk, behavior, compatibility, migration, rollout, or verification.
-   - Do not restate the commit log or file list unless it clarifies the change for reviewers.
+5. **Generate PR description** using the template below.
+   - Total body (excluding code blocks) should read in about 15 seconds — roughly 80-120 words.
+   - No section headers, no bullet lists, no checkboxes. Prose only.
+   - Plain language a non-technical reader can follow for the problem statement and insight sentence; technical detail is fine in the closing `Fix:` sentence.
+   - Pull real before/after values from the diff/tests — never fabricate example output.
 
 6. **Handle PR:**
    - Check if PR exists: `gh pr view`
    - If no PR exists: create with `gh pr create --draft`
    - If PR exists: output the generated description for user to review/copy
 
-## Fallback PR Template
+## PR Template
 
 ```markdown
-## Summary
+[1-2 sentence problem statement: what was broken or missing, and why it mattered.
+Be concrete — cite a specific symptom, incident, or scenario if one exists rather
+than describing the change abstractly.]
 
-[One or two sentences describing what changed and why it matters]
+**Before** [short qualifier if useful, e.g. "(canned text, same for every X)"]:
+```
+[actual before behavior/output, pulled from the code or tests]
+```
 
-- [High-level change or user-facing outcome]
-- [Important behavior, risk, or rollout note if needed]
-- [Max 3 bullets]
+**After** [short qualifier if useful]:
+```
+[actual after behavior/output, pulled from the code or tests]
+```
 
-## Why It Matters
+[1 sentence naming the insight: why After is correct and Before was wrong.]
 
-[One short sentence on the user, product, or operational benefit. Omit if already clear from the summary.]
+Fix: [1-2 sentences: the mechanism of the fix, an explicit scope boundary
+(what did NOT change, so reviewers know the blast radius), and a test
+coverage note, e.g. "9 new unit tests cover it."]
+```
 
-## Test Plan
+If no Before/After applies (step 4), drop that block and keep the rest:
 
-- [ ] Verified existing tests pass
-- [ ] [Specific verification steps for the changes]
-- [ ] [Note any missing test coverage]
+```markdown
+[1-2 sentence problem statement.]
+
+Fix: [mechanism + scope boundary + test coverage note.]
 ```
 
 ## Formatting
