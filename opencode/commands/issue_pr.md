@@ -19,6 +19,7 @@ Always use the PR Template below — do not use `.github/pull_request_template.m
    git diff main...HEAD --name-only
    git diff main...HEAD --stat
    ```
+   - Read the surrounding code the diff touches (callers, the module it lives in, related tests) when the diff alone does not explain what was broken and why it mattered. Skip this when the diff is self-explanatory. The point is to find a concrete symptom or scenario for the problem statement rather than describing the change abstractly.
 
 3. **Analyze test coverage** for PR changes only (not full codebase)
 
@@ -29,6 +30,7 @@ Always use the PR Template below — do not use `.github/pull_request_template.m
    - Total body (excluding code blocks) should read in about 15 seconds — roughly 80-120 words.
    - No section headers, no bullet lists, no checkboxes. Prose only.
    - Plain language a non-technical reader can follow for the problem statement and insight sentence; technical detail is fine in the closing `Fix:` sentence.
+   - The insight sentence carries the essence, not the details. Name the rule or assumption that makes After right and Before wrong; do not restate what the Before/After block already shows.
    - Pull real before/after values from the diff/tests — never fabricate example output.
 
 6. **Handle PR:**
@@ -53,7 +55,8 @@ than describing the change abstractly.]
 [actual after behavior/output, pulled from the code or tests]
 ```
 
-[1 sentence naming the insight: why After is correct and Before was wrong.]
+[1 sentence naming the insight: the rule or assumption that makes After correct
+and Before wrong. Essence, not detail — do not restate the block above.]
 
 Fix: [1-2 sentences: the mechanism of the fix, an explicit scope boundary
 (what did NOT change, so reviewers know the blast radius), and a test
