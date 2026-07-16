@@ -1,68 +1,24 @@
 ---
 name: verify-tests
-description: Review tests introduced on the current branch for project-pattern fit, behavioral value, redundancy, and over-specific improbable edge-case coverage.
+description: Review branch-introduced tests and report findings without editing. Use when the user asks for a test review, or `/verify_tests`.
 ---
 
 # Verify Tests
 
-Review only. Do not edit tests unless the user explicitly asks for fixes after the review.
-
-## Goal
-
-Judge whether branch-introduced tests are worth keeping as written:
-
-- They follow existing local test patterns.
-- They are consistent with existing test naming, structure, and organization.
-- They verify behavior through the right public seam.
-- They cover probable happy paths and likely failures.
-- They avoid redundant, implementation-coupled, or improbable edge-case coverage.
+The review half of `test-gap`, run on its own: judge the branch's tests, report, change nothing. Fix findings only when the user asks after the review.
 
 ## Workflow
 
-1. Establish the comparison range.
-   - Prefer the merge base with the upstream default branch.
-   - If the default branch cannot be determined, use the branch point or ask one concise question.
-   - Completion criterion: every added or modified test file in the branch is identified.
+1. Scope the branch and build the local pattern baseline, following the `Scope` section of [`../test-gap/REVIEW.md`](../test-gap/REVIEW.md).
 
-2. Build the local pattern baseline.
-   - Read nearby existing tests for the same feature, layer, framework, or file naming convention.
-   - Note assertion style, setup style, fixture/factory usage, helper usage, mocking style, test naming, test structure, file placement, and execution scope.
-   - Check whether names, describe/context nesting, setup blocks, grouping, and file organization match the closest existing tests.
-   - Completion criterion: each reviewed test has a concrete local baseline, not a generic testing preference.
+2. Judge every branch-introduced test against the `Pattern fit`, `Behavioral value`, and `Redundancy and probability` sections of the same file.
+   - Completion criterion: every branch-introduced test carries a verdict backed by a concrete local baseline.
 
-3. Review introduced tests against the baseline.
-   - Flag any new pattern introduced by the branch, even if it seems reasonable.
-   - Distinguish necessary new patterns from accidental novelty.
-   - Completion criterion: every new or changed test pattern is classified as existing, justified new, or suspicious new.
+3. Report missing coverage as a finding rather than writing the test. Point the user to `/test_gap` when the branch has real gaps.
 
-4. Review behavioral value.
-   - Tie each test to a user-visible behavior, public API contract, domain invariant, or important side effect changed by the branch.
-   - Prefer happy paths and probable cases over exhaustive edge cases.
-   - Flag tests that assert implementation details, private methods, internal collaborator choreography, framework behavior, or constants copied from the implementation.
-   - Completion criterion: every test has a clear reason to exist, or is flagged.
-
-5. Review redundancy and probability.
-   - Flag tests already covered by an equivalent existing test at the same or stronger seam.
-   - Flag micro-edge cases that are technically possible but not probable enough to justify ongoing maintenance.
-   - Keep edge cases when they represent real user behavior, historically buggy behavior, security/data-loss risk, integration boundaries, or domain rules.
-   - Completion criterion: every flagged redundancy or edge case includes why it is low value in this codebase.
-
-6. Report findings in code-review format.
-   - Findings first, ordered by severity.
-   - Include file and line references where possible.
-   - If no problems are found, say that explicitly and mention residual risks.
-
-## Review Heuristics
-
-- A test is strong when it would fail for a real behavior regression and survive an internal refactor.
-- A test is weak when it mostly freezes current structure, duplicates another test, or documents an input nobody reasonably expects.
-- A new pattern is suspicious when existing tests solve the same problem with established helpers, factories, matchers, or seams.
-- Inconsistent naming or structure is suspicious when nearby tests already provide a clear convention.
-- A new pattern may be justified when the branch introduces a genuinely new seam, integration boundary, domain concept, or test framework capability.
+4. Report in the output shape below, findings first, ordered by severity.
 
 ## Output Shape
-
-Use this structure:
 
 ```markdown
 Findings
@@ -70,7 +26,7 @@ Findings
 - File: `path:line`
 - Issue: what is wrong
 - Why it matters: maintenance, correctness, or signal cost
-- Recommendation: keep, rewrite, move to another seam, merge with another test, or delete
+- Verdict: `keep|rewrite|move|merge|delete`
 
 Pattern Notes
 - Existing patterns followed: ...
