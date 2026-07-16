@@ -44,8 +44,5 @@ Format:
   - A very simplified version of the UI that the user sees in the app, to explain UI changes.
   - A system diagram showing data flow or communication between components. Make sure to include example data here!
 - Don't use ASCII diagrams. Always use simple HTML designs for your diagrams, HTML lists for lists of things, etc.
-  - For code blocks, always use `<pre>` tags. If you use a custom styled div instead, it **must** have
-    `white-space: pre-wrap` in its CSS, or the browser will collapse all newlines into a single line.
-    Before saving the file, scan each code block in the HTML source and confirm its CSS includes
-    `white-space: pre` or `pre-wrap`.
+  - For code blocks, use `<pre>`: it preserves newlines and indentation, which a plain `<div>` collapses. If you style a `<div>` instead, it **must** set `white-space: pre-wrap`. Check each code block before saving.
 - Use callouts for key concepts or definitions, important edge cases, etc.
