@@ -1,4 +1,8 @@
 {
+  "attribution": {
+    "commit": "",
+    "pr": ""
+  },
   "permissions": {
     "allow": [
       "Bash(ls*)",
@@ -82,9 +86,5 @@
   "theme": "auto",
   "editorMode": "vim",
   "preferredNotifChannel": "ghostty",
-  "attribution": {
-    "commit": "",
-    "pr": ""
-  },
   "skipAutoPermissionPrompt": true
 }
