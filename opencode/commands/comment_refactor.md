@@ -37,15 +37,18 @@ $ARGUMENTS
    - Include interface documentation, block comments, inline comments, docstrings, and language-specific comment forms.
 
 3. **Evaluate each added comment**
+   - Fact-check every comment against the code it describes. Read the surrounding implementation and confirm the claim is still true. Fix or remove comments that are stale, wrong, or describe behavior the code no longer has.
    - Keep comments that explain non-obvious intent, invariants, constraints, tradeoffs, side effects, exceptions, caller obligations, or the meaning of a value.
-   - Remove comments that merely repeat the code in different words.
+   - Remove comments that merely repeat the code in different words, or that state anything a reader would learn by reading the code itself.
+   - Remove details that do not matter to a future reader, such as migration history, how the code came to be written, or notes aimed at the original reviewer. Unimportant detail adds complexity, so leave it out.
    - For class comments, describe the abstraction the class provides.
    - For method and function comments, describe behavior, arguments, return value, side effects, exceptions, and preconditions when those are not obvious from the signature and surrounding code.
    - For variable comments, describe what the value represents rather than how the code mutates or uses it.
    - Keep public interface documentation focused on what callers need to know. Do not add implementation details unless they affect correct use.
    - Prefer comments a mid-level engineer new to the project can understand without private domain knowledge.
    - If a domain-specific term is necessary, explain the term briefly in the comment or replace it with plainer language.
-   - Use low-level comments for precision and high-level comments for intuition.
+   - Use low-level comments for precision and high-level comments for intuition. Default to the highest level of abstraction that still builds the reader's intuition, and keep the wording concise.
+   - Add a short example when prose alone will not land, such as an algorithm that manipulates a data structure or a branching condition with several interacting cases. Show a representative input and the resulting output or branch taken. Keep the example small enough to read at a glance.
    - Look at similar code in the project, such as comparable service objects, components, controllers, or modules, and align with their established commenting style when it is clear and useful.
    - Before changing a comment, identify what the surrounding code is trying to do, what single explanation covers the whole block, and what matters most for a future reader.
 
