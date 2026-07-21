@@ -1,6 +1,7 @@
 tap "heroku/brew"
 tap "mobile-dev-inc/tap"
 tap "anomalyco/tap"
+tap "facebook/fb"
 
 # fonts
 cask "font-hack-nerd-font"
@@ -71,6 +72,11 @@ brew "tree-sitter-cli"
 brew "uv"
 brew "yarn"
 brew "anomalyco/tap/opencode"
+# Drives the iOS simulator; needed by the ios-simulator MCP server.
+# Only the companion is installed by brew. The `idb` cli client is a separate
+# python package, pinned to 3.11 because it predates 3.12:
+#   uv tool install fb-idb --python 3.11
+brew "idb-companion"
 
 # cloud
 brew "awscli"
