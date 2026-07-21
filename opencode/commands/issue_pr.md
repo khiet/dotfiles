@@ -27,6 +27,7 @@ Always use the PR Template below — do not use `.github/pull_request_template.m
    - If nothing observable changed (pure refactor, internal-only helper, CI/config-only change), skip the Before/After block and say so in one sentence instead.
 
 5. **Generate PR title** following the PR Title rules below.
+   - First detect whether the repo has release or title automation (see PR Title). Only that answer decides whether the title needs a conventional commit prefix.
 
 6. **Generate PR description** using the template below.
    - Total body (excluding code blocks) should read in about 15 seconds — roughly 80-120 words.
@@ -37,14 +38,24 @@ Always use the PR Template below — do not use `.github/pull_request_template.m
 
 7. **Handle PR:**
    - Check if PR exists: `gh pr view`
-   - If no PR exists: create with `gh pr create --draft --title "<conventional commit title>"`
-   - If PR exists: output the generated description for user to review/copy. Also check the existing title — if it is missing a valid conventional commit prefix, show the suggested replacement and offer to run `gh pr edit --title "<conventional commit title>"`.
+   - If no PR exists: create with `gh pr create --draft --title "<generated title>"`
+   - If PR exists: output the generated description for user to review/copy. Also check the existing title against the convention detected in step 5 — if it does not match, show the suggested replacement and offer to run `gh pr edit --title "<generated title>"`.
 
 ## PR Title
 
-The title must be a valid [Conventional Commits](https://www.conventionalcommits.org/) subject: `type(optional-scope): description`.
+Which style applies depends on the repo. Detect it before writing the title:
 
-This is not cosmetic. A squash merge uses the PR title as the commit subject, and release automation such as [release-please](https://github.com/googleapis/release-please) parses that subject to decide the version bump and changelog entry. A title without a valid prefix is silently skipped: no bump, no changelog line.
+```bash
+find . -maxdepth 1 \( -name 'release-please-config.json' -o -name '.release-please-manifest.json' \
+  -o -name '.releaserc*' -o -name 'commitlint.config.*' -o -name '.changeset' \)
+grep -rlE "release-please|semantic-release|changesets|commitlint|semantic-pull-request" .github package.json 2>/dev/null
+```
+
+### With release or title automation
+
+Any hit above means something machine-reads the merge subject, so the title must be a valid [Conventional Commits](https://www.conventionalcommits.org/) subject: `type(optional-scope): description`.
+
+This is not cosmetic. A squash merge uses the PR title as the commit subject, and tools like [release-please](https://github.com/googleapis/release-please) or semantic-release parse that subject to decide the version bump and changelog entry. A title without a valid prefix is silently skipped: no bump, no changelog line. A title-lint action instead blocks the merge outright.
 
 Rules:
 
@@ -53,7 +64,14 @@ Rules:
 - Add a scope when the repo already uses scopes consistently (check `git log --oneline -30`); otherwise omit it rather than inventing a taxonomy.
 - Mark breaking changes with `!` before the colon (`feat(api)!: ...`) and add a `BREAKING CHANGE: <what breaks>` footer to the description. Without one of these, release automation issues a minor bump for a change that needs a major.
 - Lowercase description, imperative mood, no trailing period, ideally under 72 characters total.
-- Never include story, ticket, or issue keys in the title.
+
+### Without it
+
+No hits means no tool reads the subject, so a conventional prefix would be imposing a convention the repo has not adopted. Match what the repo already does: check `git log --oneline -30` and recent PR titles (`gh pr list --state merged --limit 20`), then write a title in that style — conventional if the history is conventional, plain and descriptive otherwise.
+
+### Either way
+
+Never include story, ticket, or issue keys in the title.
 
 ## PR Template
 
@@ -98,4 +116,4 @@ Report one of:
 - "✅ **Created new draft PR**: <URL>"
 - "📋 **PR exists**: <URL> — Generated description below for review"
 
-In both cases, state the PR title used or suggested, and flag it when the existing title needed a conventional commit prefix.
+In both cases, state the PR title used or suggested, which convention applied, and what the detection found (e.g. "release-please detected — conventional title required"). Flag it when an existing title did not match.
