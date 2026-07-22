@@ -19,6 +19,7 @@ export JAVA_HOME="/opt/homebrew/opt/openjdk/libexec/openjdk.jdk/Contents/Home"
 # ── path ─────────────────────────────────────────────────────────────
 PATH="$XDG_DATA_HOME/nvim/mason/bin:$PATH"
 PATH="$XDG_DATA_HOME/../bin:$PATH"
+PATH="$HOME/.local/bin:$PATH"
 
 # ── keybindings ──────────────────────────────────────────────────────
 bindkey "^h" backward-delete-char
