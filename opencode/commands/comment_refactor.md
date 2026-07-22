@@ -39,6 +39,7 @@ $ARGUMENTS
 3. **Evaluate each added comment**
    - Fact-check every comment against the code it describes. Read the surrounding implementation and confirm the claim is still true. Fix or remove comments that are stale, wrong, or describe behavior the code no longer has.
    - Keep comments that explain non-obvious intent, invariants, constraints, tradeoffs, side effects, exceptions, caller obligations, or the meaning of a value.
+   - Remove or rewrite comments that match any pattern in the "Low-Value Comment Patterns" section below.
    - Remove comments that merely repeat the code in different words, or that state anything a reader would learn by reading the code itself.
    - Remove details that do not matter to a future reader, such as migration history, how the code came to be written, or notes aimed at the original reviewer. Unimportant detail adds complexity, so leave it out.
    - For class comments, describe the abstraction the class provides.
@@ -51,6 +52,7 @@ $ARGUMENTS
    - Add a short example when prose alone will not land, such as an algorithm that manipulates a data structure or a branching condition with several interacting cases. Show a representative input and the resulting output or branch taken. Keep the example small enough to read at a glance.
    - Look at similar code in the project, such as comparable service objects, components, controllers, or modules, and align with their established commenting style when it is clear and useful.
    - Before changing a comment, identify what the surrounding code is trying to do, what single explanation covers the whole block, and what matters most for a future reader.
+   - Apply the rule of thumb: good comments explain why; poor comments explain what. If removing a comment does not make the code any harder to understand, remove it.
 
 4. **Edit comments in place**
    - Modify only comments that were added by the target diff unless a nearby existing comment must be adjusted for grammar or consistency with the new comment.
@@ -66,8 +68,62 @@ $ARGUMENTS
 
 6. **Report status**
    - Summarize which files had comments updated.
+   - List any names that comments were compensating for, as rename suggestions for the user.
    - If no added comments needed changes, say so explicitly.
    - If validation was skipped, explain why.
+
+## Low-Value Comment Patterns
+
+From John Ousterhout's "A Philosophy of Software Design": a comment earns its place only when it carries information the code itself cannot easily express. Remove or rewrite added comments that match any of these patterns.
+
+1. **Redundant comments** repeat exactly what the code already says.
+
+   ```java
+   i++; // Increment i
+   ```
+
+2. **Obvious interface comments** explain parameters or return values already clear from good names and types.
+
+   ```java
+   // Returns the user's name.
+   String getUserName();
+   ```
+
+3. **Implementation narration** describes each step of the algorithm instead of the overall intent.
+
+   ```java
+   // Loop through the list.
+   // Check each item.
+   // Add matching items.
+   for (...) { ... }
+   ```
+
+4. **Comments compensating for poor names** exist only because a variable or method is named unclearly. `int x; // Number of active users` should be `int activeUserCount;`. Since this command must not rename code, remove or improve the comment as far as possible and flag the naming problem in the final report instead of renaming.
+
+5. **Outdated or misleading comments** no longer reflect the code's behavior. These are worse than no comment at all; fix or delete them.
+
+6. **Boilerplate or auto-generated comments** add no information beyond the signature.
+
+   ```java
+   /**
+    * Gets the value.
+    *
+    * @return the value
+    */
+   ```
+
+7. **Noise comments** state trivial facts every reader can infer.
+
+   ```java
+   // Default constructor.
+   MyClass() {}
+   ```
+
+8. **Commented-out code** keeps old code in comments instead of relying on version control. Delete it and let Git preserve the history.
+
+9. **Line-by-line commentary** explains every individual statement rather than the overall idea.
+
+What good comments provide instead: the why behind the code, design decisions and rationale, assumptions, constraints, invariants, edge cases, performance tradeoffs, and non-obvious behavior.
 
 ## Status
 
