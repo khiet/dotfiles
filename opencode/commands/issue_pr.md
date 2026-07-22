@@ -4,9 +4,11 @@ description: Generate or create a pull request description for the current branc
 
 # PR Description Generator
 
-Generate a short, elevator-pitch-style GitHub PR description based on the current branch and recent commits. Write for a broad audience, including non-technical reviewers. If a PR doesn't exist, create one as a draft. If it exists, output the generated description for review (do not auto-update to preserve any manual edits like screenshots) and confirm if I want to overwrite.
+Generate a GitHub PR description for the current branch: a **10-second elevator pitch**, written for a broad audience including non-technical reviewers. The ticket holds the full spec and the diff holds the mechanism, so the pitch carries only what neither gives at a glance — the problem, an observable Before/After, and the insight that connects them.
 
-Always use the PR Template below — do not use `.github/pull_request_template.md` or any other repo checklist template, even if one is present. No headers, no checkboxes.
+If a PR doesn't exist, create one as a draft. If it exists, output the generated description for review (do not auto-update to preserve any manual edits like screenshots) and confirm if I want to overwrite.
+
+Always use the PR Template below — do not use `.github/pull_request_template.md` or any other repo checklist template, even if one is present.
 
 ## Process
 
@@ -21,25 +23,22 @@ Always use the PR Template below — do not use `.github/pull_request_template.m
    ```
    - Read the surrounding code the diff touches (callers, the module it lives in, related tests) when the diff alone does not explain what was broken and why it mattered. Skip this when the diff is self-explanatory. The point is to find a concrete symptom or scenario for the problem statement rather than describing the change abstractly.
 
-3. **Analyze test coverage** for PR changes only (not full codebase)
-
-4. **Find a Before/After.** Look through the diff for something observable that changed: an error message, a log line, an API response or payload shape, a function's return value, rendered UI, CLI output. This is almost always findable even for "internal" changes — pull the actual before and after strings/values from the code or tests, don't invent them.
+3. **Find a Before/After.** Look through the diff for something observable that changed: an error message, a log line, an API response or payload shape, a function's return value, rendered UI, CLI output. This is almost always findable even for "internal" changes — pull the actual before and after strings/values from the code or tests, don't invent them.
    - If nothing observable changed (pure refactor, internal-only helper, CI/config-only change), skip the Before/After block and say so in one sentence instead.
 
-5. **Generate PR title** following the PR Title rules below.
+4. **Generate PR title** following the PR Title rules below.
    - First detect whether the repo has release or title automation (see PR Title). Only that answer decides whether the title needs a conventional commit prefix.
 
-6. **Generate PR description** using the template below.
-   - Total body (excluding code blocks) should read in about 15 seconds — roughly 80-120 words.
-   - No section headers, no bullet lists, no checkboxes. Prose only.
-   - Plain language a non-technical reader can follow for the problem statement and insight sentence; technical detail is fine in the closing `Fix:` sentence.
+5. **Write the pitch** using the template below.
+   - Prose outside the Before/After block should read in about 10 seconds — roughly 40-60 words. Two beats: the problem, then the insight.
+   - No section headers, no bullet lists, no checkboxes. Prose only, in language a non-technical reader can follow.
    - The insight sentence carries the essence, not the details. Name the rule or assumption that makes After right and Before wrong; do not restate what the Before/After block already shows.
-   - Pull real before/after values from the diff/tests — never fabricate example output.
+   - The pitch stops at what changed and why it matters. Mechanism, file-by-file walkthroughs, scope boundaries, and test counts belong to the diff and the ticket; a reviewer who wants them is one click away.
 
-7. **Handle PR:**
+6. **Handle PR:**
    - Check if PR exists: `gh pr view`
    - If no PR exists: create with `gh pr create --draft --title "<generated title>"`
-   - If PR exists: output the generated description for user to review/copy. Also check the existing title against the convention detected in step 5 — if it does not match, show the suggested replacement and offer to run `gh pr edit --title "<generated title>"`.
+   - If PR exists: output the generated description for user to review/copy. Also check the existing title against the convention detected in step 4 — if it does not match, show the suggested replacement and offer to run `gh pr edit --title "<generated title>"`.
 
 ## PR Title
 
@@ -92,18 +91,16 @@ than describing the change abstractly.]
 
 [1 sentence naming the insight: the rule or assumption that makes After correct
 and Before wrong. Essence, not detail — do not restate the block above.]
-
-Fix: [1-2 sentences: the mechanism of the fix, an explicit scope boundary
-(what did NOT change, so reviewers know the blast radius), and a test
-coverage note, e.g. "9 new unit tests cover it."]
 ```
 
-If no Before/After applies (step 4), drop that block and keep the rest:
+If no Before/After applies (step 3), the pitch is the problem statement plus one
+sentence saying what the change does about it:
 
 ```markdown
 [1-2 sentence problem statement.]
 
-Fix: [mechanism + scope boundary + test coverage note.]
+[1 sentence: what the change does about it, at the level a reviewer needs before
+opening the diff.]
 ```
 
 ## Formatting
