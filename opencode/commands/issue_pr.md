@@ -4,7 +4,7 @@ description: Generate or create a pull request description for the current branc
 
 # PR Description Generator
 
-Generate a GitHub PR description for the current branch: a **10-second elevator pitch**, written for a broad audience including non-technical reviewers. The ticket holds the full spec and the diff holds the mechanism, so the pitch carries only what neither gives at a glance — the problem, an observable Before/After, and the insight that connects them.
+Generate a GitHub PR description for the current branch: a **10-second elevator pitch**, written for a broad audience including non-technical reviewers. The ticket holds the full spec and the diff holds the mechanism, so the pitch carries only what neither gives at a glance — the improvement, the problem it solves, and an observable Before/After.
 
 If a PR doesn't exist, create one as a draft. If it exists, output the generated description for review (do not auto-update to preserve any manual edits like screenshots) and confirm if I want to overwrite.
 
@@ -30,9 +30,11 @@ Always use the PR Template below — do not use `.github/pull_request_template.m
    - First detect whether the repo has release or title automation (see PR Title). Only that answer decides whether the title needs a conventional commit prefix.
 
 5. **Write the pitch** using the template below.
-   - Prose outside the Before/After block should read in about 10 seconds — roughly 40-60 words. Two beats: the problem, then the insight.
-   - No section headers, no bullet lists, no checkboxes. Prose only, in language a non-technical reader can follow.
-   - The insight sentence carries the essence, not the details. Name the rule or assumption that makes After right and Before wrong; do not restate what the Before/After block already shows.
+   - Prose outside the Before/After block should read in about 10 seconds — roughly 40-80 words across the labeled sections.
+   - Structure: bold inline labels (`**Improvement:**`, `**Problem it solves:**`, then Before/After, then `**Note:**`), one sentence or two per label. No headers, no bullet lists, no checkboxes; the text after each label is prose a non-technical reader can follow.
+   - **Improvement** leads: the outcome delivered plus the one insight that makes it work — the rule or assumption that makes After right and Before wrong. Do not restate what the Before/After block shows.
+   - **Problem it solves** is the concrete symptom or scenario from step 2, not an abstract description of the change.
+   - **Note** is optional: include it only for something a reviewer must know that neither the pitch nor the diff makes obvious — a guard, a deliberate non-goal, a tradeoff. Omit the label entirely when there is nothing.
    - The pitch stops at what changed and why it matters. Mechanism, file-by-file walkthroughs, scope boundaries, and test counts belong to the diff and the ticket; a reviewer who wants them is one click away.
 
 6. **Handle PR:**
@@ -75,9 +77,13 @@ Never include story, ticket, or issue keys in the title.
 ## PR Template
 
 ```markdown
-[1-2 sentence problem statement: what was broken or missing, and why it mattered.
-Be concrete — cite a specific symptom, incident, or scenario if one exists rather
-than describing the change abstractly.]
+**Improvement:** [1-2 sentences: the outcome this PR delivers, plus the insight
+that makes it work — the rule or assumption that makes After correct and Before
+wrong. Essence, not detail — do not restate the Before/After block.]
+
+**Problem it solves:** [1-2 sentences: what was broken or missing, and why it
+mattered. Be concrete — cite a specific symptom, incident, or scenario if one
+exists rather than describing the change abstractly.]
 
 **Before** [short qualifier if useful, e.g. "(canned text, same for every X)"]:
 ```
@@ -89,18 +95,21 @@ than describing the change abstractly.]
 [actual after behavior/output, pulled from the code or tests]
 ```
 
-[1 sentence naming the insight: the rule or assumption that makes After correct
-and Before wrong. Essence, not detail — do not restate the block above.]
+**Note:** [optional — only for something a reviewer must know that the pitch and
+diff don't make obvious: a guard, a deliberate non-goal, a tradeoff. Omit the
+label entirely when there is nothing.]
 ```
 
-If no Before/After applies (step 3), the pitch is the problem statement plus one
-sentence saying what the change does about it:
+If no Before/After applies (step 3), keep the labels and say in one sentence why
+there is no observable change:
 
 ```markdown
-[1-2 sentence problem statement.]
+**Improvement:** [1-2 sentences, as above — plus one clause on why there is no
+Before/After (pure refactor, internal-only helper, CI/config-only change).]
 
-[1 sentence: what the change does about it, at the level a reviewer needs before
-opening the diff.]
+**Problem it solves:** [1-2 sentences, as above.]
+
+**Note:** [optional, as above.]
 ```
 
 ## Formatting
