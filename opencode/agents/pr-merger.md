@@ -1,7 +1,7 @@
 ---
 description: Merge dependency PRs with restricted GitHub CLI permissions
 mode: subagent
-model: openai/gpt-5.5
+model: openai/gpt-5.6-sol
 permission:
   bash:
     "*": ask
