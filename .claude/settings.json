@@ -84,7 +84,6 @@
     "figma@claude-plugins-official": false
   },
   "theme": "auto",
-  "editorMode": "vim",
   "preferredNotifChannel": "ghostty",
   "skipAutoPermissionPrompt": true
 }
