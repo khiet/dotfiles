@@ -106,6 +106,34 @@ Optional, for zsh completions:
 herdr completion zsh > "$XDG_CONFIG_HOME/zsh/completions/_herdr"
 ```
 
+## Spaces
+
+A space is herdr's top-level container, one level above tabs. The sidebar has a
+section per level: `spaces` lists workspaces, `agents` lists agent panes. The
+`grouped` label on the agents header is the `agent_panel_sort = "spaces"`
+default, meaning agents are listed under the space they belong to; the
+alternative is `"priority"`, an attention queue ordered by state across all
+spaces.
+
+Creating one:
+
+- `ctrl+a shift+n` new space. `prompt_new_workspace_name` defaults to false, so
+  it is created immediately with a generated name, and inherits the current
+  pane's cwd because of `new_cwd = "follow"`. To root it elsewhere, `cd` first.
+- `ctrl+a shift+w` rename, when the generated name is not useful.
+- `ctrl+a shift+g` new git worktree, which gets its own space. This is the one
+  worth trying: one space per branch, agents grouped under each.
+
+From the shell, against the running server:
+
+```bash
+herdr workspace create --cwd ~/some-project --label some-project --focus
+herdr workspace list
+```
+
+With a second space in play, `ctrl+a w` switches between them and the agents
+panel starts showing more than one group.
+
 ## What to judge it on
 
 tmux already handles steps 2 and 4 fine. If herdr earns a place it will be on
