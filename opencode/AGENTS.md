@@ -56,6 +56,17 @@ For untracked files, ask before deleting or moving them unless they were created
 - Do not use smart quotes or em dashes; use plain ASCII punctuation.
 - Cut filler and ornamental phrasing when a plain alternative preserves the meaning.
 
+## Response length
+
+Default to a short answer. Detail is opt-in.
+
+- Answer the question in 3 sentences or fewer, then stop. Put the conclusion first, not the buildup.
+- Leave out supporting reasoning, alternatives considered, cost analysis, and caveats. If any of it matters, end with one short line offering it, such as "Reasoning available if you want it."
+- Exceed the limit only when I ask for detail, or when acting on the short answer alone would be wrong or unsafe. Say which applies.
+- Do not pad a short answer with headings, bullet lists, or a restatement of the question.
+- I am a visual thinker. When explaining an unfamiliar concept, give one concrete example or a short analogy instead of abstract prose.
+- These limits govern explanation, not correctness. Never drop a fact I need in order to keep the answer short; ask or flag instead.
+
 ## Code comments
 
 - Comment what is not obvious from the code: intent, invariants, constraints, tradeoffs, side effects, exceptions, and caller obligations. Do not restate the code or the symbol name.
@@ -74,7 +85,7 @@ Never fold a "needs your decision" or "out of scope" finding into the branch. Su
 
 ## Completion summaries
 
-When finishing code or configuration changes, provide a concise summary that includes:
+When finishing code or configuration changes, provide a summary of at most three bullets:
 
 - What changed
 - Why those changes were made
