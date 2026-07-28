@@ -2,54 +2,36 @@
 
 These instructions apply to all repositories where I use LLM coding agents and supplement higher-priority system/developer instructions.
 
-## Instruction feedback
+## Instructions and clarification
 
-When the user gives an instruction, evaluate it before acting.
+Evaluate an instruction before acting on it.
 
 - If a non-trivial instruction is sound, briefly confirm agreement and proceed.
 - If the instruction is risky, ambiguous, overcomplicated, or conflicts with existing guidance, explain the concern and recommend a better approach.
 - If recommending a materially different approach, ask whether to follow the recommendation or continue with the user's original instruction.
-- When clarification is needed, use the format in "Clarification before implementation."
 - Do not challenge harmless stylistic preferences or small implementation choices unless they create a real downside.
 - Keep feedback concise and practical.
 
-## Clarification before implementation
-
-When you need clarification before acting:
-
-- Ask concise clarifying questions as a numbered list.
-- Ask as many questions as needed to remove uncertainty.
-- Make each question answerable in a short reply.
-- If there are options, present them under the relevant numbered item.
-- Do not ask for clarification in prose paragraphs.
-- Express recommendations by marking an option with `(Recommended)`, not in a separate paragraph.
-- Keep every question block user-facing; never include internal tags or reminders.
-
-Required format:
+When you need clarification before acting, ask as a numbered list, never in prose paragraphs:
 
 1. <question>
    - A. <option>
    - B. <option>
 2. <question>
 
+- Ask as many questions as needed to remove uncertainty.
+- Make each question answerable in a short reply.
+- Put options under the relevant numbered item.
+- Express recommendations by marking an option with `(Recommended)`, not in a separate paragraph.
+- Keep every question block user-facing; never include internal tags or reminders.
+
 Example:
 
 1. Which approach do you want for authentication?
    - A. Session-based
-   - B. JWT
+   - B. JWT (Recommended)
 2. Should this include tests?
 3. Do you want a minimal patch or a small refactor?
-
-## Destructive file operations
-
-Do not use `rm` or `mv` directly. Use the safe wrapper scripts instead:
-
-- **Delete:** `~/dotfiles/opencode/scripts/safe-rm.sh <paths...>`
-- **Move/Rename:** `~/dotfiles/opencode/scripts/safe-mv.sh <sources...> <destination>`
-
-These scripts only operate on git-tracked files within the repo root.
-
-For untracked files, ask before deleting or moving them unless they were created during the current task.
 
 ## Communication style
 
@@ -67,6 +49,14 @@ Default to a short answer. Detail is opt-in.
 - I am a visual thinker. When explaining an unfamiliar concept, give one concrete example or a short analogy instead of abstract prose.
 - These limits govern explanation, not correctness. Never drop a fact I need in order to keep the answer short; ask or flag instead.
 
+## Completion summaries
+
+When finishing code or configuration changes, provide a summary of at most three bullets:
+
+- What changed
+- Why those changes were made
+- Any verification performed or skipped
+
 ## Code comments
 
 - Comment what is not obvious from the code: intent, invariants, constraints, tradeoffs, side effects, exceptions, and caller obligations. Do not restate the code or the symbol name.
@@ -83,22 +73,21 @@ When triaging findings from a code review, a security review, or PR comments, so
 
 Never fold a "needs your decision" or "out of scope" finding into the branch. Surface both buckets as an explicit list rather than burying them in a summary, and stop for an answer before continuing.
 
-## Completion summaries
+## Destructive file operations
 
-When finishing code or configuration changes, provide a summary of at most three bullets:
+Do not use `rm` or `mv` directly. Use the safe wrapper scripts instead:
 
-- What changed
-- Why those changes were made
-- Any verification performed or skipped
+- **Delete:** `~/dotfiles/opencode/scripts/safe-rm.sh <paths...>`
+- **Move/Rename:** `~/dotfiles/opencode/scripts/safe-mv.sh <sources...> <destination>`
+
+These scripts only operate on git-tracked files within the repo root.
+
+For untracked files, ask before deleting or moving them unless they were created during the current task.
 
 ## Committing changes
 
-- **Default action: create a git commit when the task is complete.** Do not stop after editing files unless the user explicitly says not to commit.
-- After completing a multi-step plan, propose running `/wrap_up` before committing.
-- Before committing, review the working tree and include only changes that belong to the completed task.
-- If unrelated user changes are present, leave them uncommitted and commit only the task-specific files.
-- If there is nothing to commit, say so explicitly in the completion summary.
-- For large tasks, group changes into logical commits that each capture a coherent change.
+- **Default action: create a git commit, using [Conventional Commits](https://www.conventionalcommits.org/) format, when the task is complete.** Do not stop after editing files unless the user explicitly says not to commit.
+- Before committing, review the working tree and include only changes that belong to the completed task. If unrelated user changes are present, leave them uncommitted.
 - After making code changes, run the project's linter with auto-fix. If it changes files, commit those fixes separately with the message `Auto-format and lint fixes`.
-- Follow the [Conventional Commits](https://www.conventionalcommits.org/) format (e.g., `feat:`, `fix:`, `refactor:`, `docs:`, `chore:`).
+- If there is nothing to commit, say so explicitly in the completion summary.
 - Do not push to the remote repository.
