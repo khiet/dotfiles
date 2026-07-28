@@ -20,8 +20,7 @@ tmux, so it takes over the `ctrl+a` prefix without conflict.
 | `last_pane` | `prefix space` | Nearest thing to tmux `prefix Space` |
 | `split_vertical` | `prefix %` | Same as tmux; herdr calls it "split right" |
 | `split_horizontal` | `prefix "` | Same as tmux; herdr calls it "split down" |
-| `previous_tab` / `next_tab` | `prefix [` / `prefix ]` | Browser-style tab cycling; herdr defaults to `p`/`n` |
-| `copy_mode` | `prefix u` | herdr ships copy mode unbound, and `prefix [` is taken by tab cycling |
+| `copy_mode` | `prefix [` | Same as tmux; herdr ships copy mode unbound |
 | `sidebar_start_collapsed` | `true` | Compact status rail by default; `prefix b` toggles the full sidebar |
 | `theme.name` | `dracula` | Matches Ghostty and tmux |
 | `ui.accent` | `#50fa7b` | The tmux active pane border green |
@@ -60,7 +59,8 @@ Existing tmux muscle memory, nothing new to learn:
 - `ctrl+a %` split side by side, `ctrl+a "` split stacked
 - `ctrl+a h/j/k/l` move, `ctrl+a space` jump back
 - `ctrl+a z` zoom, `ctrl+a c` new tab, `ctrl+a 1..9` switch
-- `ctrl+a [` and `ctrl+a ]` cycle tabs left and right
+- `ctrl+a p` and `ctrl+a n` cycle tabs left and right
+- `ctrl+a [` copy mode, same key as tmux
 
 ### 3. The actual point: run two agents (3 min)
 
@@ -109,7 +109,7 @@ herdr completion zsh > "$XDG_CONFIG_HOME/zsh/completions/_herdr"
 
 ## Scrollback
 
-`ctrl+a u` enters copy mode, which is tmux's copy mode: `h/j/k/l w/b/e { }` to
+`ctrl+a [` enters copy mode, which is tmux's copy mode: `h/j/k/l w/b/e { }` to
 move, `/` and `?` to search with `n`/`N`, `v` or space to select, `y` or enter
 to copy, `q` or esc to leave. It searches the whole buffer, unlike Ghostty's
 find, which only matches what is on screen. This is the way to look back

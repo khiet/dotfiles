@@ -44,16 +44,10 @@ last_pane = "prefix+space"
 split_vertical = "prefix+%"
 split_horizontal = 'prefix+"'
 
-# Tab cycling on the bracket keys, like browser-style back/forward. herdr
-# defaults to prefix+p/prefix+n; neither bracket is bound by default. Unlike
-# tmux, herdr has no copy-mode on `prefix [`, so the key is free.
-previous_tab = "prefix+["
-next_tab = "prefix+]"
-
 # Copy mode: vim motions, / and ? search over the whole scrollback, v to select,
-# y to copy. herdr ships this unbound, and `prefix [` (tmux's copy mode key) is
-# taken by tab cycling above, so it lands on an unused letter.
-copy_mode = "prefix+u"
+# y to copy. herdr ships this unbound. `prefix [` is tmux's copy mode key, which
+# is why tab cycling stays on herdr's prefix+p/prefix+n defaults.
+copy_mode = "prefix+["
 
 # lazygit in a popup, using the lazygit config already in this repo.
 # Ghostty sets macos-option-as-alt = left, so alt chords reach herdr.
@@ -124,7 +118,7 @@ resume_agents_on_restore = true
 # prefix % split side by side, prefix " split stacked
 # prefix h/j/k/l focus, prefix space last pane
 # prefix z zoom, prefix x close, prefix shift+r resize mode
-# prefix u copy mode, prefix e edit scrollback in $EDITOR
+# prefix [ copy mode, prefix e edit scrollback in $EDITOR
 #
 # extras
 # prefix b toggle sidebar
