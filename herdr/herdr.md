@@ -151,14 +151,3 @@ herdr status              # client and server status
 herdr server stop         # stop the background server
 herdr --no-session        # run monolithically, escape hatch
 ```
-
-## If it does not work out
-
-```bash
-rm "$XDG_CONFIG_HOME/herdr/config.toml"
-brew uninstall herdr
-```
-
-Then revert the `brew "herdr"` line in the Brewfile, the herdr block in
-`README.md`, and delete `herdr/`. The relevant commits are `9d5ad0a` and
-`bb7ef48`.
