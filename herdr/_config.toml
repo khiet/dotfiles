@@ -35,6 +35,14 @@ resize_mode = "prefix+shift+r"
 # this maps to the nearest equivalent toggle.
 last_pane = "prefix+space"
 
+# tmux split bindings. herdr calls these "split right" and "split down", which
+# line up with tmux's `%` (side by side) and `"` (stacked). Both keys need
+# shift, and herdr warns that shifted punctuation depends on the terminal; if
+# either stops registering, fall back to the defaults "prefix+v" and
+# "prefix+minus".
+split_vertical = "prefix+%"
+split_horizontal = 'prefix+"'
+
 # lazygit in a popup, using the lazygit config already in this repo.
 # Ghostty sets macos-option-as-alt = left, so alt chords reach herdr.
 [[keys.command]]
@@ -91,7 +99,7 @@ resume_agents_on_restore = true
 # prefix shift+t rename, prefix shift+x close
 #
 # panes
-# prefix v split vertical, prefix - split horizontal
+# prefix % split side by side, prefix " split stacked
 # prefix h/j/k/l focus, prefix space last pane
 # prefix z zoom, prefix x close, prefix shift+r resize mode
 # prefix e edit scrollback in $EDITOR
