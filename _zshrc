@@ -42,6 +42,7 @@ alias private_ip="ipconfig getifaddr en0"
 alias dc="docker compose"
 alias oc="opencode"
 alias cl="claude"
+alias h="herdr"
 
 # ── conditional aliases ──────────────────────────────────────────────
 if command -v bat >/dev/null 2>&1; then
