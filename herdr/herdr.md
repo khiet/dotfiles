@@ -21,6 +21,7 @@ tmux, so it takes over the `ctrl+a` prefix without conflict.
 | `split_vertical` | `prefix %` | Same as tmux; herdr calls it "split right" |
 | `split_horizontal` | `prefix "` | Same as tmux; herdr calls it "split down" |
 | `previous_tab` / `next_tab` | `prefix [` / `prefix ]` | Browser-style tab cycling; herdr defaults to `p`/`n` |
+| `copy_mode` | `prefix u` | herdr ships copy mode unbound, and `prefix [` is taken by tab cycling |
 | `sidebar_start_collapsed` | `true` | Compact status rail by default; `prefix b` toggles the full sidebar |
 | `theme.name` | `dracula` | Matches Ghostty and tmux |
 | `ui.accent` | `#50fa7b` | The tmux active pane border green |
@@ -105,6 +106,26 @@ Optional, for zsh completions:
 ```bash
 herdr completion zsh > "$XDG_CONFIG_HOME/zsh/completions/_herdr"
 ```
+
+## Scrollback
+
+`ctrl+a u` enters copy mode, which is tmux's copy mode: `h/j/k/l w/b/e { }` to
+move, `/` and `?` to search with `n`/`N`, `v` or space to select, `y` or enter
+to copy, `q` or esc to leave. It searches the whole buffer, unlike Ghostty's
+find, which only matches what is on screen. This is the way to look back
+through a pane, not `ctrl+a e`, which dumps the scrollback into nvim.
+
+herdr ships copy mode unbound, so it exists only because `keys.copy_mode` is
+set. It is absent from `herdr --default-config` in 0.7.5; `herdr config check`
+accepts it.
+
+Page up and page down are intercepted for pane scrollback and scroll without
+entering a mode, but cannot search or copy.
+
+The mouse wheel does nothing here because `mouse_capture = false` hands the
+mouse to Ghostty, which cannot scroll herdr's alt screen. Capturing the mouse
+would trade away native selection and Cmd-click URLs, and copy mode already
+covers reading back, so it stays off.
 
 ## Spaces
 

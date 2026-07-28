@@ -50,6 +50,11 @@ split_horizontal = 'prefix+"'
 previous_tab = "prefix+["
 next_tab = "prefix+]"
 
+# Copy mode: vim motions, / and ? search over the whole scrollback, v to select,
+# y to copy. herdr ships this unbound, and `prefix [` (tmux's copy mode key) is
+# taken by tab cycling above, so it lands on an unused letter.
+copy_mode = "prefix+u"
+
 # lazygit in a popup, using the lazygit config already in this repo.
 # Ghostty sets macos-option-as-alt = left, so alt chords reach herdr.
 [[keys.command]]
@@ -118,7 +123,7 @@ resume_agents_on_restore = true
 # prefix % split side by side, prefix " split stacked
 # prefix h/j/k/l focus, prefix space last pane
 # prefix z zoom, prefix x close, prefix shift+r resize mode
-# prefix e edit scrollback in $EDITOR
+# prefix u copy mode, prefix e edit scrollback in $EDITOR
 #
 # extras
 # prefix b toggle sidebar
