@@ -1,3 +1,4 @@
+onboarding = false
 # herdr configuration
 # Symlinked to $XDG_CONFIG_HOME/herdr/config.toml
 #
@@ -43,6 +44,12 @@ last_pane = "prefix+space"
 split_vertical = "prefix+%"
 split_horizontal = 'prefix+"'
 
+# Tab cycling on the bracket keys, like browser-style back/forward. herdr
+# defaults to prefix+p/prefix+n; neither bracket is bound by default. Unlike
+# tmux, herdr has no copy-mode on `prefix [`, so the key is free.
+previous_tab = "prefix+["
+next_tab = "prefix+]"
+
 # lazygit in a popup, using the lazygit config already in this repo.
 # Ghostty sets macos-option-as-alt = left, so alt chords reach herdr.
 [[keys.command]]
@@ -66,10 +73,12 @@ prompt_new_tab_name = false
 mouse_capture = false
 
 [ui.toast]
-# The point of herdr is walking away from running agents, so route state
-# changes to the macOS notification centre rather than in-app toasts.
-# Use "herdr" for in-app toasts instead, or "off" to disable.
-delivery = "system"
+# The point of herdr is walking away from running agents, so surface state
+# changes as desktop notifications. "terminal" sends an escape sequence and
+# lets Ghostty raise the notification, so no separate herdr entry in macOS
+# notification settings. Use "system" to ask macOS directly, "herdr" for
+# in-app toasts, or "off" to disable.
+delivery = "terminal"
 
 [ui.sound]
 enabled = true

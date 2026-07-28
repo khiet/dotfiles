@@ -18,11 +18,14 @@ tmux, so it takes over the `ctrl+a` prefix without conflict.
 | `reload_config` | `prefix r` | tmux binds `r` to reload; herdr defaults to `shift+r` |
 | `resize_mode` | `prefix shift+r` | Displaced by the swap above; tmux resizes on shifted keys |
 | `last_pane` | `prefix space` | Nearest thing to tmux `prefix Space` |
+| `split_vertical` | `prefix %` | Same as tmux; herdr calls it "split right" |
+| `split_horizontal` | `prefix "` | Same as tmux; herdr calls it "split down" |
+| `previous_tab` / `next_tab` | `prefix [` / `prefix ]` | Browser-style tab cycling; herdr defaults to `p`/`n` |
 | `theme.name` | `dracula` | Matches Ghostty and tmux |
 | `ui.accent` | `#50fa7b` | The tmux active pane border green |
 | `prompt_new_tab_name` | `false` | tmux makes windows instantly |
 | `mouse_capture` | `false` | Matches tmux; keeps Cmd-click URLs and native selection |
-| `toast.delivery` | `system` | macOS notification when an agent finishes or blocks |
+| `toast.delivery` | `terminal` | Ghostty raises the desktop notification when an agent finishes or blocks |
 | `resume_agents_on_restore` | `true` | Agent sessions survive a server restart |
 | lazygit popup | `prefix alt+g` | lazygit is already configured in this repo |
 
@@ -41,16 +44,18 @@ for resize mode.
 cd ~/some-project && herdr
 ```
 
-Plain Ghostty tab, not inside tmux. First run shows a notification-setup
-prompt; accept it so `delivery = "system"` works. Then `ctrl+a ?` for help.
+Plain Ghostty tab, not inside tmux. Notifications go through Ghostty
+(`delivery = "terminal"`), so make sure Ghostty is allowed in macOS
+notification settings. Then `ctrl+a ?` for help.
 
 ### 2. Panes and tabs (2 min)
 
 Existing tmux muscle memory, nothing new to learn:
 
-- `ctrl+a v` split vertical, `ctrl+a -` split horizontal
+- `ctrl+a %` split side by side, `ctrl+a "` split stacked
 - `ctrl+a h/j/k/l` move, `ctrl+a space` jump back
 - `ctrl+a z` zoom, `ctrl+a c` new tab, `ctrl+a 1..9` switch
+- `ctrl+a [` and `ctrl+a ]` cycle tabs left and right
 
 ### 3. The actual point: run two agents (3 min)
 
@@ -72,8 +77,10 @@ verifying before relying on it.
 ### 5. Walk away (2 min)
 
 Start something slow, switch to another app, wait for the macOS notification
-when it finishes or needs input. If notifications never arrive, change
-`delivery` to `"herdr"` in the config and `ctrl+a r` to reload.
+when it finishes or needs input. If notifications never arrive, check
+Ghostty's macOS notification permission first; failing that, change
+`delivery` to `"system"` (herdr asks macOS directly) or `"herdr"` (in-app
+toasts) in the config and `ctrl+a r` to reload.
 
 ### 6. Extras if time (1 min)
 
