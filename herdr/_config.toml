@@ -63,6 +63,13 @@ height = "80%"
 # Dracula green, the same colour as the tmux active pane border.
 accent = "#50fa7b"
 
+# Keep the sidebar out of the way by default; `prefix b` (herdr's default
+# toggle_sidebar bind) brings it back. Collapsed mode stays on "compact" so
+# the narrow status rail still shows each agent's state; set
+# sidebar_collapsed_mode = "hidden" for zero width. Takes effect on next
+# launch, not on config reload.
+sidebar_start_collapsed = true
+
 # tmux creates windows immediately on `prefix c`; don't prompt for a tab name.
 prompt_new_tab_name = false
 

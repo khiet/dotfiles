@@ -21,6 +21,7 @@ tmux, so it takes over the `ctrl+a` prefix without conflict.
 | `split_vertical` | `prefix %` | Same as tmux; herdr calls it "split right" |
 | `split_horizontal` | `prefix "` | Same as tmux; herdr calls it "split down" |
 | `previous_tab` / `next_tab` | `prefix [` / `prefix ]` | Browser-style tab cycling; herdr defaults to `p`/`n` |
+| `sidebar_start_collapsed` | `true` | Compact status rail by default; `prefix b` toggles the full sidebar |
 | `theme.name` | `dracula` | Matches Ghostty and tmux |
 | `ui.accent` | `#50fa7b` | The tmux active pane border green |
 | `prompt_new_tab_name` | `false` | tmux makes windows instantly |
