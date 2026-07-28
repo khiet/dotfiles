@@ -78,11 +78,12 @@ sidebar_start_collapsed = true
 # tmux creates windows immediately on `prefix c`; don't prompt for a tab name.
 prompt_new_tab_name = false
 
-# Leave the mouse to Ghostty, matching tmux where `mouse on` is never set.
-# Keeps Cmd-click URLs and native selection working inside panes, at the cost
-# of herdr's own click-to-focus and drag-to-split. Pane apps such as lazygit
-# still receive mouse events when they ask for them.
-mouse_capture = false
+# On trial. Gives herdr the wheel (scrollback), click-to-focus, drag-to-split,
+# and drag-select, at the cost of Ghostty's own Cmd-click URLs and native
+# selection inside panes. Set false to hand the mouse back to Ghostty, which is
+# what tmux does here since `mouse on` is never set. Pane apps such as lazygit
+# receive mouse events either way when they ask for them.
+mouse_capture = true
 
 [ui.toast]
 # The point of herdr is walking away from running agents, so surface state

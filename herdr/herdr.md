@@ -26,7 +26,7 @@ tmux, so it takes over the `ctrl+a` prefix without conflict.
 | `theme.name` | `dracula` | Matches Ghostty and tmux |
 | `ui.accent` | `#50fa7b` | The tmux active pane border green |
 | `prompt_new_tab_name` | `false` | tmux makes windows instantly |
-| `mouse_capture` | `false` | Matches tmux; keeps Cmd-click URLs and native selection |
+| `mouse_capture` | `true` | On trial: wheel scrollback and click-to-focus, at the cost of Ghostty's Cmd-click URLs and native selection |
 | `toast.delivery` | `terminal` | Ghostty raises the desktop notification when an agent finishes or blocks |
 | `resume_agents_on_restore` | `true` | Agent sessions survive a server restart |
 | lazygit popup | `prefix alt+g` | lazygit is already configured in this repo |
@@ -122,10 +122,12 @@ accepts it.
 Page up and page down are intercepted for pane scrollback and scroll without
 entering a mode, but cannot search or copy.
 
-The mouse wheel does nothing here because `mouse_capture = false` hands the
-mouse to Ghostty, which cannot scroll herdr's alt screen. Capturing the mouse
-would trade away native selection and Cmd-click URLs, and copy mode already
-covers reading back, so it stays off.
+The mouse wheel scrolls the focused pane, three lines per notch, but only
+because `mouse_capture = true` is on trial. With the mouse left to Ghostty, as
+tmux does, the wheel does nothing: Ghostty cannot scroll herdr's alt screen.
+The trade is Ghostty's Cmd-click URLs and native selection inside panes, so if
+that turns out to hurt more than the wheel helps, set `mouse_capture = false`
+and rely on copy mode.
 
 ## Spaces
 
