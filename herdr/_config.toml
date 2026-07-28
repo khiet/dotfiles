@@ -51,6 +51,12 @@ accent = "#50fa7b"
 # tmux creates windows immediately on `prefix c`; don't prompt for a tab name.
 prompt_new_tab_name = false
 
+# Leave the mouse to Ghostty, matching tmux where `mouse on` is never set.
+# Keeps Cmd-click URLs and native selection working inside panes, at the cost
+# of herdr's own click-to-focus and drag-to-split. Pane apps such as lazygit
+# still receive mouse events when they ask for them.
+mouse_capture = false
+
 [ui.toast]
 # The point of herdr is walking away from running agents, so route state
 # changes to the macOS notification centre rather than in-app toasts.
