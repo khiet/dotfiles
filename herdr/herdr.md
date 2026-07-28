@@ -93,6 +93,13 @@ toasts) in the config and `ctrl+a r` to reload.
 - `ctrl+a e` open scrollback in nvim
 - `ctrl+a shift+g` new git worktree, useful for parallel agent branches
 
+`ctrl+a w` vs `ctrl+a g`: different levels of the hierarchy, per the docs.
+`w` opens navigate mode, a sidebar surface for the current session
+(up/down between workspaces, h/j/k/l between panes). `g` opens the session
+navigator, for jumping between named persistent sessions (`herdr session`).
+The docs do not say whether `g` can also match workspaces within a session;
+untested, so treat them as complements for now.
+
 Optional, for zsh completions:
 
 ```bash
