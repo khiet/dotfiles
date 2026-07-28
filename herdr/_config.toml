@@ -1,0 +1,96 @@
+# herdr configuration
+# Symlinked to $XDG_CONFIG_HOME/herdr/config.toml
+#
+# Run `herdr --default-config` to see every option with its default.
+# Run `herdr config check` after editing to validate this file.
+
+[theme]
+# Matches Ghostty (theme = Dracula) and the tmux dracula plugin.
+name = "dracula"
+
+[terminal]
+# New panes inherit the cwd of the pane they were opened from, like tmux.
+new_cwd = "follow"
+
+[keys]
+# tmux uses C-a as prefix, so herdr does too. This only works because herdr
+# runs standalone in a Ghostty tab rather than nested inside tmux; if that
+# ever changes, move this back to "ctrl+b" so tmux keeps ctrl+a.
+prefix = "ctrl+a"
+
+# Pane focus with hjkl, same as the tmux binds. These match herdr's defaults
+# and are spelled out only so the mapping is obvious next to the tmux config.
+focus_pane_left = "prefix+h"
+focus_pane_down = "prefix+j"
+focus_pane_up = "prefix+k"
+focus_pane_right = "prefix+l"
+
+# Swapped from herdr's defaults: tmux binds `prefix r` to reload, and resizes
+# with shifted keys (H/J/K/L). Keeping reload on the unshifted key preserves
+# the more frequently used muscle memory.
+reload_config = "prefix+r"
+resize_mode = "prefix+shift+r"
+
+# tmux binds `prefix Space` to last-window. herdr has no last-tab action, so
+# this maps to the nearest equivalent toggle.
+last_pane = "prefix+space"
+
+# lazygit in a popup, using the lazygit config already in this repo.
+# Ghostty sets macos-option-as-alt = left, so alt chords reach herdr.
+[[keys.command]]
+key = "prefix+alt+g"
+type = "popup"
+command = "lazygit"
+width = "80%"
+height = "80%"
+
+[ui]
+# Dracula green, the same colour as the tmux active pane border.
+accent = "#50fa7b"
+
+# tmux creates windows immediately on `prefix c`; don't prompt for a tab name.
+prompt_new_tab_name = false
+
+[ui.toast]
+# The point of herdr is walking away from running agents, so route state
+# changes to the macOS notification centre rather than in-app toasts.
+# Use "herdr" for in-app toasts instead, or "off" to disable.
+delivery = "system"
+
+[ui.sound]
+enabled = true
+
+[session]
+# Reattach agent panes to their native conversation sessions after a server
+# restart, so a reboot does not lose in-flight agent context.
+resume_agents_on_restore = true
+
+# ===============================================
+#    cheat sheets
+# ===============================================
+# herdr --default-config    show all options and defaults
+# herdr config check        validate this file
+# herdr status              client and server status
+#
+# prefix is ctrl+a (same as tmux)
+#
+# prefix ? for help, prefix q to detach, `herdr` to reattach
+# prefix r to reload this config
+# prefix w to open the workspace picker (replaces tmux-sessionx prefix o)
+# prefix g to go to a workspace/tab/pane by name
+# prefix shift+n new workspace, prefix shift+g new git worktree
+#
+# tabs (tmux windows)
+# prefix c new tab, prefix 1..9 switch, prefix p/n prev and next
+# prefix shift+t rename, prefix shift+x close
+#
+# panes
+# prefix v split vertical, prefix - split horizontal
+# prefix h/j/k/l focus, prefix space last pane
+# prefix z zoom, prefix x close, prefix shift+r resize mode
+# prefix e edit scrollback in $EDITOR
+#
+# extras
+# prefix b toggle sidebar
+# prefix alt+g lazygit popup
+# ===============================================

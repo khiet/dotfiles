@@ -42,6 +42,7 @@ cask "trailer"
 # shell and terminal
 brew "nvim"
 brew "tmux"
+brew "herdr"
 brew "tpm"
 brew "fzf"
 brew "starship"

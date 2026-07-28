@@ -34,6 +34,9 @@ ln -s ~/dotfiles/pry $XDG_CONFIG_HOME/pry
 mkdir -p $XDG_CONFIG_HOME/tmux
 ln -s ~/dotfiles/tmux/_tmux.conf $XDG_CONFIG_HOME/tmux/tmux.conf
 
+mkdir -p $XDG_CONFIG_HOME/herdr
+ln -s ~/dotfiles/herdr/_config.toml $XDG_CONFIG_HOME/herdr/config.toml
+
 mkdir -p $XDG_CONFIG_HOME/lazygit
 ln -s ~/dotfiles/lazygit/_config.yml $XDG_CONFIG_HOME/lazygit/config.yml
 
