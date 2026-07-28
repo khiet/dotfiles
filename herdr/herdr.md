@@ -33,6 +33,9 @@ tmux, so it takes over the `ctrl+a` prefix without conflict.
 Everything else stays on herdr defaults, so `prefix ?` and the online docs
 remain accurate.
 
+herdr does not watch the config file: edits apply only after `prefix r` in a
+running session, and `sidebar_start_collapsed` only on the next launch.
+
 Two bindings have no clean tmux equivalent and are the most likely to need
 changing after real use: `prefix space` for last-pane and `prefix shift+r`
 for resize mode.
