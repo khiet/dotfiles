@@ -46,6 +46,13 @@ focus_pane_right = "prefix+l"
 swap_pane_left = "prefix+{"
 swap_pane_right = "prefix+}"
 
+# The session navigator moves off herdr's default prefix+g and onto prefix+o.
+# prefix+o is herdr's default for open_notification_target, so the two trade
+# keys rather than one of them going unbound; jumping to the pane that raised
+# the last notification still matters with ui.toast delivery set to "terminal".
+goto = "prefix+o"
+open_notification_target = "prefix+g"
+
 # Swapped from herdr's defaults: tmux binds `prefix r` to reload, and resizes
 # with shifted keys (H/J/K/L). Keeping reload on the unshifted key preserves
 # the more frequently used muscle memory.
@@ -127,7 +134,7 @@ resume_agents_on_restore = true
 # spaces (herdr's top level, above tabs)
 # prefix w workspace picker, the tmux-sessionx replacement; navigates the
 #   current session, up/down between spaces and h/j/k/l between panes
-# prefix g session navigator, for jumping between `herdr session` sessions
+# prefix o session navigator, for jumping between `herdr session` sessions
 # prefix shift+n new space, made immediately and inheriting the pane's cwd,
 #   so cd first to root it elsewhere; prefix shift+w rename
 # prefix shift+g new git worktree in its own space, one space per branch
@@ -158,6 +165,7 @@ resume_agents_on_restore = true
 #   space. Set "priority" to sort by state across all spaces instead.
 #
 # extras
+# prefix g jump to the pane that raised the last notification
 # prefix alt+g lazygit popup
 #
 # cli
