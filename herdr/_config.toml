@@ -1,0 +1,173 @@
+onboarding = false
+# herdr configuration
+# Symlinked to $XDG_CONFIG_HOME/herdr/config.toml
+#
+# herdr is an agent multiplexer: panes, tabs, and workspaces like tmux, plus a
+# sidebar showing whether each agent is working, blocked, or done. That live
+# view is the reason to run it. Installed with `brew "herdr"`; docs at
+# https://herdr.dev/docs/. It runs standalone in a Ghostty tab rather than
+# nested inside tmux, which is the only reason it can take the ctrl+a prefix.
+#
+# Bindings mirror the tmux config so nothing has to be relearned. Anything not
+# set here stays on herdr's defaults, so `prefix ?` and the online docs stay
+# accurate.
+#
+# herdr does not watch this file: edits apply on `prefix r` in a running
+# session, and sidebar_start_collapsed only on the next launch.
+#
+# Run `herdr --default-config` to see every option with its default.
+# Run `herdr config check` after editing to validate this file.
+
+[theme]
+# Matches Ghostty (theme = Dracula) and the tmux dracula plugin.
+name = "dracula"
+
+[terminal]
+# New panes inherit the cwd of the pane they were opened from, like tmux.
+new_cwd = "follow"
+
+[keys]
+# tmux uses C-a as prefix, so herdr does too. This only works because herdr
+# runs standalone in a Ghostty tab rather than nested inside tmux; if that
+# ever changes, move this back to "ctrl+b" so tmux keeps ctrl+a.
+prefix = "ctrl+a"
+
+# Pane focus with hjkl, same as the tmux binds. These match herdr's defaults
+# and are spelled out only so the mapping is obvious next to the tmux config.
+focus_pane_left = "prefix+h"
+focus_pane_down = "prefix+j"
+focus_pane_up = "prefix+k"
+focus_pane_right = "prefix+l"
+
+# Pane swapping on the braces, matching tmux's `{` and `}`. herdr defaults these
+# to prefix+shift+h/l, which collides with the tmux muscle memory for resizing.
+# herdr cannot split leftward at all (its split direction is right or down
+# only), so `%` followed by `{` is how a new pane ends up on the left.
+swap_pane_left = "prefix+{"
+swap_pane_right = "prefix+}"
+
+# Swapped from herdr's defaults: tmux binds `prefix r` to reload, and resizes
+# with shifted keys (H/J/K/L). Keeping reload on the unshifted key preserves
+# the more frequently used muscle memory.
+reload_config = "prefix+r"
+resize_mode = "prefix+shift+r"
+
+# tmux binds `prefix Space` to last-window. herdr has no last-tab action, so
+# this maps to the nearest equivalent toggle. Along with resize_mode above, it
+# is the binding with no clean tmux equivalent and the likeliest to change.
+last_pane = "prefix+space"
+
+# tmux split bindings. herdr calls these "split right" and "split down", which
+# line up with tmux's `%` (side by side) and `"` (stacked). Both keys need
+# shift, and herdr warns that shifted punctuation depends on the terminal; if
+# either stops registering, fall back to the defaults "prefix+v" and
+# "prefix+minus".
+split_vertical = "prefix+%"
+split_horizontal = 'prefix+"'
+
+# Copy mode: vim motions and search over the whole scrollback, keys in the cheat
+# sheet below. herdr ships this unbound and omits it from `--default-config` in
+# 0.7.5, though `config check` accepts it. `prefix [` is tmux's copy mode key,
+# which is why tab cycling stays on herdr's prefix+p/prefix+n defaults.
+copy_mode = "prefix+["
+
+# lazygit in a popup, using the lazygit config already in this repo.
+# Ghostty sets macos-option-as-alt = left, so alt chords reach herdr.
+[[keys.command]]
+key = "prefix+alt+g"
+type = "popup"
+command = "lazygit"
+width = "80%"
+height = "80%"
+
+[ui]
+# Dracula green, the same colour as the tmux active pane border.
+accent = "#50fa7b"
+
+# Keep the sidebar out of the way by default; `prefix b` (herdr's default
+# toggle_sidebar bind) brings it back. Collapsed mode stays on "compact" so
+# the narrow status rail still shows each agent's state; set
+# sidebar_collapsed_mode = "hidden" for zero width. Takes effect on next
+# launch, not on config reload.
+sidebar_start_collapsed = true
+
+# tmux creates windows immediately on `prefix c`; don't prompt for a tab name.
+prompt_new_tab_name = false
+
+# On trial. Gives herdr the wheel (scrollback), click-to-focus, drag-to-split,
+# and drag-select, at the cost of Ghostty's own Cmd-click URLs and native
+# selection inside panes. Set false to hand the mouse back to Ghostty, which is
+# what tmux does here since `mouse on` is never set. Pane apps such as lazygit
+# receive mouse events either way when they ask for them.
+mouse_capture = true
+
+[ui.toast]
+# The point of herdr is walking away from running agents, so surface state
+# changes as desktop notifications. "terminal" sends an escape sequence and
+# lets Ghostty raise the notification, so no separate herdr entry in macOS
+# notification settings, but Ghostty itself has to be allowed to notify. Use
+# "system" to ask macOS directly, "herdr" for in-app toasts, or "off".
+delivery = "terminal"
+
+[ui.sound]
+enabled = true
+
+[session]
+# Reattach agent panes to their native conversation sessions after a server
+# restart, so a reboot does not lose in-flight agent context.
+resume_agents_on_restore = true
+
+# ===============================================
+#    cheat sheet
+# ===============================================
+# prefix is ctrl+a (same as tmux)
+# prefix ? help, prefix q detach (agents keep running), `herdr` reattach
+# prefix r reload this config, prefix b toggle sidebar
+#
+# spaces (herdr's top level, above tabs)
+# prefix w workspace picker, the tmux-sessionx replacement; navigates the
+#   current session, up/down between spaces and h/j/k/l between panes
+# prefix g session navigator, for jumping between `herdr session` sessions
+# prefix shift+n new space, made immediately and inheriting the pane's cwd,
+#   so cd first to root it elsewhere; prefix shift+w rename
+# prefix shift+g new git worktree in its own space, one space per branch
+# prefix shift+d close space
+#
+# tabs (tmux windows)
+# prefix c new tab, prefix 1..9 switch, prefix p/n prev and next
+# prefix shift+t rename, prefix shift+x close
+#
+# panes
+# prefix % split side by side, prefix " split stacked
+# prefix h/j/k/l focus, prefix space last pane
+# prefix { and } swap the pane left and right; herdr splits only rightward or
+#   downward, so swapping is how a new pane ends up on the left
+# prefix z zoom, prefix x close, prefix shift+r resize mode
+#
+# scrollback
+# prefix [ copy mode: h/j/k/l w/b/e { } move, / and ? search with n/N,
+#   v or space select, y or enter copy, q or esc exit. Searches the whole
+#   buffer, unlike Ghostty's find, which only matches the viewport.
+# page up/down scroll the pane without entering a mode, but cannot search
+# mouse wheel scrolls the pane, three lines a notch, while mouse_capture is on
+# prefix e dump the scrollback into $EDITOR
+#
+# sidebar
+# the spaces panel lists workspaces, the agents panel lists agent panes; the
+#   "grouped" header is agent_panel_sort = "spaces", agents listed under their
+#   space. Set "priority" to sort by state across all spaces instead.
+#
+# extras
+# prefix alt+g lazygit popup
+#
+# cli
+# herdr                     launch or attach
+# herdr --default-config    every option with its default
+# herdr config check        validate this file
+# herdr status              client and server status
+# herdr workspace list      spaces in the running session
+# herdr workspace create --cwd ~/some-project --label some-project --focus
+# herdr server stop         stop the background server
+# herdr --no-session        run monolithically, escape hatch
+# herdr completion zsh > "$XDG_CONFIG_HOME/zsh/completions/_herdr"
+# ===============================================
