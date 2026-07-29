@@ -80,11 +80,15 @@
     ],
     "defaultMode": "auto"
   },
+  "model": "claude-fable-5[1m]",
+  "statusLine": {
+    "type": "command",
+    "command": "jq -r '.model.display_name'"
+  },
   "enabledPlugins": {
     "figma@claude-plugins-official": false
   },
   "theme": "auto",
   "preferredNotifChannel": "ghostty",
-  "skipAutoPermissionPrompt": true,
-  "model": "claude-fable-5[1m]"
+  "skipAutoPermissionPrompt": true
 }
