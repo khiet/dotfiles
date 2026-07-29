@@ -43,6 +43,7 @@ alias dc="docker compose"
 alias oc="opencode"
 alias cl="claude"
 alias h="herdr"
+alias hw="herdr worktree open --branch"
 
 # ── conditional aliases ──────────────────────────────────────────────
 if command -v bat >/dev/null 2>&1; then
