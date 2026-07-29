@@ -7,11 +7,21 @@ local s = ls.snippet
 local t = ls.text_node
 local i = ls.insert_node
 
-ls.add_snippets("all", {
+ls.add_snippets("ruby", {
   s(
     "de",
     { t("require 'debug'; debugger") }
   ),
+})
+
+ls.add_snippets("python", {
+  s(
+    "de",
+    { t("breakpoint()") }
+  ),
+})
+
+ls.add_snippets("all", {
   s(
     "pr",
     { t("require 'pry'; binding.pry") }
