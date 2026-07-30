@@ -65,7 +65,7 @@ ln -s ~/dotfiles/_atuin_config.toml $XDG_CONFIG_HOME/atuin/config.toml
 
 #### Claude Code permissions
 
-`.claude/settings.json` mirrors opencode's permission allowlist. `opencode/_opencode.jsonc`
+`.claude/settings.json` mirrors opencode's permission deny list. `opencode/_opencode.jsonc`
 is the single source of truth — after editing its permissions, regenerate and commit:
 
 ```bash
