@@ -12,7 +12,7 @@ onboarding = false
 # set here stays on herdr's defaults, so `prefix ?` and the online docs stay
 # accurate.
 #
-# herdr does not watch this file: edits apply on `prefix r` in a running
+# herdr does not watch this file: edits apply on `prefix shift+r` in a running
 # session, and sidebar_start_collapsed only on the next launch.
 #
 # Run `herdr --default-config` to see every option with its default.
@@ -53,11 +53,10 @@ swap_pane_right = "prefix+}"
 goto = "prefix+o"
 open_notification_target = "prefix+g"
 
-# Swapped from herdr's defaults: tmux binds `prefix r` to reload, and resizes
-# with shifted keys (H/J/K/L). Keeping reload on the unshifted key preserves
-# the more frequently used muscle memory.
-reload_config = "prefix+r"
-resize_mode = "prefix+shift+r"
+# Keep reload on the shifted key so the easier unshifted binding enters the
+# more frequently used resize mode.
+reload_config = "prefix+shift+r"
+resize_mode = "prefix+r"
 
 # tmux binds `prefix Space` to last-window. herdr has no last-tab action, so
 # this maps to the nearest equivalent toggle. Along with resize_mode above, it
@@ -129,7 +128,7 @@ resume_agents_on_restore = true
 # ===============================================
 # prefix is ctrl+a (same as tmux)
 # prefix ? help, prefix q detach (agents keep running), `herdr` reattach
-# prefix r reload this config, prefix b toggle sidebar
+# prefix shift+r reload this config, prefix b toggle sidebar
 #
 # spaces (herdr's top level, above tabs)
 # prefix w workspace picker, the tmux-sessionx replacement; navigates the
@@ -149,7 +148,7 @@ resume_agents_on_restore = true
 # prefix h/j/k/l focus, prefix space last pane
 # prefix { and } swap the pane left and right; herdr splits only rightward or
 #   downward, so swapping is how a new pane ends up on the left
-# prefix z zoom, prefix x close, prefix shift+r resize mode
+# prefix z zoom, prefix x close, prefix r resize mode
 #
 # scrollback
 # prefix [ copy mode: h/j/k/l w/b/e { } move, / and ? search with n/N,
