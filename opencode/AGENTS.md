@@ -37,6 +37,7 @@ Example:
 
 - Do not use smart quotes or em dashes; use plain ASCII punctuation.
 - Cut filler and ornamental phrasing when a plain alternative preserves the meaning.
+- Preserve the codebase's established domain terminology in explanations, plans, and code. Do not replace precise terms with generic plain-English synonyms; for example, use `encounter` rather than `visit` when the codebase uses `encounter`.
 
 ## Response length
 
