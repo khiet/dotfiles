@@ -44,6 +44,7 @@ alias oc="opencode --auto"
 alias cl="claude"
 alias h="herdr"
 alias hw="herdr worktree open --branch"
+alias hwl="herdr worktree list | jq"
 
 # ── conditional aliases ──────────────────────────────────────────────
 if command -v bat >/dev/null 2>&1; then
