@@ -5,18 +5,20 @@ description: Use when the user asks for a rich explanation of a code change, dif
 
 # Explain Diff
 
-Please make me a rich, interactive explanation of the specified code change.
+Create a clear, interactive explanation of the requested code change.
 
-It should have these sections:
+## Sections
 
-- Background: Explain the existing system relevant to this change. (You should broadly explore surrounding code for this.) We don't know how much the reader already knows, so include a deep background for beginners (note that it can be skipped if the reader is already familiar), and then a more narrow background directly relevant to the change.
-- Intuition: Explain the core intuition for the code change. The focus here is to explain the essence, not the full details. Use concrete examples with toy data. Use figures and diagrams liberally.
-- Code: Do a high-level walkthrough of the changes to the code. Group/order the changes in an understandable way.
-- Quiz: Come up with five questions that test the reader's knowledge of this PR. This should be medium difficulty, difficult enough that you actually need to understand the substance of the PR to answer them, but not gotchas. The goal is to help the reader make sure that they've actually understood. These should be presented as interactive multiple-choice questions, and when the user clicks, it tells them whether they were correct and gives feedback.
+Include these sections:
 
-Theme:
+- **Background:** Explore the surrounding code and explain the existing system. Start with enough context for a beginner, then focus on the parts that matter to this change. Make the beginner material easy for experienced readers to skip.
+- **Intuition:** Explain the main idea behind the change without covering every detail. Use small, concrete examples with sample data. Add figures and diagrams where they make the idea easier to understand.
+- **Code:** Give a high-level walkthrough of the code changes. Group and order them so the reader can follow the change as a whole.
+- **Quiz:** Write five medium-difficulty multiple-choice questions. Test real understanding of the change, not trivia or gotchas. When the reader chooses an answer, show whether it is correct and explain why.
 
-- Style the page with the Dracula Classic (dark) palette. Copy this `:root` block into the page's `<style>` and use the variables throughout. Do not hardcode ad hoc colors elsewhere, and to retheme edit only this block.
+## Theme
+
+- Use the Dracula Classic dark palette. Copy this `:root` block into the page's `<style>`.
 
   ```css
   :root {
@@ -34,22 +36,49 @@ Theme:
     --pink: #FF79C6;
   }
   ```
-- Use Background for the page, Foreground for body text, and Comment for muted/secondary text. Reserve Current Line/Selection for surfaces like cards, callouts, code-block backgrounds, and borders. Draw on the accent hues (Cyan, Green, Purple, Pink, Orange, Yellow) for headings, links, diagram elements, and syntax highlighting, using Red for warnings or errors. Keep contrast readable against the dark background.
+- Use these variables for every color so the page can be rethemed by editing only this block.
+- Use Background for the page, Foreground for body text, and Comment for secondary text.
+- Use Current Line and Selection for cards, callouts, code blocks, and borders.
+- Use Cyan, Green, Purple, Pink, Orange, and Yellow for headings, links, diagrams, and syntax highlighting. Use Red for warnings and errors.
+- Keep all text easy to read against the dark background.
 
-Format:
+## Format
 
-- Output a single self-contained HTML file which includes CSS and JavaScript. Start it with `<!DOCTYPE html>` and a proper `<html><head>` that includes `<meta charset="utf-8">` as the first element in the `<head>`. This is required: the file uses non-ASCII characters (emoji, arrows, box-drawing) and, without the charset declaration, a browser opening the local `file://` page falls back to a legacy encoding and renders them as mojibake (e.g. `→` becomes `â†’`, `🔤` becomes `ðŸ”¤`). Make the whole thing one long page with section headers and a table of contents. Don't use tabs for the top-level structure. Basic responsive styling so you can view it on a phone is nice too. Save the file in `$HOME/Desktop` (outside the code repo) named `<unix_timestamp>_<branch_name>.html`, where `branch_name` is the current git branch with any `/` replaced by `-` and `unix_timestamp` is the current Unix epoch seconds. For example: `$HOME/Desktop/1720915200_main.html`.
-- Please write with the clarity and flow of Martin Kleppmann, making it engaging and written in classic style. Transitions between sections should be smooth. Clarity outranks elegance: no metaphors or figurative phrasing where a literal sentence exists (write "the existing code", not "the machine the change slots into"), and any sentence that needs a second read gets rewritten in plain words.
-- Some tips on diagrams. Ideally, you should pick a small number of diagram families that can be reused throughout the explanation to explain various cases. Some useful kinds of diagrams:
-  - A very simplified version of the UI that the user sees in the app, to explain UI changes.
-  - A system diagram showing data flow or communication between components. Make sure to include example data here!
-- Don't use ASCII diagrams. Always use simple HTML designs for your diagrams, HTML lists for lists of things, etc.
-  - For code blocks, use `<pre>`: it preserves newlines and indentation, which a plain `<div>` collapses. If you style a `<div>` instead, it **must** set `white-space: pre-wrap`. Check each code block before saving.
-- Use callouts for key concepts or definitions, important edge cases, etc.
+- Output one self-contained HTML file with all CSS and JavaScript included.
+- Start with `<!DOCTYPE html>` and a complete `<html><head>`.
+- Make `<meta charset="utf-8">` the first element in `<head>`. The page may contain emoji, arrows, and box-drawing characters that display incorrectly without it when opened from `file://`.
+- Use one long page with section headings and a table of contents. Do not use tabs for the main page structure.
+- Add responsive styles so the page works on a phone.
+- Save the file outside the repository in `$HOME/Desktop`.
+- Name it `<unix_timestamp>_<branch_name>.html`. Use the current Unix epoch time and replace `/` in the current Git branch name with `-`. Example: `$HOME/Desktop/1720915200_main.html`.
 
-Annotations (Kindle-style highlighting and notes):
+## Writing Style
 
-- The page lets the reader select text to highlight it (four colors), attach a note to a highlight, and review every highlight and note in a slide-out drawer whose entries jump to the highlight when clicked. Annotations persist across reloads via `localStorage`.
-- Paste the module from `annotation-module.md` **verbatim** rather than writing your own: its CSS just before `</style>` (after the accent-color rules) and its `<script>` as the last element before `</body>`. It is self-contained and depends only on the Dracula `:root` variables already in the page.
-- Set `data-annot-doc-id` on `<body>` to the filename stem (`<unix_timestamp>_<branch_name>`) so highlights key to this document and survive a rename.
-- Anchoring is by character offset into the page text, stable only while that text does not change at runtime. Mark **any element whose text mutates after load** with `data-no-annotate` so the module excludes it from offset math: the **Quiz** wrapper (answer feedback appears on click) and any dynamically injected collapsible. The module already excludes its own UI, `<script>`, and `<style>`; static prose (Background, Intuition, Code) needs nothing.
+- Use easy-to-read, plain English with a clear flow.
+- Keep the explanation engaging, but choose clarity over elegance.
+- Use smooth transitions between sections.
+- Prefer literal language over metaphors. Write "the existing code," not "the machine the change slots into."
+- Rewrite any sentence that needs a second read.
+
+## Diagrams and Callouts
+
+- Reuse a small number of diagram styles throughout the page.
+- For a UI change, show a simple version of the interface the user sees.
+- For a system change, show how data moves between components and include example data.
+- Build diagrams with HTML and CSS. Do not use ASCII diagrams.
+- Use HTML lists for lists.
+- Put code blocks in `<pre>` elements so they keep their line breaks and indentation. If a code block uses a `<div>`, set `white-space: pre-wrap`.
+- Check every code block before saving the file.
+- Use callouts for key ideas, definitions, and important edge cases.
+
+## Annotations
+
+- Let readers highlight selected text in four colors, add a note to a highlight, and review all highlights and notes in a slide-out drawer.
+- Make each drawer entry jump to its highlight when clicked.
+- Keep annotations across reloads with `localStorage`.
+- Use the module from `annotation-module.md` exactly as written. Do not replace it with a new implementation.
+- Place the module's CSS just before `</style>`, after the accent-color rules.
+- Place the module's `<script>` last, just before `</body>`.
+- Set `data-annot-doc-id` on `<body>` to the filename without `.html`: `<unix_timestamp>_<branch_name>`. This keeps highlights tied to the document even if the file is renamed.
+- The module anchors highlights by character position, so text changes after page load can break them. Add `data-no-annotate` to every element whose text changes at runtime. This includes the Quiz wrapper and any collapsible content added at runtime.
+- Do not add `data-no-annotate` to static Background, Intuition, or Code text. The module already excludes its own interface, `<script>`, and `<style>`.
