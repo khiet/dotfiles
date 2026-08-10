@@ -4,11 +4,17 @@ description: Generate or create a pull request description for the current branc
 
 # PR Description Generator
 
-Generate a GitHub PR description for the current branch: a **10-second elevator pitch**, written for a broad audience including non-technical reviewers. The ticket holds the full spec and the diff holds the mechanism, so the pitch carries only what neither gives at a glance — the improvement, the problem it solves, and an observable Before/After.
+Generate a GitHub PR description for the current branch: a compact review packet for engineer and AI reviewers. The ticket holds the full spec and the diff holds the mechanism, so the description carries what neither gives at a glance - intent, evidence of validation, and where review attention belongs.
 
-If a PR doesn't exist, create one as a draft. If it exists, output the generated description for review (do not auto-update to preserve any manual edits like screenshots) and confirm if I want to overwrite.
+If a PR doesn't exist, create one as a draft. If it exists, output the generated description for review (do not auto-update, to preserve manual edits like screenshots or visuals) and confirm before overwriting.
 
-Always use the PR Template below — do not use `.github/pull_request_template.md` or any other repo checklist template, even if one is present.
+Always use the PR Template below - do not use `.github/pull_request_template.md` or any other repo checklist template, even if one is present. This skill is the canonical PR format.
+
+## Evidence rules
+
+- Every claim must trace to the ticket, the diff, test output, or a command actually run. Never invent a claim to fill a section.
+- Optional sections (Review focus, Risk and rollout, Visuals) and the Before/After block are omitted entirely when empty: no header, no "N/A", no filler like "low risk".
+- Keep `Why` and `What changed` together around 40-80 words. Evidence sections are terse lists and carry no word budget.
 
 ## Process
 
@@ -16,31 +22,30 @@ Always use the PR Template below — do not use `.github/pull_request_template.m
    - Whenever making any changes to the codebase (e.g., adding a missing test, linting, or other fixes), create a separate commit for each logical change.
 
 2. **Gather branch information:**
+
    ```bash
    git log --oneline -10
    git diff main...HEAD --name-only
    git diff main...HEAD --stat
    ```
-   - Read the surrounding code the diff touches (callers, the module it lives in, related tests) when the diff alone does not explain what was broken and why it mattered. Skip this when the diff is self-explanatory. The point is to find a concrete symptom or scenario for the problem statement rather than describing the change abstractly.
 
-3. **Find a Before/After.** Look through the diff for something observable that changed: an error message, a log line, an API response or payload shape, a function's return value, rendered UI, CLI output. This is almost always findable even for "internal" changes — pull the actual before and after strings/values from the code or tests, don't invent them.
-   - If nothing observable changed (pure refactor, internal-only helper, CI/config-only change), skip the Before/After block and say so in one sentence instead.
+   - Read the surrounding code the diff touches (callers, the module it lives in, related tests) when the diff alone does not explain what was broken and why it mattered. The point is to find a concrete symptom or scenario for `Why` rather than describing the change abstractly.
 
-4. **Generate PR title** following the PR Title rules below.
+3. **Generate PR title** following the PR Title rules below.
    - First detect whether the repo has release or title automation (see PR Title). Only that answer decides whether the title needs a conventional commit prefix.
 
-5. **Write the pitch** using the template below.
-   - Prose outside the Before/After block should read in about 10 seconds — roughly 40-80 words across the labeled sections.
-   - Structure: bold inline labels (`**Improvement:**`, `**Problem it solves:**`, then Before/After, then `**Note:**`), one sentence or two per label. No headers, no bullet lists, no checkboxes; the text after each label is prose a non-technical reader can follow.
-   - **Improvement** leads: the outcome delivered plus the one insight that makes it work — the rule or assumption that makes After right and Before wrong. Do not restate what the Before/After block shows.
-   - **Problem it solves** is the concrete symptom or scenario from step 2, not an abstract description of the change.
-   - **Note** is optional: include it only for something a reviewer must know that neither the pitch nor the diff makes obvious — a guard, a deliberate non-goal, a tradeoff. Omit the label entirely when there is nothing.
-   - The pitch stops at what changed and why it matters. Mechanism, file-by-file walkthroughs, scope boundaries, and test counts belong to the diff and the ticket; a reviewer who wants them is one click away.
+4. **Write the sections:**
+   - `Why`: the concrete symptom or scenario and the outcome the PR delivers. Cite a specific incident, error, or gap when one exists; never an abstract restatement of the diff.
+   - `What changed`: behavioral summary plus the insight that makes it work - the rule or assumption that makes the new behavior right and the old behavior wrong. Include a Before/After block only when the diff surfaces one naturally (an error message, log line, API payload, function return value, CLI output) - pull the actual values from code or tests. Do not hunt for or manufacture observability; many internal changes have none, and that is fine.
+   - `Review focus`: where a reviewer should look hardest - risky decisions, subtle files - plus anything they must know that the diff does not make obvious: a guard, a deliberate non-goal, a tradeoff. Omit when the change is routine.
+   - `Validation`: only what was verified manually or locally - exact commands run, dev-environment checks performed, and what each showed. Do not restate CI-covered tests; the Checks tab already shows them. If nothing was verified beyond CI, write `Not run: <reason>`.
+   - `Risk and rollout`: include only when at least one trigger applies - schema or data migration, compatibility break, deploy-ordering dependency, nontrivial rollback, new or changed monitoring/alarms, resource or limits impact. State the concern and the mitigation. Otherwise omit the section.
+   - `Visuals`: for UI-visible changes, emit the header with a one-line placeholder for screenshots to be added manually. Generate a Mermaid diagram whenever it would clarify the change - a control-flow or data-flow change, a new state machine, a reordered pipeline. Otherwise omit.
 
-6. **Handle PR:**
+5. **Handle PR:**
    - Check if PR exists: `gh pr view`
    - If no PR exists: create with `gh pr create --draft --title "<generated title>"`
-   - If PR exists: output the generated description for user to review/copy. Also check the existing title against the convention detected in step 4 — if it does not match, show the suggested replacement and offer to run `gh pr edit --title "<generated title>"`.
+   - If PR exists: output the generated description for user to review/copy. Also check the existing title against the convention detected in step 3 - if it does not match, show the suggested replacement and offer to run `gh pr edit --title "<generated title>"`.
 
 ## PR Title
 
@@ -68,7 +73,7 @@ Rules:
 
 ### Without it
 
-No hits means no tool reads the subject, so a conventional prefix would be imposing a convention the repo has not adopted. Match what the repo already does: check `git log --oneline -30` and recent PR titles (`gh pr list --state merged --limit 20`), then write a title in that style — conventional if the history is conventional, plain and descriptive otherwise.
+No hits means no tool reads the subject, so a conventional prefix would be imposing a convention the repo has not adopted. Match what the repo already does: check `git log --oneline -30` and recent PR titles (`gh pr list --state merged --limit 20`), then write a title in that style - conventional if the history is conventional, plain and descriptive otherwise.
 
 ### Either way
 
@@ -76,41 +81,53 @@ Never include story, ticket, or issue keys in the title.
 
 ## PR Template
 
-```markdown
-**Improvement:** [1-2 sentences: the outcome this PR delivers, plus the insight
-that makes it work — the rule or assumption that makes After correct and Before
-wrong. Essence, not detail — do not restate the Before/After block.]
+`Why` and `What changed` always appear. Every other section, and the Before/After block, is omitted entirely when it has nothing real to say.
 
-**Problem it solves:** [1-2 sentences: what was broken or missing, and why it
-mattered. Be concrete — cite a specific symptom, incident, or scenario if one
-exists rather than describing the change abstractly.]
+````markdown
+## Why
 
-**Before** [short qualifier if useful, e.g. "(canned text, same for every X)"]:
+[1-2 sentences: the concrete symptom or scenario, and the outcome this PR
+delivers.]
+
+## What changed
+
+[1-2 sentences: behavioral summary plus the insight that makes it work - the
+rule or assumption that makes the new behavior right and the old behavior
+wrong.]
+
+**Before** [short qualifier if useful]:
+
 ```
-[actual before behavior/output, pulled from the code or tests]
+[actual before behavior/output, pulled from the code or tests - only when the
+diff surfaces one naturally]
 ```
 
 **After** [short qualifier if useful]:
+
 ```
 [actual after behavior/output, pulled from the code or tests]
 ```
 
-**Note:** [optional — only for something a reviewer must know that the pitch and
-diff don't make obvious: a guard, a deliberate non-goal, a tradeoff. Omit the
-label entirely when there is nothing.]
-```
+## Review focus
 
-If no Before/After applies (step 3), keep the labels and say in one sentence why
-there is no observable change:
+- [risky decision or file needing the most attention]
+- [guard, deliberate non-goal, or tradeoff the diff does not make obvious]
 
-```markdown
-**Improvement:** [1-2 sentences, as above — plus one clause on why there is no
-Before/After (pure refactor, internal-only helper, CI/config-only change).]
+## Validation
 
-**Problem it solves:** [1-2 sentences, as above.]
+- [exact command or manual check run, and what it showed]
+- [or] Not run: [reason]
 
-**Note:** [optional, as above.]
-```
+## Risk and rollout
+
+- [migration, compat, deploy-ordering, rollback, monitoring, or resource
+  concern - and its mitigation]
+
+## Visuals
+
+[screenshot placeholder for UI changes; Mermaid diagram when it clarifies a
+flow change]
+````
 
 ## Formatting
 
@@ -119,6 +136,7 @@ Always use backticks for code elements: class names, functions, file paths, comm
 ## Status
 
 Report one of:
+
 - "✅ **Created new draft PR**: <URL>"
 - "📋 **PR exists**: <URL> — Generated description below for review"
 
