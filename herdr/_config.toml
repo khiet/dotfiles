@@ -53,6 +53,9 @@ swap_pane_right = "prefix+}"
 goto = "prefix+o"
 open_notification_target = "prefix+g"
 
+# Open an existing checkout for the current Git repository as a workspace.
+open_worktree = "prefix+shift+o"
+
 # Keep reload on the shifted key so the easier unshifted binding enters the
 # more frequently used resize mode.
 reload_config = "prefix+shift+r"
@@ -137,6 +140,7 @@ resume_agents_on_restore = true
 # prefix shift+n new space, made immediately and inheriting the pane's cwd,
 #   so cd first to root it elsewhere; prefix shift+w rename
 # prefix shift+g new git worktree in its own space, one space per branch
+# prefix shift+o open an existing git worktree in its own space
 # prefix shift+d close space
 #
 # tabs (tmux windows)
