@@ -13,6 +13,8 @@ Always use the PR Template below - do not use `.github/pull_request_template.md`
 ## Evidence rules
 
 - Every claim must trace to the ticket, the diff, test output, or a command actually run. Never invent a claim to fill a section.
+- **Completeness gate:** when a ticket exists, map its work items against the diff. If the PR delivers only part of the ticket's scope, list the remaining items in Review focus as a deliberate non-goal. Never let a partial implementation read as complete.
+- **Reconcile conflicting evidence:** when the ticket and the code or data disagree on a figure (row counts, metrics, dates), cite the newest comparable number, or state why the populations differ. Never cite a stale figure the ticket has since superseded.
 - Optional sections (Review focus, Risk and rollout, Visuals) and the Before/After block are omitted entirely when empty: no header, no "N/A", no filler like "low risk".
 - Keep `Why` and `What changed` together around 40-80 words. Evidence sections are terse lists and carry no word budget.
 
@@ -30,6 +32,8 @@ Always use the PR Template below - do not use `.github/pull_request_template.md`
    ```
 
    - Read the surrounding code the diff touches (callers, the module it lives in, related tests) when the diff alone does not explain what was broken and why it mattered. The point is to find a concrete symptom or scenario for `Why` rather than describing the change abstractly.
+   - Read the ticket when one exists and map each of its work items to the diff (for the completeness gate above).
+   - If a PR already exists, check its checks against current HEAD: `gh pr checks`.
 
 3. **Generate PR title** following the PR Title rules below.
    - First detect whether the repo has release or title automation (see PR Title). Only that answer decides whether the title needs a conventional commit prefix.
@@ -38,7 +42,7 @@ Always use the PR Template below - do not use `.github/pull_request_template.md`
    - `Why`: the concrete symptom or scenario and the outcome the PR delivers. Cite a specific incident, error, or gap when one exists; never an abstract restatement of the diff.
    - `What changed`: behavioral summary plus the insight that makes it work - the rule or assumption that makes the new behavior right and the old behavior wrong. Include a Before/After block only when the diff surfaces one naturally (an error message, log line, API payload, function return value, CLI output) - pull the actual values from code or tests. Do not hunt for or manufacture observability; many internal changes have none, and that is fine.
    - `Review focus`: where a reviewer should look hardest - risky decisions, subtle files - plus anything they must know that the diff does not make obvious: a guard, a deliberate non-goal, a tradeoff. Omit when the change is routine.
-   - `Validation`: only what was verified manually or locally - exact commands run, dev-environment checks performed, and what each showed. Do not restate CI-covered tests; the Checks tab already shows them. If nothing was verified beyond CI, write `Not run: <reason>`.
+   - `Validation`: only what was verified manually or locally - exact commands run against current HEAD, dev-environment checks performed, and what each showed. Do not restate passing CI; the Checks tab already shows it. Failing or pending checks are different: report them with the failing test or job named, since a red build is load-bearing for a reviewer. If nothing was verified beyond CI, write `Not run: <reason>`.
    - `Risk and rollout`: include only when at least one trigger applies - schema or data migration, compatibility break, deploy-ordering dependency, nontrivial rollback, new or changed monitoring/alarms, resource or limits impact. State the concern and the mitigation. Otherwise omit the section.
    - `Visuals`: for UI-visible changes, emit the header with a one-line placeholder for screenshots to be added manually. Generate a Mermaid diagram whenever it would clarify the change - a control-flow or data-flow change, a new state machine, a reordered pipeline. Otherwise omit.
 
@@ -112,6 +116,7 @@ diff surfaces one naturally]
 
 - [risky decision or file needing the most attention]
 - [guard, deliberate non-goal, or tradeoff the diff does not make obvious]
+- [remaining ticket work items not covered by this PR, when scope is partial]
 
 ## Validation
 
