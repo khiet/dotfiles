@@ -33,6 +33,7 @@
     "defaultMode": "auto"
   },
   "model": "claude-fable-5",
+  "editorMode": "vim",
   "statusLine": {
     "type": "command",
     "command": "jq -r '.model.display_name'"
