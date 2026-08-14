@@ -36,7 +36,7 @@
   "editorMode": "vim",
   "statusLine": {
     "type": "command",
-    "command": "jq -r '.model.display_name'"
+    "command": "~/dotfiles/.claude/statusline.sh"
   },
   "enabledPlugins": {
     "figma@claude-plugins-official": false
