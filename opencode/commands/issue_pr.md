@@ -16,7 +16,8 @@ Always use the PR Template below - do not use `.github/pull_request_template.md`
 - **Completeness gate:** when a ticket exists, map its work items against the diff. If the PR delivers only part of the ticket's scope, list the remaining items in Review focus as a deliberate non-goal. Never let a partial implementation read as complete.
 - **Reconcile conflicting evidence:** when the ticket and the code or data disagree on a figure (row counts, metrics, dates), cite the newest comparable number, or state why the populations differ. Never cite a stale figure the ticket has since superseded.
 - Optional sections (Review focus, Risk and rollout, Visuals) and the Before/After block are omitted entirely when empty: no header, no "N/A", no filler like "low risk".
-- Keep `Why` and `What changed` together around 40-80 words. Evidence sections are terse lists and carry no word budget.
+- Keep `Why` and `What changed` together around 40-80 words. Evidence sections are terse lists.
+- Keep each of `Why`, `What changed`, `Validation`, and `Review focus` under 500 words.
 
 ## Process
 
