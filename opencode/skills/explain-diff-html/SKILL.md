@@ -58,6 +58,7 @@ Include these sections:
 - Keep the explanation engaging, but choose clarity over elegance.
 - Use smooth transitions between sections.
 - Prefer literal language over metaphors. Write "the existing code," not "the machine the change slots into."
+- Explain with examples, not only abstract descriptions. When a change affects data, show a table of example rows, such as input and output before and after the change, so the reader can see the effect concretely.
 - Rewrite any sentence that needs a second read.
 
 ## Diagrams and Callouts
