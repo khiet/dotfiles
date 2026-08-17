@@ -1,5 +1,5 @@
 ---
-description: Generate or create a pull request description for the current branch; pass `short` for a compact ~200-word version
+description: Generate or create a compact PR description for the current branch; pass `long` for the full review packet
 ---
 
 # PR Description Generator
@@ -8,12 +8,14 @@ Generate a GitHub PR description for the current branch: a compact review packet
 
 If a PR doesn't exist, create one as a draft. If it exists, output the generated description for review (do not auto-update, to preserve manual edits like screenshots or visuals) and confirm before overwriting.
 
-Always use the PR Template below - do not use `.github/pull_request_template.md` or any other repo checklist template, even if one is present. This skill is the canonical PR format.
+Always use this skill's template for the active mode - do not use `.github/pull_request_template.md` or any other repo checklist template, even if one is present. This skill is the canonical PR format.
 
 ## Modes
 
-- **Default** (no argument): the full review-packet PR Template below.
-- **`short`** (`/issue_pr short`): a compact description under 200 words, using the Short template instead of the PR Template. Everything else - evidence rules, process, title rules, PR handling, status reporting - applies unchanged. Use this mode only when asked for it; do not infer it from PR size.
+- **Default** (no argument): a compact description under 200 words, using the Short template below.
+- **`long`** (`/issue_pr long`): the full review-packet PR Template below, for changes whose risk, rollout, or review-focus story genuinely needs it. Use this mode only when asked for it.
+
+Evidence rules, process, title rules, PR handling, and status reporting apply identically in both modes. Where an evidence rule names a section the short format lacks (e.g. remaining ticket scope in Review focus), carry the substance as a `What changed` bullet instead of adding the section.
 
 ## Evidence rules
 
@@ -44,7 +46,7 @@ Always use the PR Template below - do not use `.github/pull_request_template.md`
 3. **Generate PR title** following the PR Title rules below.
    - First detect whether the repo has release or title automation (see PR Title). Only that answer decides whether the title needs a conventional commit prefix.
 
-4. **Write the sections:**
+4. **Write the sections** (the guidance below describes the long template's sections; in the default short mode, apply the same standards to the Short template's condensed slots):
    - `Why`: the concrete symptom or scenario and the outcome the PR delivers. Cite a specific incident, error, or gap when one exists; never an abstract restatement of the diff.
    - `What changed`: behavioral summary plus the insight that makes it work - the rule or assumption that makes the new behavior right and the old behavior wrong. Include a Before/After block only when the diff surfaces one naturally (an error message, log line, API payload, function return value, CLI output) - pull the actual values from code or tests. Do not hunt for or manufacture observability; many internal changes have none, and that is fine.
    - `Review focus`: where a reviewer should look hardest - risky decisions, subtle files - plus anything they must know that the diff does not make obvious: a guard, a deliberate non-goal, a tradeoff. Omit when the change is routine.
@@ -142,7 +144,7 @@ flow change]
 
 ## Short template
 
-For `/issue_pr short` only. One compact block, under 200 words total, for simple or incremental PRs where the full packet would be padding. Bold inline headers instead of `##` sections; no Before/After, Review focus, Risk and rollout, or Visuals sections.
+The default mode. One compact block, under 200 words total. Bold inline headers instead of `##` sections; no Before/After, Review focus, Risk and rollout, or Visuals sections.
 
 ````markdown
 [One sentence stating what the PR delivers. When the branch extends earlier
