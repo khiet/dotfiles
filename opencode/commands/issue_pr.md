@@ -1,5 +1,5 @@
 ---
-description: Generate or create a pull request description for the current branch
+description: Generate or create a pull request description for the current branch; pass `short` for a compact ~200-word version
 ---
 
 # PR Description Generator
@@ -9,6 +9,11 @@ Generate a GitHub PR description for the current branch: a compact review packet
 If a PR doesn't exist, create one as a draft. If it exists, output the generated description for review (do not auto-update, to preserve manual edits like screenshots or visuals) and confirm before overwriting.
 
 Always use the PR Template below - do not use `.github/pull_request_template.md` or any other repo checklist template, even if one is present. This skill is the canonical PR format.
+
+## Modes
+
+- **Default** (no argument): the full review-packet PR Template below.
+- **`short`** (`/issue_pr short`): a compact description under 200 words, using the Short template instead of the PR Template. Everything else - evidence rules, process, title rules, PR handling, status reporting - applies unchanged. Use this mode only when asked for it; do not infer it from PR size.
 
 ## Evidence rules
 
@@ -134,6 +139,40 @@ diff surfaces one naturally]
 [screenshot placeholder for UI changes; Mermaid diagram when it clarifies a
 flow change]
 ````
+
+## Short template
+
+For `/issue_pr short` only. One compact block, under 200 words total, for simple or incremental PRs where the full packet would be padding. Bold inline headers instead of `##` sections; no Before/After, Review focus, Risk and rollout, or Visuals sections.
+
+````markdown
+[One sentence stating what the PR delivers. When the branch extends earlier
+work, open with that relationship, e.g. "Extension of #NNN: ...".]
+
+**Why.** [2-3 sentences: the concrete symptom and why it misleads or blocks.]
+
+**What changed**
+
+- [3-5 bullets, most important behaviors only. Name the domain models and key
+  functions involved (`DraftClaim`, `mergePatientClaimRows`) rather than
+  paraphrasing them; spell out what vague words like "money" or "state" mean.]
+- [When a deliberate tradeoff exists, state it in one clause, not a section.]
+
+**Validation.** [One line: test kinds run and the notable scenarios they
+cover; type-check/lint status.]
+````
+
+Example of the target density (from a real PR):
+
+> Extension of #1179: the patient Claims tab now also shows `DraftClaim` and `ClaimSubmission` information, and breaks `AdjudicatedClaim` rows out per payer.
+>
+> **Why.** The tab grouped adjudicated claims by visit alone: a two-payer visit was one row summing both payers' money under a single payer's name, so one payer's denial could hide behind another's payment.
+>
+> **What changed**
+>
+> - Adjudicated rows group by (visit, payer) - status, the charged/allowed/paid amounts, and denial category are all per payer.
+> - A tier row whose `ClaimSubmission` has `denialReceivedAt` set is kept even when the visit has adjudicated rows, so a denial whose ERA never matched cannot vanish - at the cost of an occasional visible duplicate.
+>
+> **Validation.** Unit, SQL-shape, and integration tests (two-payer split, patient-scoped `visit-payer` call); type-check and lint clean.
 
 ## Formatting
 
