@@ -52,6 +52,8 @@ $ARGUMENTS
    - Add a short example when prose alone will not land, such as an algorithm that manipulates a data structure or a branching condition with several interacting cases. Show a representative input and the resulting output or branch taken. Keep the example small enough to read at a glance.
    - Look at similar code in the project, such as comparable service objects, components, controllers, or modules, and align with their established commenting style when it is clear and useful.
    - Before changing a comment, identify what the surrounding code is trying to do, what single explanation covers the whole block, and what matters most for a future reader.
+   - **Referent check.** Reread each edited comment alone, without the code around it. List every noun phrase and pronoun; each must resolve to an identifier in the same file, a term the same sentence defines, or plain English. One that resolves only through knowledge you happen to hold is a rewrite, not a judgement call.
+   - **One idea per paragraph.** Split a paragraph carrying a rule, its cause, and its exception into separate paragraphs.
    - Apply the rule of thumb: good comments explain why; poor comments explain what. If removing a comment does not make the code any harder to understand, remove it.
 
 4. **Edit comments in place**
@@ -59,6 +61,7 @@ $ARGUMENTS
    - Do not change runtime behavior.
    - Do not rename code, restructure logic, or refactor non-comment code.
    - Preserve the file's existing comment style, formatting conventions, and line length where practical.
+   - After editing, rewrap the paragraph to the file's comment width. Formatters do not reflow comments, so an edit leaves ragged lines behind.
    - Prefer simple ASCII punctuation unless the file already uses non-ASCII punctuation for comments.
 
 5. **Validate**
@@ -124,6 +127,26 @@ From John Ousterhout's "A Philosophy of Software Design": a comment earns its pl
 9. **Line-by-line commentary** explains every individual statement rather than the overall idea.
 
 What good comments provide instead: the why behind the code, design decisions and rationale, assumptions, constraints, invariants, edge cases, performance tradeoffs, and non-obvious behavior.
+
+## Unresolvable Reference Patterns
+
+These read fine to the author, who holds the whole model in their head, and stall the reader, who does not. Rewrite added comments matching any of them.
+
+1. **Positional back-reference** points at an earlier item by position: "the Sync writes the first from the second", "the latter". Name the thing each time, even at the cost of repetition.
+
+2. **Vague stand-in for a named symbol** says "this list" or "the submission" where the code says `claims` and `ClaimSubmission.denialReceivedAt`. A comment beside code may repeat the code's names.
+
+3. **Invented synonym** calls `externalEncounterId` "the visit id", giving one field two names and forcing the reader to keep a glossary.
+
+4. **Circular comparison** compares a variable to the type or table it holds rows from: "`claims` is a narrower view of `AdjudicatedClaim`" reads as X is a view of X. Say which rows it holds and what filtered them out.
+
+5. **Load-bearing connective** hides a claim in a small word: "also" asserts additive behavior, "usually" asserts a frequency, "still" asserts persistence. Verify each against the code or drop it, since a wrong connective hides a factual error inside a sentence that scans as true.
+
+6. **Symptom without mechanism** states an outcome and stops: "the rows are usually missing here". Name the cause: which query, which filter, which writer.
+
+7. **Prose narrating a branch** describes an n-way condition in paragraphs. Write one bullet per arm, in the code's order, so the reader can lay the comment against the predicate. Reserve paragraphs for a single idea.
+
+8. **Volatile measurement** embeds row counts, percentages, or dates that age into lies. State the durable property; the numbers belong in the PR or the ticket.
 
 ## Status
 
