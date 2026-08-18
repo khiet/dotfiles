@@ -74,17 +74,6 @@ When triaging findings from a code review, a security review, or PR comments, so
 
 Never fold a "needs your decision" or "out of scope" finding into the branch. Surface both buckets as an explicit list rather than burying them in a summary, and stop for an answer before continuing.
 
-## Destructive file operations
-
-Do not use `rm` or `mv` directly. Use the safe wrapper scripts instead:
-
-- **Delete:** `~/dotfiles/opencode/scripts/safe-rm.sh <paths...>`
-- **Move/Rename:** `~/dotfiles/opencode/scripts/safe-mv.sh <sources...> <destination>`
-
-These scripts only operate on git-tracked files within the repo root.
-
-For untracked files, ask before deleting or moving them unless they were created during the current task.
-
 ## Committing changes
 
 - **Default action: create a git commit, using [Conventional Commits](https://www.conventionalcommits.org/) format, when the task is complete.** Do not stop after editing files unless the user explicitly says not to commit.
