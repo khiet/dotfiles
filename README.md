@@ -77,26 +77,18 @@ global packages are not auto-installed. Once per machine, after symlinking:
 `pi install` and `/model` write to `~/.pi/agent/settings.json`, which is the symlinked repo
 file, so commit those edits.
 
-#### Claude Code permissions
-
-`.claude/settings.json` mirrors opencode's permission deny list. `pi/_opencode.jsonc`
-is the single source of truth — after editing its permissions, regenerate and commit:
-
-```bash
-scripts/gen-claude-settings.sh
-```
-
 #### Claude Code MCP servers
 
-`pi/_opencode.jsonc` is also the single source of truth for MCP servers. Claude stores
-user-scope servers in `~/.claude.json` (which it rewrites itself, so it can't be symlinked).
-Instead, register them from the opencode config — re-run after editing the `mcp` block:
+`pi/mcp.json` is the single source of truth for MCP servers. Claude stores user-scope
+servers in `~/.claude.json` (which it rewrites itself, so it can't be symlinked). Instead,
+register them from the pi config — re-run after editing `mcpServers`:
 
 ```bash
 scripts/gen-claude-mcp.sh
 ```
 
-Every server in the `mcp` block is registered at user scope (available in every project).
+Every server, including ones marked `disabled` for pi, is registered at user scope
+(available in every project). The deny list in `.claude/settings.json` is maintained by hand.
 
 #### GitHub skills
 
