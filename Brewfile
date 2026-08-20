@@ -1,6 +1,5 @@
 tap "heroku/brew"
 tap "mobile-dev-inc/tap"
-tap "anomalyco/tap"
 tap "facebook/fb"
 
 # fonts
