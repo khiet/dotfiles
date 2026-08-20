@@ -4,7 +4,7 @@ description: Refactor newly added code comments against main so they explain int
 
 # Comment Refactor
 
-Review code comments added by a branch or commit, then update those comments in place so they follow `opencode/AGENTS.md` comment guidance.
+Review code comments added by a branch or commit, then update those comments in place so they follow `pi/AGENTS.md` comment guidance.
 
 Usage: `/comment_refactor [commit_hash|file_path|branch_name]`
 

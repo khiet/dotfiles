@@ -44,16 +44,16 @@ mkdir -p $XDG_CONFIG_HOME/ghostty
 ln -s ~/dotfiles/ghostty/_config $XDG_CONFIG_HOME/ghostty/config
 
 mkdir -p $XDG_CONFIG_HOME/opencode
-ln -s ~/dotfiles/opencode/_opencode.jsonc $XDG_CONFIG_HOME/opencode/opencode.jsonc
-ln -s ~/dotfiles/opencode/_tui.json $XDG_CONFIG_HOME/opencode/tui.json
-ln -s ~/dotfiles/opencode/AGENTS.md $XDG_CONFIG_HOME/opencode/AGENTS.md
-ln -s ~/dotfiles/opencode/agents $XDG_CONFIG_HOME/opencode/agents
-ln -s ~/dotfiles/opencode/commands $XDG_CONFIG_HOME/opencode/commands
-ln -s ~/dotfiles/opencode/skills $XDG_CONFIG_HOME/opencode/skills
+ln -s ~/dotfiles/pi/_opencode.jsonc $XDG_CONFIG_HOME/opencode/opencode.jsonc
+ln -s ~/dotfiles/pi/_tui.json $XDG_CONFIG_HOME/opencode/tui.json
+ln -s ~/dotfiles/pi/AGENTS.md $XDG_CONFIG_HOME/opencode/AGENTS.md
+ln -s ~/dotfiles/pi/agents $XDG_CONFIG_HOME/opencode/agents
+ln -s ~/dotfiles/pi/commands $XDG_CONFIG_HOME/opencode/commands
+ln -s ~/dotfiles/pi/skills $XDG_CONFIG_HOME/opencode/skills
 
 mkdir -p ~/.claude
-ln -s ~/dotfiles/opencode/commands ~/.claude/commands
-ln -s ~/dotfiles/opencode/skills ~/.claude/skills
+ln -s ~/dotfiles/pi/commands ~/.claude/commands
+ln -s ~/dotfiles/pi/skills ~/.claude/skills
 ln -s ~/dotfiles/.claude/settings.json ~/.claude/settings.json
 ln -s ~/dotfiles/.claude/CLAUDE.md ~/.claude/CLAUDE.md
 
@@ -65,7 +65,7 @@ ln -s ~/dotfiles/_atuin_config.toml $XDG_CONFIG_HOME/atuin/config.toml
 
 #### Claude Code permissions
 
-`.claude/settings.json` mirrors opencode's permission deny list. `opencode/_opencode.jsonc`
+`.claude/settings.json` mirrors opencode's permission deny list. `pi/_opencode.jsonc`
 is the single source of truth — after editing its permissions, regenerate and commit:
 
 ```bash
@@ -74,7 +74,7 @@ scripts/gen-claude-settings.sh
 
 #### Claude Code MCP servers
 
-`opencode/_opencode.jsonc` is also the single source of truth for MCP servers. Claude stores
+`pi/_opencode.jsonc` is also the single source of truth for MCP servers. Claude stores
 user-scope servers in `~/.claude.json` (which it rewrites itself, so it can't be symlinked).
 Instead, register them from the opencode config — re-run after editing the `mcp` block:
 
@@ -86,7 +86,7 @@ Every server in the `mcp` block is registered at user scope (available in every 
 
 #### GitHub skills
 
-`scripts/github-skills.tsv` lists GitHub repos and gists to sync into `opencode/skills`.
+`scripts/github-skills.tsv` lists GitHub repos and gists to sync into `pi/skills`.
 After editing that manifest, regenerate and commit:
 
 ```bash

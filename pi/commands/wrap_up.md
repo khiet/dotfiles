@@ -73,7 +73,7 @@ Decide each gate mechanically. Do not judge whether a story "feels like" it need
 
 7. **Report**
    - Print one line per step: `ran` with a one-line result, or `skipped` with the gate that caused it.
-   - In handoff mode, write the marker with the current HEAD SHA and tell the user to run `/code-review`, then feed the findings back through the triage rule in `opencode/AGENTS.md`.
+   - In handoff mode, write the marker with the current HEAD SHA and tell the user to run `/code-review`, then feed the findings back through the triage rule in `pi/AGENTS.md`.
    - In post-review mode, print `code-review: skipped, handed off at <sha> (<n> commits ago)`. State it as a fact, do not ask the user to act on it.
    - If both steps made no changes, the linter made no changes, and the tests pass, say the branch is clean and point the user at `/issue_pr`.
 
