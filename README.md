@@ -71,7 +71,7 @@ Pi has no built-in MCP; `pi/settings.json` declares the `pi-mcp-adapter` package
 global packages are not auto-installed. Once per machine, after symlinking:
 
 1. `pi install npm:pi-mcp-adapter`
-2. In pi, `/login` and pick OpenAI Codex (ChatGPT subscription; `gpt-5.6-sol` is billed to it)
+2. In pi, `/login` and pick GitHub Copilot (`gpt-5.6-sol` is billed to the Copilot plan)
 3. `/mcp-auth linear` and `/mcp-auth sentry` (OAuth tokens live in the OS keychain)
 
 `pi install` and `/model` write to `~/.pi/agent/settings.json`, which is the symlinked repo

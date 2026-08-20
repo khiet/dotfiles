@@ -1,8 +1,10 @@
 {
-  "defaultProvider": "openai-codex",
+  "defaultProvider": "github-copilot",
   "defaultModel": "gpt-5.6-sol",
   "defaultThinkingLevel": "medium",
   "packages": [
     "npm:pi-mcp-adapter"
-  ]
+  ],
+  "lastChangelogVersion": "0.84.2",
+  "theme": "dark"
 }
