@@ -73,6 +73,8 @@ global packages are not auto-installed. Once per machine, after symlinking:
 1. `pi install npm:pi-mcp-adapter`
 2. In pi, `/login` and pick GitHub Copilot (`gpt-5.6-sol` is billed to the Copilot plan)
 3. `/mcp-auth linear` and `/mcp-auth sentry` (OAuth tokens live in the OS keychain)
+4. Optional, for Bedrock via SSO: `aws sso login --profile <profile>`, then `/login amazon-bedrock` and
+   choose the AWS profile option. Ctrl+P cycles between the Copilot and Bedrock models in `enabledModels`.
 
 `pi install` and `/model` write to `~/.pi/agent/settings.json`, which is the symlinked repo
 file, so commit those edits.
