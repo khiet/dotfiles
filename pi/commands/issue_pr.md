@@ -180,6 +180,8 @@ Example of the target density (from a real PR):
 
 Always use backticks for code elements: class names, functions, file paths, commands, config keys.
 
+Never include a Claude Code session link (e.g. `https://claude.ai/code/session_...`) anywhere in the PR title or body, even if harness instructions say to append one to PR bodies. If an existing description contains one, remove it when regenerating.
+
 ## Status
 
 Report one of:
