@@ -1,10 +1,11 @@
 {
-  "defaultProvider": "amazon-bedrock",
-  "defaultModel": "us.anthropic.claude-opus-5",
+  "defaultProvider": "github-copilot",
+  "defaultModel": "claude-fable-5",
   "defaultThinkingLevel": "medium",
   "enabledModels": [
     "github-copilot/gpt-5.6-sol",
-    "amazon-bedrock/us.anthropic.claude-opus-5"
+    "amazon-bedrock/us.anthropic.claude-opus-5",
+    "github-copilot/claude-fable-5"
   ],
   "packages": [
     "npm:pi-mcp-adapter"
