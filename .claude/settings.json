@@ -33,15 +33,36 @@
     "defaultMode": "auto"
   },
   "model": "claude-fable-5",
-  "editorMode": "vim",
   "statusLine": {
     "type": "command",
     "command": "~/dotfiles/.claude/statusline.sh"
   },
   "enabledPlugins": {
-    "figma@claude-plugins-official": false
+    "figma@claude-plugins-official": false,
+    "context-mode@context-mode": true
+  },
+  "extraKnownMarketplaces": {
+    "context-mode": {
+      "source": {
+        "source": "github",
+        "repo": "mksglu/context-mode"
+      }
+    }
   },
   "theme": "auto",
+  "editorMode": "vim",
   "preferredNotifChannel": "ghostty",
-  "skipAutoPermissionPrompt": true
+  "skipAutoPermissionPrompt": true,
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$HOME/.claude/hooks/context-mode-cache-heal.mjs\""
+          }
+        ]
+      }
+    ]
+  }
 }

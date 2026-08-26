@@ -5,11 +5,8 @@ allowed-tools: Bash(git diff:*), Bash(git add:*), Bash(git commit:*), Bash(git s
 
 Create a single git commit for the currently staged changes.
 
-Here are the staged changes:
-!`git diff --cached`
-
 Instructions:
-1. Analyze the staged changes above
+1. Run `git diff --cached` and analyze the staged changes
 2. Write a clear, concise commit message following conventional commit format (e.g., feat:, fix:, docs:, refactor:, chore:)
 3. The commit message should focus on the "why" rather than the "what"
 4. Keep the subject line under 72 characters

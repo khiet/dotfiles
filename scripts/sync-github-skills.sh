@@ -1,21 +1,21 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Sync selected skills from GitHub into opencode/vendor/skills/ and symlink them
-# into opencode/skills/, so vendored skills stay distinct from custom ones.
+# Sync selected skills from GitHub into pi/vendor/skills/ and symlink them
+# into pi/skills/, so vendored skills stay distinct from custom ones.
 #
 # The manifest is a tab-separated file with this shape:
 # source  repo_url  ref  source_path  dest
 #
 # source_path may point to either a directory containing SKILL.md or a single
-# markdown file that becomes opencode/vendor/skills/<dest>/SKILL.md (symlinked).
+# markdown file that becomes pi/vendor/skills/<dest>/SKILL.md (symlinked).
 #
 # Usage:
 #   ./scripts/sync-github-skills.sh [--manifest PATH] [--source NAME ...]
 #   ./scripts/sync-github-skills.sh --help
 
-LINK_DIR="opencode/skills"
-VENDOR_DIR="opencode/vendor/skills"
+LINK_DIR="pi/skills"
+VENDOR_DIR="pi/vendor/skills"
 DEFAULT_MANIFEST="scripts/github-skills.tsv"
 
 if [[ -t 1 ]]; then
@@ -141,7 +141,7 @@ refuse_untracked_dest_files() {
   fi
 }
 
-# Point opencode/skills/<dest> at the vendored copy via a relative symlink.
+# Point pi/skills/<dest> at the vendored copy via a relative symlink.
 # Custom skills stay as real directories, so a symlink marks a synced skill.
 link_vendored_skill() {
   local dest="$1"
