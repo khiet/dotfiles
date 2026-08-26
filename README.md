@@ -51,6 +51,7 @@ ln -s ~/dotfiles/pi/keybindings.json ~/.pi/agent/keybindings.json
 ln -s ~/dotfiles/pi/AGENTS.md ~/.pi/agent/AGENTS.md
 ln -s ~/dotfiles/pi/commands ~/.pi/agent/prompts
 ln -s ~/dotfiles/pi/skills ~/.pi/agent/skills
+ln -s ~/dotfiles/pi/themes ~/.pi/agent/themes
 ln -s ~/dotfiles/pi/mcp.json $XDG_CONFIG_HOME/mcp/mcp.json
 
 mkdir -p ~/.claude
