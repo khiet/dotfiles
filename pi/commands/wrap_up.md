@@ -65,7 +65,6 @@ Decide each gate mechanically. Do not judge whether a story "feels like" it need
 9. **Report**
    - Print one line per step: `ran` with a one-line result, or `skipped` with the gate that caused it.
    - List the "needs your decision" and "out of scope" findings from step 4 as two explicit lists, then stop for an answer. Do not act on them.
-   - If running in Claude Code, remind the user that `code-review` checks standards and spec only, and that `/review` (the bundled review; `/code-review` is shadowed by the skill) does the bug-hunting pass.
    - If no step made changes, the linter made no changes, the tests pass, and both finding lists are empty, say the branch is clean and point the user at `/issue_pr`.
 
 ## Ordering
