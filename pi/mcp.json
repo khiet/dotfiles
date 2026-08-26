@@ -19,6 +19,10 @@
       "command": "npx",
       "args": ["@playwright/mcp@latest"]
     },
+    "ios-simulator": {
+      "command": "npx",
+      "args": ["ios-simulator-mcp"]
+    },
     "aws-api": {
       "disabled": true,
       "command": "uvx",
@@ -63,11 +67,6 @@
         "AWS_REGION": "eu-west-2",
         "FASTMCP_LOG_LEVEL": "ERROR"
       }
-    },
-    "ios-simulator": {
-      "disabled": true,
-      "command": "npx",
-      "args": ["ios-simulator-mcp"]
     }
   }
 }
