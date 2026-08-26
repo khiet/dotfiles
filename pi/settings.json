@@ -13,5 +13,5 @@
     "npm:context-mode"
   ],
   "lastChangelogVersion": "0.84.3",
-  "theme": "dark"
+  "theme": "dracula"
 }
