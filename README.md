@@ -43,17 +43,19 @@ ln -s ~/dotfiles/lazygit/_config.yml $XDG_CONFIG_HOME/lazygit/config.yml
 mkdir -p $XDG_CONFIG_HOME/ghostty
 ln -s ~/dotfiles/ghostty/_config $XDG_CONFIG_HOME/ghostty/config
 
-mkdir -p $XDG_CONFIG_HOME/opencode
-ln -s ~/dotfiles/opencode/_opencode.jsonc $XDG_CONFIG_HOME/opencode/opencode.jsonc
-ln -s ~/dotfiles/opencode/_tui.json $XDG_CONFIG_HOME/opencode/tui.json
-ln -s ~/dotfiles/opencode/AGENTS.md $XDG_CONFIG_HOME/opencode/AGENTS.md
-ln -s ~/dotfiles/opencode/agents $XDG_CONFIG_HOME/opencode/agents
-ln -s ~/dotfiles/opencode/commands $XDG_CONFIG_HOME/opencode/commands
-ln -s ~/dotfiles/opencode/skills $XDG_CONFIG_HOME/opencode/skills
+# Pi reads ~/.pi/agent only (no XDG support); its MCP adapter reads the shared
+# $XDG_CONFIG_HOME/mcp/mcp.json.
+mkdir -p ~/.pi/agent $XDG_CONFIG_HOME/mcp
+ln -s ~/dotfiles/pi/settings.json ~/.pi/agent/settings.json
+ln -s ~/dotfiles/pi/keybindings.json ~/.pi/agent/keybindings.json
+ln -s ~/dotfiles/pi/AGENTS.md ~/.pi/agent/AGENTS.md
+ln -s ~/dotfiles/pi/commands ~/.pi/agent/prompts
+ln -s ~/dotfiles/pi/skills ~/.pi/agent/skills
+ln -s ~/dotfiles/pi/mcp.json $XDG_CONFIG_HOME/mcp/mcp.json
 
 mkdir -p ~/.claude
-ln -s ~/dotfiles/opencode/commands ~/.claude/commands
-ln -s ~/dotfiles/opencode/skills ~/.claude/skills
+ln -s ~/dotfiles/pi/commands ~/.claude/commands
+ln -s ~/dotfiles/pi/skills ~/.claude/skills
 ln -s ~/dotfiles/.claude/settings.json ~/.claude/settings.json
 ln -s ~/dotfiles/.claude/CLAUDE.md ~/.claude/CLAUDE.md
 
@@ -63,30 +65,36 @@ mkdir -p $XDG_CONFIG_HOME/atuin
 ln -s ~/dotfiles/_atuin_config.toml $XDG_CONFIG_HOME/atuin/config.toml
 ```
 
-#### Claude Code permissions
+#### Pi
 
-`.claude/settings.json` mirrors opencode's permission deny list. `opencode/_opencode.jsonc`
-is the single source of truth — after editing its permissions, regenerate and commit:
+Pi has no built-in MCP; `pi/settings.json` declares the `pi-mcp-adapter` package, but
+global packages are not auto-installed. Once per machine, after symlinking:
 
-```bash
-scripts/gen-claude-settings.sh
-```
+1. `pi install npm:pi-mcp-adapter`
+2. In pi, `/login` and pick GitHub Copilot (`gpt-5.6-sol` is billed to the Copilot plan)
+3. `/mcp-auth linear` and `/mcp-auth sentry` (OAuth tokens live in the OS keychain)
+4. Optional, for Bedrock via SSO: `aws sso login --profile <profile>`, then `/login amazon-bedrock` and
+   choose the AWS profile option. Ctrl+P cycles between the Copilot and Bedrock models in `enabledModels`.
+
+`pi install` and `/model` write to `~/.pi/agent/settings.json`, which is the symlinked repo
+file, so commit those edits.
 
 #### Claude Code MCP servers
 
-`opencode/_opencode.jsonc` is also the single source of truth for MCP servers. Claude stores
-user-scope servers in `~/.claude.json` (which it rewrites itself, so it can't be symlinked).
-Instead, register them from the opencode config — re-run after editing the `mcp` block:
+`pi/mcp.json` is the single source of truth for MCP servers. Claude stores user-scope
+servers in `~/.claude.json` (which it rewrites itself, so it can't be symlinked). Instead,
+register them from the pi config — re-run after editing `mcpServers`:
 
 ```bash
 scripts/gen-claude-mcp.sh
 ```
 
-Every server in the `mcp` block is registered at user scope (available in every project).
+Every server, including ones marked `disabled` for pi, is registered at user scope
+(available in every project). The deny list in `.claude/settings.json` is maintained by hand.
 
 #### GitHub skills
 
-`scripts/github-skills.tsv` lists GitHub repos and gists to sync into `opencode/skills`.
+`scripts/github-skills.tsv` lists GitHub repos and gists to sync into `pi/skills`.
 After editing that manifest, regenerate and commit:
 
 ```bash

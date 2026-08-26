@@ -1,0 +1,3 @@
+{
+  "tui.editor.deleteCharBackward": ["backspace", "shift+backspace", "ctrl+h"]
+}

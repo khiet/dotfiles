@@ -1,1 +1,1 @@
-@~/dotfiles/opencode/AGENTS.md
+@~/dotfiles/pi/AGENTS.md

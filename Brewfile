@@ -1,6 +1,6 @@
 tap "heroku/brew"
+tap "oven-sh/bun"
 tap "mobile-dev-inc/tap"
-tap "anomalyco/tap"
 tap "facebook/fb"
 
 # fonts
@@ -33,6 +33,7 @@ cask "ollama-app"
 cask "handy"
 
 # version control
+brew "oven-sh/bun/bun"
 brew "git"
 brew "lazygit"
 brew "delta"
@@ -71,7 +72,7 @@ brew "mise"
 brew "tree-sitter-cli"
 brew "uv"
 brew "yarn"
-brew "anomalyco/tap/opencode"
+brew "pi-coding-agent"
 # Drives the iOS simulator; needed by the ios-simulator MCP server.
 # Only the companion is installed by brew. The `idb` cli client is a separate
 # python package, pinned to 3.11 because it predates 3.12:
