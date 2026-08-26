@@ -12,8 +12,6 @@ $ARGUMENTS
 
 The optional argument is the spec the branch implements: an issue reference such as `#99`, a URL, or a file path. It is handed to the `code-review` skill as the spec source. Without it, the skill looks for issue references in the commit messages and falls back to asking.
 
-A bare `review` argument is a leftover from an older version of this command that had a review mode. Treat it exactly like no argument: do not pass it to `code-review` as a spec, and do not ask what it means.
-
 ## Safety Rules
 
 1. Reject immediately if the current branch is `main`.
