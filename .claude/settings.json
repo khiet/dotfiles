@@ -32,7 +32,18 @@
     ],
     "defaultMode": "auto"
   },
-  "model": "claude-fable-5",
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$HOME/.claude/hooks/context-mode-cache-heal.mjs\""
+          }
+        ]
+      }
+    ]
+  },
   "statusLine": {
     "type": "command",
     "command": "~/dotfiles/.claude/statusline.sh"
@@ -53,16 +64,5 @@
   "editorMode": "vim",
   "preferredNotifChannel": "ghostty",
   "skipAutoPermissionPrompt": true,
-  "hooks": {
-    "SessionStart": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "\"$HOME/.claude/hooks/context-mode-cache-heal.mjs\""
-          }
-        ]
-      }
-    ]
-  }
+  "model": "claude-fable-5"
 }
