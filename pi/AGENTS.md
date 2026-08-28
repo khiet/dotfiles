@@ -80,4 +80,4 @@ Never fold a "needs your decision" or "out of scope" finding into the branch. Su
 - Before committing, review the working tree and include only changes that belong to the completed task. If unrelated user changes are present, leave them uncommitted.
 - After making code changes, run the project's linter with auto-fix. If it changes files, commit those fixes separately with the message `Auto-format and lint fixes`.
 - If there is nothing to commit, say so explicitly in the completion summary.
-- Do not push to the remote repository.
+- Push only when the user explicitly requests it or the requested task requires a remote branch, such as opening a PR; otherwise do not push.
