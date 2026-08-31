@@ -136,7 +136,7 @@ resume_agents_on_restore = true
 # spaces (herdr's top level, above tabs)
 # prefix w workspace picker, the tmux-sessionx replacement; navigates the
 #   current session, up/down between spaces and h/j/k/l between panes
-# prefix o session navigator, for jumping between `herdr session` sessions
+# prefix o goto picker, listing all spaces for search and quick navigation
 # prefix shift+n new space, made immediately and inheriting the pane's cwd,
 #   so cd first to root it elsewhere; prefix shift+w rename
 # prefix shift+g new git worktree in its own space, one space per branch
