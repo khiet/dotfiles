@@ -63,6 +63,5 @@
   "theme": "auto",
   "editorMode": "vim",
   "preferredNotifChannel": "ghostty",
-  "skipAutoPermissionPrompt": true,
-  "model": "claude-fable-5"
+  "skipAutoPermissionPrompt": true
 }
