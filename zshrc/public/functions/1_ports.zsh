@@ -1,14 +1,14 @@
 function port { lsof -n -P -i :"$1" }
 function ports { lsof -n -P -i | grep "$1" }
 
-# kp PORT [-f]: kill whatever is listening on PORT.
+# pk PORT [-f]: kill whatever is listening on PORT.
 #
 # Only listeners are matched (-sTCP:LISTEN), so a client that happens to be
 # connected to the port is left alone. TERM goes first and KILL follows only
 # if the listener is still there after two seconds; -f sends KILL at once.
 # Returns 0 once the port is free, 1 when nothing listened or it would not
 # die, 2 on a bad argument.
-function kp {
+function pk {
   local force=0 port arg pids
   for arg in "$@"; do
     case $arg in
@@ -17,7 +17,7 @@ function kp {
     esac
   done
   if [[ -z "$port" || "$port" != <-> ]]; then
-    echo "usage: kp PORT [-f]" >&2
+    echo "usage: pk PORT [-f]" >&2
     return 2
   fi
 
@@ -56,5 +56,5 @@ function kp {
   echo "Port $port is free"
 }
 
-# kpf PORT: kp with KILL straight away.
-function kpf { kp "$1" -f }
+# kpf PORT: pk with KILL straight away.
+function kpf { pk "$1" -f }
