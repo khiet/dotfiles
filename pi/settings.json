@@ -9,7 +9,8 @@
   "packages": [
     "npm:pi-mcp-adapter",
     "npm:pi-subagents",
-    "npm:context-mode"
+    "npm:context-mode",
+    "npm:pi-web-access"
   ],
   "lastChangelogVersion": "0.84.4",
   "theme": "dracula"
