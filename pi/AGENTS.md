@@ -64,16 +64,6 @@ When finishing code or configuration changes, provide a summary of at most three
 - Never include story IDs, ticket IDs, or issue keys in code comments or docstrings, such as `FUS-439` in `Add alarms for structured LLM failure events (FUS-439).` Keep comments focused on durable intent and behavior.
 - Keep public interface docs focused on what callers need (behavior, arguments, return, side effects, preconditions); leave implementation detail out unless it affects correct use.
 
-## Review findings
-
-When triaging findings from a code review, a security review, or PR comments, sort every finding into one of three buckets and act on only the first.
-
-- **Fix now:** a defect in code the current branch touched, where the correct fix is unambiguous. Fix it.
-- **Needs your decision:** the fix requires a product, API, or architecture choice, or it contradicts the plan the branch is implementing. Present the options and the tradeoff. Do not pick one.
-- **Out of scope:** a pre-existing issue, or a fix that would grow the branch beyond its plan. List it and offer to open a ticket. Do not fix it.
-
-Never fold a "needs your decision" or "out of scope" finding into the branch. Surface both buckets as an explicit list rather than burying them in a summary, and stop for an answer before continuing.
-
 ## Committing changes
 
 - **Default action: create a git commit, using [Conventional Commits](https://www.conventionalcommits.org/) format, when the task is complete.** Do not stop after editing files unless the user explicitly says not to commit.
