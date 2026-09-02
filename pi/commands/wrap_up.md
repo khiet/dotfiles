@@ -16,8 +16,17 @@ The optional argument is the spec the branch implements: an issue reference such
 
 1. Reject immediately if the current branch is `main`.
 2. Do not push.
-3. Never fold "needs your decision" or "out of scope" findings into this branch. Report them and stop.
-4. Skip a step only for the mechanical reasons below, and always report the skip.
+3. Skip a step only for the mechanical reasons below, and always report the skip.
+
+## Review Findings
+
+Sort every finding from the code review into one of three buckets and act on only the first.
+
+- **Fix now:** a defect in code the current branch touched, where the correct fix is unambiguous and small enough to review in one commit. Fix it.
+- **Needs your decision:** the fix requires a product, API, or architecture choice, or it contradicts the plan the branch is implementing. Present the options and the tradeoff. Do not pick one.
+- **Out of scope:** a pre-existing issue, or a fix that would grow the branch beyond its plan. List it and offer to open a ticket. Do not fix it.
+
+Never fold a "needs your decision" or "out of scope" finding into the branch. Hold both buckets for the report in step 9, and surface them there as explicit lists rather than burying them in a summary.
 
 ## Step Gates
 
@@ -45,7 +54,7 @@ Decide each gate mechanically. Do not judge whether a story "feels like" it need
 4. **Run `code-review`**
    - Use the `code-review` skill with `main` as the fixed point, so it reviews `git diff main...HEAD`.
    - Pass the spec argument from above if one was given.
-   - Sort every finding through the review-findings rule in `pi/AGENTS.md`: fix now, needs your decision, out of scope.
+   - Sort every finding through the Review Findings rule above.
    - Apply the "fix now" findings and commit them on their own with a `fix:` or `refactor:` subject. Hold the other two buckets for the report.
 
 5. **Evaluate the `comment-refactor` gate**
