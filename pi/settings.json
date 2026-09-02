@@ -10,7 +10,8 @@
     "npm:pi-mcp-adapter",
     "npm:pi-subagents",
     "npm:context-mode",
-    "npm:pi-web-access"
+    "npm:pi-web-access",
+    "npm:@juicesharp/rpiv-ask-user-question"
   ],
   "lastChangelogVersion": "0.84.4",
   "theme": "dracula"
