@@ -3,9 +3,11 @@ description: Implement a GitHub issue, wrap up the branch, and open a draft PR
 argument-hint: "<issue-ref> [instructions]"
 ---
 
-Implement GitHub issue `$1` using the `implement` skill. Treat a bare number as an issue number in the current repository.
+Implement GitHub issue `$1`. Treat a bare number as an issue number in the current repository.
 
 Additional instructions, if provided: `${@:2}`
+
+Use /tdd where possible, at pre-agreed seams. Run typechecking regularly, single test files regularly, and the full test suite once at the end. Use /code-review to review the work, then commit to the current branch.
 
 When implementation is complete, run `/wrap_up $1`.
 
