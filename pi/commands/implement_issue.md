@@ -7,7 +7,7 @@ Implement GitHub issue `$1`. Treat a bare number as an issue number in the curre
 
 Additional instructions, if provided: `${@:2}`
 
-Use /tdd where possible, at pre-agreed seams. Run typechecking regularly, single test files regularly, and the full test suite once at the end. Use /code-review to review the work, then commit to the current branch.
+Use /tdd where possible, at pre-agreed seams. Run typechecking regularly, single test files regularly, and the full test suite once at the end, then commit to the current branch.
 
 When implementation is complete, run `/wrap_up $1`.
 
