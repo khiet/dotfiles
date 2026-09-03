@@ -1,6 +1,6 @@
 {
-  "defaultProvider": "github-copilot",
-  "defaultModel": "gpt-5.6-sol",
+  "defaultProvider": "amazon-bedrock",
+  "defaultModel": "us.anthropic.claude-opus-5",
   "defaultThinkingLevel": "medium",
   "enabledModels": [
     "github-copilot/gpt-5.6-sol",
