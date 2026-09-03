@@ -11,6 +11,6 @@ Use /tdd where possible, at pre-agreed seams. Run typechecking regularly, single
 
 When implementation is complete, run `/wrap_up $1`.
 
-For decisions raised by code review or wrap-up, use your recommended approach by default. Ask me only when my input is genuinely required or the decision involves a meaningful product, API, architecture, scope, risk, or other tradeoff.
+wrap_up sorts review findings itself. Do not act on its "needs your decision" or "out of scope" lists.
 
-If no decision requires my input and the branch is ready for a PR, run `/issue_pr`, then run `open <PR-URL>` with the PR URL it returns.
+If the "needs your decision" list is empty and the test suite passes, run `/issue_pr`, then run `open <PR-URL>` with the PR URL it returns. Include the "out of scope" list in your final report; it does not block the PR.
