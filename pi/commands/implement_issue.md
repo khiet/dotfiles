@@ -1,9 +1,14 @@
 ---
-description: Implement a GitHub issue, wrap up the branch, and open a draft PR
+description: Implement a GitHub or Linear issue, wrap up the branch, and open a draft PR
 argument-hint: "<issue-ref> [instructions]"
 ---
 
-Implement GitHub issue `$1`. Treat a bare number as an issue number in the current repository.
+Implement issue `$1`. The shape of the reference picks the tracker:
+
+- A bare number, `#N`, or a github.com issue URL is a GitHub issue in the current repository. Read it with `gh issue view`.
+- A Linear key such as `ABC-123` or a linear.app URL is a Linear issue. Read it with the Linear tools.
+
+Reference the issue in every commit message footer (`Closes #N` for GitHub, `Fixes ABC-123` for Linear) so wrap-up, code review, and the PR description can find the spec.
 
 Additional instructions, if provided: `${@:2}`
 

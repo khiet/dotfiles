@@ -10,7 +10,7 @@ Usage: `/wrap_up [spec]`
 
 $ARGUMENTS
 
-The optional argument is the spec the branch implements: an issue reference such as `#99`, a URL, or a file path. It is handed to the `code-review` skill as the spec source. Without it, the skill looks for issue references in the commit messages and falls back to asking.
+The optional argument is the spec the branch implements: an issue reference such as `#99` or a Linear key such as `ABC-123`, a URL, or a file path. It is handed to the `code-review` skill as the spec source. Without it, the skill looks for issue references in the commit messages and falls back to asking.
 
 ## Safety Rules
 
