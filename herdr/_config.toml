@@ -110,6 +110,7 @@ prompt_new_tab_name = false
 # receive mouse events either way when they ask for them.
 mouse_capture = true
 
+agent_panel_sort = "priority"
 [ui.toast]
 # The point of herdr is walking away from running agents, so surface state
 # changes as desktop notifications. "terminal" sends an escape sequence and
