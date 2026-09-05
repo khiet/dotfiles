@@ -23,10 +23,26 @@ The optional argument is the spec the branch implements: an issue reference such
 Sort every finding from the code review into one of three buckets and act on only the first.
 
 - **Fix now:** a defect in code the current branch touched, where the correct fix is unambiguous and small enough to review in one commit. Fix it.
-- **Needs your decision:** the fix requires a product, API, or architecture choice, or it contradicts the plan the branch is implementing. Present the options and the tradeoff. Do not pick one.
+- **Needs your decision:** the fix requires a product, API, or architecture choice, or it contradicts the plan the branch is implementing. Write it up in the Decision Format below. Do not apply any option.
 - **Out of scope:** a pre-existing issue, or a fix that would grow the branch beyond its plan. List it and offer to open a ticket. Do not fix it.
 
 Never fold a "needs your decision" or "out of scope" finding into the branch. Hold both buckets for the report in step 9, and surface them there as explicit lists rather than burying them in a summary.
+
+### Decision Format
+
+Present every "needs your decision" finding as a numbered question. Under it, list each viable option as a lettered item with a one-clause trade-off, and mark exactly one option `(Recommended)`. Aim for two to four options; include the "leave as is" option when it is viable.
+
+```
+1. Should this behavior be enforced?
+   - A. Enforce it (Recommended): matches the intended rule and keeps behavior consistent.
+   - B. Allow it: simpler, but permits behavior we may not want.
+   - C. Warn only: keeps flexibility while still surfacing the issue.
+
+2. Should this case use a separate rule?
+   - A. Use a separate rule (Recommended): makes the behavior explicit and easier to review.
+   - B. Reuse an existing rule: reduces complexity but is less precise.
+   - C. Do not score it: keep it informational only.
+```
 
 ## Step Gates
 
@@ -73,7 +89,7 @@ Decide each gate mechanically. Do not judge whether a story "feels like" it need
 
 9. **Report**
    - Print one line per step: `ran` with a one-line result, or `skipped` with the gate that caused it.
-   - List the "needs your decision" and "out of scope" findings from step 4 as two explicit lists, then stop for an answer. Do not act on them.
+   - List the "needs your decision" findings from step 4 in the Decision Format, then the "out of scope" findings as a plain list. Stop for an answer. Do not act on either.
    - If no step made changes, the linter made no changes, the tests pass, and both finding lists are empty, say the branch is clean and point the user at `/issue_pr`.
 
 ## Ordering
