@@ -29,7 +29,7 @@
     "aws-api": {
       "disabled": true,
       "command": "uvx",
-      "args": ["awslabs.aws-api-mcp-server@latest"],
+      "args": ["--with", "mcp<2", "awslabs.aws-api-mcp-server@latest"],
       "env": {
         "AWS_REGION": "eu-west-2",
         "AWS_API_MCP_PROFILE_NAME": "pave",
