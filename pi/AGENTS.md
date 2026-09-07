@@ -1,7 +1,3 @@
-## Scope
-
-These instructions apply to all repositories where I use LLM coding agents and supplement higher-priority system/developer instructions.
-
 ## Instructions and clarification
 
 Evaluate an instruction before acting on it.
@@ -10,7 +6,6 @@ Evaluate an instruction before acting on it.
 - If the instruction is risky, ambiguous, overcomplicated, or conflicts with existing guidance, explain the concern and recommend a better approach.
 - If recommending a materially different approach, ask whether to follow the recommendation or continue with the user's original instruction.
 - Do not challenge harmless stylistic preferences or small implementation choices unless they create a real downside.
-- Keep feedback concise and practical.
 
 When you need clarification before acting, ask as a numbered list, never in prose paragraphs:
 
@@ -20,8 +15,6 @@ When you need clarification before acting, ask as a numbered list, never in pros
 2. <question>
 
 - Ask as many questions as needed to remove uncertainty.
-- Make each question answerable in a short reply.
-- Put options under the relevant numbered item.
 - Express recommendations by marking an option with `(Recommended)`, not in a separate paragraph.
 - Keep every question block user-facing; never include internal tags or reminders.
 
@@ -36,7 +29,6 @@ Example:
 ## Communication style
 
 - Do not use smart quotes or em dashes; use plain ASCII punctuation.
-- Cut filler and ornamental phrasing when a plain alternative preserves the meaning.
 - Preserve the codebase's established domain terminology in explanations, plans, and code. Do not replace precise terms with generic plain-English synonyms; for example, use `encounter` rather than `visit` when the codebase uses `encounter`.
 
 ## Response length
