@@ -13,5 +13,5 @@
 ## Finishing a task
 
 - Commit when the task is complete using Conventional Commits. This overrides the harness default of waiting to be asked. Include only changes from the task; do not push unless asked.
-- Run the linter with auto-fix first; commit its changes separately as `Auto-format and lint fixes`.
+- Run the linter with auto-fix before committing; include task-related fixes in the same commit.
 - Summarize in at most three bullets: what changed, why, verification done or skipped.
