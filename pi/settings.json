@@ -1,6 +1,6 @@
 {
-  "defaultProvider": "amazon-bedrock",
-  "defaultModel": "us.anthropic.claude-opus-5",
+  "defaultProvider": "openai-codex",
+  "defaultModel": "gpt-6-astra",
   "defaultThinkingLevel": "medium",
   "enabledModels": [
     "amazon-bedrock/us.anthropic.claude-opus-5",
