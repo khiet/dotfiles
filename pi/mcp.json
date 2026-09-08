@@ -1,4 +1,7 @@
 {
+  "settings": {
+    "showStatusIcon": false
+  },
   "mcpServers": {
     "context-mode": {
       "command": "context-mode"
