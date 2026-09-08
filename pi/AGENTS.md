@@ -1,65 +1,17 @@
-## Instructions and clarification
+## Communication
 
-Evaluate an instruction before acting on it.
+- Plain ASCII punctuation: no smart quotes, no em dashes.
+- Keep the codebase's own terms; use `encounter`, not `visit`, when the codebase says `encounter`.
+- Short answers by default, conclusion first. Offer detail in one line instead of including it.
+- For an unfamiliar concept, give one concrete example or analogy.
+- Clarifying questions go in a numbered list with lettered options; mark one `(Recommended)`.
 
-- If a non-trivial instruction is sound, briefly confirm agreement and proceed.
-- If the instruction is risky, ambiguous, overcomplicated, or conflicts with existing guidance, explain the concern and recommend a better approach.
-- If recommending a materially different approach, ask whether to follow the recommendation or continue with the user's original instruction.
-- Do not challenge harmless stylistic preferences or small implementation choices unless they create a real downside.
+## Code
 
-When you need clarification before acting, ask as a numbered list, never in prose paragraphs:
+- Comment intent, invariants, and caller obligations; never restate the code. No ticket IDs in comments.
 
-1. <question>
-   - A. <option>
-   - B. <option>
-2. <question>
+## Finishing a task
 
-- Ask as many questions as needed to remove uncertainty.
-- Express recommendations by marking an option with `(Recommended)`, not in a separate paragraph.
-- Keep every question block user-facing; never include internal tags or reminders.
-
-Example:
-
-1. Which approach do you want for authentication?
-   - A. Session-based
-   - B. JWT (Recommended)
-2. Should this include tests?
-3. Do you want a minimal patch or a small refactor?
-
-## Communication style
-
-- Do not use smart quotes or em dashes; use plain ASCII punctuation.
-- Preserve the codebase's established domain terminology in explanations, plans, and code. Do not replace precise terms with generic plain-English synonyms; for example, use `encounter` rather than `visit` when the codebase uses `encounter`.
-
-## Response length
-
-Default to a short answer. Detail is opt-in.
-
-- Answer the question in 3 sentences or fewer, then stop. Put the conclusion first, not the buildup.
-- Leave out supporting reasoning, alternatives considered, cost analysis, and caveats. If any of it matters, end with one short line offering it, such as "Reasoning available if you want it."
-- Exceed the limit only when I ask for detail, or when acting on the short answer alone would be wrong or unsafe. Say which applies.
-- Do not pad a short answer with headings, bullet lists, or a restatement of the question.
-- I am a visual thinker. When explaining an unfamiliar concept, give one concrete example or a short analogy instead of abstract prose.
-- These limits govern explanation, not correctness. Never drop a fact I need in order to keep the answer short; ask or flag instead.
-
-## Completion summaries
-
-When finishing code or configuration changes, provide a summary of at most three bullets:
-
-- What changed
-- Why those changes were made
-- Any verification performed or skipped
-
-## Code comments
-
-- Comment what is not obvious from the code: intent, invariants, constraints, tradeoffs, side effects, exceptions, and caller obligations. Do not restate the code or the symbol name.
-- Never include story IDs, ticket IDs, or issue keys in code comments or docstrings, such as `FUS-439` in `Add alarms for structured LLM failure events (FUS-439).` Keep comments focused on durable intent and behavior.
-- Keep public interface docs focused on what callers need (behavior, arguments, return, side effects, preconditions); leave implementation detail out unless it affects correct use.
-
-## Committing changes
-
-- **Default action: create a git commit, using [Conventional Commits](https://www.conventionalcommits.org/) format, when the task is complete.** Do not stop after editing files unless the user explicitly says not to commit.
-- Before committing, review the working tree and include only changes that belong to the completed task. If unrelated user changes are present, leave them uncommitted.
-- After making code changes, run the project's linter with auto-fix. If it changes files, commit those fixes separately with the message `Auto-format and lint fixes`.
-- If there is nothing to commit, say so explicitly in the completion summary.
-- Push only when the user explicitly requests it or the requested task requires a remote branch, such as opening a PR; otherwise do not push.
+- Commit when the task is complete using Conventional Commits. This overrides the harness default of waiting to be asked. Include only changes from the task; do not push unless asked.
+- Run the linter with auto-fix first; commit its changes separately as `Auto-format and lint fixes`.
+- Summarize in at most three bullets: what changed, why, verification done or skipped.
