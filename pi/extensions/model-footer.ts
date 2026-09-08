@@ -1,6 +1,6 @@
 import { isAbsolute, relative, resolve, sep } from "node:path";
 import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
-import { truncateToWidth, visibleWidth } from "@earendil-works/pi-tui";
+import { truncateToWidth } from "@earendil-works/pi-tui";
 
 type Usage = {
 	input: number;
@@ -33,7 +33,10 @@ function formatCwd(cwd: string, home: string | undefined): string {
 }
 
 function sanitizeStatus(text: string): string {
-	return text.replace(/[\r\n\t]/g, " ").replace(/ +/g, " ").trim();
+	return text
+		.replace(/[\r\n\t]/g, " ")
+		.replace(/ +/g, " ")
+		.trim();
 }
 
 export default function modelFooter(pi: ExtensionAPI) {
@@ -102,9 +105,6 @@ export default function modelFooter(pi: ExtensionAPI) {
 					else if (contextPercentValue > 70) statsParts.push(theme.fg("warning", contextDisplay));
 					else statsParts.push(contextDisplay);
 
-					let statsLeft = statsParts.join(" ");
-					if (visibleWidth(statsLeft) > width) statsLeft = truncateToWidth(statsLeft, width, "...");
-
 					const modelName = ctx.model?.id ?? "no-model";
 					let modelText = modelName;
 					if (ctx.model?.reasoning) {
@@ -112,24 +112,24 @@ export default function modelFooter(pi: ExtensionAPI) {
 						modelText = thinkingLevel === "off" ? `${modelName} • thinking off` : `${modelName} • ${thinkingLevel}`;
 					}
 
-					if (footerData.getAvailableProviderCount() > 1 && ctx.model) {
-						const withProvider = `(${ctx.model.provider}) ${modelText}`;
-						if (visibleWidth(statsLeft) + 2 + visibleWidth(withProvider) <= width) modelText = withProvider;
-					}
-
-					const availableForModel = width - visibleWidth(statsLeft) - 2;
-					const visibleModel = availableForModel > 0 ? truncateToWidth(modelText, availableForModel, "") : "";
-					const padding = " ".repeat(Math.max(0, width - visibleWidth(statsLeft) - visibleWidth(visibleModel)));
-					const statsLine = theme.fg("dim", statsLeft + padding) + theme.fg("borderAccent", visibleModel);
-
-					const lines = [
-						truncateToWidth(theme.fg("dim", pwd), width, theme.fg("dim", "...")),
-						statsLine,
-					];
+					if (ctx.model) modelText = `(${ctx.model.provider}) ${modelText}`;
 
 					const extensionStatuses = footerData.getExtensionStatuses();
-					if (extensionStatuses.size > 0) {
-						const statusLine = Array.from(extensionStatuses.entries())
+					const mcpStatus = extensionStatuses.get("mcp");
+					const inlineParts = [theme.fg("warning", statsParts.join(" ")), theme.fg("borderAccent", modelText)];
+					if (mcpStatus) {
+						const compactStatus = sanitizeStatus(mcpStatus)
+							.replace(/🔌\s*/, "")
+							.replace(/\b(\d+) servers? enabled\b/, "$1 enabled");
+						inlineParts.push(compactStatus);
+					}
+					const statsLine = truncateToWidth(inlineParts.join("  "), width, theme.fg("dim", "..."));
+
+					const lines = [truncateToWidth(theme.fg("dim", pwd), width, theme.fg("dim", "...")), statsLine];
+
+					const remainingStatuses = Array.from(extensionStatuses.entries()).filter(([key]) => key !== "mcp");
+					if (remainingStatuses.length > 0) {
+						const statusLine = remainingStatuses
 							.sort(([left], [right]) => left.localeCompare(right))
 							.map(([, text]) => sanitizeStatus(text))
 							.join(" ");
