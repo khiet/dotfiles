@@ -9,7 +9,8 @@ return {
       char_delete = "#6b2f3a",
     },
     explorer = {
-      auto_open_on_cursor = true
+      auto_open_on_cursor = true,
+      width = 60
     },
     diff = {
       layout = "inline", -- toggle between "side-by-side" and "inline" with 't'
