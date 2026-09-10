@@ -1,5 +1,6 @@
 ---
-description: Generate or create a compact PR description for the current branch; pass `long` for the full review packet
+description: Generate or create a PR description; pass `tiny` for a few plain-English sentences or `long` for the full review packet
+argument-hint: "[tiny|long]"
 ---
 
 # PR Description Generator
@@ -12,10 +13,13 @@ Always use this skill's template for the active mode - do not use `.github/pull_
 
 ## Modes
 
+Requested mode: ${1:-default}.
+
+- **`tiny`** (`/issue_pr tiny`): a plain-English description of the changes in 1-3 sentences, using the Tiny template below.
 - **Default** (no argument): a compact description under 200 words, using the Short template below.
 - **`long`** (`/issue_pr long`): the full review-packet PR Template below, for changes whose risk, rollout, or review-focus story genuinely needs it. Use this mode only when asked for it.
 
-Evidence rules, process, title rules, PR handling, and status reporting apply identically in both modes. Where an evidence rule names a section the short format lacks (e.g. remaining ticket scope in Review focus), carry the substance as a `What changed` bullet instead of adding the section.
+Evidence gathering, title rules, PR handling, and status reporting apply in all modes. Section-specific formatting and length rules apply only to default and `long` modes. Where an evidence rule names a section the short format lacks (e.g. remaining ticket scope in Review focus), carry the substance as a `What changed` bullet instead of adding the section. In `tiny` mode, follow the Tiny template's rules for carrying that substance.
 
 ## Evidence rules
 
@@ -46,7 +50,7 @@ Evidence rules, process, title rules, PR handling, and status reporting apply id
 3. **Generate PR title** following the PR Title rules below.
    - First detect whether the repo has release or title automation (see PR Title). Only that answer decides whether the title needs a conventional commit prefix.
 
-4. **Write the sections** (the guidance below describes the long template's sections; in the default short mode, apply the same standards to the Short template's condensed slots):
+4. **Write the description** using the active mode's template. For `tiny`, use the Tiny template and skip the section guidance below. For default and `long`, apply this guidance to their respective slots:
    - `Why`: the concrete symptom or scenario and the outcome the PR delivers. Cite a specific incident, error, or gap when one exists; never an abstract restatement of the diff.
    - `What changed`: behavioral summary plus the insight that makes it work - the rule or assumption that makes the new behavior right and the old behavior wrong. Include a Before/After block only when the diff surfaces one naturally (an error message, log line, API payload, function return value, CLI output) - pull the actual values from code or tests. Do not hunt for or manufacture observability; many internal changes have none, and that is fine.
    - `Review focus`: where a reviewer should look hardest - risky decisions, subtle files - plus anything they must know that the diff does not make obvious: a guard, a deliberate non-goal, a tradeoff. Omit when the change is routine.
@@ -142,11 +146,26 @@ diff surfaces one naturally]
 flow change]
 ````
 
+## Tiny template
+
+Write one plain-English paragraph of 1-3 sentences explaining what changed and, when useful, why. Prefer observable behavior over implementation names or jargon. Use prose only, without headings, bullets, diagrams, or a separate validation section.
+
+Keep material caveats within the sentence limit: remaining ticket scope, failing or pending checks, and breaking-change or rollout concerns. Report routine validation (or why it was not run) alongside Status, outside the PR body. A required `BREAKING CHANGE:` footer is the only exception to the paragraph format; count its text toward the three-sentence limit.
+
+```markdown
+[What changed, in everyday language. Why it matters, if useful. Any material
+scope, validation, or rollout caveat. Use fewer sentences when sufficient.]
+```
+
+Example:
+
+> The Claims tab now shows each payer's claim separately, so one payer's payment no longer hides another payer's denial. Denied submissions stay visible even when their response could not be matched to a claim.
+
 ## Short template
 
 The default mode. One compact block, under 200 words total. Bold inline headers instead of `##` sections; no Before/After, Review focus, Risk and rollout, or Visuals sections.
 
-````markdown
+```markdown
 [One sentence stating what the PR delivers. When the branch extends earlier
 work, open with that relationship, e.g. "Extension of #NNN: ...".]
 
@@ -161,7 +180,7 @@ work, open with that relationship, e.g. "Extension of #NNN: ...".]
 
 **Validation.** [One line: test kinds run and the notable scenarios they
 cover; type-check/lint status.]
-````
+```
 
 Example of the target density (from a real PR):
 
