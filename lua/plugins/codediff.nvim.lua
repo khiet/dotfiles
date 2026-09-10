@@ -25,7 +25,7 @@ return {
       local ref = vim.fn.getreg('+'):match('^%s*(.-)%s*$')
 
       if ref ~= '' then
-        vim.cmd('CodeDiff ' .. vim.fn.fnameescape(ref .. '^') .. ' ' .. vim.fn.fnameescape(ref))
+      vim.cmd('CodeDiff ' .. vim.fn.fnameescape(ref))
       end
     end, opt_sn)
   end,
