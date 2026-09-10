@@ -1,5 +1,5 @@
 ---
-description: Save UI screenshots to ~/Desktop, wait for manual GitHub upload, then use gh to format them in the PR description
+description: Stage UI screenshots in a branch-named Desktop folder, open the PR for manual upload, then format its Visuals section
 ---
 
 # PR Screenshots
@@ -13,14 +13,14 @@ The argument is the page (or pages) to capture when no usable screenshot exists.
 ## Rules
 
 - **Reuse before capture.** If screenshots from the recent Playwright session exist, use them as-is. Do not recapture, recrop, or resize a usable asset.
-- **Manual upload only.** Save screenshots to `~/Desktop` and ask the user to upload them to GitHub. Stop until the user confirms the upload; never automate the upload or publish local paths as image URLs.
+- **Manual upload only.** Stage screenshots in the branch folder (step 5), open the PR, and ask the user to upload them to GitHub. Stop until the user confirms the upload; never automate the upload or publish local paths as image URLs.
 - **Warn on existing screenshots.** If the PR body already contains images (`![`, `<img`, or a `github.com/user-attachments` URL), stop and show which ones are present. Continue only after the user confirms whether to replace them or add to them.
 - **Touch only the Visuals slot.** Never regenerate the rest of the description. Replace the placeholder that `/issue_pr` emits, or an existing screenshot table, otherwise append a Visuals section that matches the body's header style (`## Visuals` when the body uses `##` headers, `**Visuals**` when it uses bold inline headers).
 - **Image width is set on the `<img>` tag,** not the table. Markdown cannot size table columns, so every cell is `<img src="..." width="600">`. GitHub scales two 600px images down to fit the body; that is expected.
 
 ## Process
 
-1. **Locate the PR:** `gh pr view --json url,body,headRefName`. If there is no PR, stop and point to `/issue_pr`, which creates it.
+1. **Locate the PR:** `gh pr view --json number,url,body,headRefName`. If there is no PR, stop and point to `/issue_pr`, which creates it.
 
 2. **Check for existing images** in the body (see the warning rule). Report each image URL and where it sits, then wait for the user's decision.
 
@@ -33,9 +33,9 @@ The argument is the page (or pages) to capture when no usable screenshot exists.
 
 4. **Capture only when nothing is reusable.** Requires a target page: use the argument, or derive the route from the diff when it is unambiguous, otherwise ask. Confirm the dev server is up before navigating; if it is not, ask how to start it rather than guessing. Capture with the Playwright MCP (`browser_navigate`, then `browser_take_screenshot` to a named file); fall back to `npx playwright screenshot <url> <file>` when the MCP is unavailable. One full-page capture per route or UI state.
 
-5. **Stage on the Desktop.** Copy each selected screenshot, without modifying the original or its image bytes, to `~/Desktop`. Use unique, descriptive filenames containing the PR number and route or UI state; never overwrite an unrelated Desktop file. Keep a mapping of each Desktop path to its source, caption, and capture order.
+5. **Stage in the branch folder.** Use the PR's `headRefName` as the folder name under `~/Desktop`, replacing `/` with `--` so it stays a single folder (for example, `feat/login` becomes `~/Desktop/feat--login`). Reuse the folder if it exists; otherwise create it with `mkdir -p` and a quoted absolute path. Preserve its existing contents. Copy each selected screenshot into it without modifying the original or its image bytes. Use unique, descriptive filenames containing the PR number and route or UI state; on a filename collision, reuse a byte-identical copy or add a numeric suffix rather than overwrite a different file. Keep a mapping of each destination path to its source, caption, and capture order. Verify every selected screenshot is present in the folder before continuing.
 
-6. **Ask the user to upload, then stop.** Print the PR URL and the exact Desktop paths. Ask the user to open the PR description editor, drag those files into the `Visuals` slot (creating it if absent), save the description without changing anything else, and reply when the upload is complete. Do not upload through browser tools, poll for completion, or run `gh pr edit` yet. End the turn and wait for the user's reply.
+6. **Open the PR, ask for upload, then stop.** Once staging is verified, run `open "<pr-url>"` with the URL from step 1 to launch the PR in the user's default browser. Print the PR URL and exact screenshot paths. Ask the user to open the description editor on that page, drag those files into the `Visuals` slot (creating it if absent), save the description without changing anything else, and reply when the upload is complete. If `open` is unavailable or fails, report that and ask the user to open the printed URL manually. For GitHub, opening the page is the only automated browser action: do not upload through browser tools, poll for completion, or run `gh pr edit` yet. End the turn and wait for the user's reply.
 
 7. **Resolve uploaded images and build the table.** After the user confirms the upload, re-fetch the same PR with `gh pr view <pr-url> --json body`. Extract the uploaded GitHub image URLs from its description and match them to the Desktop file mapping. If any upload is missing or the mapping is ambiguous, ask the user for the corresponding GitHub image URL or inserted Markdown and wait again. Never guess a URL or use a local path. Preserve the user's earlier add/replace decision; newly uploaded images are expected, but unrelated new images or edits require clarification before changing them.
 
