@@ -78,21 +78,15 @@ export default function modelFooter(pi: ExtensionAPI) {
 					const sessionName = ctx.sessionManager.getSessionName();
 					if (sessionName) pwd = `${pwd} • ${sessionName}`;
 
-					const statsParts: string[] = [];
-					if (totals.input) statsParts.push(`↑${formatTokens(totals.input)}`);
-					if (totals.output) statsParts.push(`↓${formatTokens(totals.output)}`);
-					if (totals.cacheRead) statsParts.push(`R${formatTokens(totals.cacheRead)}`);
-					if (totals.cacheWrite) statsParts.push(`W${formatTokens(totals.cacheWrite)}`);
+					const tokenParts: string[] = [];
+					if (totals.input) tokenParts.push(`↑${formatTokens(totals.input)}`);
+					if (totals.output) tokenParts.push(`↓${formatTokens(totals.output)}`);
+					if (totals.cacheRead) tokenParts.push(`CR${formatTokens(totals.cacheRead)}`);
+					if (totals.cacheWrite) tokenParts.push(`CW${formatTokens(totals.cacheWrite)}`);
 					if ((totals.cacheRead || totals.cacheWrite) && latestCacheHitRate !== undefined) {
-						statsParts.push(`CH${latestCacheHitRate.toFixed(1)}%`);
+						tokenParts.push(`CH${latestCacheHitRate.toFixed(1)}%`);
 					}
-
-					// These providers use subscription billing even though their credentials resemble API keys.
-					const usingSubscription =
-						ctx.model !== undefined && ["github-copilot", "openai-codex", "kimi-coding"].includes(ctx.model.provider);
-					if (totals.cost || usingSubscription) {
-						statsParts.push(`$${totals.cost.toFixed(3)}${usingSubscription ? " (sub)" : ""}`);
-					}
+					const statsParts = tokenParts.map((part) => theme.fg("warning", part));
 
 					const contextUsage = ctx.getContextUsage();
 					const contextWindow = contextUsage?.contextWindow ?? ctx.model?.contextWindow ?? 0;
@@ -101,9 +95,11 @@ export default function modelFooter(pi: ExtensionAPI) {
 						contextUsage?.percent === null
 							? `?/${formatTokens(contextWindow)}`
 							: `${contextPercentValue.toFixed(1)}%/${formatTokens(contextWindow)}`;
-					if (contextPercentValue > 90) statsParts.push(theme.fg("error", contextDisplay));
-					else if (contextPercentValue > 70) statsParts.push(theme.fg("warning", contextDisplay));
-					else statsParts.push(contextDisplay);
+					const contextTokens = contextUsage?.tokens;
+					if (contextTokens == null) statsParts.push(theme.fg("dim", contextDisplay));
+					else if (contextTokens >= 170_000) statsParts.push(theme.fg("error", contextDisplay));
+					else if (contextTokens >= 100_000) statsParts.push(theme.fg("warning", contextDisplay));
+					else statsParts.push(theme.fg("success", contextDisplay));
 
 					const modelName = ctx.model?.id ?? "no-model";
 					let modelText = modelName;
@@ -116,12 +112,23 @@ export default function modelFooter(pi: ExtensionAPI) {
 
 					const extensionStatuses = footerData.getExtensionStatuses();
 					const mcpStatus = extensionStatuses.get("mcp");
-					const inlineParts = [theme.fg("warning", statsParts.join(" ")), theme.fg("borderAccent", modelText)];
+					const inlineParts = [theme.fg("borderAccent", modelText), statsParts.join(" ")];
 					if (mcpStatus) {
 						const compactStatus = sanitizeStatus(mcpStatus)
 							.replace(/🔌\s*/, "")
-							.replace(/\b(\d+) servers? enabled\b/, "$1 enabled");
+							.replace(/MCP:/, "⚒")
+							.replace(
+								/(\d+) (?:servers? )?enabled( \(\d+ connected\))?(?: \((\d+) disabled\))?/,
+								(_match, enabled: string, connected: string | undefined, disabled: string | undefined) =>
+									`${enabled}/${Number(enabled) + Number(disabled ?? 0)}${connected ?? ""}`,
+							);
 						inlineParts.push(compactStatus);
+					}
+					// These providers use subscription billing even though their credentials resemble API keys.
+					const usingSubscription =
+						ctx.model !== undefined && ["github-copilot", "openai-codex", "kimi-coding"].includes(ctx.model.provider);
+					if (totals.cost || usingSubscription) {
+						inlineParts.push(theme.fg("dim", `$${totals.cost.toFixed(3)}${usingSubscription ? " (sub)" : ""}`));
 					}
 					const statsLine = truncateToWidth(inlineParts.join("  "), width, theme.fg("dim", "..."));
 
