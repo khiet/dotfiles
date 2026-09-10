@@ -1,80 +1,81 @@
 ---
 name: comment-refactor
-description: Refactor code comments added by a branch or commit into concise reasons and hidden contracts. Use when the user asks to clean up, review, or refactor comments, or runs `/comment_refactor`.
+description: Fact-check and simplify branch comment changes. Use when asked to review or clean up comments added, removed, or updated on a branch.
 ---
+
 # Comment Refactor
 
-Review code comments added by a branch or commit, then update them in place using the rules below and `pi/AGENTS.md`.
+Fact-check the current branch's comment changes, then keep only useful reasons
+and hidden contracts in plain English.
 
-Invoke via `/comment_refactor [target]` or `/skill:comment-refactor [target]`. The optional target is a commit hash, a file path, or a branch name.
+Invoke with `/skill:comment-refactor [base-ref]` or `/comment_refactor [base-ref]`.
+The optional argument overrides the base branch, not the branch being edited.
 
-## Comment Rules
+## 1. Fix the scope
 
-1. **Trust names and types.** Leave clearly named fields, props, and parameters uncommented: `assignee: EncounterAssignee | null` needs no "who is assigned to work on the encounter" gloss.
-2. **Skip introductions.** Start with the hidden constraint or reason, not a summary of the function, hook, route, or class; skip what names, types, and code already say.
-3. **One sentence per decision.** State the reason and its consequence, not a paragraph of design rationale: "Keep disabled members listed because hiding them leaves the current assignee unexplained."
-4. **Document hidden facts.** Use one concise sentence for a contract the types cannot express, such as the keys inside a `Json` column, or a dependency that makes apparently removable code necessary, such as a handler required elsewhere on the page. Preserve necessary contracts when shortening; accuracy takes precedence over the sentence limit.
-5. **Match sibling coverage.** When every member of the immediate block has a comment, give new members the same concise treatment; silence would read as an omission. This is an exception to leaving clear names uncommented, not permission to copy noisy conventions across the project.
+- Read the repository instructions and record the current HEAD and worktree diff.
+- Use the supplied base ref, otherwise the repository's default branch. If the
+  default cannot be established, ask for a base rather than guessing.
+- Resolve `git merge-base <base-ref> HEAD` once and save it as `<base>`.
+- Inventory comment additions, removals, and updates from
+  `git diff --find-renames --unified=0 <base> HEAD`. Include inline comments,
+  block comments, documentation comments, and docstrings; exclude generated and
+  vendored files. Recognize comments using the file's language, not a regex alone.
+- Only lines changed by this branch are editable. Unchanged comments, including
+  context lines in a changed block, remain untouched. Read them for context only.
+- Uncommitted changes are outside this review. If they overlap a candidate edit,
+  stop and ask how to proceed; preserve all unrelated work.
 
-Use exact identifiers rather than vague references or invented synonyms, and briefly explain necessary domain terms. Name the cause of non-obvious behavior, not just its symptom.
+Proceed when the base is fixed and every changed comment is inventoried. If the
+branch has no comment changes, report that and stop.
 
-Remove redundant narration, boilerplate, commented-out code, migration history, reviewer notes, and volatile measurements; retain durable constraints instead. If an unclear name still needs explanation, keep the useful comment and suggest a rename in the report without changing code.
+## 2. Fact-check every change
 
-## Target Rules
+Read each full comment and its surrounding implementation on both sides of the
+diff. Trace referenced callers, types, tests, and dependencies until each factual
+claim has evidence, including qualifiers such as "always", "still", and "only".
+A plausible explanation is not evidence of intent.
 
-- With no argument, use the current branch and diff against `main`.
-- With a commit hash, review comments added by that commit only.
-- With a file path, use the current branch diff against `main`, limited to that file.
-- With a branch name, diff `main...<branch_name>`.
-- If the current branch is `main` and no branch or commit target is provided, report that the branch has to be non-main and stop.
-- If the target branch argument is `main`, report that the branch has to be non-main and stop.
-- If a branch target is provided and it is not the currently checked-out branch, do not switch branches automatically when the worktree has uncommitted changes. Ask the user to switch or confirm before proceeding.
+- **Added or updated:** choose keep, correct, shorten, or remove using the rules
+  below. Delete unsupported rationale rather than inventing a replacement. If a
+  potentially necessary contract cannot be verified, leave it and flag the claim
+  as unresolved with the evidence needed.
+- **Removed:** check whether the deleted reason or contract still applies. Keep
+  redundant or obsolete comments deleted; restore a concise version only when
+  evidence shows a necessary hidden constraint was lost. Flag uncertain removals.
 
-## Process
+Finish when every changed comment has a disposition and every factual claim is
+supported or explicitly unresolved.
 
-1. **Resolve the target**
-   - Run `git rev-parse --abbrev-ref HEAD` to identify the current branch.
-   - Run `git rev-parse --verify main` to verify `main` exists. If it does not, report the error and stop.
-   - Classify the target argument as one of: empty, commit hash, existing file path, or branch name.
-   - For branch targets, verify the branch exists with `git rev-parse --verify <branch_name>`.
+### Comment rules
 
-2. **Collect added comments only**
-   - For the default target, inspect `git diff main...HEAD --unified=0`.
-   - For a file path, inspect `git diff main...HEAD --unified=0 -- <file_path>`.
-   - For a branch, inspect `git diff main...<branch_name> --unified=0`.
-   - For a commit hash, inspect `git diff <commit_hash>^! --unified=0`.
-   - Consider only added comment lines from the diff. Ignore unchanged comments, deleted comments, generated files, vendored code, lockfiles, and minified files.
-   - Include interface documentation, block comments, inline comments, docstrings, and language-specific comment forms.
+- **Trust the names.** A clear name and type get no comment:
+  `assignee: EncounterAssignee | null` needs no "who is working the encounter"
+  gloss. Apply this even when neighboring fields have comments.
+- **Never say what.** Start with the reason or hidden constraint. Remove opening
+  summaries of functions, routes, and other code; the signature and body already
+  describe the behavior.
+- **One sentence per decision.** Keep a single "because" the code cannot express:
+  "Keep disabled members listed because hiding them leaves the current assignee
+  unexplained." A distinct hidden contract earns its own sentence, not a
+  paragraph of design rationale.
+- **Plain English.** Use direct words, exact identifiers, and the codebase's domain
+  terms. Cut filler, ticket IDs, historical narration, and speculative rationale.
+  Explain necessary caller obligations or invariants without restating the body.
 
-3. **Evaluate each added comment**
-   - Read the surrounding implementation and verify every claim, including implied claims in words such as "also", "usually", and "still". Trace referenced dependencies when the reason lives elsewhere.
-   - Apply the Comment Rules to decide whether to keep, shorten, correct, or remove each comment.
-   - Finish when each retained comment is accurate and carries a necessary reason, hidden fact, or immediate sibling convention.
+## 3. Edit and verify
 
-4. **Edit comments in place**
-   - Modify only comments that were added by the target diff unless a nearby existing comment must be adjusted for grammar or consistency with the new comment.
-   - Do not change runtime behavior.
-   - Do not rename code, restructure logic, or refactor non-comment code.
-   - Preserve the file's existing comment style, formatting conventions, and line length where practical.
-   - Rewrap edited comments to the file's comment width; one sentence may span physical lines.
-   - Prefer simple ASCII punctuation unless the file already uses non-ASCII punctuation for comments.
+Apply the dispositions only within the inventoried scope. Preserve executable
+code, runtime-significant docstrings, license notices, and tool directives such
+as lint suppressions; flag these instead if they need a semantic change.
 
-5. **Validate**
-   - Re-run the relevant diff command and confirm changes stay within the allowed comment scope, including deliberate removals.
-   - If the project has a cheap formatter or linter for the changed files, run it with auto-fix. Do not run expensive full-suite commands unless the change or project convention calls for it.
-   - Review `git diff --check` for whitespace errors.
+Run the repository's applicable linter with auto-fix on edited files, then inspect
+its changes: retain only in-scope comment edits and preserve pre-existing work.
+Run `git diff --check`. If no applicable linter exists, report that limitation.
 
-6. **Report status**
-   - Summarize which files had comments updated.
-   - List any names that comments were compensating for, as rename suggestions for the user.
-   - If no added comments needed changes, say so explicitly.
-   - If validation was skipped, explain why.
+Compare the final diff with the starting snapshot. Finish only when every new
+edit maps to an inventoried comment change, unchanged comments and code are
+untouched, and each retained sentence passes the rules above.
 
-## Status
-
-Report one of:
-
-- `Done: updated added comments in <files>.`
-- `No changes: added comments already follow the comment guidance.`
-- `Skipped: target branch must be non-main.`
-- `Error: <reason>.`
+Report changed files, unresolved claims with evidence locations, and validation
+results in at most three bullets. If nothing needed editing, say so explicitly.

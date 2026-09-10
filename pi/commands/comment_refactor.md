@@ -1,13 +1,11 @@
 ---
-description: Refactor newly added code comments against main so they explain intent, constraints, and domain terms clearly
+description: Fact-check and simplify comments added, removed, or updated on the current branch
 ---
 
 # Comment Refactor
 
-Use the `comment-refactor` skill to review the comments added by a branch or commit and rewrite them in place so they follow the comment guidance in `pi/AGENTS.md`.
+Use the `comment-refactor` skill.
 
-Usage: `/comment_refactor [commit_hash|file_path|branch_name]`
-
-With no argument, the skill uses the current branch diffed against `main`.
+Usage: `/comment_refactor [base-ref]`
 
 $ARGUMENTS
