@@ -59,6 +59,9 @@ supported or explicitly unresolved.
   "Keep disabled members listed because hiding them leaves the current assignee
   unexplained." A distinct hidden contract earns its own sentence, not a
   paragraph of design rationale.
+- **Examples when needed.** If a hidden rule remains unclear, keep the reason to
+  one sentence and add one short, concrete example showing its consequence, not
+  the code's mechanics. Verify the example against the implementation.
 - **Plain English.** Use direct words, exact identifiers, and the codebase's domain
   terms. Cut filler, ticket IDs, historical narration, and speculative rationale.
   Explain necessary caller obligations or invariants without restating the body.
