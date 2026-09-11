@@ -81,4 +81,4 @@ edit maps to an inventoried comment change, unchanged comments and code are
 untouched, and each retained sentence passes the rules above.
 
 Report changed files, unresolved claims with evidence locations, and validation
-results in at most three bullets. If nothing needed editing, say so explicitly.
+results. If nothing needed editing, say so explicitly.
