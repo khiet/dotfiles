@@ -1,18 +1,6 @@
 # Test Review Reference
 
-The criteria [`test-gap`](SKILL.md) judges branch-introduced tests against, consulted at its scope and review steps.
-
-## Scope
-
-1. Establish the comparison range.
-   - Prefer the merge base with the upstream default branch.
-   - If the default branch cannot be determined, use the branch point or ask one concise question.
-   - Completion criterion: every added or modified file in the branch is identified and split into source files and test files.
-
-2. Build the local pattern baseline.
-   - Read nearby existing tests for the same feature, layer, framework, or file naming convention.
-   - Note assertion style, setup style, fixture/factory usage, helper usage, mocking style, test naming, test structure, file placement, and execution scope.
-   - Completion criterion: each reviewed test has a concrete local baseline, not a generic testing preference.
+The criteria [`test-gap`](SKILL.md) judges tests against, consulted when choosing gaps and at the review step. A branch-introduced test is any test the branch added or modified, including tests written in this run.
 
 ## Pattern fit
 
@@ -24,7 +12,7 @@ The criteria [`test-gap`](SKILL.md) judges branch-introduced tests against, cons
 
 - Tie each test to a user-visible behavior, public API contract, domain invariant, or important side effect changed by the branch.
 - A test is strong when it would fail for a real behavior regression and survive an internal refactor.
-- A test is weak when it freezes implementation details, private methods, internal collaborator choreography, framework behavior, or constants copied from the implementation.
+- A test is implementation-coupled when it asserts private methods, internal collaborator choreography, framework behavior, or constants copied from the implementation.
 - Completion criterion: every test has a clear reason to exist, or carries a verdict.
 
 ## Redundancy and probability
