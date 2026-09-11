@@ -21,6 +21,7 @@ export HUSKY=0
 PATH="$XDG_DATA_HOME/nvim/mason/bin:$PATH"
 PATH="$XDG_DATA_HOME/../bin:$PATH"
 PATH="$HOME/.local/bin:$PATH"
+PATH="$HOME/go/bin:$PATH"
 
 # ── keybindings ──────────────────────────────────────────────────────
 bindkey "^h" backward-delete-char
