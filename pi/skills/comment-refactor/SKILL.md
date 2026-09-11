@@ -72,10 +72,6 @@ Apply the dispositions only within the inventoried scope. Preserve executable
 code, runtime-significant docstrings, license notices, and tool directives such
 as lint suppressions; flag these instead if they need a semantic change.
 
-Run the repository's applicable linter with auto-fix on edited files, then inspect
-its changes: retain only in-scope comment edits and preserve pre-existing work.
-Run `git diff --check`. If no applicable linter exists, report that limitation.
-
 Compare the final diff with the starting snapshot. Finish only when every new
 edit maps to an inventoried comment change, unchanged comments and code are
 untouched, and each retained sentence passes the rules above.
