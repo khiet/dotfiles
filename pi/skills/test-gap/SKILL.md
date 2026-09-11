@@ -1,53 +1,44 @@
 ---
 name: test-gap
-description: Find and fill valuable missing tests for the current branch, then review every branch-introduced test and fix what does not earn its place. Use when the user asks for test gaps, missing coverage, or `/test_gap`.
+description: Close behavioral test gaps on the current branch and review added or modified tests. Use when asked to find or fill missing test coverage.
 ---
 
 # Test Gap
 
-Close the coverage gaps the branch left, then hold every branch-introduced test to the bar in [`REVIEW.md`](REVIEW.md). This skill edits tests, runs the suite, and commits.
+Close the coverage gaps the branch left, then hold every branch-introduced test to the bar in [`REVIEW.md`](REVIEW.md). This skill edits tests, runs the suite, and commits. The optional argument is a focus; use it to prioritize which changes to test while still running the full workflow.
 
 ## Workflow
 
-1. Scope the branch and build the local pattern baseline, following the `Scope` section of [`REVIEW.md`](REVIEW.md).
-   - The baseline serves both jobs ahead: it is the convention new tests must follow and the yardstick the review measures against.
+1. Scope the branch and build the local pattern baseline.
+   - Compare against the merge base with the upstream default branch. If the default branch cannot be determined, use the branch point or ask one concise question.
+   - If the working tree is dirty, stop and ask whether to include those changes, since later steps commit.
+   - Build the baseline: read nearby existing tests for the same feature, layer, framework, or file naming convention, and note assertion style, setup style, fixture/factory usage, helper usage, mocking style, test naming, test structure, file placement, and execution scope.
+   - Completion criterion: every added, modified, or removed file in the branch is split into source and test files, and each reviewed test has a concrete local baseline that cites a specific nearby test.
 
 2. Understand what changed.
-   - Identify new functions, methods, classes, or modules added.
-   - Identify modified logic, branching, or edge cases.
-   - Note any changed public APIs or interfaces.
-   - If the user provided a focus, use it to prioritize which changes to test.
-   - Completion criterion: every added or modified non-test file is accounted for.
+   - Completion criterion: every added, modified, or removed behavior in non-test files is listed. Removed behavior counts because it leaves stale tests behind.
 
 3. Identify test gaps.
-   - Compare what the branch changed against what existing tests cover.
-   - Flag new behavior with no tests, modified branches with no updated assertions, probable failures, and important error handling that are untested.
-   - Prefer gaps tied to user-visible behavior, public API contracts, domain invariants, integration boundaries, or important side effects.
-   - Treat a technical branch, private helper path, copied constant, or improbable micro-edge case as already covered.
-   - If coverage is already comprehensive, record `no gaps` and go to step 5.
+   - Pick gaps by the Behavioral value and Redundancy rules in [`REVIEW.md`](REVIEW.md).
+   - Completion criterion: every listed behavior resolves to covered, test to add, or omitted by choice. Omissions go to `Residual risks`.
+   - If every behavior is covered, record `no gaps` and go to step 5.
 
 4. Write the missing tests.
-   - Follow the baseline exactly: file naming, directory structure, imports, assertion style, helpers, setup, naming, and grouping.
-   - Write focused, descriptive test names that explain the behavior being verified.
+   - Match the baseline; a new pattern needs a Pattern fit justification. With no local precedent, use the framework's documented default and record that under `Residual risks`.
    - Cover happy paths and probable failures first.
-   - Add edge cases only when they represent real user behavior, historically buggy behavior, security or data-loss risk, integration boundaries, or domain rules.
    - Extend existing tests rather than duplicating them.
+   - Completion criterion: every gap from step 3 has a test.
 
-5. Review every branch-introduced test against [`REVIEW.md`](REVIEW.md), judging the tests you just wrote and the tests the branch already had the same way.
-   - Reviewing your own work is the weak link in this skill: the tests from step 4 get the rubric first and hardest, and having authored one is no evidence it earns its place.
+5. Review every branch-introduced test against [`REVIEW.md`](REVIEW.md). The tests from step 4 get the rubric first.
    - Completion criterion: every branch-introduced test carries a verdict backed by a concrete local baseline.
 
 6. Apply every verdict from step 5, including deletions and rewrites of tests the branch already had.
-   - Completion criterion: no test is left on a non-`keep` verdict.
+   - Completion criterion: every verdict applied.
 
 7. Validate.
-   - Run the project's test suite to confirm all new and existing tests pass.
-   - If any tests fail, fix them and re-run until green.
+   - Run the project's test suite.
+   - Failures caused by this run's changes are yours to fix with the behavioral assertions intact. Pre-existing or environmental failures go in the report.
    - Commit the test changes as a single commit.
-
-## Formatting
-
-Always use backticks for code elements: class names, functions, file paths, commands, config keys.
 
 ## Status
 
@@ -56,6 +47,6 @@ Report what landed, the verdicts applied, and the suite result:
 - `Tests added`: what behavior is now covered.
 - `Tests revised`: what was rewritten, merged, moved, or deleted, and why.
 - `No gaps found`: existing tests already cover the branch changes.
-- `Issues remain`: what still needs attention.
+- `Issues remain`: what still needs attention, including failures left unfixed.
 
-Close every run with `Residual risks`: what this run could still be wrong about, such as behavior left uncovered by choice, a baseline read from thin local precedent, or a verdict that was a close call. A run that found nothing owes this section the most.
+Close every run with `Residual risks`: what this run could still be wrong about, such as behavior omitted by choice, a baseline read from thin or absent local precedent, or a verdict that was a close call. A run that found nothing owes this section the most.
