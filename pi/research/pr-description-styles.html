@@ -1,0 +1,917 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light" />
+    <title>PR descriptions: three ways to say less</title>
+    <style>
+      :root {
+        --ink: #182b39;
+        --muted: #52616c;
+        --paper: #f5f3ed;
+        --card: #fff;
+        --line: #d8dedb;
+        --green: #176348;
+        --green-light: #edf6f0;
+        --blue: #28598b;
+        --amber: #80551c;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        margin: 0;
+        background: var(--paper);
+        color: var(--ink);
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        font-size: 16px;
+        line-height: 1.6;
+      }
+      a {
+        color: var(--green);
+        text-underline-offset: 3px;
+      }
+      a:hover {
+        text-decoration-thickness: 2px;
+      }
+      a:focus-visible,
+      summary:focus-visible {
+        outline: 3px solid var(--blue);
+        outline-offset: 5px;
+      }
+      .skip {
+        position: absolute;
+        top: -100px;
+        left: 20px;
+      }
+      .skip:focus {
+        top: 12px;
+        background: white;
+        padding: 10px;
+        z-index: 2;
+      }
+      .wrap {
+        max-width: 1420px;
+        margin: auto;
+        padding: 0 40px;
+      }
+      .masthead {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        padding-top: 24px;
+        padding-bottom: 24px;
+        border-bottom: 1px solid var(--line);
+        font-size: 13px;
+      }
+      .brand,
+      .eyebrow,
+      .kicker {
+        font-size: 11px;
+        font-weight: 750;
+        text-transform: uppercase;
+        letter-spacing: 1.6px;
+      }
+      nav {
+        display: flex;
+        gap: 24px;
+        flex-wrap: wrap;
+      }
+      nav a {
+        color: var(--ink);
+      }
+      header {
+        padding: 48px 0 28px;
+        max-width: 980px;
+      }
+      .eyebrow {
+        color: var(--green);
+      }
+      h1 {
+        font-size: clamp(36px, 4.4vw, 60px);
+        font-weight: 650;
+        line-height: 1.08;
+        letter-spacing: -2px;
+        margin: 14px 0 22px;
+      }
+      .lead {
+        font-size: 20px;
+        line-height: 1.5;
+        max-width: 830px;
+      }
+      .muted,
+      .meta {
+        color: var(--muted);
+      }
+      .meta {
+        font-size: 13px;
+      }
+      h2 {
+        font-size: 28px;
+        line-height: 1.25;
+        letter-spacing: -0.5px;
+      }
+      h3 {
+        line-height: 1.3;
+      }
+      .recommendation {
+        background: var(--ink);
+        color: white;
+        border-radius: 12px;
+        padding: 26px 30px;
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 28px;
+        align-items: start;
+        margin-bottom: 38px;
+      }
+      .recommendation .kicker {
+        color: #b1dec4;
+      }
+      .recommendation h2 {
+        margin: 8px 0 0;
+        font-size: 24px;
+      }
+      .recommendation p {
+        margin: 0;
+      }
+      .recommendation .meta {
+        color: #c3d0d6;
+        margin-top: 10px;
+      }
+      section {
+        scroll-margin-top: 24px;
+      }
+      .section-heading {
+        display: flex;
+        gap: 24px;
+        align-items: baseline;
+        justify-content: space-between;
+      }
+      .section-heading h2 {
+        margin: 0 0 14px;
+      }
+      .scenario {
+        padding: 17px 20px;
+        border-left: 3px solid var(--line);
+        margin: 0 0 24px;
+        font-size: 14px;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 20px;
+      }
+      .style-card {
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-top: 4px solid var(--accent);
+        border-radius: 9px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+      }
+      .outcome {
+        --accent: var(--green);
+      }
+      .contrast {
+        --accent: var(--blue);
+      }
+      .decision {
+        --accent: var(--amber);
+      }
+      .card-head {
+        padding: 24px 24px 20px;
+      }
+      .card-head .kicker {
+        color: var(--accent);
+      }
+      .card-head h3 {
+        font-size: 26px;
+        letter-spacing: -0.6px;
+        margin: 12px 0 8px;
+      }
+      .card-head p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 14px;
+      }
+      .badge {
+        display: inline-block;
+        background: var(--green-light);
+        color: var(--green);
+        padding: 2px 8px;
+        border-radius: 4px;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0;
+        margin-left: 6px;
+      }
+      .preview {
+        margin: 0 14px;
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        flex: 1;
+      }
+      .preview-bar {
+        padding: 9px 14px;
+        border-bottom: 1px solid var(--line);
+        background: #f8faf9;
+        font-size: 11px;
+        color: var(--muted);
+      }
+      .pr-body {
+        padding: 18px;
+        font-size: 15px;
+        line-height: 1.65;
+      }
+      .pr-body p {
+        margin: 0 0 16px;
+      }
+      .pr-body p:last-child {
+        margin-bottom: 0;
+      }
+      .fit {
+        padding: 20px 24px;
+        font-size: 13px;
+      }
+      .fit p {
+        margin: 0 0 8px;
+      }
+      .fit p:last-child {
+        margin: 0;
+        color: var(--muted);
+      }
+      .style-card details {
+        border-top: 1px solid var(--line);
+        padding: 16px 24px;
+      }
+      summary {
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: 650;
+      }
+      pre {
+        white-space: pre-wrap;
+        overflow-wrap: anywhere;
+        background: #f4f6f5;
+        padding: 16px;
+        border-radius: 5px;
+        font-size: 12px;
+        line-height: 1.7;
+      }
+      code {
+        font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+        font-size: 0.9em;
+      }
+      .rules {
+        margin: 44px 0;
+      }
+      .rule-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+      .rule {
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 22px 26px;
+      }
+      .rule h3 {
+        margin: 0 0 10px;
+        font-size: 18px;
+      }
+      .rule ul {
+        margin: 0;
+        padding-left: 20px;
+        font-size: 14px;
+      }
+      .rule li + li {
+        margin-top: 8px;
+      }
+      .caution {
+        padding: 20px 24px;
+        margin-top: 20px;
+        background: #f2eadd;
+        border: 1px solid #d7c6a9;
+        border-radius: 8px;
+        font-size: 14px;
+      }
+      .caution p {
+        margin: 0;
+      }
+      .research {
+        border-top: 1px solid var(--line);
+        padding: 32px 0;
+      }
+      .findings {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 18px 36px;
+      }
+      .finding {
+        border-bottom: 1px solid var(--line);
+        padding-bottom: 20px;
+      }
+      .finding h3 {
+        font-size: 17px;
+        margin: 6px 0 10px;
+      }
+      .finding p {
+        font-size: 14px;
+        margin: 0 0 10px;
+      }
+      .finding .date {
+        font-size: 11px;
+        font-weight: 700;
+        color: var(--muted);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+      .finding a {
+        font-size: 13px;
+      }
+      .next {
+        margin: 8px 0 40px;
+        background: var(--green-light);
+        padding: 24px 28px;
+        border-radius: 8px;
+      }
+      .next h2 {
+        margin: 0 0 10px;
+        font-size: 22px;
+      }
+      .next p {
+        margin: 0;
+        font-size: 14px;
+      }
+      footer {
+        border-top: 1px solid var(--line);
+        padding: 22px 0 36px;
+        font-size: 12px;
+        color: var(--muted);
+      }
+      @media (max-width: 1100px) {
+        .grid {
+          grid-template-columns: 1fr;
+        }
+        .style-card {
+          display: grid;
+          grid-template-columns: 1fr 1.4fr;
+        }
+        .preview {
+          grid-column: 2;
+          grid-row: 1 / span 2;
+          margin: 18px;
+        }
+        .style-card details {
+          grid-column: 1 / -1;
+        }
+        .fit {
+          padding-top: 0;
+        }
+      }
+      @media (max-width: 650px) {
+        .wrap {
+          padding-left: 20px;
+          padding-right: 20px;
+        }
+        .masthead,
+        .section-heading {
+          align-items: flex-start;
+          flex-direction: column;
+          gap: 10px;
+        }
+        nav {
+          gap: 18px;
+        }
+        header {
+          padding-top: 32px;
+        }
+        h1 {
+          letter-spacing: -1px;
+        }
+        .lead {
+          font-size: 18px;
+        }
+        .recommendation,
+        .rule-grid,
+        .findings {
+          grid-template-columns: 1fr;
+        }
+        .recommendation {
+          padding: 24px;
+          gap: 16px;
+        }
+        .style-card {
+          display: flex;
+        }
+        .preview {
+          margin: 0 14px;
+        }
+        .fit {
+          padding-top: 20px;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+      }
+      @media print {
+        body {
+          background: white;
+          font-size: 12px;
+        }
+        .wrap {
+          max-width: none;
+          padding: 0;
+        }
+        nav,
+        .skip {
+          display: none;
+        }
+        header {
+          padding: 20px 0;
+        }
+        h1 {
+          font-size: 32px;
+        }
+        .grid,
+        .style-card {
+          display: block;
+        }
+        .style-card {
+          break-inside: avoid;
+          margin-bottom: 20px;
+        }
+        .preview {
+          margin: 0 14px;
+        }
+        .recommendation {
+          background: white;
+          color: var(--ink);
+          border: 1px solid var(--line);
+        }
+        .recommendation .kicker,
+        .recommendation .meta {
+          color: var(--muted);
+        }
+        .research {
+          break-before: page;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <div class="wrap">
+      <div class="masthead">
+        <span class="brand">Team review / format study</span>
+        <nav aria-label="Page sections">
+          <a href="#styles">Three styles</a>
+          <a href="#rules">What earns space</a>
+          <a href="#research">Recent research</a>
+        </nav>
+      </div>
+      <main id="main">
+        <header>
+          <div class="eyebrow">One default. No tiny or long modes.</div>
+          <h1>Less description.<br />More understanding.</h1>
+          <p class="lead">
+            In 30 seconds, a reviewer should know
+            <strong
+              >what changes, why it matters, and the one thing they must not
+              miss.</strong
+            >
+            Not every function the agent touched.
+          </p>
+          <p class="meta">
+            Research window: March 12-September 12, 2026. Three candidates for
+            one team default, not three new command options.
+          </p>
+        </header>
+
+        <aside class="recommendation" aria-label="Recommended direction">
+          <div>
+            <div class="kicker">Recommendation</div>
+            <h2>A. Outcome + caveat</h2>
+          </div>
+          <div>
+            <p>
+              Combine what and why in one sentence. Add a caveat only when it
+              changes understanding or approval. Add one useful verification
+              line. Then stop.
+            </p>
+            <p class="meta">
+              Roughly 40-80 words when context is needed; one sentence can be
+              enough. This is a writing target, not a proven reading-time
+              threshold or a cap on material risks.
+            </p>
+          </div>
+        </aside>
+
+        <section id="styles" aria-labelledby="styles-heading">
+          <div class="section-heading">
+            <h2 id="styles-heading">Same change. Three different lenses.</h2>
+            <span class="meta">Examples are the proposed PR bodies.</span>
+          </div>
+          <p class="scenario">
+            <strong>Shared fictional PR:</strong> Stop refreshing account data
+            on every returning sign-in. Keep immediate sync for first-time
+            connections; existing users use the daily sync. Assume the team
+            accepted this freshness tradeoff.
+            <strong
+              >Test outcomes below are illustrative, not tests run in this
+              repository.</strong
+            >
+          </p>
+
+          <div class="grid">
+            <article class="style-card outcome" aria-labelledby="outcome-title">
+              <div class="card-head">
+                <div class="kicker">
+                  A / Narrative <span class="badge">Recommended</span>
+                </div>
+                <h3 id="outcome-title">Outcome + caveat</h3>
+                <p>
+                  Lead with the payoff. Keep only the exception and evidence
+                  that earn a second glance.
+                </p>
+              </div>
+              <div class="preview">
+                <div class="preview-bar">
+                  Rendered PR description / illustrative example
+                </div>
+                <div class="pr-body" id="example-a">
+                  <p>
+                    Sign-in no longer waits for account-data refresh, so
+                    provider outages do not block returning users. First-time
+                    connections still sync immediately.
+                  </p>
+                  <p>
+                    <strong>Tradeoff.</strong> Existing users can see data up to
+                    24 hours old when daily sync succeeds on schedule; failed or
+                    delayed runs extend the window.
+                  </p>
+                  <p>
+                    <strong>Checked.</strong> Integration tests passed for
+                    returning sign-in during a provider outage and first-time
+                    sync.
+                  </p>
+                </div>
+              </div>
+              <div class="fit">
+                <p>
+                  <strong>Best for:</strong> Everyday fixes and features. The
+                  least ceremony for a mixed team.
+                </p>
+                <p>
+                  <strong>Watch out:</strong> Dense paragraphs can hide
+                  unrelated changes. Split the change instead of adding a
+                  miniature changelog.
+                </p>
+              </div>
+              <details>
+                <summary>Show Markdown template</summary>
+                <pre><code>[Behavior change], so [concrete benefit or reason].
+
+**Tradeoff.** [Only a non-obvious constraint, accepted cost, or scope boundary. Omit when absent.]
+
+**Checked.** [One relevant verification outcome, or a material verification gap. Omit redundant green-CI reporting.]</code></pre>
+                <p class="meta">
+                  A routine change can be just the first line. Use a precise
+                  label such as "Rollout" or "Scope" when "Tradeoff" does not
+                  fit.
+                </p>
+              </details>
+            </article>
+
+            <article
+              class="style-card contrast"
+              aria-labelledby="contrast-title"
+            >
+              <div class="card-head">
+                <div class="kicker">B / Contrast</div>
+                <h3 id="contrast-title">Before / After</h3>
+                <p>
+                  Give the reviewer a tiny behavior model. Let the contrast
+                  explain why the change exists.
+                </p>
+              </div>
+              <div class="preview">
+                <div class="preview-bar">
+                  Rendered PR description / illustrative example
+                </div>
+                <div class="pr-body" id="example-b">
+                  <p>
+                    <strong>Before:</strong> Returning users wait for a provider
+                    refresh during sign-in; an outage blocks them.
+                  </p>
+                  <p>
+                    <strong>After:</strong> They sign in using stored account
+                    data. First-time connections still sync immediately.
+                  </p>
+                  <p>
+                    <strong>Boundary:</strong> Existing data can be up to 24
+                    hours old when daily sync succeeds on schedule; failed or
+                    delayed runs extend the window.
+                  </p>
+                  <p>
+                    <strong>Checked:</strong> Integration tests passed for
+                    returning sign-in during a provider outage and first-time
+                    sync.
+                  </p>
+                </div>
+              </div>
+              <div class="fit">
+                <p>
+                  <strong>Best for:</strong> Bug fixes and behavior changes
+                  where a reviewer needs to see the difference quickly.
+                </p>
+                <p>
+                  <strong>Watch out:</strong> Forced before/after stories add
+                  noise to internal refactors. Actual behavior is enough;
+                  screenshots and output blocks are not mandatory.
+                </p>
+              </div>
+              <details>
+                <summary>Show Markdown template</summary>
+                <pre><code>**Before:** [Observable behavior and the problem it causes.]
+
+**After:** [New behavior; mention an unchanged boundary only if important.]
+
+**Boundary:** [Only a surprising limitation, rollout condition, or remaining scope. Omit when absent.]
+
+**Checked:** [One relevant verification outcome, or a material verification gap. Omit redundant green-CI reporting.]</code></pre>
+                <p class="meta">
+                  Use behavior from the request, code, or tests. Do not invent a
+                  before/after metric or manufacture a UI example.
+                </p>
+              </details>
+            </article>
+
+            <article
+              class="style-card decision"
+              aria-labelledby="decision-title"
+            >
+              <div class="card-head">
+                <div class="kicker">C / Judgment</div>
+                <h3 id="decision-title">Decision brief</h3>
+                <p>
+                  Lead with the choice being made. Put the accepted cost where
+                  the reviewer cannot overlook it.
+                </p>
+              </div>
+              <div class="preview">
+                <div class="preview-bar">
+                  Rendered PR description / illustrative example
+                </div>
+                <div class="pr-body" id="example-c">
+                  <p>
+                    <strong>Decision:</strong> Use stored account data for
+                    returning sign-ins; keep immediate sync for first-time
+                    connections.
+                  </p>
+                  <p>
+                    <strong>Reason:</strong> Returning sign-in should not depend
+                    on provider availability.
+                  </p>
+                  <p>
+                    <strong>Accepted cost:</strong> Existing data can be up to
+                    24 hours old when daily sync succeeds on schedule; failed or
+                    delayed runs extend the window.
+                  </p>
+                  <p>
+                    <strong>Evidence:</strong> Integration tests passed for
+                    returning sign-in during a provider outage and first-time
+                    sync.
+                  </p>
+                </div>
+              </div>
+              <div class="fit">
+                <p>
+                  <strong>Best for:</strong> Data consistency, compatibility,
+                  migrations, and other choices with a meaningful cost.
+                </p>
+                <p>
+                  <strong>Watch out:</strong> Too formal for routine work.
+                  Record real decisions, not invented alternatives or claims
+                  that the team already approved them.
+                </p>
+              </div>
+              <details>
+                <summary>Show Markdown template</summary>
+                <pre><code>**Decision:** [Behavior or policy chosen.]
+
+**Reason:** [Constraint that makes this choice appropriate.]
+
+**Accepted cost:** [Only a consequential tradeoff and its boundary. Omit when absent.]
+
+**Evidence:** [One relevant verification outcome, or a material verification gap. Omit redundant green-CI reporting.]</code></pre>
+                <p class="meta">
+                  If approval is still needed, label it "Open question" rather
+                  than "Accepted cost." Link an existing design decision instead
+                  of retelling its history.
+                </p>
+              </details>
+            </article>
+          </div>
+        </section>
+
+        <section class="rules" id="rules" aria-labelledby="rules-heading">
+          <h2 id="rules-heading">What earns space in any version?</h2>
+          <div class="rule-grid">
+            <div class="rule">
+              <h3>Keep what changes the review.</h3>
+              <ul>
+                <li>
+                  The outcome and concrete reason, in the team's domain
+                  language.
+                </li>
+                <li>
+                  Non-obvious accepted costs, failure behavior, security
+                  boundaries, or deployment ordering.
+                </li>
+                <li>
+                  Remaining ticket scope or a prerequisite PR when omission
+                  would imply completion.
+                </li>
+                <li>
+                  A meaningful check result. Always surface an unverified
+                  critical path or failing/pending required check.
+                </li>
+              </ul>
+            </div>
+            <div class="rule">
+              <h3>Leave the mechanism in the diff.</h3>
+              <ul>
+                <li>
+                  Remove repeated summary/why/what sections and mandatory bullet
+                  counts.
+                </li>
+                <li>
+                  Skip file inventories, routine helper names, pasted logs, and
+                  repeated green-CI status.
+                </li>
+                <li>
+                  Omit empty headings and "low risk" filler. Keep important
+                  caveats visible.
+                </li>
+                <li>
+                  Link deeper evidence or a durable design note only when
+                  useful; a PR body is not an agent transcript.
+                </li>
+              </ul>
+            </div>
+          </div>
+          <aside class="caution">
+            <p>
+              <strong
+                >Your 24-hour example is exactly the right kind of
+                detail.</strong
+              >
+              But daily scheduling alone is not a hard freshness guarantee.
+              Check scheduling, completion time, retries, and failure handling
+              before promising "at most 24 hours." The examples deliberately
+              qualify that bound. Their tests also do not prove a maximum data
+              age.
+            </p>
+          </aside>
+        </section>
+
+        <section
+          class="research"
+          id="research"
+          aria-labelledby="research-heading"
+        >
+          <div class="section-heading">
+            <h2 id="research-heading">What recent guidance actually says</h2>
+            <a href="pr-description-research.md"
+              >Full research notes and limitations</a
+            >
+          </div>
+          <p class="muted">
+            Four dated publications within the requested six months. The
+            principles below are supported by the sources; the three templates
+            and word target are our synthesis, not an industry standard.
+          </p>
+          <div class="findings">
+            <article class="finding">
+              <div class="date">GitHub / May 7, 2026 / Author guidance</div>
+              <h3>Cut agent verbosity before requesting review.</h3>
+              <p>
+                "Agents love verbosity. They describe what's better explored
+                through the code itself." GitHub also asks authors to review
+                their own agent-generated PRs and confirm intent.
+              </p>
+              <p>
+                <strong>Applied here:</strong> Outcome instead of a diff recap.
+                Human ownership stays; the word count shrinks.
+              </p>
+              <a
+                href="https://github.blog/ai-and-ml/generative-ai/agent-pull-requests-are-everywhere-heres-how-to-review-them/"
+                >Read: Agent pull requests are everywhere</a
+              >
+            </article>
+            <article class="finding">
+              <div class="date">
+                GitHub / August 4, 2026 / Workflow guidance
+              </div>
+              <h3>One concern is easier to explain than five.</h3>
+              <p>
+                GitHub recommends small, logically ordered PRs, "each scoped to
+                a single concern," with enough context from preceding work.
+              </p>
+              <p>
+                <strong>Applied here:</strong> One high-level story; a short
+                dependency or partial-scope note when needed. A template cannot
+                fix an oversized PR.
+              </p>
+              <a
+                href="https://github.blog/engineering/turn-one-giant-ai-generated-pull-request-to-a-reviewable-stack/"
+                >Read: Turn one giant AI-generated PR into a stack</a
+              >
+            </article>
+            <article class="finding">
+              <div class="date">
+                GitLab / August 24, 2026 / Platform perspective
+              </div>
+              <h3>Constraints are context, not implementation trivia.</h3>
+              <p>
+                GitLab's context model includes requirements, history, business
+                priorities, and constraints. It distinguishes automated policy
+                from unforeseen cases needing human attention.
+              </p>
+              <p>
+                <strong>Applied here:</strong> Keep the freshness tradeoff. Drop
+                the list of helper functions. This source is broader platform
+                strategy, not a PR-template study.
+              </p>
+              <a href="https://about.gitlab.com/blog/when-code-is-abundant/"
+                >Read: When code is abundant</a
+              >
+            </article>
+            <article class="finding">
+              <div class="date">
+                Rachel Laycock / September 2, 2026 / Opinion
+              </div>
+              <h3>Reserve attention for consequential judgment.</h3>
+              <p>
+                Writing on Martin Fowler's site, Laycock argues for earlier
+                design discussion, automated deterministic checks, and human
+                attention to sensitive or high-impact changes.
+              </p>
+              <p>
+                <strong>Applied here:</strong> The decision brief makes a
+                tradeoff explicit. We borrow that focus, not the essay's broader
+                proposal to reduce mandatory reviews.
+              </p>
+              <a
+                href="https://martinfowler.com/rachels-ramblings/code-review.html"
+                >Read: Maybe We Shouldn't Be Reviewing All This Code</a
+              >
+            </article>
+          </div>
+          <p class="meta">
+            Dates and supporting passages were checked on fetched source pages.
+            Guidance and opinion are not experimental proof. An undated guide
+            was excluded from the recent evidence; a later search hit a provider
+            rate limit. Thirty seconds is for orientation, not approval.
+          </p>
+        </section>
+
+        <section class="next" aria-labelledby="next-heading">
+          <h2 id="next-heading">Pick a default, not another menu.</h2>
+          <p>
+            <strong>My pick: A.</strong> It leaves the most space for the rare
+            detail that matters. Choose B if your team thinks in behavior
+            contrasts, or C if reviews mostly revolve around consequential
+            choices. Try the selected style on five varied PRs: after 30
+            seconds, can a reviewer state the outcome and the important caveat
+            without opening the diff?
+          </p>
+          <p style="margin-top: 12px">
+            <strong>Pending your choice:</strong> Remove
+            <code>tiny|long</code> and replace the default in
+            <code>pi/commands/issue_pr.md</code>. Preserve evidence checks,
+            partial-scope disclosure, draft creation, title handling, and
+            confirmation before overwriting existing descriptions. The command
+            is unchanged in this proposal.
+          </p>
+        </section>
+      </main>
+      <footer>
+        Prepared September 12, 2026. Self-contained HTML: no external assets,
+        scripts, or tracking. Open the template disclosures to view copyable
+        Markdown.
+      </footer>
+    </div>
+  </body>
+</html>
