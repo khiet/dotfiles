@@ -1,15 +1,10 @@
 ---
 description: Close out a branch after implementation
-argument-hint: "[spec]"
 ---
 
 # Wrap Up
 
 Run the post-implementation pass over the current branch, then lint the whole branch once at the end with auto-fix.
-
-$ARGUMENTS
-
-The optional argument is the spec the branch implements: an issue reference such as `#99` or `ABC-123`, a URL, or a file path. Hand it to the `code-review` skill as the spec source.
 
 ## Review Findings
 
@@ -37,7 +32,7 @@ Do not push. Decide each gate from the diff and report every skip with its gate.
    - Use the `test-gap` skill. Its commit carries a `test:` subject.
 
 4. **Run `code-review`**
-   - Use the `code-review` skill with `main` as the fixed point and the spec argument from above if one was given.
+   - Use the `code-review` skill with `main` as the fixed point.
    - Sort every finding through Review Findings. Apply only the "fix now" findings and commit them on their own with a `fix:` or `refactor:` subject. Hold the other two buckets for step 9.
 
 5. **Evaluate the `comment-refactor` gate**
