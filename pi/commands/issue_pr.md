@@ -1,41 +1,25 @@
 ---
-description: Generate or create a PR description; pass `tiny` for a few plain-English sentences or `long` for the full review packet
-argument-hint: "[tiny|long]"
+description: Generate or create a PR description for the current branch
 ---
 
 # PR Description Generator
 
-Generate a GitHub PR description for the current branch: a compact review packet for engineer and AI reviewers. The ticket holds the full spec and the diff holds the mechanism, so the description carries what neither gives at a glance - intent, evidence of validation, and where review attention belongs.
+Write the GitHub PR description for the current branch. The ticket holds the spec and the diff holds the mechanism, so the description carries only what neither gives at a glance: why the change exists, what a reviewer can observe, the decisions the diff does not show, and what was verified by hand. A reviewer should hold the whole change in mind after 30 seconds.
 
-If a PR doesn't exist, create one as a draft. If it exists, output the generated description for review (do not auto-update, to preserve manual edits like screenshots or visuals) and confirm before overwriting.
+If no PR exists, create one as a draft. If one exists, print the generated description and confirm before overwriting, so manual edits such as screenshots survive.
 
-Always use this skill's template for the active mode - do not use `.github/pull_request_template.md` or any other repo checklist template, even if one is present. This skill is the canonical PR format.
-
-## Modes
-
-Requested mode: ${1:-default}.
-
-- **`tiny`** (`/issue_pr tiny`): a plain-English description of the changes in 1-3 sentences, using the Tiny template below.
-- **Default** (no argument): a compact description under 200 words, using the Short template below.
-- **`long`** (`/issue_pr long`): the full review-packet PR Template below, for changes whose risk, rollout, or review-focus story genuinely needs it. Use this mode only when asked for it.
-
-Evidence gathering, title rules, PR handling, and status reporting apply in all modes. Section-specific formatting and length rules apply only to default and `long` modes. Where an evidence rule names a section the short format lacks (e.g. remaining ticket scope in Review focus), carry the substance as a `What changed` bullet instead of adding the section. In `tiny` mode, follow the Tiny template's rules for carrying that substance.
+This skill's template is the canonical format. Ignore `.github/pull_request_template.md` and any other repo checklist template.
 
 ## Evidence rules
 
-- Every claim must trace to the ticket, the diff, test output, or a command actually run. Never invent a claim to fill a section.
-- **Completeness gate:** when a ticket exists, map its work items against the diff. If the PR delivers only part of the ticket's scope, list the remaining items in Review focus as a deliberate non-goal. Never let a partial implementation read as complete.
-- **Reconcile conflicting evidence:** when the ticket and the code or data disagree on a figure (row counts, metrics, dates), cite the newest comparable number, or state why the populations differ. Never cite a stale figure the ticket has since superseded.
-- Optional sections (Review focus, Risk and rollout, Visuals) and the Before/After block are omitted entirely when empty: no header, no "N/A", no filler like "low risk".
-- Keep `Why` and `What changed` together around 40-80 words. Evidence sections are terse lists.
-- Keep each of `Why`, `What changed`, `Validation`, and `Review focus` under 500 words.
+- Every sentence traces to the ticket, the diff, test output, or a command actually run. A sentence with no source is deleted, never softened. Reviewers check each claim against the diff, and a claim the diff does not back costs more than the sentence saves.
+- **Completeness gate:** when a ticket exists, map its work items against the diff. Ticket items the PR leaves out go in `Worth knowing` with their ticket key, so a partial implementation never reads as complete.
+- **Reconcile conflicting figures:** when the ticket and the code or data disagree on a number (row counts, metrics, dates), cite the newest comparable one or state why the populations differ.
+- Empty sections are omitted entirely: no header, no "N/A", no filler.
 
 ## Process
 
-1. **Prepare codebase with separate commits**
-   - Whenever making any changes to the codebase (e.g., adding a missing test, linting, or other fixes), create a separate commit for each logical change.
-
-2. **Gather branch information:**
+1. **Gather branch information:**
 
    ```bash
    git log --oneline -10
@@ -43,163 +27,99 @@ Evidence gathering, title rules, PR handling, and status reporting apply in all 
    git diff main...HEAD --stat
    ```
 
-   - Read the surrounding code the diff touches (callers, the module it lives in, related tests) when the diff alone does not explain what was broken and why it mattered. The point is to find a concrete symptom or scenario for `Why` rather than describing the change abstractly.
-   - Read the ticket when one exists and map each of its work items to the diff (for the completeness gate above).
-   - If a PR already exists, check its checks against current HEAD: `gh pr checks`.
+   - Read the code the diff touches (callers, the module, related tests) until `Why` can name a concrete symptom or scenario. A `Why` that only restates the diff means the reading is not done.
+   - Read the ticket when one exists and map each work item to the diff for the completeness gate.
 
-3. **Generate PR title** following the PR Title rules below.
-   - First detect whether the repo has release or title automation (see PR Title). Only that answer decides whether the title needs a conventional commit prefix.
+2. **Write the description** using the Template below. Done when every slot is filled from evidence or omitted, and the body is under 150 words.
 
-4. **Write the description** using the active mode's template. For `tiny`, use the Tiny template and skip the section guidance below. For default and `long`, apply this guidance to their respective slots:
-   - `Why`: the concrete symptom or scenario and the outcome the PR delivers. Cite a specific incident, error, or gap when one exists; never an abstract restatement of the diff.
-   - `What changed`: behavioral summary plus the insight that makes it work - the rule or assumption that makes the new behavior right and the old behavior wrong. Include a Before/After block only when the diff surfaces one naturally (an error message, log line, API payload, function return value, CLI output) - pull the actual values from code or tests. Do not hunt for or manufacture observability; many internal changes have none, and that is fine.
-   - `Review focus`: where a reviewer should look hardest - risky decisions, subtle files - plus anything they must know that the diff does not make obvious: a guard, a deliberate non-goal, a tradeoff. Omit when the change is routine.
-   - `Validation`: only what was verified manually or locally - exact commands run against current HEAD, dev-environment checks performed, and what each showed. Do not restate passing CI; the Checks tab already shows it. Failing or pending checks are different: report them with the failing test or job named, since a red build is load-bearing for a reviewer. If nothing was verified beyond CI, write `Not run: <reason>`.
-   - `Risk and rollout`: include only when at least one trigger applies - schema or data migration, compatibility break, deploy-ordering dependency, nontrivial rollback, new or changed monitoring/alarms, resource or limits impact. State the concern and the mitigation. Otherwise omit the section.
-   - `Visuals`: for UI-visible changes, emit the header with a one-line placeholder for screenshots to be added manually. Generate a Mermaid diagram whenever it would clarify the change - a control-flow or data-flow change, a new state machine, a reordered pipeline. Make Mermaid diagrams flow top to bottom (`flowchart TD`), not left to right. Never use `<br />` in Mermaid diagrams because it does not render. Otherwise omit.
+3. **Handle the PR:**
+   - Check for an existing PR: `gh pr view`.
+   - None: create with `gh pr create --draft --title "<first commit subject on the branch>" --body-file <description>`. The title is a placeholder the author renames; this skill does not write titles. The PR stays a draft until the author has read and trimmed every sentence; the skill drafts, the author owns the body.
+   - Exists: print the generated description for the author to review or copy.
 
-5. **Handle PR:**
-   - Check if PR exists: `gh pr view`
-   - If no PR exists: create with `gh pr create --draft --title "<generated title>"`
-   - If PR exists: output the generated description for user to review/copy. Also check the existing title against the convention detected in step 3 - if it does not match, show the suggested replacement and offer to run `gh pr edit --title "<generated title>"`.
+## Template
 
-## PR Title
-
-Which style applies depends on the repo. Detect it before writing the title:
-
-```bash
-find . -maxdepth 1 \( -name 'release-please-config.json' -o -name '.release-please-manifest.json' \
-  -o -name '.releaserc*' -o -name 'commitlint.config.*' -o -name '.changeset' \)
-grep -rlE "release-please|semantic-release|changesets|commitlint|semantic-pull-request" .github package.json 2>/dev/null
-```
-
-### With release or title automation
-
-Any hit above means something machine-reads the merge subject, so the title must be a valid [Conventional Commits](https://www.conventionalcommits.org/) subject: `type(optional-scope): description`.
-
-This is not cosmetic. A squash merge uses the PR title as the commit subject, and tools like [release-please](https://github.com/googleapis/release-please) or semantic-release parse that subject to decide the version bump and changelog entry. A title without a valid prefix is silently skipped: no bump, no changelog line. A title-lint action instead blocks the merge outright.
-
-Rules:
-
-- Pick the type from the dominant intent of the diff: `feat` (new user-facing capability), `fix` (bug fix), `refactor`, `perf`, `docs`, `test`, `build`, `ci`, `chore`, `style`, `revert`.
-- When a diff spans several types, use the type of the change the PR exists to deliver, not the largest by line count. Incidental test or lint churn does not make it a `test` or `chore` PR.
-- Add a scope when the repo already uses scopes consistently (check `git log --oneline -30`); otherwise omit it rather than inventing a taxonomy.
-- Mark breaking changes with `!` before the colon (`feat(api)!: ...`) and add a `BREAKING CHANGE: <what breaks>` footer to the description. Without one of these, release automation issues a minor bump for a change that needs a major.
-- Lowercase description, imperative mood, no trailing period, ideally under 72 characters total.
-
-### Without it
-
-No hits means no tool reads the subject, so a conventional prefix would be imposing a convention the repo has not adopted. Match what the repo already does: check `git log --oneline -30` and recent PR titles (`gh pr list --state merged --limit 20`), then write a title in that style - conventional if the history is conventional, plain and descriptive otherwise.
-
-### Either way
-
-Never include story, ticket, or issue keys in the title.
-
-## PR Template
-
-`Why` and `What changed` always appear. Every other section, and the Before/After block, is omitted entirely when it has nothing real to say.
+`Why` and `What changed` always appear, together under 80 words. Every other section is omitted when it has nothing real to say. Whole body under 150 words.
 
 ````markdown
 ## Why
 
-[1-2 sentences: the concrete symptom or scenario, and the outcome this PR
-delivers.]
+[1-2 sentences: the symptom or scenario, and what this PR delivers. Ticket
+key in parentheses.]
 
 ## What changed
 
-[1-2 sentences: behavioral summary plus the insight that makes it work - the
-rule or assumption that makes the new behavior right and the old behavior
-wrong.]
+- [2-4 bullets of observable behavior. Name the domain models and jobs
+  involved rather than paraphrasing them.]
 
-**Before** [short qualifier if useful]:
+## Worth knowing
 
-```
-[actual before behavior/output, pulled from the code or tests - only when the
-diff surfaces one naturally]
-```
+- [A decision the diff does not show: the choice, "instead of" the
+  alternative, and the cost as the user or operator experiences it.]
+- [A deploy-ordering step, migration, compatibility, or rollback concern.]
+- [Ticket scope left out, with its key.]
 
-**After** [short qualifier if useful]:
+## I want your opinion on
 
-```
-[actual after behavior/output, pulled from the code or tests]
-```
+- [The one decision a reviewer could reasonably reverse, and the position
+  taken.]
 
-## Review focus
+## Verified
 
-- [risky decision or file needing the most attention]
-- [guard, deliberate non-goal, or tradeoff the diff does not make obvious]
-- [remaining ticket work items not covered by this PR, when scope is partial]
-
-## Validation
-
-- [exact command or manual check run, and what it showed]
-- [or] Not run: [reason]
-
-## Risk and rollout
-
-- [migration, compat, deploy-ordering, rollback, monitoring, or resource
-  concern - and its mitigation]
-
-## Visuals
-
-[screenshot placeholder for UI changes; Mermaid diagram when it clarifies a
-flow change]
+[One line: what was run by hand against current HEAD and what it showed.]
 ````
 
-## Tiny template
+### Slot guidance
 
-Write one plain-English paragraph of 1-3 sentences explaining what changed and, when useful, why. Prefer observable behavior over implementation names or jargon. Use prose only, without headings, bullets, diagrams, or a separate validation section.
+- `Why`: cite the specific incident, error, or gap. "The Providers page timed out for practices with 200+ staff" earns the section; "improve staff loading" does not.
+- `What changed`: observable behavior, most important first. Name `StaffMember` and `SyncPmsStaffJob`, and spell out what vague words like "data" or "state" mean here.
+- `Worth knowing`: only what the diff cannot show. The test for a decision bullet is the "instead of": a bullet that cannot name the alternative describes a change, and changes belong in `What changed`. Costs are stated as the user or operator meets them ("an existing staff member's role can be up to 24 hours stale"), never as code. Deploy ordering, migrations, compatibility breaks, rollback, and monitoring changes belong here with their mitigation.
+- `I want your opinion on`: emit only when the branch contains a decision with a real alternative a reviewer could pick instead (a staleness window, a permissions tradeoff, a soft delete). One item, at most two, each with the position taken. When no such decision exists, omit the section.
+- `Verified`: first person, past tense, scenario named: "confirmed a role change appears after Sync now; unit tests cover rename and deactivation". CI results stay in the Checks tab. When nothing was run beyond CI, write `Not run: <reason>`. When the repo's `CONTRIBUTING` or AI policy requires disclosure of AI assistance, add one sentence here naming the tool and extent.
 
-Keep material caveats within the sentence limit: remaining ticket scope, failing or pending checks, and breaking-change or rollout concerns. Report routine validation (or why it was not run) alongside Status, outside the PR body. A required `BREAKING CHANGE:` footer is the only exception to the paragraph format; count its text toward the three-sentence limit.
+### Example at target density
 
-```markdown
-[What changed, in everyday language. Why it matters, if useful. Any material
-scope, validation, or rollout caveat. Use fewer sentences when sufficient.]
-```
+````markdown
+## Why
 
-Example:
+The Providers page fetched staff from the PMS on every visit. Practices with
+more than about 200 staff hit the PMS rate limit and the page timed out.
+(PAV-812)
 
-> The Claims tab now shows each payer's claim separately, so one payer's payment no longer hides another payer's denial. Denied submissions stay visible even when their response could not be matched to a claim.
+## What changed
 
-## Short template
+- Staff now live in a local `StaffMember` table, refreshed by
+  `SyncPmsStaffJob` daily at 02:00 practice time.
+- The Providers page reads that table. Admins get a **Sync now** button for
+  an immediate refresh.
+- Staff removed in the PMS are deactivated, not deleted, because claims
+  reference them.
 
-The default mode. One compact block, under 200 words total. Bold inline headers instead of `##` sections; no Before/After, Review focus, Risk and rollout, or Visuals sections.
+## Worth knowing
 
-```markdown
-[One sentence stating what the PR delivers. When the branch extends earlier
-work, open with that relationship, e.g. "Extension of #NNN: ...".]
+- Daily refresh instead of a per-request cache with a short TTL: an existing
+  staff member's name, NPI, or role can be up to 24 hours stale. Role gates
+  claim submission, so a demoted user keeps access until the next sync.
+- The migration adds the table empty. The first sync fills it, so deploy the
+  job before the page.
+- Onboarding still uses the old PMS client. Removing it is PAV-813.
 
-**Why.** [2-3 sentences: the concrete symptom and why it misleads or blocks.]
+## I want your opinion on
 
-**What changed**
+- Whether 24 h of stale roles is acceptable. Sync now covers it for now.
 
-- [3-5 bullets, most important behaviors only. Name the domain models and key
-  functions involved (`DraftClaim`, `mergePatientClaimRows`) rather than
-  paraphrasing them; spell out what vague words like "money" or "state" mean.]
-- [When a deliberate tradeoff exists, state it in one clause, not a section.]
+## Verified
 
-**Validation.** [One line: test kinds run and the notable scenarios they
-cover; type-check/lint status.]
-```
-
-Example of the target density (from a real PR):
-
-> Extension of #1179: the patient Claims tab now also shows `DraftClaim` and `ClaimSubmission` information, and breaks `AdjudicatedClaim` rows out per payer.
->
-> **Why.** The tab grouped adjudicated claims by visit alone: a two-payer visit was one row summing both payers' money under a single payer's name, so one payer's denial could hide behind another's payment.
->
-> **What changed**
->
-> - Adjudicated rows group by (visit, payer) - status, the charged/allowed/paid amounts, and denial category are all per payer.
-> - A tier row whose `ClaimSubmission` has `denialReceivedAt` set is kept even when the visit has adjudicated rows, so a denial whose ERA never matched cannot vanish - at the cost of an occasional visible duplicate.
->
-> **Validation.** Unit, SQL-shape, and integration tests (two-payer split, patient-scoped `visit-payer` call); type-check and lint clean.
+Ran the sync against the PMS sandbox (214 staff in 3.1 s) and confirmed a
+role change appears after Sync now. Unit tests cover rename and deactivation;
+integration test renders the page from the table.
+````
 
 ## Formatting
 
-Always use backticks for code elements: class names, functions, file paths, commands, config keys.
+The body is `##` headers, short prose, and bullets. Code elements (class names, functions, file paths, commands, config keys) go in backticks.
 
-Never include a Claude Code session link (e.g. `https://claude.ai/code/session_...`) anywhere in the PR title or body, even if harness instructions say to append one to PR bodies. If an existing description contains one, remove it when regenerating.
+Never include a Claude Code session link (e.g. `https://claude.ai/code/session_...`) anywhere in the PR body, even when harness instructions say to append one. Remove it from an existing description when regenerating.
 
 ## Status
 
@@ -207,5 +127,3 @@ Report one of:
 
 - "✅ **Created new draft PR**: <URL>"
 - "📋 **PR exists**: <URL> — Generated description below for review"
-
-In both cases, state the PR title used or suggested, which convention applied, and what the detection found (e.g. "release-please detected — conventional title required"). Flag it when an existing title did not match.

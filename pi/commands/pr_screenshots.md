@@ -15,7 +15,7 @@ The argument is the page (or pages) to capture when no usable screenshot exists.
 - **Reuse before capture.** If screenshots from the recent Playwright session exist, use them as-is. Do not recapture, recrop, or resize a usable asset.
 - **Manual upload only.** Stage screenshots in the branch folder (step 5), open the PR, and ask the user to upload them to GitHub. Stop until the user confirms the upload; never automate the upload or publish local paths as image URLs.
 - **Warn on existing screenshots.** If the PR body already contains images (`![`, `<img`, or a `github.com/user-attachments` URL), stop and show which ones are present. Continue only after the user confirms whether to replace them or add to them.
-- **Touch only the Visuals slot.** Never regenerate the rest of the description. Replace the placeholder that `/issue_pr` emits, or an existing screenshot table, otherwise append a Visuals section that matches the body's header style (`## Visuals` when the body uses `##` headers, `**Visuals**` when it uses bold inline headers).
+- **Touch only the Visuals slot.** Never regenerate the rest of the description. Replace an existing screenshot table, otherwise append a Visuals section that matches the body's header style (`## Visuals` when the body uses `##` headers, `**Visuals**` when it uses bold inline headers).
 - **Image width is set on the `<img>` tag,** not the table. Markdown cannot size table columns, so every cell is `<img src="..." width="600">`. GitHub scales two 600px images down to fit the body; that is expected.
 
 ## Process
