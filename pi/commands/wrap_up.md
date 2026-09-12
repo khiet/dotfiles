@@ -5,7 +5,7 @@ argument-hint: "[spec]"
 
 # Wrap Up
 
-Run the post-implementation pass over the current branch, linting every commit it makes with auto-fix first.
+Run the post-implementation pass over the current branch, then lint the whole branch once at the end with auto-fix.
 
 $ARGUMENTS
 
