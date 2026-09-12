@@ -51,7 +51,7 @@ Do not push. Decide each gate from the diff and report every skip with its gate.
 9. **Report**
    - Print one line per step: `ran` with a one-line result, or `skipped` with the gate that caused it.
    - List the "needs your decision" findings, then the "out of scope" findings as a plain list. A non-empty decision list stops the run for an answer.
-   - The branch is finished when the suite passes and the decision list is empty. Say so and point the user at `/issue_pr`.
+   - The branch is finished when the suite passes and the decision list is empty. Say so.
 
 ## Ordering
 
