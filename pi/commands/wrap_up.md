@@ -46,7 +46,7 @@ Do not push. Decide each gate from the diff and report every skip with its gate.
    - `git diff main...HEAD --unified=0`. Run when the diff adds, modifies, or removes at least one comment line. Record the decision and reason.
 
 7. **Run `comment-refactor`** (if gated in)
-   - Use the `comment-refactor` skill with `main` as the base ref. Its commit carries a `docs:` subject.
+   - Use the `comment-refactor` skill. Its commit carries a `docs:` subject.
 
 8. **Lint**
    - Run the project's linter with auto-fix. Commit anything it changed with a `style:` subject.
@@ -58,7 +58,7 @@ Do not push. Decide each gate from the diff and report every skip with its gate.
     - Run when step 9 passed (or was skipped for lack of a suite) and at least one changed path renders UI, as step 1 of the `smoke-test` skill defines UI. Record the decision and reason; a failed suite is a skip with that gate.
 
 11. **Run `smoke-test`** (if gated in)
-    - Use the `smoke-test` skill with `main` as the base ref.
+    - Use the `smoke-test` skill.
     - Sort its `Failed` findings through Review Findings. Apply only the "fix now" findings, commit them on their own with a `fix:` subject, then re-run step 8's linter and step 9's suite once. Hold the other two buckets for step 12.
 
 12. **Report**
