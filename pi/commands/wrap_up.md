@@ -35,9 +35,8 @@ Do not push. Decide each gate from the diff and report every skip with its gate.
    - Use the `test-gap` skill. Its commit carries a `test:` subject.
 
 4. **Resolve the spec**
-   - Use `$1` when given. Otherwise take the issue reference from the branch's commit footers (`Closes #N` for GitHub, `Fixes ABC-123` for Linear).
-   - A bare number, `#N`, or a github.com issue URL is a GitHub issue in the current repository: read it with `gh issue view`. A Linear key or linear.app URL is a Linear issue: read it with the Linear tools.
-   - Record `no spec` when neither source yields a reference. The review still runs and reports the missing spec itself.
+   - The issue is `$1` when given, otherwise the reference in the branch's commit footers. Read it from its tracker.
+   - Record `no spec` when there is none. The review still runs and reports the missing spec itself.
 
 5. **Run `code-review`**
    - Use the `code-review` skill with `main` as the fixed point. Hand it the fetched issue contents as the spec so it does not go looking for one.
