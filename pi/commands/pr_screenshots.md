@@ -8,7 +8,7 @@ Fill the `Visuals` slot of the current PR description with screenshots of the UI
 
 Usage: `/pr_screenshots [url-or-route ...]`
 
-The argument is the page (or pages) to capture when no usable screenshot exists. Omit it when the recent Playwright session already produced captures.
+The argument is the page (or pages) to capture when no usable screenshot exists. Omit it when a recent smoke-test, Playwright, or ios-simulator session already produced captures.
 
 ## Rules
 
@@ -26,12 +26,13 @@ The argument is the page (or pages) to capture when no usable screenshot exists.
 
 3. **Collect candidate screenshots.** Look in, newest first:
    - `.playwright-mcp/` (Playwright MCP default output dir)
+   - `.ios-simulator-mcp/` (smoke-test's iOS screenshot dir)
    - `test-results/` and `playwright-report/` (test runs)
    - files captured earlier in this session
 
    Keep only PNG/JPEG files modified after the branch base (`git merge-base main HEAD`) and that show the UI this diff touches. List the candidates with path and mtime, and say which are reused. When at least one candidate is usable, skip step 4.
 
-4. **Capture only when nothing is reusable.** Requires a target page: use the argument, or derive the route from the diff when it is unambiguous, otherwise ask. Confirm the dev server is up before navigating; if it is not, ask how to start it rather than guessing. Capture with the Playwright MCP (`browser_navigate`, then `browser_take_screenshot` to a named file); fall back to `npx playwright screenshot <url> <file>` when the MCP is unavailable. One full-page capture per route or UI state.
+4. **Capture only when nothing is reusable.** Use the `smoke-test` skill, passing the argument routes through when given. Only screenshots listed under its `Passed` status are candidates; a `Failed` route shows a broken state, so list its finding for the user and leave its screenshot out. On `Skipped: no launch recipe`, ask how to start the app, then run the skill again with that recipe. On `Skipped: no UI changes` with no argument, report that there is nothing to capture and stop. Re-run step 3 over the skill's dirs to collect what it wrote.
 
 5. **Stage in the branch folder.** Use the PR's `headRefName` as the folder name under `~/Desktop`, replacing `/` with `--` so it stays a single folder (for example, `feat/login` becomes `~/Desktop/feat--login`). Reuse the folder if it exists; otherwise create it with `mkdir -p` and a quoted absolute path. Preserve its existing contents. Copy each selected screenshot into it without modifying the original or its image bytes. Use unique, descriptive filenames containing the PR number and route or UI state; on a filename collision, reuse a byte-identical copy or add a numeric suffix rather than overwrite a different file. Keep a mapping of each destination path to its source, caption, and capture order. Verify every selected screenshot is present in the folder before continuing.
 
