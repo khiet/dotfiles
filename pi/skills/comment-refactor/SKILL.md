@@ -13,8 +13,8 @@ The optional argument is the base ref.
 
 - Read the repository instructions and snapshot the current HEAD and worktree
   diff.
-- Use the supplied base ref, otherwise the repository's default branch. If the
-  default cannot be established, ask for a base rather than guessing.
+- Use the supplied base ref. Otherwise use `main`. Ask only when neither
+  exists.
 - Resolve `git merge-base <base-ref> HEAD` once and save it as `<base>`.
 - Inventory comment additions, removals, and updates from
   `git diff --find-renames --unified=0 <base> HEAD`, covering every comment form

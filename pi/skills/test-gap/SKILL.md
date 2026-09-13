@@ -10,7 +10,7 @@ Close the coverage gaps the branch left, then hold every branch-introduced test 
 ## Workflow
 
 1. Scope the branch and build the local pattern baseline.
-   - Compare against the merge base with the upstream default branch. If the default branch cannot be determined, use the branch point or ask one concise question.
+   - Compare against the merge base with `main`, or with the supplied base ref when one is given. Ask only when neither exists.
    - If the working tree is dirty, stop and ask whether to include those changes, since later steps commit.
    - Build the baseline: read nearby existing tests for the same feature, layer, framework, or file naming convention, and note assertion style, setup style, fixture/factory usage, helper usage, mocking style, test naming, test structure, file placement, and execution scope.
    - Completion criterion: every added, modified, or removed file in the branch is split into source and test files, and each reviewed test has a concrete local baseline that cites a specific nearby test.
