@@ -1,14 +1,17 @@
 ---
 description: Close out a branch after implementation
+argument-hint: "[issue-ref]"
 ---
 
 # Wrap Up
 
 Run the post-implementation pass over the current branch, then lint the whole branch once at the end with auto-fix.
 
+Issue reference, if provided: `$1`
+
 ## Review Findings
 
-Sort every finding from the code review into one of three buckets. Steps 4 and 9 consume them.
+A finding is one reported problem with a location in the diff and the claim made about it. Treat each item the review reports as one finding however the review groups them (by axis, file, or severity). Sort every finding into one of three buckets. Steps 5 and 10 consume them.
 
 - **Fix now:** a defect in code the current branch touched, where the correct fix is unambiguous and small enough to review in one commit.
 - **Needs your decision:** the fix requires a product, API, or architecture choice, or it contradicts the plan the branch is implementing. Present it as a numbered question with lettered options carrying a one-clause trade-off each, two to four options including "leave as is" when viable, exactly one marked `(Recommended)`.
@@ -31,27 +34,31 @@ Do not push. Decide each gate from the diff and report every skip with its gate.
 3. **Run `test-gap`** (if gated in)
    - Use the `test-gap` skill. Its commit carries a `test:` subject.
 
-4. **Run `code-review`**
-   - Use the `code-review` skill with `main` as the fixed point.
-   - Sort every finding through Review Findings. Apply only the "fix now" findings and commit them on their own with a `fix:` or `refactor:` subject. Hold the other two buckets for step 9.
+4. **Resolve the spec**
+   - Use `$1` when given. Otherwise take the issue reference from the branch's commit footers (`Closes #N` for GitHub, `Fixes ABC-123` for Linear).
+   - A bare number, `#N`, or a github.com issue URL is a GitHub issue in the current repository: read it with `gh issue view`. A Linear key or linear.app URL is a Linear issue: read it with the Linear tools.
+   - Record `no spec` when neither source yields a reference. The review still runs and reports the missing spec itself.
 
-5. **Evaluate the `comment-refactor` gate**
+5. **Run `code-review`**
+   - Use the `code-review` skill with `main` as the fixed point. Hand it the fetched issue contents as the spec so it does not go looking for one.
+   - Sort every finding through Review Findings. Apply only the "fix now" findings and commit them on their own with a `fix:` or `refactor:` subject. Hold the other two buckets for step 10.
+
+6. **Evaluate the `comment-refactor` gate**
    - `git diff main...HEAD --unified=0`. Run when the diff adds, modifies, or removes at least one comment line. Record the decision and reason.
 
-6. **Run `comment-refactor`** (if gated in)
-   - Use the `comment-refactor` skill with `main` as the base ref.
-   - Commit the result on its own with a `docs:` subject.
+7. **Run `comment-refactor`** (if gated in)
+   - Use the `comment-refactor` skill with `main` as the base ref. Its commit carries a `docs:` subject.
 
-7. **Lint**
+8. **Lint**
    - Run the project's linter with auto-fix. Commit anything it changed with a `style:` subject.
 
-8. **Run the test suite**
+9. **Run the test suite**
    - Run the project's tests, or record `skipped` when the project has no test suite. Report failures with the actual output.
 
-9. **Report**
-   - Print one line per step: `ran` with a one-line result, or `skipped` with the gate that caused it.
-   - List the "needs your decision" findings, then the "out of scope" findings as a plain list. A non-empty decision list stops the run for an answer.
-   - The branch is finished when the suite passes and the decision list is empty. Say so.
+10. **Report**
+    - Print one line per step: `ran` with a one-line result, or `skipped` with the gate that caused it.
+    - List the "needs your decision" findings, then the "out of scope" findings as a plain list. A non-empty decision list stops the run for an answer.
+    - The branch is finished when the suite passes and the decision list is empty. Say so.
 
 ## Ordering
 

@@ -6,7 +6,8 @@ description: Fact-check and simplify the comments a branch changed. Use when ask
 # Comment Refactor
 
 Fact-check the current branch's comment changes, then keep only useful reasons
-and hidden contracts in plain English. The optional argument is the base ref.
+and hidden contracts in plain English. This skill edits comments and commits.
+The optional argument is the base ref.
 
 ## 1. Fix the scope
 
@@ -48,13 +49,17 @@ A plausible explanation is not evidence of intent.
 Finish when every changed comment has a disposition and every factual claim is
 supported or explicitly unresolved.
 
-## 3. Edit and verify
+## 3. Edit, verify, and commit
 
 Apply the dispositions only within the inventoried scope.
 
-Compare the final diff with the starting snapshot. Finish only when every new
+Compare the final diff with the starting snapshot. Proceed only when every new
 edit maps to an inventoried comment change, unchanged comments and code are
 untouched, and each retained sentence passes the comment rules below.
+
+Stage only the files this pass changed and commit them on their own with a
+`docs:` subject, so the comment edits stay separable from the code they
+describe. Skip the commit when nothing was edited.
 
 Report changed files and unresolved claims with evidence locations. If nothing
 needed editing, say so explicitly.

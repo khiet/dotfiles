@@ -38,7 +38,7 @@ Close the coverage gaps the branch left, then hold every branch-introduced test 
 7. Validate.
    - Run the project's test suite.
    - Failures caused by this run's changes are yours to fix with the behavioral assertions intact. Pre-existing or environmental failures go in the report.
-   - Commit the test changes as a single commit.
+   - Commit the test changes as a single commit with a `test:` subject.
 
 ## Status
 
