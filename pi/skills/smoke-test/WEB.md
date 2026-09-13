@@ -5,9 +5,10 @@ Mechanics for the `playwright` driver. The workflow in [`SKILL.md`](SKILL.md) de
 ## Launch
 
 1. Probe the documented URL first: `curl -sI <url>`. Any HTTP response means the app is found running; record it and skip to readiness.
-2. Otherwise run the recipe's script in the background with stdout and stderr to a log file in the scratch dir, and record the process group id so the stop step can kill the whole tree.
+2. Otherwise run the recipe's script in the background with stdout and stderr to a log file in the scratch dir, and record its pid. A backgrounded command shares the shell's process group, so the pid is the handle the stop step walks.
 3. Read the local URL from the log (dev servers print it); fall back to the documented URL when the log has none within the readiness cap.
 4. Readiness: poll the base URL every 2 s until it answers below 500, within the readiness cap.
+5. `docker compose up`: record the service names it started that `docker compose ps` did not already list as running.
 
 ## Route derivation
 
@@ -21,14 +22,14 @@ Mechanics for the `playwright` driver. The workflow in [`SKILL.md`](SKILL.md) de
 Per row:
 
 1. `browser_navigate` to the route.
-2. `browser_wait_for` on the observable text, or on network idle when the observable is a control or the change is style-only.
-3. `browser_snapshot` to confirm the observable is present in the accessibility tree.
-4. `browser_console_messages` at error level; diff against the baseline.
+2. Wait by observable kind. Text: `browser_wait_for` with `text`. Control, test id, or style-only: `browser_wait_for` with `time` 2, since the tool has no network-idle mode.
+3. Confirm by observable kind. Text or control: `browser_find` with the text or role. Test id: `browser_evaluate` with `() => document.querySelector('[data-testid="<id>"]') !== null`, because the accessibility snapshot carries no test ids. Style-only: `browser_snapshot` returns a tree.
+4. `browser_console_messages` with `level` `error`. The default window is since the last navigation, so this is the row's own output; the startup set was read the same way after the root load.
 5. `browser_take_screenshot` with `filename` set to the smoke name under `.playwright-mcp/`.
 
 ## Stop
 
-- `kill -- -<pgid>` on the recorded process group, then `lsof -i :<port>` to confirm the port is free.
-- `docker compose down` only when this run ran `docker compose up`.
+- `pkill -P <pid>; kill <pid>` on the recorded pid, then `lsof -i :<port>` to confirm the port is free.
+- `docker compose stop <services>` for the services this run started, so services already running stay up.
 - `browser_close`.
 - A found-running app is left untouched.
