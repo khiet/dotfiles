@@ -61,15 +61,23 @@ Stage only the files this pass changed and commit them on their own with a
 `docs:` subject, so the comment edits stay separable from the code they
 describe. Skip the commit when nothing was edited.
 
-Report changed files and unresolved claims with evidence locations. If nothing
-needed editing, say so explicitly.
+Report changed files, unresolved claims, and design signals with evidence
+locations. If nothing needed editing, say so explicitly.
 
 ## Comment rules
 
-- **Reason or contract only.** A comment survives only if it carries a reason or
-  a hidden contract the code cannot express; names, signatures, and bodies
-  already say what. `assignee: EncounterAssignee | null` needs no "who is
-  working the encounter" gloss, even when neighboring fields have comments.
+- **Reason or contract only.** A comment on a field, local, or statement
+  survives only if it carries a reason or a hidden contract the code cannot
+  express; the name and body already say what.
+  `assignee: EncounterAssignee | null` needs no "who is working the encounter"
+  gloss, even when neighboring fields have comments. It does earn "null until
+  triage claims the encounter", because the type says null is possible, not
+  when.
+- **Interface comments complete the abstraction.** A comment on a class,
+  module, or exported function survives when it lets a caller use the thing
+  without reading the body: behavior, arguments, return value, side effects,
+  errors, and preconditions. Trim the parts that describe how the body works;
+  a caller does not need them and they go stale first.
 - **One sentence per decision.** Keep a single "because" the code cannot express:
   "Keep disabled members listed because hiding them leaves the current assignee
   unexplained." A distinct hidden contract earns its own sentence.
@@ -78,3 +86,7 @@ needed editing, say so explicitly.
 - **Plain English.** Use direct words, exact identifiers, and the codebase's domain
   terms. Cut filler, ticket IDs, historical narration, and speculative rationale.
   Explain necessary caller obligations or invariants.
+- **Flag design signals instead of padding.** When a changed comment cannot be
+  made both simple and complete, or exists only to compensate for a vague name,
+  the fix is a rename or a design change outside the editable lines. Report it
+  with its location; do not write a longer comment around it.
