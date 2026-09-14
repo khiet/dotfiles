@@ -8,7 +8,7 @@ disable-model-invocation: true
 
 One self-contained, interactive HTML page that shows a feature inside the product's own look, so the team can play with it and agree on the UI/UX without a dev environment. Fidelity is the whole point: a reviewer never has to ask "is this here because it's a demo?"
 
-The argument is the feature: free text, an issue reference, or the URL of a demo this skill published earlier, meaning revise that one; extra words after a URL are the revision instructions. Empty: print `Usage: /demo_html <feature description | issue-ref | artifact-url> [instructions]` and stop.
+The argument is the feature: free text, an issue reference, or the URL of a demo this skill published earlier, meaning revise that one; extra words after a URL are the revision instructions. Empty: print `Usage: <feature description | issue-ref | artifact-url> [instructions]` and stop.
 
 The run is unattended. A gate that fails ends the run with its `Skipped` label: before Launch has run, straight to Report; from Launch on, through Stop and then Report. Nothing is published on a skipped run. The rules for the page are in [`DEMO.md`](DEMO.md), read from step 5. Launch mechanics are the shared [`../_shared/app-launch.md`](../_shared/app-launch.md) and file-to-route mapping the shared [`../_shared/route-derivation.md`](../_shared/route-derivation.md).
 
