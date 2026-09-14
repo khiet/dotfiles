@@ -6,9 +6,7 @@ description: Stage UI screenshots in a branch-named Desktop folder, open the PR 
 
 Fill the `Visuals` slot of the current PR description with screenshots of the UI this branch changes. Only the new UI is shown - no before/after pairing.
 
-Usage: `/pr_screenshots [url-or-route ...]`
-
-The argument is the page (or pages) to capture when no usable screenshot exists. Omit it when a recent smoke-test or Playwright session already produced captures.
+Usage: `/pr_screenshots`
 
 ## Rules
 
@@ -30,7 +28,7 @@ The argument is the page (or pages) to capture when no usable screenshot exists.
 
    Keep only PNG/JPEG files modified after the branch base (`git merge-base main HEAD`) and that show the UI this diff touches. List the candidates with path and mtime, and say which are reused. When at least one candidate is usable, skip step 4.
 
-4. **Capture only when nothing is reusable.** Use the `smoke-test` skill, passing the argument routes through when given. Only screenshots listed under its `Passed` status are candidates; a `Failed` route shows a broken state, so list its finding for the user and leave its screenshot out. On `Skipped: no launch recipe`, ask how to start the app, then run the skill again with that recipe. On `Skipped: no UI changes` with no argument, report that there is nothing to capture and stop. Re-run step 3 over the skill's dirs to collect what it wrote.
+4. **Capture only when nothing is reusable.** Use the `smoke-test` skill. Only screenshots listed under its `Passed` status are candidates; a `Failed` route shows a broken state, so list its finding for the user and leave its screenshot out. On `Skipped: no UI changes`, report that there is nothing to capture and stop. On any other `Skipped` label, report the gate and stop. Re-run step 3 over the skill's dirs to collect what it wrote.
 
 5. **Stage in the branch folder.** Use the PR's `headRefName` as the folder name under `~/Desktop`, replacing `/` with `--` so it stays a single folder (for example, `feat/login` becomes `~/Desktop/feat--login`). Reuse the folder if it exists; otherwise create it with `mkdir -p` and a quoted absolute path. Preserve its existing contents. Copy each selected screenshot into it without modifying the original or its image bytes. Use unique, descriptive filenames containing the PR number and route or UI state; on a filename collision, reuse a byte-identical copy or add a numeric suffix rather than overwrite a different file. Keep a mapping of each destination path to its source, caption, and capture order. Verify every selected screenshot is present in the folder before continuing.
 
@@ -49,5 +47,3 @@ The argument is the page (or pages) to capture when no usable screenshot exists.
 8. **Write the body using GitHub CLI.** Apply the Visuals-slot rule to the freshly fetched body, replacing the raw upload lines within that slot with the table. Preserve all content outside the slot and any existing images the user chose to keep. Save to a temp file and run `gh pr edit <pr-url> --body-file <file>`. Re-fetch the same PR and confirm the table and uploaded URLs are present and content outside the slot is unchanged.
 
 9. **Report:** the PR URL, which files were reused versus captured, and the final table.
-
-$ARGUMENTS
