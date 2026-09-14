@@ -7,8 +7,6 @@ description: Smoke-test the UI a branch changed by booting the real web app and 
 
 Drive the real web app with the Playwright MCP and confirm the UI this branch changed still renders. This skill runs unattended: it discovers how to start the app from what the repo already states, starts it, loads each changed route, and stops what it started. Failures come back as findings for the caller to sort.
 
-The optional argument is a list of routes. It replaces the list step 2 derives from the diff and bypasses the UI gate in step 1; the other gates and the caps still apply.
-
 Launch and stop mechanics are shared with other skills in [`../_shared/app-launch.md`](../_shared/app-launch.md); this file holds what is specific to smoke-testing a diff.
 
 ## Workflow
@@ -16,13 +14,13 @@ Launch and stop mechanics are shared with other skills in [`../_shared/app-launc
 1. Scope the branch and gate.
    - Base is `main` unless one is supplied; record it. Changed paths are `git diff --name-only $(git merge-base <base> HEAD)` plus `git ls-files --others --exclude-standard`, so uncommitted work counts.
    - Mark each changed path UI or not. UI: components, pages, routes, layouts, templates, styles. Not UI: tests, docs, config, pure logic.
-   - No UI paths and no argument list: report `Skipped: no UI changes` and stop.
+   - No UI paths: report `Skipped: no UI changes` and stop.
    - Web app: `app-launch.md` `Web signal`. None: report `Skipped: not a web app` and stop.
    - Driver: `app-launch.md` `Availability`. Missing: report `Skipped: no driver (server unavailable)` and stop.
    - Completion criterion: every changed path is marked UI or not, and each gate is recorded as passed or the run has stopped with its label.
 
 2. Derive routes and the observable.
-   - Map each changed UI file to the route that renders it, per Route derivation. An argument list replaces this mapping.
+   - Map each changed UI file to the route that renders it, per Route derivation.
    - The observable, in order of preference: new or changed literal text; the rendered text or test id of a new component; a new control. For a style-only change, the check is that the route renders and the screenshot lands.
    - Route parameters take values the repo states (fixtures, seeds, README, stories). Otherwise use the route without parameters, or record `Not covered: needs data`.
    - Apply Caps. Rank rows by changed lines and move the overflow to `Not covered: over route cap`.
