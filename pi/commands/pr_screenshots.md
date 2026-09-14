@@ -8,7 +8,7 @@ Fill the `Visuals` slot of the current PR description with screenshots of the UI
 
 Usage: `/pr_screenshots [url-or-route ...]`
 
-The argument is the page (or pages) to capture when no usable screenshot exists. Omit it when a recent smoke-test, Playwright, or ios-simulator session already produced captures.
+The argument is the page (or pages) to capture when no usable screenshot exists. Omit it when a recent smoke-test or Playwright session already produced captures.
 
 ## Rules
 
@@ -26,7 +26,6 @@ The argument is the page (or pages) to capture when no usable screenshot exists.
 
 3. **Collect candidate screenshots.** Look in, newest first:
    - `.playwright-mcp/` (Playwright MCP default output dir)
-   - `.ios-simulator-mcp/` (smoke-test's iOS screenshot dir)
    - `test-results/` and `playwright-report/` (test runs)
    - files captured earlier in this session
 

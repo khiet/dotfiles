@@ -27,7 +27,7 @@ The run is unattended. A gate that fails ends the run with its `Skipped` label i
    - Completion criterion: each gate is recorded as passed, or the run has stopped with its label.
 
 3. Derive the baseline routes.
-   - Grep the entities and labels from step 1 across route files and components; map hits to routes with the route derivation in [`../smoke-test/WEB.md`](../smoke-test/WEB.md). Rank by hit count and keep the top 4.
+   - Grep the entities and labels from step 1 across route files and components; map hits to routes with the route derivation in [`../smoke-test/SKILL.md`](../smoke-test/SKILL.md). Rank by hit count and keep the top 4.
    - A route parameter takes its value from fixtures, seeds, README, or stories. No value: the route leaves the list as `Not covered: needs data`, before the cap.
    - The shell: the root route's nav and header, plus the list and detail pages the derived routes sit under. Nothing derived: the first two nav links. Shell plus derived routes fit the route cap.
    - A screen the description says the feature adds has no baseline; list it as a new screen.
