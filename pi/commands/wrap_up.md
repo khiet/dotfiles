@@ -69,4 +69,4 @@ Do not push. Decide each gate from the diff and report every skip with its gate.
 
 ## Ordering
 
-`code-review` runs after `test-gap` so the review sees the final tests, and `comment-refactor` runs after both so it covers every comment the branch changes in one pass, including those from the review fixes. Lint runs last to catch anything the earlier steps wrote. `smoke-test` runs after the suite so a browser or simulator session is only spent on a green branch, and after lint so it drives the code that ships; a smoke fix re-runs lint and the suite once, so every result in the report comes from the commit that ships.
+`code-review` runs after `test-gap` so the review sees the final tests, and `comment-refactor` runs after both so it covers every comment the branch changes in one pass, including those from the review fixes. Lint runs last to catch anything the earlier steps wrote. `smoke-test` runs after the suite so a browser session is only spent on a green branch, and after lint so it drives the code that ships; a smoke fix re-runs lint and the suite once, so every result in the report comes from the commit that ships.
