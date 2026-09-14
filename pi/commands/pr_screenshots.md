@@ -26,7 +26,6 @@ The argument is the page (or pages) to capture when no usable screenshot exists.
 
 3. **Collect candidate screenshots.** Look in, newest first:
    - `.playwright-mcp/` (Playwright MCP default output dir)
-   - `test-results/` and `playwright-report/` (test runs)
    - files captured earlier in this session
 
    Keep only PNG/JPEG files modified after the branch base (`git merge-base main HEAD`) and that show the UI this diff touches. List the candidates with path and mtime, and say which are reused. When at least one candidate is usable, skip step 4.
