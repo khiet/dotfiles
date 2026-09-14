@@ -28,14 +28,16 @@ Record the recipe as start command, readiness probe, stop command, and a found-r
 
 1. When `.gitignore` does not cover it, add `.playwright-mcp/` to `.git/info/exclude`. That file is per clone and never committed, so the tree stays clean for the caller's commits without adding a project file.
 2. A found-running app is used as is; skip to readiness.
-3. Otherwise run the recipe's start command in the background with stdout and stderr to a log file in the scratch dir, and record its pid. A backgrounded command shares the shell's process group, so the pid is the handle the stop step walks.
+3. Otherwise run the recipe's start command in the background with job control on (`set -m`), stdout and stderr to a log file in the scratch dir, and record its pid. Job control gives the command its own process group, so the pid names every process it spawns, including the grandchildren a package manager forks.
 4. Read the local URL from the log (dev servers print it); fall back to the documented URL when the log has none within the readiness cap.
 5. Readiness: poll the base URL every 2 s until it answers below 500, within 120 s.
 6. `docker compose up`: record the service names it started that `docker compose ps` did not already list as running.
 
 ## Stop
 
-- `pkill -P <pid>; kill <pid>` on the recorded pid, then `lsof -i :<port>` to confirm the port is free.
+The calling skill runs this on every exit after Launch has run, including a skip.
+
+- `kill -- -<pid>` on the recorded process group; done when `pgrep -g <pid>` returns nothing and `lsof -i :<port>` shows the port free.
 - `docker compose stop <services>` for the services this run started, so services already running stay up.
 - `browser_close`.
 - A found-running app is left untouched.

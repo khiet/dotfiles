@@ -5,7 +5,7 @@ argument-hint: "<feature description | issue-ref | artifact-url> [instructions]"
 
 # Demo HTML
 
-Use the `demo-html` skill. The argument passes through to it.
+Read `~/dotfiles/pi/skills/demo-html/SKILL.md` and follow it. The argument passes through to it.
 
 Usage: `/demo_html <feature description | issue-ref | artifact-url> [instructions]`
 
