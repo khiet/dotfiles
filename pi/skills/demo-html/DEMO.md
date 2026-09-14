@@ -4,8 +4,8 @@ Rules for the page `SKILL.md` builds: the product's look with the feature added,
 
 ## Sources
 
-- **Tokens**: the style probe from step 4 wins for the elements it measured; files fill the rest, first hit wins, and the source is recorded: `tailwind.config.*` theme; CSS custom properties in a global stylesheet (`globals.css`, `app.css`, `variables.css`, `theme.*`); a theme object (`theme.ts`, `createTheme`); the component library's defaults. Colors, font families and sizes, weights, radii, spacing, shadows.
-- **Mock data** comes from fixtures, first hit per entity type: seed scripts (`seed*`, `db/seeds`, `prisma/seed*`), e2e fixtures (`e2e/fixtures`, `playwright/fixtures`, `cypress/fixtures`), test factories (`factories`, `__fixtures__`), stories. Each record in the demo is a fixture record verbatim: names, emails, dates, statuses, counts. A live snapshot supplies formatting, ordering, and truncation, with the provenance row saying so; the page is shared, so its records and any documented credentials stay out of it. Users offered by "Viewing as" are fixture users only.
+- **Tokens**: the style probe from step 4 wins for the elements it measured; files fill the rest, first hit wins, and the source is recorded: the framework's theme config (a Tailwind config, a theme object), the custom properties in the app's global stylesheet entry, then the component library's defaults. Colors, font families and sizes, weights, radii, spacing, shadows.
+- **Mock data** comes from the repo's own sample data, first hit per entity type: seed scripts, test fixtures and factories, end-to-end fixtures, stories. Each record in the demo is a fixture record verbatim: names, emails, dates, statuses, counts. A live snapshot supplies formatting, ordering, and truncation, with the provenance row saying so; the page is shared, so its records and any documented credentials stay out of it. Users offered by "Viewing as" are fixture users only.
 - **Vocabulary**: the product's terms from the live snapshots win over the description's wording. Every replacement is a term mapping in the report.
 
 ## Structure
