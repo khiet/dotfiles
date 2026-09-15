@@ -47,6 +47,7 @@ ln -s ~/dotfiles/ghostty/_config $XDG_CONFIG_HOME/ghostty/config
 # $XDG_CONFIG_HOME/mcp/mcp.json.
 mkdir -p ~/.pi/agent $XDG_CONFIG_HOME/mcp
 ln -s ~/dotfiles/pi/settings.json ~/.pi/agent/settings.json
+ln -s ~/dotfiles/pi/models.json ~/.pi/agent/models.json
 ln -s ~/dotfiles/pi/keybindings.json ~/.pi/agent/keybindings.json
 ln -s ~/dotfiles/pi/AGENTS.md ~/.pi/agent/AGENTS.md
 ln -s ~/dotfiles/pi/commands ~/.pi/agent/prompts
