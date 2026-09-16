@@ -1,6 +1,6 @@
 {
-  "defaultProvider": "mlx-lm",
-  "defaultModel": "mlx-community/Qwen3.6-35B-A3B-4bit",
+  "defaultProvider": "openai-codex",
+  "defaultModel": "gpt-6-astra",
   "defaultThinkingLevel": "high",
   "enabledModels": [
     "amazon-bedrock/us.anthropic.claude-opus-5",
