@@ -15,6 +15,14 @@ The criteria [`test-gap`](SKILL.md) judges tests against, consulted when choosin
 - A test is implementation-coupled when it asserts private methods, internal collaborator choreography, framework behavior, or constants copied from the implementation.
 - Completion criterion: every test has a clear reason to exist, or carries a verdict.
 
+## Retired behavior
+
+Behavior the branch removed is retired, and its tests retire with it: the compiler and imports already enforce the removal, so a test asserting the absence of a removed component, file, symbol, or text lands on `delete`.
+
+- Test the behavior that remains. When the removal changed what survives, such as a screen that now renders differently, assert what it renders.
+- Keep an absence assertion only for a continuing contract the product, security, or compatibility still requires, reached through an entry point the app offers.
+- Completion criterion: every retired behavior resolves to no tests, tests deleted, or a named continuing contract.
+
 ## Redundancy and probability
 
 - Flag tests already covered by an equivalent existing test at the same or stronger seam.
@@ -30,4 +38,4 @@ Every branch-introduced test lands on one:
 - `rewrite`: right behavior, wrong pattern or wrong assertions.
 - `move`: right behavior, wrong seam.
 - `merge`: duplicates another test; fold them together.
-- `delete`: redundant, implementation-coupled, or improbable enough that maintenance outweighs signal.
+- `delete`: redundant, implementation-coupled, retired, or improbable enough that maintenance outweighs signal.
