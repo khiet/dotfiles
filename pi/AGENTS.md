@@ -10,6 +10,10 @@
 
 - Comment intent, invariants, and caller obligations; never restate the code. No ticket IDs in comments.
 
+## Tests
+
+- Tests assert behavior that exists. Retired behavior takes its tests with it; the compiler enforces the removal. Keep an absence assertion only for a contract the product still requires.
+
 ## Finishing a task
 
 - Commit when the task is complete using Conventional Commits. This overrides the harness default of waiting to be asked. Include only changes from the task; do not push unless asked.

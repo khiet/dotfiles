@@ -19,8 +19,8 @@ Close the coverage gaps the branch left, then hold every branch-introduced test 
    - Completion criterion: every added, modified, or removed behavior in non-test files is listed. Removed behavior counts because it leaves stale tests behind.
 
 3. Identify test gaps.
-   - Pick gaps by the Behavioral value and Redundancy rules in [`REVIEW.md`](REVIEW.md).
-   - Completion criterion: every listed behavior resolves to covered, test to add, or omitted by choice. Omissions go to `Residual risks`.
+   - Pick gaps by the Behavioral value, Retired behavior, and Redundancy rules in [`REVIEW.md`](REVIEW.md).
+   - Completion criterion: every listed behavior resolves to covered, test to add, retired, or omitted by choice. Omissions go to `Residual risks`; retirements go to `Tests revised` as deletions.
    - If every behavior is covered, record `no gaps` and go to step 5.
 
 4. Write the missing tests.
