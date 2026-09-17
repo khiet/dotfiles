@@ -66,6 +66,7 @@ brew "tlrc"
 brew "watch"
 
 # development tools
+brew "libpq"
 brew "universal-ctags"
 brew "gh"
 brew "mise"
