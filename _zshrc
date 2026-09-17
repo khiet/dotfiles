@@ -19,7 +19,6 @@ export HUSKY=0
 
 # ── path ─────────────────────────────────────────────────────────────
 PATH="$XDG_DATA_HOME/nvim/mason/bin:$PATH"
-PATH="$XDG_DATA_HOME/../bin:$PATH"
 PATH="$HOME/.local/bin:$PATH"
 PATH="$HOME/go/bin:$PATH"
 export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
