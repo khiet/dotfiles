@@ -112,6 +112,9 @@ mouse_capture = true
 
 agent_panel_sort = "priority"
 
+# "{hostname}: {workspace}" by default.
+window_title = "{workspace}"
+
 [ui.sidebar.agents]
 rows = [["state_icon", "workspace", "tab"]]
 
