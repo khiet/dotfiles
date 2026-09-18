@@ -3,3 +3,5 @@
 zshrc/*
 !zshrc/public/
 !zshrc/public/**
+
+/pi/skills/synced/
