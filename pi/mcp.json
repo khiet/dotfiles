@@ -17,6 +17,10 @@
         "CONTEXT7_API_KEY": "${CONTEXT7_API_KEY}"
       }
     },
+    "figma": {
+      "type": "http",
+      "url": "http://127.0.0.1:3845/mcp"
+    },
     "sentry": {
       "type": "http",
       "url": "https://mcp.sentry.dev/mcp"
