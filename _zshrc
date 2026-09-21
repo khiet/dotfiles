@@ -47,7 +47,7 @@ alias pie="pi --session"
 alias h="herdr"
 alias hw="herdr worktree open --branch"
 alias hwl="herdr worktree list | jq '[.result.worktrees[] | {branch, path}]'"
-alias say-clip="python /Users/khietle/clipboard-tts/speak_clipboard.py -s 1.5"
+alias tts="python /Users/khietle/clipboard-tts/speak_clipboard.py -s 1.5"
 
 # ── conditional aliases ──────────────────────────────────────────────
 if command -v bat >/dev/null 2>&1; then
