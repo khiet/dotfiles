@@ -14,6 +14,6 @@
     "npm:context-mode",
     "npm:pi-web-access"
   ],
-  "lastChangelogVersion": "0.85.1",
+  "lastChangelogVersion": "0.86.1",
   "theme": "dracula"
 }
