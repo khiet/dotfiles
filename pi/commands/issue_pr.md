@@ -36,6 +36,7 @@ This skill's template is the canonical format. Ignore `.github/pull_request_temp
    - Check for an existing PR: `gh pr view`.
    - None: create with `gh pr create --draft --title "<first commit subject on the branch>" --body-file <description>`. The title is a placeholder the author renames; this skill does not write titles. The PR stays a draft until the author has read and trimmed every sentence; the skill drafts, the author owns the body.
    - Exists: print the generated description for the author to review or copy.
+   - Either way, run `open <PR-URL>` so the author lands on the PR to read and trim the body.
 
 ## Template
 

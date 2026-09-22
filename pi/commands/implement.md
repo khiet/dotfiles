@@ -21,4 +21,4 @@ Put the reference in every commit message footer (`Closes #N` for GitHub, `Fixes
 3. Typecheck and run the touched test file after each change. Implementation is complete when every acceptance criterion in the issue has a passing test and the full suite is green. A criterion that retires behavior gets no red-green cycle; Retired behavior in the `test-gap` skill's `REVIEW.md` has the rule.
 4. Commit to the branch.
 5. Run `/wrap_up $1`. It sorts review findings itself; carry its "needs your decision" and "out of scope" lists into your final report unchanged.
-6. If the "needs your decision" list is empty and wrap-up reports the tests passing, run `/issue_pr`, then `open <PR-URL>` with the URL it returns. An "out of scope" list alone still opens the PR. Otherwise stop and present the "needs your decision" list.
+6. If the "needs your decision" list is empty and wrap-up reports the tests passing, run `/issue_pr`. An "out of scope" list alone still opens the PR. Otherwise stop and present the "needs your decision" list.
