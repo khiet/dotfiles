@@ -31,7 +31,7 @@ Prose budget 500-800 words, counting table text and questions with answers, excl
 Sections, in order:
 
 - **What changes** (60-100 words): the behavior contract, minimal background, and a metadata line naming the compared revisions and scope.
-- **Scope check**: a table with one row per claim and one per unrequested change. Columns: Claim, Where (`path:symbol` or "not in diff"), Verdict (done, partial, missing, unrequested). With no claims and nothing unrequested, one sentence replaces the table.
+- **Scope check**: a table with one row per claim and one per change the claims do not describe. Columns: Claim, Where (`path:symbol` or "not in diff"), Verdict (done, partial, missing, undescribed). With no claims and nothing undescribed, one sentence replaces the table.
 - **Before / after** (120-180 words): the representative input with old and new outcome, linked to the responsible code and the test that covers it. A table for data, a small interface sketch for UI. A diagram only when relationships read better drawn than tabulated.
 - **Why it works** (180-280 words): the causal steps, each under a heading that names its purpose ("Reject expired tokens before lookup"). Show final code, not a full unified diff: a short excerpt with a gutter marker per line (`+` added, `~` modified, `-` removed) and `<mark>` on the changed tokens. Label verbatim code and illustrative pseudocode as such. Keep each annotation beside the lines it explains.
 - **Check before trusting**: a visible list of the material risks, the test delta with its status wording, and what remains unverified.
