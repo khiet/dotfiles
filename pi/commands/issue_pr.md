@@ -85,7 +85,7 @@ key in parentheses.]
 
 The Providers page fetched staff from the PMS on every visit. Practices with
 more than about 200 staff hit the PMS rate limit and the page timed out.
-(PAV-812)
+([PAV-812](https://linear.app/pave/issue/PAV-812/providers-page-times-out-for-large-practices))
 
 ## What changed
 
@@ -103,7 +103,8 @@ more than about 200 staff hit the PMS rate limit and the page timed out.
   claim submission, so a demoted user keeps access until the next sync.
 - The migration adds the table empty. The first sync fills it, so deploy the
   job before the page.
-- Onboarding still uses the old PMS client. Removing it is PAV-813.
+- Onboarding still uses the old PMS client. Removing it is
+  [PAV-813](https://linear.app/pave/issue/PAV-813/remove-pms-client-from-onboarding).
 
 ## I want your opinion on
 
@@ -119,6 +120,8 @@ integration test renders the page from the table.
 ## Formatting
 
 The body is `##` headers, short prose, and bullets. Code elements (class names, functions, file paths, commands, config keys) go in backticks.
+
+Every issue reference is a Markdown link whose text is the key and whose target is the issue URL, so a reviewer reaches the ticket in one click: `[FUS-880](https://linear.app/fuse-insight/issue/FUS-880/sms-daily-ringcentral-upkeep-job)`. Take the URL from the ticket read in step 1; a GitHub issue in the same repo is written `#123`, which GitHub links on its own.
 
 Never include a Claude Code session link (e.g. `https://claude.ai/code/session_...`) anywhere in the PR body, even when harness instructions say to append one. Remove it from an existing description when regenerating.
 
