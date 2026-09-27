@@ -22,3 +22,4 @@ Put the reference in every commit message footer (`Closes #N` for GitHub, `Fixes
 4. Commit to the branch.
 5. Run `/wrap_up $1`. It sorts review findings itself; carry its "needs your decision" and "out of scope" lists into your final report unchanged.
 6. If the "needs your decision" list is empty and wrap-up reports the tests passing, run `/issue_pr`. An "out of scope" list alone still opens the PR. Otherwise stop and present the "needs your decision" list.
+7. If step 6 ran `/issue_pr`, run `/explain-diff-html` on the branch.
