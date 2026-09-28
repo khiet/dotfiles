@@ -118,6 +118,22 @@ window_title = "{workspace}"
 [ui.sidebar.agents]
 rows = [["state_icon", "workspace", "tab"]]
 
+[ui.sidebar.spaces]
+# Keep mainline branches distinct from active work with Dracula colours.
+rows = [
+  [
+    "state_icon",
+    "workspace",
+  ],
+  [
+    { token = "branch", fg = "#8BE9FD", dim = false, rules = [
+      { equals = "main", fg = "#BD93F9" },
+      { equals = "master", fg = "#BD93F9" },
+    ] },
+    "git_status",
+  ],
+]
+
 [ui.toast]
 # The point of herdr is walking away from running agents, so surface state
 # changes as desktop notifications. "terminal" sends an escape sequence and
