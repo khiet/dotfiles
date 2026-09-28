@@ -12,6 +12,8 @@
 <script>
   // Mirrors the terminal tts player. Keys act only after the audio has
   // started, so Space and the arrows still scroll for readers who never play it.
+  // The audio element itself is not exempt: clicking play focuses it, and its
+  // native keys (a different seek step, volume) would otherwise take over.
   (() => {
     const audio = document.querySelector(".narration audio");
     const speed = document.querySelector(".narration-speed");
@@ -23,15 +25,16 @@
     audio.addEventListener("play", () => { started = true; }, { once: true });
     audio.addEventListener("ratechange", show);
     show();
-    const native = "a, summary, button, input, select, textarea, audio, [contenteditable]";
+    const seekStep = 10;
+    const native = "a, summary, button, input, select, textarea, [contenteditable]";
     document.addEventListener("keydown", (e) => {
       if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return;
       if (e.target instanceof Element && e.target.closest(native)) return;
       if (!started) return;
       switch (e.key) {
         case " ": audio.paused ? audio.play() : audio.pause(); break;
-        case "ArrowLeft": audio.currentTime = Math.max(0, audio.currentTime - 5); break;
-        case "ArrowRight": audio.currentTime = Math.min(audio.duration || Infinity, audio.currentTime + 5); break;
+        case "ArrowLeft": audio.currentTime = Math.max(0, audio.currentTime - seekStep); break;
+        case "ArrowRight": audio.currentTime = Math.min(audio.duration || Infinity, audio.currentTime + seekStep); break;
         case "ArrowUp": setRate(audio.playbackRate + 0.1); break;
         case "ArrowDown": setRate(audio.playbackRate - 0.1); break;
         default: return;
