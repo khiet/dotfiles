@@ -63,6 +63,18 @@ Count whitespace-separated words in reader-facing text, preserving block and tab
 
 Done when the evidence checks pass, rendered behavior meets the Theme and Format requirements below, and source-derived strings are HTML-escaped. Report any unavailable checks as unverified.
 
+## 5. Narrate
+
+After the page's final edit, run the skill's `narrate.sh` on it; rerun whenever the page changes later:
+
+```sh
+<skill-dir>/narrate.sh "$page"
+```
+
+It speaks the page's visible text with clipboard-tts, then embeds `player.html` under the `<h1>`.
+
+Done when the delivery summary reports the script's outcome: the audio length, or its error.
+
 ## Writing style
 
 Plain English, conclusion first in every section. Short, true, non-obvious sentences. Prefer literal language. Distinguish intended behavior, code-derived inference, and executed verification. For an unfamiliar mechanism, use a concrete example or one brief analogy mapped back to the real components, stating its important limitation when needed. Rewrite any sentence that needs a second read.
@@ -95,7 +107,7 @@ Dracula Classic plus one accessibility token. Copy this block into `<style>` and
 
 ## Format
 
-- `<!DOCTYPE html>`, complete `<head>` with `<meta charset="utf-8">` first, all CSS and JavaScript inline, no external resources.
+- `<!DOCTYPE html>`, complete `<head>` with `<meta charset="utf-8">` first, all CSS, JavaScript, and audio inline, no external resources.
 - Body text 17px, line-height 1.55, one column of 65-75ch. Code 14px in `ui-monospace, "Cascadia Code", Menlo, Consolas, monospace`. Use one code line-break strategy: block-level line spans with no inter-span text newlines, or inline spans separated by literal newlines, so each source line renders once.
 - Reading and answers work without JavaScript: native `<details>` for reveals, visible keyboard focus.
 - Reflows at 320px; tables and code scroll inside their own region.
