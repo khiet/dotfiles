@@ -33,20 +33,16 @@
       "command": "npx",
       "args": ["ios-simulator-mcp"]
     },
-    "aws-api": {
+    "aws-mcp": {
       "disabled": true,
       "command": "uvx",
-      "args": ["--with", "mcp<2", "awslabs.aws-api-mcp-server@latest"],
-      "env": {
-        "AWS_REGION": "eu-west-2",
-        "AWS_API_MCP_PROFILE_NAME": "pave",
-        "READ_OPERATIONS_ONLY": "true"
-      }
-    },
-    "aws-knowledge": {
-      "disabled": true,
-      "command": "uvx",
-      "args": ["fastmcp", "run", "https://knowledge-mcp.global.api.aws"]
+      "args": [
+        "mcp-proxy-for-aws@1.7.0",
+        "https://aws-mcp.us-east-1.api.aws/mcp",
+        "--profile", "pave",
+        "--read-only",
+        "--metadata", "AWS_REGION=eu-west-2"
+      ]
     },
     "cloudwatch": {
       "disabled": true,
