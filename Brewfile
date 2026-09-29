@@ -35,6 +35,7 @@ cask "handy"
 # version control
 brew "oven-sh/bun/bun"
 brew "git"
+brew "gitleaks"
 brew "lazygit"
 brew "delta"
 cask "trailer"
