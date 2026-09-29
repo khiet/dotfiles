@@ -12,7 +12,8 @@
     "npm:pi-mcp-adapter",
     "npm:pi-subagents",
     "npm:context-mode",
-    "npm:pi-web-access"
+    "npm:pi-web-access",
+    "../../pi-prompt-history"
   ],
   "lastChangelogVersion": "0.87.1",
   "theme": "dracula"
