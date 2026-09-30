@@ -1,10 +1,10 @@
 ---
-description: Stage UI screenshots in a branch-named Desktop folder, open the PR for manual upload, then format its Visuals section
+description: Stage UI screenshots in a branch-named Desktop folder, open the PR for manual upload, then format its Evidence section
 ---
 
 # PR Screenshots
 
-Fill the `Visuals` slot of the current PR description with screenshots of the UI this branch changes. Only the new UI is shown - no before/after pairing.
+Fill the Evidence section of the current PR description with screenshots of the UI this branch changes. Only the new UI is shown - no before/after pairing - so the table is the **After**. Leave any **Before** line the body already has.
 
 Usage: `/pr_screenshots`
 
@@ -12,13 +12,13 @@ Usage: `/pr_screenshots`
 
 - **Reuse before capture.** If screenshots from the recent Playwright session exist, use them as-is. Do not recapture, recrop, or resize a usable asset.
 - **Manual upload only.** Stage screenshots in the branch folder (step 5), open the PR, and ask the user to upload them to GitHub. Stop until the user confirms the upload; never automate the upload or publish local paths as image URLs.
-- **Warn on existing screenshots.** If the PR body already contains images (`![`, `<img`, or a `github.com/user-attachments` URL), stop and show which ones are present. Continue only after the user confirms whether to replace them or add to them.
-- **Touch only the Visuals slot.** Never regenerate the rest of the description. Replace an existing screenshot table, otherwise append a Visuals section that matches the body's header style (`## Visuals` when the body uses `##` headers, `**Visuals**` when it uses bold inline headers).
+- **Warn on existing screenshots.** If the PR body already contains images (`![`, `<img`, or a `github.com/user-attachments` URL), stop and show which ones are present. Continue only after the user confirms whether to replace them or add to them. Images on the **Before** line are exempt: never warn about or replace them.
+- **Touch only the Evidence screenshots.** Never regenerate the rest of the description. Replace an existing screenshot table in Evidence. Otherwise put the table in place of the `**After:**` placeholder, keeping the `**After:**` label, or under `## Evidence` when there is no placeholder, adding that heading after `## Summary` if it is missing.
 - **Image width is set on the `<img>` tag,** not the table. Markdown cannot size table columns, so every cell is `<img src="..." width="600">`. GitHub scales two 600px images down to fit the body; that is expected.
 
 ## Process
 
-1. **Locate the PR:** `gh pr view --json number,url,body,headRefName`. If there is no PR, stop and point to `/issue_pr`, which creates it.
+1. **Locate the PR:** `gh pr view --json number,url,body,headRefName`. If there is no PR, stop and report that.
 
 2. **Check for existing images** in the body (see the warning rule). Report each image URL and where it sits, then wait for the user's decision.
 
@@ -32,7 +32,7 @@ Usage: `/pr_screenshots`
 
 5. **Stage in the branch folder.** Use the PR's `headRefName` as the folder name under `~/Desktop`, replacing `/` with `--` so it stays a single folder (for example, `feat/login` becomes `~/Desktop/feat--login`). Reuse the folder if it exists; otherwise create it with `mkdir -p` and a quoted absolute path. Preserve its existing contents. Copy each selected screenshot into it without modifying the original or its image bytes. Use unique, descriptive filenames containing the PR number and route or UI state; on a filename collision, reuse a byte-identical copy or add a numeric suffix rather than overwrite a different file. Keep a mapping of each destination path to its source, caption, and capture order. Verify every selected screenshot is present in the folder before continuing.
 
-6. **Open the PR, ask for upload, then stop.** Once staging is verified, run `open "<pr-url>"` with the URL from step 1 to launch the PR in the user's default browser. Print the PR URL and exact screenshot paths. Ask the user to open the description editor on that page, drag those files into the `Visuals` slot (creating it if absent), save the description without changing anything else, and reply when the upload is complete. If `open` is unavailable or fails, report that and ask the user to open the printed URL manually. For GitHub, opening the page is the only automated browser action: do not upload through browser tools, poll for completion, or run `gh pr edit` yet. End the turn and wait for the user's reply.
+6. **Open the PR, ask for upload, then stop.** Once staging is verified, run `open "<pr-url>"` with the URL from step 1 to launch the PR in the user's default browser. Print the PR URL and exact screenshot paths. Ask the user to open the description editor on that page, drag those files into the Evidence section (creating it if absent), save the description without changing anything else, and reply when the upload is complete. If `open` is unavailable or fails, report that and ask the user to open the printed URL manually. For GitHub, opening the page is the only automated browser action: do not upload through browser tools, poll for completion, or run `gh pr edit` yet. End the turn and wait for the user's reply.
 
 7. **Resolve uploaded images and build the table.** After the user confirms the upload, re-fetch the same PR with `gh pr view <pr-url> --json body`. Extract the uploaded GitHub image URLs from its description and match them to the Desktop file mapping. If any upload is missing or the mapping is ambiguous, ask the user for the corresponding GitHub image URL or inserted Markdown and wait again. Never guess a URL or use a local path. Preserve the user's earlier add/replace decision; newly uploaded images are expected, but unrelated new images or edits require clarification before changing them.
 
@@ -44,6 +44,6 @@ Usage: `/pr_screenshots`
    | <img src="https://github.com/user-attachments/assets/..." width="600"> | <img src="https://github.com/user-attachments/assets/..." width="600"> |
    ```
 
-8. **Write the body using GitHub CLI.** Apply the Visuals-slot rule to the freshly fetched body, replacing the raw upload lines within that slot with the table. Preserve all content outside the slot and any existing images the user chose to keep. Save to a temp file and run `gh pr edit <pr-url> --body-file <file>`. Re-fetch the same PR and confirm the table and uploaded URLs are present and content outside the slot is unchanged.
+8. **Write the body using GitHub CLI.** Apply the Evidence-screenshots rule to the freshly fetched body, replacing the raw upload lines within the Evidence section with the table. Preserve all content outside the section and any existing images the user chose to keep. Save to a temp file and run `gh pr edit <pr-url> --body-file <file>`. Re-fetch the same PR and confirm the table and uploaded URLs are present and content outside the section is unchanged.
 
 9. **Report:** the PR URL, which files were reused versus captured, and the final table.
