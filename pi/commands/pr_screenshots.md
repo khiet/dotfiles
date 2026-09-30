@@ -18,7 +18,7 @@ Usage: `/pr_screenshots`
 
 ## Process
 
-1. **Locate the PR:** `gh pr view --json number,url,body,headRefName`. If there is no PR, stop and point to `/implement` step 6, or `gh pr create --draft`.
+1. **Locate the PR:** `gh pr view --json number,url,body,headRefName`. If there is no PR, stop and report that.
 
 2. **Check for existing images** in the body (see the warning rule). Report each image URL and where it sits, then wait for the user's decision.
 
