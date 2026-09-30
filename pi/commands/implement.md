@@ -21,4 +21,7 @@ Put the reference in every commit message footer (`Closes #N` for GitHub, `Fixes
 3. Typecheck and run the touched test file after each change. Implementation is complete when every acceptance criterion in the issue has a passing test and the full suite is green. A removal is the exception: the compiler enforces it, so test what the removal changed in surviving behavior instead, and keep an absence assertion only for a contract the product still requires.
 4. Commit to the branch.
 5. Run `/wrap_up $1`. It sorts review findings itself; carry its "needs your decision" and "out of scope" lists into your final report unchanged.
-6. If the "needs your decision" list is empty and wrap-up reports the tests passing, run `/issue_pr`. An "out of scope" list alone still opens the PR. Otherwise stop and present the "needs your decision" list.
+6. If the "needs your decision" list is empty and wrap-up reports the tests passing, open the PR. An "out of scope" list alone still opens the PR. Otherwise stop and present the "needs your decision" list.
+   - Write the body with the `pr` skill, from the diff against `main` and the issue.
+   - If `gh pr view` finds no PR, run `gh pr create --draft --title "<first commit subject on the branch>" --body-file <file>`. If a PR exists, print the body and confirm before running `gh pr edit --body-file`, so manual edits survive.
+   - Run `open <PR-URL>`.
