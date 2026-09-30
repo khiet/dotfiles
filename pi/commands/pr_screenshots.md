@@ -12,8 +12,8 @@ Usage: `/pr_screenshots`
 
 - **Reuse before capture.** If screenshots from the recent Playwright session exist, use them as-is. Do not recapture, recrop, or resize a usable asset.
 - **Manual upload only.** Stage screenshots in the branch folder (step 5), open the PR, and ask the user to upload them to GitHub. Stop until the user confirms the upload; never automate the upload or publish local paths as image URLs.
-- **Warn on existing screenshots.** If the PR body already contains images (`![`, `<img`, or a `github.com/user-attachments` URL), stop and show which ones are present. Continue only after the user confirms whether to replace them or add to them.
-- **Touch only the Evidence screenshots.** Never regenerate the rest of the description. Replace an existing screenshot table in Evidence. Otherwise insert the table under `## Evidence`, adding that heading after `## Summary` if it is missing.
+- **Warn on existing screenshots.** If the PR body already contains images (`![`, `<img`, or a `github.com/user-attachments` URL), stop and show which ones are present. Continue only after the user confirms whether to replace them or add to them. Images on the **Before** line are exempt: never warn about or replace them.
+- **Touch only the Evidence screenshots.** Never regenerate the rest of the description. Replace an existing screenshot table in Evidence. Otherwise put the table in place of the `**After:**` placeholder, keeping the `**After:**` label, or under `## Evidence` when there is no placeholder, adding that heading after `## Summary` if it is missing.
 - **Image width is set on the `<img>` tag,** not the table. Markdown cannot size table columns, so every cell is `<img src="..." width="600">`. GitHub scales two 600px images down to fit the body; that is expected.
 
 ## Process

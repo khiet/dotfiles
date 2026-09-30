@@ -22,6 +22,6 @@ Put the reference in every commit message footer (`Closes #N` for GitHub, `Fixes
 4. Commit to the branch.
 5. Run `/wrap_up $1`. It sorts review findings itself; carry its "needs your decision" and "out of scope" lists into your final report unchanged.
 6. If the "needs your decision" list is empty and wrap-up reports the tests passing, open the PR. An "out of scope" list alone still opens the PR. Otherwise stop and present the "needs your decision" list.
-   - Write the body with the `pr` skill, from the diff against `main` and the issue.
+   - Write the body with the `pr` skill, from the diff against `main` and the issue, and save it to a temp file.
    - If `gh pr view` finds no PR, run `gh pr create --draft --title "<first commit subject on the branch>" --body-file <file>`. If a PR exists, print the body and confirm before running `gh pr edit --body-file`, so manual edits survive.
    - Run `open <PR-URL>`.
