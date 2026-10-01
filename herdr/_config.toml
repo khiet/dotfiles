@@ -123,13 +123,14 @@ rows = [["state_icon", "workspace", "tab"]]
 rows = [
   [
     "state_icon",
-    "workspace",
+    { token = "workspace", rules = [{ starts_with = "\u200B", fg = "#FFB86C" }] },
   ],
   [
     { token = "branch", fg = "#8BE9FD", dim = false, rules = [
       { equals = "main", fg = "#BD93F9" },
       { equals = "master", fg = "#BD93F9" },
     ] },
+    { token = "$worktree_branch", fg = "#8BE9FD", dim = false },
     "git_status",
   ],
 ]
