@@ -13,7 +13,7 @@
     "npm:pi-subagents",
     "npm:context-mode",
     "npm:pi-web-access",
-    "../../pi-prompt-history"
+    "npm:pi-prompt-history"
   ],
   "lastChangelogVersion": "0.99.1",
   "theme": "dracula"
