@@ -25,6 +25,10 @@
       "type": "http",
       "url": "https://mcp.sentry.dev/mcp"
     },
+    "slack": {
+      "type": "http",
+      "url": "https://mcp.slack.com/mcp"
+    },
     "playwright": {
       "command": "npx",
       "args": ["@playwright/mcp@latest"]
