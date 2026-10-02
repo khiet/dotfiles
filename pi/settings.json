@@ -15,6 +15,9 @@
     "npm:pi-web-access",
     "npm:pi-prompt-history"
   ],
-  "lastChangelogVersion": "0.99.1",
-  "theme": "dracula"
+  "lastChangelogVersion": "1.0.0",
+  "theme": "dracula",
+  "extensions": [
+    "-builtin:mcp"
+  ]
 }
