@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Narrate an explain-diff-html page with clipboard-tts and embed player.html
+# Narrate a walkthrough page with clipboard-tts and embed player.html
 # under its first </h1>. Re-running replaces the previous player.
 # Exit 2 means a dependency is missing and the page was left unchanged.
 set -euo pipefail
@@ -16,9 +16,23 @@ fi
 tmp=$(mktemp -d)
 trap 'rm -rf "$tmp"' EXIT
 
+# Speak the reading path only: a path read aloud is noise, so each locator is
+# cut to its symbol, and details marked data-narrate="skip" are left out.
+python3 - "$page" "$tmp/speech.html" <<'EOF'
+import html, re, sys
+page = open(sys.argv[1], encoding="utf-8").read()
+page = re.sub(r'<details\b[^>]*\bdata-narrate="skip"[^>]*>.*?</details>', "", page, flags=re.S)
+def spoken(match):
+    loc = re.sub(r"\s+(L\d+(-\d+)?|\(base\))", "", html.unescape(match.group(1)))
+    path, _, symbol = loc.partition(":")
+    return html.escape(symbol.strip() or path.rsplit("/", 1)[-1])
+page = re.sub(r'<code class="loc">(.*?)</code>', spoken, page, flags=re.S)
+open(sys.argv[2], "w", encoding="utf-8").write(page)
+EOF
+
 # The player has no visible text, so narrating a page that already has one
 # produces the same audio.
-"$tts/.venv/bin/python" "$tts/speak_clipboard.py" "$page" -o "$tmp/audio.wav" >/dev/null
+"$tts/.venv/bin/python" "$tts/speak_clipboard.py" "$tmp/speech.html" -o "$tmp/audio.wav" >/dev/null
 ffmpeg -loglevel error -y -i "$tmp/audio.wav" -c:a libopus -b:a 32k -ac 1 "$tmp/audio.webm"
 
 python3 - "$page" "$here/player.html" "$tmp/audio.webm" <<'EOF'
