@@ -48,7 +48,7 @@ Skip preambles and use `GLOSSARY.md` terms when the repo has one. Put the conclu
 
 ## Length
 
-The **reading path** is the text a browser renders at desktop width outside `<pre>` blocks, locators, `<details>` with their `<summary>`; inline code, captions, labels, and table cells count. Count whitespace-separated words in the browser's `innerText` once those elements are removed, skipping tokens with no letter or digit. It scales with the subject and stays under 1,500 words. To fit it:
+The **reading path** is the text a browser renders at desktop width outside `<pre>` blocks, locators, and `<details>` with their `<summary>`; inline code, captions, labels, and table cells count. Count whitespace-separated words in the browser's `innerText` once those elements are removed, skipping tokens with no letter or digit. It scales with the subject and stays under 1,500 words. To fit it:
 
 - Give each causal step one excerpt, or one before/after pair when a removal matters.
 - State each finding in full once, where it matters most, and refer to it in a clause elsewhere.
