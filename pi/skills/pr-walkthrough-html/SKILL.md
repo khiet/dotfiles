@@ -9,7 +9,7 @@ Produce one self-contained HTML walkthrough that zooms in on a PR body written w
 
 Read both shared files before step 1; evidence is recorded as locators from the start:
 
-- [`../_shared/walkthrough/page.md`](../_shared/walkthrough/page.md): verification statuses, narrative, opening, locators, code excerpts, writing style, length, theme, format, checks, and narration.
+- [`../_shared/walkthrough/page.md`](../_shared/walkthrough/page.md): verification statuses, narrative, opening, locators, code excerpts, writing style, length, theme, format, and checks.
 - [`../_shared/walkthrough/change.md`](../_shared/walkthrough/change.md): the evidence a change needs and the Scope check.
 
 ## 1. Gather evidence
@@ -50,8 +50,8 @@ Write under **Locators**, **Code excerpts**, **Writing style**, **Length**, **Th
 
 Done when each mirrored section zooms in on its PR counterpart, the verdict sentence agrees with the Scope check, every carried row appears in its section above the `<details>`, and the reading path fits its length.
 
-## 4. Save, check, and narrate
+## 4. Save and check
 
-Write to `$HOME/Desktop/<headRefName>_<unix_timestamp>.html`, with `/` replaced by `-`. Then run **Checks** in `page.md`, then **Narration**.
+Write to `$HOME/Desktop/<headRefName>_<unix_timestamp>.html`, with `/` replaced by `-`. Then run **Checks** in `page.md`.
 
-Done when the completion criteria under **Checks** and **Narration** hold.
+Done when the completion criteria under **Checks** hold.

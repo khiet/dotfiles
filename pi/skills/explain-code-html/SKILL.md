@@ -9,7 +9,7 @@ Produce one self-contained HTML walkthrough of a subject: a **change**, or a **t
 
 Read the shared files before step 1; evidence is recorded as locators from the start:
 
-- [`../_shared/walkthrough/page.md`](../_shared/walkthrough/page.md), for every subject: verification statuses, narrative, opening, locators, code excerpts, writing style, length, theme, format, checks, and narration.
+- [`../_shared/walkthrough/page.md`](../_shared/walkthrough/page.md), for every subject: verification statuses, narrative, opening, locators, code excerpts, writing style, length, theme, format, and checks.
 - [`../_shared/walkthrough/change.md`](../_shared/walkthrough/change.md), for a change: the evidence a change needs and the Scope check.
 
 ## 1. Gather evidence
@@ -51,8 +51,8 @@ Write under **Locators**, **Code excerpts**, **Writing style**, **Length**, **Th
 
 Done when the opening answer agrees with the sections under it, every entry point, piece of owned state, and document disagreement recorded in step 1 appears on the page, a change's carried rows appear outside the `<details>`, and the reading path fits **Length** in `page.md`.
 
-## 4. Save, check, and narrate
+## 4. Save and check
 
-Write to `$HOME/Desktop/<name>_<unix_timestamp>.html`, where `<name>` is the head branch of a change, or the topic in a few kebab-case words, with `/` replaced by `-`. Then run **Checks** in `page.md`, then **Narration**.
+Write to `$HOME/Desktop/<name>_<unix_timestamp>.html`, where `<name>` is the head branch of a change, or the topic in a few kebab-case words, with `/` replaced by `-`. Then run **Checks** in `page.md`.
 
-Done when the completion criteria under **Checks** and **Narration** hold.
+Done when the completion criteria under **Checks** hold.

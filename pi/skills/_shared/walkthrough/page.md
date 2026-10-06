@@ -1,6 +1,6 @@
 # Walkthrough page
 
-Shared rules for skills that write a self-contained HTML walkthrough of code. The calling skill decides the subject, the page's sections, and what they say; this file says how verification is graded, how the narrative is built, how the page opens, how statements are cited, how code is shown, how long the page runs, how it looks, and how it is checked and narrated.
+Shared rules for skills that write a self-contained HTML walkthrough of code. The calling skill decides the subject, the page's sections, and what they say; this file says how verification is graded, how the narrative is built, how the page opens, how statements are cited, how code is shown, how long the page runs, how it looks, and how it is checked.
 
 ## Verification
 
@@ -26,7 +26,7 @@ On the page, each causal step sits under a heading that names its purpose ("Reje
 
 ## Opening
 
-Directly under the `<h1>`, before any section and with only the narration player between them, the opening statement gives the answer the calling skill asks for. Follow it with the one invariant the subject must keep ("Must remain true"): the one the decisive step enforces, grounded in a requirement or code and stated no wider than its guards enforce, with a locator for the guard on every code path that reaches the protected effect, found by listing that effect's callers. Qualify it by its preconditions: what must already hold for those guards to apply.
+Directly under the `<h1>`, before any section, the opening statement gives the answer the calling skill asks for. Follow it with the one invariant the subject must keep ("Must remain true"): the one the decisive step enforces, grounded in a requirement or code and stated no wider than its guards enforce, with a locator for the guard on every code path that reaches the protected effect, found by listing that effect's callers. Qualify it by its preconditions: what must already hold for those guards to apply.
 
 ## Locators
 
@@ -48,11 +48,11 @@ Skip preambles and use `GLOSSARY.md` terms when the repo has one. Put the conclu
 
 ## Length
 
-The **reading path** is the text a browser renders at desktop width outside `<pre>` blocks, locators, `<details>` with their `<summary>`, and the narration player; inline code, captions, labels, and table cells count. Count whitespace-separated words in the browser's `innerText` once those elements are removed, skipping tokens with no letter or digit. It scales with the subject and stays under 1,500 words. To fit it:
+The **reading path** is the text a browser renders at desktop width outside `<pre>` blocks, locators, `<details>` with their `<summary>`; inline code, captions, labels, and table cells count. Count whitespace-separated words in the browser's `innerText` once those elements are removed, skipping tokens with no letter or digit. It scales with the subject and stays under 1,500 words. To fit it:
 
 - Give each causal step one excerpt, or one before/after pair when a removal matters.
 - State each finding in full once, where it matters most, and refer to it in a clause elsewhere.
-- When a list the calling skill requires in full outgrows the path, move rows into a closed `<details data-narrate="skip">` directly under the list, lowest priority first across every such list on the page, stopping once the path fits: a row that reports a divergence, a gap, or a needed change outranks one that simply holds, and among equals a row about code a causal step cites outranks one that is not. Title the fold for the rows it holds.
+- When a list the calling skill requires in full outgrows the path, move rows into a closed `<details>` directly under the list, lowest priority first across every such list on the page, stopping once the path fits: a row that reports a divergence, a gap, or a needed change outranks one that simply holds, and among equals a row about code a causal step cites outranks one that is not. Title the fold for the rows it holds.
 
 Spend the words on mechanism.
 
@@ -109,15 +109,3 @@ Dracula Classic plus one accessibility token. Copy this block into `<style>` and
 In the delivery summary, not the page, report each check above as automated, manual, unverified with its reason, or not applicable.
 
 Done when every check passes or is reported unverified with its reason.
-
-## Narration
-
-After the page's final edit, run `narrate.sh` from this file's directory on it; rerun whenever the page changes later:
-
-```sh
-<this-directory>/narrate.sh "$page"
-```
-
-It speaks the page's prose with clipboard-tts, which skips code blocks; the script also leaves out every `<details data-narrate="skip">` and shortens each `<code class="loc">` to its symbol. It then embeds `player.html` between the `<h1>` and the page's opening statement and changes nothing else, so the checks still stand. It can run past ten minutes, so run it in the background.
-
-Done when the delivery summary reports the script's outcome: the audio length, or its error.
