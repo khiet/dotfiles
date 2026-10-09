@@ -1,6 +1,6 @@
-# Walkthrough of a change
+# Change evidence and Scope check
 
-Shared rules for walkthroughs whose subject is a change: the diff between a base and a head revision. The calling skill names the two revisions and the sources of claims; this file says what evidence a change needs and how its Scope check is built.
+Rules for the change under walkthrough: the diff between a base and a head revision. `SKILL.md` names the two revisions and the sources of claims; this file says what evidence a change needs and how its Scope check is built.
 
 ## Change evidence
 
@@ -12,7 +12,7 @@ Done when every claim is located in the diff or marked `missing`, every changed 
 
 A table with columns Claim, Where, Verdict, inside a closed `<details>`.
 
-- **Rows**: one per independently checkable claim, however often its sources repeat it, and one per undescribed change: a behavioral change in the diff that no source claims. A precondition or failure mode that follows from a described change stays in the calling skill's failure modes, without a row. A sentence whose clauses could hold or fail separately gets a row per clause; clauses that one declaration decides together, such as a list of attributes or a removed line and its replacement, share a row. A removed or renamed externally consumed contract, including a public endpoint, gets its own row. With no claims and nothing undescribed, one sentence replaces the table.
+- **Rows**: one per independently checkable claim, however often its sources repeat it, and one per undescribed change: a behavioral change in the diff that no source claims. A precondition or failure mode that follows from a described change stays in the failure modes in `SKILL.md`, without a row. A sentence whose clauses could hold or fail separately gets a row per clause; clauses that one declaration decides together, such as a list of attributes or a removed line and its replacement, share a row. A removed or renamed externally consumed contract, including a public endpoint, gets its own row. With no claims and nothing undescribed, one sentence replaces the table.
 - **Where**: a locator for each piece of code, test, or CI workflow job that decides the claim, the call sites included when the claim says who uses or calls something, with the `(base)` locator as well when the claim is about what was removed or replaced; `whole diff` for a claim that something is absent or untouched; `not in diff` for missing implementation.
 - **Verdict**: exactly `done`, `partial` (the code or the cited evidence supports only part of the claim), `missing`, or `undescribed` (no source claims it: a documentation gap, not a code-quality judgment).
 
