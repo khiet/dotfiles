@@ -5,12 +5,13 @@ alias aws_ls_ec2='aws ec2 describe-instances --filters Name=instance-state-name,
 # aws_tunnel <instance-id> <remote-host> [remote-port] [local-port] [region]
 # Forwards a local port through an SSM-managed EC2 instance to a remote host
 # (e.g. an RDS endpoint that isn't publicly reachable).
-# region must match where the target EC2 instance lives (defaults to us-west-1).
+# remote-port defaults to 5432, local-port to remote-port, region to us-east-1.
+# region must match where the target EC2 instance lives.
 aws_tunnel() {
   local target="$1"
   local host="$2"
-  local rport="$3"
-  local lport="$4"
+  local rport="${3:-5432}"
+  local lport="${4:-$rport}"
   local region="${5:-us-east-1}"
   if [[ -z "$target" || -z "$host" ]]; then
     echo "usage: aws_tunnel <instance-id> <remote-host> [remote-port] [local-port] [region]" >&2
