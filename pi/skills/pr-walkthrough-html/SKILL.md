@@ -1,6 +1,6 @@
 ---
 name: pr-walkthrough-html
-description: Use when the user wants an HTML walkthrough or explanation of a PR, branch, or diff. Writes the PR body with the pr skill when none exists. For findings-focused reviews, use code-review.
+description: Use when the user wants an HTML walkthrough or explanation of a PR or a branch's diff. For findings-focused reviews, use code-review.
 ---
 
 # PR Walkthrough
@@ -16,7 +16,7 @@ Read both rule files before step 1; evidence is recorded as locators from the st
 
 Settle the change: the PR the user names, else the PR for the current branch, else the current branch. For a PR, fetch `gh pr view [<number>] --json body,headRefName,baseRefOid,headRefOid` and take `baseRefOid` as base and `headRefOid` as head. With no PR, base is `origin/main` and head is `HEAD`, and the head branch name stands in for `headRefName`.
 
-Use the PR body as is when it has all three `pr` headings (`## Summary`, `## Evidence`, `## Merge Danger`); its **provenance** is `author`. Otherwise write a body with the [`pr`](../pr/SKILL.md) skill from the merge-base diff of base and head; its provenance is `generated`. For its Evidence, run the tests that show each before and after when the checkout is at head and can run them, and mark each one not run as "Not checked". Never post or edit the body on GitHub.
+Use the PR body as is when it has all three `pr` headings (`## Summary`, `## Evidence`, `## Merge Danger`); its **provenance** is `author`. Otherwise write a body with the [`pr`](../pr/SKILL.md) skill from the merge-base diff of base and head; its provenance is `generated`. Its Evidence carries the status of each test it cites, per **Verification** in `page.md`. The body stays local: on the page, and in step 4's Markdown file.
 
 Collect claims from the body:
 

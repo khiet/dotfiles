@@ -1,6 +1,6 @@
 # Walkthrough page
 
-Rules for the HTML walkthrough page. `SKILL.md` decides the page's sections and what they say; this file says how verification is graded, how the narrative is built, how the page opens, how statements are cited, how code is shown, how long the page runs, how it looks, and how it is checked.
+Rules for the page; `SKILL.md` decides its sections and what they say.
 
 ## Verification
 

@@ -1,6 +1,6 @@
 # Change evidence and Scope check
 
-Rules for the change under walkthrough: the diff between a base and a head revision. `SKILL.md` names the two revisions and the sources of claims; this file says what evidence a change needs and how its Scope check is built.
+The change is the diff between the base and head revisions `SKILL.md` names, and its claims come from the sources `SKILL.md` lists.
 
 ## Change evidence
 
