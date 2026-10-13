@@ -20,7 +20,6 @@ cask "appcleaner"
 cask "iina"
 cask "slack"
 cask "bitwarden"
-cask "obsidian"
 
 # terminal and development apps
 cask "ghostty"
