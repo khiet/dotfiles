@@ -12,6 +12,16 @@ return {
   opts = {
     global_keymaps = false,
     kulala_keymaps_prefix = "",
+    -- Kulala's response window binds <C-h>/<C-l> to tab switching, which
+    -- would shadow the global <C-h>/<C-l> split navigation from nvim/keymaps.lua.
+    -- Unused tab shortcuts are dropped too; B, H, A, S still reach their tabs.
+    kulala_keymaps = {
+      ["Previous tab"] = false,
+      ["Next tab"] = false,
+      ["Show verbose"] = false,
+      ["Show script output"] = false,
+      ["Show report"] = false,
+    },
     ui = {
       -- https://neovim.getkulala.net/docs/getting-started/configuration-options#uiwin_opts
       max_response_size = 10485760, -- 10MB
