@@ -15,6 +15,11 @@ gmq() {
           }
         }
       }' \
-    --jq '.data.repository.mergeQueue.entries.nodes[] |
-      [.position, .pullRequest.number, .state, .pullRequest.title] | @tsv'
+    --jq '.data.repository.mergeQueue |
+      if . == null then
+        "Merge queue is not configured for main."
+      else
+        .entries.nodes[] |
+        [.position, .pullRequest.number, .state, .pullRequest.title] | @tsv
+      end'
 }
