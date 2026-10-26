@@ -11,7 +11,7 @@ Issue reference, if provided: `$1`
 
 ## Review Findings
 
-A finding is one reported problem with a location in the diff and the claim made about it. Treat each item the review reports as one finding however the review groups them (by axis, file, or severity). Sort every finding into one of three buckets. Steps 5, 11, and 12 consume them.
+A finding is one reported problem with a location in the diff and the claim made about it. Treat each item the review reports as one finding however the review groups them (by axis, file, or severity). Sort every finding into one of three buckets. Steps 9, 15, and 16 consume them.
 
 - **Fix now:** a defect in code the current branch touched, where the correct fix is unambiguous and small enough to review in one commit.
 - **Needs your decision:** the fix requires a product, API, or architecture choice, or it contradicts the plan the branch is implementing. Present it as a numbered question with lettered options carrying a one-clause trade-off each, two to four options including "leave as is" when viable, exactly one marked `(Recommended)`.
@@ -29,44 +29,61 @@ Do not push. Decide each gate from the diff and report every skip with its gate.
 
 2. **Evaluate the `test-gap` gate**
    - Run unless every changed path in the step 1 diff is documentation, or the project has no test suite. Refactors and removals run too, since removed code leaves stale tests behind and the skill reviews branch-introduced tests.
-   - Record the decision and reason before running anything.
+   - Record the decision and reason.
 
 3. **Run `test-gap`** (if gated in)
    - Use the `test-gap` skill. Its commit carries a `test:` subject.
 
 4. **Resolve the spec**
-   - The issue is `$1` when given, otherwise the reference in the branch's commit footers. Read it from its tracker.
+   - The issue is `$1` when given, otherwise the reference in the branch's commit footers. Read it from its tracker and write its contents to a temp file, the spec file.
    - Record `no spec` when there is none. The review still runs and reports the missing spec itself.
 
-5. **Run `code-review`**
-   - Use the `code-review` skill with `main` as the fixed point. Hand it the fetched issue contents as the spec so it does not go looking for one.
-   - Sort every finding through Review Findings. Apply only the "fix now" findings and commit them on their own with a `fix:` or `refactor:` subject. Hold the other two buckets for step 12.
+5. **Evaluate the pi code review gate**
+   - Run when `CLAUDECODE` is `1` in the shell.
+   - Record the decision and reason. Every pi code review skip is recorded as `skipped (pi code review: <reason>)`, for example `skipped (pi code review: host is not Claude Code)`.
 
-6. **Evaluate the `comment-refactor` gate**
-   - `git diff main...HEAD --unified=0`. Run when the diff adds, modifies, or removes at least one comment line. Record the decision and reason.
+6. **Start the pi code review** (if gated in)
+   - Run `~/dotfiles/scripts/pi-review.sh <spec file>` as a background command with stdout and stderr captured. Omit the argument when step 4 recorded `no spec`.
+   - Record a launch failure as a skip in step 5's format.
 
-7. **Run `comment-refactor`** (if gated in)
-   - Use the `comment-refactor` skill. Its commit carries a `docs:` subject.
+7. **Run `code-review`**
+   - Use the `code-review` skill with `main` as the fixed point and the spec file as the spec.
+   - Hold its findings for step 9.
 
-8. **Lint**
-   - Run the project's linter with auto-fix. Commit anything it changed with a `style:` subject.
+8. **Collect the pi code review** (if started)
+   - Wait for the step 6 command to exit. Its stdout is pi's report. On any failure it exits non-zero with the reason on stderr.
+   - Exit 3 means pi changed files. Stop and print the script's stderr, which names the changed files. Continuing would let step 9 commit them.
+   - Record any other non-zero exit as a skip in step 5's format with the stderr reason, and continue with the step 7 findings alone.
 
-9. **Run the test suite**
-   - Run the project's tests, or record `skipped` when the project has no test suite. Report failures with the actual output.
+9. **Sort the review findings**
+   - Merge the step 7 and step 8 findings. A finding both reviewers report appears once, tagged `(both reviewers)` as higher confidence.
+   - Sort every finding through Review Findings. Apply only the "fix now" findings and commit them on their own with a `fix:` or `refactor:` subject. Hold the other two buckets for step 16.
 
-10. **Evaluate the `smoke-test` gate**
-    - Run when step 9 passed (or was skipped for lack of a suite) and at least one changed path renders UI, as step 1 of the `smoke-test` skill defines UI. Record the decision and reason; a failed suite is a skip with that gate.
+10. **Evaluate the `comment-refactor` gate**
+    - `git diff main...HEAD --unified=0`. Run when the diff adds, modifies, or removes at least one comment line. Record the decision and reason.
 
-11. **Run `smoke-test`** (if gated in)
+11. **Run `comment-refactor`** (if gated in)
+    - Use the `comment-refactor` skill. Its commit carries a `docs:` subject.
+
+12. **Lint**
+    - Run the project's linter with auto-fix. Commit anything it changed with a `style:` subject.
+
+13. **Run the test suite**
+    - Run the project's tests, or record `skipped` when the project has no test suite. Report failures with the actual output.
+
+14. **Evaluate the `smoke-test` gate**
+    - Run when step 13 passed (or was skipped for lack of a suite) and at least one changed path renders UI, as step 1 of the `smoke-test` skill defines UI. Record the decision and reason; a failed suite is a skip with that gate.
+
+15. **Run `smoke-test`** (if gated in)
     - Use the `smoke-test` skill.
-    - Sort its `Failed` findings through Review Findings. Apply only the "fix now" findings, commit them on their own with a `fix:` subject, then re-run step 8's linter and step 9's suite once. Hold the other two buckets for step 12.
+    - Sort its `Failed` findings through Review Findings. Apply only the "fix now" findings, commit them on their own with a `fix:` subject, then re-run step 12's linter and step 13's suite once. Hold the other two buckets for step 16.
 
-12. **Report**
-    - Print one line per step: `ran` with a one-line result, or `skipped` with the gate that caused it. The smoke line names the screenshot dir so `/pr_screenshots` can find it.
-    - State the suite result on its own line, from the latest run: step 9, or the step 11 re-run when a smoke fix landed.
-    - List the "needs your decision" findings, then the "out of scope" findings as a plain list. A non-empty decision list stops the run for an answer.
+16. **Report**
+    - Print one line per step: `ran` with a one-line result, or `skipped` with the gate that caused it. The smoke line names the screenshot dir so `/pr_screenshots` can find it. Steps 5, 6, and 8 share one pi code review line: `ran` with pi's finding count, or the skip from step 5's format.
+    - State the suite result on its own line, from the latest run: step 13, or the step 15 re-run when a smoke fix landed.
+    - After the step lines, two sections on their own, each headed `Needs your decision:` or `Out of scope:` and followed by its findings or `none`. A non-empty decision list stops the run for an answer.
     - The branch is finished when the suite passes and the decision list is empty. Say so.
 
 ## Ordering
 
-`code-review` runs after `test-gap` so the review sees the final tests, and `comment-refactor` runs after both so it covers every comment the branch changes in one pass, including those from the review fixes. Lint runs last to catch anything the earlier steps wrote. `smoke-test` runs after the suite so a browser session is only spent on a green branch, and after lint so it drives the code that ships; a smoke fix re-runs lint and the suite once, so every result in the report comes from the commit that ships.
+`code-review` runs after `test-gap` so the review sees the final tests. The pi code review starts before the host's `code-review` so the two run concurrently on the same commit, and is collected after it so the findings merge and sort once, with one fix commit. `comment-refactor` runs after both reviews so it covers every comment the branch changes in one pass, including those from the review fixes. Lint runs last to catch anything the earlier steps wrote. `smoke-test` runs after the suite so a browser session is only spent on a green branch, and after lint so it drives the code that ships; a smoke fix re-runs lint and the suite once, so every result in the report comes from the commit that ships.
