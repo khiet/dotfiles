@@ -1,49 +1,44 @@
 ---
-description: Stage UI screenshots in a branch-named Desktop folder, open the PR for manual upload, then format its Evidence section
+description: Upload UI screenshots with GitHub CLI and format the PR's Evidence section
 ---
 
 # PR Screenshots
 
-Fill the Evidence section of the current PR description with screenshots of the UI this branch changes. Only the new UI is shown - no before/after pairing - so the table is the **After**. Leave any **Before** line the body already has.
-
-Usage: `/pr_screenshots`
+Fill the current PR's Evidence section with screenshots of the UI this branch changes. Show the new UI only, as **After** evidence.
 
 ## Rules
 
-- **Reuse before capture.** If screenshots from the recent Playwright session exist, use them as-is. Do not recapture, recrop, or resize a usable asset.
-- **Manual upload only.** Stage screenshots in the branch folder (step 5), open the PR, and ask the user to upload them to GitHub. Stop until the user confirms the upload; never automate the upload or publish local paths as image URLs.
-- **Warn on existing screenshots.** If the PR body already contains images (`![`, `<img`, or a `github.com/user-attachments` URL), stop and show which ones are present. Continue only after the user confirms whether to replace them or add to them. Images on the **Before** line are exempt: never warn about or replace them.
-- **Touch only the Evidence screenshots.** Never regenerate the rest of the description. Replace an existing screenshot table in Evidence. Otherwise put the table in place of the `**After:**` placeholder, keeping the `**After:**` label, or under `## Evidence` when there is no placeholder, adding that heading after `## Summary` if it is missing.
-- **Image width is set on the `<img>` tag,** not the table. Markdown cannot size table columns, so every cell is `<img src="..." width="600">`. GitHub scales two 600px images down to fit the body; that is expected.
+- **Require `--attach`.** If `gh pr edit --help` does not list `--attach`, report that the installed GitHub CLI cannot upload attachments and stop.
+- **Check existing images before every write.** Look for Markdown images, `<img>` tags, and `github.com/user-attachments` URLs, excluding the **Before** line. On the first check, if any exist, show each image URL and its location, then wait for the user to choose which Evidence screenshots to replace or keep. On later checks, stop and ask only if images changed since the user's decision.
 
 ## Process
 
-1. **Locate the PR:** `gh pr view --json number,url,body,headRefName`. If there is no PR, stop and report that.
+1. **Locate the PR.** Run `gh pr view --json number,url,body`. If there is no PR, report that and stop. Check existing images.
 
-2. **Check for existing images** in the body (see the warning rule). Report each image URL and where it sits, then wait for the user's decision.
+2. **Reuse screenshots before capturing.** Look in `.playwright-mcp/` and files captured earlier in this session, newest first. Select PNG/JPEG files modified after the branch-base commit (`git merge-base main HEAD`) that show UI touched by this diff. List each selected path and mtime, and flag any screenshot older than the latest commit that changed the UI it shows, since it may not reflect the final state. Keep usable assets as-is, without recapturing, cropping, or resizing. If any are usable, skip step 3.
 
-3. **Collect candidate screenshots.** Look in, newest first:
-   - `.playwright-mcp/` (Playwright MCP default output dir)
-   - files captured earlier in this session
+3. **Capture only when nothing is reusable.** Use the `smoke-test` skill and collect screenshots from its output directories using step 2's criteria. Only screenshots listed under `Passed` are eligible. Report `Failed` findings and exclude their screenshots. On `Skipped: no UI changes`, report that there is nothing to capture; on any other `Skipped` label, report the gate. Stop on either skipped outcome or if no eligible screenshots remain.
 
-   Keep only PNG/JPEG files modified after the branch base (`git merge-base main HEAD`) and that show the UI this diff touches. List the candidates with path and mtime, and say which are reused. When at least one candidate is usable, skip step 4.
-
-4. **Capture only when nothing is reusable.** Use the `smoke-test` skill. Only screenshots listed under its `Passed` status are candidates; a `Failed` route shows a broken state, so list its finding for the user and leave its screenshot out. On `Skipped: no UI changes`, report that there is nothing to capture and stop. On any other `Skipped` label, report the gate and stop. Re-run step 3 over the skill's dirs to collect what it wrote.
-
-5. **Stage in the branch folder.** Use the PR's `headRefName` as the folder name under `~/Desktop`, replacing `/` with `--` so it stays a single folder (for example, `feat/login` becomes `~/Desktop/feat--login`). Reuse the folder if it exists; otherwise create it with `mkdir -p` and a quoted absolute path. Preserve its existing contents. Copy each selected screenshot into it without modifying the original or its image bytes. Use unique, descriptive filenames containing the PR number and route or UI state; on a filename collision, reuse a byte-identical copy or add a numeric suffix rather than overwrite a different file. Keep a mapping of each destination path to its source, caption, and capture order. Verify every selected screenshot is present in the folder before continuing.
-
-6. **Open the PR, ask for upload, then stop.** Once staging is verified, run `open "<pr-url>"` with the URL from step 1 to launch the PR in the user's default browser. Print the PR URL and exact screenshot paths. Ask the user to open the description editor on that page, drag those files into the Evidence section (creating it if absent), save the description without changing anything else, and reply when the upload is complete. If `open` is unavailable or fails, report that and ask the user to open the printed URL manually. For GitHub, opening the page is the only automated browser action: do not upload through browser tools, poll for completion, or run `gh pr edit` yet. End the turn and wait for the user's reply.
-
-7. **Resolve uploaded images and build the table.** After the user confirms the upload, re-fetch the same PR with `gh pr view <pr-url> --json body`. Extract the uploaded GitHub image URLs from its description and match them to the Desktop file mapping. If any upload is missing or the mapping is ambiguous, ask the user for the corresponding GitHub image URL or inserted Markdown and wait again. Never guess a URL or use a local path. Preserve the user's earlier add/replace decision; newly uploaded images are expected, but unrelated new images or edits require clarification before changing them.
-
-   Build the table with the confirmed uploaded URLs. Two columns, screenshots in capture order, left to right then top to bottom. An odd final screenshot leaves the last cell empty. Header cells name the route or UI state shown.
+4. **Build the body.** Fetch the latest body with `gh pr view <pr-url> --json body` and check existing images. Build a two-column table of the selected screenshots in capture order, left to right then top to bottom, leaving the last cell empty for an odd count. Header cells name the route or UI state. Use each screenshot's absolute local path as a placeholder `src`; step 6 swaps in the uploaded URL. Set width on each `<img>` tag; GitHub scales images to fit the body.
 
    ```markdown
    | Sign-in form | Sign-in error state |
    | --- | --- |
-   | <img src="https://github.com/user-attachments/assets/..." width="600"> | <img src="https://github.com/user-attachments/assets/..." width="600"> |
+   | <img src="/abs/path/sign-in.png" width="600"> | <img src="/abs/path/sign-in-error.png" width="600"> |
    ```
 
-8. **Write the body using GitHub CLI.** Apply the Evidence-screenshots rule to the freshly fetched body, replacing the raw upload lines within the Evidence section with the table. Preserve all content outside the section and any existing images the user chose to keep. Save to a temp file and run `gh pr edit <pr-url> --body-file <file>`. Re-fetch the same PR and confirm the table and uploaded URLs are present and content outside the section is unchanged.
+   Place the table with a targeted edit of the fetched body:
+   - Update the existing Evidence screenshot table according to the user's keep/replace decision. If no table exists, replace the `**After:**` placeholder while retaining its label, or insert under `## Evidence`. If Evidence is missing, add it after `## Summary`.
+   - Preserve the **Before** line, images chosen for keeping, and all unrelated content.
 
-9. **Report:** the PR URL, which files were reused versus captured, and the final table.
+   Check that the diff against the fetched body contains only these edits, then save it to a temp file.
+
+5. **Upload.** Run `gh pr edit <pr-url> --body-file <file> --attach '<absolute-path>#<filename>'`, repeating `--attach` for each selected screenshot. `--attach` does not rewrite `<img src>` paths; it appends one `![<filename>](<url>)` reference per upload to the end of the body.
+
+6. **Swap in the URLs.** Re-fetch the body, including after a non-zero exit: partial failures still publish the uploads that succeeded. Match each appended reference to its screenshot by alt text.
+   - If any upload failed, retry once: save the re-fetched body to the temp file and rerun step 5 attaching only those files.
+   - If an upload still has no appended reference, report the error and the affected files, then stop without the swap below.
+
+   Replace each placeholder `src` with its uploaded URL, remove the appended references, and run `gh pr edit <pr-url> --body-file <file>` without `--attach`. Re-fetch and confirm every table cell holds a `github.com/user-attachments` URL and no local path or appended reference remains. Never leave a local path in the body while claiming completion.
+
+7. **Report** the PR URL, which files were reused versus captured, and the final table.
