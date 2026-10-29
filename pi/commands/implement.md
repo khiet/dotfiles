@@ -34,4 +34,5 @@ Put the reference in every commit message footer (`Closes #N` for GitHub, `Fixes
    - Run `git fetch origin`, then write the PR body with the `pr` skill, from the diff against `origin/main` and the issue, and save it to a temp file. GitHub diffs against `origin/main`, so a stale local `main` would misdescribe the PR.
    - Push the branch.
    - If `gh pr view` finds no PR, run `gh pr create --draft --title "<Conventional Commits title summarizing the branch>" --body-file <file>`. If a PR exists, print the body and confirm before running `gh pr edit --body-file`, so manual edits survive.
+   - Run `/pr_screenshots`. Any skip, such as `Skipped: no UI changes`, is a normal outcome, and a failure does not stop this step; put its outcome in the final report.
    - Run `open <PR-URL>`.
