@@ -63,5 +63,6 @@
   "theme": "auto",
   "editorMode": "vim",
   "preferredNotifChannel": "ghostty",
-  "skipAutoPermissionPrompt": true
+  "skipAutoPermissionPrompt": true,
+  "model": "opus"
 }
