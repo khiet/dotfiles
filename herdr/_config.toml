@@ -39,6 +39,12 @@ focus_pane_down = "prefix+j"
 focus_pane_up = "prefix+k"
 focus_pane_right = "prefix+l"
 
+# Reserve j/k for spaces in workspace navigation; use arrows for vertical panes.
+navigate_workspace_down = "j"
+navigate_workspace_up = "k"
+navigate_pane_down = "down"
+navigate_pane_up = "up"
+
 # Pane swapping on the braces, matching tmux's `{` and `}`. herdr defaults these
 # to prefix+shift+h/l, which collides with the tmux muscle memory for resizing.
 # herdr cannot split leftward at all (its split direction is right or down
@@ -160,7 +166,7 @@ resume_agents_on_restore = true
 #
 # spaces (herdr's top level, above tabs)
 # prefix w workspace picker, the tmux-sessionx replacement; navigates the
-#   current session, up/down between spaces and h/j/k/l between panes
+#   current session, j/k between spaces and h/l/up/down between panes
 # prefix o goto picker, listing all spaces for search and quick navigation
 # prefix shift+n new space, made immediately and inheriting the pane's cwd,
 #   so cd first to root it elsewhere; prefix shift+w rename
