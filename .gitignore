@@ -6,3 +6,4 @@ zshrc/*
 !zshrc/public/**
 
 /pi/skills/synced/
+/pi/skills/.trash/
