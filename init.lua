@@ -4,6 +4,7 @@ require("nvim.functions")
 require("nvim.lazy")
 require("nvim.filetypes")
 require("nvim.fold")
+require("nvim.herdr")
 
 vim.o.ch = 1
 
