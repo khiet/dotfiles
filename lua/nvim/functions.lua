@@ -41,7 +41,6 @@ local function create_spec_file()
   vim.api.nvim_command("silent execute '" .. cmd .. "'")
 end
 
-vim.keymap.set('n', '<leader>cw', delete_trailing_whitespaces, { noremap = true })
 vim.keymap.set('n', '<leader>cq', convert_to_ascii, { noremap = true })
 
 vim.keymap.set('n', '<leader>Z', function() vim.cmd([[normal 1z=]]) end, { noremap = true })
