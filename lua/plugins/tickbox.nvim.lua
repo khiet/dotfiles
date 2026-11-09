@@ -4,6 +4,7 @@ return {
   opts = {
     progress = true,
     auto_check_parent = true,
+    fold = true,
   },
   keys = {
     { "<leader>cc", "<Plug>(tickbox-toggle)", mode = { "n", "x" }, ft = "markdown", desc = "Toggle task" },
