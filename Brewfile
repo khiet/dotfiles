@@ -87,7 +87,9 @@ brew "heroku"
 brew "stripe/stripe-cli/stripe"
 
 # media
+cask "blender"
 brew "ffmpeg"
+brew "vhs"
 brew "yt-dlp"
 
 # fun stuff
