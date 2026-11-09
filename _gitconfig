@@ -40,6 +40,7 @@
   rs   = rebase --skip
   riom = !git rebase -i $(git branch -r | rg '^\\s+origin/(master|main)$')
   o = !sh ~/dotfiles/scripts/git_open_in_github.sh
+  mq = !sh ~/dotfiles/scripts/git_open_merge_queue.sh
 [user]
   name = Khiet Le
   email = khiet@outlook.com
