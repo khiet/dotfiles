@@ -33,6 +33,7 @@
   rmc  = rm -r --cached .
   rma  = !git reset --hard HEAD && git clean -fd
   ro   = !git reset --hard origin/$(git symbolic-ref --short HEAD)
+  wt   = !git fetch && git checkout -B $(basename $(git rev-parse --show-toplevel)) origin/main
   su   = !git branch --set-upstream-to=origin/$(git symbolic-ref --short HEAD)
   rl   = reflog --pretty=format:'%C(yellow)%h%Creset %C(green)%cd%Creset %s%C(red)%d%Creset' --date=format:'%a %d %b %Y %H:%M:%S'
   rc   = rebase --continue
