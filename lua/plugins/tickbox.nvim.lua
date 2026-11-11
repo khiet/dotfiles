@@ -1,5 +1,7 @@
 return {
-  "khiet/tickbox.nvim",
+  -- The local checkout, so unpushed changes load on restart.
+  dir = "~/tickbox.nvim",
+  name = "tickbox.nvim",
   ft = "markdown",
   opts = {
     progress = true,
