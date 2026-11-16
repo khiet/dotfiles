@@ -13,12 +13,12 @@ List the open PRs authored by the bot author. A grouped PR carries several updat
 
 For each update, gather all six, from the default branch as it is now rather than from your checkout:
 
-1. **Diff**: the manifest lines and the lockfile entries that change, including engine requirements and new transitive packages.
+1. **Diff**: every file the PR changes. In manifests and lockfiles, the lines and entries that change, including engine requirements and new transitive packages; any other changed file (source, native, build or runtime configuration) by name and what it changes.
 2. **Release notes**: every version between current and target, majors first. The PR body truncates them; read upstream for the rest.
 3. **CI**: the conclusion of each check, and for each failure the log line that explains it.
 4. **Usage**: the import sites and the API surface the repo calls, plus any config or initializer for the package. For a transitive dependency, the package that pulls it in and the feature behind that package.
 5. **Constraints**: peer ranges, `overrides` or `resolutions` entries, engine requirements against the runtime versions used in CI and production.
-6. **Alert**: the open Dependabot alert the update answers, and its patched version.
+6. **Alert**: the open Dependabot alert the update answers and its patched version, or `none` when no alert matches. `none` is a finding; unknown is for alert access you could not get.
 
 Done when every update has all six, or the missing one is written down as unknown. An unknown counts against the update: it is uncertainty, never safety.
 
@@ -28,7 +28,7 @@ A version number is not evidence. A security-only bot setup still opens major bu
 
 - **Include**: the release notes show no removed API, changed default or changed behaviour the repo depends on, and the constraints hold alongside every other included update.
 - **Separate**: the update matches a standalone rule, or it needs a migration (code changes, a config rewrite, a framework/runtime/build-tool bump, or a native module change that needs a rebuild). Name what the standalone work involves.
-- **Superseded**: another open PR updates the same dependency to a higher target. Keep the higher one.
+- **Superseded**: another open PR updates the same dependency in the same manifest to a higher target, and that higher update is itself an Include. Keep the higher one.
 - **Obsolete**: the default branch already has the target version or newer, or the alert is closed.
 - **Investigate**: evidence is missing and you could not get it. Say what is missing.
 
@@ -48,7 +48,7 @@ Done when every update has exactly one verdict and a reason that cites evidence.
 
 A group is two or more included updates. With fewer, there is no ticket: go to the report.
 
-Search Linear for an open ticket with the ticket title and update it if one exists; otherwise create it. Ask which team or project to use only when more than one fits.
+The ticket title carries this repository's `owner/repo`, so each repository has its own ticket. Search Linear for an open ticket with that exact title and update it if one exists; otherwise create it. Ask which team or project to use only when more than one fits.
 
 Write for an implementer who has none of your context. The ticket covers the included updates only. Sections, in order:
 
@@ -58,8 +58,8 @@ Write for an implementer who has none of your context. The ticket covers the inc
 
 2. **Implementation**: branch from the current default branch; revalidate these recommendations against current manifests and upstream; apply the updates together with the repo's package manager and let it regenerate each lockfile (the originating PRs' lockfile diffs are reference only); confirm a clean install.
 3. **Verification**: the repo's lint, type-check, tests and build on the combined branch, plus one concrete check per included dependency drawn from its usage (a script whose output must stay the same, a feature to exercise on staging). Checks on the individual PRs say nothing about the combination. An update that fails is dropped and documented; the scope stays fixed rather than growing to rescue it.
-4. **Pull request**: one PR to the default branch that links the ticket, lists the originating PRs it supersedes, and summarises included versions and verification results. Merging it and closing the originating PRs are left to the reviewer.
-5. **Acceptance criteria**: compatible updates grouped in one PR; manifests and lockfiles consistent; required checks pass on the combined branch; the PR names the originating PRs it supersedes.
+4. **Pull request**: one PR to the default branch that links the ticket, lists each originating PR as fully superseded (every one of its updates is included) or partly covered (naming the updates left out), and summarises included versions and verification results. Merging it and closing the fully superseded PRs are left to the reviewer.
+5. **Acceptance criteria**: compatible updates grouped in one PR; manifests and lockfiles consistent; required checks pass on the combined branch; the PR names each originating PR as fully superseded or partly covered.
 
 Take the commands in sections 2 and 3 from the repo's own scripts and docs.
 
@@ -69,8 +69,8 @@ Done when the ticket exists and its table has one row per included update.
 
 Reply with:
 
-- The included updates and the ticket link, plus the caveats the user should know before assigning the ticket.
-- One line for every other PR: link, verdict, reason, and the user's next action (Separate: the standalone work to plan; Superseded: close in favour of the higher PR; Obsolete: close; Investigate: the evidence to find).
-- A lone included update, reported as safe to merge on its own.
+- When a ticket was written: its link, the included updates, and the caveats the user should know before assigning it.
+- One line for every open PR that has an update outside the ticket: link, each such update's verdict and reason, and the user's next action (Separate: the standalone work to plan; Superseded: close in favour of the higher PR; Obsolete: close; Investigate: the evidence to find). Closing is the next action only when every update in the PR is accounted for.
+- A lone included update, as a standalone recommendation: merge its PR as is when the evidence asks for nothing more, otherwise the manifest line or newer target it still needs and the checks to run first.
 
-Done when every open PR from step 1 appears in the report exactly once.
+Done when every update from step 1 is accounted for exactly once, in the ticket or in the report.

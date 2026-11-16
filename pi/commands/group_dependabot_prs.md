@@ -7,7 +7,7 @@ description: Group compatible open Dependabot PRs into one Linear ticket and rep
 Use the `group-dependency-prs` skill with these inputs:
 
 - **Bot author**: `app/dependabot`
-- **Ticket title**: `Group compatible Dependabot updates into one PR`
+- **Ticket title**: `Group compatible Dependabot updates into one PR (<owner/repo>)`, with the repository filled in
 - **Standalone rules**: none
 
 Usage: `/group_dependabot_prs [owner/repo]`
