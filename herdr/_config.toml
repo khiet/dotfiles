@@ -5,10 +5,9 @@ onboarding = false
 # herdr is an agent multiplexer: panes, tabs, and workspaces like tmux, plus a
 # sidebar showing whether each agent is working, blocked, or done. That live
 # view is the reason to run it. Installed with `brew "herdr"`; docs at
-# https://herdr.dev/docs/. It runs standalone in a Ghostty tab rather than
-# nested inside tmux, which is the only reason it can take the ctrl+a prefix.
+# https://herdr.dev/docs/. It runs standalone in a Ghostty tab.
 #
-# Bindings mirror the tmux config so nothing has to be relearned. Anything not
+# Bindings follow tmux muscle memory so nothing has to be relearned. Anything not
 # set here stays on herdr's defaults, so `prefix ?` and the online docs stay
 # accurate.
 #
@@ -19,7 +18,7 @@ onboarding = false
 # Run `herdr config check` after editing to validate this file.
 
 [theme]
-# Matches Ghostty (theme = Dracula) and the tmux dracula plugin.
+# Matches Ghostty (theme = Dracula).
 name = "dracula"
 
 [terminal]
@@ -27,13 +26,11 @@ name = "dracula"
 new_cwd = "follow"
 
 [keys]
-# tmux uses C-a as prefix, so herdr does too. This only works because herdr
-# runs standalone in a Ghostty tab rather than nested inside tmux; if that
-# ever changes, move this back to "ctrl+b" so tmux keeps ctrl+a.
+# ctrl+a, the old tmux prefix, instead of herdr's default ctrl+b.
 prefix = "ctrl+a"
 
 # Pane focus with hjkl, same as the tmux binds. These match herdr's defaults
-# and are spelled out only so the mapping is obvious next to the tmux config.
+# and are spelled out only so the mapping is obvious.
 focus_pane_left = "prefix+h"
 focus_pane_down = "prefix+j"
 focus_pane_up = "prefix+k"
@@ -96,7 +93,7 @@ width = "80%"
 height = "80%"
 
 [ui]
-# Dracula green, the same colour as the tmux active pane border.
+# Dracula green.
 accent = "#50fa7b"
 
 # Keep the sidebar out of the way by default; `prefix b` (herdr's default
@@ -111,8 +108,7 @@ prompt_new_tab_name = false
 
 # On trial. Gives herdr the wheel (scrollback), click-to-focus, drag-to-split,
 # and drag-select, at the cost of Ghostty's own Cmd-click URLs and native
-# selection inside panes. Set false to hand the mouse back to Ghostty, which is
-# what tmux does here since `mouse on` is never set. Pane apps such as lazygit
+# selection inside panes. Set false to hand the mouse back to Ghostty. Pane apps such as lazygit
 # receive mouse events either way when they ask for them.
 mouse_capture = true
 

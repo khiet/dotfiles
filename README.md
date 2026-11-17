@@ -31,9 +31,6 @@ ln -s ~/dotfiles $XDG_CONFIG_HOME/nvim
 ln -s ~/dotfiles/bat $XDG_CONFIG_HOME/bat
 ln -s ~/dotfiles/pry $XDG_CONFIG_HOME/pry
 
-mkdir -p $XDG_CONFIG_HOME/tmux
-ln -s ~/dotfiles/tmux/_tmux.conf $XDG_CONFIG_HOME/tmux/tmux.conf
-
 mkdir -p $XDG_CONFIG_HOME/herdr
 ln -s ~/dotfiles/herdr/_config.toml $XDG_CONFIG_HOME/herdr/config.toml
 

@@ -13,11 +13,6 @@ vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
   command = "set filetype=zsh"
 })
 
-vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
-  pattern = "_tmux.conf",
-  command = "set filetype=tmux"
-})
-
 -- Set filetype=haml for *.inky-haml files
 vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
   pattern = "*.inky-haml",
