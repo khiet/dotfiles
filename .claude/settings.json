@@ -49,7 +49,6 @@
     "command": "~/dotfiles/.claude/statusline.sh"
   },
   "enabledPlugins": {
-    "figma@claude-plugins-official": false,
     "context-mode@context-mode": true
   },
   "extraKnownMarketplaces": {
