@@ -14,7 +14,7 @@
 # bash stays in, so the working tree is compared before and after.
 set -uo pipefail
 
-MODEL=openai-codex/gpt-6-astra:high
+MODEL=openai/gpt-6.2-astra:high
 TOOLS=read,bash,grep,find,ls
 TIMEOUT=900 # seconds, hard limit
 
