@@ -1,12 +1,14 @@
 {
-  "defaultProvider": "openai-codex",
-  "defaultModel": "gpt-6-astra",
+  "defaultProvider": "openai",
+  "defaultModel": "gpt-6.2-astra",
   "defaultThinkingLevel": "high",
   "enabledModels": [
     "openai-codex/gpt-6-sol",
     "openai-codex/gpt-6-astra",
     "amazon-bedrock/us.anthropic.claude-opus-5",
-    "mlx-lm/mlx-community/Qwen3.6-35B-A3B-4bit"
+    "mlx-lm/mlx-community/Qwen3.6-35B-A3B-4bit",
+    "openai/gpt-6.2-astra",
+    "openai/gpt-6.2-sol"
   ],
   "packages": [
     "npm:pi-mcp-adapter",
