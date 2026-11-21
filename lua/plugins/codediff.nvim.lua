@@ -10,7 +10,7 @@ return {
     },
     explorer = {
       auto_open_on_cursor = true,
-      width = 60
+      width = 30
     },
     diff = {
       layout = "inline", -- toggle between "side-by-side" and "inline" with 't'
