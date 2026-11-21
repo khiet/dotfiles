@@ -52,7 +52,7 @@ Do not push. Decide each gate from the diff and report every skip with its gate.
 
 8. **Collect the pi code review** (if started)
    - Wait for the step 6 command to exit. Its stdout is pi's report. On any failure it exits non-zero with the reason on stderr.
-   - Exit 3 means pi changed files. Stop and print the script's stderr, which names the changed files. Continuing would let step 9 commit them.
+   - Exit 3 means the repo changed during the review. Stop and print the script's stderr, which shows what changed. Continuing would let step 9 commit them.
    - Record any other non-zero exit as a skip in step 5's format with the stderr reason, and continue with the step 7 findings alone.
 
 9. **Sort the review findings**

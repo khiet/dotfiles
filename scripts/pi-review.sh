@@ -14,7 +14,7 @@ set -uo pipefail
 
 spec=${1:-}
 
-if [[ -n $spec && ! -r $spec ]]; then
+if [[ -n $spec && ( ! -f $spec || ! -r $spec ) ]]; then
   echo "spec file is not readable: $spec" >&2
   exit 2
 fi
