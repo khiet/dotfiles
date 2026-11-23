@@ -16,8 +16,8 @@ Launch and stop mechanics are per platform: [`../_shared/app-launch.md`](../_sha
    - Mark each changed path UI or not. UI: components, pages, screens, routes, layouts, templates, styles. Not UI: tests, docs, config, pure logic.
    - No UI paths: report `Skipped: no UI changes` and stop.
    - Platform: `app-launch-ios.md` `Mobile signal` first, then `app-launch.md` `Web signal`. Neither: report `Skipped: no app signal` and stop.
-   - Driver: the launch file's `Availability`. Missing: report `Skipped: no driver (server unavailable)` and stop. iOS with no booted simulator: report `Skipped: no booted simulator` and stop.
-   - iOS app: `app-launch-ios.md` `App`. Not installed: report `Skipped: app not installed on simulator` and stop.
+   - Driver: the launch file's `Availability`. Missing: report `Skipped: no driver (server unavailable)` and stop.
+   - iOS device: `app-launch-ios.md` `App`, then `Simulator`. No device has the app: report `Skipped: app not installed on any simulator` and stop.
    - Recipe: the launch file's `Recipe`. None: report `Skipped: no launch recipe` and stop.
    - Completion criterion: the platform is recorded, every changed path is marked UI or not, and the recipe is recorded as start command, readiness probe, stop command, and a found-running flag, or the run has stopped with its `Skipped` label.
 
@@ -78,8 +78,8 @@ One finding per failed route, in the shape `wrap_up` sorts: a location in the di
 
 ## Status
 
-- `Launch`: platform, recipe used, and whether the app was found running or started and stopped. iOS with a found-running Metro: note that the Metro error signal was unobserved.
+- `Launch`: platform, recipe used, and whether the app was found running or started and stopped. iOS: the device used, and whether this run booted it. iOS with a found-running Metro: note that the Metro error signal was unobserved.
 - `Passed`: routes with the observable present and a clean error check, each with its absolute screenshot path. With the Metro signal unobserved, clean means the screen signal only, and the line says so.
 - `Failed`: findings.
 - `Not covered`: files or routes left out, each with its reason: over route cap, over step cap, needs data, needs login, no route.
-- `Skipped`: the gate that stopped the run: `no UI changes`, `no app signal`, `no driver (server unavailable)`, `no booted simulator`, `app not installed on simulator`, `no launch recipe`.
+- `Skipped`: the gate that stopped the run: `no UI changes`, `no app signal`, `no driver (server unavailable)`, `app not installed on any simulator`, `no launch recipe`.
