@@ -14,7 +14,7 @@ The `ios-simulator` MCP tools must be listed in this session; `get_booted_sim_id
 
 ## App
 
-- Bundle id: `ios.bundleIdentifier` in `app.json` or `app.config.*`, else `PRODUCT_BUNDLE_IDENTIFIER` in `ios/*.xcodeproj/project.pbxproj`.
+- Bundle id: `expo.ios.bundleIdentifier` in `app.json` (top-level `ios.bundleIdentifier` in `app.config.*`, or in an `app.json` without the `expo` key), else `PRODUCT_BUNDLE_IDENTIFIER` in `ios/*.xcodeproj/project.pbxproj`.
 - Expo Go project (no `ios/` dir and no `expo-dev-client` dependency): the bundle id is `host.exp.Exponent`.
 - `list_apps` on the booted simulator must include the bundle id; a miss is `app not installed on simulator`.
 
@@ -33,20 +33,19 @@ Record the recipe as start command, readiness probe, stop command, and a found-r
 
 ## Launch
 
-1. When `.gitignore` does not cover it, add `.ios-simulator-mcp/` to `.git/info/exclude`. That file is per clone and never committed.
-2. A found-running Metro is used as is. Its log is out of reach, so the Metro error signal is unavailable for the run; record that for the caller's report.
+1. Create `.ios-simulator-mcp/` at the repo root (`mkdir -p`); the MCP does not create a screenshot's parent dir. When `.gitignore` does not cover it, add it to `.git/info/exclude`. That file is per clone and never committed.
+2. A found-running Metro is used as is. Its log is out of reach, so the Metro error signal is unobserved for the run: record that for the caller's report, and error checks rest on the screen signal alone.
 3. Otherwise run the recipe's start command in the background with job control on (`set -m`), stdout and stderr to a log file in the scratch dir, and record its pid so the process group can be stopped later.
 4. Record whether the app was already running (`xcrun simctl spawn <udid> launchctl list | grep <bundle-id>`), then `launch_app` with `terminate_running` true.
-5. Connect to Metro when the app opens on the Expo dev launcher or Expo Go home: tap the entry for the Metro URL. This is connection, not navigation, so it does not count against the interaction cap.
-6. Readiness: Metro reports `packager-status:running` and `ui_describe_all` shows the app's own first screen rather than a launcher or a loading bundle. Poll every 2 s, within 180 s, since a cold first bundle is slow.
+5. Readiness: Metro reports `packager-status:running` and `ui_describe_all` shows the app's own first screen. Poll every 2 s, within 180 s, since a cold first bundle is slow. Each poll that shows the Expo dev launcher or Expo Go home instead: tap the entry for the Metro URL, then keep polling. This is connection, not navigation, so it does not count against the interaction cap.
 
 ## Relaunch
 
-Before each row: `launch_app` with `terminate_running` true, then wait for readiness as in Launch step 6. Every row starts cold from the app's first screen, the way a tester opens the app.
+Before each row: `launch_app` with `terminate_running` true, then readiness as in Launch step 5, connection taps included. Every row starts cold from the app's first screen, the way a tester opens the app.
 
 ## Tap
 
-Find the element with `ui_find_element`: search by its accessibility label, or its visible text, with `matchMode` `exact` first and then `substring`. Tap the center of its frame with `ui_tap`. Text entry: tap the field, then `ui_type`. A documented login is the login screen's fields and submit, done this way; the calling skill counts it against its interaction cap.
+Find the element with `ui_find_element`: search by its accessibility label, or its visible text, with `matchMode` `exact` first and then `substring`. Poll every 1 s, within 10 s, since the screen may still be transitioning or loading. Tap the center of its frame with `ui_tap`. Text entry: tap the field, then `ui_type`. A documented login is the login screen's fields and submit, done this way; the calling skill counts it against its interaction cap.
 
 ## Error signals
 

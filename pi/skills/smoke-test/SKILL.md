@@ -60,11 +60,11 @@ Per row:
 Per row:
 
 1. Relaunch per `app-launch-ios.md` `Relaunch`.
-2. Perform the row's reach steps in order per `Tap`. A label that is not on screen fails the row with a finding naming the step, as a tester would report a missing button.
+2. Perform the row's reach steps in order per `Tap`. A label that is not on screen within the poll fails the row with a finding naming the step, as a tester would report a missing button.
 3. Wait: poll `ui_find_element` for the observable every 1 s, within 10 s. Style-only: wait 2 s.
 4. Confirm by observable kind. Text, control, or test id: `ui_find_element` with the text, label, or test id (React Native exposes `testID` as the unique id it searches). Style-only: `ui_describe_all` returns the app's screen.
 5. Check `Error signals`: the Metro log since the row began, and `ui_describe_all` for a red screen or error LogBox.
-6. `screenshot` with `output_path` set to the smoke name.
+6. `screenshot` with `output_path` set to the smoke name's absolute path under the repo's `.ios-simulator-mcp/`; a relative path lands in the MCP's own output dir instead.
 
 ## Caps
 
@@ -78,8 +78,8 @@ One finding per failed route, in the shape `wrap_up` sorts: a location in the di
 
 ## Status
 
-- `Launch`: platform, recipe used, and whether the app was found running or started and stopped. iOS with a found-running Metro: note that the Metro error signal was unavailable.
-- `Passed`: routes with the observable present and a clean error check, each with its absolute screenshot path.
+- `Launch`: platform, recipe used, and whether the app was found running or started and stopped. iOS with a found-running Metro: note that the Metro error signal was unobserved.
+- `Passed`: routes with the observable present and a clean error check, each with its absolute screenshot path. With the Metro signal unobserved, clean means the screen signal only, and the line says so.
 - `Failed`: findings.
 - `Not covered`: files or routes left out, each with its reason: over route cap, over step cap, needs data, needs login, no route.
 - `Skipped`: the gate that stopped the run: `no UI changes`, `no app signal`, `no driver (server unavailable)`, `no booted simulator`, `app not installed on simulator`, `no launch recipe`.
