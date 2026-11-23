@@ -24,7 +24,7 @@
   ],
   "extensionChangelogVersions": {
     "{\"source\":\"npm:pi-mcp-adapter\",\"scope\":\"user\"}": "7.0.1",
-    "{\"source\":\"npm:pi-subagents\",\"scope\":\"user\"}": "0.89.1",
+    "{\"source\":\"npm:pi-subagents\",\"scope\":\"user\"}": "0.89.2",
     "{\"source\":\"npm:pi-web-access\",\"scope\":\"user\"}": "0.48.0"
   },
   "deviceId": "0388c73a-0a49-4f72-b78b-8e6ba624a8f2"
