@@ -1,5 +1,5 @@
 ---
-description: Boot the web app and load the routes this branch changed, one screenshot each, reporting anything that fails to render
+description: Boot the web or iOS app and reach the screens this branch changed, one screenshot each, reporting anything that fails to render
 ---
 
 # Smoke Test

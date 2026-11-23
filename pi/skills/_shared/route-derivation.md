@@ -1,6 +1,6 @@
-# Route derivation (web)
+# Route derivation
 
-Shared mapping from a source file to the route that renders it, for skills that drive the web app with the Playwright MCP. The calling skill decides which files come in and which `Not covered` label a miss gets; this file only says how to map.
+Shared mapping from a source file to the route that renders it, for skills that drive the web app or the iOS app. The calling skill decides which files come in and which `Not covered` label a miss gets; this file only says how to map. On iOS a route is a screen: an Expo Router file, or a screen registered with a React Navigation navigator.
 
 ## Route
 
@@ -13,3 +13,14 @@ Check in order and stop at the first hit:
 ## Parameters
 
 A parameter takes a value the repo states: seeds, fixtures, README, stories. A value counts once the running app answers the route with it; a parameter with no stated value, or one the app rejects, is a parameter miss.
+
+## Tap path (iOS)
+
+The iOS app is reached the way a tester reaches it: by tapping from the app's first screen. Plan the path from the code before driving, then follow it with no exploration:
+
+1. Find the screen's entry points: the `Link`, `router.push`, `router.navigate`, or `navigation.navigate` call sites that target it, or the tab that hosts it.
+2. For each, take the label a tester sees on the triggering control: its text child, `accessibilityLabel`, or the tab's `title`/`tabBarLabel`.
+3. Walk up the same way from the screen holding that control until reaching the first screen or a tab bar. Prefer the shortest path.
+4. A screen or ancestor with no entry point is a route miss; record the chain walked. The calling skill's interaction cap bounds the path length.
+
+The path is an ordered list of labels to tap. Parameters on the way are chosen by tapping, so the parameter rule above applies only when a step needs a specific record: the repo must state which one to tap.
